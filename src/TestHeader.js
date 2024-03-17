@@ -1,6 +1,5 @@
 import React from 'react';
-import {ReactComponent as logo} from './logo.svg';
-
+import logo from './logo.svg';
 
 /**
  * TestHeader component.
@@ -21,6 +20,11 @@ function TestHeader() {
             >
         Learn React
             </a>
+            <h1
+                className="mt-4 text-3xl font-bold text-blue-500 underline"
+            >
+                    If I&apos;m blue, bold & underlined, then tailwindcss is working!
+            </h1>
         </header>
     );
 }
