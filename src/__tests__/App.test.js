@@ -1,8 +1,12 @@
-import {render, screen, test} from '@testing-library/react';
-// Import the 'expect' function from the 'jest-dom' package
-import {expect} from '@testing-library/jest-dom';
-import App from './App';
 import React from 'react';
+import {render, screen, cleanup} from '@testing-library/react';
+import App from '../App';
+import {test, expect, afterEach} from '@jest/globals';
+
+afterEach(() => {
+    cleanup();
+});
+
 
 test('renders learn react link', () => {
     render(<App />);

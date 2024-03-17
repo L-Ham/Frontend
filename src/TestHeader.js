@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import {ReactComponent as logo} from './logo.svg';
 
 
 /**
@@ -8,7 +8,7 @@ import logo from './logo.svg';
  */
 function TestHeader() {
     return (
-        <header className="App-header">
+        <header className="App-header" data-testid="header-1">
             <img src={logo} className="App-logo" alt="logo" />
             <p>
         Edit <code>src/App.js</code> and save to reload.

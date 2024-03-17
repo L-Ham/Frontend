@@ -1,0 +1,16 @@
+import React from 'react';
+import {render, screen, cleanup} from '@testing-library/react';
+import TestHeader from '../TestHeader';
+import {test, expect, afterEach} from '@jest/globals';
+
+afterEach(() => {
+    cleanup();
+});
+
+
+test('should render TestHeader component', () => {
+    render(<TestHeader />);
+    const headerElement = screen.getByTestId('header-1');
+    expect(headerElement).toBeInTheDocument();
+    expect(headerElement).toHaveTextContent('Edit src/App.js and save to reload.');
+});
