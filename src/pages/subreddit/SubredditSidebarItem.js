@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SubredditSidebarItem.css';
 
 /**
  * Renders the subreddit sidebar item.
@@ -10,8 +9,8 @@ import './SubredditSidebarItem.css';
  */
 export function SubredditSidebarItem({title, children}) {
     return (
-        <div className="subreddit-sidebar-item">
-            <h3>{title}</h3>
+        <div className="flex flex-col border-b  border-[#25201a] bg-transparent p-5 text-left">
+            <h3 className='mb-2.5 text-left text-sm font-bold'>{title}</h3>
             {children}
         </div>
     );

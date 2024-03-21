@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 // icons
 import {ReactComponent as CaretDownIconOutline} from '../../assets/icons/caret-down-outline.svg';
-// styles
-import './Rule.css';
 
 /**
  * Renders the rules.
@@ -20,17 +18,19 @@ export function Rule({number, rule, descriptionList}) {
     };
 
     return (
-        <li className="rule">
-            <div className="rule__title" onClick={() =>{
+        <li className="flex flex-col">
+            <div className="flex w-full items-center justify-between px-4 py-2 hover:bg-[#251c00]" onClick={() =>{
                 toogleDescriptionVisibility();
             }}>
                 <span>{number}</span>
-                <p>{rule}</p>
-                <CaretDownIconOutline className={!isDescriptionHidden ? 'rotateCW' : 'rotateCCW'} />
+                <p className="max-w-36 grow">{rule}</p>
+                <CaretDownIconOutline
+                    className={`${!isDescriptionHidden ? 'rotate-180' : 'rotate-0'}
+                     transition-transform duration-300 ease-in-out`} />
             </div>
-            <ul className={`rule__description ${isDescriptionHidden ? 'hidden' : ''}`}>
+            <ul className={`pl-12 ${isDescriptionHidden ? 'hidden' : ''}`}>
                 {descriptionList.map((descriptionListItem, idx) => (
-                    <li key={idx}><p>{descriptionListItem}</p></li>
+                    <li key={idx} className="list-disc px-0 py-1"><p>{descriptionListItem}</p></li>
                 ))}
             </ul>
         </li>

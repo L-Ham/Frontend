@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditSidebarItem} from './SubredditSidebarItem';
 import {LinkButton} from '../../generic components/LinkButton';
-import './CommunityBookmarks.css';
 
 /**
  * Renders the community bookmarks.
@@ -70,13 +69,11 @@ export function CommunityBookmarks({name}) {
 
     return (
         <SubredditSidebarItem title='Community Bookmarks'>
-            <div className="community-bookmarks">
-                <ul>
-                    {bookmarks.map((bookmark) => (
-                        <LinkButton key={bookmark.buttonText} data={bookmark}/>
-                    ))}
-                </ul>
-            </div>
+            <ul className="m-0 flex flex-col p-0">
+                {bookmarks.map((bookmark) => (
+                    <LinkButton key={bookmark.buttonText} data={bookmark}/>
+                ))}
+            </ul>
         </SubredditSidebarItem>
     );
 }

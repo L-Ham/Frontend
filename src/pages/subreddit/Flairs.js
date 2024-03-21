@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditSidebarItem} from './SubredditSidebarItem';
-import './Flairs.css';
 
 /**
  * Renders the flairs.
@@ -27,11 +26,12 @@ export function Flairs({name}) {
 
     return (
         <SubredditSidebarItem title='Flairs'>
-            <div className="flairs">
+            <div className="flex flex-row flex-wrap">
                 {flairs.map((flair) => (
-                    <div key={flair.name} style={getFlairStyle(flair.color)} onClick={() => {
-                        handleFlairClick(flair.name);
-                    }}>
+                    <div key={flair.name} style={getFlairStyle(flair.color)}
+                        className="m-1 cursor-pointer rounded-lg p-2 text-xs" onClick={() => {
+                            handleFlairClick(flair.name);
+                        }}>
                         {flair.name}
                     </div>
                 ))}
@@ -50,7 +50,7 @@ Flairs.propTypes =
  * @param {string} color - The color to check.
  * @return {boolean} True if the color is light, false otherwise.
  */
-function isLightColor(color) {
+export function isLightColor(color) {
     const lightColors = ['red', 'green', 'yellow', 'purple', 'pink', 'blue', 'orange'];
     const darkColors = ['darkred', 'gray'];
     if (lightColors.includes(color)) {
@@ -67,7 +67,7 @@ function isLightColor(color) {
  * @param {string} color - The color of the flair.
  * @return {Object} The style for the flair.
  */
-function getFlairStyle(color) {
+export function getFlairStyle(color) {
     return {
         backgroundColor: color,
         color: isLightColor(color) ? 'black' : 'white',

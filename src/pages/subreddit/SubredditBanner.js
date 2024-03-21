@@ -8,7 +8,6 @@ import {ReactComponent as NotificationOffIconFill} from '../../assets/icons/noti
 import {ReactComponent as PlusIconFill} from '../../assets/icons/plus-fill.svg';
 import {ReactComponent as OnlineIcon} from '../../assets/icons/online.svg';
 import {ReactComponent as OverflowHorizontalIconOutline} from '../../assets/icons/overflow-horizontal-outline.svg';
-import './SubredditBanner.css';
 
 const iconComponents = {
     'notification-fill': NotificationIconFill,
@@ -17,14 +16,14 @@ const iconComponents = {
 };
 
 /**
- * Returns the icon component for the dropdown menu item.
- * @param {string} iconName - The name of the icon.
+ * Returns the icon component.
+ * @param {string} iconName - The name of the icon
  * @return {JSX.Element} The icon component.
  */
 const getIconComponent = (iconName) => {
     if (!iconName) return null;
     const IconComponent = iconComponents[`${iconName}-fill`];
-    return IconComponent ? <IconComponent className='icon' /> : null;
+    return IconComponent ? <IconComponent className='h-5' /> : null;
 };
 
 /**
@@ -149,43 +148,67 @@ export function SubredditBanner({
     }
 
     return (
-        <div className="subreddit-banner">
-            <div className="subreddit-banner__cover">
-                <img src={coverSrc} alt="Subreddit Cover" />
+        <div className="my-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
+            <div className="w-full overflow-hidden rounded-lg bg-[#d3d3d3]">
+                <img src={coverSrc ? coverSrc : ''}
+                    alt="Subreddit Cover" className='size-full object-cover object-center'/>
             </div>
-            <div className="subreddit-banner__info">
-                <div className="subreddit-banner__subinfo-container">
-                    <div className="subreddit-banner__profile-picture">
-                        <img src={profilePictureSrc} alt="Subreddit profile picture" />
+            <div className="relative bottom-0 flex w-[95%] flex-col items-start justify-start
+            lg:bottom-[26%] lg:flex-row lg:items-end lg:justify-between">
+                <div className="mt-2 flex flex-row items-center justify-center">
+                    <div className="relative -top-2 size-28
+                    max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
+                        <img src={profilePictureSrc} alt="Subreddit profile picture"
+                            className='size-full rounded-[50%] border-[5px] border-solid border-[#181100]'/>
                     </div>
-                    <div className="subreddit-banner__subinfo">
-                        <h1 className="subreddit-banner__title">{`r/${name}`}</h1>
-                        <div className="subreddit-banner__status hidden">
-                            <span>{`${(membersCount)} members`}</span>
-                            <span>
-                                <OnlineIcon className="icon no-fill"/>
-                                {`${(onlineCount)} online`}</span>
+                    <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
+                        <h1 className="mb-4 ml-2 text-2xl font-bold leading-6 text-white
+                        max-[1024px]:m-0 max-[1024px]:mb-1 max-[1024px]:text-[1rem] max-[1024px]:leading-4">
+                            {`r/${name}`}
+                        </h1>
+                        <div className="flex flex-row items-center min-[1024px]:hidden">
+                            <span className='mr-2 flex text-[0.5rem] text-[#b08d0e]'>
+                                <span className='mr-[3px] scale-110'>{membersCount}</span> members
+                            </span>
+                            <span className='flex items-center justify-center text-[0.5rem]
+                            text-[#b08d0e]'>
+                                <OnlineIcon className="relative -bottom-[6px] mr-1 h-5 self-center bg-transparent"/>
+                                <span className='mr-[3px] scale-110'>{onlineCount}</span> online
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div className="subreddit-banner__actions">
-                    <button className="no-fill" onClick={handleCreatePost}>
-                        <PlusIconFill className="icon"/>
+                <div className="flex flex-row items-center max-[1024px]:mb-3">
+                    <button className='flex h-11 cursor-pointer flex-row
+                    items-center whitespace-nowrap rounded-3xl border-2 border-solid border-[#777777] bg-transparent
+                    px-5 py-2 text-white outline-none hover:border-white'
+                    onClick={handleCreatePost}>
+                        <PlusIconFill className="mr-1 h-5"/>
                         Create a post
                     </button>
                     {isNotficationsVisible && (
-                        <button className='no-fill rounded' onClick={handleNotificationClick}
-                            style={{position: 'relative'}}>
+                        <button className='ml-2 flex w-[45px]
+                        items-center justify-center rounded-[50%] border-2 border-solid border-[#777777] bg-transparent
+                         p-2.5 text-white hover:border-white'
+                        onClick={handleNotificationClick}
+                        style={{position: 'relative'}}>
                             {getIconComponent(activeNotification)}
                             {isNotficationOptionsVisible && <NotificationsDropdownMenu activeItem={activeNotification}
                                 onItemClick={handleNotificationItemClick}/>}
                         </button>
                     )}
-                    <button className={`${isJoined ? 'no-fill' : 'fill-color'}`} onClick={handleJoinClick}>
+                    <button className={`${isJoined ?
+                        'border-2 border-solid border-[#777777] bg-transparent text-white hover:border-white' :
+                        'border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]'}
+                         mx-2 rounded-3xl px-5 py-2`}
+                    onClick={handleJoinClick}>
                         {isJoined ? 'Joined' : 'Join'}
                     </button>
-                    <button className="no-fill rounded" onClick={handleMoreClick} style={{position: 'relative'}}>
-                        <OverflowHorizontalIconOutline className="icon"/>
+                    <button className="flex w-[45px] items-center justify-center
+                    rounded-[50%] border-2 border-solid
+                    border-[#777777] bg-transparent p-2.5 text-white hover:border-white"
+                    onClick={handleMoreClick} style={{position: 'relative'}}>
+                        <OverflowHorizontalIconOutline className="h-5"/>
                         {isOtherOptionsVisible && <MoreDropdownMenu name={name}
                             isMuted={isMuted}
                             onMuteClick={handleMuteClick}

@@ -1,5 +1,4 @@
 import React from 'react';
-import './PostsList.css';
 
 /**
  * Renders the posts list.
@@ -7,14 +6,9 @@ import './PostsList.css';
  */
 export function PostsList() {
     return (
-        <div className="posts-container">
+        <div className="m-0 mr-3 flex h-full
+                flex-auto flex-col items-center rounded-lg bg-yellow-300 p-0 pt-2.5 opacity-50">
             {/* place holder for posts*/}
-            <div className="posts-container__post"></div>
-            <div className="posts-container__post"></div>
-            <div className="posts-container__post"></div>
-            <div className="posts-container__post"></div>
-            <div className="posts-container__post"></div>
-            <div className="posts-container__post"></div>
         </div>
     );
 }

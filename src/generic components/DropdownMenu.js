@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './DropdownMenu.css';
 import {ReactComponent as NotificationIconFill} from '../assets/icons/notification-fill.svg';
 import {ReactComponent as NotificationFrequentIconFill} from '../assets/icons/notification-frequent-fill.svg';
 import {ReactComponent as NotificationOffIconFill} from '../assets/icons/notification-off-fill.svg';
@@ -27,7 +26,7 @@ const getIconComponent = (iconName, isActive) => {
     if (!iconName) return null;
     const iconSuffix = isActive ? '-fill' : '-outline';
     const IconComponent = iconComponents[`${iconName}${iconSuffix}`];
-    return IconComponent ? <IconComponent className='icon' /> : null;
+    return IconComponent ? <IconComponent className='mr-2.5 h-5' /> : null;
 };
 
 /**
@@ -65,7 +64,7 @@ export function DropdownMenu({
 },
 ) {
     return (
-        <div className="dropdown-menu">
+        <div className="absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#1f1700]">
             {menuItems.map((item) => {
                 const containsIcon = item.content.icon;
                 const isActive = (activeItem && activeItem === item.content.icon);
@@ -73,14 +72,14 @@ export function DropdownMenu({
                 return (
                     <div
                         className={
-                            `dropdown-menu__item ${(isActive) ?
-                                'active' : '' }`
+                            `flex cursor-pointer flex-row items-center px-4 py-2 ${(isActive) ?
+                                'bg-[#251c00]' : ''} hover:bg-[#2f2401]`
                         }
                         key={item.content.text}
                         onClick={item.onClick}
                     >
                         {containsIcon && Icon}
-                        <span>{item.content.text}</span>
+                        <span className='whitespace-nowrap'>{item.content.text}</span>
                     </div>
                 );
             })}

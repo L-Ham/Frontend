@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 // components
 import {SubredditSidebarItem} from './SubredditSidebarItem';
 import {CommunityStats} from './CommunityStats';
-// styles
-import './SubredditInfo.css';
+
 
 /**
  * Renders the subreddit info.
@@ -24,8 +23,8 @@ export function SubredditInfo({
 }) {
     return (
         <SubredditSidebarItem title={name}>
-            <div className="subreddit-info">
-                <div className="subreddit-info__subinfo">
+            <div>
+                <div className="mb-4 flex flex-col">
                     <p>
                         {description}
                     </p>

@@ -7,7 +7,6 @@ import {Flairs} from './Flairs';
 import {SpoilInstructions} from './SpoilInstructions';
 import {Rules} from './Rules';
 import {SubredditModerators} from './SubredditModerators';
-import './SubredditSidebar.css';
 
 
 /**
@@ -35,7 +34,9 @@ export function SubredditSidebar({
     moderators,
 }) {
     return (
-        <div className="subreddit-sidebar">
+        <div
+            className="sticky top-0 m-0 flex h-screen w-80 flex-col
+            overflow-y-auto rounded-lg bg-[#0c0700] font-sans text-xs text-[#b99617]">
             <SubredditInfo
                 name={name}
                 description={description}

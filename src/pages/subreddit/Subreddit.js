@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {SubredditBanner} from './SubredditBanner';
 import {SubredditSidebar} from './SubredditSidebar';
 import {PostsList} from './PostsList';
-// styles
-import './Subreddit.css';
 
 
 /**
@@ -30,7 +28,7 @@ export function Subreddit({name}) {
     const {subreddit, user} = data;
 
     return (
-        <div className="subreddit">
+        <div className="m-auto flex h-full w-4/5 flex-col items-center">
             <SubredditBanner
                 name={subreddit.name}
                 profilePictureSrc={subreddit.profilePictureSrc}
@@ -38,19 +36,21 @@ export function Subreddit({name}) {
                 membersCount={numberToString(subreddit.membersCount)}
                 onlineCount={numberToString(subreddit.onlineCount)}
             />
-            <div className='subreddit__data-container'>
-                <PostsList />
-                <SubredditSidebar
-                    name={subreddit.name}
-                    description={subreddit.description}
-                    membersCount={numberToString(subreddit.membersCount)}
-                    onlineCount={numberToString(subreddit.onlineCount)}
-                    rank={subreddit.rank}
-                    username={user.username}
-                    spoilInstructions={subreddit.spoilIntructions}
-                    rules={subreddit.rules}
-                    moderators={subreddit.moderators}
-                />
+            <div className="flex w-full flex-auto">
+                <PostsList/>
+                <div className="max-[1000px]:hidden">
+                    <SubredditSidebar
+                        name={subreddit.name}
+                        description={subreddit.description}
+                        membersCount={numberToString(subreddit.membersCount)}
+                        onlineCount={numberToString(subreddit.onlineCount)}
+                        rank={subreddit.rank}
+                        username={user.username}
+                        spoilInstructions={subreddit.spoilIntructions}
+                        rules={subreddit.rules}
+                        moderators={subreddit.moderators}
+                    />
+                </div>
             </div>
         </div>
     );

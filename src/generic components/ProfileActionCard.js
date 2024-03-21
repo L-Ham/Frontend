@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ProfileActionCard.css';
 
 /**
  * Renders the user flair.
@@ -10,9 +9,9 @@ import './ProfileActionCard.css';
  */
 export function ProfileActionCard({name, pictureSrc}) {
     return (
-        <div className="profile-action-card">
+        <div className="mb-2 flex flex-row items-center">
             <img src={pictureSrc}
-                alt="picture"/>
+                alt="picture" className='mr-2 size-8 rounded-full'/>
             <span>{name}</span>
         </div>
     );

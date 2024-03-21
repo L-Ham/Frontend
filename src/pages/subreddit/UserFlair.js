@@ -11,7 +11,7 @@ import {ProfileActionCard} from '../../generic components/ProfileActionCard';
 export function UserFlair({username}) {
     const profilePictureSrc = 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_6.png';
     return (
-        <div className="user-flair">
+        <div>
             <SubredditSidebarItem title='USER FLAIR'>
                 <ProfileActionCard
                     key={username}

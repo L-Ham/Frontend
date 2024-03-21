@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditSidebarItem} from './SubredditSidebarItem';
-import './SpoilInstructions.css';
 
 /**
  * Renders the spoil instructions.
@@ -11,9 +10,9 @@ import './SpoilInstructions.css';
 export function SpoilInstructions({instructions}) {
     return (
         <SubredditSidebarItem title="DON'T SPOIL OTHERS.">
-            <ul className="spoil-instructions">
+            <ul className="m-0 px-5 py-0">
                 {instructions.map((instruction, idx) => (
-                    <li key={idx}><p>{instruction}</p></li>
+                    <li key={idx} className='mb-1.5 list-disc'><p>{instruction}</p></li>
                 ))}
             </ul>
         </SubredditSidebarItem>

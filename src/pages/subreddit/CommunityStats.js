@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {CommunityStatsItem} from './CommunityStatsItem';
-import './CommunityStats.css';
 
 /**
  * Renders the CommunityStats.
@@ -33,7 +32,7 @@ export function CommunityStats({
     ];
 
     return (
-        <div className='subredditinfo__CommunityStats'>
+        <div className='flex'>
             {
                 data.map((item) => <CommunityStatsItem key={item.title} item={item} />)
             }

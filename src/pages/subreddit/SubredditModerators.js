@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {SubredditSidebarItem} from './SubredditSidebarItem';
 import {ProfileActionCard} from '../../generic components/ProfileActionCard';
 import {LinkButton} from '../../generic components/LinkButton';
-import './SubredditModerators.css';
 
 /**
  * Renders the subreddit moderators
@@ -33,9 +32,9 @@ export function SubredditModerators({users, name}) {
     ];
 
     return (
-        <div className="subreddit-moderators">
+        <div>
             <SubredditSidebarItem title='Moderators'>
-                <div className="subreddit-moderators__users">
+                <div>
                     {
                         users.map((user) => (
                             <ProfileActionCard
@@ -45,7 +44,7 @@ export function SubredditModerators({users, name}) {
                         ))
                     }
                 </div>
-                <div className="subreddit-moderators__action-items">
+                <div className="mt-5">
                     {
                         linkButtons.map((data) => (
                             <LinkButton

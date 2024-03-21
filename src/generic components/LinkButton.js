@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './LinkButton.css';
 import {DropdownMenu} from './DropdownMenu';
 import {ReactComponent as CaretDownIconOutline} from '../assets/icons/caret-down-outline.svg';
 import {ReactComponent as MessageIconOutline} from '../assets/icons/message-outline.svg';
@@ -27,7 +26,7 @@ import {ReactComponent as MessageIconOutline} from '../assets/icons/message-outl
  */
 export function LinkButton({data}) {
     const [isOptionsVisible, setIsOptionsVisible] = React.useState(false);
-    const icon = data.icon;
+    const icon = data.icon === 'email' ? 'email' : null;
     const IconComponent = icon === 'email' ? MessageIconOutline : null;
     const isSingleOption = data.targetOptions.length === 1;
 
@@ -57,11 +56,20 @@ export function LinkButton({data}) {
     });
 
     return (
-        <li key={data.buttonText} onClick={handleClick} className="link-button">
-            {icon && <IconComponent className='icon'/>}
-            <span>{data.buttonText}</span>
-            {!isSingleOption && <CaretDownIconOutline className='icon'/>}
-            {isOptionsVisible && <DropdownMenu menuItems={menuItems}/>}
+        <li
+            key={data.buttonText}
+            onClick={handleClick}
+            className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full cursor-pointer text-white 
+        text-sm mb-2 relative ${
+        !isSingleOption ? 'bg-[#2f2401] hover:bg-[#3b2d01]' : 'bg-[#2f2401] hover:bg-[#3b2d01] hover:underline'
+        } rounded-full`}
+        >
+            {icon && <IconComponent className='mr-1'/>}
+            <span className='hover:underline'>{data.buttonText}</span>
+            {!isSingleOption && <CaretDownIconOutline className='ml-1'/>}
+            <div>
+                {isOptionsVisible && <DropdownMenu menuItems={menuItems}/>}
+            </div>
         </li>
     );
 }
