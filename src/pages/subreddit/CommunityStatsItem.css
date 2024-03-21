@@ -1,0 +1,49 @@
+.subredditinfo__CommunityStats__item{
+display: flex;
+flex-direction: column;
+align-items: start;
+flex: auto;
+}
+
+.subredditinfo__CommunityStats__item > a{
+    white-space: nowrap;
+}
+
+.subredditinfo__CommunityStats__item > h3{
+    color: #ffffff;
+    margin: 0;
+}
+
+.subredditinfo__CommunityStats__item:not(:last-child){
+    margin-right: 10%;
+}
+
+.subredditinfo__CommunityStats__item div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.subredditinfo__CommunityStats__item div .icon:first-child{
+    margin-right: 1px;
+}
+
+.subredditinfo__CommunityStats__item div svg:first-child{
+    height: 10px;
+    width: 10px;
+}
+
+.subredditinfo__CommunityStats__item div svg:first-child circle{
+    r: 4px;
+    cx : 4px;
+    cy : 5px;
+}
+
+.subredditinfo__CommunityStats__item div a{
+    display: flex;
+    align-items: center;
+}
+
+.subredditinfo__CommunityStats__item div .icon:last-child{
+    margin-left: 2px;
+}
