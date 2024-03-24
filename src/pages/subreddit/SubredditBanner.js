@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {MoreDropdownMenu} from './MoreDropdownMenu';
 import {NotificationsDropdownMenu} from './NotificationsDropdownMenu';
 import {getIconComponent} from '../../generic components/icons';
-import {EditIcon} from '../../generic components/EditIcon';
+import {Edit} from '../../generic components/Edit';
 
 /**
  * Renders the subreddit banner.
@@ -12,7 +12,7 @@ import {EditIcon} from '../../generic components/EditIcon';
  * @param {string} props.coverSrc - The source of the cover image.
  * @param {string} props.membersCount - The number of members in the subreddit.
  * @param {string} props.onlineCount - The number of members online in the subreddit.
- * @param {boolean} props.isUserView - The flag to check if the user is viewing the feed.
+ * @param {boolean} props.isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditBanner({
@@ -21,7 +21,7 @@ export function SubredditBanner({
     coverSrc,
     membersCount,
     onlineCount,
-    isUserView,
+    isOwnerView,
 }) {
     // states
     const [isJoined, setIsJoined] = useState(false);
@@ -137,10 +137,7 @@ export function SubredditBanner({
     return (
         <div className="my-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
             <div className="relative w-full overflow-hidden rounded-lg bg-[#d3d3d3]">
-                {isUserView && <EditIcon onClick={() => {
-                    alert('asdasd');
-                }
-                }/>}
+                {isOwnerView && <Edit />}
                 <img src={coverSrc ? coverSrc : ''}
                     alt="Subreddit Cover" className='size-full object-cover object-center'/>
             </div>
@@ -190,7 +187,7 @@ export function SubredditBanner({
                         </button>
                     )}
                     {
-                        !isUserView && (
+                        !isOwnerView && (
                             <button className={`${isJoined ?
                                 'border-2 border-solid border-[#777777] bg-transparent text-white hover:border-white' :
                                 'border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]'}
@@ -200,7 +197,7 @@ export function SubredditBanner({
                             </button>
                         )
                     }
-                    {isUserView && (
+                    {isOwnerView && (
                         <button className={`border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]
                          mx-2 rounded-3xl px-5 py-2`}
                         onClick={handleModToolsClick}>
@@ -230,10 +227,10 @@ SubredditBanner.propTypes = {
     coverSrc: PropTypes.string,
     membersCount: PropTypes.string.isRequired,
     onlineCount: PropTypes.string.isRequired,
-    isUserView: PropTypes.bool,
+    isOwnerView: PropTypes.bool,
 };
 
 SubredditBanner.defaultProps = {
     coverSrc: '',
-    isUserView: false,
+    isOwnerView: false,
 };

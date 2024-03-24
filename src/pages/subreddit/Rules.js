@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // components
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 // components
 import {Rule} from './Rule';
 
 /**
  * Renders the rules.
  * @param {object} rules - The rules of the subreddit.
+ * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function Rules({rules}) {
+export function Rules({rules, isOwnerView}) {
     return (
-        <SubredditSidebarItem title="Rules">
+        <SubredditWidget title="Rules" isOwnerView={isOwnerView}>
             {
                 rules.map((rule, idx) => (
                     <Rule
@@ -23,7 +24,7 @@ export function Rules({rules}) {
                     />
                 ))
             }
-        </SubredditSidebarItem>
+        </SubredditWidget>
     );
 }
 
@@ -32,4 +33,5 @@ Rules.propTypes = {
         title: PropTypes.string.isRequired,
         description: PropTypes.arrayOf(PropTypes.string).isRequired,
     })).isRequired,
+    isOwnerView: PropTypes.bool,
 };

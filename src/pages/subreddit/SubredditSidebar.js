@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditInfo} from './SubredditInfo';
-import {CommunityBookmarks} from './CommunityBookmarks';
+import {CommunityDetailsWidget} from './CommunityDetailsWidget';
+import {CommunityWidget} from './CommunityWidget';
 import {UserFlair} from './UserFlair';
 import {Flairs} from './Flairs';
 import {SpoilInstructions} from './SpoilInstructions';
 import {Rules} from './Rules';
 import {SubredditModerators} from './SubredditModerators';
+import {CommunitySettings} from './CommunitySettings';
 
 
 /**
@@ -20,6 +21,7 @@ import {SubredditModerators} from './SubredditModerators';
  * @param {string} spoilInstructions - The spoil instructions.
  * @param {string} rules - The rules of the subreddit.
  * @param {string} moderators - The moderators of the subreddit.
+ * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditSidebar({
@@ -32,24 +34,27 @@ export function SubredditSidebar({
     spoilInstructions,
     rules,
     moderators,
+    isOwnerView,
 }) {
     return (
         <div
             className="sticky top-0 m-0 flex h-screen w-80 flex-col
             overflow-y-auto rounded-lg bg-[#0c0700] font-sans text-xs text-[#b99617]">
-            <SubredditInfo
+            <CommunityDetailsWidget
                 name={name}
                 description={description}
                 membersCount={membersCount}
                 onlineCount={onlineCount}
                 rank={rank}
+                isCustomizable={isOwnerView}
             />
-            <UserFlair username={username}/>
-            <CommunityBookmarks name={name}/>
-            <Flairs name={name}/>
-            <SpoilInstructions instructions={spoilInstructions}/>
-            <Rules rules={rules}/>
-            <SubredditModerators users={moderators} name={name}/>
+            <UserFlair username={username} isCustomizable={isOwnerView}/>
+            <CommunityWidget name={name} isCustomizable={isOwnerView}/>
+            <Flairs name={name} isCustomizable={isOwnerView}/>
+            <SpoilInstructions instructions={spoilInstructions} isCustomizable={isOwnerView}/>
+            <Rules rules={rules} isCustomizable={isOwnerView}/>
+            <SubredditModerators users={moderators} name={name} isCustomizable={isOwnerView}/>
+            {isOwnerView && <CommunitySettings/>}
         </div>
     );
 }
@@ -72,4 +77,5 @@ SubredditSidebar.propTypes = {
             profilePictureSrc: PropTypes.string.isRequired,
         }),
     ).isRequired,
+    isOwnerView: PropTypes.bool,
 };

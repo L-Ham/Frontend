@@ -1,27 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 import {ProfileActionCard} from '../../generic components/ProfileActionCard';
 
 /**
  * Renders the user flair.
  * @param {string} username - The UserFlair of the user.
+ * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  *  @return {JSX.Element} The rendered component.
  */
-export function UserFlair({username}) {
+export function UserFlair({username, isOwnerView}) {
     const profilePictureSrc = 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_6.png';
     return (
         <div>
-            <SubredditSidebarItem title='USER FLAIR'>
+            <SubredditWidget title='USER FLAIR' isOwnerView={isOwnerView}>
                 <ProfileActionCard
                     key={username}
                     name={username}
                     pictureSrc={profilePictureSrc}/>
-            </SubredditSidebarItem>
+            </SubredditWidget>
         </div>
     );
 }
 
 UserFlair.propTypes = {
     username: PropTypes.string.isRequired,
+    isOwnerView: PropTypes.bool,
 };

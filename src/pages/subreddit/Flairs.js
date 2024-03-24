@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 
 /**
  * Renders the flairs.
  * @param {string} name - The name of the subreddit.
+ * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function Flairs({name}) {
+export function Flairs({name, isOwnerView}) {
     const flairs = [
         {name: 'Discussion', color: 'red'},
         {name: 'Theory', color: 'green'},
@@ -25,7 +26,7 @@ export function Flairs({name}) {
     };
 
     return (
-        <SubredditSidebarItem title='Flairs'>
+        <SubredditWidget title='Flairs' isOwnerView={isOwnerView}>
             <div className="flex flex-row flex-wrap">
                 {flairs.map((flair) => (
                     <div key={flair.name} style={getFlairStyle(flair.color)}
@@ -36,13 +37,14 @@ export function Flairs({name}) {
                     </div>
                 ))}
             </div>
-        </SubredditSidebarItem>
+        </SubredditWidget>
     );
 }
 
 Flairs.propTypes =
 {
     name: PropTypes.string.isRequired,
+    isOwnerView: PropTypes.bool,
 };
 
 /**

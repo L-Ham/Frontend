@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 import {ProfileActionCard} from '../../generic components/ProfileActionCard';
 import {MultiLinkButton} from '../../generic components/MultiLinkButton';
 import {getIconComponent} from '../../generic components/icons';
@@ -37,7 +37,7 @@ export function SubredditModerators({users, name}) {
 
     return (
         <div>
-            <SubredditSidebarItem title='Moderators'>
+            <SubredditWidget title='Moderators'>
                 <div>
                     {
                         users.map((user) => (
@@ -58,7 +58,7 @@ export function SubredditModerators({users, name}) {
                         ))
                     }
                 </div>
-            </SubredditSidebarItem>
+            </SubredditWidget>
         </div>
     );
 }

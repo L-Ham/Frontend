@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 /**
  * Renders the posts list.
  * @param {object} props - The props object.
- * @param {boolean} props.isUserView - The flag to check if the user is viewing the feed.
+ * @param {boolean} props.isOwnerView - The flag to check if the user is viewing the feed.
  * @param {Array} props.posts - The list of posts.
  * @param {string} props.subredditName - The name of the subreddit.
  * @return {JSX.Element} The rendered component.
  */
-export function Feed({isUserView, posts, subredditName}) {
+export function Feed({isOwnerView, posts, subredditName}) {
     return (
         <div className="m-0 mr-3 flex h-full flex-auto
                 flex-col items-center justify-center rounded-lg bg-yellow-300 p-0 pt-2.5 opacity-50">
-            {posts.length === 0 ? (!isUserView ? getEmptyFeed() : null) : (
+            {posts.length === 0 ? (!isOwnerView ? getEmptyFeed() : null) : (
                 posts.map((post) => (
-                    <Post key={post.id} post={post} isUserView={isUserView} subredditName={subredditName}/>
+                    <Post key={post.id} post={post} isOwnerView={isOwnerView} subredditName={subredditName}/>
                     /* LSA: hl user view h7tagha f3ln*/
                 ))
             )}
@@ -24,13 +24,13 @@ export function Feed({isUserView, posts, subredditName}) {
 }
 
 Feed.defaultProps = {
-    isUserView: false,
+    isOwnerView: false,
     posts: [],
     subredditName: '',
 };
 
 Feed.propTypes = {
-    isUserView: PropTypes.bool,
+    isOwnerView: PropTypes.bool,
     posts: PropTypes.array,
     subredditName: PropTypes.string,
 };

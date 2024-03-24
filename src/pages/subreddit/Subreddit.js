@@ -12,7 +12,7 @@ import {Feed} from '../../generic components/Feed';
  */
 export function Subreddit({name}) {
     const [data, setData] = React.useState(null);
-    const isUserView = true;
+    const isOwnerView = true;
 
     React.useEffect(() => {
         fetchData(name).then((newData) => {
@@ -36,10 +36,10 @@ export function Subreddit({name}) {
                 coverSrc={subreddit.coverSrc}
                 membersCount={numberToString(subreddit.membersCount)}
                 onlineCount={numberToString(subreddit.onlineCount)}
-                isUserView={isUserView}
+                isOwnerView={isOwnerView}
             />
             <div className="flex w-full flex-auto">
-                <Feed isUserView={isUserView}/>
+                <Feed isOwnerView={isOwnerView}/>
                 <div className="max-[1000px]:hidden">
                     <SubredditSidebar
                         name={subreddit.name}
@@ -51,7 +51,7 @@ export function Subreddit({name}) {
                         spoilInstructions={subreddit.spoilIntructions}
                         rules={subreddit.rules}
                         moderators={subreddit.moderators}
-                        isUserView={isUserView}
+                        isOwnerView={isOwnerView}
                     />
                 </div>
             </div>

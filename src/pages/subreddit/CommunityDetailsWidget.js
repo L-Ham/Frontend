@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // components
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 import {CommunityStats} from './CommunityStats';
-
 
 /**
  * Renders the subreddit info.
@@ -12,36 +11,37 @@ import {CommunityStats} from './CommunityStats';
  * @param {string} membersCount - The number of members in the subreddit.
  * @param {string} onlineCount - The number of members online in the subreddit.
  * @param {number} rank - The rank of the subreddit by size.
+ * @param {boolean} isCustomizable - The flag to check if the widget is customizable.
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditInfo({
+export function CommunityDetailsWidget({
     name,
     description,
     membersCount,
     onlineCount,
     rank,
+    isCustomizable,
 }) {
     return (
-        <SubredditSidebarItem title={name}>
-            <div>
-                <div className="mb-4 flex flex-col">
-                    <p>
-                        {description}
-                    </p>
-                </div>
-                <CommunityStats membersCount={membersCount}
-                    onlineCount={onlineCount} rank={rank}/>
+        <SubredditWidget title={name} isCustomizable={isCustomizable} useDivForTitle={false}>
+            <div className="mb-4 flex flex-col">
+                <p>
+                    {description}
+                </p>
             </div>
-        </SubredditSidebarItem>
+            <CommunityStats membersCount={membersCount}
+                onlineCount={onlineCount} rank={rank}/>
+        </SubredditWidget>
     );
 }
 
-SubredditInfo.propTypes = {
+CommunityDetailsWidget.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     membersCount: PropTypes.string.isRequired,
     onlineCount: PropTypes.string.isRequired,
     rank: PropTypes.string.isRequired,
+    isCustomizable: PropTypes.bool,
 };
 
 

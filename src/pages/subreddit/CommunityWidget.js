@@ -1,15 +1,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditSidebarItem} from './SubredditSidebarItem';
+import {SubredditWidget} from './SubredditWidget';
 import {MultiLinkButton} from '../../generic components/MultiLinkButton';
 
 /**
  * Renders the community bookmarks.
  * @param {string} name - The name of the subreddit.
+ * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityBookmarks({name}) {
+export function CommunityWidget({name, isOwnerView}) {
     const bookmarks = [
         {
             buttonText: 'Wiki', targetOptions: [
@@ -68,16 +69,17 @@ export function CommunityBookmarks({name}) {
     ];
 
     return (
-        <SubredditSidebarItem title='Community Bookmarks'>
+        <SubredditWidget title='Community Bookmarks' isOwnerView={isOwnerView}>
             <ul className="m-0 flex flex-col p-0">
                 {bookmarks.map((bookmark) => (
                     <MultiLinkButton key={bookmark.buttonText} data={bookmark}/>
                 ))}
             </ul>
-        </SubredditSidebarItem>
+        </SubredditWidget>
     );
 }
 
-CommunityBookmarks.propTypes = {
+CommunityWidget.propTypes = {
     name: PropTypes.string.isRequired,
+    isOwnerView: PropTypes.bool,
 };

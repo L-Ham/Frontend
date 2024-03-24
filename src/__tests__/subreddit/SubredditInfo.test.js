@@ -1,13 +1,13 @@
 import React from 'react';
 import {render} from '@testing-library/react';
 import {expect, describe, it} from '@jest/globals';
-import {SubredditInfo} from '../../pages/subreddit/SubredditInfo';
+import {CommunityDetailsWidget} from '../../pages/subreddit/CommunityDetailsWidget';
 
-describe('SubredditInfo component', () => {
+describe('CommunityDetailsWidget component', () => {
     it('should render correctly with all props', () => {
-        // Render the SubredditInfo component
+        // Render the CommunityDetailsWidget component
         const {getByText} = render(
-            <SubredditInfo
+            <CommunityDetailsWidget
                 name="Test Subreddit"
                 description="This is a test subreddit"
                 membersCount="1000"
