@@ -1,18 +1,18 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import {expect, describe, it} from '@jest/globals';
-import {SubredditModerators} from '../../pages/subreddit/SubredditModerators';
+import {ModeratorsWidget} from '../../pages/subreddit/ModeratorsWidget';
 
-describe('SubredditModerators component', () => {
-    // Renders the SubredditModerators component with valid props.
-    it('should render the SubredditModerators component with valid props', () => {
+describe('ModeratorsWidget component', () => {
+    // Renders the ModeratorsWidget component with valid props.
+    it('should render the ModeratorsWidget component with valid props', () => {
         const users = [
             {username: 'user1', profilePictureSrc: 'profile1.jpg'},
             {username: 'user2', profilePictureSrc: 'profile2.jpg'},
         ];
         const name = 'subreddit';
 
-        render(<SubredditModerators users={users} name={name} />);
+        render(<ModeratorsWidget users={users} name={name} />);
 
         expect(screen.getByText('Moderators')).toBeInTheDocument();
         // Check for specific user names instead of a general query.
@@ -21,12 +21,12 @@ describe('SubredditModerators component', () => {
         });
     });
 
-    // Renders the SubredditModerators component with no users.
-    it('should render the SubredditModerators component with no users', () => {
+    // Renders the ModeratorsWidget component with no users.
+    it('should render the ModeratorsWidget component with no users', () => {
         const users = [];
         const name = 'subreddit';
 
-        render(<SubredditModerators users={users} name={name} />);
+        render(<ModeratorsWidget users={users} name={name} />);
 
         expect(screen.getByText('Moderators')).toBeInTheDocument();
         users.forEach((user) => {

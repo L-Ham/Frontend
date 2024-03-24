@@ -5,17 +5,17 @@ import {UserFlair} from './UserFlair';
 import {Flairs} from './Flairs';
 import {SpoilInstructions} from './SpoilInstructions';
 import {Rules} from './Rules';
-import {SubredditModerators} from './SubredditModerators';
+import {ModeratorsWidget} from './ModeratorsWidget';
 import {CommunitySettings} from './CommunitySettings';
 
-export const COMPONENTS_MAP = {
+export const WIDGETS_MAP = {
     CommunityDetailsWidget: CommunityDetailsWidget,
     CommunityWidget: CommunityWidget,
     UserFlair: UserFlair,
     Flairs: Flairs,
     SpoilInstructions: SpoilInstructions,
     Rules: Rules,
-    SubredditModerators: SubredditModerators,
+    ModeratorsWidget: ModeratorsWidget,
     CommunitySettings: CommunitySettings,
 };
 

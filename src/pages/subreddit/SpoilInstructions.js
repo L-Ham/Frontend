@@ -8,7 +8,7 @@ import {useSubreddit} from './subredditContext';
  * @return {JSX.Element} The rendered component.
  */
 export function SpoilInstructions() {
-    const {instructions, isOwnerView} = useSubreddit();
+    const {spoilInstructions: instructions, isOwnerView} = useSubreddit();
     return (
         <SubredditWidget title="DON'T SPOIL OTHERS." isOwnerView={isOwnerView}>
             <ul className="m-0 px-5 py-0">

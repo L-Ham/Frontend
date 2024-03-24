@@ -24,7 +24,6 @@ export function SubredditProvider({children}) {
     const [name, setName] = useState('');
     const [profilePictureSrc, setProfilePictureSrc] = useState('');
     const [coverSrc, setCoverSrc] = useState('');
-    const [description, setDescription] = useState([]);
     const [userFlair, setUserFlair] = useState('');
     const [username, setUsername] = useState('');
     const [spoilInstructions, setSpoilInstructions] = useState([]);
@@ -35,7 +34,6 @@ export function SubredditProvider({children}) {
     const [membersCount, setMembersCount] = useState('');
     const [rules, setRules] = useState([]);
     const [moderators, setModerators] = useState([]);
-    const [widgets, setWidgets] = useState([]);
     const [isOwnerView, setIsOwnerView] = useState(false);
 
 
@@ -50,9 +48,6 @@ export function SubredditProvider({children}) {
 
                 const coverSrcData = await getCoverSrc();
                 setCoverSrc(coverSrcData);
-
-                const descriptionData = await getDescription();
-                setDescription(descriptionData);
 
                 const userFlairData = await getUserFLair();
                 setUserFlair(userFlairData);
@@ -87,9 +82,6 @@ export function SubredditProvider({children}) {
                 const isOwnerView = await getIsOwnerView();
                 setIsOwnerView(isOwnerView);
 
-                const widgetsData = await getWidgets();
-                setWidgets(widgetsData);
-
                 setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch subreddit data', error);
@@ -108,7 +100,6 @@ export function SubredditProvider({children}) {
         name,
         profilePictureSrc,
         coverSrc,
-        description,
         userFlair,
         username,
         spoilInstructions,
@@ -120,7 +111,6 @@ export function SubredditProvider({children}) {
         rules,
         moderators,
         isOwnerView,
-        widgets,
     };
 
     return (
@@ -170,19 +160,6 @@ async function getProfilePictureSrc() {
 async function getCoverSrc() {
     return 'https://cdn.statically.io/img/timelinecovers.pro/' +
            'f=webp/facebook-cover/thumbs540/anime-one-piece-skulls-facebook-cover.jpg';
-}
-
-/**
- * Fetches the description from the Reddit API.
- * @return {Promise} The promise object representing the API call.
- * @return {string} The description.
- * */
-async function getDescription() {
-    return `Welcome to r/OnePiece, the community for Eiichiro Oda's manga and anime series One Piece.
-            From the East Blue to the New World,
-            anything related to the world of One Piece belongs here!
-            If you've just set sail with the Straw Hat Pirates,
-            be wary of spoilers on this subreddit!`;
 }
 
 
@@ -402,36 +379,6 @@ async function getRules() {
 }
 
 
-/**
- * Fetches the moderators from the Reddit API.
- * @return {Promise} The promise object representing the API call.
- * @return {Object} The moderators.
- * */
-async function getModerators() {
-    return (
-        [
-            {username: 'Luffy',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_01_24A0ED.png'},
-            {username: 'Zoro',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_6.png'},
-            {username: 'Nami',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_09_24A0ED.png'},
-            {username: 'Usopp',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_7.png'},
-            {username: 'Sanji',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_05_24A0ED.png'},
-            {username: 'Chopper',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_06_24A0ED.png'},
-            {username: 'Robin',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_5.png'},
-            {username: 'Franky',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_08_24A0ED.png'},
-            {username: 'Brook',
-                profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_09_24A0ED.png'},
-        ]
-    );
-}
-
 const numberToString = (number) => {
     if (number > 1000000) {
         return `${(number / 1000000).toFixed(1)}M`;
@@ -441,20 +388,4 @@ const numberToString = (number) => {
     return number.toString();
 };
 
-/**
- * Fetches the widgets from the Reddit API.
- * @return {Promise} The promise object representing the API call.
- * @return {Array} The widgets.
- * */
-async function getWidgets() {
-    return [
-        'CommunityDetailsWidget',
-        'UserFlair',
-        'CommunityWidget',
-        'Flairs',
-        'SpoilInstructions',
-        'Rules',
-        'SubredditModerators',
-        'CommunitySettings',
-    ];
-}
+
