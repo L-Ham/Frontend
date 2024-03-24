@@ -7,6 +7,7 @@ import {API_ROUTES} from './requests/routes.js';
 import {login} from './store/userSlice.js';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
+import { Subreddit } from './pages/subreddit/Subreddit.js';
 
 /**
  * Main application component
@@ -47,7 +48,7 @@ function App() {
             justifyContent: 'center',
             height: '100vh',
         }}>
-            <button
+            {/* <button
                 onClick={handleClick}
                 style={{
                     padding: '1rem',
@@ -68,7 +69,8 @@ function App() {
                     </div>
                 ) : null}
             </div>
-            {/* <TestHeader /> */}
+            <TestHeader /> */}
+            <Subreddit name={"OnePiece"} />
         </div>
     );
 }

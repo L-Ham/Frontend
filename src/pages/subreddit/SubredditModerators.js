@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditSidebarItem} from './SubredditSidebarItem';
 import {ProfileActionCard} from '../../generic components/ProfileActionCard';
-import {LinkButton} from '../../generic components/LinkButton';
+import {MultiLinkButton} from '../../generic components/MultiLinkButton';
+import {getIconComponent} from '../../generic components/icons';
 
 /**
  * Renders the subreddit moderators
@@ -11,15 +12,18 @@ import {LinkButton} from '../../generic components/LinkButton';
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditModerators({users, name}) {
-    const linkButtons = [
+    const MessageIcon = getIconComponent('message', false);
+    const MultiLinkButtons = [
         {
-            buttonText: 'Message the mods', targetOptions: [
+            buttonText: 'Message the mods',
+            icon: <MessageIcon className='mr-1'/>,
+            targetOptions: [
                 {
                     text: 'Message the mods',
                     targetURL: `https://www.reddit.com/message/compose?to=r%2F${name}/`,
                 },
             ],
-            icon: 'email',
+
         },
         {
             buttonText: 'View all moderators', targetOptions: [
@@ -46,9 +50,9 @@ export function SubredditModerators({users, name}) {
                 </div>
                 <div className="mt-5">
                     {
-                        linkButtons.map((data) => (
-                            <LinkButton
-                                key={data.name}
+                        MultiLinkButtons.map((data) => (
+                            <MultiLinkButton
+                                key={data.buttonText}
                                 data={data}
                             />
                         ))

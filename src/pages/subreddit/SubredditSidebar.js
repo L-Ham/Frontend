@@ -57,11 +57,19 @@ export function SubredditSidebar({
 SubredditSidebar.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    membersCount: PropTypes.number.isRequired,
-    onlineCount: PropTypes.number.isRequired,
+    membersCount: PropTypes.string.isRequired,
+    onlineCount: PropTypes.string.isRequired,
     rank: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
-    spoilInstructions: PropTypes.string.isRequired,
-    rules: PropTypes.string.isRequired,
-    moderators: PropTypes.string.isRequired,
+    spoilInstructions: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rules: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string).isRequired,
+    })).isRequired,
+    moderators: PropTypes.arrayOf(
+        PropTypes.shape({
+            username: PropTypes.string.isRequired,
+            profilePictureSrc: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
 };

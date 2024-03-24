@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from '../../generic components/DropdownMenu';
+import {getIconComponent} from '../../generic components/icons';
 
 /**
  * NotificationsDropdownMenu component
@@ -13,24 +14,31 @@ export function NotificationsDropdownMenu({
     activeItem,
     onItemClick,
 }) {
+    // icons
+    const FrequentIcon = getIconComponent('Frequent', activeItem === 'Frequent');
+    const LowIcon = getIconComponent('Low', activeItem === 'Low');
+    const OffIcon = getIconComponent('Off', activeItem === 'Off');
+
+    const className = 'w-5 h-5 mr-2';
+
     const menuItems = [
         {
             content: {
-                text: 'frequent', icon: 'notification-frequent',
+                text: 'Frequent', icon: <FrequentIcon className={className}/>,
             },
-            onClick: () => onItemClick('notification-frequent'),
+            onClick: () => onItemClick('Frequent'),
         },
         {
             content: {
-                text: 'Low', icon: 'notification',
+                text: 'Low', icon: <LowIcon className={className}/>,
             },
-            onClick: () => onItemClick('notification'),
+            onClick: () => onItemClick('Low'),
         },
         {
             content: {
-                text: 'off', icon: 'notification-off',
+                text: 'Off', icon: <OffIcon className={className}/>,
             },
-            onClick: () => onItemClick('notification-off'),
+            onClick: () => onItemClick('Off'),
         },
     ];
 

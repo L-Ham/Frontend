@@ -6,9 +6,9 @@ import {CommunityStats} from '../../pages/subreddit/CommunityStats';
 
 describe('CommunityStats', () => {
     it('renders correctly with provided props', () => {
-        const membersCount = 1000;
-        const onlineCount = 500;
-        const rank = 1;
+        const membersCount = '1.2M';
+        const onlineCount = '500';
+        const rank = '1';
 
         const {getByText} = render(
             <CommunityStats

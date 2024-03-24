@@ -1,12 +1,12 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import {PostsList} from '../../pages/subreddit/PostsList';
+import {Feed} from '../../generic components/Feed';
 import {expect, describe, it} from '@jest/globals';
 
 
-describe('PostsList', () => {
+describe('Feed', () => {
     it('should render the component', () => {
-        const {container} = render(<PostsList />);
+        const {container} = render(<Feed />);
         expect(container).toBeInTheDocument();
     });
 });

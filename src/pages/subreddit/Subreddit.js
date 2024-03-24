@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditBanner} from './SubredditBanner';
 import {SubredditSidebar} from './SubredditSidebar';
-import {PostsList} from './PostsList';
+import {Feed} from '../../generic components/Feed';
 
 
 /**
@@ -12,6 +12,7 @@ import {PostsList} from './PostsList';
  */
 export function Subreddit({name}) {
     const [data, setData] = React.useState(null);
+    const isUserView = true;
 
     React.useEffect(() => {
         fetchData(name).then((newData) => {
@@ -35,9 +36,10 @@ export function Subreddit({name}) {
                 coverSrc={subreddit.coverSrc}
                 membersCount={numberToString(subreddit.membersCount)}
                 onlineCount={numberToString(subreddit.onlineCount)}
+                isUserView={isUserView}
             />
             <div className="flex w-full flex-auto">
-                <PostsList/>
+                <Feed isUserView={isUserView}/>
                 <div className="max-[1000px]:hidden">
                     <SubredditSidebar
                         name={subreddit.name}
@@ -49,6 +51,7 @@ export function Subreddit({name}) {
                         spoilInstructions={subreddit.spoilIntructions}
                         rules={subreddit.rules}
                         moderators={subreddit.moderators}
+                        isUserView={isUserView}
                     />
                 </div>
             </div>

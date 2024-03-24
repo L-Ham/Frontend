@@ -39,9 +39,9 @@ export function SubredditInfo({
 SubredditInfo.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    membersCount: PropTypes.number.isRequired,
-    onlineCount: PropTypes.number.isRequired,
-    rank: PropTypes.number.isRequired,
+    membersCount: PropTypes.string.isRequired,
+    onlineCount: PropTypes.string.isRequired,
+    rank: PropTypes.string.isRequired,
 };
 
 

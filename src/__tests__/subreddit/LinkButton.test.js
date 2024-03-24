@@ -1,11 +1,11 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import {LinkButton} from '../../generic components/LinkButton';
+import {MultiLinkButton} from '../../generic components/MultiLinkButton';
 import {expect, describe, it} from '@jest/globals';
 
 describe('code snippet', () => {
-    // Renders a LinkButton with a single target option and an icon.
-    it('should render a LinkButton with a single target option and an icon', () => {
+    // Renders a MultiLinkButton with a single target option and an icon.
+    it('should render a MultiLinkButton with a single target option and an icon', () => {
         const data = {
             buttonText: 'email',
             icon: 'email',
@@ -16,18 +16,18 @@ describe('code snippet', () => {
                 },
             ],
         };
-        const {getByText, container} = render(<LinkButton data={data}/>);
+        const {getByText, container} = render(<MultiLinkButton data={data}/>);
 
-        const linkButton = getByText('email');
-        expect(linkButton).toBeInTheDocument();
+        const MultiLinkButton = getByText('email');
+        expect(MultiLinkButton).toBeInTheDocument();
 
         // Checking if there is one SVG element (for the icon)
         const svgIcons = container.querySelectorAll('svg');
         expect(svgIcons.length).toBe(1); // Should find the message icon as an SVG
     });
 
-    // Renders a LinkButton with a single target option and no icon.
-    it('should render a LinkButton with a single target option and no icon', () => {
+    // Renders a MultiLinkButton with a single target option and no icon.
+    it('should render a MultiLinkButton with a single target option and no icon', () => {
         const data = {
             buttonText: 'google',
             icon: 'invalid',
@@ -38,18 +38,18 @@ describe('code snippet', () => {
                 },
             ],
         };
-        const {getByText, container} = render(<LinkButton data={data}/>);
+        const {getByText, container} = render(<MultiLinkButton data={data}/>);
 
-        const linkButton = getByText('google');
-        expect(linkButton).toBeInTheDocument();
+        const MultiLinkButton = getByText('google');
+        expect(MultiLinkButton).toBeInTheDocument();
 
         // Expect no SVG elements for icons
         const svgIcons = container.querySelectorAll('svg');
         expect(svgIcons.length).toBe(0);
     });
 
-    // Renders a LinkButton with multiple target options and an icon.
-    it('should render a LinkButton with multiple target options and an icon', () => {
+    // Renders a MultiLinkButton with multiple target options and an icon.
+    it('should render a MultiLinkButton with multiple target options and an icon', () => {
         const data = {
             buttonText: 'email',
             icon: 'email',
@@ -64,18 +64,18 @@ describe('code snippet', () => {
                 },
             ],
         };
-        const {getByText, container} = render(<LinkButton data={data}/>);
+        const {getByText, container} = render(<MultiLinkButton data={data}/>);
 
-        const linkButton = getByText('email');
-        expect(linkButton).toBeInTheDocument();
+        const MultiLinkButton = getByText('email');
+        expect(MultiLinkButton).toBeInTheDocument();
 
         // Checking if there are two SVG elements (for the message icon and caret down icon)
         const svgIcons = container.querySelectorAll('svg');
         expect(svgIcons.length).toBe(2); // Should find both icons as SVG elements
     });
 
-    // Renders a LinkButton with multiple target options and no icon.
-    it('should render a LinkButton with multiple target options and no icon', () => {
+    // Renders a MultiLinkButton with multiple target options and no icon.
+    it('should render a MultiLinkButton with multiple target options and no icon', () => {
         const data = {
             buttonText: 'google',
             icon: 'invalid',
@@ -90,7 +90,7 @@ describe('code snippet', () => {
                 },
             ],
         };
-        const {container} = render(<LinkButton data={data}/>);
+        const {container} = render(<MultiLinkButton data={data}/>);
 
         // Checking if there is one SVG element (for the caret down icon)
         const svgIcons = container.querySelectorAll('svg');

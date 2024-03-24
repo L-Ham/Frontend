@@ -30,6 +30,6 @@ export function Rules({rules}) {
 Rules.propTypes = {
     rules: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string).isRequired,
     })).isRequired,
 };

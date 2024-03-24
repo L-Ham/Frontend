@@ -2,29 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {MoreDropdownMenu} from './MoreDropdownMenu';
 import {NotificationsDropdownMenu} from './NotificationsDropdownMenu';
-import {ReactComponent as NotificationIconFill} from '../../assets/icons/notification-fill.svg';
-import {ReactComponent as NotificationFrequentIconFill} from '../../assets/icons/notification-frequent-fill.svg';
-import {ReactComponent as NotificationOffIconFill} from '../../assets/icons/notification-off-fill.svg';
-import {ReactComponent as PlusIconFill} from '../../assets/icons/plus-fill.svg';
-import {ReactComponent as OnlineIcon} from '../../assets/icons/online.svg';
-import {ReactComponent as OverflowHorizontalIconOutline} from '../../assets/icons/overflow-horizontal-outline.svg';
-
-const iconComponents = {
-    'notification-fill': NotificationIconFill,
-    'notification-frequent-fill': NotificationFrequentIconFill,
-    'notification-off-fill': NotificationOffIconFill,
-};
-
-/**
- * Returns the icon component.
- * @param {string} iconName - The name of the icon
- * @return {JSX.Element} The icon component.
- */
-const getIconComponent = (iconName) => {
-    if (!iconName) return null;
-    const IconComponent = iconComponents[`${iconName}-fill`];
-    return IconComponent ? <IconComponent className='h-5' /> : null;
-};
+import {getIconComponent} from '../../generic components/icons';
+import {EditIcon} from '../../generic components/EditIcon';
 
 /**
  * Renders the subreddit banner.
@@ -33,6 +12,7 @@ const getIconComponent = (iconName) => {
  * @param {string} props.coverSrc - The source of the cover image.
  * @param {string} props.membersCount - The number of members in the subreddit.
  * @param {string} props.onlineCount - The number of members online in the subreddit.
+ * @param {boolean} props.isUserView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditBanner({
@@ -41,28 +21,32 @@ export function SubredditBanner({
     coverSrc,
     membersCount,
     onlineCount,
+    isUserView,
 }) {
     // states
     const [isJoined, setIsJoined] = useState(false);
-    const [isNotficationOptionsVisible, setIsNotficationOptionsVisible] = React.useState(false);
+    const [isNotificationOptionsVisible, setIsNotificationOptionsVisible] = React.useState(false);
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = React.useState(false);
     const [activeNotification, setActiveNotification] = React.useState('notification');
     const [isMuted, setIsMuted] = React.useState(false);
     const [isFavourite, setIsFavourite] = React.useState(false);
 
     // constants
-    const isNotficationsVisible = isJoined;
+    const isNotificationsVisible = isJoined;
+
+    // icons
+    const OnlineIcon = getIconComponent('online', true);
+    const PlusIconFill = getIconComponent('plus', true);
+    const OverflowHorizontalIconOutline = getIconComponent('overflow-horizontal', false);
+    const NotificationIcon = getIconComponent(activeNotification, true);
+
 
     // functions
     /**
      * Handles the click event on the notification button.
      */
     function handleNotificationClick() {
-        if (isNotficationOptionsVisible) {
-            setIsNotficationOptionsVisible(false);
-        } else {
-            setIsNotficationOptionsVisible(true);
-        }
+        setIsNotificationOptionsVisible((prevState) => !prevState);
     }
 
     /**
@@ -71,11 +55,10 @@ export function SubredditBanner({
     function handleMuteClick() {
         if (isMuted) {
             // TODO: handle unmute
-            setIsMuted(false);
         } else {
             // TODO: handle mute
-            setIsMuted(true);
         }
+        setIsMuted((prevState) => !prevState);
     }
 
     /**
@@ -85,12 +68,11 @@ export function SubredditBanner({
         if (isFavourite) {
             // TODO: handle remove from favourites
             // adding to favourite automatically joins the subreddit
-            setIsFavourite(false);
         } else {
             // TODO: handle add to favourites
             handleJoinClick(true);
-            setIsFavourite(true);
         }
+        setIsFavourite((prevState) => !prevState);
     }
 
     /**
@@ -109,7 +91,7 @@ export function SubredditBanner({
         if (forceJoin === true) {
             if (isJoined !== true) {
                 setIsJoined(true);
-                if (activeNotification !== 'notification') setActiveNotification('notification');
+                if (activeNotification !== 'Low') setActiveNotification('Low');
             }
             return;
         }
@@ -120,19 +102,24 @@ export function SubredditBanner({
         } else {
             // TODO: handle join
             setIsJoined(true);
-            if (activeNotification !== 'notification') setActiveNotification('notification');
+            if (activeNotification !== 'Low') setActiveNotification('Low');
         }
+    }
+
+
+    /**
+     * Handles the click event on the mod tools button.
+     * @return {void}
+     * */
+    function handleModToolsClick() {
+        window.open(`https://www.reddit.com/r/${name}/about/modqueue`, '_blank');
     }
 
     /**
      * Handles the click event on the more button.
      */
     function handleMoreClick() {
-        if (isOtherOptionsVisible) {
-            setIsOtherOptionsVisible(false);
-        } else {
-            setIsOtherOptionsVisible(true);
-        }
+        setIsOtherOptionsVisible((prevState) => !prevState);
     }
 
     /**
@@ -149,7 +136,11 @@ export function SubredditBanner({
 
     return (
         <div className="my-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
-            <div className="w-full overflow-hidden rounded-lg bg-[#d3d3d3]">
+            <div className="relative w-full overflow-hidden rounded-lg bg-[#d3d3d3]">
+                {isUserView && <EditIcon onClick={() => {
+                    alert('asdasd');
+                }
+                }/>}
                 <img src={coverSrc ? coverSrc : ''}
                     alt="Subreddit Cover" className='size-full object-cover object-center'/>
             </div>
@@ -159,7 +150,8 @@ export function SubredditBanner({
                     <div className="relative -top-2 size-28
                     max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
                         <img src={profilePictureSrc} alt="Subreddit profile picture"
-                            className='size-full rounded-[50%] border-[5px] border-solid border-[#181100]'/>
+                            className='size-full rounded-[50%] border-[5px] border-solid border-[#181100]
+                            max-[1024px]:mr-2  max-[1024px]:border-transparent'/>
                     </div>
                     <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
                         <h1 className="mb-4 ml-2 text-2xl font-bold leading-6 text-white
@@ -186,24 +178,35 @@ export function SubredditBanner({
                         <PlusIconFill className="mr-1 h-5"/>
                         Create a post
                     </button>
-                    {isNotficationsVisible && (
+                    {isNotificationsVisible && (
                         <button className='ml-2 flex w-[45px]
                         items-center justify-center rounded-[50%] border-2 border-solid border-[#777777] bg-transparent
                          p-2.5 text-white hover:border-white'
                         onClick={handleNotificationClick}
                         style={{position: 'relative'}}>
-                            {getIconComponent(activeNotification)}
-                            {isNotficationOptionsVisible && <NotificationsDropdownMenu activeItem={activeNotification}
+                            {<NotificationIcon/>}
+                            {isNotificationOptionsVisible && <NotificationsDropdownMenu activeItem={activeNotification}
                                 onItemClick={handleNotificationItemClick}/>}
                         </button>
                     )}
-                    <button className={`${isJoined ?
-                        'border-2 border-solid border-[#777777] bg-transparent text-white hover:border-white' :
-                        'border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]'}
+                    {
+                        !isUserView && (
+                            <button className={`${isJoined ?
+                                'border-2 border-solid border-[#777777] bg-transparent text-white hover:border-white' :
+                                'border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]'}
+                                 mx-2 rounded-3xl px-5 py-2`}
+                            onClick={handleJoinClick}>
+                                {isJoined ? 'Joined' : 'Join'}
+                            </button>
+                        )
+                    }
+                    {isUserView && (
+                        <button className={`border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]
                          mx-2 rounded-3xl px-5 py-2`}
-                    onClick={handleJoinClick}>
-                        {isJoined ? 'Joined' : 'Join'}
-                    </button>
+                        onClick={handleModToolsClick}>
+                            Mod Tools
+                        </button>
+                    )}
                     <button className="flex w-[45px] items-center justify-center
                     rounded-[50%] border-2 border-solid
                     border-[#777777] bg-transparent p-2.5 text-white hover:border-white"
@@ -224,8 +227,13 @@ export function SubredditBanner({
 SubredditBanner.propTypes = {
     name: PropTypes.string.isRequired,
     profilePictureSrc: PropTypes.string.isRequired,
-    coverSrc: PropTypes.string.isRequired,
+    coverSrc: PropTypes.string,
     membersCount: PropTypes.string.isRequired,
     onlineCount: PropTypes.string.isRequired,
-    onCreatePost: PropTypes.func.isRequired,
+    isUserView: PropTypes.bool,
+};
+
+SubredditBanner.defaultProps = {
+    coverSrc: '',
+    isUserView: false,
 };

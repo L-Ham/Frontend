@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  */
 export function SubredditSidebarItem({title, children}) {
     return (
-        <div className="flex flex-col border-b  border-[#25201a] bg-transparent p-5 text-left">
+        <div className="relative flex flex-col  border-b border-[#25201a] bg-transparent p-5 text-left">
             <h3 className='mb-2.5 text-left text-sm font-bold'>{title}</h3>
             {children}
         </div>
