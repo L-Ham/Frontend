@@ -29,6 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: git log -n 1 --pretty=format:%ae
 
     - name: Sending Mail on success 
       if: success()
@@ -42,4 +43,4 @@ jobs:
         subject: " env.Mabroooookkkkkk!!! kalam mawzoon "
         body: ${{ github.event_name }} event on ${{ github.repository }} triggered by ${{ github.actor }} at ${{ github.event.head_commit.timestamp }}
         to: ${{ github.event.pull_request.user.login }}@users.noreply.github.com
-    - run: git log -n 1 --pretty=format:%ae
+    
