@@ -38,7 +38,7 @@ jobs:
         body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
         to: ${{ github.event.pull_request.user.login }}
         from: ${{ secrets.DEVOPS_EMAIL }}
-        attachments: "test.txt"
+
     
     - name: Sending Mail on Failure
       if: failure()
@@ -52,4 +52,4 @@ jobs:
         body: ${{ github.job }} job in workflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
         to: ${{ github.event.pull_request.user.login }}
         from: ${{ secrets.DEVOPS_EMAIL }}
-        attachments: "test.txt"
+
