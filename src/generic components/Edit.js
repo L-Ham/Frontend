@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getIconComponent} from './icons';
+import {getIconComponent} from './iconsMap';
 
 /**
  * Renders the edit icon.

@@ -1,28 +1,26 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import {MoreDropdownMenu} from './MoreDropdownMenu';
 import {NotificationsDropdownMenu} from './NotificationsDropdownMenu';
-import {getIconComponent} from '../../generic components/icons';
+import {getIconComponent} from '../../generic components/iconsMap';
 import {Edit} from '../../generic components/Edit';
+import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the subreddit banner.
- * @param {string} props.name - The name of the subreddit.
- * @param {string} props.profilePictureSrc - The source of the profile picture.
- * @param {string} props.coverSrc - The source of the cover image.
- * @param {string} props.membersCount - The number of members in the subreddit.
- * @param {string} props.onlineCount - The number of members online in the subreddit.
- * @param {boolean} props.isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditBanner({
-    name,
-    profilePictureSrc,
-    coverSrc,
-    membersCount,
-    onlineCount,
-    isOwnerView,
-}) {
+export function SubredditBanner() {
+    const {
+        name,
+        profilePictureSrc,
+        coverSrc,
+        membersNickname,
+        membersCount,
+        currentlyViewingNickname,
+        currentlyViewingCount,
+        isOwnerView,
+    } = useSubreddit();
+
     // states
     const [isJoined, setIsJoined] = useState(false);
     const [isNotificationOptionsVisible, setIsNotificationOptionsVisible] = React.useState(false);
@@ -157,12 +155,13 @@ export function SubredditBanner({
                         </h1>
                         <div className="flex flex-row items-center min-[1024px]:hidden">
                             <span className='mr-2 flex text-[0.5rem] text-[#b08d0e]'>
-                                <span className='mr-[3px] scale-110'>{membersCount}</span> members
+                                <span className='mr-[3px] scale-110'>{membersCount}</span> {membersNickname}
                             </span>
                             <span className='flex items-center justify-center text-[0.5rem]
                             text-[#b08d0e]'>
                                 <OnlineIcon className="relative -bottom-[6px] mr-1 h-5 self-center bg-transparent"/>
-                                <span className='mr-[3px] scale-110'>{onlineCount}</span> online
+                                <span className='mr-[3px] scale-110'>{currentlyViewingCount}</span>
+                                {currentlyViewingNickname}
                             </span>
                         </div>
                     </div>
@@ -219,18 +218,3 @@ export function SubredditBanner({
         </div>
     );
 }
-
-
-SubredditBanner.propTypes = {
-    name: PropTypes.string.isRequired,
-    profilePictureSrc: PropTypes.string.isRequired,
-    coverSrc: PropTypes.string,
-    membersCount: PropTypes.string.isRequired,
-    onlineCount: PropTypes.string.isRequired,
-    isOwnerView: PropTypes.bool,
-};
-
-SubredditBanner.defaultProps = {
-    coverSrc: '',
-    isOwnerView: false,
-};

@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
 import {ProfileActionCard} from '../../generic components/ProfileActionCard';
 import {MultiLinkButton} from '../../generic components/MultiLinkButton';
-import {getIconComponent} from '../../generic components/icons';
+import {getIconComponent} from '../../generic components/iconsMap';
+import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the subreddit moderators
- * @param {object} users - The moderators of the subreddit.
- * @param {string} name - The name of the subreddit.
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditModerators({users, name}) {
+export function SubredditModerators() {
+    const {users, name} = useSubreddit();
     const MessageIcon = getIconComponent('message', false);
     const MultiLinkButtons = [
         {
@@ -62,11 +61,3 @@ export function SubredditModerators({users, name}) {
         </div>
     );
 }
-
-SubredditModerators.propTypes = {
-    users: PropTypes.arrayOf(PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        profilePictureSrc: PropTypes.string.isRequired,
-    })).isRequired,
-    name: PropTypes.string.isRequired,
-};

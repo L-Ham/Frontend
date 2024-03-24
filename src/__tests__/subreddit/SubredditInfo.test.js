@@ -11,7 +11,7 @@ describe('CommunityDetailsWidget component', () => {
                 name="Test Subreddit"
                 description="This is a test subreddit"
                 membersCount="1000"
-                onlineCount="50"
+                currentlyViewingCount="50"
                 rank='5'
             />,
         );

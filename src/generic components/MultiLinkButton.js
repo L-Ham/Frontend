@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from './DropdownMenu';
-import {getIconComponent} from './icons';
+import {getIconComponent} from './iconsMap';
 
 /**
  * Renders a MultiLinkButton.

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
 // components
 import {Rule} from './Rule';
+// hooks
+import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the rules.
@@ -11,7 +13,8 @@ import {Rule} from './Rule';
  * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function Rules({rules, isOwnerView}) {
+export function Rules() {
+    const {rules, isOwnerView} = useSubreddit();
     return (
         <SubredditWidget title="Rules" isOwnerView={isOwnerView}>
             {

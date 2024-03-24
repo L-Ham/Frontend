@@ -15,7 +15,7 @@ import {ReactComponent as MessageIconOutline} from '../assets/icons/message-outl
 import {ReactComponent as EditIconOutline} from '../assets/icons/edit-outline.svg';
 
 // icons map
-const iconsMap = {
+const ICONS_MAP = {
     'Low-fill': NotificationIconFill,
     'Frequent-fill': NotificationFrequentIconFill,
     'Off-fill': NotificationOffIconFill,
@@ -39,6 +39,6 @@ const iconsMap = {
 export const getIconComponent = (iconName, isFill) => {
     if (!iconName) return null;
     const iconSuffix = isFill ? '-fill' : '-outline';
-    const IconComponent = iconsMap[`${iconName}${iconSuffix}`];
+    const IconComponent = ICONS_MAP[`${iconName}${iconSuffix}`];
     return IconComponent ? (props) => <IconComponent {...props} /> : null;
 };

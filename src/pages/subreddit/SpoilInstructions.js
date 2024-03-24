@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
+// hooks
+import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the spoil instructions.
- * @param {string} instructions - The spoil instructions.
- * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function SpoilInstructions({instructions, isOwnerView}) {
+export function SpoilInstructions() {
+    const {instructions, isOwnerView} = useSubreddit();
     return (
         <SubredditWidget title="DON'T SPOIL OTHERS." isOwnerView={isOwnerView}>
             <ul className="m-0 px-5 py-0">
@@ -20,7 +20,3 @@ export function SpoilInstructions({instructions, isOwnerView}) {
     );
 }
 
-SpoilInstructions.propTypes = {
-    instructions: PropTypes.arrayOf(PropTypes.string).isRequired,
-    isOwnerView: PropTypes.bool,
-};

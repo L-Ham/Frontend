@@ -11,7 +11,7 @@ describe('code snippet', () => {
         const profilePictureSrc = 'testProfilePictureSrc';
         const coverSrc = 'testCoverSrc';
         const membersCount = '100';
-        const onlineCount = '10';
+        const currentlyViewingCount = '10';
 
         // Act
         const {getByAltText, getByText} = render(<SubredditBanner
@@ -19,7 +19,7 @@ describe('code snippet', () => {
             profilePictureSrc={profilePictureSrc}
             coverSrc={coverSrc}
             membersCount={membersCount}
-            onlineCount={onlineCount}
+            currentlyViewingCount={currentlyViewingCount}
         />);
 
         // Assert
@@ -27,7 +27,7 @@ describe('code snippet', () => {
         expect(getByAltText('Subreddit profile picture')).toHaveAttribute('src', profilePictureSrc);
         expect(getByAltText('Subreddit Cover')).toHaveAttribute('src', coverSrc);
         expect(getByText(membersCount)).toBeInTheDocument();
-        expect(getByText(onlineCount)).toBeInTheDocument();
+        expect(getByText(currentlyViewingCount)).toBeInTheDocument();
     });
 
     // Cover image is not provided
@@ -36,14 +36,14 @@ describe('code snippet', () => {
         const name = 'testName';
         const profilePictureSrc = 'testProfilePictureSrc';
         const membersCount = '100';
-        const onlineCount = '10';
+        const currentlyViewingCount = '10';
 
         // Act
         const {getByAltText} = render(<SubredditBanner
             name={name}
             profilePictureSrc={profilePictureSrc}
             membersCount={membersCount}
-            onlineCount={onlineCount}
+            currentlyViewingCount={currentlyViewingCount}
         />);
 
         // Assert

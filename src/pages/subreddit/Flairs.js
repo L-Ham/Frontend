@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
+// hooks
+import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the flairs.
  * @param {string} name - The name of the subreddit.
- * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
+ * @param {boolean} isCustomizable - The flag to check if the user is viewing the feed.
  * @return {JSX.Element} The rendered component.
  */
-export function Flairs({name, isOwnerView}) {
+export function Flairs() {
+    const {name, isOwnerView: isCustomizable} = useSubreddit();
     const flairs = [
         {name: 'Discussion', color: 'red'},
         {name: 'Theory', color: 'green'},
@@ -26,7 +29,7 @@ export function Flairs({name, isOwnerView}) {
     };
 
     return (
-        <SubredditWidget title='Flairs' isOwnerView={isOwnerView}>
+        <SubredditWidget title='Flairs' isCustomizable={isCustomizable}>
             <div className="flex flex-row flex-wrap">
                 {flairs.map((flair) => (
                     <div key={flair.name} style={getFlairStyle(flair.color)}
@@ -44,7 +47,7 @@ export function Flairs({name, isOwnerView}) {
 Flairs.propTypes =
 {
     name: PropTypes.string.isRequired,
-    isOwnerView: PropTypes.bool,
+    isCustomizable: PropTypes.bool,
 };
 
 /**

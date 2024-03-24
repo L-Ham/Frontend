@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from '../../generic components/DropdownMenu';
-import {getIconComponent} from '../../generic components/icons';
+import {getIconComponent} from '../../generic components/iconsMap';
 
 /**
  * NotificationsDropdownMenu component
