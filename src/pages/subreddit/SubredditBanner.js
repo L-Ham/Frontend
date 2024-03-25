@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {MoreDropdownMenu} from './MoreDropdownMenu';
 import {NotificationsDropdownMenu} from './NotificationsDropdownMenu';
 import {getIconComponent} from '../../generic components/iconsMap';
@@ -11,40 +11,58 @@ import {useSubreddit} from './subredditContext';
  */
 export function SubredditBanner() {
     const {
-        name,
-        profilePictureSrc,
-        coverSrc,
-        membersNickname,
-        membersCount,
-        currentlyViewingNickname,
-        currentlyViewingCount,
-        isOwnerView,
+        subredditAbout,
     } = useSubreddit();
 
+    const {
+        url,
+        banner_background_color: bannerBackgroundColor,
+        banner_background_image: bannerBackgroundImage,
+        primary_color: primaryColor,
+        community_icon: communityIcon,
+        user_is_moderator: userIsModerator,
+        user_is_subscriber: userIsSubscriber,
+        user_is_muted: userIsMuted,
+        user_has_favourited: userHasFavourited,
+        display_name_prefixed: displayNamePrefixed,
+        notification_level: notificationLevel,
+        active_user_count: activeUserCount,
+        subscribers: subscribersCount,
+    } = subredditAbout.data;
+
     // states
-    const [isJoined, setIsJoined] = useState(false);
-    const [isNotificationOptionsVisible, setIsNotificationOptionsVisible] = React.useState(false);
+    const [isSubscribed, setIsSubscribed] = useState(false);
+    const [isNotificationLevelsVisible, setIsNotificationLevelsVisible] = React.useState(false);
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = React.useState(false);
-    const [activeNotification, setActiveNotification] = React.useState('notification');
+    const [activeNotificationLevel, setActiveNotificationLevel] = React.useState(null);
     const [isMuted, setIsMuted] = React.useState(false);
-    const [isFavourite, setIsFavourite] = React.useState(false);
+    const [isFavourited, setIsFavourited] = React.useState(false);
 
     // constants
-    const isNotificationsVisible = isJoined;
+    const activeUserCountNickname = 'members';
+    const subscribersNickname = 'online';
 
     // icons
     const OnlineIcon = getIconComponent('online', true);
     const PlusIconFill = getIconComponent('plus', true);
     const OverflowHorizontalIconOutline = getIconComponent('overflow-horizontal', false);
-    const NotificationIcon = getIconComponent(activeNotification, true);
+    const activeNotificationLevelIconName = activeNotificationLevel ? activeNotificationLevel : 'low';
+    const NotificationLevelIcon = getIconComponent(activeNotificationLevelIconName, true);
 
+
+    useEffect(() => {
+        setIsSubscribed(userIsSubscriber);
+        setIsMuted(userIsMuted);
+        setIsFavourited(userHasFavourited);
+        setActiveNotificationLevel(notificationLevel);
+    }, [userIsSubscriber, userIsMuted, userHasFavourited, notificationLevel]);
 
     // functions
     /**
      * Handles the click event on the notification button.
      */
     function handleNotificationClick() {
-        setIsNotificationOptionsVisible((prevState) => !prevState);
+        setIsNotificationLevelsVisible((prevState) => !prevState);
     }
 
     /**
@@ -63,14 +81,14 @@ export function SubredditBanner() {
      * Handle favourite click event.
      */
     function handleFavouriteClick() {
-        if (isFavourite) {
+        if (isFavourited) {
             // TODO: handle remove from favourites
             // adding to favourite automatically joins the subreddit
         } else {
             // TODO: handle add to favourites
             handleJoinClick(true);
         }
-        setIsFavourite((prevState) => !prevState);
+        setIsFavourited((prevState) => !prevState);
     }
 
     /**
@@ -78,7 +96,7 @@ export function SubredditBanner() {
      */
     function handleCreatePost() {
         // TODO: replace with our actual URL
-        window.open('https://www.reddit.com/r/OnePiece/submit', '_blank');
+        window.open(`https://www.reddit.com${url}submit`, '_blank');
     }
 
     /**
@@ -87,21 +105,20 @@ export function SubredditBanner() {
      */
     function handleJoinClick(forceJoin = false) {
         if (forceJoin === true) {
-            if (isJoined !== true) {
-                setIsJoined(true);
-                if (activeNotification !== 'Low') setActiveNotification('Low');
+            if (isSubscribed !== true) {
+                setIsSubscribed(true);
+                if (activeNotificationLevel !== 'Low') setActiveNotificationLevel('Low');
             }
             return;
         }
 
-        if (isJoined) {
+        if (isSubscribed) {
             // TODO: handle leave
-            setIsJoined(false);
         } else {
             // TODO: handle join
-            setIsJoined(true);
-            if (activeNotification !== 'Low') setActiveNotification('Low');
+            if (activeNotificationLevel !== 'Low') setActiveNotificationLevel('Low');
         }
+        setIsSubscribed((prevState) => !prevState);
     }
 
 
@@ -110,7 +127,7 @@ export function SubredditBanner() {
      * @return {void}
      * */
     function handleModToolsClick() {
-        window.open(`https://www.reddit.com/r/${name}/about/modqueue`, '_blank');
+        window.open(`https://www.reddit.com${url}about/modqueue`, '_blank');
     }
 
     /**
@@ -129,14 +146,15 @@ export function SubredditBanner() {
      */
     function handleNotificationItemClick(item) {
         // TODO: send notification state to server
-        setActiveNotification(item);
+        setActiveNotificationLevel(item);
     }
 
     return (
-        <div className="my-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
-            <div className="relative w-full overflow-hidden rounded-lg bg-[#d3d3d3]">
-                {isOwnerView && <Edit />}
-                <img src={coverSrc ? coverSrc : ''}
+        <div className="mb-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
+            <div className="relative size-full overflow-hidden rounded-lg"
+                style={{backgroundColor: bannerBackgroundColor}}>
+                {userIsModerator && <Edit />}
+                <img src={bannerBackgroundImage ? bannerBackgroundImage : ''}
                     alt="Subreddit Cover" className='size-full object-cover object-center'/>
             </div>
             <div className="relative bottom-0 flex w-[95%] flex-col items-start justify-start
@@ -144,24 +162,24 @@ export function SubredditBanner() {
                 <div className="mt-2 flex flex-row items-center justify-center">
                     <div className="relative -top-2 size-28
                     max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
-                        <img src={profilePictureSrc} alt="Subreddit profile picture"
-                            className='size-full rounded-[50%] border-[5px] border-solid border-[#181100]
-                            max-[1024px]:mr-2  max-[1024px]:border-transparent'/>
+                        <img src={communityIcon} alt="Subreddit profile picture"
+                            className='size-full rounded-[50%] border-[5px] border-solid
+                            border-[#ffeef6]  max-[1024px]:mr-2 max-[1024px]:border-transparent'/>
                     </div>
                     <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
-                        <h1 className="mb-4 ml-2 text-2xl font-bold leading-6 text-white
+                        <h1 className="mb-4 ml-2 text-2xl font-bold leading-6
                         max-[1024px]:m-0 max-[1024px]:mb-1 max-[1024px]:text-[1rem] max-[1024px]:leading-4">
-                            {`r/${name}`}
+                            {displayNamePrefixed}
                         </h1>
                         <div className="flex flex-row items-center min-[1024px]:hidden">
                             <span className='mr-2 flex text-[0.5rem] text-[#b08d0e]'>
-                                <span className='mr-[3px] scale-110'>{membersCount}</span> {membersNickname}
+                                <span className='mr-[3px] scale-110'>{subscribersCount}</span> {activeUserCountNickname}
                             </span>
                             <span className='flex items-center justify-center text-[0.5rem]
                             text-[#b08d0e]'>
                                 <OnlineIcon className="relative -bottom-[6px] mr-1 h-5 self-center bg-transparent"/>
-                                <span className='mr-[3px] scale-110'>{currentlyViewingCount}</span>
-                                {currentlyViewingNickname}
+                                <span className='mr-[3px] scale-110'>{activeUserCount}</span>
+                                {subscribersNickname}
                             </span>
                         </div>
                     </div>
@@ -169,52 +187,57 @@ export function SubredditBanner() {
                 <div className="flex flex-row items-center max-[1024px]:mb-3">
                     <button className='flex h-11 cursor-pointer flex-row
                     items-center whitespace-nowrap rounded-3xl border-2 border-solid border-[#777777] bg-transparent
-                    px-5 py-2 text-white outline-none hover:border-white'
+                    px-5 py-2  outline-none hover:border-black'
                     onClick={handleCreatePost}>
                         <PlusIconFill className="mr-1 h-5"/>
                         Create a post
                     </button>
-                    {isNotificationsVisible && (
+                    {isSubscribed && (
                         <button className='ml-2 flex w-[45px]
                         items-center justify-center rounded-[50%] border-2 border-solid border-[#777777] bg-transparent
-                         p-2.5 text-white hover:border-white'
+                         p-2.5  hover:border-black'
                         onClick={handleNotificationClick}
                         style={{position: 'relative'}}>
-                            {<NotificationIcon/>}
-                            {isNotificationOptionsVisible && <NotificationsDropdownMenu activeItem={activeNotification}
+                            {<NotificationLevelIcon/>}
+                            {isNotificationLevelsVisible &&
+                            <NotificationsDropdownMenu activeItem={activeNotificationLevel}
                                 onItemClick={handleNotificationItemClick}/>}
                         </button>
                     )}
                     {
-                        !isOwnerView && (
-                            <button className={`${isJoined ?
-                                'border-2 border-solid border-[#777777] bg-transparent text-white hover:border-white' :
-                                'border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]'}
+                        !userIsModerator && (
+                            <button className={`${isSubscribed ?
+                                'border-2 border-solid bg-transparent  hover:border-black' :
+                                'border-solid text-[white] hover:bg-[#857541]'}
                                  mx-2 rounded-3xl px-5 py-2`}
+                            style={{border: primaryColor, backgroundColor: primaryColor}}
                             onClick={handleJoinClick}>
-                                {isJoined ? 'Joined' : 'Join'}
+                                {isSubscribed ? 'Joined' : 'Join'}
                             </button>
                         )
                     }
-                    {isOwnerView && (
-                        <button className={`border-solid border-[#564b27] bg-[#564b27] text-[white] hover:bg-[#857541]
+                    {userIsModerator && (
+                        <button className={`border-solid text-[white] hover:bg-[#857541]
                          mx-2 rounded-3xl px-5 py-2`}
+                        style={{border: primaryColor, backgroundColor: primaryColor}}
                         onClick={handleModToolsClick}>
                             Mod Tools
                         </button>
                     )}
                     <button className="flex w-[45px] items-center justify-center
                     rounded-[50%] border-2 border-solid
-                    border-[#777777] bg-transparent p-2.5 text-white hover:border-white"
+                    border-[#777777] bg-transparent p-2.5  hover:border-black"
                     onClick={handleMoreClick} style={{position: 'relative'}}>
                         <OverflowHorizontalIconOutline className="h-5"/>
-                        {isOtherOptionsVisible && <MoreDropdownMenu name={name}
+                        {isOtherOptionsVisible && <MoreDropdownMenu
                             isMuted={isMuted}
                             onMuteClick={handleMuteClick}
-                            isFavourite={isFavourite} onFavouriteClick={handleFavouriteClick}/>}
+                            isFavourited={isFavourited} onFavouriteClick={handleFavouriteClick}/>}
                     </button>
                 </div>
             </div>
         </div>
     );
 }
+
+

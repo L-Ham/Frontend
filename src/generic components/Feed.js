@@ -10,7 +10,7 @@ export function Feed() {
     const posts = []; // LSA: hl user view h7tagha f3ln
     return (
         <div className="m-0 mr-3 flex h-full flex-auto
-                flex-col items-center justify-center rounded-lg bg-yellow-300 p-0 pt-2.5 opacity-50">
+                flex-col items-center justify-center rounded-lg bg-pink-300 p-0 pt-2.5 opacity-50">
             {posts.length === 0 ? (!isOwnerView ? getEmptyFeed() : null) : (
                 posts.map((post) => (
                     <Post key={post.id} post={post} isOwnerView={isOwnerView} subredditName={subredditName}/>
@@ -28,7 +28,7 @@ export function Feed() {
  */
 function getEmptyFeed() {
     return (
-        <div>
+        <div className='z-10'>
             <h1 className='mb-2 text-4xl'>This Community doesn&apos;t have any posts yet</h1>
             <p className='mb-2 text-[#444444]'>Make one and get this feed started</p>
             <button className={`mx-2 rounded-3xl px-5 py-2 bg-[#0045ac]

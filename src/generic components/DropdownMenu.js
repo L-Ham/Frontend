@@ -15,9 +15,8 @@ export function DropdownMenu({
     className,
 },
 ) {
-    console.log(menuItems);
     return (
-        <div className={`absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#1f1700] 
+        <div className={`absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#ffffff] 
         ${className}`}>
             {menuItems.map((item) => {
                 const {text, icon: IconComponent} = item.content;
@@ -26,7 +25,7 @@ export function DropdownMenu({
                     <div
                         className={
                             `flex cursor-pointer flex-row items-center px-4 py-2 ${(isActive) ?
-                                'bg-[#251c00]' : ''} hover:bg-[#2f2401]`
+                                'bg-[#ffe1fe]' : ''} hover:bg-pink-200`
                         }
                         key={text}
                         onClick={item.onClick}

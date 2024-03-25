@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from '../../generic components/DropdownMenu';
+import {useSubreddit} from './subredditContext';
 
 /**
  * MoreDropdownMenu component.
  * @param {Object} props - Component props.
- * @param {string} props.name - Name of the subreddit.
  * @param {boolean} props.isMuted - Whether the subreddit is muted.
  * @param {function} props.onMuteClick - Function to handle mute click.
  * @param {boolean} props.isFavourite - Whether the subreddit is a favourite.
@@ -13,11 +13,11 @@ import {DropdownMenu} from '../../generic components/DropdownMenu';
  * @return {JSX.Element} MoreDropdownMenu component.
  */
 export function MoreDropdownMenu({
-    name,
     isMuted,
     onMuteClick,
     isFavourite,
     onFavouriteClick}) {
+    const {subredditName} = useSubreddit();
     const menuItems = [
         {
             content: {
@@ -27,7 +27,7 @@ export function MoreDropdownMenu({
         },
         {
             content: {
-                text: (isMuted ? `Unmute r/${name}` : `Mute r/${name}`),
+                text: (isMuted ? `Unmute r/${name}` : `Mute r/${subredditName}`),
             },
             onClick: onMuteClick,
         },
@@ -39,7 +39,6 @@ export function MoreDropdownMenu({
 }
 
 MoreDropdownMenu.propTypes = {
-    name: PropTypes.string.isRequired,
     isMuted: PropTypes.bool.isRequired,
     onMuteClick: PropTypes.func.isRequired,
     isFavourite: PropTypes.bool.isRequired,

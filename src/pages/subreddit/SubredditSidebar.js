@@ -8,7 +8,7 @@ import {useSubreddit} from './subredditContext';
  */
 export function SubredditSidebar() {
     const [widgets, setWidgets] = useState([]);
-    const {name: subredditName} = useSubreddit();
+    const {subredditName, keyColor} = useSubreddit();
 
     useEffect(() => {
         getWidgets(subredditName).then((widgets) => {
@@ -19,7 +19,8 @@ export function SubredditSidebar() {
     return (
         widgets.length !== 0 && <div
             className="sticky top-0 m-0 flex h-screen w-80 flex-col
-                overflow-y-auto rounded-lg bg-[#0c0700] font-sans text-xs text-[#b99617] max-[1000px]:hidden"
+                overflow-y-auto rounded-lg bg-[#fff2fe] font-sans text-xs max-[1000px]:hidden"
+            style={{color: keyColor}}
         >
             {widgets.map((widgetName) => {
                 const WidgetComponent = WIDGETS_MAP[widgetName];
