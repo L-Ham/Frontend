@@ -31,15 +31,32 @@ jobs:
     - run: npm test
     - run: git log -n 1 --pretty=format:%ae
 
-    - name: Sending Mail on success 
+    - name: Send Email on success
       if: success()
-      uses: dawidd6/action-send-mail@v3
+      uses: hilarion5/send-mail@v1
       with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        password: ${{ secrets.DEVOPS_PASSWORD }}
-        from: ${{ secrets.DEVOPS_EMAIL }} # Specify the sender email here
-        subject: " env.Mabroooookkkkkk!!! kalam mawzoon "
-        body: ${{ github.event_name }} event on ${{ github.repository }} triggered by ${{ github.actor }} at ${{ github.event.head_commit.timestamp }}
-        to: ${{ github.event.pull_request.user.login }}@users.noreply.github.com
+         smtp-server: smtp.gmail.com
+         smtp-port: 465
+         smtp-secure: true
+         from-email: ${{ secrets.DEVOPS_EMAIL }}
+         to-email: ${{ secrets.DEVOPS_EMAIL }},${{ secrets.SUB_TEAM_LEADER }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
+         username: ${{ secrets.DEVOPS_EMAIL }}
+         password: ${{ secrets.DEVOPS_PASSWORD }}
+         subject: SHOGHEL FA5ER MN EL AKHER YA ${{ github.actor }}
+         body: ${{ github.event_name }} event on ${{ github.repository }} triggered by ${{ github.actor }} at ${{ github.event.head_commit.timestamp }}
+
+    - name : Send Email on failure
+      if: failure()
+      uses: hilarion5/send-mail@v1
+      with:
+         smtp-server: smtp.gmail.com
+         smtp-port: 465
+         smtp-secure: true
+         from-email: ${{ secrets.DEVOPS_EMAIL }}
+         to-email: ${{ secrets.DEVOPS_EMAIL }},${{ secrets.SUB_TEAM_LEADER }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
+         username: ${{ secrets.DEVOPS_EMAIL }}
+         password: ${{ secrets.DEVOPS_PASSWORD }}
+         subject: SO SO SO BAD FROM ${{ github.actor }}
+         body: ${{ github.event_name }} event on ${{ github.repository }} triggered by ${{ github.actor }} at ${{ github.event.head_commit.timestamp }}
+
     
