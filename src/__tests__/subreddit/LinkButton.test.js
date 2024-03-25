@@ -7,12 +7,12 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with a single target option and an icon.
     it('should render a MultiLinkButton with a single target option and an icon', () => {
         const data = {
-            buttonText: 'email',
+            groupName: 'email',
             icon: 'email',
-            targetOptions: [
+            links: [
                 {
-                    text: 'email',
-                    targetURL: 'https://www.email.com',
+                    name: 'email',
+                    URL: 'https://www.email.com',
                 },
             ],
         };
@@ -29,12 +29,12 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with a single target option and no icon.
     it('should render a MultiLinkButton with a single target option and no icon', () => {
         const data = {
-            buttonText: 'google',
+            groupName: 'google',
             icon: 'invalid',
-            targetOptions: [
+            links: [
                 {
-                    text: 'Google',
-                    targetURL: 'https://www.google.com',
+                    name: 'Google',
+                    URL: 'https://www.google.com',
                 },
             ],
         };
@@ -51,16 +51,16 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with multiple target options and an icon.
     it('should render a MultiLinkButton with multiple target options and an icon', () => {
         const data = {
-            buttonText: 'email',
+            groupName: 'email',
             icon: 'email',
-            targetOptions: [
+            links: [
                 {
-                    text: 'email',
-                    targetURL: 'https://www.email.com',
+                    name: 'email',
+                    URL: 'https://www.email.com',
                 },
                 {
-                    text: 'email Images',
-                    targetURL: 'https://www.email.com/imghp',
+                    name: 'email Images',
+                    URL: 'https://www.email.com/imghp',
                 },
             ],
         };
@@ -77,16 +77,16 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with multiple target options and no icon.
     it('should render a MultiLinkButton with multiple target options and no icon', () => {
         const data = {
-            buttonText: 'google',
+            groupName: 'google',
             icon: 'invalid',
-            targetOptions: [
+            links: [
                 {
-                    text: 'Google',
-                    targetURL: 'https://www.google.com',
+                    name: 'Google',
+                    URL: 'https://www.google.com',
                 },
                 {
-                    text: 'Google Images',
-                    targetURL: 'https://www.google.com/imghp',
+                    name: 'Google Images',
+                    URL: 'https://www.google.com/imghp',
                 },
             ],
         };

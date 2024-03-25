@@ -26,6 +26,7 @@ export function SubredditProvider({children}) {
     const [coverSrc, setCoverSrc] = useState('');
     const [userFlair, setUserFlair] = useState('');
     const [username, setUsername] = useState('');
+    const [userDisplayName, setUserDisplayName] = useState('');
     const [spoilInstructions, setSpoilInstructions] = useState([]);
     const [rank, setRank] = useState('');
     const [membersNickname, setMembersNickname] = useState('');
@@ -33,7 +34,6 @@ export function SubredditProvider({children}) {
     const [currentlyViewingCount, setCurrentlyViewingCount] = useState('');
     const [membersCount, setMembersCount] = useState('');
     const [rules, setRules] = useState([]);
-    const [moderators, setModerators] = useState([]);
     const [isOwnerView, setIsOwnerView] = useState(false);
 
 
@@ -54,6 +54,9 @@ export function SubredditProvider({children}) {
 
                 const usernameData = await getUsername();
                 setUsername(usernameData);
+
+                const userDisplayNameData = await getUserDisplayName();
+                setUserDisplayName(userDisplayNameData);
 
                 const spoilInstructionsData = await getSpoilInstructions();
                 setSpoilInstructions(spoilInstructionsData);
@@ -76,11 +79,9 @@ export function SubredditProvider({children}) {
                 const rulesData = await getRules();
                 setRules(rulesData);
 
-                const moderatorsData = await getModerators();
-                setModerators(moderatorsData);
+                const isOwnerViewData = await getIsOwnerView();
+                setIsOwnerView(isOwnerViewData);
 
-                const isOwnerView = await getIsOwnerView();
-                setIsOwnerView(isOwnerView);
 
                 setLoading(false);
             } catch (error) {
@@ -102,6 +103,7 @@ export function SubredditProvider({children}) {
         coverSrc,
         userFlair,
         username,
+        userDisplayName,
         spoilInstructions,
         rank,
         membersNickname,
@@ -109,7 +111,6 @@ export function SubredditProvider({children}) {
         membersCount: numberToString(membersCount),
         currentlyViewingCount: numberToString(currentlyViewingCount),
         rules,
-        moderators,
         isOwnerView,
     };
 
@@ -179,6 +180,15 @@ async function getUserFLair() {
  * */
 async function getUsername() {
     return 'Monkey D. Luffy';
+}
+
+/**
+ * Fetches the user display name from the Reddit API.
+ * @return {Promise} The promise object representing the API call.
+ * @return {string} The description.
+ * */
+async function getUserDisplayName() {
+    return 'Luffy';
 }
 
 /**

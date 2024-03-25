@@ -12,14 +12,15 @@ export function SubredditSidebar() {
 
     useEffect(() => {
         getWidgets(subredditName).then((widgets) => {
-            setWidgets({widgets});
+            setWidgets(widgets);
         });
     }, []);
 
     return (
-        <div
+        widgets.length !== 0 && <div
             className="sticky top-0 m-0 flex h-screen w-80 flex-col
-            overflow-y-auto rounded-lg bg-[#0c0700] font-sans text-xs text-[#b99617] max-[1000px]:hidden">
+                overflow-y-auto rounded-lg bg-[#0c0700] font-sans text-xs text-[#b99617] max-[1000px]:hidden"
+        >
             {widgets.map((widgetName) => {
                 const WidgetComponent = WIDGETS_MAP[widgetName];
                 return WidgetComponent ? <WidgetComponent key={widgetName} /> : null;
@@ -39,12 +40,12 @@ async function getWidgets(subredditName) {
     // MOCKED DATA
     return [
         'CommunityDetailsWidget',
-        'UserFlair',
-        'CommunityWidget',
-        'Flairs',
-        'SpoilInstructions',
-        'Rules',
-        'ModeratorsWidget',
+        // 'UserFlair',
+        // 'CommunityWidget',
+        // 'Flairs',
+        // 'SpoilInstructions',
+        // 'Rules',
+        'CommunityModeratorsWidget',
         'CommunitySettings',
     ];
 }

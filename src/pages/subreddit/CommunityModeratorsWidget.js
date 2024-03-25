@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {SubredditWidget} from './SubredditWidget';
-import {ProfileActionCard} from '../../generic components/ProfileActionCard';
+import {ProfileActionCard} from './ProfileActionCard';
 import {MultiLinkButton} from '../../generic components/MultiLinkButton';
 import {useSubreddit} from './subredditContext';
 import {getIconComponent} from '../../generic components/iconsMap';
@@ -9,19 +9,13 @@ import {getIconComponent} from '../../generic components/iconsMap';
  * Renders the subreddit moderators
  * @return {JSX.Element} The rendered component.
  */
-export function ModeratorsWidget() {
+export function CommunityModeratorsWidget() {
     const {name: subredditName} = useSubreddit();
     const [moderators, setModerators] = useState([]);
-
-    useEffect(() => {
-        getModerators(subredditName).then((moderators) => {
-            setModerators(moderators);
-        },
-        );
-    }, []);
-
-    const MultiLinkButtons = [
+    const MessageIcon = getIconComponent('message', false);
+    const multiLinkButtons = [
         {
+            icon: <MessageIcon className='mr-2'/>,
             links: [
                 {
                     name: 'Message the mods',
@@ -40,18 +34,28 @@ export function ModeratorsWidget() {
         },
     ];
 
+    useEffect(() => {
+        getModerators(subredditName).then((moderators) => {
+            setModerators(moderators);
+        },
+        );
+    }, []);
+
     return (
-        <div>
+        moderators.length !== 0 && <div>
             <SubredditWidget title='Moderators'>
                 <div>
                     {
                         moderators.map((moderator) => {
-                            const {username, profilePictureSrc} = moderator;
+                            const {username, userDisplayName, profilePictureSrc} = moderator;
                             return (
                                 <ProfileActionCard
                                     key={username}
                                     name={username}
-                                    pictureSrc={profilePictureSrc}/>
+                                    displayName={userDisplayName}
+                                    pictureSrc={profilePictureSrc}
+                                    isLink = {true}
+                                />
                             );
                         },
                         )
@@ -59,10 +63,10 @@ export function ModeratorsWidget() {
                 </div>
                 <div className="mt-5">
                     {
-                        MultiLinkButtons.map((MultiLinkButton) => (
+                        multiLinkButtons.map((multiLinkButton) => (
                             <MultiLinkButton
-                                key={MultiLinkButton.links[0].name}
-                                data={MultiLinkButton}
+                                key={multiLinkButton.links[0].name}
+                                data={multiLinkButton}
                             />
                         ))
                     }
@@ -90,6 +94,7 @@ async function getModerators(subredditName) {
             {username: 'Nami',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_09_24A0ED.png'},
             {username: 'Usopp',
+                userDisplayName: 'Usopp',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_7.png'},
             {username: 'Sanji',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_05_24A0ED.png'},

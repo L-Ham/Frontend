@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
-import {ProfileActionCard} from '../../generic components/ProfileActionCard';
+import {ProfileActionCard} from './ProfileActionCard';
 import {useSubreddit} from './subredditContext';
 
 /**

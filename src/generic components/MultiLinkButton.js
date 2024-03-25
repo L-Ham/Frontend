@@ -6,30 +6,13 @@ import {getIconComponent} from './iconsMap';
 /**
  * Renders a MultiLinkButton.
  * @param {Object} data - The data for the MultiLinkButton.
- * example:
- * {
- *   icon : <Icon>
- *   buttonText: 'google',
- *   targetOptions: [
- *      {
- *         text: 'Google',
- *        targetURL: 'https://www.google.com',
- *         icon : <Icon>
- *    },
- *   {
- *     text: 'Google Images',
- *   targetURL: 'https://www.google.com/imghp',
- *  icon : <Icon>
- * },
- * ],
- * }
  * @return {JSX.Element} The rendered component.
  */
 export function MultiLinkButton({data}) {
     const [isOptionsVisible, setIsOptionsVisible] = React.useState(false);
 
-    const {icon: IconComponent, buttonText, targetOptions} = data;
-    const isSingleOption = targetOptions.length === 1;
+    const {icon: IconComponent, groupName, links} = data;
+    const isSingleOption = !groupName;
     const CaretDownIcon = getIconComponent('caret-down', false);
 
 
@@ -42,24 +25,25 @@ export function MultiLinkButton({data}) {
         * If the MultiLinkButton has multiple target options, it toggles the visibility of the options.
         */
     const handleClick = isSingleOption ?
-        () => window.open(data.targetOptions[0].targetURL, '_blank') :
+        () => window.open(links[0].URL, '_blank') :
         toggleOptionsVisibility;
 
 
     // Create the menu items for the dropdown menu.
     const menuItems = [];
-    targetOptions.forEach((option) => {
+    links.forEach((link) => {
+        const {name, URL} = link;
         menuItems.push({
-            content: {text: option.text},
+            content: {text: name},
             onClick: () => {
-                window.open(option.targetURL, '_blank');
+                window.open(URL, '_blank');
             },
         });
     });
 
     return (
         <li
-            key={buttonText}
+            key={groupName}
             onClick={handleClick}
             className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full cursor-pointer text-white 
         text-sm mb-2 relative ${
@@ -67,10 +51,10 @@ export function MultiLinkButton({data}) {
         } rounded-full`}
         >
             {IconComponent ? IconComponent : null}
-            <span className='hover:underline'>{data.buttonText}</span>
+            <span className='hover:underline'>{links[0].name}</span>
             {!isSingleOption && <CaretDownIcon className='ml-1' />}
             <div>
-                {isOptionsVisible && <DropdownMenu menuItems={menuItems} />}
+                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='inset-x-1/2 '/>}
             </div>
         </li>
     );

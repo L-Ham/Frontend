@@ -13,56 +13,56 @@ export function CommunityWidget() {
     const {name, isOwnerView: isCustomizable} = useSubreddit();
     const bookmarks = [
         {
-            buttonText: 'Wiki', targetOptions: [
+            groupName: 'Wiki', links: [
                 {
                     text: 'Wiki',
-                    targetURL: `https://www.reddit.com/r/${name}/wiki/index`,
+                    URL: `https://www.reddit.com/r/${name}/wiki/index`,
                 },
             ],
         },
         {
-            buttonText: 'Discussions', targetOptions: [
+            groupName: 'Discussions', links: [
                 {
                     text: 'Manga Discussions',
-                    targetURL: `https://www.reddit.com/r/${name}/wiki/manga_discussion/`,
+                    URL: `https://www.reddit.com/r/${name}/wiki/manga_discussion/`,
                 },
                 {
                     text: 'Anime Discussions',
-                    targetURL: `https://www.reddit.com/r/${name}/wiki/anime_discussion/`,
+                    URL: `https://www.reddit.com/r/${name}/wiki/anime_discussion/`,
                 },
             ],
         },
         {
-            buttonText: 'Latest Chapter', targetOptions: [
+            groupName: 'Latest Chapter', links: [
                 {
                     text: 'Latest Chapter',
-                    targetURL: `https://www.reddit.com/r/${name}
+                    URL: `https://www.reddit.com/r/${name}
                     /search/?q=one+piece+chapter+flair%3ACurrent%2BChapter&restrict_sr=on
                     &sort=new&t=all`,
                 },
             ],
         },
         {
-            buttonText: 'Resources', targetOptions: [
+            groupName: 'Resources', links: [
                 {
                     text: 'Resources',
-                    targetURL: `https://www.reddit.com/r/${name}/wiki/resources/`,
+                    URL: `https://www.reddit.com/r/${name}/wiki/resources/`,
                 },
             ],
         },
         {
-            buttonText: 'Discord', targetOptions: [
+            groupName: 'Discord', links: [
                 {
                     text: 'Discord',
-                    targetURL: `https://discord.com/invite/${name}`,
+                    URL: `https://discord.com/invite/${name}`,
                 },
             ],
         },
         {
-            buttonText: 'No Spoiler', targetOptions: [
+            groupName: 'No Spoiler', links: [
                 {
                     text: 'No Spoiler',
-                    targetURL: `https://ns.reddit.com/r/${name}/`,
+                    URL: `https://ns.reddit.com/r/${name}/`,
                 },
             ],
         },
@@ -72,7 +72,7 @@ export function CommunityWidget() {
         <SubredditWidget title='Community Bookmarks' isCustomizable={isCustomizable}>
             <ul className="m-0 flex flex-col p-0">
                 {bookmarks.map((bookmark) => (
-                    <MultiLinkButton key={bookmark.buttonText} data={bookmark}/>
+                    <MultiLinkButton key={bookmark.groupName} data={bookmark}/>
                 ))}
             </ul>
         </SubredditWidget>

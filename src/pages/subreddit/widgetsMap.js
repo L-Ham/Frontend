@@ -5,7 +5,7 @@ import {UserFlair} from './UserFlair';
 import {Flairs} from './Flairs';
 import {SpoilInstructions} from './SpoilInstructions';
 import {Rules} from './Rules';
-import {ModeratorsWidget} from './ModeratorsWidget';
+import {CommunityModeratorsWidget} from './CommunityModeratorsWidget';
 import {CommunitySettings} from './CommunitySettings';
 
 export const WIDGETS_MAP = {
@@ -15,7 +15,7 @@ export const WIDGETS_MAP = {
     Flairs: Flairs,
     SpoilInstructions: SpoilInstructions,
     Rules: Rules,
-    ModeratorsWidget: ModeratorsWidget,
+    CommunityModeratorsWidget: CommunityModeratorsWidget,
     CommunitySettings: CommunitySettings,
 };
 

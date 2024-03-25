@@ -24,7 +24,7 @@ export function CommunityDetailsWidget() {
     }, []);
 
     return (
-        <SubredditWidget title={name} isCustomizable={isCustomizable} useDivForTitle={false}>
+        <SubredditWidget title={subredditName} isCustomizable={isCustomizable} useDivForTitle={false}>
             <div className="mb-4 flex flex-col">
                 <p>
                     {description}

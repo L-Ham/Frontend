@@ -6,16 +6,19 @@ import PropTypes from 'prop-types';
  * @param {Object} props - Component props.
  * @param {Array} props.menuItems - Array of menu items.
  * @param {string} props.activeItem - Active item in the dropdown menu.
+ * @param {string} props.className - Additional classes for styling.
  * @return {JSX.Element} DropdownMenu component.
  */
 export function DropdownMenu({
     menuItems,
     activeItem,
+    className,
 },
 ) {
     console.log(menuItems);
     return (
-        <div className="absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#1f1700]">
+        <div className={`absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#1f1700] 
+        ${className}`}>
             {menuItems.map((item) => {
                 const {text, icon: IconComponent} = item.content;
                 const isActive = (activeItem && activeItem === text);
@@ -25,11 +28,11 @@ export function DropdownMenu({
                             `flex cursor-pointer flex-row items-center px-4 py-2 ${(isActive) ?
                                 'bg-[#251c00]' : ''} hover:bg-[#2f2401]`
                         }
-                        key={item.content.text}
+                        key={text}
                         onClick={item.onClick}
                     >
                         {IconComponent ? IconComponent : null}
-                        <span className='whitespace-nowrap'>{item.content.text}</span>
+                        <span className='whitespace-nowrap'>{text}</span>
                     </div>
                 );
             })}
@@ -46,5 +49,10 @@ DropdownMenu.propTypes = {
         onClick: PropTypes.func.isRequired,
     })).isRequired,
     activeItem: PropTypes.string,
-    icons: PropTypes.object.isRequired,
+    className: PropTypes.string,
+};
+
+DropdownMenu.defaultProps = {
+    activeItem: '',
+    className: '',
 };
