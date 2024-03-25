@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {SubredditWidget} from './SubredditWidget';
-import {ProfileActionCard} from './ProfileActionCard';
+import {UserCard} from './UserCard';
 import {MultiLinkButton} from '../../generic components/MultiLinkButton';
 import {useSubreddit} from './subredditContext';
 import {getIconComponent} from '../../generic components/iconsMap';
@@ -13,26 +13,37 @@ export function CommunityModeratorsWidget() {
     const {name: subredditName} = useSubreddit();
     const [moderators, setModerators] = useState([]);
     const MessageIcon = getIconComponent('message', false);
-    const multiLinkButtons = [
-        {
-            icon: <MessageIcon className='mr-2'/>,
-            links: [
-                {
-                    name: 'Message the mods',
-                    URL: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
-                },
-            ],
-
-        },
-        {
-            links: [
-                {
-                    name: 'View all moderators',
-                    URL: `https://www.reddit.com/r/${subredditName}/about/moderators/`,
-                },
-            ],
-        },
-    ];
+    const multiLinkButtons = moderators.length === 1 ?
+        [
+            {
+                icon: <MessageIcon className='mr-2'/>,
+                links: [
+                    {
+                        name: 'Message the mods',
+                        URL: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
+                    },
+                ],
+            },
+        ] :
+        [
+            {
+                icon: <MessageIcon className='mr-2'/>,
+                links: [
+                    {
+                        name: 'Message the mods',
+                        URL: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
+                    },
+                ],
+            },
+            {
+                links: [
+                    {
+                        name: 'View all moderators',
+                        URL: `https://www.reddit.com/r/${subredditName}/about/moderators/`,
+                    },
+                ],
+            },
+        ];
 
     useEffect(() => {
         getModerators(subredditName).then((moderators) => {
@@ -49,7 +60,7 @@ export function CommunityModeratorsWidget() {
                         moderators.map((moderator) => {
                             const {username, userDisplayName, profilePictureSrc} = moderator;
                             return (
-                                <ProfileActionCard
+                                <UserCard
                                     key={username}
                                     name={username}
                                     displayName={userDisplayName}
@@ -94,7 +105,7 @@ async function getModerators(subredditName) {
             {username: 'Nami',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_09_24A0ED.png'},
             {username: 'Usopp',
-                userDisplayName: 'Usopp',
+                userDisplayName: 'Usoggod',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_7.png'},
             {username: 'Sanji',
                 profilePictureSrc: 'https://www.redditstatic.com/avatars/avatar_default_05_24A0ED.png'},

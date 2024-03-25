@@ -8,30 +8,30 @@ import PropTypes from 'prop-types';
  * @param {string} pictureSrc - The source of the profile picture.
  * @param {boolean} isLink - The flag to check if the username is a link.
  * @return {JSX.Element} The rendered component.
- */export function ProfileActionCard({name, displayName, pictureSrc, isLink}) {
+ */export function UserCard({name, displayName, pictureSrc, isLink}) {
     return (
         <div className="mb-2 flex flex-row items-center" >
             <img src={pictureSrc}
                 alt="picture" className='mr-2 size-8 rounded-full'/>
-            <div className='flex flex-col'>
+            <div className='flex flex-col justify-center'>
                 <a className={`${isLink ? 'hover:underline' : ''}` }
                     href={isLink ? `https://www.reddit.com/user/${name}/` : ''}>
                     {`u/${name}`}
                 </a>
-                {displayName && <span className='text-sm'>{displayName}</span>}
+                {displayName && <span className='text-[10px]'>{displayName}</span>}
             </div>
         </div>
     );
 }
 
-ProfileActionCard.propTypes = {
+UserCard.propTypes = {
     name: PropTypes.string.isRequired,
     displayName: PropTypes.string,
     pictureSrc: PropTypes.string.isRequired,
     isLink: PropTypes.bool,
 };
 
-ProfileActionCard.defaultProps = {
+UserCard.defaultProps = {
     isLink: false,
     displayName: '',
 };

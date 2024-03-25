@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {SubredditWidget} from './SubredditWidget';
-import {ProfileActionCard} from './ProfileActionCard';
+import {UserCard} from './UserCard';
 import {useSubreddit} from './subredditContext';
 
 /**
@@ -16,7 +16,7 @@ export function UserFlair() {
     return (
         <div>
             <SubredditWidget title='USER FLAIR' isOwnerView={isOwnerView}>
-                <ProfileActionCard
+                <UserCard
                     key={username}
                     name={username}
                     pictureSrc={profilePictureSrc}/>
