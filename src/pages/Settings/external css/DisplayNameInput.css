@@ -1,0 +1,31 @@
+.display-name-container {
+  margin: 1rem;
+}
+
+.display-name-input {
+  width: 100%;
+  padding: 10px;
+  background: white; 
+  color: black; 
+  outline: none; 
+
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  
+}
+
+
+.display-name-input:focus {
+  border: 1px solid black; 
+}
+
+.char-counter {
+  
+  margin-top: 0.25rem;
+  text-align: right;
+  color: #666;
+  
+  font-size: 0.875em;
+}
