@@ -30,9 +30,10 @@ export function SubredditSidebar() {
     if (!items || !idCardWidget || !topbar || !sidebar || !moderatorWidget) return null;
 
     return (
-        <div style={{color: 'var(baseColor)', backgroundColor: 'var(--sidebarBackgroundColor)'}}
-            className="sticky top-0 m-0 flex h-screen w-80 flex-col
-        overflow-y-auto rounded-lg font-sans text-xs max-[1000px]:hidden">
+        <div
+            className="sticky top-0 m-0 flex h-screen w-[300px] shrink-0
+            flex-col overflow-y-auto rounded-lg bg-[var(--sidebarBackgroundColor)] font-sans
+            text-xs text-[var(--baseColor)] max-[1000px]:hidden">
             {renderWidgetOfKind(items[idCardWidget].kind, items[idCardWidget], idCardWidget)}
             {topbar.order.map((widgetId) => renderWidgetOfKind(items[widgetId].kind, items[widgetId], widgetId))}
             {sidebar.order.map((widgetId) => renderWidgetOfKind(items[widgetId].kind, items[widgetId], widgetId))}

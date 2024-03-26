@@ -8,11 +8,11 @@ import {getIconComponent} from '../../generic components/iconsMap';
  * @param {number} subscribersCount - The number of members in the subreddit.
  * @param {number} currentlyViewingCount - The number of members online in the subreddit.
  * @param {string} rank - The rank of the subreddit by size.
- * @param {object} styles - The styles.
+ * @param {object} isSmallView - The isSmallView.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityStats({subscribersCount,
-    currentlyViewingCount, rank, styles}) {
+    currentlyViewingCount, rank, isSmallView}) {
     if (!subscribersCount || !currentlyViewingCount) {
         return null;
     }
@@ -38,9 +38,9 @@ export function CommunityStats({subscribersCount,
     ];
 
     return (
-        <div className={styles}>
+        <div className='flex flex-row'>
             {
-                data.map((item) => <CommunityStatsItem key={item.title} item={item} />)
+                data.map((item) => <CommunityStatsItem key={item.title} item={item} isSmallView={isSmallView}/>)
             }
         </div>
     );
@@ -50,12 +50,12 @@ CommunityStats.propTypes = {
     subscribersCount: PropTypes.number,
     currentlyViewingCount: PropTypes.number,
     rank: PropTypes.string,
-    styles: PropTypes.string,
+    isSmallView: PropTypes.bool,
 };
 
 CommunityStats.defaultProps = {
     rank: null,
-    styles: 'flex flex-row',
+    isSmallView: false,
     subscribersCount: 0,
     currentlyViewingCount: 0,
 };
@@ -67,7 +67,7 @@ CommunityStats.defaultProps = {
 
 const numberToString = (number) => {
     if (number > 1000000) {
-        return `${(number / 1000000).toFixed(1)}M`;
+        return `${(number / 1000000).toFixed(1)}m`;
     } else if (number > 1000) {
         return `${(number / 1000).toFixed(1)}k`;
     }

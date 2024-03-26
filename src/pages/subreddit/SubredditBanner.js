@@ -19,7 +19,7 @@ export function SubredditBanner() {
     const [activeNotificationLevel, setActiveNotificationLevel] = useState(null);
     const [isMuted, setIsMuted] = useState(false);
     const [isFavourite, setIsFavourite] = useState(false);
-
+    // hooks
     const {about} = useSubreddit();
 
     useEffect(() => {
@@ -69,7 +69,8 @@ export function SubredditBanner() {
      * Handles the click event on the notification button.
      */
     function handleNotificationClick() {
-        setIsNotificationLevelsVisible((prevState) => !prevState);
+        closeAllDropdowns();
+        setIsNotificationLevelsVisible(!isNotificationLevelsVisible);
     }
 
     /**
@@ -141,7 +142,8 @@ export function SubredditBanner() {
      * Handles the click event on the more button.
      */
     function handleMoreClick() {
-        setIsOtherOptionsVisible((prevState) => !prevState);
+        closeAllDropdowns();
+        setIsOtherOptionsVisible(!isOtherOptionsVisible);
     }
 
     /**
@@ -156,18 +158,27 @@ export function SubredditBanner() {
         setActiveNotificationLevel(item);
     }
 
+    /**
+     * Closes all dropdowns.
+     * @return {void}
+     * */
+    function closeAllDropdowns() {
+        if (isNotificationLevelsVisible) setIsNotificationLevelsVisible(false);
+        if (isOtherOptionsVisible) setIsOtherOptionsVisible(false);
+    }
+
     return (
-        <div className={`${styles.banner} flex flex-col`} >
-            <div className="relative w-full flex-1 overflow-hidden rounded-lg"
+        <div className={styles.banner} >
+            <div className="relative h-20 w-full overflow-hidden rounded-lg"
                 style={{backgroundColor: bannerBackgroundColor}}>
                 {userIsModerator && <Edit />}
                 <img src={bannerBackgroundImage ? bannerBackgroundImage : ''}
                     alt="Subreddit Cover" className='size-full object-cover object-center'/>
             </div>
-            <div className="relative bottom-0 flex w-[95%] flex-col items-start justify-start
-            lg:bottom-[26%] lg:flex-row lg:items-end lg:justify-between">
+            <div className="absolute bottom-20 flex w-[95%] flex-col items-start justify-start
+            max-[1024px]:bottom-0 lg:flex-row lg:items-end lg:justify-between">
                 <div className="mt-2 flex flex-row items-center justify-center">
-                    <div className="relative -top-2 size-28
+                    <div className="relative -top-0 size-24
                     max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
                         <img src={communityIcon ? communityIcon : ''} alt="Subreddit profile picture"
                             className='size-full rounded-[50%] border-[5px] border-solid
@@ -176,57 +187,51 @@ export function SubredditBanner() {
                     </div>
                     <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
                         <h1 className="mb-4 ml-2 text-2xl font-bold leading-6
-                        max-[1024px]:m-0 max-[1024px]:mb-1 max-[1024px]:text-[1rem] max-[1024px]:leading-4">
+                        text-[var(--primaryTextColor-light)] max-[1024px]:m-0 max-[1024px]:mb-1 max-[1024px]:text-[1rem]
+                         max-[1024px]:leading-4">
                             {displayNamePrefixed}
                         </h1>
                         <div className="flex flex-row items-center min-[1024px]:hidden">
                             <CommunityStats currentlyViewingCount={currentlyViewingCount}
-                                subscribersCount={subscribersCount}/>
+                                subscribersCount={subscribersCount} isSmallView={true}/>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row items-center max-[1024px]:mb-3">
-                    <button className={styles.outline}
+                {/* action buttons*/}
+                <div className="flex flex-row items-center">
+                    <button className='outlineBtn'
                         onClick={handleCreatePost}>
-                        <PlusIconFill className="mr-1 h-5" style={{fill: 'black'}}/>
+                        <PlusIconFill className="mr-1 h-5 fill-inherit"/>
                         Create a post
                     </button>
                     {isSubscribed && (
-                        <button className={`${styles.outline} rounded-2xl`}
-                            onClick={handleNotificationClick}
-                            style={{position: 'relative'}}>
+                        <button className={`outlineBtn roundedBtn relative`}
+                            onClick={handleNotificationClick}>
                             {<NotificationLevelIcon/>}
                             {isNotificationLevelsVisible &&
-                            <NotificationsDropdownMenu activeItem={activeNotificationLevel}
+                            <NotificationsDropdownMenu className='-bottom-[122px]' activeItem={activeNotificationLevel}
                                 onItemClick={handleNotificationItemClick}/>}
                         </button>
                     )}
                     {
                         !userIsModerator && (
-                            <button className={`${isSubscribed ?
-                                'border-2 border-solid bg-transparent' :
-                                'border-solid'}
-                                 mx-2 rounded-3xl px-5 py-2`}
-                            style={{border: 'var(--keyColor)', backgroundColor: 'var(--keyColor)',
-                                color: 'white'}}
-                            onClick={handleJoinClick}>
+                            <button className={`${isSubscribed ? 'outlineBtn' : 'joinBtn'}`}
+                                style={{color: !isSubscribed ? 'white' : 'black'}}
+                                onClick={handleJoinClick}>
                                 {isSubscribed ? 'Joined' : 'Join'}
                             </button>
                         )
                     }
                     {userIsModerator && (
-                        <button className={`border-solid
-                         mx-2 rounded-3xl px-5 py-2`}
-                        style={{border: 'var(--keyColor)', backgroundColor: 'var(--keyColor)'}}
-                        onClick={handleModToolsClick}>
+                        <button className='joinBtn'
+                            style={{color: !isSubscribed ? 'white' : 'black'}}
+                            onClick={handleModToolsClick}>
                             Mod Tools
                         </button>
                     )}
-                    <button className="flex w-[45px] items-center justify-center
-                    rounded-[50%] border-2 border-solid
-                     bg-transparent p-2.5"
-                    onClick={handleMoreClick} style={{position: 'relative', borderColor: 'var(--primaryTextColor)'}}>
-                        <OverflowHorizontalIconOutline className="h-5"/>
+                    <button className="roundedBtn outlineBtn relative"
+                        onClick={handleMoreClick}>
+                        <OverflowHorizontalIconOutline />
                         {isOtherOptionsVisible && <MoreDropdownMenu
                             isMuted={isMuted}
                             onMuteClick={handleMuteClick}

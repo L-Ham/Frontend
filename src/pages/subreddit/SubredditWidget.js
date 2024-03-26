@@ -14,12 +14,14 @@ import {Edit} from '../../generic components/Edit';
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditWidget({id, title, children, isCustomizable, onEditClick, useDivForTitle}) {
-    const TitleTag = useDivForTitle ? 'div' : 'h2';
+    const TitleTag = useDivForTitle ? 'div' : 'h3';
     return (
-        <div className="relative flex flex-col  border-b bg-transparent p-5 text-left" id={id}
+        <div className="relative flex flex-col border-b bg-transparent p-5 text-left" id={id}
             style={{borderColor: 'var(baseColor)'}}>
             {isCustomizable && <Edit onEditClick={onEditClick}/>}
-            <TitleTag className={`mb-2.5 text-left text-sm ${!useDivForTitle ? 'font-bold' : ''} `}>{title}</TitleTag>
+            <TitleTag className={`mb-2.5 text-left text-sm ${!useDivForTitle ? 'font-bold' : 'font-normal'} `}>
+                {title}
+            </TitleTag>
             {children}
         </div>
     );

@@ -6,15 +6,14 @@ import {useSubreddit} from '../pages/subreddit/subredditContext';
  * @return {JSX.Element} The rendered component.
  */
 export function Feed() {
-    const {isOwnerView, name: subredditName} = useSubreddit();
+    const {userIsModerator, name: subredditName} = useSubreddit();
     const posts = []; // LSA: hl user view h7tagha f3ln
     return (
         <div className="m-0 mr-3 flex h-full flex-auto
-                flex-col items-center justify-center rounded-lg p-0 pt-2.5 opacity-50">
-            {posts.length === 0 ? (!isOwnerView ? getEmptyFeed() : null) : (
+                flex-col items-center justify-center rounded-lg p-0 pt-2.5">
+            {posts.length === 0 ? (!userIsModerator ? getEmptyFeed() : null) : (
                 posts.map((post) => (
-                    <Post key={post.id} post={post} isOwnerView={isOwnerView} subredditName={subredditName}/>
-                    /* LSA: hl user view h7tagha f3ln*/
+                    <Post key={post.id} post={post} subredditName={subredditName}/>
                 ))
             )}
         </div>

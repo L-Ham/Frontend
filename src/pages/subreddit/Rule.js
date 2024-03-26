@@ -18,7 +18,10 @@ export function Rule({data, display}) {
 
     if (! data) return null;
 
-    const description = parse(replaceHtmlEntities(descriptionHtml));
+    const descriptionHtmlStyled = descriptionHtml.
+        replaceAll('&lt;li&gt;', '&lt;li style=\'margin-bottom: 10px; list-style: disc;\'&gt;');
+
+    const description = parse(replaceHtmlEntities(descriptionHtmlStyled));
 
     const toogleDescriptionVisibility = () =>{
         setIsDescriptionHidden((prevState) => !prevState);
@@ -26,18 +29,22 @@ export function Rule({data, display}) {
 
     return (
         <li className="flex flex-col">
-            <div className="flex w-full items-center justify-between px-4 py-2 hover:bg-[#251c00]" onClick={() =>{
+            <div className="flex
+            w-full items-center justify-between px-4 py-2 hover:bg-[var(--bookmarksColor)]"
+            onClick={() =>{
                 if (isCompact) toogleDescriptionVisibility();
             }}>
                 <span>{priority+1}</span>
-                <p className="max-w-36 grow">{shortName}</p>
+                <p className="w-32 text-left">{shortName}</p>
                 <CaretDownIconOutline
                     className={`${!isDescriptionHidden ? 'rotate-180' : 'rotate-0'}
                      transition-transform duration-300 ease-in-out`} />
             </div>
-            <ul className={`pl-12 ${isDescriptionHidden ? 'hidden' : ''}`}>
-                {description}
-            </ul>
+            <div className={`${isDescriptionHidden ? 'hidden' : ''}`}>
+                <ul className={`shrink-0 pl-12`}>
+                    {description}
+                </ul>
+            </div>
         </li>
     );
 }

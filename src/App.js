@@ -45,11 +45,6 @@ function App() {
     }
     return (
         <div className="App" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
         }}>
             {/* <button
                 onClick={handleClick}

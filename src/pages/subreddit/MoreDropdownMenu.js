@@ -10,13 +10,15 @@ import {useSubreddit} from './subredditContext';
  * @param {function} props.onMuteClick - Function to handle mute click.
  * @param {boolean} props.isFavourite - Whether the subreddit is a favourite.
  * @param {function} props.onFavouriteClick - Function to handle favourite click.
+ * @param {string} props.className - The class name.
  * @return {JSX.Element} MoreDropdownMenu component.
  */
 export function MoreDropdownMenu({
     isMuted,
     onMuteClick,
     isFavourite,
-    onFavouriteClick}) {
+    onFavouriteClick,
+    className}) {
     const {subredditName} = useSubreddit();
     const menuItems = [
         {
@@ -34,7 +36,7 @@ export function MoreDropdownMenu({
     ];
 
     return (
-        <DropdownMenu menuItems={menuItems}/>
+        <DropdownMenu menuItems={menuItems} className={className}/>
     );
 }
 
@@ -43,4 +45,9 @@ MoreDropdownMenu.propTypes = {
     onMuteClick: PropTypes.func.isRequired,
     isFavourite: PropTypes.bool.isRequired,
     onFavouriteClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
+};
+
+MoreDropdownMenu.defaultProps = {
+    className: '',
 };

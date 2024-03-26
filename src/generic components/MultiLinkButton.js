@@ -44,16 +44,16 @@ export function MultiLinkButton({data}) {
         <li
             key={text}
             onClick={handleClick}
-            className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full cursor-pointer text-white 
-        text-sm mb-2 relative ${
-        !isSingleOption ? 'bg-[#ffd7fd] hover:bg-[#ffbcfc]' : 'bg-[#ffd7fd] hover:bg-[#ffbcfc] hover:underline'
-        } rounded-full`}
+            className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full 
+            cursor-pointer text-[var(--primaryTextColor-light)] bg-[var(--bookmarksColor)] 
+            hover:bg-[var(--bookmarksHoverColor)]
+            text-sm mb-2 relative ${!isSingleOption ? '' : 'hover:underline'} rounded-full`}
         >
             {IconComponent ? IconComponent : null}
             <span className='hover:underline'>{text}</span>
             {!isSingleOption && <CaretDownIcon className='ml-1' />}
             <div>
-                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='inset-x-1/2 '/>}
+                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='-bottom-[70px] right-1/2'/>}
             </div>
         </li>
     );

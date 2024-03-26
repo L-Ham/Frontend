@@ -3,14 +3,9 @@
 @import "tailwindcss/utilities";
 
 .banner{
-    @apply mb-2 flex h-60 w-full flex-col items-center rounded-lg max-[1024px]:m-0;
+    @apply mb-2 flex h-60 w-full relative flex-col items-center rounded-lg max-[1024px]:m-0;
 }
 
-.outline {
-    color : var(--primaryTextColor);
-    background-color: transparent;
-    border: 1px solid var(--primaryTextColor);
-    @apply flex h-11 cursor-pointer flex-row
-    items-center whitespace-nowrap rounded-3xl border-2 border-solid bg-transparent
-    px-5 py-2  outline-none;
+.banner button{
+    @apply ml-2;
 }

@@ -16,16 +16,17 @@ export function DropdownMenu({
 },
 ) {
     return (
-        <div className={`absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg bg-[#ffffff] 
+        <div className={`absolute -bottom-20 right-0 z-10 flex flex-col overflow-hidden rounded-lg 
+        shadow-lg bg-[var(--backgroundColor)] 
         ${className}`}>
             {menuItems.map((item) => {
                 const {text, icon: IconComponent} = item.content;
-                const isActive = (activeItem && activeItem === text);
+                const isActive = (activeItem && activeItem === text.toLowerCase());
                 return (
                     <div
                         className={
-                            `z-10 flex cursor-pointer flex-row items-center px-4 py-2 text-black ${(isActive) ?
-                                'bg-[#ffe1fe]' : ''} hover:bg-pink-200`
+                            `z-10 flex cursor-pointer flex-row items-center px-4 py-2 ${(isActive) ?
+                                'bg-[var(--bookmarksColor)]' : 'hover:bg-[var(--sidebarBackgroundColor)]'} `
                         }
                         key={text}
                         onClick={item.onClick}

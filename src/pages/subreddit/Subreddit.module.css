@@ -2,45 +2,43 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/*subreddit*/
 .subreddit {
-    --baseColor: #a58c30; /*affects subreddit background color, sidebar, color of: buttons, borders*/
-    --keyColor: #2a2410; /*color of: join buttons, edit widgets, links active*/
-    --backgroundColor: #fefaf2;
-    --sidebarBackgroundColor: #fef4e2;
-    --primaryTextColor : black;
-    @apply m-auto flex h-full w-4/5 flex-col items-center p-3;
-    background-color: var(--backgroundColor);
+    @apply m-auto flex h-full w-4/5 flex-col items-center p-3 bg-[var(--backgroundColor)];
 }
 
+/*general*/
 .subreddit button{
-    color : var(--primaryTextColor);
+    @apply text-[var(--primaryTextColor-light)];
 }
 
-.subreddit button.join {
-    background-color: var(--keyColor);
-    border: 1px solid var(--keyColor);
+/*general*/
+.subreddit span{
+    @apply text-xs;
 }
 
-.subreddit button.no-fill {
-    color : var(--primaryTextColor);
-    background-color: transparent;
-    border: 1px solid var(--primaryTextColor);
-    @apply flex h-11 cursor-pointer flex-row
-    items-center whitespace-nowrap rounded-3xl border-2 border-solid bg-transparent
-    px-5 py-2  outline-none;
-}
-
-.subreddit button.no-fill.rounded{
-
-}
-
-.subreddit button.no-fill:hover {
-    border: 1px solid var(--primaryTextColor);
+.subreddit h3 {
+    @apply text-[var(--primaryTextColor-light)] text-base font-bold;
 }
 
 .subreddit a:active {
-    color: var(--keyColor);
+    @apply text-[var(--keyColor)];
 }
+
+/*custom classes*/
+.joinBtn {
+    @apply bg-[var(--keyColor)] border-[var(--keyColor)] text-[var(--primaryTextColor-dark)];
+}
+
+.outlineBtn {
+    @apply text-[var(--outlineButton-color)] bg-transparent border-[var(--outlineButton-color)];
+    @apply flex h-11 cursor-pointer flex-row items-center whitespace-nowrap rounded-3xl border-2 px-5 py-2 outline-none;
+}
+
+.outlineBtn:hover {
+    @apply border-[var(--outlineButton-hover)];
+}
+
 
 
 

@@ -1,12 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-/* 
-(OPTIONAL INSTEAD OF ABOVE)
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-*/
+:root{
+  --baseColor: #a58c30; /*affects subreddit background color, sidebar, color of: buttons, borders*/
+  --keyColor: #2a2410; /*color of: join buttons, edit widgets, links active*/
+  --backgroundColor: #fefaf2;
+  --sidebarBackgroundColor: #fef4e2;
+  --bookmarksColor: #fae4bc;
+  --bookmarksHoverColor: #f9d9a6;
+  --primaryTextColor-light : black;
+  --primaryTextColor-dark : white;
+  --outlineButton-color: #8a8a8a;
+  --outlineButton-hover: #000000;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,7 +21,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(231, 195, 195);
+  background-color: rgb(36, 13, 136);
+  height: 3000px;
+}
+
+#root{
+  height: 100%;
 }
 
 code {
@@ -27,3 +39,23 @@ code {
   scrollbar-color: #646464 #333;
 }
 
+/*custom classes*/
+.joinBtn {
+  @apply bg-[var(--keyColor)] border-[var(--keyColor)] text-[var(--primaryTextColor-dark)] rounded-3xl px-5 py-2 border-2;
+}
+
+.outlineBtn {
+  @apply text-[var(--outlineButton-color)] bg-transparent border-[var(--outlineButton-color)];
+  @apply flex h-11 cursor-pointer flex-row items-center whitespace-nowrap rounded-3xl border-2 px-5 py-2 outline-none;
+}
+
+.outlineBtn:hover {
+  @apply border-[var(--outlineButton-hover)];
+}
+.outlineBtn:active{
+  @apply bg-gray-200;
+}
+
+.roundedBtn {
+  @apply rounded-3xl p-2.5;
+}
