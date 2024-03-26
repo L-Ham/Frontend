@@ -4,6 +4,8 @@ import {Edit} from '../../generic components/Edit';
 
 /**
  * Renders the subreddit sidebar item.
+ * @param {object} props - The props.
+ * @param {string} id - The id of the sidebar item.
  * @param {string} title - The title of the sidebar item.
  * @param {JSX.Element} children - The children of the sidebar item.
  * @param {boolean} isCustomizable - The flag to check if the sidebar item is customizable.
@@ -11,10 +13,10 @@ import {Edit} from '../../generic components/Edit';
  * @param {boolean} useDivForTitle - The flag to check if the title should be rendered as a div.
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditWidget({title, children, isCustomizable, onEditClick, useDivForTitle}) {
+export function SubredditWidget({id, title, children, isCustomizable, onEditClick, useDivForTitle}) {
     const TitleTag = useDivForTitle ? 'div' : 'h2';
     return (
-        <div className="relative flex flex-col  border-b border-[#25201a] bg-transparent p-5 text-left">
+        <div className="relative flex flex-col  border-b border-[#25201a] bg-transparent p-5 text-left" id={id}>
             {isCustomizable && <Edit onEditClick={onEditClick}/>}
             <TitleTag className={`mb-2.5 text-left text-sm ${!useDivForTitle ? 'font-bold' : ''} `}>{title}</TitleTag>
             {children}
@@ -29,6 +31,7 @@ SubredditWidget.defaultProps = {
 };
 
 SubredditWidget.propTypes = {
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     isCustomizable: PropTypes.bool,

@@ -13,6 +13,7 @@ import {ReactComponent as OverflowHorizontalIconOutline} from '../assets/icons/o
 import {ReactComponent as CaretDownIconOutline} from '../assets/icons/caret-down-outline.svg';
 import {ReactComponent as MessageIconOutline} from '../assets/icons/message-outline.svg';
 import {ReactComponent as EditIconOutline} from '../assets/icons/edit-outline.svg';
+import {ReactComponent as ExternalIconOutline} from '../assets/icons/external-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -28,6 +29,7 @@ const ICONS_MAP = {
     'caret-down-outline': CaretDownIconOutline,
     'message-outline': MessageIconOutline,
     'edit-outline': EditIconOutline,
+    'external-outline': ExternalIconOutline,
 };
 
 /**

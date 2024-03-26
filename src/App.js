@@ -8,6 +8,8 @@ import {login} from './store/userSlice.js';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
 import { Subreddit } from './pages/subreddit/Subreddit.js';
+import { SubredditProvider } from './pages/subreddit/subredditContext.js';
+
 
 /**
  * Main application component
@@ -20,6 +22,7 @@ import { Subreddit } from './pages/subreddit/Subreddit.js';
  */
 function App() {
     // const [user, setUser] = React.useState(null);
+    
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     /**
@@ -70,8 +73,9 @@ function App() {
                 ) : null}
             </div>
             <TestHeader /> */}
-            
+        <SubredditProvider>
             <Subreddit name={"OnePiece"} />
+        </SubredditProvider>
         </div>
     );
 }

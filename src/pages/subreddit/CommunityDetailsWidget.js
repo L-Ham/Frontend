@@ -1,5 +1,5 @@
 import React from 'react';
-import parse from 'html-react-parser';
+import propTypes from 'prop-types';
 // components
 import {SubredditWidget} from './SubredditWidget';
 import {CommunityStats} from './CommunityStats';
@@ -8,39 +8,35 @@ import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the subreddit info.
+ * @param {object} props - The props.
+ * @param {string} props.id - The id of the widget.
+ * @param {string} props.description - The description of the subreddit.
+ * @param {number} props.currentlyViewingCount - The number of users currently viewing the subreddit.
+ * @param {number} props.subscribersCount - The number of subscribers to the subreddit.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityDetailsWidget() {
-    const {
-        subredditName,
-        subredditAbout,
-    } = useSubreddit();
+export function CommunityDetailsWidget({id, description, currentlyViewingCount, subscribersCount}) {
+    const {about} = useSubreddit();
 
-    console.log(subredditAbout);
-    if (!subredditAbout) return (<div>Loading...</div>);
+    if (!about | !id | !description | !currentlyViewingCount | !subscribersCount) return (<div>Loading...</div>);
 
-    const {public_description: descriptionHtml, user_is_moderator: isCustomizable} = subredditAbout.data;
-
-
-    const description = parse(replaceHtmlEntities(descriptionHtml));
+    const {data: {user_is_moderator: isCustomizable, title}} = about;
 
     return (
-        <SubredditWidget title={subredditName} isCustomizable={isCustomizable} useDivForTitle={false}>
+        <SubredditWidget title={title} isCustomizable={isCustomizable} useDivForTitle={false} id={id}>
             <div className="mb-4 flex flex-col">
-                {description}
+                <p>
+                    {description}
+                </p>
             </div>
-            <CommunityStats/>
+            <CommunityStats currentlyViewingCount={currentlyViewingCount} subscribersCount={subscribersCount}/>
         </SubredditWidget>
     );
 }
 
-/**
- * Replaces html entities with their respective characters
- * @param {string} str
- * @return {string}
- */
-function replaceHtmlEntities(str) {
-    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
-        .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
-        .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
-}
+CommunityDetailsWidget.propTypes = {
+    id: propTypes.string.isRequired,
+    description: propTypes.string.isRequired,
+    currentlyViewingCount: propTypes.number.isRequired,
+    subscribersCount: propTypes.number.isRequired,
+};

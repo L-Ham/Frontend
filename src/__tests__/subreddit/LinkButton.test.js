@@ -7,7 +7,7 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with a single target option and an icon.
     it('should render a MultiLinkButton with a single target option and an icon', () => {
         const data = {
-            groupName: 'email',
+            text: 'email',
             icon: 'email',
             links: [
                 {
@@ -29,7 +29,7 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with a single target option and no icon.
     it('should render a MultiLinkButton with a single target option and no icon', () => {
         const data = {
-            groupName: 'google',
+            text: 'google',
             icon: 'invalid',
             links: [
                 {
@@ -51,7 +51,7 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with multiple target options and an icon.
     it('should render a MultiLinkButton with multiple target options and an icon', () => {
         const data = {
-            groupName: 'email',
+            text: 'email',
             icon: 'email',
             links: [
                 {
@@ -77,7 +77,7 @@ describe('code snippet', () => {
     // Renders a MultiLinkButton with multiple target options and no icon.
     it('should render a MultiLinkButton with multiple target options and no icon', () => {
         const data = {
-            groupName: 'google',
+            text: 'google',
             icon: 'invalid',
             links: [
                 {

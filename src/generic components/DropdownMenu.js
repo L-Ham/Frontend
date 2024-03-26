@@ -24,7 +24,7 @@ export function DropdownMenu({
                 return (
                     <div
                         className={
-                            `flex cursor-pointer flex-row items-center px-4 py-2 ${(isActive) ?
+                            `z-10 flex cursor-pointer flex-row items-center px-4 py-2 text-black ${(isActive) ?
                                 'bg-[#ffe1fe]' : ''} hover:bg-pink-200`
                         }
                         key={text}

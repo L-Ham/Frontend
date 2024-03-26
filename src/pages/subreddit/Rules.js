@@ -9,21 +9,26 @@ import {useSubreddit} from './subredditContext';
 
 /**
  * Renders the rules.
- * @param {object} rules - The rules of the subreddit.
- * @param {boolean} isOwnerView - The flag to check if the user is viewing the feed.
+ * @param {object} props - The props.
+ * @param {string} props.id - The id of the widget.
+ * @param {object} props.styles - The styles for the widget.
+ * @param {boolean} props.display -  type : compact or full
+ * @param {Array} props.data - The rules description.
  * @return {JSX.Element} The rendered component.
  */
-export function Rules() {
-    const {rules, isOwnerView} = useSubreddit();
+export function Rules({id, styles, display, data}) {
+    const {about} = useSubreddit();
+
+    if (!about) return (<div>Loading...</div>);
+    const {data: {user_is_moderator: isCustomizable}} = about;
     return (
-        <SubredditWidget title="Rules" isOwnerView={isOwnerView}>
+        <SubredditWidget title="Rules" isCustomizable={isCustomizable} id={id} styles={styles}>
             {
-                rules.map((rule, idx) => (
+                data.map((ruleData) => (
                     <Rule
-                        key={rule.title}
-                        number = {idx + 1}
-                        rule={rule.title}
-                        descriptionList={rule.description}
+                        key={ruleData.priority}
+                        data={ruleData}
+                        display={display}
                     />
                 ))
             }
@@ -31,10 +36,10 @@ export function Rules() {
     );
 }
 
+
 Rules.propTypes = {
-    rules: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        description: PropTypes.arrayOf(PropTypes.string).isRequired,
-    })).isRequired,
-    isOwnerView: PropTypes.bool,
+    id: PropTypes.string.isRequired,
+    styles: PropTypes.object.isRequired,
+    display: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
 };

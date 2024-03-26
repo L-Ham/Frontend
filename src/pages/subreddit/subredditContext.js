@@ -39,20 +39,20 @@ export function useSubreddit() {
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditProvider({children}) {
-    const subredditName = 'OnePiece';
+    const name = 'OnePiece';
     const [loading, setLoading] = useState(true);
-    const [subredditAbout, setSubredditAbout] = useState(null);
-    const [subredditWidgets, setSubredditWidgets] = useState(null);
+    const [about, setAbout] = useState(null);
+    const [widgets, setWidgets] = useState(null);
     const baseColor = '#fee5b4';
 
     useEffect(() => {
         const loadData = async () => {
             try {
-                const subredditAboutData = await fetchSubredditAbout(subredditName);
-                setSubredditAbout(subredditAboutData);
+                const aboutData = await fetchSubredditAbout(name);
+                setAbout(aboutData);
 
-                const subredditWidgetsData = await fetchSubredditWidgets(subredditName);
-                setSubredditWidgets(subredditWidgetsData);
+                const widgetsData = await fetchSubredditWidgets(name);
+                setWidgets(widgetsData);
 
                 setLoading(false);
             } catch (error) {
@@ -61,13 +61,13 @@ export function SubredditProvider({children}) {
             }
         };
         loadData();
-    }, [subredditName]);
+    }, [name]);
 
     // The value that will be supplied to any descendants of this provider.
     const value = {
-        subredditName,
-        subredditAbout,
-        subredditWidgets,
+        name,
+        about,
+        widgets,
         baseColor,
         loading,
     };
@@ -86,12 +86,12 @@ SubredditProvider.propTypes = {
 
 /**
  * Fetches the subreddit about from the Reddit API.
- * @param {string} subredditName The name of the subreddit.
+ * @param {string} name The name of the subreddit.
  * @return {Promise} The promise object representing the API call.
  * @return {Object} The subreddit about.
  * */
-const fetchSubredditAbout = async (subredditName) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${subredditName}/about`, {
+const fetchSubredditAbout = async (name) => {
+    const response = await fetch(`https://oauth.reddit.com/r/${name}/about`, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'User-Agent': userAgent,
@@ -103,12 +103,12 @@ const fetchSubredditAbout = async (subredditName) => {
 
 /**
  * Fetches the subreddit widgets from the Reddit API.
- * @param {string} subredditName The name of the subreddit.
+ * @param {string} name The name of the subreddit.
  * @return {Promise} The promise object representing the API call.
  * @return {Object} The subreddit widgets.
  * */
-const fetchSubredditWidgets = async (subredditName) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${subredditName}/api/widgets`, {
+const fetchSubredditWidgets = async (name) => {
+    const response = await fetch(`https://oauth.reddit.com/r/${name}/api/widgets`, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'User-Agent': userAgent,

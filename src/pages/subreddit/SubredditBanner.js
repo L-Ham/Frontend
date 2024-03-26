@@ -10,37 +10,54 @@ import {useSubreddit} from './subredditContext';
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditBanner() {
-    const {
-        subredditAbout,
-    } = useSubreddit();
-
-    const {
-        url,
-        banner_background_color: bannerBackgroundColor,
-        banner_background_image: bannerBackgroundImage,
-        primary_color: primaryColor,
-        community_icon: communityIcon,
-        user_is_moderator: userIsModerator,
-        user_is_subscriber: userIsSubscriber,
-        user_is_muted: userIsMuted,
-        user_has_favourited: userHasFavourited,
-        display_name_prefixed: displayNamePrefixed,
-        notification_level: notificationLevel,
-        active_user_count: activeUserCount,
-        subscribers: subscribersCount,
-    } = subredditAbout.data;
-
     // states
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [isNotificationLevelsVisible, setIsNotificationLevelsVisible] = React.useState(false);
-    const [isOtherOptionsVisible, setIsOtherOptionsVisible] = React.useState(false);
-    const [activeNotificationLevel, setActiveNotificationLevel] = React.useState(null);
-    const [isMuted, setIsMuted] = React.useState(false);
-    const [isFavourite, setIsFavourite] = React.useState(false);
+    const [isOtherOptionsVisible, setIsOtherOptionsVisible] = useState(false);
+    const [activeNotificationLevel, setActiveNotificationLevel] = useState(null);
+    const [isMuted, setIsMuted] = useState(false);
+    const [isFavourite, setIsFavourite] = useState(false);
+
+    const {about} = useSubreddit();
+
+    useEffect(() => {
+        if (!about) return;
+
+        const {
+            user_is_subscriber: userIsSubscriber,
+            user_is_muted: userIsMuted,
+            user_has_favourited: userHasFavourited,
+            notification_level: notificationLevel,
+        } = about.data;
+
+        setIsSubscribed(!!userIsSubscriber);
+        setIsMuted(!!userIsMuted);
+        setIsFavourite(!!userHasFavourited);
+        setActiveNotificationLevel(notificationLevel);
+    }, [about]);
+
+    if (!about) return (<div>Loading...</div>);
+
+    const {
+        data: {
+            url,
+            banner_background_color: bannerBackgroundColor,
+            banner_background_image: bannerBgImg,
+            primary_color: primaryColor,
+            community_icon: comIcon,
+            user_is_moderator: userIsModerator,
+            display_name_prefixed: displayNamePrefixed,
+            active_user_count: activeUserCount,
+            subscribers: subscribersCount,
+        },
+    } = about;
+
 
     // constants
     const activeUserCountNickname = 'members';
     const subscribersNickname = 'online';
+    const bannerBackgroundImage = bannerBgImg.split('?')[0];
+    const communityIcon = comIcon.split('?')[0];
 
     // icons
     const OnlineIcon = getIconComponent('online', true);
@@ -48,14 +65,6 @@ export function SubredditBanner() {
     const OverflowHorizontalIconOutline = getIconComponent('overflow-horizontal', false);
     const activeNotificationLevelIconName = activeNotificationLevel ? activeNotificationLevel : 'low';
     const NotificationLevelIcon = getIconComponent(activeNotificationLevelIconName, true);
-
-
-    useEffect(() => {
-        setIsSubscribed(userIsSubscriber);
-        setIsMuted(userIsMuted);
-        setIsFavourite(userHasFavourited);
-        setActiveNotificationLevel(notificationLevel);
-    }, [userIsSubscriber, userIsMuted, userHasFavourited, notificationLevel]);
 
     // functions
     /**
@@ -150,7 +159,7 @@ export function SubredditBanner() {
     }
 
     return (
-        <div className="mb-2 flex h-56 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
+        <div className="mb-2 flex h-60 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
             <div className="relative size-full overflow-hidden rounded-lg"
                 style={{backgroundColor: bannerBackgroundColor}}>
                 {userIsModerator && <Edit />}

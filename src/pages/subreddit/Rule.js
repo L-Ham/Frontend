@@ -5,13 +5,14 @@ import {ReactComponent as CaretDownIconOutline} from '../../assets/icons/caret-d
 
 /**
  * Renders the rules.
- * @param {int} number - The number of the rule.
- * @param {string} rule - The rule.
- * @param {array} descriptionList - The description of the rule.
+ * @param {object} props - The props.
+ * @param {data} props.data - The rules description.
+ * @param {display} props.display -  type : compact or full
  * @return {JSX.Element} The rendered component.
  */
-export function Rule({number, rule, descriptionList}) {
-    const [isDescriptionHidden, setIsDescriptionHidden] = useState(true);
+export function Rule({data, display}) {
+    const isCompact = display === 'compact';
+    const [isDescriptionHidden, setIsDescriptionHidden] = useState(!isCompact);
 
     const toogleDescriptionVisibility = () =>{
         setIsDescriptionHidden((prevState) => !prevState);
@@ -20,7 +21,7 @@ export function Rule({number, rule, descriptionList}) {
     return (
         <li className="flex flex-col">
             <div className="flex w-full items-center justify-between px-4 py-2 hover:bg-[#251c00]" onClick={() =>{
-                toogleDescriptionVisibility();
+                if (!isCompact) toogleDescriptionVisibility();
             }}>
                 <span>{number}</span>
                 <p className="max-w-36 grow">{rule}</p>
@@ -29,18 +30,19 @@ export function Rule({number, rule, descriptionList}) {
                      transition-transform duration-300 ease-in-out`} />
             </div>
             <ul className={`pl-12 ${isDescriptionHidden ? 'hidden' : ''}`}>
-                {descriptionList.map((descriptionListItem, idx) => (
-                    <li key={idx} className="list-disc px-0 py-1"><p>{descriptionListItem}</p></li>
-                ))}
+                {description}
             </ul>
         </li>
     );
 }
 
 Rule.propTypes = {
-    number: PropTypes.number.isRequired,
-    rule: PropTypes.string.isRequired,
-    descriptionList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    data: PropTypes.shape({
+        number: PropTypes.number.isRequired,
+        rule: PropTypes.string.isRequired,
+        descriptionList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }).isRequired,
+    display: PropTypes.string.isRequired,
 };
 
 

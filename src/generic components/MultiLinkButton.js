@@ -10,9 +10,8 @@ import {getIconComponent} from './iconsMap';
  */
 export function MultiLinkButton({data}) {
     const [isOptionsVisible, setIsOptionsVisible] = React.useState(false);
-
-    const {icon: IconComponent, groupName, links} = data;
-    const isSingleOption = !groupName;
+    const {icon: IconComponent, text, url, children} = data;
+    const isSingleOption = !children;
     const CaretDownIcon = getIconComponent('caret-down', false);
 
 
@@ -21,37 +20,37 @@ export function MultiLinkButton({data}) {
 
     /*
         * Handles the click event for the MultiLinkButton.
-        * If the MultiLinkButton has only one target option, it opens the target URL in a new tab.
+        * If the MultiLinkButton has only one target option, it opens the target url in a new tab.
         * If the MultiLinkButton has multiple target options, it toggles the visibility of the options.
         */
     const handleClick = isSingleOption ?
-        () => window.open(links[0].URL, '_blank') :
+        () => window.open(url, '_blank') :
         toggleOptionsVisibility;
 
 
     // Create the menu items for the dropdown menu.
     const menuItems = [];
-    links.forEach((link) => {
-        const {name, URL} = link;
+    !isSingleOption && children.forEach((item) => {
+        const {text, url} = item;
         menuItems.push({
-            content: {text: name},
+            content: {text: text},
             onClick: () => {
-                window.open(URL, '_blank');
+                window.open(url, '_blank');
             },
         });
     });
 
     return (
         <li
-            key={groupName}
+            key={text}
             onClick={handleClick}
             className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full cursor-pointer text-white 
         text-sm mb-2 relative ${
-        !isSingleOption ? 'bg-[#2f2401] hover:bg-[#3b2d01]' : 'bg-[#2f2401] hover:bg-[#3b2d01] hover:underline'
+        !isSingleOption ? 'bg-[#ffd7fd] hover:bg-[#ffbcfc]' : 'bg-[#ffd7fd] hover:bg-[#ffbcfc] hover:underline'
         } rounded-full`}
         >
             {IconComponent ? IconComponent : null}
-            <span className='hover:underline'>{links[0].name}</span>
+            <span className='hover:underline'>{text}</span>
             {!isSingleOption && <CaretDownIcon className='ml-1' />}
             <div>
                 {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='inset-x-1/2 '/>}
