@@ -27,7 +27,7 @@ export function CommunityStatsItem({item}) {
                         className="flex items-center whitespace-nowrap">
                         {text}<ExternalIconOutline className='ml-0.5'/>
                     </a> :
-                    <p>{text}</p>}
+                    <p>{numberToString(text)}</p>}
             </div>
         </div>
     );
@@ -36,6 +36,11 @@ export function CommunityStatsItem({item}) {
 CommunityStatsItem.propTypes = {
     item: PropTypes.object.isRequired,
 };
+
+/**
+ * Renders the CommunityStats.
+ * @return {JSX.Element} The rendered component.
+ */
 
 const numberToString = (number) => {
     if (number > 1000000) {

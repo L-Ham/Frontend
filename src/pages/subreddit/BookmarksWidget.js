@@ -9,7 +9,7 @@ import {useSubreddit} from './subredditContext';
  * Renders the community bookmarks.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityWidget() {
+export function BookmarksWidget() {
     const {name, isOwnerView: isCustomizable} = useSubreddit();
     const bookmarks = [
         {

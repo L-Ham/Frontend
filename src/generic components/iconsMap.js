@@ -16,12 +16,12 @@ import {ReactComponent as EditIconOutline} from '../assets/icons/edit-outline.sv
 
 // icons map
 const ICONS_MAP = {
-    'Low-fill': NotificationIconFill,
-    'Frequent-fill': NotificationFrequentIconFill,
-    'Off-fill': NotificationOffIconFill,
-    'Low-outline': NotificationIconOutline,
-    'Frequent-outline': NotificationFrequentIconOutline,
-    'Off-outline': NotificationOffIconOutline,
+    'low-fill': NotificationIconFill,
+    'frequent-fill': NotificationFrequentIconFill,
+    'off-fill': NotificationOffIconFill,
+    'low-outline': NotificationIconOutline,
+    'frequent-outline': NotificationFrequentIconOutline,
+    'off-outline': NotificationOffIconOutline,
     'plus-fill': PlusIconFill,
     'online-fill': OnlineIcon,
     'overflow-horizontal-outline': OverflowHorizontalIconOutline,

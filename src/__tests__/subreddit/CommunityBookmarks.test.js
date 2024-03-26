@@ -1,13 +1,13 @@
 import React from 'react';
 import {render} from '@testing-library/react';
 import {expect, describe, it} from '@jest/globals';
-import {CommunityWidget} from '../../pages/subreddit/CommunityWidget';
+import {BookmarksWidget} from '../../pages/subreddit/BookmarksWidget';
 
 
-describe('CommunityWidget', () => {
+describe('BookmarksWidget', () => {
     it('renders the component with correct props', () => {
         const subredditName = 'example';
-        const {getByText} = render(<CommunityWidget name={subredditName} />);
+        const {getByText} = render(<BookmarksWidget name={subredditName} />);
 
         // Assert that the component renders with the correct title
         expect(getByText('Community Bookmarks')).toBeInTheDocument();

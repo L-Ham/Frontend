@@ -1,6 +1,6 @@
 import React from 'react';
 import {SubredditBanner} from './SubredditBanner';
-// import {SubredditSidebar} from './SubredditSidebar';
+import {SubredditSidebar} from './SubredditSidebar';
 import {Feed} from '../../generic components/Feed';
 import {useSubreddit} from './subredditContext';
 
@@ -23,7 +23,7 @@ export function Subreddit() {
             />
             <div className="flex w-full flex-auto">
                 <Feed/>
-                {/* <SubredditSidebar/> */}
+                <SubredditSidebar/>
             </div>
         </div>
     );

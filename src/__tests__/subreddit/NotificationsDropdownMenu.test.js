@@ -12,7 +12,7 @@ describe('NotificationsDropdownMenu', () => {
         );
 
         expect(getByText('frequent')).toBeInTheDocument();
-        expect(getByText('Low')).toBeInTheDocument();
+        expect(getByText('low')).toBeInTheDocument();
         expect(getByText('off')).toBeInTheDocument();
     });
 
@@ -24,7 +24,7 @@ describe('NotificationsDropdownMenu', () => {
         fireEvent.click(getByText('frequent'));
         expect(onItemClick).toHaveBeenCalledWith('notification-frequent');
 
-        fireEvent.click(getByText('Low'));
+        fireEvent.click(getByText('low'));
         expect(onItemClick).toHaveBeenCalledWith('notification');
 
         fireEvent.click(getByText('off'));

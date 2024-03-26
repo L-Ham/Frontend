@@ -41,7 +41,6 @@ export function useSubreddit() {
 export function SubredditProvider({children}) {
     const subredditName = 'OnePiece';
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [subredditAbout, setSubredditAbout] = useState(null);
     const [subredditWidgets, setSubredditWidgets] = useState(null);
     const baseColor = '#fee5b4';
@@ -58,7 +57,6 @@ export function SubredditProvider({children}) {
                 setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch subreddit data', error);
-                setError(error);
                 setLoading(false);
             }
         };
@@ -68,11 +66,10 @@ export function SubredditProvider({children}) {
     // The value that will be supplied to any descendants of this provider.
     const value = {
         subredditName,
-        loading,
-        error,
         subredditAbout,
         subredditWidgets,
         baseColor,
+        loading,
     };
 
     return (

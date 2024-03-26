@@ -36,7 +36,7 @@ export function SubredditBanner() {
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = React.useState(false);
     const [activeNotificationLevel, setActiveNotificationLevel] = React.useState(null);
     const [isMuted, setIsMuted] = React.useState(false);
-    const [isFavourited, setIsFavourited] = React.useState(false);
+    const [isFavourite, setIsFavourite] = React.useState(false);
 
     // constants
     const activeUserCountNickname = 'members';
@@ -53,7 +53,7 @@ export function SubredditBanner() {
     useEffect(() => {
         setIsSubscribed(userIsSubscriber);
         setIsMuted(userIsMuted);
-        setIsFavourited(userHasFavourited);
+        setIsFavourite(userHasFavourited);
         setActiveNotificationLevel(notificationLevel);
     }, [userIsSubscriber, userIsMuted, userHasFavourited, notificationLevel]);
 
@@ -81,14 +81,14 @@ export function SubredditBanner() {
      * Handle favourite click event.
      */
     function handleFavouriteClick() {
-        if (isFavourited) {
+        if (isFavourite) {
             // TODO: handle remove from favourites
             // adding to favourite automatically joins the subreddit
         } else {
             // TODO: handle add to favourites
             handleJoinClick(true);
         }
-        setIsFavourited((prevState) => !prevState);
+        setIsFavourite((prevState) => !prevState);
     }
 
     /**
@@ -107,7 +107,7 @@ export function SubredditBanner() {
         if (forceJoin === true) {
             if (isSubscribed !== true) {
                 setIsSubscribed(true);
-                if (activeNotificationLevel !== 'Low') setActiveNotificationLevel('Low');
+                if (activeNotificationLevel !== 'low') setActiveNotificationLevel('low');
             }
             return;
         }
@@ -116,7 +116,7 @@ export function SubredditBanner() {
             // TODO: handle leave
         } else {
             // TODO: handle join
-            if (activeNotificationLevel !== 'Low') setActiveNotificationLevel('Low');
+            if (activeNotificationLevel !== 'low') setActiveNotificationLevel('low');
         }
         setIsSubscribed((prevState) => !prevState);
     }
@@ -162,9 +162,9 @@ export function SubredditBanner() {
                 <div className="mt-2 flex flex-row items-center justify-center">
                     <div className="relative -top-2 size-28
                     max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
-                        <img src={communityIcon} alt="Subreddit profile picture"
+                        <img src={communityIcon ? communityIcon : ''} alt="Subreddit profile picture"
                             className='size-full rounded-[50%] border-[5px] border-solid
-                            border-[#ffeef6]  max-[1024px]:mr-2 max-[1024px]:border-transparent'/>
+                            border-[#ffeef6]  bg-slate-800 max-[1024px]:mr-2 max-[1024px]:border-transparent'/>
                     </div>
                     <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
                         <h1 className="mb-4 ml-2 text-2xl font-bold leading-6
@@ -232,7 +232,7 @@ export function SubredditBanner() {
                         {isOtherOptionsVisible && <MoreDropdownMenu
                             isMuted={isMuted}
                             onMuteClick={handleMuteClick}
-                            isFavourited={isFavourited} onFavouriteClick={handleFavouriteClick}/>}
+                            isFavourite={isFavourite} onFavouriteClick={handleFavouriteClick}/>}
                     </button>
                 </div>
             </div>

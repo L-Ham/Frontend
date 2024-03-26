@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {WIDGETS_MAP} from './widgetsMap';
 import {useSubreddit} from './subredditContext';
 
@@ -7,46 +7,37 @@ import {useSubreddit} from './subredditContext';
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditSidebar() {
-    const [widgets, setWidgets] = useState([]);
-    const {subredditName, keyColor} = useSubreddit();
-
-    useEffect(() => {
-        getWidgets(subredditName).then((widgets) => {
-            setWidgets(widgets);
-        });
-    }, []);
+    const {user_is_moderator: userIsModerator, widgets, key_color: keyColor} = useSubreddit();
+    console.log(widgets);
 
     return (
-        widgets.length !== 0 && <div
-            className="sticky top-0 m-0 flex h-screen w-80 flex-col
-                overflow-y-auto rounded-lg bg-[#fff2fe] font-sans text-xs max-[1000px]:hidden"
-            style={{color: keyColor}}
-        >
-            {widgets.map((widgetName) => {
-                const WidgetComponent = WIDGETS_MAP[widgetName];
-                return WidgetComponent ? <WidgetComponent key={widgetName} /> : null;
-            })}
+        <div style={{color: keyColor}}>
+            {renderWidgetOfType('community-details')}
+            {widgets && (
+                <div
+                    className="sticky top-0 m-0 flex h-screen w-80 flex-col
+                    overflow-y-auto rounded-lg bg-[#fff2fe] font-sans text-xs max-[1000px]:hidden"
+                >
+                    {widgets.map((widgetType) => renderWidgetOfType(widgetType))}
+                </div>
+            )}
+            {renderWidgetOfType('moderators')}
+            {userIsModerator && renderWidgetOfType('community-settings')}
         </div>
     );
 }
 
+
 /**
- * Fetches the widgets from the Reddit API.
- * @param {string} subredditName The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {Array} The widgets.
- * */
-async function getWidgets(subredditName) {
-    // TODO: Fetch the widgets from the Reddit API.
-    // MOCKED DATA
-    return [
-        'CommunityDetailsWidget',
-        // 'UserFlair',
-        // 'CommunityWidget',
-        // 'Flairs',
-        // 'SpoilInstructions',
-        // 'Rules',
-        'CommunityModeratorsWidget',
-        'CommunitySettings',
-    ];
+ * Renders the widget of the specified type.
+ * @param {string} widgetType - The type of widget to render.
+ * @param {object} widgetProps - The props to pass to the widget.
+ * @return {JSX.Element} The rendered component.
+ */
+function renderWidgetOfType(widgetType, widgetProps) {
+    const Widget = WIDGETS_MAP[widgetType];
+    if (Widget) {
+        return <Widget {...widgetProps}/>;
+    }
+    return null;
 }

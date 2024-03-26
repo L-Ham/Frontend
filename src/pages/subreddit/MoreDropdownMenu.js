@@ -27,7 +27,7 @@ export function MoreDropdownMenu({
         },
         {
             content: {
-                text: (isMuted ? `Unmute r/${name}` : `Mute r/${subredditName}`),
+                text: (isMuted ? `Unmute r/${subredditName}` : `Mute r/${subredditName}`),
             },
             onClick: onMuteClick,
         },

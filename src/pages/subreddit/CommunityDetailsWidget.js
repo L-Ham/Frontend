@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import parse from 'html-react-parser';
 // components
 import {SubredditWidget} from './SubredditWidget';
 import {CommunityStats} from './CommunityStats';
@@ -10,25 +11,23 @@ import {useSubreddit} from './subredditContext';
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityDetailsWidget() {
-    const [description, setDescription] = useState('');
-
     const {
-        name: subredditName,
-        isOwnerView: isCustomizable,
+        subredditName,
+        subredditAbout,
     } = useSubreddit();
 
-    useEffect(() => {
-        getDescription(subredditName).then((description) => {
-            setDescription(description);
-        });
-    }, []);
+    console.log(subredditAbout);
+    if (!subredditAbout) return (<div>Loading...</div>);
+
+    const {public_description: descriptionHtml, user_is_moderator: isCustomizable} = subredditAbout.data;
+
+
+    const description = parse(replaceHtmlEntities(descriptionHtml));
 
     return (
         <SubredditWidget title={subredditName} isCustomizable={isCustomizable} useDivForTitle={false}>
             <div className="mb-4 flex flex-col">
-                <p>
-                    {description}
-                </p>
+                {description}
             </div>
             <CommunityStats/>
         </SubredditWidget>
@@ -36,18 +35,12 @@ export function CommunityDetailsWidget() {
 }
 
 /**
- * Fetches the description from the Reddit API.
- * @param {string} subredditName The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {string} The description.
- * */
-async function getDescription(subredditName) {
-    // TODO: Fetch the description from the Reddit API.
-    // MOCKED DATA
-    return `Welcome to r/OnePiece, the community for Eiichiro Oda's manga and anime series One Piece.
-            From the East Blue to the New World,
-            anything related to the world of One Piece belongs here!
-            If you've just set sail with the Straw Hat Pirates,
-            be wary of spoilers on this subreddit!`;
+ * Replaces html entities with their respective characters
+ * @param {string} str
+ * @return {string}
+ */
+function replaceHtmlEntities(str) {
+    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
+        .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
+        .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
 }
-

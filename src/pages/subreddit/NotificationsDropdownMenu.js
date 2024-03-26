@@ -15,9 +15,9 @@ export function NotificationsDropdownMenu({
     onItemClick,
 }) {
     // icons
-    const FrequentIcon = getIconComponent('Frequent', activeItem === 'Frequent');
-    const LowIcon = getIconComponent('Low', activeItem === 'Low');
-    const OffIcon = getIconComponent('Off', activeItem === 'Off');
+    const FrequentIcon = getIconComponent('frequent', activeItem === 'frequent');
+    const LowIcon = getIconComponent('low', activeItem === 'low');
+    const OffIcon = getIconComponent('off', activeItem === 'off');
 
     const className = 'w-5 h-5 mr-2';
 
@@ -26,19 +26,19 @@ export function NotificationsDropdownMenu({
             content: {
                 text: 'Frequent', icon: <FrequentIcon className={className}/>,
             },
-            onClick: () => onItemClick('Frequent'),
+            onClick: () => onItemClick('frequent'),
         },
         {
             content: {
-                text: 'Low', icon: <LowIcon className={className}/>,
+                text: 'low', icon: <LowIcon className={className}/>,
             },
-            onClick: () => onItemClick('Low'),
+            onClick: () => onItemClick('low'),
         },
         {
             content: {
                 text: 'Off', icon: <OffIcon className={className}/>,
             },
-            onClick: () => onItemClick('Off'),
+            onClick: () => onItemClick('off'),
         },
     ];
 

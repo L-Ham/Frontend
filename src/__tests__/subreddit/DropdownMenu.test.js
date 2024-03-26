@@ -11,7 +11,7 @@ describe('code snippet', () => {
         const menuItems = [
             {
                 content: {
-                    text: 'Low',
+                    text: 'low',
                     icon: 'notification',
                 },
                 onClick: jest.fn(),
@@ -30,11 +30,11 @@ describe('code snippet', () => {
         const {getByText} = render(<DropdownMenu menuItems={menuItems} activeItem={activeItem} />);
 
         // Assert
-        expect(getByText('Low')).toBeInTheDocument();
+        expect(getByText('low')).toBeInTheDocument();
         expect(getByText('frequent')).toBeInTheDocument();
-        // For "Low", checking its parent element's className
-        expect(getByText('Low')).toBeInTheDocument();
-        const lowParentClass = getByText('Low').parentElement.className;
+        // For "low", checking its parent element's className
+        expect(getByText('low')).toBeInTheDocument();
+        const lowParentClass = getByText('low').parentElement.className;
         expect(lowParentClass.includes('bg-[#251c00]')).toBe(true);
 
         // For "frequent", checking its parent element's className
