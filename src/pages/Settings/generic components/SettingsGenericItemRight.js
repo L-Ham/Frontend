@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Typography, Box} from '@mui/material';
-import {
-    GenderMenu,
-    LanguagesMenu,
-    ConnectToTwitterButton,
-    ChangeButton,
-    AppleButton,
-    ToggleButton,
-    DeleteAccountButton,
-    MarkAsReadButton,
-    RedditMenu,
-} from '../components'; // Adjust import path as necessary
+import {LanguagesMenu} from '../tab specific components/account tab/menus/LanguagesMenu';
+import {GenderMenu} from '../tab specific components/account tab/menus/GenderMenu';
+import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/ConnectToTwitterButton';
+import {ChangeButton} from '../general components/buttons/ChangeButton';
+import {AppleButton} from '../tab specific components/account tab/buttons/AppleButton';
+import {ToggleButton} from '../general components/buttons/ToggleButton';
+import {DeleteAccountButton} from '../tab specific components/account tab/buttons/DeleteAccountButton';
+import {MarkAsReadButton} from '../general components/buttons/MarkAsReadButton';
+import {RedditMenu} from '../tab specific components/feed tab/RedditMenu';
 
 /**
  * SettingsGenericItemRight displays a settings item with a title,

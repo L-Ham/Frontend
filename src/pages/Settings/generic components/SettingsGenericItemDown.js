@@ -13,7 +13,7 @@ import {LanguagesMenu} from '../tab specific components/account tab/menus/Langua
 import {DisplayNameTextBox} from '../tab specific components/profile tab/text boxes/DisplayNameTextBox';
 import {ResizableTextArea} from '../tab specific components/profile tab/text boxes/ResizableTextArea';
 import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/DoubleDropZone';
-import {BlockUserComponent} from '../tab specific components/safety and privacy/BlockUserComponent';
+import {BlockUserComponent} from '../tab specific components/safety and privacy tab/BlockUserComponent';
 
 /**
  * SettingsGenericItemDown function component displays a settings
@@ -65,7 +65,7 @@ function SettingsGenericItemDown({head, text, thirdComponent}) {
                 {thirdComponent === 'Toggle' && <ToggleButton />}
                 {thirdComponent === 'Delete' && <DeleteAccountButton />}
                 {thirdComponent === 'text30' && <DisplayNameTextBox />}
-                {thirdComponent === 'text200' && <ResizableTextArea />}
+                {thirdComponent === 'text200' && <ResizableTextArea maxCharacters={200} />}
                 {thirdComponent === '2images' && <DoubleDropZone />}
                 {thirdComponent === 'block' && <BlockUserComponent />}
             </Box>

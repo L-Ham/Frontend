@@ -40,7 +40,7 @@ function ToggleButton({header = ''}) { // Default value for header is an empty s
             top: '2px',
             left: isToggledOn ? '25px' : '2px', // Adjusted for accurate toggle effect
             borderRadius: '50%',
-            transition: 'left 0.25s', // Added transition time for smooth toggle effect
+            transition: 'left 0s', // Added transition time for smooth toggle effect
             position: 'absolute',
         },
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
 import {SettingsGenericItemDown} from '../../generic components/SettingsGenericItemDown';
-import {SettingsTabHeading} from '../../general components/text/Header';
+import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
 
 /**
  * ProfileSettings function component renders the profile customization settings.

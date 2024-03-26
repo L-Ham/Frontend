@@ -1,6 +1,6 @@
 import React from 'react';
 import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/Header';
+import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
 
 /**
  * ChatSettings function component renders the chat and messaging settings interface.
