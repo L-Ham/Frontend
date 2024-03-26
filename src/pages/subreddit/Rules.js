@@ -19,7 +19,7 @@ import {useSubreddit} from './subredditContext';
 export function Rules({id, styles, display, data}) {
     const {about} = useSubreddit();
 
-    if (!about) return (<div>Loading...</div>);
+    if (!about) return null;
     const {data: {user_is_moderator: isCustomizable}} = about;
     return (
         <SubredditWidget title="Rules" isCustomizable={isCustomizable} id={id} styles={styles}>

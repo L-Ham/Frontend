@@ -12,7 +12,7 @@ import {useSubreddit} from './subredditContext';
  */
 export function BookmarksWidget({id, styles, data}) {
     const {about} = useSubreddit();
-    if (!about) return <div>Loading...</div>;
+    if (!about) return null;
 
     const {data: {user_is_moderator: isCustomizable}} = about;
 

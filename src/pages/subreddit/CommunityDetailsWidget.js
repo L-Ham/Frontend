@@ -18,7 +18,7 @@ import {useSubreddit} from './subredditContext';
 export function CommunityDetailsWidget({id, description, currentlyViewingCount, subscribersCount}) {
     const {about} = useSubreddit();
 
-    if (!about | !id | !description | !currentlyViewingCount | !subscribersCount) return (<div>Loading...</div>);
+    if (!about | !id | !description | !currentlyViewingCount | !subscribersCount) return null;
 
     const {data: {user_is_moderator: isCustomizable, title}} = about;
 

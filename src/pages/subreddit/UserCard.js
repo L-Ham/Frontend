@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
                 alt="picture" className='mr-2 size-8 rounded-full'/>
             <div className='flex flex-col justify-center'>
                 <a className={`${isLink ? 'hover:underline' : ''}` }
-                    href={isLink ? `https://www.reddit.com/user/${name}/` : ''}>
+                    href={isLink ? `https://www.reddit.com/user/${name}/` : ''} target='_blank' rel="noreferrer">
                     {`u/${name}`}
                 </a>
                 {displayName && <span className='text-[10px]'>{displayName}</span>}

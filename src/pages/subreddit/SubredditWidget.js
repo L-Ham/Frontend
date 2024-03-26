@@ -16,7 +16,8 @@ import {Edit} from '../../generic components/Edit';
 export function SubredditWidget({id, title, children, isCustomizable, onEditClick, useDivForTitle}) {
     const TitleTag = useDivForTitle ? 'div' : 'h2';
     return (
-        <div className="relative flex flex-col  border-b border-[#25201a] bg-transparent p-5 text-left" id={id}>
+        <div className="relative flex flex-col  border-b bg-transparent p-5 text-left" id={id}
+            style={{borderColor: 'var(baseColor)'}}>
             {isCustomizable && <Edit onEditClick={onEditClick}/>}
             <TitleTag className={`mb-2.5 text-left text-sm ${!useDivForTitle ? 'font-bold' : ''} `}>{title}</TitleTag>
             {children}

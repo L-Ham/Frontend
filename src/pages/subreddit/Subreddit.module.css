@@ -1,0 +1,47 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.subreddit {
+    --baseColor: #a58c30; /*affects subreddit background color, sidebar, color of: buttons, borders*/
+    --keyColor: #2a2410; /*color of: join buttons, edit widgets, links active*/
+    --backgroundColor: #fefaf2;
+    --sidebarBackgroundColor: #fef4e2;
+    --primaryTextColor : black;
+    @apply m-auto flex h-full w-4/5 flex-col items-center p-3;
+    background-color: var(--backgroundColor);
+}
+
+.subreddit button{
+    color : var(--primaryTextColor);
+}
+
+.subreddit button.join {
+    background-color: var(--keyColor);
+    border: 1px solid var(--keyColor);
+}
+
+.subreddit button.no-fill {
+    color : var(--primaryTextColor);
+    background-color: transparent;
+    border: 1px solid var(--primaryTextColor);
+    @apply flex h-11 cursor-pointer flex-row
+    items-center whitespace-nowrap rounded-3xl border-2 border-solid bg-transparent
+    px-5 py-2  outline-none;
+}
+
+.subreddit button.no-fill.rounded{
+
+}
+
+.subreddit button.no-fill:hover {
+    border: 1px solid var(--primaryTextColor);
+}
+
+.subreddit a:active {
+    color: var(--keyColor);
+}
+
+
+
+

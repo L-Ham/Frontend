@@ -3,7 +3,9 @@ import {MoreDropdownMenu} from './MoreDropdownMenu';
 import {NotificationsDropdownMenu} from './NotificationsDropdownMenu';
 import {getIconComponent} from '../../generic components/iconsMap';
 import {Edit} from '../../generic components/Edit';
+import {CommunityStats} from './CommunityStats';
 import {useSubreddit} from './subredditContext';
+import styles from './SubredditBanner.module.css';
 
 /**
  * Renders the subreddit banner.
@@ -36,31 +38,27 @@ export function SubredditBanner() {
         setActiveNotificationLevel(notificationLevel);
     }, [about]);
 
-    if (!about) return (<div>Loading...</div>);
+    if (!about) return null;
 
     const {
         data: {
             url,
             banner_background_color: bannerBackgroundColor,
             banner_background_image: bannerBgImg,
-            primary_color: primaryColor,
             community_icon: comIcon,
             user_is_moderator: userIsModerator,
             display_name_prefixed: displayNamePrefixed,
-            active_user_count: activeUserCount,
+            active_user_count: currentlyViewingCount,
             subscribers: subscribersCount,
         },
     } = about;
 
 
     // constants
-    const activeUserCountNickname = 'members';
-    const subscribersNickname = 'online';
     const bannerBackgroundImage = bannerBgImg.split('?')[0];
     const communityIcon = comIcon.split('?')[0];
 
     // icons
-    const OnlineIcon = getIconComponent('online', true);
     const PlusIconFill = getIconComponent('plus', true);
     const OverflowHorizontalIconOutline = getIconComponent('overflow-horizontal', false);
     const activeNotificationLevelIconName = activeNotificationLevel ? activeNotificationLevel : 'low';
@@ -159,8 +157,8 @@ export function SubredditBanner() {
     }
 
     return (
-        <div className="mb-2 flex h-60 w-full flex-col items-center rounded-lg max-[1024px]:m-0">
-            <div className="relative size-full overflow-hidden rounded-lg"
+        <div className={`${styles.banner} flex flex-col`} >
+            <div className="relative w-full flex-1 overflow-hidden rounded-lg"
                 style={{backgroundColor: bannerBackgroundColor}}>
                 {userIsModerator && <Edit />}
                 <img src={bannerBackgroundImage ? bannerBackgroundImage : ''}
@@ -173,7 +171,8 @@ export function SubredditBanner() {
                     max-[1024px]:size-12 max-[1024px]:self-end max-[1024px]:border-0">
                         <img src={communityIcon ? communityIcon : ''} alt="Subreddit profile picture"
                             className='size-full rounded-[50%] border-[5px] border-solid
-                            border-[#ffeef6]  bg-slate-800 max-[1024px]:mr-2 max-[1024px]:border-transparent'/>
+                         max-[1024px]:mr-2 '
+                            style={{borderColor: 'var(--backgroundColor)'}}/>
                     </div>
                     <div className="h-full self-end max-[1024px]:mt-4 max-[1024px]:self-center max-[1024px]:text-left">
                         <h1 className="mb-4 ml-2 text-2xl font-bold leading-6
@@ -181,32 +180,21 @@ export function SubredditBanner() {
                             {displayNamePrefixed}
                         </h1>
                         <div className="flex flex-row items-center min-[1024px]:hidden">
-                            <span className='mr-2 flex text-[0.5rem] text-[#b08d0e]'>
-                                <span className='mr-[3px] scale-110'>{subscribersCount}</span> {activeUserCountNickname}
-                            </span>
-                            <span className='flex items-center justify-center text-[0.5rem]
-                            text-[#b08d0e]'>
-                                <OnlineIcon className="relative -bottom-[6px] mr-1 h-5 self-center bg-transparent"/>
-                                <span className='mr-[3px] scale-110'>{activeUserCount}</span>
-                                {subscribersNickname}
-                            </span>
+                            <CommunityStats currentlyViewingCount={currentlyViewingCount}
+                                subscribersCount={subscribersCount}/>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-row items-center max-[1024px]:mb-3">
-                    <button className='flex h-11 cursor-pointer flex-row
-                    items-center whitespace-nowrap rounded-3xl border-2 border-solid border-[#777777] bg-transparent
-                    px-5 py-2  outline-none hover:border-black'
-                    onClick={handleCreatePost}>
-                        <PlusIconFill className="mr-1 h-5"/>
+                    <button className={styles.outline}
+                        onClick={handleCreatePost}>
+                        <PlusIconFill className="mr-1 h-5" style={{fill: 'black'}}/>
                         Create a post
                     </button>
                     {isSubscribed && (
-                        <button className='ml-2 flex w-[45px]
-                        items-center justify-center rounded-[50%] border-2 border-solid border-[#777777] bg-transparent
-                         p-2.5  hover:border-black'
-                        onClick={handleNotificationClick}
-                        style={{position: 'relative'}}>
+                        <button className={`${styles.outline} rounded-2xl`}
+                            onClick={handleNotificationClick}
+                            style={{position: 'relative'}}>
                             {<NotificationLevelIcon/>}
                             {isNotificationLevelsVisible &&
                             <NotificationsDropdownMenu activeItem={activeNotificationLevel}
@@ -216,27 +204,28 @@ export function SubredditBanner() {
                     {
                         !userIsModerator && (
                             <button className={`${isSubscribed ?
-                                'border-2 border-solid bg-transparent  hover:border-black' :
-                                'border-solid text-[white] hover:bg-[#857541]'}
+                                'border-2 border-solid bg-transparent' :
+                                'border-solid'}
                                  mx-2 rounded-3xl px-5 py-2`}
-                            style={{border: primaryColor, backgroundColor: primaryColor}}
+                            style={{border: 'var(--keyColor)', backgroundColor: 'var(--keyColor)',
+                                color: 'white'}}
                             onClick={handleJoinClick}>
                                 {isSubscribed ? 'Joined' : 'Join'}
                             </button>
                         )
                     }
                     {userIsModerator && (
-                        <button className={`border-solid text-[white] hover:bg-[#857541]
+                        <button className={`border-solid
                          mx-2 rounded-3xl px-5 py-2`}
-                        style={{border: primaryColor, backgroundColor: primaryColor}}
+                        style={{border: 'var(--keyColor)', backgroundColor: 'var(--keyColor)'}}
                         onClick={handleModToolsClick}>
                             Mod Tools
                         </button>
                     )}
                     <button className="flex w-[45px] items-center justify-center
                     rounded-[50%] border-2 border-solid
-                    border-[#777777] bg-transparent p-2.5  hover:border-black"
-                    onClick={handleMoreClick} style={{position: 'relative'}}>
+                     bg-transparent p-2.5"
+                    onClick={handleMoreClick} style={{position: 'relative', borderColor: 'var(--primaryTextColor)'}}>
                         <OverflowHorizontalIconOutline className="h-5"/>
                         {isOtherOptionsVisible && <MoreDropdownMenu
                             isMuted={isMuted}

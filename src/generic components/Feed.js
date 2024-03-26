@@ -10,7 +10,7 @@ export function Feed() {
     const posts = []; // LSA: hl user view h7tagha f3ln
     return (
         <div className="m-0 mr-3 flex h-full flex-auto
-                flex-col items-center justify-center rounded-lg bg-pink-300 p-0 pt-2.5 opacity-50">
+                flex-col items-center justify-center rounded-lg p-0 pt-2.5 opacity-50">
             {posts.length === 0 ? (!isOwnerView ? getEmptyFeed() : null) : (
                 posts.map((post) => (
                     <Post key={post.id} post={post} isOwnerView={isOwnerView} subredditName={subredditName}/>

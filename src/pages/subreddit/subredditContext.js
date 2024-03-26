@@ -43,7 +43,6 @@ export function SubredditProvider({children}) {
     const [loading, setLoading] = useState(true);
     const [about, setAbout] = useState(null);
     const [widgets, setWidgets] = useState(null);
-    const baseColor = '#fee5b4';
 
     useEffect(() => {
         const loadData = async () => {
@@ -65,11 +64,10 @@ export function SubredditProvider({children}) {
 
     // The value that will be supplied to any descendants of this provider.
     const value = {
+        loading,
         name,
         about,
         widgets,
-        baseColor,
-        loading,
     };
 
     return (
@@ -117,3 +115,4 @@ const fetchSubredditWidgets = async (name) => {
     const data = await response.json();
     return data;
 };
+

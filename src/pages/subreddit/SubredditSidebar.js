@@ -9,12 +9,11 @@ import {useSubreddit} from './subredditContext';
 export function SubredditSidebar() {
     const {widgets, about} = useSubreddit();
 
-    if (!widgets | ! about) return <div>Loading...</div>;
+    if (!widgets | ! about) return null;
 
     const {
         data: {
             user_is_moderator: userIsModerator,
-            key_color: keyColor,
         },
     } = about;
 
@@ -28,18 +27,12 @@ export function SubredditSidebar() {
         },
     } = widgets;
 
-    if (!items || !idCardWidget || !topbar || !sidebar || !moderatorWidget) return <div>Loading...</div>;
-
-    console.log(items);
-    console.log(idCardWidget);
-    console.log(topbar);
-    console.log(sidebar);
-    console.log(moderatorWidget);
-
+    if (!items || !idCardWidget || !topbar || !sidebar || !moderatorWidget) return null;
 
     return (
-        <div style={{color: keyColor}} className="sticky top-0 m-0 flex h-screen w-80 flex-col
-        overflow-y-auto rounded-lg bg-pink-200 font-sans text-xs max-[1000px]:hidden">
+        <div style={{color: 'var(baseColor)', backgroundColor: 'var(--sidebarBackgroundColor)'}}
+            className="sticky top-0 m-0 flex h-screen w-80 flex-col
+        overflow-y-auto rounded-lg font-sans text-xs max-[1000px]:hidden">
             {renderWidgetOfKind(items[idCardWidget].kind, items[idCardWidget], idCardWidget)}
             {topbar.order.map((widgetId) => renderWidgetOfKind(items[widgetId].kind, items[widgetId], widgetId))}
             {sidebar.order.map((widgetId) => renderWidgetOfKind(items[widgetId].kind, items[widgetId], widgetId))}

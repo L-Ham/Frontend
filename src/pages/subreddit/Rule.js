@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
 // icons
 import {ReactComponent as CaretDownIconOutline} from '../../assets/icons/caret-down-outline.svg';
 
@@ -12,7 +13,12 @@ import {ReactComponent as CaretDownIconOutline} from '../../assets/icons/caret-d
  */
 export function Rule({data, display}) {
     const isCompact = display === 'compact';
-    const [isDescriptionHidden, setIsDescriptionHidden] = useState(!isCompact);
+    const [isDescriptionHidden, setIsDescriptionHidden] = useState(isCompact);
+    const {descriptionHtml, priority, shortName} = data;
+
+    if (! data) return null;
+
+    const description = parse(replaceHtmlEntities(descriptionHtml));
 
     const toogleDescriptionVisibility = () =>{
         setIsDescriptionHidden((prevState) => !prevState);
@@ -21,10 +27,10 @@ export function Rule({data, display}) {
     return (
         <li className="flex flex-col">
             <div className="flex w-full items-center justify-between px-4 py-2 hover:bg-[#251c00]" onClick={() =>{
-                if (!isCompact) toogleDescriptionVisibility();
+                if (isCompact) toogleDescriptionVisibility();
             }}>
-                <span>{number}</span>
-                <p className="max-w-36 grow">{rule}</p>
+                <span>{priority+1}</span>
+                <p className="max-w-36 grow">{shortName}</p>
                 <CaretDownIconOutline
                     className={`${!isDescriptionHidden ? 'rotate-180' : 'rotate-0'}
                      transition-transform duration-300 ease-in-out`} />
@@ -37,12 +43,19 @@ export function Rule({data, display}) {
 }
 
 Rule.propTypes = {
-    data: PropTypes.shape({
-        number: PropTypes.number.isRequired,
-        rule: PropTypes.string.isRequired,
-        descriptionList: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }).isRequired,
+    data: PropTypes.object.isRequired,
     display: PropTypes.string.isRequired,
 };
+
+/**
+ * Replaces HTML entities in a string.
+ * @param {string} str - The string to replace HTML entities in.
+ * @return {string} The string with HTML entities replaced.
+ */
+function replaceHtmlEntities(str) {
+    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
+        .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
+        .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
+}
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {SubredditBanner} from './SubredditBanner';
 import {SubredditSidebar} from './SubredditSidebar';
 import {Feed} from '../../generic components/Feed';
+import styles from './Subreddit.module.css';
 
 
 /**
@@ -10,7 +11,7 @@ import {Feed} from '../../generic components/Feed';
  */
 export function Subreddit() {
     return (
-        <div className="m-auto flex h-full w-4/5 flex-col items-center p-3">
+        <div className={styles.subreddit}>
             <SubredditBanner
             />
             <div className="flex w-full flex-auto">
