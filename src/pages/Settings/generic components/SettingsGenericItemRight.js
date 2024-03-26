@@ -12,7 +12,7 @@ import {DeleteAccountButton} from '../tab specific components/account tab/button
 import {MarkAsReadButton} from '../general components/buttons/MarkAsReadButton';
 import {RedditMenu} from '../tab specific components/feed settings/RedditMenu';
 
-const SettingsComponent = ({head, text, thirdComponent}) => {
+const SettingsGenericItemRight = ({head, text, thirdComponent}) => {
     const handleChangeEmail = () => {
         console.log('Change email clicked');
     };
@@ -56,11 +56,11 @@ const SettingsComponent = ({head, text, thirdComponent}) => {
     );
 };
 
-// Define prop types for SettingsComponent
-SettingsComponent.propTypes = {
+// Define prop types for SettingsGenericItemRight
+SettingsGenericItemRight.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     thirdComponent: PropTypes.string.isRequired,
 };
 
-export {SettingsComponent};
+export {SettingsGenericItemRight};

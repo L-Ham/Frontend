@@ -14,7 +14,7 @@ import {ResizableTextArea} from '../tab specific components/profile tab/text box
 import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/DoubleDropZone';
 import {BlockUserComponent} from '../tab specific components/safety and privacy/BlockUserComponent';
 
-const SettingsComponentDown = ({head, text, thirdComponent}) => {
+const SettingsGenericItemDown = ({head, text, thirdComponent}) => {
     const handleChangeEmail = () => {
         console.log('Change email clicked');
         alert('Change email clicked');
@@ -67,10 +67,10 @@ const SettingsComponentDown = ({head, text, thirdComponent}) => {
     );
 };
 
-SettingsComponentDown.propTypes = {
+SettingsGenericItemDown.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     thirdComponent: PropTypes.string.isRequired,
 };
 
-export {SettingsComponentDown};
+export {SettingsGenericItemDown};

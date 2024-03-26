@@ -23,7 +23,7 @@ import {ChatSettings} from './tabs/ChatSettings';
  * @param {Object} other - Other props passed to the tab panel.
  * @return {React.ReactElement} The tab panel component.
  */
-export function CustomTabPanel(props) {
+function CustomTabPanel(props) {
     const {children, value, index, ...other} = props;
 
     return (

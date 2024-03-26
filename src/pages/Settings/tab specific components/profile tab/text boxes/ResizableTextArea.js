@@ -2,12 +2,27 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes
 import {TextField, Box} from '@mui/material';
 
-const ResizableTextArea = ({maxCharacters}) => {
+/**
+ * A text area component that supports resizing and character count limitation.
+ *
+ * @param {object} props - Component properties.
+ * @param {number} props.maxCharacters - The maximum number of characters allowed.
+ * @return {JSX.Element} A component consisting of a text area with character count limitation.
+ */
+function ResizableTextArea({maxCharacters}) {
     const [text, setText] = useState('');
 
-    const handleTextChange = (event) => {
+    /**
+     * Handles changes to the text area input.
+     *
+     * Updates the component's state with the new input value, ensuring
+     * the text remains within the specified character limit.
+     *
+     * @param {React.ChangeEvent<HTMLInputElement>} event - The event triggered upon changing the text input.
+     */
+    function handleTextChange(event) {
         setText(event.target.value);
-    };
+    }
 
     const charactersRemaining = maxCharacters - text.length;
 
@@ -64,16 +79,10 @@ const ResizableTextArea = ({maxCharacters}) => {
             </Box>
         </Box>
     );
-};
+}
 
 ResizableTextArea.propTypes = {
-    // Define prop types with default props
-    maxCharacters: PropTypes.number,
-};
-
-ResizableTextArea.defaultProps = {
-    // Set default props
-    maxCharacters: 200,
+    maxCharacters: PropTypes.number.isRequired,
 };
 
 export {ResizableTextArea};

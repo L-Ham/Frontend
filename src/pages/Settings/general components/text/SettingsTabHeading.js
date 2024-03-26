@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = ({text}) => {
+const SettingsTabHeading = ({text}) => {
     const headerStyle = {
         fontSize: '14px',
         fontWeight: 'bold', // Updated from 'fontWeight' to 'bold' for the actual value
@@ -20,8 +20,8 @@ const Header = ({text}) => {
     );
 };
 
-Header.propTypes = {
+SettingsTabHeading.propTypes = {
     text: PropTypes.string.isRequired,
 };
 
-export {Header};
+export {SettingsTabHeading};

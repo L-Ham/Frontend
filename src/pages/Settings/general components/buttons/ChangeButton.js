@@ -11,13 +11,15 @@ import {Button} from '@mui/material';
  */
 function ChangeButton() {
     /**
-   * Handles the click event for the ChangeButton component.
-   * Currently, it logs a message to the console.
-   */
-    const handleClick = () => {
+     * Handles the click event for the ChangeButton component.
+     * Currently, it logs a message to the console, indicating the button was clicked.
+     * This function demonstrates handling of click events in React.
+     */
+    function handleClick() {
         console.log('Change Button clicked');
+        // Uncomment the next line to enable alert
         // alert('Change Button clicked');
-    };
+    }
 
     return (
         <Button
@@ -36,7 +38,7 @@ function ChangeButton() {
                 },
             }}
         >
-    Change
+            Change
         </Button>
     );
 }
