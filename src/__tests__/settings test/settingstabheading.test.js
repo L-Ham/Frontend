@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import {SettingsTabHeading} from '../pages/Settings/general components/text/settingstabheading';
+import {SettingsTabHeading} from '../../pages/Settings/general components/text/settingstabheading';
 import {describe, it, expect} from '@jest/globals';
 
 describe('SettingsTabHeading', () => {

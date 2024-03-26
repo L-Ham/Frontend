@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, screen, cleanup} from '@testing-library/react';
-import TestHeader from '../TestHeader';
+import TestHeader from '../../TestHeader';
 import {test, expect, afterEach, describe} from '@jest/globals';
 
 afterEach(() => {

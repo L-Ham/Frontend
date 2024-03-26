@@ -3,7 +3,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {describe, afterEach, beforeEach, jest, it, expect} from '@jest/globals';
-import {GenderMenu} from '../pages/Settings/tab specific components/account tab/menus/gendermenu';
+import {GenderMenu} from '../../pages/Settings/tab specific components/account tab/menus/gendermenu';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 

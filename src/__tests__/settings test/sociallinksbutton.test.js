@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import {describe, expect, test} from '@jest/globals';
-import {SocialLinksButton} from '../pages/Settings/tab specific components/profile tab/buttons/sociallinksbutton';
+import {SocialLinksButton} from '../../pages/Settings/tab specific components/profile tab/buttons/sociallinksbutton';
 
 
 /**

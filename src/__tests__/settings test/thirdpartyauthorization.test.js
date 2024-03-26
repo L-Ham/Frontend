@@ -1,7 +1,7 @@
 import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {ThirdPartyAuthorization} from '../pages/Settings/general components/buttons/thirdpartyauthorization';
+import {ThirdPartyAuthorization} from '../../pages/Settings/general components/buttons/thirdpartyauthorization';
 import {describe, test, beforeEach, afterEach, jest} from '@jest/globals';
 
 

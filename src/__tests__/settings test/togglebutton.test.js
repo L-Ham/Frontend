@@ -3,7 +3,7 @@ import React from 'react';
 import {describe, afterEach, beforeEach, jest, it, expect} from '@jest/globals';
 import {render, fireEvent, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {ToggleButton} from '../pages/Settings/general components/buttons/togglebutton';
+import {ToggleButton} from '../../pages/Settings/general components/buttons/togglebutton';
 
 describe('ToggleButton', () => {
     let consoleSpy;

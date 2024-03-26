@@ -2,9 +2,11 @@
 import React from 'react';
 import {render, fireEvent, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {DeleteAccountButton} from '../pages/Settings/tab specific components/account tab/buttons/deleteaccountbutton';
+import {DeleteAccountButton} from
+    '../../pages/Settings/tab specific components/account tab/buttons/deleteaccountbutton';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {describe, afterEach, beforeEach, jest, it, expect} from '@jest/globals';
+
 
 describe('DeleteAccountButton', () => {
     let consoleSpy;
