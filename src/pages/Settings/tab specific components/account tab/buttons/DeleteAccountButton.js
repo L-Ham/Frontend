@@ -16,7 +16,7 @@ function DeleteAccountButton() {
      */
     function handleClick() {
         console.log('delete button is clicked');
-        // Optionally, uncomment the next line to show an alert with the click confirmation
+
         // alert('delete button is clicked');
         // Placeholder for actual deletion logic
     }

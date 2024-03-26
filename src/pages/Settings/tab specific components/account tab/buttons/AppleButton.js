@@ -15,7 +15,7 @@ function AppleButton() {
      */
     function handleClick() {
         console.log('apple button clicked');
-        // Optionally, uncomment the next line to show an alert with the click confirmation
+
         // alert('apple button clicked');
         // Placeholder for actual connection logic
     }

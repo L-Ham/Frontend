@@ -1,8 +1,9 @@
-import React from 'react'; // Make sure React is imported
+import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {ThirdPartyAuthorization} from '../pages/Settings/general components/buttons/ThirdPartyAuthorization';
-import {test, describe, beforeEach, afterEach, jest} from '@jest/globals';
+import {ThirdPartyAuthorization} from '../pages/Settings/general components/buttons/thirdpartyauthorization';
+import {describe, test, beforeEach, afterEach, jest} from '@jest/globals';
+
 
 describe('ThirdPartyAuthorization', () => {
     beforeEach(() => {

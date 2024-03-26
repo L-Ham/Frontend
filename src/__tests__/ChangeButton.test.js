@@ -2,7 +2,7 @@ import React from 'react';
 import {render, fireEvent, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {describe, afterEach, beforeEach, jest, it, expect} from '@jest/globals';
-import {ChangeButton} from '../pages/Settings/general components/buttons/ChangeButton';
+import {ChangeButton} from '../pages/Settings/general components/buttons/changebutton';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 describe('ChangeButton', () => {

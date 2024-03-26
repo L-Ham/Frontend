@@ -17,7 +17,7 @@ function ConnectToTwitterButton() {
      */
     function handleConnectToTwitter() {
         console.log('Twitter button is clicked');
-        // Optionally, uncomment the next line to show an alert with the click confirmation
+
         // alert('Twitter button is clicked');
         // Placeholder for the actual connection logic
     }

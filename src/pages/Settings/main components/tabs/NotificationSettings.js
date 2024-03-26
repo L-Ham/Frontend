@@ -1,6 +1,6 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
 
 /**
  * NotificationSettings function component renders the notification settings for a user.
@@ -13,7 +13,8 @@ import {SettingsTabHeading} from '../../general components/text/SettingsTabHeadi
 function NotificationSettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Notification settings</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Notification settings</h1>
             <SettingsTabHeading text="MESSAGES" />
 
             <SettingsGenericItemRight head="Private messages" text="" thirdComponent={'Toggle'} />

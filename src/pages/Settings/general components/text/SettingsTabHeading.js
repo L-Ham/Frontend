@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
  */
 function SettingsTabHeading({text}) {
     const headerStyle = {
-        fontSize: '14px',
+        fontSize: '13px',
         fontWeight: 'bold',
         marginBottom: '20px',
         fontFamily: 'Arial',

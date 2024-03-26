@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import {TextField, Box} from '@mui/material';
 
 /**

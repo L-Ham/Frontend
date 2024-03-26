@@ -17,7 +17,7 @@ function MarkAsReadButton() {
      */
     function handleClick() {
         console.log('Mark as read Button clicked');
-        // Optional: Uncomment the line below to alert users upon clicking the button.
+
         // alert('Mark as read Button clicked');
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
+
 
 /**
  * ChatSettings function component renders the chat and messaging settings interface.
@@ -12,11 +13,12 @@ import {SettingsTabHeading} from '../../general components/text/SettingsTabHeadi
 function ChatSettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Chat & Messaging</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Chat & Messaging</h1>
             <SettingsTabHeading text="MESSAGES" />
 
-            <SettingsGenericItemRight head="Who can send you chat requests" thirdComponent={'Gender'} />
-            <SettingsGenericItemRight head="Who can send you private messages" thirdComponent={'Gender'} />
+            <SettingsGenericItemRight head="Who can send you chat requests" thirdComponent={'chatMenu'} />
+            <SettingsGenericItemRight head="Who can send you private messages" thirdComponent={'chatMenu'} />
             <SettingsGenericItemRight head="Mark all as read" thirdComponent={'mr'} />
         </div>
     );

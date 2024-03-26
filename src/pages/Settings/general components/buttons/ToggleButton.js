@@ -18,7 +18,7 @@ function ToggleButton({header = ''}) { // Default value for header is an empty s
     function handleToggle() {
         setIsToggledOn(!isToggledOn); // Toggle the state
         console.log(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
-        // Uncomment the next line if you want to use an alert for feedback
+
         // alert(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
     }
 
@@ -54,7 +54,7 @@ function ToggleButton({header = ''}) { // Default value for header is an empty s
 
 // Define PropTypes
 ToggleButton.propTypes = {
-    header: PropTypes.string, // Optional prop, can be made required by adding .isRequired
+    header: PropTypes.string,
 };
 
 export {ToggleButton};

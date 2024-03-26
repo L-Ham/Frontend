@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Typography, Box} from '@mui/material';
 
-// Import components
-import {GenderMenu} from '../tab specific components/account tab/menus/GenderMenu';
-import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/ConnectToTwitterButton';
-import {ChangeButton} from '../general components/buttons/ChangeButton';
-import {AppleButton} from '../tab specific components/account tab/buttons/AppleButton';
-import {ToggleButton} from '../general components/buttons/ToggleButton';
-import {DeleteAccountButton} from '../tab specific components/account tab/buttons/DeleteAccountButton';
-import {LanguagesMenu} from '../tab specific components/account tab/menus/LanguagesMenu';
-import {DisplayNameTextBox} from '../tab specific components/profile tab/text boxes/DisplayNameTextBox';
-import {ResizableTextArea} from '../tab specific components/profile tab/text boxes/ResizableTextArea';
-import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/DoubleDropZone';
-import {BlockUserComponent} from '../tab specific components/safety and privacy tab/BlockUserComponent';
+
+import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu';
+import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton';
+import {ChangeButton} from '../general components/buttons/changebutton';
+import {AppleButton} from '../tab specific components/account tab/buttons/applebutton';
+import {ToggleButton} from '../general components/buttons/togglebutton';
+import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton';
+import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu';
+import {DisplayNameTextBox} from '../tab specific components/profile tab/text boxes/displaynametextbox';
+import {ResizableTextArea} from '../tab specific components/profile tab/text boxes/resizabletextarea';
+import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/doubledropzone';
+import {BlockUserComponent} from '../tab specific components/safety and privacy tab/blockusercomponent';
+import {SocialLinksButton} from '../tab specific components/profile tab/buttons/sociallinksbutton';
 
 /**
  * SettingsGenericItemDown function component displays a settings
@@ -68,6 +69,7 @@ function SettingsGenericItemDown({head, text, thirdComponent}) {
                 {thirdComponent === 'text200' && <ResizableTextArea maxCharacters={200} />}
                 {thirdComponent === '2images' && <DoubleDropZone />}
                 {thirdComponent === 'block' && <BlockUserComponent />}
+                {thirdComponent === 'social' && <SocialLinksButton />}
             </Box>
         </Box>
     );

@@ -1,9 +1,9 @@
-// ToggleButton.test.js
+
 import React from 'react';
 import {describe, afterEach, beforeEach, jest, it, expect} from '@jest/globals';
 import {render, fireEvent, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {ToggleButton} from '../pages/Settings/general components/buttons/ToggleButton';
+import {ToggleButton} from '../pages/Settings/general components/buttons/togglebutton';
 
 describe('ToggleButton', () => {
     let consoleSpy;
@@ -32,12 +32,11 @@ describe('ToggleButton', () => {
         // Simulate the first click
         fireEvent.click(buttonElement);
         expect(consoleSpy).toHaveBeenCalledWith(`${headerMessage} is now on`);
-        // Note: If you're testing for specific style changes, ensure your component implementation supports this.
+
 
         // Simulate the second click
         fireEvent.click(buttonElement);
         expect(consoleSpy).toHaveBeenCalledWith(`${headerMessage} is now off`);
-        // Note: Adjustments might be needed based on how your component handles style changes.
     });
 
     it('changes the button background color when toggled', () => {

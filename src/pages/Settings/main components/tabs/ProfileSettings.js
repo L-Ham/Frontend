@@ -1,7 +1,7 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsGenericItemDown} from '../../generic components/SettingsGenericItemDown';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
 
 /**
  * ProfileSettings function component renders the profile customization settings.
@@ -15,14 +15,15 @@ import {SettingsTabHeading} from '../../general components/text/SettingsTabHeadi
 function ProfileSettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Customize Profile</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Customize Profile</h1>
             <SettingsTabHeading text="PROFILE INFORMATION " />
 
             <SettingsGenericItemDown head="Display name (optional)" text="Set display name" thirdComponent={'text30'} />
             <SettingsGenericItemDown head="About (optional)" text="A brief description
              of yourself shown on your profile." thirdComponent={'text200'} />
             <SettingsGenericItemDown head="Social links (5 max)" text="People who visit
-             your profile will see your social links." thirdComponent={'mr'} />
+             your profile will see your social links." thirdComponent={'social'} />
 
             <SettingsTabHeading text="Images" />
             <SettingsGenericItemDown head="Avatar and banner image" text="Images

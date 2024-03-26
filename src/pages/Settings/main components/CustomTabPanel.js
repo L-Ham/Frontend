@@ -4,14 +4,14 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {AccountSettings} from './tabs/AccountSettings';
-import {EmailSettings} from './tabs/EmailSettings';
-import {ProfileSettings} from './tabs/ProfileSettings';
-import {SafetySettings} from './tabs/SafetySettings';
-import {FeedSettings} from './tabs/FeedSettings';
-import {NotificationSettings} from './tabs/NotificationSettings';
-import {SubscriptionSettings} from './tabs/SubscriptionSettings';
-import {ChatSettings} from './tabs/ChatSettings';
+import {AccountSettings} from './tabs/accountsettings';
+import {EmailSettings} from './tabs/emailsettings';
+import {ProfileSettings} from './tabs/profilesettings';
+import {SafetySettings} from './tabs/safetysettings';
+import {FeedSettings} from './tabs/feedsettings';
+import {NotificationSettings} from './tabs/notificationsettings';
+import {SubscriptionSettings} from './tabs/subscriptionsettings';
+import {ChatSettings} from './tabs/chatsettings';
 
 /**
  * CustomTabPanel component renders the tab panel content based on the current active tab.

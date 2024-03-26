@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../../external css/DisplayNameInput.css';
+import '../../../external css/displaynameinput.css';
 
 const MAX_CHARS = 30;
 

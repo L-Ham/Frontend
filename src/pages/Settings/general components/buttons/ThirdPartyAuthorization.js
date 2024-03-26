@@ -42,7 +42,7 @@ function ThirdPartyAuthorization({spacing = 2}) {
 }
 
 ThirdPartyAuthorization.propTypes = {
-    spacing: PropTypes.number, // Declares 'spacing' as an optional prop of type number
+    spacing: PropTypes.number,
 };
 
 export {ThirdPartyAuthorization};

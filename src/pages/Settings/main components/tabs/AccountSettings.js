@@ -1,8 +1,8 @@
 import React from 'react';
-import {LanguageSettings} from '../../tab specific components/account tab/bulk components/LanguagesComponent';
-import {SettingsGenericItemDown} from '../../generic components/SettingsGenericItemDown';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {LanguageSettings} from '../../tab specific components/account tab/bulk components/languagescomponent';
+import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
 
 /**
  * AccountSettings function component renders the account settings interface.
@@ -16,7 +16,10 @@ function AccountSettings() {
 
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', marginLeft: '50px', ...leftAlignStyle}}>
-            <h3 style={{color: 'black', ...leftAlignStyle}}>Account Settings</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Account Settings</h1>
+
+
             <SettingsTabHeading text="Account Preferences" style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Email Address" text="yourEmail@gmail.com"

@@ -26,7 +26,7 @@ function BlockUserComponent() {
      */
     function handleButtonClick() {
         console.log(`${inputValue} is blocked`);
-        // Uncomment the next line to enable alert
+
         // alert(`${inputValue} is blocked`);
     }
 

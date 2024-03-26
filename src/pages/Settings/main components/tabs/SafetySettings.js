@@ -1,8 +1,8 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsGenericItemDown} from '../../generic components/SettingsGenericItemDown';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
-import {ThirdPartyAuthorization} from '../../general components/buttons/ThirdPartyAuthorization';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
+import {ThirdPartyAuthorization} from '../../general components/buttons/thirdpartyauthorization';
 
 /**
  * SafetySettings function component renders the safety and privacy settings section.
@@ -17,7 +17,8 @@ import {ThirdPartyAuthorization} from '../../general components/buttons/ThirdPar
 function SafetySettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Safety & Privacy</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Safety & Privacy</h1>
 
             <SettingsTabHeading text="SAFETY" />
 

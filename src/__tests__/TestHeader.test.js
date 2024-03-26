@@ -14,6 +14,4 @@ describe('TestHeader', () => {
         expect(headerElement).toBeInTheDocument();
         expect(headerElement).toHaveTextContent('Edit src/App.js and save to reload.');
     });
-
-    /* Unit Tests for "TestHeader" component go here */
 });

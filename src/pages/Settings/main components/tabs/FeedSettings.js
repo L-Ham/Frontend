@@ -1,6 +1,6 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
 
 /**
  * FeedSettings function component renders the user's feed settings interface.
@@ -13,7 +13,8 @@ import {SettingsTabHeading} from '../../general components/text/SettingsTabHeadi
 function FeedSettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Feed Settings</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Feed Settings</h1>
             <SettingsTabHeading text="CONTENT PREFERENCES" />
 
             <SettingsGenericItemRight

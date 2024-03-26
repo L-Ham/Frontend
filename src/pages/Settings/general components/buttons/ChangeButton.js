@@ -17,7 +17,6 @@ function ChangeButton() {
      */
     function handleClick() {
         console.log('Change Button clicked');
-        // Optional: Uncomment the line below to provide visual feedback via alert.
         // alert('Change Button clicked');
     }
 

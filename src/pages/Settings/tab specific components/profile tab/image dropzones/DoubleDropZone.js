@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box} from '@mui/material';
-import {StyledDropZone} from './StyledDropZone';
+import {StyledDropZone} from './styleddropzone';
 
 /**
  * DoubleDropZone component renders two drop zones side by side for file upload.

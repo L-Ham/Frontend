@@ -37,7 +37,7 @@ function RedditMenu() {
         setSelected(text);
         setAnchorEl(null);
         console.log(`The selected item is now ${text}`);
-        // Uncomment the following line for a production environment, if user feedback is necessary.
+
         // alert(`The selected item is now ${text}`);
     }
 

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Typography, Box} from '@mui/material';
-import {LanguagesMenu} from '../tab specific components/account tab/menus/LanguagesMenu';
-import {GenderMenu} from '../tab specific components/account tab/menus/GenderMenu';
-import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/ConnectToTwitterButton';
-import {ChangeButton} from '../general components/buttons/ChangeButton';
-import {AppleButton} from '../tab specific components/account tab/buttons/AppleButton';
-import {ToggleButton} from '../general components/buttons/ToggleButton';
-import {DeleteAccountButton} from '../tab specific components/account tab/buttons/DeleteAccountButton';
-import {MarkAsReadButton} from '../general components/buttons/MarkAsReadButton';
-import {RedditMenu} from '../tab specific components/feed tab/RedditMenu';
+import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu';
+import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu';
+import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton';
+import {ChangeButton} from '../general components/buttons/changebutton';
+import {AppleButton} from '../tab specific components/account tab/buttons/applebutton';
+import {ToggleButton} from '../general components/buttons/togglebutton';
+import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton';
+import {MarkAsReadButton} from '../general components/buttons/markasreadbutton';
+import {RedditMenu} from '../tab specific components/feed tab/redditmenu';
+import {DropDownMenu} from '../tab specific components/chats tab/dropdownmenu';
+
 
 /**
  * SettingsGenericItemRight displays a settings item with a title,
@@ -44,7 +46,7 @@ function SettingsGenericItemRight({head, text, thirdComponent}) {
                     {text}
                 </Typography>
             </Box>
-            {/* Conditional rendering based on thirdComponent */}
+
             {thirdComponent === 'Change' && <ChangeButton />}
             {thirdComponent === 'GenderMenu' && <GenderMenu />}
             {thirdComponent === 'Languages' && <LanguagesMenu />}
@@ -54,6 +56,7 @@ function SettingsGenericItemRight({head, text, thirdComponent}) {
             {thirdComponent === 'Delete' && <DeleteAccountButton />}
             {thirdComponent === 'mr' && <MarkAsReadButton />}
             {thirdComponent === 'rm' && <RedditMenu />}
+            {thirdComponent === 'chatMenu' && <DropDownMenu />}
         </Box>
     );
 }

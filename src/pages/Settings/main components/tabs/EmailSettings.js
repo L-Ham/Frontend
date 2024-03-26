@@ -1,6 +1,6 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
-import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading';
 
 /**
  * EmailSettings function component renders the email management settings interface.
@@ -12,7 +12,8 @@ import {SettingsTabHeading} from '../../general components/text/SettingsTabHeadi
 function EmailSettings() {
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h3 style={{color: 'black'}}>Manage Emails</h3>
+            <h1 style={{color: 'black', marginBottom:
+             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Manage Emails</h1>
             <SettingsTabHeading text="MESSAGES" />
 
             <SettingsGenericItemRight head="Private messages" thirdComponent={'Toggle'} />
