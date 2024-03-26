@@ -1,39 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
+import PropTypes from 'prop-types';
 import {Typography, IconButton, Box, Paper} from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import LinkOffIcon from '@mui/icons-material/LinkOff';
 
 /**
- * Renders a component for managing third-party app authorization.
- *
- * This component displays an option for users to manage third-party app authorization settings,
- * including revoking access. It includes navigation functionality, presumably to a detailed
- * settings page, and provides visual feedback that it's clickable.
+ * ThirdPartyAuthorization function component renders a UI element for managing third-party application authorizations.
+ * It presents a user-friendly interface to navigate to detailed authorization settings and allows for actions like
+ * revoking access. The component visually indicates its interactivity and navigational purpose.
  *
  * @param {Object} props - Component props.
- * @param {number} [props.spacing=2] - Optional spacing prop to control the space between
- * the text and the navigation icon.
- * @return {React.ReactElement} The rendered Paper component with authorization management option.
+ * @param {number} [props.spacing=2] - Controls the horizontal space between the text and the navigation icon.
+ * @return {React.Component} A Material UI Paper component containing the authorization management options.
  */
 function ThirdPartyAuthorization({spacing = 2}) {
     /**
-     * Handles navigation to the authorization settings page or modal.
-     * This function is meant to be expanded to include navigation logic,
-     * such as using React Router for page navigation or opening a modal.
+     * handleNavigation function to be called upon user interaction with the component.
+     * It is designed to initiate navigation to a detailed settings
+     *  page or modal for managing third-party app authorizations.
+     * Placeholder for actual navigation implementation.
      */
-    const handleNavigation = () => {
-        // Placeholder for navigation logic
-    };
+    function handleNavigation() {
+        // Navigation logic placeholder
+        console.log('Navigate to the third-party app authorization settings');
+    }
 
     return (
-        <Paper elevation={2} sx={{padding: 2, margin: 2, display:
-        'flex', alignItems: 'center', cursor: 'pointer', backgroundColor: 'white'}}>
-            <Typography color="primary" onClick={handleNavigation} sx={{display: 'flex', alignItems: 'center'}}>
+        <Paper elevation={2} sx={{padding: 2, margin: 2, display: 'flex',
+            alignItems: 'center', cursor: 'pointer', backgroundColor: '#ffffff'}}>
+            <Typography variant="body1" color="primary" sx={{flexGrow: 1,
+                display: 'flex', alignItems: 'center'}} onClick={handleNavigation}>
                 Manage third-party app authorization
                 <LinkOffIcon color="primary" sx={{ml: 1}} />
             </Typography>
-            <Box sx={{flexGrow: 1, mr: spacing}}></Box>
+            <Box sx={{flexGrow: 1, mr: spacing}} />
             <IconButton color="primary" onClick={handleNavigation} size="small">
                 <ArrowForwardIosIcon fontSize="small" />
             </IconButton>
@@ -41,9 +41,8 @@ function ThirdPartyAuthorization({spacing = 2}) {
     );
 }
 
-// Define prop types for ThirdPartyAuthorization
 ThirdPartyAuthorization.propTypes = {
-    spacing: PropTypes.number, // Define spacing as an optional number
+    spacing: PropTypes.number, // Declares 'spacing' as an optional prop of type number
 };
 
 export {ThirdPartyAuthorization};

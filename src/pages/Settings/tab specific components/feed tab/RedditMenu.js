@@ -23,9 +23,9 @@ function RedditMenu() {
      *
      * @param {React.MouseEvent<HTMLButtonElement>} event The event object representing the click.
      */
-    const handleClick = (event) => {
+    function handleClick(event) {
         setAnchorEl(event.currentTarget);
-    };
+    }
 
     /**
      * Handles closing the menu and sets the selected filter.
@@ -33,13 +33,13 @@ function RedditMenu() {
      *
      * @param {string} text The text of the selected menu item.
      */
-    const handleClose = (text) => {
+    function handleClose(text) {
         setSelected(text);
         setAnchorEl(null);
         console.log(`The selected item is now ${text}`);
         // Uncomment the following line for a production environment, if user feedback is necessary.
         // alert(`The selected item is now ${text}`);
-    };
+    }
 
     const menuItems = [
         {text: 'Hot', icon: <HotIcon />},

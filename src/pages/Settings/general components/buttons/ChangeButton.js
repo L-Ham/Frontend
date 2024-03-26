@@ -2,22 +2,22 @@ import React from 'react';
 import {Button} from '@mui/material';
 
 /**
- * Renders a button with custom styles and a click handler.
+ * ChangeButton function component renders a styled "Change" button using Material UI.
+ * The button showcases custom styling options and logs a message to the console when clicked.
+ * It serves as an example of event handling and component styling in React applications using Material UI.
  *
- * Upon clicking, it logs a message to the console. This component
- * demonstrates how to style Material UI components and handle events.
- *
- * @return {JSX.Element} The rendered ChangeButton component.
+ * @return {React.Component} A styled Material UI Button component with an onClick event handler.
  */
 function ChangeButton() {
     /**
-     * Handles the click event for the ChangeButton component.
-     * Currently, it logs a message to the console, indicating the button was clicked.
-     * This function demonstrates handling of click events in React.
+     * handleClick function to be executed when the button is clicked.
+     * Logs a message to the console indicating that the button has been clicked.
+     * This placeholder function can be expanded to include more complex logic,
+     * such as initiating state changes or triggering application-specific actions.
      */
     function handleClick() {
         console.log('Change Button clicked');
-        // Uncomment the next line to enable alert
+        // Optional: Uncomment the line below to provide visual feedback via alert.
         // alert('Change Button clicked');
     }
 

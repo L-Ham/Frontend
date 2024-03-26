@@ -71,9 +71,15 @@ function a11yProps(index) {
 export function BasicTabs() {
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (event, newValue) => {
+    /**
+     * Handles the change event of the tabs.
+     *
+     * @param {object} event - The event object.
+     * @param {number} newValue - The new value of the tabs.
+     */
+    function handleChange(event, newValue) {
         setValue(newValue);
-    };
+    }
 
     return (
         <Box sx={{width: '100%', bgcolor: 'white', height: '100%'}}>

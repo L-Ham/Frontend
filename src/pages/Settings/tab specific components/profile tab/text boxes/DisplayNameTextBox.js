@@ -17,9 +17,9 @@ function DisplayNameTextBox() {
      * Handles changes to the display name input field, updating the component's state.
      * @param {React.ChangeEvent<HTMLInputElement>} event - The change event on the input field.
      */
-    const handleChange = (event) => {
+    function handleChange(event) {
         setDisplayName(event.target.value);
-    };
+    }
 
     // Calculate the number of characters remaining.
     const charsRemaining = MAX_CHARS - displayName.length;

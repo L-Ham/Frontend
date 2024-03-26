@@ -4,12 +4,18 @@ import {SettingsGenericItemDown} from '../../generic components/SettingsGenericI
 import {SettingsGenericItemRight} from '../../generic components/SettingsGenericItemRight';
 import {SettingsTabHeading} from '../../general components/text/SettingsTabHeading';
 
-const AccountSettings = () => {
+/**
+ * AccountSettings function component renders the account settings interface.
+ * It provides options to customize email address, gender, language preferences, and more.
+ * The component utilizes various generic items and tab headings to structure the settings.
+ *
+ * @return {React.Component} A div container with account settings.
+ */
+function AccountSettings() {
     const leftAlignStyle = {textAlign: 'left'};
 
     return (
-        <div style={{backgroundColor: 'white', maxWidth: '600px', selfJustify: 'left',
-            marginLeft: '50px', ...leftAlignStyle}}>
+        <div style={{backgroundColor: 'white', maxWidth: '600px', marginLeft: '50px', ...leftAlignStyle}}>
             <h3 style={{color: 'black', ...leftAlignStyle}}>Account Settings</h3>
             <SettingsTabHeading text="Account Preferences" style={leftAlignStyle} />
 
@@ -48,15 +54,11 @@ const AccountSettings = () => {
              the newest features from Reddit and join the r/beta
              community" thirdComponent={'Toggle'} style={leftAlignStyle} />
 
-            <SettingsGenericItemRight head="Opt into beta tests" text="
-            See the newest features from Reddit and join the r/beta community"
-            thirdComponent={'Toggle'} style={leftAlignStyle} />
-
             <SettingsTabHeading text="Delete" style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle} />
         </div>
     );
-};
+}
 
 export {AccountSettings};

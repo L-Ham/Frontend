@@ -2,26 +2,24 @@ import React from 'react';
 import {Button} from '@mui/material';
 
 /**
- * Renders a "Mark as Read" button.
+ * MarkAsReadButton function component renders a button styled with Material UI.
+ * This button, when clicked, logs a message indicating its activation. It demonstrates
+ * the application of custom styles to Material UI components, including adjustments to border radius,
+ * color, and hover effects. This button could be used, for example, to mark notifications or messages as read.
  *
- * When clicked, this button logs a message to the console. It's styled with Material UI and demonstrates
- * custom styling options for buttons, including border radius, color, and hover effects.
- *
- * @return {JSX.Element} The rendered "Mark as Read" button.
+ * @return {React.Component} A Material UI Button component labeled "Mark as Read".
  */
 function MarkAsReadButton() {
     /**
-   * Handles click events on the "Mark as Read" button.
-   *
-   * Currently, it logs a message to the console indicating that the button was clicked.
-   * This function can be expanded to include more complex logic, such as updating a state
-   * or sending a notification to mark a message or notification as read.
-   */
-    const handleClick = () => {
+     * Handles click events for the MarkAsReadButton.
+     * It logs a message to the console upon click. This functionality can be extended
+     * to perform actions such as marking notifications or messages as read in an application's context.
+     */
+    function handleClick() {
         console.log('Mark as read Button clicked');
-    // Uncomment the following line to alert users upon click, if desired.
-    // alert('Mark as read Button clicked');
-    };
+        // Optional: Uncomment the line below to alert users upon clicking the button.
+        // alert('Mark as read Button clicked');
+    }
 
     return (
         <Button
@@ -40,7 +38,7 @@ function MarkAsReadButton() {
                 },
             }}
         >
-      Mark as Read
+            Mark as Read
         </Button>
     );
 }

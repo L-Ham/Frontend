@@ -30,14 +30,27 @@ const StyledMenuItem = styled(MenuItem)({
     },
 });
 
-const LanguagesMenu = () => {
+/**
+ * LanguagesMenu function component for selecting a language from a dropdown menu.
+ * This component uses Material UI components to render a styled form control with a select dropdown.
+ * The user's selected language is managed using React's useState hook, and changes are logged to the console.
+ *
+ * @return {React.Component} The LanguagesMenu component rendering a styled select dropdown for language selection.
+ */
+function LanguagesMenu() {
     const [language, setLanguage] = useState('');
 
-    const handleChangeLanguage = (event) => {
+    /**
+     * Handles changing the selected language from the dropdown menu.
+     * Updates the component's state with the new language and logs the selection to the console.
+     *
+     * @param {Object} event - The event object representing the change event on the select input.
+     */
+    function handleChangeLanguage(event) {
         setLanguage(event.target.value);
         console.log(`${event.target.value} is now selected`);
-    // alert(`${event.target.value} is now selected`);
-    };
+        // alert(`${event.target.value} is now selected`);
+    }
 
     return (
         <StyledFormControl variant="outlined">
@@ -52,10 +65,9 @@ const LanguagesMenu = () => {
                 <StyledMenuItem value={'Español (ES)'}>Español (ES)</StyledMenuItem>
                 <StyledMenuItem value={'Español (MX)'}>Español (MX)</StyledMenuItem>
                 <StyledMenuItem value={'Français'}>Français</StyledMenuItem>
-
             </Select>
         </StyledFormControl>
     );
-};
+}
 
 export {LanguagesMenu};

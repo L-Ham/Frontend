@@ -16,18 +16,18 @@ function DoubleDropZone(props) {
      *
      * @param {Array<File>} files An array of files dropped on the left drop zone.
      */
-    const handleFileUploadLeft = (files) => {
+    function handleFileUploadLeft(files) {
         console.log('Left drop zone files:', files.map((file) => file.name));
-    };
+    }
 
     /**
      * Handles file uploads for the right drop zone. Logs the names of the files uploaded.
      *
      * @param {Array<File>} files An array of files dropped on the right drop zone.
      */
-    const handleFileUploadRight = (files) => {
+    function handleFileUploadRight(files) {
         console.log('Right drop zone files:', files.map((file) => file.name));
-    };
+    }
 
     return (
         <Box sx={{
