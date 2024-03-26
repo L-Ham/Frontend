@@ -2,9 +2,16 @@ import React from 'react'; // Make sure React is imported
 import {render, screen, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {ThirdPartyAuthorization} from '../pages/Settings/general components/buttons/ThirdPartyAuthorization';
-import {test, describe} from '@jest/globals';
+import {test, describe, beforeEach, afterEach, jest} from '@jest/globals';
 
 describe('ThirdPartyAuthorization', () => {
+    beforeEach(() => {
+        jest.spyOn(console, 'log').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+        console.log.mockRestore();
+    });
     test('Typography click triggers navigation', () => {
         render(<ThirdPartyAuthorization />);
 
