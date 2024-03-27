@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
  * <SideBarSectionItem />
  * @return {JSX.Element} The sidebar section summary/header component
  */
-const SideBarSectionItem = ({icon, label, link}) => {
+function SideBarSectionItem({icon, label, link}) {
     return (
 
         <a href={link} className='relative flex h-[40px] w-[228px] cursor-pointer
@@ -28,7 +28,7 @@ const SideBarSectionItem = ({icon, label, link}) => {
             </span>
         </a>
     );
-};
+}
 
 SideBarSectionItem.propTypes = {
     icon: PropTypes.element.isRequired,

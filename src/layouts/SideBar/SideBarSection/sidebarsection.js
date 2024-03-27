@@ -14,8 +14,7 @@ import PropTypes from 'prop-types';
  * <SideBarSection tabs={tabs} />
  * @return {JSX.Element} The main application component
  */
-
-const SideBarSection = ({tabs, collapsible = false, sectionName = ''}) => {
+function SideBarSection({tabs, collapsible = false, sectionName = ''}) {
     const [isOpen, setIsOpen] = useState(true);
     return (
         <>
@@ -61,7 +60,7 @@ const SideBarSection = ({tabs, collapsible = false, sectionName = ''}) => {
             </div>
         </>
     );
-};
+}
 
 SideBarSection.propTypes = {
     tabs: PropTypes.array.isRequired,
