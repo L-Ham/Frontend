@@ -17,15 +17,15 @@ function Login() {
   return (
     <div className="wrap">
       <div className="wrap">
-        <div className="floatleft">
+        <div style={{  float: 'left', height: '100%', width: '10%'   }}>
           <img
             src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
             alt="React Logo"
             style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <div className="floatright">
-          <div style={{ marginBottom: "95px" }} /> {/* Spacer above Heading */}
+        <div style={{  float: 'right', height: '100%', width: '87%'   }}>       
+         <div style={{ marginBottom: "95px" }} /> {/* Spacer above Heading */}
           <Heading />
           <div style={{ marginBottom: "5px" }} /> {/* Spacer below Heading */}
           <UserAgreement />
