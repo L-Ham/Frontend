@@ -2,17 +2,17 @@
 
 import {useState} from 'react';
 
-import './App.css';
+import '../../App.css';
 
-import {RedditLogo} from './generic components/guestpagecomponents/redditlogo';
+import {RedditLogo} from '../.././generic components/guestpagecomponents/redditlogo';
 
-import {UserHelp} from './generic components/guestpagecomponents/forgotpasswordcomponents/usernamehelp';
-import {Headingpassword} from './generic components/guestpagecomponents/forgotpasswordcomponents/headingpassword';
-import {Passwordmessage} from './generic components/guestpagecomponents/forgotpasswordcomponents/passwordmessage';
-import PasswordLoginForm from './generic components/guestpagecomponents/forgotpasswordcomponents/passwordfieldsbutton';
-import {ForgotUsername} from './generic components/guestpagecomponents/forgotpasswordcomponents/passwordforgotusername';
+import {UserHelp} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/usernamehelp';
+import {Headingpassword} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/headingpassword';
+import {Passwordmessage} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/passwordmessage';
+import PasswordLoginForm from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/passwordfieldsbutton';
+import {ForgotUsername} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/passwordforgotusername';
 
-function App() {
+function ForgotPassword() {
     return (
         <div className="wrap">
             <div className="floatleft">
@@ -45,4 +45,4 @@ function App() {
     );
 }
 
-export default App;
+export  {ForgotPassword};

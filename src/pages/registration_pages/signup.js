@@ -3,24 +3,24 @@ import React from 'react';
 import {useState} from 'react';
 
 
-import './App.css';
+import '../.././App.css';
 
 import { GoogleLogin } from '@react-oauth/google';
 
-import {SignUpWithGoogleButton} from "./generic components/guestpagecomponents/signupcomponents/google";
+import {SignUpWithGoogleButton} from "../.././generic components/guestpagecomponents/signupcomponents/google";
 
-import {Divider} from "./generic components/guestpagecomponents/divider";
+import {Divider} from "../.././generic components/guestpagecomponents/divider";
 
-import {HeadingSignUp} from './generic components/guestpagecomponents/signupcomponents/headingsignup';
-import {UserAgreementSignup} from './generic components/guestpagecomponents/signupcomponents/useragreementsignup';
-import EmailLoginForm from './generic components/guestpagecomponents/signupcomponents/emailtextfield';
+import {HeadingSignUp} from '../.././generic components/guestpagecomponents/signupcomponents/headingsignup';
+import {UserAgreementSignup} from '../.././generic components/guestpagecomponents/signupcomponents/useragreementsignup';
+import EmailLoginForm from '../.././generic components/guestpagecomponents/signupcomponents/emailtextfield';
 
-import {ExistingMember} from './generic components/guestpagecomponents/signupcomponents/existingmember';
+import {ExistingMember} from '../.././generic components/guestpagecomponents/signupcomponents/existingmember';
 /**
  *
  * @return {JSX.Element} App
  */
-function App() {
+function SignUp() {
     return (
         <div className="wrap">
             <div className="wrap">
@@ -59,4 +59,4 @@ function App() {
     );
 }
 
-export default App;
+export  {SignUp};

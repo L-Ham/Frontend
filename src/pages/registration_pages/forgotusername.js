@@ -2,17 +2,17 @@
 import {useState} from 'react';
 
 
-import './App.css';
+import '../.././App.css';
 
 
-import {HeadingUserName} from './generic components/guestpagecomponents/forgotusernamecomponents/headingusername';
-import {Usermessage} from './generic components/guestpagecomponents/forgotpasswordcomponents/usernamemessage';
-import {RedditLogo} from './generic components/guestpagecomponents/redditlogo';
-import EmailLoginForm from './generic components/guestpagecomponents/forgotusernamecomponents/emailusername';
-import {UserHelp} from './generic components/guestpagecomponents/forgotpasswordcomponents/usernamehelp';
+import {HeadingUserName} from '../.././generic components/guestpagecomponents/forgotusernamecomponents/headingusername';
+import {Usermessage} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/usernamemessage';
+import {RedditLogo} from '../.././generic components/guestpagecomponents/redditlogo';
+import EmailLoginForm from '../.././generic components/guestpagecomponents/forgotusernamecomponents/emailusername';
+import {UserHelp} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/usernamehelp';
 
 
-function App() {
+function ForgotUsername() {
     return (
         <div className="wrap">
             <div className="floatleft">
@@ -46,4 +46,4 @@ function App() {
     );
 }
 
-export default App;s
+export  {ForgotUsername};
