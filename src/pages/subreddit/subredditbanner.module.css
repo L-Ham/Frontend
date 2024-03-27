@@ -1,0 +1,36 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.banner{
+    @apply flex w-full flex-col h-[180px] relative items-center min-[1120px]:rounded-lg max-[1120px]:m-0 mb-5;
+}
+
+.banner button{
+    @apply ml-2 text-sm flex cursor-pointer flex-row items-center whitespace-nowrap rounded-3xl border-2 px-3 py-2 outline-none;
+}
+
+/*custom classes*/
+.joinBtn {
+    @apply bg-[#524725] border-[#524725] text-white;
+  }
+  
+  .joinBtn:hover{
+    @apply bg-[#3e361b];
+  }
+  
+  .outlineBtn {
+    @apply text-[#8a8a8a] bg-transparent border-[#8a8a8a];
+  }
+  
+  .outlineBtn:hover {
+    @apply border-[#000000];
+  }
+  
+  .outlineBtn:active{
+    @apply bg-gray-200;
+  }
+  
+  .roundedBtn {
+    @apply rounded-full p-2;
+  }

@@ -1,0 +1,31 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/*subreddit*/
+.subreddit {
+    @apply m-auto flex h-full min-[1120px]:w-[1120px]  flex-col items-center min-[1120px]:p-3 bg-[#fefaf2];
+}
+
+/*general*/
+.subreddit button{
+    @apply text-black;
+}
+
+.subreddit span{
+    @apply text-xs;
+}
+
+.subreddit h3 {
+    @apply text-black text-base font-bold;
+}
+
+.subreddit a:active {
+    @apply text-[#524725];
+}
+
+
+
+
+
+
