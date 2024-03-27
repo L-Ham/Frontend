@@ -4,7 +4,13 @@ module.exports = {
         './src/**/*.{js,jsx,ts,tsx}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            screens: {
+                'xs': '475px',
+                's': '960px',
+                'nd': '1200px',
+            },
+        },
     },
     plugins: [
         require('tailwindcss'),

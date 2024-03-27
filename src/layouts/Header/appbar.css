@@ -1,0 +1,11 @@
+.sh-sm {
+    --tw-shadow: 0 0.0625rem 0.25rem 0 #00000026, 0 0.25rem 0.25rem 0 #00000026;
+    --tw-shadow-colored: 0 0.0625rem 0.25rem 0 #00000026, 0 0.25rem 0.25rem 0 #00000026;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, var(--tw-shadow);
+}
+
+.button-medium {
+    --button-height: 2.5rem;
+    --button-padding: 0.5rem;
+    --button-border-width-default: 0.0625rem;
+}
