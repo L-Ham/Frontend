@@ -1,7 +1,7 @@
 import React from 'react';
 import {SearchHistoryItem} from './searchhistoryitem';
 import {SearchTrendingItem} from './searchtrendingitem';
-import {ReactComponent as SearchTrendingIcon} from '../../assets/images/trending-icon.svg';
+import {ReactComponent as SearchTrendingIcon} from '../../../assets/images/trending-icon.svg';
 import PropTypes from 'prop-types';
 
 /**

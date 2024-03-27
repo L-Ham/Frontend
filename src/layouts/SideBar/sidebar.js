@@ -7,7 +7,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import {ReactComponent as Popular} from '../../assets/images/popular-icon.svg';
 import {ReactComponent as All} from '../../assets/images/all-icon.svg';
-import {SideBarSection} from './sidebarsection';
+import {SideBarSection} from './SideBarSection/sidebarsection';
 
 
 /**

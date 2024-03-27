@@ -2,9 +2,9 @@
 import {React, useState, useRef, useEffect} from 'react';
 import {ProfileIcon} from './profileicon';
 import {UserDrawerElement} from './userdrawerelement';
-import {ReactComponent as DarkModeIcon} from '../../assets/images/dark-mode-icon.svg';
+import {ReactComponent as DarkModeIcon} from '../../../assets/images/dark-mode-icon.svg';
 import {CustomSwitch} from './switch';
-import './appbar.css';
+import '../appbar.css';
 
 /**
  * Profile icon component

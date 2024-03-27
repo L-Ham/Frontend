@@ -7,7 +7,7 @@ import {ReactComponent as InboxIcon} from '../../assets/images/inbox-icon.svg';
 import {ReactComponent as CreatePostIcon} from '../../assets/images/create-icon.svg';
 import {ReactComponent as HambugerMenuIcon} from '../../assets/images/hamburger-menu-icon.svg';
 import {SearchDropDown} from './Search/searchdropdown';
-import {ProfileMenu} from './UserMenuComponents/profilemenu';
+import {ProfileMenu} from './UserMenu/profilemenu';
 import {SearchBar} from './Search/searchbar';
 import './appbar.css';
 /**

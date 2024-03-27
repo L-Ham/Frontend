@@ -1,6 +1,6 @@
 import React from 'react';
-import {ReactComponent as HistoryIcon} from '../../assets/images/history-icon.svg';
-import {ReactComponent as RemoveIcon} from '../../assets/images/remove-icon.svg';
+import {ReactComponent as HistoryIcon} from '../../../assets/images/history-icon.svg';
+import {ReactComponent as RemoveIcon} from '../../../assets/images/remove-icon.svg';
 import PropTypes from 'prop-types';
 
 /**

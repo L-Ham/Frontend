@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as SearchIcon} from '../../assets/images/search-icon.svg';
+import {ReactComponent as SearchIcon} from '../../../assets/images/search-icon.svg';
 import PropTypes from 'prop-types';
 
 /**
