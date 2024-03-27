@@ -1,14 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Search trending item component
  * @component
+ * @param {string} title - The title of the search trending item
+ * @param {string} description - The description of the search trending item
+ * @param {string} subredditIconURL - The URL of the subreddit icon
+ * @param {string} subredditName - The name of the subreddit
+ * @param {string} imageURL - The URL of the image
  * @example
  * // Render the search trending item
  * <SearchTrendingItem />
  * @return {JSX.Element} The search trending item component
  */
-function SearchTrendingItem() {
+function SearchTrendingItem({title = 'test', description = 'test', subredditIconURL = '',
+    subredditName = 'r/test', imageURL = ''}) {
     return (
         <a className='relative flex cursor-pointer justify-between gap-2
          px-4 py-2 text-[#0f1a1c]
@@ -23,7 +30,7 @@ function SearchTrendingItem() {
                     <span className='text-sm'>
                         <span className='ml-1 inline-block h-5 leading-5'>
                             <span className='font-bold text-[#2a3c42]'>
-                                US wins Nations League
+                                {title}
                             </span>
 
                         </span>
@@ -31,17 +38,16 @@ function SearchTrendingItem() {
                     <span className='text-xs text-[#576f76]'>
                         <span className='ml-1 inline-block min-h-[40px] pb-2 text-[#2a3c42]'>
                             <span className='mb-2 inline-block'>
-                                [USMNT] AS IT SHOULD BE. DOS A CERO.
-                                 The USMNT secures its third straight Nations League title!
+                                {description}
                             </span>
                             <div className='flex text-[#576f76] '>
 
                                 <img className='mr-1 size-4 rounded-full' loading='lazy'
                                     // eslint-disable-next-line max-len
-                                    src='https://b.thumbs.redditmedia.com/nE2LD5gPj_nTva28AvGXvEMNkmd_QwxKSluXzXNcwHk.png'
+                                    src={subredditIconURL}
                                     width='16' height='16' alt='Icon for r/'></img>
 
-                                <span>r/MLS and more</span>
+                                <span>{subredditName}</span>
                             </div>
                         </span>
                     </span>
@@ -52,7 +58,7 @@ function SearchTrendingItem() {
                 <span className='flex h-6 items-center justify-center'>
                     <img className='mr-1 hidden  rounded-sm object-cover xs:block'
                         // eslint-disable-next-line max-len
-                        loading='lazy' src='https://a.thumbs.redditmedia.com/Vty96PdG2cjNGu_1Q-elwMEZbn6SFo32xKPRRGk6ux4.jpg'
+                        loading='lazy' src={imageURL}
                         width='96' height='72' alt=''>
 
                     </img>
@@ -61,5 +67,13 @@ function SearchTrendingItem() {
         </a>
     );
 }
+
+SearchTrendingItem.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    subredditIconURL: PropTypes.string,
+    subredditName: PropTypes.string,
+    imageURL: PropTypes.string,
+};
 
 export {SearchTrendingItem};

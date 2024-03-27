@@ -15,12 +15,13 @@ import './appbar.css';
  * @return {JSX.Element} The profile icon component
  */
 function ProfileMenu() {
-    const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const UserMenuRef = useRef();
 
     useEffect(() => {
         const closeDropdown = (e) => {
             if (UserMenuRef.current && !UserMenuRef.current.contains(e.target)) {
+                // console.log('clicked somewhere else');
                 setIsUserMenuOpen(false);
             }
         };
@@ -35,6 +36,7 @@ function ProfileMenu() {
     return (
         <div ref={UserMenuRef} className='flex size-[40px] items-center justify-center'>
             <ProfileIcon onClick={() => {
+                // console.log('icon clicked');
                 setIsUserMenuOpen(!isUserMenuOpen);
             }}/>
             <div className={`absolute right-2 top-0 z-50 min-w-[256px] translate-y-[56px]
@@ -43,28 +45,29 @@ function ProfileMenu() {
                 <ul className='m-0 my-2 w-full list-none p-0'>
                     <li className='relative mt-0 list-none'>
                         <UserDrawerElement
-                            textMain='View Profile'
-                            textWeak='u/Cute-Area64'
+                            primaryText='View Profile'
+                            secondaryText='u/Cute-Area64'
                             icon={<ProfileIcon/>}
                             href='#'
                         />
                     </li>
                     <li className='relative mt-0 list-none'>
                         <UserDrawerElement
-                            textMain='View Profile'
-                            textWeak='u/Cute-Area64'
+                            primaryText='View Profile'
+                            secondaryText='u/Cute-Area64'
                             icon={<ProfileIcon/>}
                             href='#'
                         />
                     </li>
                     <li className='relative mt-0 list-none'>
                         <UserDrawerElement
-                            textMain='View Profile'
-                            textWeak='u/Cute-Area64'
+                            primaryText='View Profile'
+                            secondaryText='u/Cute-Area64'
                             icon={<ProfileIcon/>}
                             href='#'
                         />
                     </li>
+
                 </ul>
 
 
@@ -73,9 +76,8 @@ function ProfileMenu() {
                 <ul>
                     <li className='relative mt-0 list-none'>
                         <UserDrawerElement
-                            textMain='Dark Mode'
+                            primaryText='Dark Mode'
                             icon={<DarkModeIcon/>}
-                            component2={<CustomSwitch sx={{m: 1}} defaultChecked />}
                         />
                     </li>
                 </ul>

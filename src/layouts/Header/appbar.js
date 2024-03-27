@@ -1,16 +1,14 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {ReactComponent as RedditLogo} from '../../assets/images/reddit-logo.svg';
 import {ReactComponent as RedditName} from '../../assets/images/reddit-name.svg';
-import {ReactComponent as SearchIcon} from '../../assets/images/search-icon.svg';
 import {ReactComponent as AddvertiseIcon} from '../../assets/images/advertise-icon.svg';
 import {ReactComponent as ChatIcon} from '../../assets/images/chat-icon.svg';
 import {ReactComponent as InboxIcon} from '../../assets/images/inbox-icon.svg';
 import {ReactComponent as CreatePostIcon} from '../../assets/images/create-icon.svg';
-import {ReactComponent as SearchTrendingIcon} from '../../assets/images/trending-icon.svg';
 import {ReactComponent as HambugerMenuIcon} from '../../assets/images/hamburger-menu-icon.svg';
-import {SearchTrendingItem} from './searchtrendingitem';
-import {SearchHistoryItem} from './searchhistoryitem';
+import {SearchDropDown} from './searchdropdown';
 import {ProfileMenu} from './profilemenu';
+import {SearchBar} from './searchbar';
 import './appbar.css';
 /**
  * Main application component
@@ -40,11 +38,33 @@ function AppBar() {
     const searchTrendingItems = [];
     for (let i = 0; i < 6; i++) {
         searchTrendingItems.push(
-            <li className='relative mt-0 list-none'>
-                <SearchTrendingItem />
-            </li>,
-            <hr className='mx-4 my-0 border-x-0 border-b-0
-            border-t-[0.0625rem] border-solid border-[#0000001a]'/>,
+            {
+                title: 'Trending Item',
+                description: 'Description of the trending item',
+                subredditIconURL: 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png',
+                subredditName: 'r/Popular',
+                imageURL: 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png',
+            },
+        );
+    }
+
+    const SearchHistoryItems = [];
+    for (let i = 0; i < 3; i++) {
+        SearchHistoryItems.push(
+            {
+                subredditIconURL: 'https://www.redditstatic.com/desktop2x/img/favicon/apple-icon-57x57.png',
+                label: 'History Item',
+                link: '/test',
+            },
+        );
+    }
+    for (let i = 0; i < 3; i++) {
+        SearchHistoryItems.push(
+            {
+                subredditIconURL: '',
+                label: 'History Item',
+                link: '/test',
+            },
         );
     }
 
@@ -54,7 +74,7 @@ function AppBar() {
             <nav className='flex h-[56px] items-center border-x-0
                 border-b-[0.0625rem] border-t-0 border-solid border-[#00000033]'>
 
-                <div id='LogoContainer' className='flex items-center justify-start gap-2 pr-6'>
+                <div className='flex items-center justify-start gap-2 pr-6'>
 
                     <button className="button-medium inline-flex size-10 items-center
                     justify-center rounded-full px-2 hover:bg-[#e2e7e9] active:bg-[#d2dadd]
@@ -82,61 +102,22 @@ function AppBar() {
 
                     <div className='flex w-full flex-col justify-stretch'>
 
-                        {/* eslint-disable-next-line max-len */}
-                        <div ref={searchBarRef} className={`  w-full max-w-[750px] justify-stretch nd:pointer-events-auto
+
+                        <div ref={searchBarRef} className={`  w-full max-w-[750px] justify-stretch
                                                 nd:mx-auto nd:w-[560px] rounded-[1.25rem]
                                                 ${isSearchDropdownVisible ? 'sh-sm bg-white' : ''}
+                                                
                                                 `} onClick={() => setIsSearchDropdownVisible(true)}>
-                            {/* eslint-disable-next-line max-len */}
-                            <div className={`${isSearchDropdownVisible ? 'border-x-0 border-b-[0.0625rem] border-t-0 border-solid border-[#0000001a] pb-[.45rem]' : ''} w-full`}>
-
-
-                                <div className={`box-border inline-flex h-[40px] w-[inherit]
-                                                    rounded-[1.25rem] bg-[#eaedef] hover:bg-[#e2e7e9] focus:bg-white
-                                                    ${isSearchDropdownVisible ? 'bg-white' : ''}
-                                                    `}>
-
-                                    <form className='relative flex w-[inherit] items-center text-[#0f1a1c]'>
-                                        <div className='flex px-4'>
-
-                                            <span id='SearchIcon' className='mr-2 inline-flex items-center'>
-                                                <SearchIcon />
-                                            </span>
-                                            {/* <form id='SearchForm' className='flex w-full items-center gap-2'> */}
-                                            <span id='SearchInputContainer' className='flex w-full items-center'>
-                                                <input id='SearchInput' type='text' className='size-full bg-transparent
-                                            focus:outline-none' placeholder='Search Reddit'
-                                                autoComplete='off'/>
-                                            </span>
-                                            {/* </form> */}
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            <SearchBar isSearchDropdownVisible={isSearchDropdownVisible} />
 
                             {/* SearchDropdown, should be hidden by default and
                              shown when the user types in the search input */}
-                            <div id='SearchDropdown' className={`max-h-[calc(100vh-56px-15px-10px)]
-                                    ${isSearchDropdownVisible ? 'block' : 'hidden'}
-                                    overflow-y-auto overflow-x-hidden rounded-b-[1.25rem]
-                                    bg-white shadow-md`}>
+                            <SearchDropDown
+                                SearchHistoryItems={SearchHistoryItems}
+                                searchTrendingItems={searchTrendingItems}
+                                isSearchDropdownVisible={isSearchDropdownVisible}
+                            />
 
-                                <SearchHistoryItem />
-
-                                <hr className='my-0 border-x-0 border-b-0
-                                    border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-
-
-                                <div className="mb-1 ml-4 mt-3 flex items-center text-[#576f76]">
-                                    <SearchTrendingIcon />
-                                    TRENDING TODAY
-                                </div>
-
-
-                                <ul id='SearchDropdownList' className='my-0 list-none p-0'>
-                                    {searchTrendingItems}
-                                </ul>
-                            </div>
 
                         </div>
                     </div>

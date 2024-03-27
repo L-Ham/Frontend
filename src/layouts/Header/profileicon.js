@@ -27,9 +27,9 @@ function ProfileIcon({imgSrc = 'https://www.redditstatic.com/avatars/defaults/v2
                         <img src={imgSrc}
                             alt='User Avatar' className='max-w-full'></img>
 
-                        <span className={`absolute bottom-0 right-[0.0825rem]
+                        <span className='absolute bottom-0 right-[0.0825rem]
                                 flex size-[.5rem] rounded-full border-[0.0625rem] border-solid
-                                border-white`} style={{backgroundColor: statusColor}}>
+                                border-white' style={{backgroundColor: statusColor}}>
 
                         </span>
                     </span>
