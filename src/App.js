@@ -1,11 +1,7 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import {SideBar} from './layouts/SideBar/sidebar';
-import {AppBar} from './layouts/Header/appbar';
 import {LayoutWithNavigation} from './generic components/layoutwithnavigation';
 import './App.css';
-
 /**
  * Main application component
  * @component
