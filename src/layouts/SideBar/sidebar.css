@@ -1,0 +1,23 @@
+
+/* style the scroll bars to be similar to reddit sidebar */
+/* https://www.reddit.com/r/Enhancement/comments/2f3j7d/feature_request_custom_scrollbar_styles/ */
+/* it should be invisible until hovered over, and then it should be visible and have a width of 10px */
+/* it is slightly rounded and has a light grey background with a dark grey thumb */ 
+
+.styled-scrollbars{
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-background);
+    scrollbar-width: thin;
+    --scrollbar-background: #ffffff;
+}
+
+.styled-scrollbars::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+
+
+/* .styled-scrollbars::-webkit-scrollbar-track {
+    background-color: #ddd;
+    border-radius: 10px;
+} */
