@@ -6,9 +6,9 @@ import {ReactComponent as ChatIcon} from '../../assets/images/chat-icon.svg';
 import {ReactComponent as InboxIcon} from '../../assets/images/inbox-icon.svg';
 import {ReactComponent as CreatePostIcon} from '../../assets/images/create-icon.svg';
 import {ReactComponent as HambugerMenuIcon} from '../../assets/images/hamburger-menu-icon.svg';
-import {SearchDropDown} from './searchdropdown';
-import {ProfileMenu} from './profilemenu';
-import {SearchBar} from './searchbar';
+import {SearchDropDown} from './Search/searchdropdown';
+import {ProfileMenu} from './UserMenuComponents/profilemenu';
+import {SearchBar} from './Search/searchbar';
 import './appbar.css';
 /**
  * Main application component
