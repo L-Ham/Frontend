@@ -103,11 +103,11 @@ function AppBar() {
                     <div className='flex w-full flex-col justify-stretch'>
 
 
-                        <div ref={searchBarRef} className={`  w-full max-w-[750px] justify-stretch
-                                                nd:mx-auto nd:w-[560px] rounded-[1.25rem]
-                                                ${isSearchDropdownVisible ? 'sh-sm bg-white' : ''}
-                                                
-                                                `} onClick={() => setIsSearchDropdownVisible(true)}>
+                        <div ref={searchBarRef} className={`${isSearchDropdownVisible ?
+                            ' sh-sm w-full max-w-[750px] justify-stretch rounded-[1.25rem] bg-white' +
+                            ' nd:mx-auto nd:w-[560px]' :
+                            'w-full max-w-[750px] justify-stretch rounded-[1.25rem] nd:mx-auto nd:w-[560px]'}`}
+                        onClick={() => setIsSearchDropdownVisible(true)}>
                             <SearchBar isSearchDropdownVisible={isSearchDropdownVisible} />
 
                             {/* SearchDropdown, should be hidden by default and
