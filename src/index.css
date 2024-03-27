@@ -20,3 +20,69 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* define global colors */
+:root {
+  --bg-neutral: #0b1416;
+  --bg-neutral-hover: #131f23;
+  --btn-color-bg: #1a282d;
+  --btn-color-bg-hover: #223237;
+  --btn-downvote-hover: #6a5cff;
+  --btn-upvote-hover: #d93a00;
+  --btn-color-text: #F2F4F5;
+  --rem6: 0.375rem;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --font-12-16-semibold: normal 600 0.75rem / 1rem var(--font-sans);
+  --font-button-sm: var(--font-12-16-semibold);
+  --color-neutral-content: #b8c5c9;
+  --color-neutral-content-strong: #F2F4F5;
+  --color-neutral-content-weak: #82959B;
+  --tooltip-content: #0f1a1c;
+  --color-a-default: #629fff;
+  --color-a-hover: #a7ccff;
+  --color-neutral-border-weak: #ffffff1a;
+  --size-lg: 1.5rem;
+  --btn-primary-bg: #0045ac;
+  --btn-primary-bg-hover: #1870f4;
+}
+
+.tooltip-shadow {
+  box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* add dark scheme here */
+    --bg-neutral: #0b1416;
+    --bg-neutral-hover: #131f23;
+    --btn-color-bg: #1a282d;
+    --btn-color-bg-hover: #223237;
+    --btn-downvote-hover: #6a5cff;
+    --btn-upvote-hover: #d93a00;
+    --btn-color-text: #F2F4F5;
+    --rem6: 0.375rem;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    --font-12-16-semibold: normal 600 0.75rem / 1rem var(--font-sans);
+    --font-button-sm: var(--font-12-16-semibold);
+    --color-neutral-content: #b8c5c9;
+    --color-neutral-content-strong: #F2F4F5;
+    --color-neutral-content-weak: #82959B;
+    --tooltip-content: #0f1a1c;
+    --color-a-default: #629fff;
+    --color-a-hover: #a7ccff;
+    --color-neutral-border-weak: #ffffff1a;
+    --size-lg: 1.5rem;
+    --btn-primary-bg: #0045ac;
+    --btn-primary-bg-hover: #1870f4;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* add light scheme here */
+    --bg-neutral: #ffffff;
+    --bg-neutral-hover: #F2F4F5;
+  }
+}
