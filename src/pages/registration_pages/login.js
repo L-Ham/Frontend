@@ -1,19 +1,19 @@
 /*eslint-disable*/
 import { useState } from "react";
 
-import "./App.css";
-import { Heading } from "./generic components/guestpagecomponents/logincomponents/heading";
-import {UserAgreement} from "./generic components/guestpagecomponents/logincomponents/useragreement"; // Update the import statement
-import {BasicTextFields} from "./generic components/guestpagecomponents/logincomponents/textfields";
-import {Divider} from "./generic components/guestpagecomponents/divider";
-import {Forgot} from "./generic components/guestpagecomponents/logincomponents/forgot";
-import {NewMember} from "./generic components/guestpagecomponents/logincomponents/newmember";
-import {ContinueWithGoogleButton} from "./generic components/guestpagecomponents/googlelogin";
+import "../.././App.css";
+import { Heading } from "../.././generic components/guestpagecomponents/logincomponents/heading";
+import {UserAgreement} from "../.././generic components/guestpagecomponents/logincomponents/useragreement"; // Update the import statement
+import {BasicTextFields} from "../.././generic components/guestpagecomponents/logincomponents/textfields";
+import {Divider} from "../.././generic components/guestpagecomponents/divider";
+import {Forgot} from "../.././generic components/guestpagecomponents/logincomponents/forgot";
+import {NewMember} from "../.././generic components/guestpagecomponents/logincomponents/newmember";
+import {ContinueWithGoogleButton} from "../.././generic components/guestpagecomponents/googlelogin";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import {SignUpWithGoogleButton} from "./generic components/guestpagecomponents/signupcomponents/google";
-import LoginForm from "./generic components/guestpagecomponents/mergedtextfields";
+import {SignUpWithGoogleButton} from "../.././generic components/guestpagecomponents/signupcomponents/google";
+import LoginForm from "../.././generic components/guestpagecomponents/mergedtextfields";
 import { TextFields } from "@mui/icons-material";
-function App() {
+function Login() {
   return (
     <div className="wrap">
       <div className="wrap">
@@ -55,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export  {Login};
