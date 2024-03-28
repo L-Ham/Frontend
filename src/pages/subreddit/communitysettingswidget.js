@@ -14,8 +14,8 @@ export function CommunitySettingsWidget() {
                 <span>Community Appearance</span>
                 <Edit className='relative right-0 top-0'/>
             </div>
-            <button className={`rounded-3xl px-5 py-2 bg-[#0045ac]
-             text-[white] hover:bg-[#003584]`}>
+            <button className="rounded-3xl bg-[#0045ac] px-5 py-2
+             text-[white] hover:bg-[#003584]">
                 Edit Widgets
             </button>
         </SubredditWidget>

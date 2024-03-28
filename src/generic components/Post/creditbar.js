@@ -28,7 +28,9 @@ export function CreditBar({
                 className="hidden size-10 items-center justify-center rounded-full bg-[var(--btn-color-bg)]
                 px-2 text-[var(--btn-color-text)] hover:bg-[var(--btn-color-bg-hover)] md:inline-flex"
                 type="button"
-                onClick={history.back()}
+                onClick={(e) => {
+                    e.stopPropagation; history.back();
+                }}
                 data-testid={`back-${postId}`}
             >
                 <span className="flex items-center justify-center">

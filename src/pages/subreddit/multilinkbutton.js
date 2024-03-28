@@ -55,16 +55,17 @@ export function MultiLinkButton({data}) {
         <li
             key={text}
             onClick={handleClick}
-            className={`list-none flex flex-row items-center justify-center py-2 px-0 w-full 
-            cursor-pointer text-black bg-[#fee5b4] 
-            hover:bg-[#fede99]
-            text-sm mb-2 relative ${!isSingleOption ? '' : 'hover:underline'} rounded-full`}
+            className={isSingleOption ?
+                `relative mb-2 flex w-full cursor-pointer list-none flex-row items-center justify-center rounded-full
+                 bg-[#fee5b4] px-0 py-2 text-sm text-black hover:bg-[#fede99] hover:underline` :
+                `relative mb-2 flex w-full cursor-pointer list-none flex-row items-center justify-center 
+                rounded-full bg-[#fee5b4] px-0 py-2 text-sm text-black hover:bg-[#fede99]`}
         >
             {IconComponent ? IconComponent : null}
             <span className='hover:underline'>{text}</span>
             {!isSingleOption && <CaretDownIcon className='ml-1' />}
             <div>
-                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='-bottom-[70px] right-1/2'/>}
+                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='bottom-[70px] right-1/2'/>}
             </div>
         </li>
     );

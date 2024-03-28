@@ -12,13 +12,12 @@ import PropTypes from 'prop-types';
 export function DropdownMenu({
     menuItems,
     activeItem,
-    className,
+    // className, this cannot be done for order of classes should be maintained and this will override the classes
 },
 ) {
     return (
-        <div className={`absolute -bottom-20 right-0 z-20 flex flex-col overflow-hidden rounded-lg 
-        shadow-lg bg-[#fefaf2] 
-        ${className}`}>
+        <div className="absolute -bottom-20 right-0 z-20 flex flex-col overflow-hidden rounded-lg
+        bg-[#fefaf2] shadow-lg">
             {menuItems.map((item) => {
                 const {text, icon: IconComponent} = item.content;
                 const isActive = (activeItem && activeItem === text.toLowerCase());

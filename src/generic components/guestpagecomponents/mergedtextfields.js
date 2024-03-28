@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-
+import {useNavigate} from 'react-router-dom';
 const UsernameInputField = ({placeholder, id, showError, errorMessage, onChange}) => {
     const [isActive, setIsActive] = useState(false);
     const [isValid, setIsValid] = useState(false);
@@ -217,10 +217,10 @@ const LoginForm = () => {
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showPasswordError, setShowPasswordError] = useState(false);
     const [showInvalidCredentials, setShowInvalidCredentials] = useState(false);
-
+    const navigate = useNavigate();
     const handleLogin = () => {
         if (username === 'john' && password === '123') {
-            alert('Logging in');
+            navigate('/');
         } else {
             setShowInvalidCredentials(true);
             setShowUsernameError(true);

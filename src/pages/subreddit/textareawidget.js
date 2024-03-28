@@ -41,7 +41,8 @@ TextAreaWidget.propTypes = {
  * @return {string} The string with HTML entities replaced.
  */
 function replaceHtmlEntities(str) {
-    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
-        .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
-        .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
+    if (!str) return '';
+    return str?.replaceAll(/&lt;/g, '<')?.replaceAll(/&gt;/g, '>')?.
+        replaceAll(/&quot;/g, '"')?.replaceAll(/&nbsp;/g, ' ')?.
+        replaceAll(/&apos;/g, '\'')?.replaceAll(/&amp;/g, '&');
 }

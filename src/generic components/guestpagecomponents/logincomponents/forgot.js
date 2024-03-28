@@ -19,16 +19,14 @@ function Forgot() {
         >
       Forgot your{' '}
             <a
-                target="_blank"
-                href="https://www.reddit.com/username/"
+                href="/username"
                 style={{color: '#0079d3', fontWeight: '400'}} rel="noreferrer"
             >
         username
             </a>{' '}
       or{' '}
             <a
-                target="_blank"
-                href="https://www.reddit.com/password/"
+                href="/password"
                 style={{color: '#0079d3', fontWeight: '400'}} rel="noreferrer"
             >
         password

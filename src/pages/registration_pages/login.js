@@ -15,8 +15,8 @@ import LoginForm from "../.././generic components/guestpagecomponents/mergedtext
 import { TextFields } from "@mui/icons-material";
 function Login() {
   return (
-    <div className="wrap">
-      <div className="wrap">
+    <div className="fixed w-full h-full left-0 top-0">
+      <div className="fixed w-full h-full left-0 top-0">
         <div style={{  float: 'left', height: '100%', width: '10%'   }}>
           <img
             src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"

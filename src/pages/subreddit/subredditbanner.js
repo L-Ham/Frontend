@@ -215,7 +215,7 @@ export function SubredditBanner() {
                             onClick={handleNotificationClick}>
                             {<NotificationLevelIcon/>}
                             {isNotificationLevelsVisible &&
-                            <NotificationsDropdownMenu className='-bottom-[122px]' activeItem={activeNotificationLevel}
+                            <NotificationsDropdownMenu className='bottom-[122px]' activeItem={activeNotificationLevel}
                                 onItemClick={handleNotificationItemClick}/>}
                         </button>
                     )}

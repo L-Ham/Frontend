@@ -3,31 +3,8 @@ import PropTypes from 'prop-types';
 
 // Define the context
 const SubredditContext = createContext();
-
-const token = `eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnl`+
-`sV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxj`+
-`dWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZ`+
-`XhwIjoxNzExNTc5NjczLjk2ODg1OCwiaWF0IjoxNzExNDkzMjczLj`+
-`k2ODg1OCwianRpIjoiOGpJd1k2amd5bWMwZEs1OWpBMlU0SWFjUlp`+
-`EMEpnIiwiY2lkIjoiOXRMb0Ywc29wNVJKZ0EiLCJsaWQiOiJ0Ml90`+
-`enNoYTkwZTkiLCJhaWQiOiJ0Ml90enNoYTkwZTkiLCJsY2EiOjE3M`+
-`Dc2Nzk1MzUwNjMsInNjcCI6ImVKeGtrVkZ1OURBSWhPX2k1NXpndj`+
-`hxdnFuSnNzb3RxbXdod1ZudjdpdGhrSV9WdFlMNWdtUHdQTzJKWVF`+
-`zd0NHWFVvaHBqREVxQkdMTlpKaVhvekx6SGtqQ3BtRG5vckVUa3M0`+
-`WW1peE8td0JNelFGTlZrd1FOcWJQRUJZUW1WY3FLMjRlUFN5cmgySl`+
-`piUjhWR1ZjcUZKelEwcTVVWTZwNUEtd2JfWlNYUktnYklOcFJ5M0Rk`+
-`TW9YdmhqOTlXMzlQV3pfYzU0UklVS0l2RUIxcGszTS16RWRwakV3OTR`+
-`UNVo2ME0yVFJkemxKNldzOWI1ZS1TbUpjalR2R2V2YmFUTWJrSEpxZVV`+
-`mX2Q5WXZ4eEQzUHlfVGFnUm1yLTE2NjdWbTdmOVVPVk1yQVVZbWQtRF`+
-`FjdVhMNXRsOEM3ZHIwcjNIN3hBN2ZGYW5KRGI4MUhiVmNuRGoxTUw1`+
-`LUF3QUFfXzlWZTk3aiIsInJjaWQiOiItR2lqWTl5bEQ2YVlyejhqbG`+
-`pTd2ZRWlBTWU9vWHMxQVlQUkVUclJvR2ZVIiwiZmxvIjoyfQ.sDC_5`+
-`JT8HoIRTbYGG_9_5q_dgJSQKamlWpOQkHfq_1OAfMd_sbuBXEW3Vh1`+
-`vWWgcjpkkMCl84w3CxhNTRTgq-WKSy2kGLJ9hy3AWDRCV4fCVkXhIs`+
-`ccITCYzU4Dee0DGciYGLfWTp_RB8R13stNBUlBS5YnByITCU87K3-wV`+
-`1CaBp3suru7UTDiM6lOJqKdVsLm6iI2g6lt_n7lxvw_7FS0HLvo24T`+
-`e-4MuNlMDqC1OIZ62cmBnEP__oS7xHaWjkQ4UV85RM7A1oVCwiBwevm`+
-`fGUKYy5Mjl5G1ZPWgNbrhf6MyOP6mkAoWDHZnL7bGXINIr8cOpxVe-EpLukGYhzzw`;
+/* eslint-disable max-len */
+const token = `eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzExNzA4NDg1LjY5MzE1MywiaWF0IjoxNzExNjIyMDg1LjY5MzE1MywianRpIjoiak5RU2VHZ1l6dWktY3dzbzkta2QzNVRLLXJkMHB3IiwiY2lkIjoiOXRMb0Ywc29wNVJKZ0EiLCJsaWQiOiJ0Ml9uY2Q1eCIsImFpZCI6InQyX25jZDV4IiwibGNhIjoxNDMxMDIyOTQ3OTk3LCJzY3AiOiJlSnhra2RHT3REQUloZC1sMXo3Ql95cF9OaHRzY1lhc0xRYW9rM243RFZvY2s3MDdjTDRpSFA4bktJcUZMRTJ1QktHa0tXRUZXdE9VTmlMdjU4eTlPWkVGU3lGVFI4NDN5d29rYVVwUFVtTjVweWxSd1daa0xsZmFzVUtEQjZZcFZTNloyMEtQUzV2UTNJMUZ6MDZNcWx4V0h0VFlvM0pwYkdNSzJ4UGp6Y1pxUXlxdXk2bE1ZRmtvbjhXTGZ2eUctdFktZjdiZmhIWXdyS2dLRF9UT3VGeHdZX0hERkhiX25wcjBiRjJ3cUwzWGc5US0xLU4yN2JObW9kbTVfVnpQdnphU2NUbUc1aWZZdjd0LUNSMTQ1SG1aVVFjd1lnMF95ckFqNl9Ddk9vREtCUVdNSlloUEk1QXJsMl9fSmRpdVRmOGF0eWQtLUdiRVRXXzRyUm1vNXhMRW9VX2o2emNBQVBfX1hEX2U0dyIsInJjaWQiOiI0NXVHaDRTVjdQZGRsanlTc0dXcmZWamZwMVhkQ2lJN3BQU2FmZVIxN2t3IiwiZmxvIjoyfQ.i7eVim73CWgcXg3vX9Zew5NpfWLNQRTFIVMlfyBPMmHTTi6CgOF_jb6ZLWtpayYhWw6DSDJVOeNbNu2VrcsW4mu5iaydBk20waVkGNj333Uhg9R8xYKafnKSlaERPSEwT6ABvZE9_Da9s2lDPfpsGWiVlt19XmWUhXmmVqSTWSIaouTZusq8ucyrHM0IqyIeG_3ORLtRR3_1BHrSc2X_-4XGcsuIGmvTwo5fKNEgQrFMVxs1a-c3maQPxrCfL8h1mbEJNjpQVafQTER0VllMK_o-fPE7F-twfw9wu7DZFDi0DkNJfDXCqaJcbFeGgjZ926oTBqeyW-tUdmjmKZ7YOw`;
 
 
 const userAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 `+
@@ -44,11 +21,11 @@ export function useSubreddit() {
  * Subreddit provider component.
  * @param {Object} props - The props object.
  * @param {JSX.Element} props.children - The children to render.
+ * @param {string} props.name - The name of the subreddit.
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditProvider({children}) {
+export function SubredditProvider({children, name}) {
     // const name = 'help';
-    const name = 'OnePiece';
     // const name = 'ChatGPT';
     const [loading, setLoading] = useState(true);
     const [about, setAbout] = useState(null);
@@ -89,6 +66,7 @@ export function SubredditProvider({children}) {
 
 SubredditProvider.propTypes = {
     children: PropTypes.node.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
 

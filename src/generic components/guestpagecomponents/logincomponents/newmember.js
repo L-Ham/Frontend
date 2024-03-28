@@ -20,8 +20,7 @@ function NewMember() {
         >
       New to Reddit?{' '}
             <a
-                target="_blank"
-                href="https://www.reddit.com/account/register/"
+                href="/register"
                 style={{color: '#0088de', fontWeight: '700', fontSize: '12px'}} rel="noreferrer"
             >
         SIGN UP

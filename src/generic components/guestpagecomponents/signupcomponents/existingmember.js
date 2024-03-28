@@ -19,8 +19,7 @@ function ExistingMember() {
         >
       Already a redditor?{' '}
             <a
-                target="_blank"
-                href="https://www.reddit.com/account/register/"
+                href="/login"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
         LOG IN

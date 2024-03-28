@@ -18,8 +18,8 @@ export function Rule({data, display}) {
 
     if (! data) return null;
 
-    const descriptionHtmlStyled = descriptionHtml.
-        replaceAll('&lt;li&gt;', '&lt;li style=\'margin-bottom: 10px; list-style: disc;\'&gt;');
+    const descriptionHtmlStyled = descriptionHtml?.
+        replaceAll(/&lt;li&gt;/g, '&lt;li style=\'margin-bottom: 10px; list-style: disc;\'&gt;');
 
     const description = parse(replaceHtmlEntities(descriptionHtmlStyled));
 
@@ -44,8 +44,9 @@ export function Rule({data, display}) {
                     className={`${!isDescriptionHidden ? 'rotate-180' : 'rotate-0'}
                      transition-transform duration-300 ease-in-out`} />
             </div>
-            <div className={`transition-[max-height] duration-300 ease-in-out overflow-hidden 
-            ${isDescriptionHidden ? 'max-h-0' : 'max-h-full'}`}>
+            <div className={isDescriptionHidden ?
+                `max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out` :
+                `max-h-full overflow-hidden transition-[max-height] duration-300 ease-in-out`}>
                 <ul className={`shrink-0 pl-12`}>
                     {description}
                 </ul>
@@ -65,7 +66,8 @@ Rule.propTypes = {
  * @return {string} The string with HTML entities replaced.
  */
 function replaceHtmlEntities(str) {
-    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
+    if (!str) return '';
+    return str?.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
         .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
         .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
 }
