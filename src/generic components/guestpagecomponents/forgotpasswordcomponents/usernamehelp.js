@@ -30,15 +30,13 @@ function UserHelp() {
             <br />
             <div style={{marginBottom: '3px'}} />{' '}
             <a
-                target="_blank"
-                href="https://accounts.reddit.com/account/login/"
+                href="/login"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
         LOG IN.{' '}
             </a>
             <a
-                target="_blank"
-                href="https://accounts.reddit.com/account/register/"
+                href="/register"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
                 {' '}

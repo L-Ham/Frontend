@@ -1,12 +1,12 @@
-@import "tailwindcss/base";
+/* @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss/utilities"; */
 
 .banner{
     @apply flex w-full flex-col h-[180px] relative items-center min-[1120px]:rounded-lg max-[1120px]:m-0 mb-5;
 }
 
-.banner button{
+.banner > button{
     @apply ml-2 text-sm flex cursor-pointer flex-row items-center whitespace-nowrap rounded-3xl border-2 px-3 py-2 outline-none;
 }
 

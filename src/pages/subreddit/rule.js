@@ -18,8 +18,8 @@ export function Rule({data, display}) {
 
     if (! data) return null;
 
-    const descriptionHtmlStyled = descriptionHtml.
-        replaceAll('&lt;li&gt;', '&lt;li style=\'margin-bottom: 10px; list-style: disc;\'&gt;');
+    const descriptionHtmlStyled = descriptionHtml?.
+        replaceAll(/&lt;li&gt;/g, '&lt;li style=\'margin-bottom: 10px; list-style: disc;\'&gt;');
 
     const description = parse(replaceHtmlEntities(descriptionHtmlStyled));
 
@@ -65,7 +65,8 @@ Rule.propTypes = {
  * @return {string} The string with HTML entities replaced.
  */
 function replaceHtmlEntities(str) {
-    return str.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
+    if (!str) return '';
+    return str?.replaceAll(/&lt;/g, '<').replaceAll(/&gt;/g, '>')
         .replaceAll(/&quot;/g, '"').replaceAll(/&nbsp;/g, ' ')
         .replaceAll(/&apos;/g, '\'').replaceAll(/&amp;/g, '&');
 }

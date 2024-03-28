@@ -64,7 +64,7 @@ export function MultiLinkButton({data}) {
             <span className='hover:underline'>{text}</span>
             {!isSingleOption && <CaretDownIcon className='ml-1' />}
             <div>
-                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='-bottom-[70px] right-1/2'/>}
+                {isOptionsVisible && <DropdownMenu menuItems={menuItems} className='bottom-[70px] right-1/2'/>}
             </div>
         </li>
     );

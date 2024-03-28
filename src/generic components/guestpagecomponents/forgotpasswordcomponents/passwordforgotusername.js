@@ -17,8 +17,7 @@ function ForgotUsername() {
             }}
         >
             <a
-                target="_blank"
-                href="https://accounts.reddit.com/username"
+                href="/username"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
     FORGOT USERNAME?

@@ -21,7 +21,7 @@ function LayoutWithNavigation(props) {
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] nd:visible'>
                     <AppBar />
                 </div>
-                <div className='m:grid-cols-[272px_1fr] grid grid-cols-1'>
+                <div className='grid grid-cols-[272px_1fr]'>
                     <div id='sidebar-container' className='isolate order-first hidden nd:block'>
                         <SideBar visible={true} />
                     </div>
