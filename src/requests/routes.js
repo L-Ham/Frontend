@@ -4,8 +4,7 @@ const API_ROUTES = {
     USER_INFO: (username) => `/users/${username}/about`,
     CAST_VOTE: '/api/vote',
     */
-    getUser: (id) => `/users/${id}`,
-    getUserAbout: (username) => `/user/${username}/about`,
+    login: '/auth/login',
     // Add more routes as needed
 };
 

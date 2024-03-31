@@ -1,37 +1,13 @@
 import React from 'react';
-import {Login} from './pages/registration_pages/login.js';
-import {SignUp} from './pages/registration_pages/signup.js';
-import {ForgotPassword} from './pages/registration_pages/forgotpassword.js';
-import {ForgotUsername} from './pages/registration_pages/forgotusername.js';
-import {Post} from './generic components/Post/post.js';
-import {BasicTabs} from './pages/Settings/main components/customtabpanel.js';
-import {BrowserRouter as Router, Routes, Route, useParams} from 'react-router-dom';
-import {Subreddit} from './pages/subreddit/subreddit.js';
-import {SubredditProvider} from './pages/subreddit/subredditcontext.js';
-import {HomePage} from './pages/HomePage/homepage.js';
-import {LayoutWithNavigation} from './generic components/layoutwithnavigation.js';
-
-/**
- * Renders a route for displaying a post based on the provided ID.
- * @return {JSX.Element} The rendered Post component.
- */
-function PostRoute() {
-    const {id} = useParams();
-    return <Post postId={id} viewContext='AggregateFeed' />;
-}
-
-/**
- * Renders a route for a specific subreddit.
- * @return {JSX.Element} The rendered SubredditRoute component.
- */
-function SubredditRoute() {
-    const {name} = useParams();
-    return (
-        <SubredditProvider name={name}>
-            <Subreddit />
-        </SubredditProvider>
-    );
-}
+import {Login} from '../pages/registration_pages/login.js';
+import {SignUp} from '../pages/registration_pages/signup.js';
+import {ForgotPassword} from '../pages/registration_pages/forgotpassword.js';
+import {ForgotUsername} from '../pages/registration_pages/forgotusername.js';
+import {BasicTabs} from '../pages/Settings/main components/customtabpanel.js';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {HomePage} from '../pages/HomePage/homepage.js';
+import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
+import {PostRoute, SubredditRoute} from './pageRoutes.js';
 
 /**
  * Renders the main application component.
