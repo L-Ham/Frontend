@@ -1,7 +1,6 @@
 /*eslint-disable*/
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import "../.././App.css";
 import { Heading } from "../.././generic components/guestpagecomponents/logincomponents/heading";
 import {UserAgreement} from "../.././generic components/guestpagecomponents/logincomponents/useragreement"; // Update the import statement
 import {BasicTextFields} from "../.././generic components/guestpagecomponents/logincomponents/textfields";
@@ -14,14 +13,18 @@ import {SignUpWithGoogleButton} from "../.././generic components/guestpagecompon
 import LoginForm from "../.././generic components/guestpagecomponents/mergedtextfields";
 import { TextFields } from "@mui/icons-material";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const user = useSelector((state) => state.user);
-  if(user.token) {
-    return <Redirect to="/" />
-  }
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
   return (
-    <div className="wrap">
-      <div className="wrap">
+    <div className="fixed w-full h-full left-0 top-0">
+      <div className="fixed w-full h-full left-0 top-0">
         <div style={{  float: 'left', height: '100%', width: '10%'   }}>
           <img
             src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
