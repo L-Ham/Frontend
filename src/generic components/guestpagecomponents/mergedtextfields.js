@@ -1,7 +1,12 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-import {useNavigate} from 'react-router-dom';
+import {axiosInstance as axios} from '../../requests/axios.js';
+import {API_ROUTES} from '../../requests/routes.js';
+import {useDispatch} from 'react-redux';
+import {login} from '../../store/userSlice.js';
+
+
 const UsernameInputField = ({placeholder, id, showError, errorMessage, onChange}) => {
     const [isActive, setIsActive] = useState(false);
     const [isValid, setIsValid] = useState(false);
@@ -217,16 +222,28 @@ const LoginForm = () => {
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showPasswordError, setShowPasswordError] = useState(false);
     const [showInvalidCredentials, setShowInvalidCredentials] = useState(false);
-    const navigate = useNavigate();
-    const handleLogin = () => {
-        if (username === 'john' && password === '123') {
-            navigate('/');
-        } else {
+    const dispatch = useDispatch();
+
+    /**
+     * Handles the login process
+     */
+    async function handleLogin() {
+        try {
+            const response = await axios.post(API_ROUTES.login, {
+                userName: username,
+                password: password,
+            });
+            console.log(response);
+            if (response.data.token) {
+                dispatch(login({token: response.data.token}));
+            }
+        } catch (e) {
+            console.log(e);
             setShowInvalidCredentials(true);
             setShowUsernameError(true);
             setShowPasswordError(true);
         }
-    };
+    }
 
     const handleUsernameChange = (value) => {
         setUsername(value);

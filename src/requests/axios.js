@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // Setup a base URL
-const BASE_URL = 'http://localhost:3000';
-// const BASE_URL = 'http://reddit-bylham.com/';
+// const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://reddit-bylham.me/api';
 
 // Create an Axios instance with the base URL and any other default configurations
 const axiosInstance = axios.create({

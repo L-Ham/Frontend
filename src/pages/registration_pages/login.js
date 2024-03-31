@@ -13,10 +13,15 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import {SignUpWithGoogleButton} from "../.././generic components/guestpagecomponents/signupcomponents/google";
 import LoginForm from "../.././generic components/guestpagecomponents/mergedtextfields";
 import { TextFields } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 function Login() {
+  const user = useSelector((state) => state.user);
+  if(user.token) {
+    return <Redirect to="/" />
+  }
   return (
-    <div className="fixed w-full h-full left-0 top-0">
-      <div className="fixed w-full h-full left-0 top-0">
+    <div className="wrap">
+      <div className="wrap">
         <div style={{  float: 'left', height: '100%', width: '10%'   }}>
           <img
             src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
