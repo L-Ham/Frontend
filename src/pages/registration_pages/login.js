@@ -18,7 +18,7 @@ function Login() {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
+    if (user.token) {
       navigate("/");
     }
   }, [user, navigate]);
