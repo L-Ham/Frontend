@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as SearchIcon} from '../../../assets/images/search-icon.svg';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import PropTypes from 'prop-types';
 
 /**
@@ -26,7 +26,7 @@ function SearchBar({isSearchDropdownVisible = false}) {
                     <div className='flex px-4'>
 
                         <span id='SearchIcon' className='mr-2 inline-flex items-center'>
-                            <SearchIcon />
+                            {getIconComponent('search', false)}
                         </span>
                         {/* <form id='SearchForm' className='flex w-full items-center gap-2'> */}
                         <span id='SearchInputContainer' className='flex w-full items-center'>

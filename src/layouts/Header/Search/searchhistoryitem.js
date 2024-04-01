@@ -1,6 +1,5 @@
 import React from 'react';
-import {ReactComponent as HistoryIcon} from '../../../assets/images/history-icon.svg';
-import {ReactComponent as RemoveIcon} from '../../../assets/images/remove-icon.svg';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import PropTypes from 'prop-types';
 
 /**
@@ -28,7 +27,7 @@ function SearchHistoryItem({subredditIconURL = '', label = 'test', link = '/test
                         {
                             subredditIconURL ?
                                 <img src={subredditIconURL} alt="Icon for r/" className="size-4 rounded-full" /> :
-                                <HistoryIcon />
+                                getIconComponent('search', false)
                         }
                     </span>
                 </span>
@@ -50,7 +49,7 @@ function SearchHistoryItem({subredditIconURL = '', label = 'test', link = '/test
                     onClick={(e) => e.stopPropagation()} >
                         <span className="flex items-center justify-center">
                             <span className="flex">
-                                <RemoveIcon />
+                                {getIconComponent('remove', false)}
                             </span>
                         </span>
                     </button>

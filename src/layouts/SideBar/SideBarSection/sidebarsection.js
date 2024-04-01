@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import {SideBarSectionItem} from './sidebarsectionitem';
-import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
+// import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import PropTypes from 'prop-types';
 
 /**
@@ -40,7 +41,7 @@ function SideBarSection({tabs, collapsible = false, sectionName = ''}) {
                     <span className='flex shrink-0 items-center'>
                         <span className={`flex h-6 items-center justify-center ${isOpen ? 'rotate-0' : '-rotate-180'} 
                                 transition-transform duration-300 ease-in-out`}>
-                            <KeyboardArrowUpRoundedIcon height={20} width={20}/>
+                            {getIconComponent('arrow-up', false)}
                         </span>
                     </span>
                 </div>

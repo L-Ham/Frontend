@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppBar} from '../layouts/Header/appbar';
-import {SideBar} from '../layouts/SideBar/sidebar';
+import {SideBar} from '../layouts/SideBar/sidebar.js';
 import PropTypes from 'prop-types';
 
 /**

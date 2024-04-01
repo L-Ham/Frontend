@@ -1,7 +1,7 @@
 import React from 'react';
 import {SearchHistoryItem} from './searchhistoryitem';
 import {SearchTrendingItem} from './searchtrendingitem';
-import {ReactComponent as SearchTrendingIcon} from '../../../assets/images/trending-icon.svg';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import PropTypes from 'prop-types';
 
 /**
@@ -41,7 +41,7 @@ function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = 
 
 
             <div className="mb-1 ml-4 mt-3 flex items-center text-[#576f76]">
-                <SearchTrendingIcon />
+                {getIconComponent('trending', false)}
                                     TRENDING TODAY
             </div>
 

@@ -1,11 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {ReactComponent as RedditLogo} from '../../assets/images/reddit-logo.svg';
-import {ReactComponent as RedditName} from '../../assets/images/reddit-name.svg';
-import {ReactComponent as AddvertiseIcon} from '../../assets/images/advertise-icon.svg';
-import {ReactComponent as ChatIcon} from '../../assets/images/chat-icon.svg';
-import {ReactComponent as InboxIcon} from '../../assets/images/inbox-icon.svg';
-import {ReactComponent as CreatePostIcon} from '../../assets/images/create-icon.svg';
-import {ReactComponent as HambugerMenuIcon} from '../../assets/images/hamburger-menu-icon.svg';
+import {getIconComponent} from '../../generic components/iconsmap';
 import {SearchDropDown} from './Search/searchdropdown';
 import {ProfileMenu} from './UserMenu/profilemenu';
 import {SearchBar} from './Search/searchbar';
@@ -21,6 +15,13 @@ import './appbar.css';
 function AppBar() {
     const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false);
     const searchBarRef = useRef();
+    const MenuIcon = getIconComponent('menu', false);
+    const RedditLogo = getIconComponent('reddit-logo', false);
+    const RedditName = getIconComponent('reddit-name', false);
+    const AddvertiseIcon = getIconComponent('advertise', false);
+    const ChatIcon = getIconComponent('chat', false);
+    const CreatePostIcon = getIconComponent('create-post', false);
+    const InboxIcon = getIconComponent('inbox', false);
 
     useEffect(() => {
         const closeDropdown = (e) => {
@@ -81,7 +82,7 @@ function AppBar() {
                      nd:hidden " id="navbar-menu-button" type="button">
                         <span className="flex items-center justify-center">
                             <span className="flex">
-                                <HambugerMenuIcon />
+                                <MenuIcon />
                             </span>
 
                         </span>
@@ -89,9 +90,10 @@ function AppBar() {
 
                     <a href='/' className='flex items-center'>
                         <span className='flex items-center pr-0 s:pr-2'>
-                            <RedditLogo />
+                            <RedditLogo/>
                         </span>
                         <span >
+                            {/* <RedditName className='h-[22px]' style={{color: '#ff4500'}} /> */}
                             <RedditName className='h-[22px]' style={{color: '#ff4500'}} />
                         </span>
                     </a>

@@ -2,11 +2,6 @@
 import {React, useState} from 'react';
 // import PropTypes from 'prop-types';
 import './sidebar.css';
-// import {ReactComponent as Home} from '../../assets/images/home-icon.svg';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import HomeIcon from '@mui/icons-material/Home';
-import {ReactComponent as Popular} from '../../assets/images/popular-icon.svg';
-import {ReactComponent as All} from '../../assets/images/all-icon.svg';
 import {SideBarSection} from './SideBarSection/sidebarsection';
 
 
@@ -21,17 +16,17 @@ import {SideBarSection} from './SideBarSection/sidebarsection';
 function SideBar() {
     const tabs = [
         {
-            icon: <HomeOutlinedIcon />,
+            icon: 'home',
             label: 'Home',
             link: '/',
         },
         {
-            icon: <Popular />,
+            icon: 'popular',
             label: 'Popular',
             link: '/popular',
         },
         {
-            icon: <All />,
+            icon: 'all',
             label: 'All',
             link: '/all',
         },

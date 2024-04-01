@@ -1,4 +1,5 @@
 import React from 'react';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import PropTypes from 'prop-types';
 
 /**
@@ -13,6 +14,7 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The sidebar section summary/header component
  */
 function SideBarSectionItem({icon, label, link}) {
+    const Icon = getIconComponent(icon, false);
     return (
 
         <a href={link} className='relative flex h-[40px] w-[228px] cursor-pointer
@@ -22,7 +24,7 @@ function SideBarSectionItem({icon, label, link}) {
             <span className='flex min-w-0 shrink items-center gap-2'>
                 <span className='flex size-8 shrink-0 items-center justify-center
                                     text-xl leading-4'>
-                    {icon}
+                    <Icon/>
                 </span>
                 <span className='text-black'>{label}</span>
             </span>

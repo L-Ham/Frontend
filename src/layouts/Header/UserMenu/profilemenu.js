@@ -2,7 +2,7 @@
 import {React, useState, useRef, useEffect} from 'react';
 import {ProfileIcon} from './profileicon';
 import {UserDrawerElement} from './userdrawerelement';
-import {ReactComponent as DarkModeIcon} from '../../../assets/images/dark-mode-icon.svg';
+import {getIconComponent} from '../../../generic components/iconsmap';
 import {CustomSwitch} from './switch';
 import '../appbar.css';
 
@@ -77,7 +77,7 @@ function ProfileMenu() {
                     <li className='relative mt-0 list-none'>
                         <UserDrawerElement
                             primaryText='Dark Mode'
-                            icon={<DarkModeIcon/>}
+                            icon={getIconComponent('night', false)}
                         />
                     </li>
                 </ul>
