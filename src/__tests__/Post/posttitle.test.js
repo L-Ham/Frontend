@@ -22,6 +22,6 @@ describe('PostTitle', () => {
         render(<PostTitle postId={postId} title={title} isCommentsPage={false} />);
 
         expect(screen.getByTestId(`title-${postId}`)).toHaveTextContent(title);
-        expect(screen.getByTestId(`title-${postId}`)).toHaveClass(titleClasses.div);
+        expect(screen.getByTestId(`title-${postId}`)).toHaveClass(titleClasses.a);
     });
 });
