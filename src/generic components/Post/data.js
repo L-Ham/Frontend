@@ -8,8 +8,7 @@ export const DATA = {
         author: 'Fit-Courage3123',
         title: 'Recruiter breaks down 3000+ Applications received on a single job posting',
         postType: 'text',
-        permalink: '/r/csMajors/comments/1bk6nvn/is_it_hard_to_land_a_first_internship_or/',
-        contentHref: 'https://www.reddit.com/r/csMajors/comments/1bk6nvn/is_it_hard_to_land_a_first_internship_or/',
+        permalink: 'r/csMajors/comments/1bmnuhw/recruiter_breaks_down_3000_applications_received/',
         created: 1711295258.0,
         selftext_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This topic comes up frequently` +
         ` on this sub. This is the reality of those huge numbers of applications you see on online` +
@@ -48,6 +47,13 @@ export const DATA = {
         banner_background_image: `https://styles.redditmedia.com/t5_2sokd/styles/bannerBackgroundImag` +
         `e_at8s941lsun31.png`,
         user_is_subscriber: false,
+        public_description_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All about studying and 
+        students of computer science.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
+        public_description: 'All about studying and students of computer science.',
+        membersCount: 242395,
+        membersName: 'Members',
+        onlineCount: 303,
+        onlineName: 'Online',
     },
 };
 
