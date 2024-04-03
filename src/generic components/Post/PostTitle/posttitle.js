@@ -19,9 +19,9 @@ export function PostTitle({
                 <h1 className={titleClasses.h1} data-testid={`title-${postId}`}>
                     {title}
                 </h1> :
-                <div className={titleClasses.div} data-testid={`title-${postId}`}>
+                <a className={titleClasses.a} data-testid={`title-${postId}`}>
                     {title}
-                </div>
+                </a>
             }
         </>
     );

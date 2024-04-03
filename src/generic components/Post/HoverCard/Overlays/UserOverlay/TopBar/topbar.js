@@ -24,7 +24,7 @@ export function TopBar({
         <div className={topbarClasses.root} data-testid={`topbar-user-${name}`}>
             <div className={topbarClasses.avatarWrapper}>
                 <img
-                    src={avatar || '../../../../../../assets/images/avatar_default_0.png'}
+                    src={avatar || require('../../../../../../assets/images/avatar_default_0.png')}
                     alt={namePrefixed + ' avatar'}
                     className={topbarClasses.avatar}
                     data-testid={`topbar-user-avatar-${name}`}

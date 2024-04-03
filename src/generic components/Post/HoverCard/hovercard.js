@@ -31,9 +31,15 @@ export function HoverCard({
     } = useHoverCard({fullName, postId, viewContext});
     return (
         <>
-            <div className={hoverCardClasses.root} data-testid={`hovercard-${postId}-${fullName}`}>
+            <div
+                className={hoverCardClasses.root}
+                style={hoverCardStyles.root}
+                data-testid={`hovercard-${postId}-${fullName}`}
+                onMouseEnter={handlePopoverOpen}
+                onMouseLeave={handlePopoverClose}
+            >
                 {viewContext !== VIEW_CONTEXTS.COMMENTS_PAGE &&
-                <div className={hoverCardStyles.icon}>
+                <div className={hoverCardClasses.icon}>
                     {icon ||
                     <DefaultSubredditIcon
                         viewBox="0 0 20 20"
@@ -42,14 +48,7 @@ export function HoverCard({
                         fill="currentColor"
                     />}
                 </div>}
-                <div
-                    className={hoverCardClasses.name}
-                    style={hoverCardStyles.name}
-                    onMouseEnter={handlePopoverOpen}
-                    onMouseLeave={handlePopoverClose}
-                >
-                    {prefixedName}
-                </div>
+                {prefixedName}
             </div>
             <div className={hoverCardClasses.overlay}>
                 {overlayOpen && (isUser ?

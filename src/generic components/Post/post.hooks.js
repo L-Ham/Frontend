@@ -6,7 +6,7 @@ export const usePost = ({postId, viewContext}) => {
     // postTypes: gallery, text, image, link, video, multiMedia
     // viewType: cardView, compactView
     const isCommentsPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE;
-    const classNames = `${postClasses.root} ${isCommentsPage ? postClasses.rootC : ''}`;
+    const classNames = `${postClasses.root} ${isCommentsPage ? '' : postClasses.rootC}`;
 
     return {
         title,

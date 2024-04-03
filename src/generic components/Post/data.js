@@ -6,39 +6,50 @@ export const DATA = {
         subreddit_name_prefixed: 'r/csMajors',
         author_fullname: 't2_bll4twvt',
         author: 'Fit-Courage3123',
-        title: 'Recruiter breaks down 3000+ Applications received on a single job posting',
+        title: 'Struggling to get a job has impacted all my relationships',
         postType: 'text',
-        permalink: 'r/csMajors/comments/1bmnuhw/recruiter_breaks_down_3000_applications_received/',
-        created: 1711295258.0,
-        selftext_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;This topic comes up frequently` +
-        ` on this sub. This is the reality of those huge numbers of applications you see on online` +
-        ` job postings. This recruiter&amp;#39;s experience matches my own when hiring in the past couple ` +
-        `of years, and it&amp;#39;s getting worse. If you see 1000+ other applicants, that doesn&amp;#39;t` +
-        ` mean you are actually competing with 1000+ applicants. Those numbers mean almost nothing` +
-        ` in 2024.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href="https://preview.redd.it/851cmh7lyaqc1.png?width` +
-        `=534&amp;amp;format=png&amp;amp;auto=webp&amp;amp;s=d66b12b53a50acef9193d73419be4c84673acf50"` +
-        `&gt;https://preview.redd.it/851cmh7lyaqc1.png?width=534&amp;amp;format=png&amp;amp;auto=webp&amp;a` +
-        `mp;s=d66b12b53a50acef9193d73419be4c84673acf50&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
-        selftext: `This topic comes up frequently on this sub. This is the reality of those huge numbers of appl` +
-        `ications you see on online job postings. This recruiter's experience matches my own when hiring in ` +
-        `the past couple of years, and it's getting worse. If you see 1000+ other applicants, that doesn't m` +
-        `ean you are actually competing with 1000+ applicants. Those numbers mean almost nothing in 2024.\n\n` +
-        `https://preview.redd.it/851cmh7lyaqc1.png?width=534&amp;format=png&amp;auto=webp&amp;s=d66b12b53a50` +
-        `acef9193d73419be4c84673acf50`,
-        commentCount: 6,
-        score: 1573,
+        permalink: '/r/csMajors/comments/1bugpq6/struggling_to_get_a_job_has_impacted_all_my/',
+        created: 1712109452.0,
+        selftext_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am a 21 yo girl who` +
+        ` is studying CS in EU and have been struggling to find an internship for more than a yea` +
+        `r now. And that has affected me and the people around me so much. &lt;/p&gt;\n\n&lt;p&gt` +
+        `;I am at a very bad place right now. I am only getting up to study for my exams and go t` +
+        `o classes because, I know I would be majorly fucked up if I didn’t and I do have dreams ` +
+        `and hope for my master. &lt;/p&gt;\n\n&lt;p&gt;I do apply to a few jobs everyday, email ` +
+        `people, but have gotten 2 interviews so far and have been rejected. I don’t know what to` +
+        ` do, how to improve myself. I am so lost. Everyone at Uni is moving forward, I don’t kno` +
+        `w how, they’re the people I hang out with at uni, they just don’t tell me things. &lt;/p` +
+        `&gt;\n\n&lt;p&gt;I have a good GPA, it’s almost straight As. That doesn’t help, there’s ` +
+        `always better candidates and profiles. I have been ignored, ghosted, rejected for a year` +
+        `. Still continuing to do so. I have applied to tech roles and research roles yet nothing` +
+        `. &lt;/p&gt;\n\n&lt;p&gt;I stopped my contact with my family back home, they don’t under` +
+        `stand. Every time we talk, they tell me that it will be fine, or I should have stayed ba` +
+        `ck home, or joke about it. It is so draining. I am not okay. &lt;/p&gt;\n\n&lt;p&gt;My o` +
+        `lder sister who was also a CS major, and has a job and lives in a more stable EU country` +
+        ` has totally turned her back on me. It has been 4 months since we talked. And whenever I` +
+        ` text, she’s super formal, almost like a stranger. &lt;/p&gt;\n\n&lt;p&gt;I don’t have a` +
+        `ny really friends, people that I know outside unis are privileged people (not in cs). I ` +
+        `can’t keep hearing about their love affairs when I am mentally and financially strugglin` +
+        `g and don’t know who to talk with or go to. &lt;/p&gt;\n\n&lt;p&gt;I was such a great an` +
+        `d ambitious kid. I don’t know why I turned into such a waste. I feel pathetic. I am so b` +
+        `roken. I failed myself. I don’t know where to go. My time management sucks. Honestly I d` +
+        `on’t know what to do.&lt;/p&gt;\n\n&lt;p&gt;I grew up poor, I must escape the loop. I am` +
+        ` scared. &lt;/p&gt;\n\n&lt;p&gt;I have even gone to a few places near my accommodation t` +
+        `o ask for a normal job. They’re not hiring. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
+        commentCount: 96,
+        score: 598,
     },
     t2_bll4twvt: {
         id: 'bll4twvt',
-        name: 'roguethrowaway0999',
-        display_name_prefixed: 'u/roguethrowaway0999',
-        snoovatar_img: 'https://i.redd.it/snoovatar/avatars/6121c00e-73cd-4315-bd28-cb7d73d53e38.png',
+        name: 'DiscordBotStudio',
+        display_name_prefixed: 'u/DiscordBotStudio',
+        // snoovatar_img: 'https://i.redd.it/snoovatar/avatars/6121c00e-73cd-4315-bd28-cb7d73d53e38.png',
         snoovatar_size: [380, 600],
-        public_description: 'No one has as many friends as the many with many cheeses!',
-        comment_karma: 10728,
+        public_description: 'Creator of DiscordBotStudio.org and Loopliz.com',
+        comment_karma: 21,
         created: 1632450514.0,
         total_karma: 6,
-        link_karma: 12,
+        link_karma: 171,
         is_friend: false,
     },
     t5_33vsv: {

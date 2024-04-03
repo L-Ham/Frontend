@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {textStyles} from './posttext.styles.js';
 import {usePostText} from './posttext.hooks.js';
+import './md.css';
 /**
  * PostText component
  * @param {string} postId

@@ -55,12 +55,12 @@ export function UserOverlay({
                     namePrefixed={namePrefixed}
                     created={created}
                 />
-                <div className={overlayClasses.description}
+                {publicDescription && <div className={overlayClasses.description}
                     style={overlayStyles.description}
                     data-testid={`user-overlay-description-${userId}`}
                 >
                     {publicDescription}
-                </div>
+                </div>}
                 <Stats
                     authorId={userId}
                     linkKarma={linkKarma}
