@@ -7,7 +7,7 @@ import {CreditBar} from '../../../generic components/Post/CreditBar/creditbar.js
 import {creditBarClasses} from '../../../generic components/Post/CreditBar/creditbar.styles.js';
 import {describe, it, expect} from '@jest/globals';
 import {VIEW_CONTEXTS} from '../../../generic components/Post/data.js';
-
+import {BrowserRouter as Router} from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import ru from 'javascript-time-ago/locale/ru';
@@ -19,7 +19,7 @@ describe('CreditBar', () => {
 
     it('should render the CreditBar component [COMMENTS]', () => {
         const viewContext = VIEW_CONTEXTS.COMMENTS_PAGE;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const creditBar = screen.getByTestId(`creditbar-${postId}`);
         expect(creditBar).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe('CreditBar', () => {
 
     it('should render the CreditBar component [AGGREGATE FEED]', () => {
         const viewContext = VIEW_CONTEXTS.AGGREGATE_FEED;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const creditBar = screen.getByTestId(`creditbar-${postId}`);
         expect(creditBar).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('CreditBar', () => {
 
     it('should render the BackButton component [COMMENTS]', () => {
         const viewContext = VIEW_CONTEXTS.COMMENTS_PAGE;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const backButton = screen.getByTestId(`back-${postId}`);
         expect(backButton).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('CreditBar', () => {
 
     it('shouldn\'t render the BackButton component [AGGREGATE FEED]', () => {
         const viewContext = VIEW_CONTEXTS.AGGREGATE_FEED;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const backButton = screen.queryByTestId(`back-${postId}`);
         expect(backButton).not.toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('CreditBar', () => {
 
     it('should render the MetadataCard component [COMMENTS]', () => {
         const viewContext = VIEW_CONTEXTS.COMMENTS_PAGE;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const metadataCard = screen.getByTestId(`metadatacard-${postId}`);
         expect(metadataCard).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe('CreditBar', () => {
 
     it('should render the MetadataCard component [AGGREGATE FEED]', () => {
         const viewContext = VIEW_CONTEXTS.AGGREGATE_FEED;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const metadataCard = screen.getByTestId(`metadatacard-${postId}`);
         expect(metadataCard).toBeInTheDocument();
@@ -67,7 +67,7 @@ describe('CreditBar', () => {
 
     it('should render the MetadataCard component', () => {
         const viewContext = VIEW_CONTEXTS.COMMENTS_PAGE;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const metadataCard = screen.getByTestId(`metadatacard-${postId}`);
         expect(metadataCard).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe('CreditBar', () => {
 
     it('should have styles applied', () => {
         const viewContext = VIEW_CONTEXTS.COMMENTS_PAGE;
-        render(<CreditBar postId={postId} viewContext={viewContext} />);
+        render(<Router><CreditBar postId={postId} viewContext={viewContext} /></Router>);
 
         const creditBar = screen.getByTestId(`creditbar-${postId}`);
         expect(creditBar).toHaveClass(creditBarClasses.wrapper);
