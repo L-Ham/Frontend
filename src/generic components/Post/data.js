@@ -43,7 +43,7 @@ export const DATA = {
         id: 'bll4twvt',
         name: 'DiscordBotStudio',
         display_name_prefixed: 'u/DiscordBotStudio',
-        // snoovatar_img: 'https://i.redd.it/snoovatar/avatars/6121c00e-73cd-4315-bd28-cb7d73d53e38.png',
+        snoovatar_img: 'https://i.redd.it/snoovatar/avatars/6121c00e-73cd-4315-bd28-cb7d73d53e38.png',
         snoovatar_size: [380, 600],
         public_description: 'Creator of DiscordBotStudio.org and Loopliz.com',
         comment_karma: 21,
