@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getIconComponent} from '../../../../../iconsmap';
 import {topbarClasses} from './topbar.styles';
+import {useTopBar} from './topbar.hooks';
 /**
  * TopBar component
  * @param {string} avatar
@@ -10,17 +10,16 @@ import {topbarClasses} from './topbar.styles';
  * @param {number} created
  * @return {React.Component}
  */
-function TopBar({
+export function TopBar({
     avatar,
     name,
     namePrefixed,
     created,
 }) {
-    const CakeIcon = getIconComponent('cake', false);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const creationDate = new Date(created * 1000);
-    const displayDate = months[creationDate.getMonth()] + ' ' + creationDate.getDate() + ', ' +
-                        creationDate.getFullYear();
+    const {
+        CakeIcon,
+        displayDate,
+    } = useTopBar({created});
     return (
         <div className={topbarClasses.root} data-testid={`topbar-user-${name}`}>
             <div className={topbarClasses.avatarWrapper}>
@@ -62,5 +61,3 @@ TopBar.propTypes = {
     namePrefixed: PropTypes.string.isRequired,
     created: PropTypes.number.isRequired,
 };
-
-export {TopBar};

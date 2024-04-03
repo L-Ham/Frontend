@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {topbarClasses, topbarStyles} from './topbar.styles.js';
-import {getIconComponent} from '../../../../../iconsmap.js';
+import {useTopBar} from './topbar.hooks.js';
 /**
  * TopBar component
  * @param {string} subredditId
@@ -10,13 +10,15 @@ import {getIconComponent} from '../../../../../iconsmap.js';
  * @param {boolean} isSubscriber
  * @return {React.Component}
  */
-function TopBar({
+export function TopBar({
     subredditId,
     subredditPrefixedName,
     icon,
     isSubscriber,
 }) {
-    const DefaultIcon = getIconComponent('default-subreddit');
+    const {
+        DefaultIcon,
+    } = useTopBar();
     return (
         <div className={topbarClasses.root}>
             <div className={topbarClasses.icon} data-testid={`subreddit-icon-${subredditId}`}>
@@ -51,5 +53,3 @@ TopBar.propTypes = {
     icon: PropTypes.element,
     isSubscriber: PropTypes.bool.isRequired,
 };
-
-export {TopBar};

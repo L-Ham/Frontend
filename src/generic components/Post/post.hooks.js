@@ -3,7 +3,8 @@ import {postClasses} from './post.styles.js';
 export const usePost = ({postId, viewContext}) => {
     const {title, permalink} = DATA[postId];
     // viewContexts: AggregateFeed, CommentsPage, SubredditFeed
-    // postTypes: gallery, text, image, link, video
+    // postTypes: gallery, text, image, link, video, multiMedia
+    // viewType: cardView, compactView
     const isCommentsPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE;
     const classNames = `${postClasses.root} ${isCommentsPage ? postClasses.rootC : ''}`;
 
