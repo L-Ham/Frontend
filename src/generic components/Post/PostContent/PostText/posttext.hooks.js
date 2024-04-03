@@ -13,6 +13,12 @@ export const usePostText = ({postId, viewContext}) => {
     postContent = postContent.replaceAll(
         '<a', '<a className=\'text-[var(--color-a-default)] no-underline break-words\'',
     );
+    // if not in comments page, remove all classes starting with md
+    postContent = isCommentsPage ? postContent : postContent.replaceAll(
+        'class="md', 'class="',
+    ).replaceAll(
+        '<p', '<p className=\'inline\'',
+    );
     postContent = parse(postContent);
     const classNames = isCommentsPage ? textClasses.rootC : textClasses.root;
     return {

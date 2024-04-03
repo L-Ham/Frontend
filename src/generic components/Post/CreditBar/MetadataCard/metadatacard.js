@@ -20,10 +20,17 @@ export function MetadataCard({
     viewContext,
     created,
 }) {
+    const Icon = <img src={require('../../../../assets/images/avatar_default_0.png')}
+        alt='avatar' className='size-6 rounded-full'/>;
     return (
         <div className={metaClasses.root} data-testid={`metadatacard-${postId}`}>
             <div className={metaClasses.base}>
-                <HoverCard postId={postId} viewContext={viewContext} fullName={subredditId}/>
+                <HoverCard
+                    postId={postId}
+                    viewContext={viewContext}
+                    fullName={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? authorId:subredditId}
+                    icon={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? Icon:null}
+                />
                 <div className={metaClasses.time}>
                     <div className={metaClasses.dot}>•</div>
                     <ReactTimeAgo date={new Date(created * 1000)} locale="en-US" className='ml-1' />

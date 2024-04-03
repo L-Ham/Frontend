@@ -18,9 +18,7 @@ export function CreditBar({
     const {
         handleSubredditRedirect,
         rootClassNames,
-        DefaultSubredditIcon,
-        SubredditIcon,
-        icon,
+        Icon,
         subredditId,
         authorId,
         created,
@@ -31,13 +29,9 @@ export function CreditBar({
                 {viewContext === VIEW_CONTEXTS.COMMENTS_PAGE && <BackButton postId={postId}/>}
                 <div className={creditBarClasses.base} onClick={handleSubredditRedirect}>
                     {viewContext === VIEW_CONTEXTS.COMMENTS_PAGE &&
-                <div className={creditBarClasses.icon} data-testid={`subreddit-icon-${postId}`}>
-                    {icon ? (
-                        SubredditIcon
-                    ) : (
-                        <DefaultSubredditIcon width="32" height="32"/>
-                    )}
-                </div>}
+                    <div className={creditBarClasses.icon} data-testid={`subreddit-icon-${postId}`}>
+                        {Icon}
+                    </div>}
                     <MetadataCard
                         postId={postId}
                         subredditId={subredditId}

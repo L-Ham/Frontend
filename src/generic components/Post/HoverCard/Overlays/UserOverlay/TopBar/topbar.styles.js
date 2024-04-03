@@ -1,6 +1,6 @@
 export const topbarClasses = {
     root: `flex flex-row justify-items-start`,
-    avatarWrapper: `mr-3 flex w-[48px]`,
+    avatarWrapper: `mr-3 flex-col flex w-[48px] justify-center`,
     userDetails: `mr-[4px] flex max-w-[calc(100%-60px)] grow flex-col`,
     avatar: `size-[48px] overflow-hidden rounded-full border-2 border-solid
     border-[var(--color-neutral-border-weak)]`,

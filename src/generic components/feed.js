@@ -14,7 +14,7 @@ export function Feed() {
     return (
         <>
             {posts.map((post) => (
-                <Post key={post.name} viewContext={VIEW_CONTEXTS.COMMENTS_PAGE} postId={postId}/>
+                <Post key={post.name} viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED} postId={postId}/>
             ))}
         </>
     );

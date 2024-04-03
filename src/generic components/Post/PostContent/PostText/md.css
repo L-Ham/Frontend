@@ -5,11 +5,6 @@
 .md :last-child {
     margin-bottom: 0;
 }
-
-.md p:not(:has(a)) {
-    margin: 1em 0;
-}
-.md p + p:has(a) {
-    margin: 0 !important;
-    display: inline;
+.md p {
+    margin: 1rem 0;
 }

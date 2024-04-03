@@ -46,12 +46,6 @@ code {
   --btn-primary-bg-hover: #1870f4;
 }
 
-.tooltip-shadow {
-  box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
-  -moz-box-shadow: 2px 16px 13px -7px rgba(0,0,0,0.75);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     /* add dark scheme here */
@@ -69,6 +63,7 @@ code {
     --color-neutral-content: #b8c5c9;
     --color-neutral-content-strong: #F2F4F5;
     --color-neutral-content-weak: #82959B;
+    --color-primary-background: #014d88;
     --tooltip-content: #0f1a1c;
     --color-a-default: #629fff;
     --color-a-hover: #a7ccff;

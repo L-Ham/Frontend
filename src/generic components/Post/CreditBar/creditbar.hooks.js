@@ -12,7 +12,8 @@ export const useCreditBar = ({postId, viewContext}) => {
         creditBarClasses.root;
 
     const DefaultSubredditIcon = getIconComponent('default-subreddit');
-    const SubredditIcon = <img src={icon} alt='Subreddit Icon' className='rounded-full' />;
+    const Icon = icon ? <img src={icon} alt='Icon' className='rounded-full' />:
+        <DefaultSubredditIcon width="32" height="32"/>;
     /**
      * Handles the redirect to a subreddit.
      * @param {Event} event - The event object.
@@ -24,10 +25,9 @@ export const useCreditBar = ({postId, viewContext}) => {
     }
 
     return {
-        rootClassNames,
         handleSubredditRedirect,
-        DefaultSubredditIcon,
-        SubredditIcon,
+        rootClassNames,
+        Icon,
         subredditId,
         authorId,
         created,
