@@ -3,11 +3,7 @@ name: Docker Image CI/CD
 on:
   push:
     branches: 
-      - Continuous-Deployment
-  pull_request:
-    branches: 
-      - Continuous-Deployment
-
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
