@@ -5,9 +5,9 @@ name: tests CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "Continuous-Deployment" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "Continuous-Deployment" ]
 
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
          smtp-port: 465
          smtp-secure: true
          from-email: ${{ secrets.DEVOPS_EMAIL }}
-         to-email: ${{ secrets.DEVOPS_EMAIL }},${{ secrets.SUB_TEAM_LEADER }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
+         to-email: ${{ secrets.DEVOPS_EMAIL }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
          username: ${{ secrets.DEVOPS_EMAIL }}
          password: ${{ secrets.DEVOPS_PASSWORD }}
          subject: SHOGHEL FA5ER MN EL AKHER YA ${{ github.actor }}
@@ -53,7 +53,7 @@ jobs:
          smtp-port: 465
          smtp-secure: true
          from-email: ${{ secrets.DEVOPS_EMAIL }}
-         to-email: ${{ secrets.DEVOPS_EMAIL }},${{ secrets.SUB_TEAM_LEADER }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
+         to-email: ${{ secrets.DEVOPS_EMAIL }},${{secrets.SUB_TEAM_TESTING}},${{ secrets.TEAM_LEADER }}
          username: ${{ secrets.DEVOPS_EMAIL }}
          password: ${{ secrets.DEVOPS_PASSWORD }}
          subject: SO SO SO BAD FROM ${{ github.actor }}
