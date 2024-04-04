@@ -5,9 +5,9 @@ name: tests CI
 
 on:
   push:
-    branches: [ "Continuous-Deployment" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "Continuous-Deployment" ]
+    branches: [ "main" ]
 
 jobs:
   build:
