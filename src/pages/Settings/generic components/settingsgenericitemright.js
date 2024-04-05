@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Typography, Box} from '@mui/material';
+
 import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu';
 import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu';
 import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton';
@@ -26,38 +26,30 @@ import {DropDownMenu} from '../tab specific components/chats tab/dropdownmenu';
  */
 function SettingsGenericItemRight({head, text, thirdComponent}) {
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                width: '100%',
-                margin: 'auto',
-                backgroundColor: 'white',
-                padding: '20px 0px',
-            }}
-        >
-            <Box sx={{textAlign: 'left', marginRight: 'auto'}}>
-                <Typography variant="h6" gutterBottom sx={{color: 'black', fontSize: '16px', fontWeight: 'bold'}}>
-                    {head}
-                </Typography>
-                <Typography variant="body1" sx={{color: '#7c7c7c', fontSize: '12px'}}>
-                    {text}
-                </Typography>
-            </Box>
+        <div className='mb-8 flex flex-row flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+            <div className="mr-2 flex max-w-[80%] flex-col">
+                <div className="flex flex-row items-center">
+                    <h3 className="mb-1 flex text-base font-medium leading-5
+                    text-[color:var(--newCommunityTheme-bodyText)]">{head}</h3>
+                </div>
+                <p className="text-xs font-normal leading-4 text-[color:var(--newCommunityTheme-metaText)]">{text}</p>
+            </div>
+            <div className="flex grow items-center justify-end">
+                <div className="relative float-right">
+                    {thirdComponent === 'Change' && <ChangeButton />}
+                    {thirdComponent === 'GenderMenu' && <GenderMenu />}
+                    {thirdComponent === 'Languages' && <LanguagesMenu />}
+                    {thirdComponent === 'Twitter' && <ConnectToTwitterButton />}
+                    {thirdComponent === 'Apple' && <AppleButton />}
+                    {thirdComponent === 'Toggle' && <ToggleButton />}
+                    {thirdComponent === 'Delete' && <DeleteAccountButton />}
+                    {thirdComponent === 'mr' && <MarkAsReadButton />}
+                    {thirdComponent === 'rm' && <RedditMenu />}
+                    {thirdComponent === 'chatMenu' && <DropDownMenu />}
+                </div>
+            </div>
+        </div>
 
-            {thirdComponent === 'Change' && <ChangeButton />}
-            {thirdComponent === 'GenderMenu' && <GenderMenu />}
-            {thirdComponent === 'Languages' && <LanguagesMenu />}
-            {thirdComponent === 'Twitter' && <ConnectToTwitterButton />}
-            {thirdComponent === 'Apple' && <AppleButton />}
-            {thirdComponent === 'Toggle' && <ToggleButton />}
-            {thirdComponent === 'Delete' && <DeleteAccountButton />}
-            {thirdComponent === 'mr' && <MarkAsReadButton />}
-            {thirdComponent === 'rm' && <RedditMenu />}
-            {thirdComponent === 'chatMenu' && <DropDownMenu />}
-        </Box>
     );
 }
 

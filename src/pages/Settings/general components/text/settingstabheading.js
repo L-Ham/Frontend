@@ -10,19 +10,14 @@ import PropTypes from 'prop-types';
  * @return {React.Component} A styled div element containing the heading text.
  */
 function SettingsTabHeading({text}) {
-    const headerStyle = {
-        fontSize: '13px',
-        fontWeight: 'bold',
-        marginBottom: '20px',
-        fontFamily: 'Arial',
-        color: 'grey',
-        textAlign: 'left',
-        borderBottom: '1px solid grey',
-        paddingBottom: '10px',
-    };
-
     return (
-        <div style={headerStyle}>
+        <div
+            className='mb-8 border-b border-solid border-b-[color:var(--newCommunityTheme-line)] pb-1.5 text-[10px]
+        font-bold uppercase leading-3 tracking-[0.5px] text-[color:var(--newCommunityTheme-metaText)]'
+            style={{
+                fontFamily: '"IBM Plex Sans", sans-serif',
+            }}
+        >
             {text}
         </div>
     );

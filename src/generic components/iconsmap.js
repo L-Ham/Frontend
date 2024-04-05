@@ -25,6 +25,7 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
+import {ReactComponent as UploadIconOutline} from '../assets/icons/upload-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -50,6 +51,7 @@ const ICONS_MAP = {
     'unfollow-outline': UnfolowIconOutline,
     'follow-outline': FollowIconOutline,
     'threedots-fill': ThreeDotsIconFill,
+    'upload-outline': UploadIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
 };

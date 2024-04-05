@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {TextField, Box} from '@mui/material';
+// import {TextField, Box} from '@mui/material';
 
 /**
  * A text area component that supports resizing and character count limitation.
@@ -27,57 +27,21 @@ function ResizableTextArea({maxCharacters}) {
     const charactersRemaining = maxCharacters - text.length;
 
     return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            maxWidth: 500,
-            margin: 'auto',
-            backgroundColor: 'white',
-        }}>
-            <TextField
-                multiline
+        <div>
+            <textarea
                 placeholder="About (optional)"
-                variant="outlined"
-                InputProps={{
-                    style: {resize: 'vertical', overflow: 'auto'},
-                }}
-                inputProps={{
-                    maxLength: maxCharacters,
-                }}
-                value={text}
+                maxLength="200"
+                rows="4"
+                className="mb-0 box-border block h-[99px] w-full resize
+                 rounded border border-solid border-[color:var(--newCommunityTheme-line)]
+                 bg-[color:var(--newCommunityTheme-body)] p-2 text-[color:var(--newCommunityTheme-bodyText)]"
                 onChange={handleTextChange}
-                sx={{
-                    '& .MuiOutlinedInput-root': {
-                        'fontSize': '1rem',
-                        'backgroundColor': 'white',
-                        '& fieldset': {
-                            borderColor: 'rgba(0, 0, 0, 0.23)',
-                        },
-                        '&:hover fieldset': {
-                            borderColor: 'black',
-                        },
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'black',
-                        },
-                    },
-                    '& .MuiOutlinedInput-multiline': {
-                        padding: 0,
-                    },
-                }}
-            />
-            <Box
-                sx={{
-                    marginTop: 1,
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    color: 'rgba(0, 0, 0, 0.6)',
-                    justifyContent: 'space-between',
-                    fontSize: '0.875rem',
-                }}
             >
-                <Box sx={{alignSelf: 'flex-start'}}>{charactersRemaining} Characters remaining</Box>
-            </Box>
-        </Box>
+                {text}
+            </textarea>
+            <div className="text-left text-xs text-[color:var(--newCommunityTheme-metaText)]">
+                {charactersRemaining} characters remaining</div>
+        </div>
     );
 }
 

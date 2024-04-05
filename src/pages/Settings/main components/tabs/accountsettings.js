@@ -16,13 +16,17 @@ function AccountSettings() {
 
     return (
         <div style={{backgroundColor: 'white', maxWidth: '600px', marginLeft: '50px', ...leftAlignStyle}}>
-            <h1 style={{color: 'black', marginBottom:
-             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Account Settings</h1>
+            <h2
+                className='px-0 py-10 text-xl font-medium not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
+                style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+            >
+                Account settings
+            </h2>
 
 
-            <SettingsTabHeading text="Account Preferences" style={leftAlignStyle} />
+            <SettingsTabHeading text="ACCOUNT PREFERENCES" style={leftAlignStyle} />
 
-            <SettingsGenericItemRight head="Email Address" text="yourEmail@gmail.com"
+            <SettingsGenericItemRight head="Email address" text="yourEmail@gmail.com"
                 thirdComponent={'Change'} style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Gender" text="This information may be used

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {FormControl, Select, MenuItem} from '@mui/material';
+import React from 'react';
+// import {FormControl, Select, MenuItem} from '@mui/material';
 
 /**
  * GenderMenu function component for selecting a gender identity from a dropdown menu.
@@ -9,53 +9,92 @@ import {FormControl, Select, MenuItem} from '@mui/material';
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
 function GenderMenu() {
-    const [selection, setSelection] = useState('');
+    // const [selection, setSelection] = useState('');
 
-    /**
-     * Handles changing the selected gender identity from the dropdown menu.
-     * Updates the component's state with the new selection and logs the selection to the console.
-     *
-     * @param {Object} event - The event object representing the change event on the select input.
-     */
-    function handleChangeGender(event) {
-        setSelection(event.target.value);
-        console.log(`${event.target.value} is now selected`);
+    // /**
+    //  * Handles changing the selected gender identity from the dropdown menu.
+    //  * Updates the component's state with the new selection and logs the selection to the console.
+    //  *
+    //  * @param {Object} event - The event object representing the change event on the select input.
+    //  */
+    // function handleChangeGender(event) {
+    //     setSelection(event.target.value);
+    //     console.log(`${event.target.value} is now selected`);
 
-        // alert(`${event.target.value} is now selected`);
-    }
+    //     // alert(`${event.target.value} is now selected`);
+    // }
 
     return (
-        <FormControl>
-            <Select
-                value={selection}
-                displayEmpty
-                onChange={handleChangeGender}
-                inputProps={{'aria-label': 'Without label'}}
-                MenuProps={{
-                    transitionDuration: 0,
-                    MenuListProps: {
-                        style: {
-                            backgroundColor: 'white',
-                            border: '1px solid black',
-                        },
-                    },
-                }}
-                sx={{
-                    '& .MuiMenuItem-root': {
-                        '&:not(:first-of-type)': {
-                            borderTop: '4px solid #000000',
-                        },
-                    },
-                }}
-            >
-                <MenuItem value="" disabled>Select</MenuItem>
-                <MenuItem value={'Woman'}>Woman</MenuItem>
-                <MenuItem value={'Man'}>Man</MenuItem>
-                <MenuItem value={'Non-Binary'}>Non-Binary</MenuItem>
-                <MenuItem value={'Self-Define'}>I Refer To Myself As...</MenuItem>
-                <MenuItem value={'Prefer-Not-to-Say'}>I Prefer Not To Say</MenuItem>
-            </Select>
-        </FormControl>
+        <div className='flex grow items-center justify-end'>
+            <div className='ml-4 flex items-center'>
+                <div className='cursor-pointer'>
+                    <div className='flex items-center'>
+                        <button className='block w-full whitespace-nowrap
+                        border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
+                        font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'>
+                            MAN
+                        </button>
+                        <span>
+                            <svg
+                                className="ml-0.5 inline-block
+                                size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M14.17,9.35,10,13.53,5.83,9.35a.5.5,0,0,1,.35-.85h7.64a.5.5,0,0,1,.35.85">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div className='absolute z-[1] overflow-hidden
+                    rounded
+                    border
+                    border-solid border-[var(--newCommunityTheme-line)] bg-[color:var(--newCommunityTheme-body)]
+                    text-[var(--newCommunityTheme-bodyText)]
+                    shadow-[0_2px_4px_0_var(--newCommunityTheme-bodyTextAlpha20)]
+                     first:border-none'
+                    style={{
+                        fontFamily: '"IBM Plex Sans", sans-serif',
+                    }}
+                    >
+                        <button className='block w-full whitespace-nowrap fill-[var(--newRedditTheme-actionIcon)] p-2
+                        text-left text-sm font-medium capitalize leading-[18px]
+                        text-[color:var(--newRedditTheme-actionIcon)] hover:bg-[color:var(--newRedditTheme-highlight)]
+                        hover:fill-[var(--newRedditTheme-bodyText)] hover:text-[color:var(--newRedditTheme-bodyText)]'>
+                            <div className='inline-block'>Woman</div>
+                        </button>
+                        <button className='block w-full whitespace-nowrap border-t border-solid
+                        border-b-[none] border-t-[color:var(--newRedditTheme-line)]
+                        fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
+                        text-sm font-medium capitalize
+                        leading-[18px] text-[color:var(--newRedditTheme-actionIcon)]'>
+                            <div className='inline-block'>Man</div>
+                        </button>
+                        <button className='block w-full whitespace-nowrap border-t border-solid
+                        border-b-[none] border-t-[color:var(--newRedditTheme-line)]
+                        fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
+                        text-sm font-medium capitalize
+                        leading-[18px] text-[color:var(--newRedditTheme-actionIcon)]'>
+                            <div className='inline-block'>Non-Binary</div>
+                        </button>
+                        <button className='block w-full whitespace-nowrap border-t border-solid
+                        border-b-[none] border-t-[color:var(--newRedditTheme-line)]
+                        fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
+                        text-sm font-medium capitalize
+                        leading-[18px] text-[color:var(--newRedditTheme-actionIcon)]'>
+                            <div className='inline-block'>I Refer To Myself As...</div>
+                        </button>
+                        <button className='block w-full whitespace-nowrap border-t border-solid
+                        border-b-[none] border-t-[color:var(--newRedditTheme-line)]
+                        fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
+                        text-sm font-medium capitalize
+                        leading-[18px] text-[color:var(--newRedditTheme-actionIcon)]'>
+                            <div className='inline-block'>I Prefer Not To Say</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 

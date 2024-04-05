@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from '@mui/material';
 
 /**
  * ChangeButton function component renders a styled "Change" button using Material UI.
@@ -21,24 +20,21 @@ function ChangeButton() {
     }
 
     return (
-        <Button
-            variant="outlined"
+        <button
             onClick={handleClick}
-            sx={{
-                'borderRadius': '20px',
-                'textTransform': 'none',
-                'color': '#1976d2',
-                'backgroundColor': '#fff',
-                'borderWidth': '2px',
-                'borderColor': '#1976d2',
-                '&:hover': {
-                    borderColor: '#1976d2',
-                    backgroundColor: '#e3f2fd',
-                },
+            className='box-border min-h-[32px] w-auto min-w-[32px] border border-solid
+            border-[var(--newCommunityTheme-button)] fill-[var(--newCommunityTheme-button)]
+            px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset]
+            text-[var(--newCommunityTheme-button)] hover:bg-[var(--newCommunityTheme-buttonAlpha05)]
+            active:bg-[var(--newCommunityTheme-buttonAlpha10)]'
+            style={{
+                fontFamily: '"Noto Sans", sans-serif',
+                textTransform: 'unset',
+                borderRadius: '999px',
             }}
         >
             Change
-        </Button>
+        </button>
     );
 }
 
