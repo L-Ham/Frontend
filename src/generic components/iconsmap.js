@@ -25,13 +25,33 @@ import {ReactComponent as RemoveIconOutline} from '../assets/icons/remove-outlin
 import {ReactComponent as HistoryIconOutline} from '../assets/icons/history-outline.svg';
 import {ReactComponent as ChatIconOutline} from '../assets/icons/chat-outline.svg';
 import {ReactComponent as AddvertiseIconOutline} from '../assets/icons/advertise-outline.svg';
-import {ReactComponent as InboxIconOutline} from '../assets/icons/inbox-outline.svg';
 import {ReactComponent as MenuIconOutline} from '../assets/icons/menu-outline.svg';
 import {ReactComponent as DarkModeIconOutline} from '../assets/icons/dark-mode-outline.svg';
 import {ReactComponent as TrendingIconOutline} from '../assets/icons/trending-outline.svg';
 import {ReactComponent as RedditLogo} from '../assets/icons/reddit-logo-outline.svg';
 import {ReactComponent as RedditName} from '../assets/icons/reddit-name-outline.svg';
 import {ReactComponent as CreatePostIcon} from '../assets/icons/create-outline.svg';
+import {ReactComponent as AvatarStyleIconOutline} from '../assets/icons/avatar-style-outline.svg';
+import {ReactComponent as LogoutIconOutline} from '../assets/icons/logout-outline.svg';
+import {ReactComponent as PremiumIconOutline} from '../assets/icons/premium-outline.svg';
+import {ReactComponent as SettingsIconOutline} from '../assets/icons/settings-outline.svg';
+import {ReactComponent as UpvoteIconOutline} from '../assets/icons/upvote-outline.svg';
+import {ReactComponent as WalletIconOutline} from '../assets/icons/wallet-outline.svg';
+import {ReactComponent as StarIconOutline} from '../assets/icons/star-outline.svg';
+import {ReactComponent as StarIconFill} from '../assets/icons/star-fill.svg';
+import {ReactComponent as AdminIconOutline} from '../assets/icons/admin-outline.svg';
+import {ReactComponent as TopicActivismIconOutline} from '../assets/icons/topic-activism-outline.svg';
+import {ReactComponent as HelpIconOutline} from '../assets/icons/help-outline.svg';
+import {ReactComponent as TopicReadingIconOutline} from '../assets/icons/topic-reading-outline.svg';
+import {ReactComponent as TopicCareersIconOutline} from '../assets/icons/topic-careers-outline.svg';
+import {ReactComponent as AuthorIconOutline} from '../assets/icons/author-outline.svg';
+import {ReactComponent as CommunityIconOutline} from '../assets/icons/community-outline.svg';
+import {ReactComponent as TopicHistoryIconOutline} from '../assets/icons/topic-history-outline.svg';
+import {ReactComponent as TopicIconOutline} from '../assets/icons/topic-outline.svg';
+import {ReactComponent as TopicEthicsIconOutline} from '../assets/icons/topic-ethics-outline.svg';
+import {ReactComponent as TopicLawIconOutline} from '../assets/icons/topic-law-outline.svg';
+import {ReactComponent as RulesIconOutline} from '../assets/icons/rules-outline.svg';
+import {ReactComponent as AddIconOutline} from '../assets/icons/add-outline.svg';
 import ArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 
 
@@ -62,13 +82,33 @@ const ICONS_MAP = {
     'chat-outline': ChatIconOutline,
     'advertise-outline': AddvertiseIconOutline,
     'create-post-outline': CreatePostIcon,
-    'inbox-outline': InboxIconOutline,
     'menu-outline': MenuIconOutline,
     'night-outline': DarkModeIconOutline,
     'trending-outline': TrendingIconOutline,
     'arrow-up-outline': ArrowUpRoundedIcon,
     'reddit-logo-outline': RedditLogo,
     'reddit-name-outline': RedditName,
+    'avatar-style-outline': AvatarStyleIconOutline,
+    'logout-outline': LogoutIconOutline,
+    'premium-outline': PremiumIconOutline,
+    'settings-outline': SettingsIconOutline,
+    'upvote-outline': UpvoteIconOutline,
+    'wallet-outline': WalletIconOutline,
+    'star-outline': StarIconOutline,
+    'star-fill': StarIconFill,
+    'admin-outline': AdminIconOutline,
+    'topic-activism-outline': TopicActivismIconOutline,
+    'help-outline': HelpIconOutline,
+    'topic-reading-outline': TopicReadingIconOutline,
+    'topic-career-outline': TopicCareersIconOutline,
+    'author-outline': AuthorIconOutline,
+    'community-outline': CommunityIconOutline,
+    'topic-history-outline': TopicHistoryIconOutline,
+    'topic-outline': TopicIconOutline,
+    'topic-ethics-outline': TopicEthicsIconOutline,
+    'topic-law-outline': TopicLawIconOutline,
+    'rules-outline': RulesIconOutline,
+    'add-outline': AddIconOutline,
 };
 
 /**
@@ -81,6 +121,5 @@ export const getIconComponent = (iconName, isFill) => {
     if (!iconName) return null;
     const iconSuffix = isFill ? '-fill' : '-outline';
     const IconComponent = ICONS_MAP[`${iconName}${iconSuffix}`];
-    IconComponent ? console.log(IconComponent) : console.log('icon not found');
     return IconComponent ? (props) => <IconComponent {...props} /> : null;
 };
