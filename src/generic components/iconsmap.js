@@ -14,6 +14,17 @@ import {ReactComponent as CaretDownIconOutline} from '../assets/icons/caret-down
 import {ReactComponent as MessageIconOutline} from '../assets/icons/message-outline.svg';
 import {ReactComponent as EditIconOutline} from '../assets/icons/edit-outline.svg';
 import {ReactComponent as ExternalIconOutline} from '../assets/icons/external-outline.svg';
+import {ReactComponent as DefaultSubredditIcon} from '../assets/icons/default-subreddit.svg';
+import {ReactComponent as CommentsIconOutline} from '../assets/icons/comments-outline.svg';
+import {ReactComponent as ShareIconOutline} from '../assets/icons/share-outline.svg';
+import {ReactComponent as UpvoteIconOutline} from '../assets/icons/upvote-outline.svg';
+import {ReactComponent as DownvoteIconOutline} from '../assets/icons/downvote-outline.svg';
+import {ReactComponent as CakeIconOutline} from '../assets/icons/cake-outline.svg';
+import {ReactComponent as ChatIconOutline} from '../assets/icons/chat-outline.svg';
+import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-outline.svg';
+import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
+import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
+import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
 import {ReactComponent as HomeIconOutline} from '../assets/icons/home-outline.svg';
 import {ReactComponent as HomeIconFill} from '../assets/icons/home-fill.svg';
 import {ReactComponent as PopularIconOutline} from '../assets/icons/popular-outline.svg';
@@ -70,6 +81,17 @@ const ICONS_MAP = {
     'message-outline': MessageIconOutline,
     'edit-outline': EditIconOutline,
     'external-outline': ExternalIconOutline,
+    'comments-outline': CommentsIconOutline,
+    'share-outline': ShareIconOutline,
+    'upvote-outline': UpvoteIconOutline,
+    'downvote-outline': DownvoteIconOutline,
+    'cake-outline': CakeIconOutline,
+    'chat-outline': ChatIconOutline,
+    'unfollow-outline': UnfolowIconOutline,
+    'follow-outline': FollowIconOutline,
+    'threedots-fill': ThreeDotsIconFill,
+    'back': BackIcon,
+    'default-subreddit': DefaultSubredditIcon,
     'home-outline': HomeIconOutline,
     'home-fill': HomeIconFill,
     'popular-outline': PopularIconOutline,
@@ -119,7 +141,7 @@ const ICONS_MAP = {
  */
 export const getIconComponent = (iconName, isFill) => {
     if (!iconName) return null;
-    const iconSuffix = isFill ? '-fill' : '-outline';
+    const iconSuffix = isFill === undefined ? '' : (isFill ? '-fill' : '-outline');
     const IconComponent = ICONS_MAP[`${iconName}${iconSuffix}`];
     return IconComponent ? (props) => <IconComponent {...props} /> : null;
 };

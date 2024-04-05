@@ -1,10 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    username: '',
+    displayName: '',
     email: '',
-    age: 0,
-    karma: 0,
+    about: '',
+    avatarImage: '',
+    token: '',
 };
 
 const userSlice = createSlice({
@@ -12,10 +13,7 @@ const userSlice = createSlice({
     initialState: initialState,
     reducers: {
         login: (state, action) => {
-            state.username = action.payload.username;
-            state.email = action.payload.email;
-            state.age = action.payload.age;
-            state.karma = action.payload.karma;
+            state.token = action.payload.token;
         },
         increaseKarma: (state) => {
             state.karma++;

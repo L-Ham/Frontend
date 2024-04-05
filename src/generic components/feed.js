@@ -2,6 +2,7 @@ import React from 'react';
 // import {useSubreddit} from '../pages/subreddit/subredditcontext';
 import {Post} from './Post/post.js';
 import {DATA} from './Post/data.js';
+import {VIEW_CONTEXTS} from './Post/data.js';
 /**
  * Renders the Feed component.
  * @return {JSX.Element} The rendered component.
@@ -11,12 +12,11 @@ export function Feed() {
     const postId = 't3_1bmnuhw';
     const posts = [DATA[postId]];
     return (
-        <div className="m-0 mr-3 flex h-full flex-auto
-                flex-col items-center justify-start rounded-lg p-0 pt-2.5">
+        <>
             {posts.map((post) => (
-                <Post key={post.name} viewContext='AggregateFeed' postId={postId}/>
+                <Post key={post.name} viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED} postId={postId}/>
             ))}
-        </div>
+        </>
     );
 }
 // Post({

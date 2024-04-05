@@ -2,9 +2,6 @@
 import {useState} from 'react';
 
 
-import '../.././App.css';
-
-
 import {HeadingUserName} from '../.././generic components/guestpagecomponents/forgotusernamecomponents/headingusername';
 import {Usermessage} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/usernamemessage';
 import {RedditLogo} from '../.././generic components/guestpagecomponents/redditlogo';

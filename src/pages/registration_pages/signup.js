@@ -3,8 +3,6 @@ import React from 'react';
 import {useState} from 'react';
 
 
-import '../.././App.css';
-
 import { GoogleLogin } from '@react-oauth/google';
 
 import {SignUpWithGoogleButton} from "../.././generic components/guestpagecomponents/signupcomponents/google";
