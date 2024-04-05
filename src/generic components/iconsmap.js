@@ -34,7 +34,6 @@ import {ReactComponent as AllIconFill} from '../assets/icons/all-fill.svg';
 import {ReactComponent as SearchIconOutline} from '../assets/icons/search-outline.svg';
 import {ReactComponent as RemoveIconOutline} from '../assets/icons/remove-outline.svg';
 import {ReactComponent as HistoryIconOutline} from '../assets/icons/history-outline.svg';
-import {ReactComponent as ChatIconOutline} from '../assets/icons/chat-outline.svg';
 import {ReactComponent as AddvertiseIconOutline} from '../assets/icons/advertise-outline.svg';
 import {ReactComponent as MenuIconOutline} from '../assets/icons/menu-outline.svg';
 import {ReactComponent as DarkModeIconOutline} from '../assets/icons/dark-mode-outline.svg';
@@ -46,7 +45,6 @@ import {ReactComponent as AvatarStyleIconOutline} from '../assets/icons/avatar-s
 import {ReactComponent as LogoutIconOutline} from '../assets/icons/logout-outline.svg';
 import {ReactComponent as PremiumIconOutline} from '../assets/icons/premium-outline.svg';
 import {ReactComponent as SettingsIconOutline} from '../assets/icons/settings-outline.svg';
-import {ReactComponent as UpvoteIconOutline} from '../assets/icons/upvote-outline.svg';
 import {ReactComponent as WalletIconOutline} from '../assets/icons/wallet-outline.svg';
 import {ReactComponent as StarIconOutline} from '../assets/icons/star-outline.svg';
 import {ReactComponent as StarIconFill} from '../assets/icons/star-fill.svg';
