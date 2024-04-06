@@ -1,0 +1,10 @@
+.md :first-child {
+    margin-top: 0;
+}
+
+.md :last-child {
+    margin-bottom: 0;
+}
+.md p {
+    margin: 1rem 0;
+}
