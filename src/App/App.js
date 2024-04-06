@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
-
+import {SignUpContinued} from '../pages/registration_pages/signupcontinued.js';
 /**
  * Renders the main application component.
  *
@@ -20,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
+                <Route path="/register/continue" element={<SignUpContinued />} />
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/settings" element={
@@ -27,6 +28,7 @@ function App() {
                         <BasicTabs />
                     </LayoutWithNavigation>
                 } />
+
                 <Route path="/post/:id" element={
                     <LayoutWithNavigation>
                         <PostRoute />
