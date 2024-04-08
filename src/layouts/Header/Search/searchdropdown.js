@@ -1,7 +1,8 @@
 import React from 'react';
 import {SearchHistoryItem} from './searchhistoryitem';
 import {SearchTrendingItem} from './searchtrendingitem';
-import {getIconComponent} from '../../../generic components/iconsmap';
+import {useSearchDropDown} from './search.hooks';
+import {searchDropDownClasses as styles} from './search.styles';
 import PropTypes from 'prop-types';
 
 /**
@@ -16,47 +17,36 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The search dropdown component
  * */
 function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = [], SearchHistoryItems = []}) {
+    const {rootStyles, TrendingIcon} = useSearchDropDown({isSearchDropdownVisible});
     return (
-        <div id='SearchDropdown' className={`max-h-[calc(100vh-56px-15px-10px)]
-                                    ${isSearchDropdownVisible ? 'block' : 'hidden'}
-                                    overflow-y-auto overflow-x-hidden rounded-b-[1.25rem]
-                                    bg-white shadow-md`}>
-            <ul className='m-0 border-none p-0'>
+        <div className={rootStyles}>
+            <ul className={styles.recentSearchList}>
                 {
                     SearchHistoryItems.map((item, index) => (
-                        <>
-
-                            <li key={index} className='relative mt-0 list-none '>
+                        <React.Fragment key={index}>
+                            <li className={styles.listItem}>
                                 <SearchHistoryItem {...item}/>
                             </li>
-                            <hr className='mx-4 my-0 border-x-0 border-b-0
-                                border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-                        </>
+                            <hr className={styles.listSeparator}/>
+                        </React.Fragment>
                     ))
                 }
             </ul>
+            <hr className={styles.sectionSeparator}/>
 
-            <hr className='my-0 border-x-0 border-b-0
-                                    border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-
-
-            <div className="mb-1 ml-4 mt-3 flex items-center text-[#576f76]">
-                {getIconComponent('trending', false)}
+            <div className={styles.trending}>
+                <TrendingIcon/>
                                     TRENDING TODAY
             </div>
-
-
-            <ul id='SearchDropdownList' className='my-0 list-none p-0'>
+            <ul id='SearchDropdownList' className={styles.trendingList}>
                 {
                     searchTrendingItems.map((item, index) => (
-                        <>
-
-                            <li key={index} className='relative mt-0 list-none'>
+                        <React.Fragment key={index}>
+                            <li key={index} className={styles.listItem}>
                                 <SearchTrendingItem {...item}/>
                             </li>
-                            <hr className='mx-4 my-0 border-x-0 border-b-0
-                                border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-                        </>
+                            <hr className={styles.listSeparator}/>
+                        </React.Fragment>
                     ))
                 }
             </ul>
