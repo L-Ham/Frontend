@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
-import {React, useState} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {getIconComponent} from '../../../../generic components/iconsmap';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles';
+import {useCommunityItem} from './community.hooks';
 import PropTypes from 'prop-types';
 
 
@@ -17,9 +16,8 @@ import PropTypes from 'prop-types';
  * <SidebarCommunity />
  * @return {JSX.Element} The sidebar community component
  */
-function CommunityItem({imgURL='https://styles.redditmedia.com/t5_2qs0q/styles/communityIcon_kxcmzy9bt1381.jpg?format=pjpg&s=16025192cd7824a5f93aaa0ed9eb4f149761e18e', label='Test', href='/test'}) {
-    const [starred, setStarred] = useState(false);
-    const StarIcon = getIconComponent('star', starred);
+function CommunityItem({imgURL, label, href}) {
+    const {handleStar, StarIcon} = useCommunityItem();
     return (
         <NavLink to={href} className={styles.root}>
 
@@ -31,10 +29,7 @@ function CommunityItem({imgURL='https://styles.redditmedia.com/t5_2qs0q/styles/c
             </span>
             <button
                 className={styles.button}
-                onClick={(e) => {
-                    e.preventDefault();
-                    setStarred(!starred);
-                }}
+                onClick={handleStar}
             >
                 <StarIcon />
             </button>

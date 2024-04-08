@@ -1,6 +1,6 @@
 import React from 'react';
-import {getIconComponent} from '../../../../generic components/iconsmap';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles';
+import {useCreateCommunityItem} from './community.hooks';
 import PropTypes from 'prop-types';
 
 /**
@@ -9,16 +9,14 @@ import PropTypes from 'prop-types';
  * @component
  * @param {string} icon - Name of the icon to be displayed
  * @param {string} label - The text to be displayed
- * @param {function} onClick - The function to be executed on click
  * @example
  * // Render the generic sidebar section item
  * <SectionItem />
  * @return {JSX.Element} The generic sidebar section item component
  */
-function CreateCommunityItem({icon='add', label='Create Community', onClick=(e)=>{
-    e.preventDefault();
-}}) {
-    const Icon = getIconComponent(icon, false);
+function CreateCommunityItem({icon, label}) {
+    const {Icon, onClick} = useCreateCommunityItem();
+
     return (
 
         <div className={styles.root} onClick={onClick}>
