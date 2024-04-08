@@ -1,5 +1,6 @@
 import React from 'react';
 import {TopSectionItem} from './topsectionitem';
+import {useTopSection} from './topsection.hooks';
 
 /**
  * The sidebar top section component
@@ -10,23 +11,7 @@ import {TopSectionItem} from './topsectionitem';
  * @return {JSX.Element} The sidebar top section component
  */
 function TopSection() {
-    const topTabs = [
-        {
-            icon: 'home',
-            label: 'Home',
-            href: '/',
-        },
-        {
-            icon: 'popular',
-            label: 'Popular',
-            href: '/popular',
-        },
-        {
-            icon: 'all',
-            label: 'All',
-            href: '/all',
-        },
-    ];
+    const {topTabs} = useTopSection();
     return (
         <div>
             {topTabs.map((tab, index) => (

@@ -1,7 +1,7 @@
 import React from 'react';
-import {getIconComponent} from '../../../../generic components/iconsmap';
 import {NavLink} from 'react-router-dom';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles';
+import {useTopSectionItem} from './topsection.hooks';
 import PropTypes from 'prop-types';
 
 /**
@@ -16,17 +16,12 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The sidebar section summary/header component
  */
 function TopSectionItem({icon, label, href}) {
-    const IconOutline = getIconComponent(icon, false);
-    const IconFilled = getIconComponent(icon, true);
-    const isActive = window.location.pathname === href;
-    const rootStyles = isActive ? `${styles.root} ${styles.active}` : `${styles.root} ${styles.inactive}`;
+    const {Icon, rootStyles} = useTopSectionItem({icon, href});
     return (
         <NavLink to={href} className={rootStyles}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
-                    {
-                        isActive? <IconFilled /> : <IconOutline />
-                    }
+                    <Icon />
                 </span>
                 <span className={styles.label}>{label}</span>
             </span>
