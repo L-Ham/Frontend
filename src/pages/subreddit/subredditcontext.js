@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 // Define the context
 const SubredditContext = createContext();
-/* eslint-disable max-len */
-const token = `eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzExNzA4NDg1LjY5MzE1MywiaWF0IjoxNzExNjIyMDg1LjY5MzE1MywianRpIjoiak5RU2VHZ1l6dWktY3dzbzkta2QzNVRLLXJkMHB3IiwiY2lkIjoiOXRMb0Ywc29wNVJKZ0EiLCJsaWQiOiJ0Ml9uY2Q1eCIsImFpZCI6InQyX25jZDV4IiwibGNhIjoxNDMxMDIyOTQ3OTk3LCJzY3AiOiJlSnhra2RHT3REQUloZC1sMXo3Ql95cF9OaHRzY1lhc0xRYW9rM243RFZvY2s3MDdjTDRpSFA4bktJcUZMRTJ1QktHa0tXRUZXdE9VTmlMdjU4eTlPWkVGU3lGVFI4NDN5d29rYVVwUFVtTjVweWxSd1daa0xsZmFzVUtEQjZZcFZTNloyMEtQUzV2UTNJMUZ6MDZNcWx4V0h0VFlvM0pwYkdNSzJ4UGp6Y1pxUXlxdXk2bE1ZRmtvbjhXTGZ2eUctdFktZjdiZmhIWXdyS2dLRF9UT3VGeHdZX0hERkhiX25wcjBiRjJ3cUwzWGc5US0xLU4yN2JObW9kbTVfVnpQdnphU2NUbUc1aWZZdjd0LUNSMTQ1SG1aVVFjd1lnMF95ckFqNl9Ddk9vREtCUVdNSlloUEk1QXJsMl9fSmRpdVRmOGF0eWQtLUdiRVRXXzRyUm1vNXhMRW9VX2o2emNBQVBfX1hEX2U0dyIsInJjaWQiOiI0NXVHaDRTVjdQZGRsanlTc0dXcmZWamZwMVhkQ2lJN3BQU2FmZVIxN2t3IiwiZmxvIjoyfQ.i7eVim73CWgcXg3vX9Zew5NpfWLNQRTFIVMlfyBPMmHTTi6CgOF_jb6ZLWtpayYhWw6DSDJVOeNbNu2VrcsW4mu5iaydBk20waVkGNj333Uhg9R8xYKafnKSlaERPSEwT6ABvZE9_Da9s2lDPfpsGWiVlt19XmWUhXmmVqSTWSIaouTZusq8ucyrHM0IqyIeG_3ORLtRR3_1BHrSc2X_-4XGcsuIGmvTwo5fKNEgQrFMVxs1a-c3maQPxrCfL8h1mbEJNjpQVafQTER0VllMK_o-fPE7F-twfw9wu7DZFDi0DkNJfDXCqaJcbFeGgjZ926oTBqeyW-tUdmjmKZ7YOw`;
 
+/* eslint-disable-next-line*/
+const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzEyNjU1NjkwLjQ2NzQ0MywiaWF0IjoxNzEyNTY5MjkwLjQ2NzQ0MywianRpIjoiZXFSa0pYb005bmRIa0ZXNUFGMWVxQWVOYUktWllRIiwiY2lkIjoiOXRMb0Ywc29wNVJKZ0EiLCJsaWQiOiJ0Ml90enNoYTkwZTkiLCJhaWQiOiJ0Ml90enNoYTkwZTkiLCJsY2EiOjE3MDc2Nzk1MzUwNjMsInNjcCI6ImVKeGtrZEdPdERBSWhkLWwxejdCX3lwX05odHNjWWFzTFFhb2szbjdEVm9jazcwN2NMNGlIUDhuS0lxRkxFMnVCS0drS1dFRld0T1VOaUx2NTh5OU9aRUZTeUZUUjg0M3l3b2thVXBQVW1ONXB5bFJ3V1prTGxmYXNVS0RCNllwVlM2WjIwS1BTNXZRM0kxRnowNk1xbHhXSHRUWW8zSnBiR01LMnhQanpjWnFReXF1eTZsTVlGa29uOFdMZnZ5Ry10WS1mN2JmaEhZd3JLZ0tEX1RPdUZ4d1lfSERGSGJfbnByMGJGMndxTDNYZzlRLTEtTjI3Yk5tb2RtNV9WelB2emFTY1RtRzVpZll2N3QtQ1IxNDVIbVpVUWN3WWcwX3lyQWo2X0N2T29ES0JRV01KWWhQSTVBcmwyX19KZGl1VGY4YXR5ZC0tR2JFVFdfNHJSbW81eExFb1VfajZ6Y0FBUF9fWERfZTR3IiwicmNpZCI6Ii1HaWpZOXlsRDZhWXJ6OGpsalN3ZlFaUFNZT29YczFBWVBSRVRyUm9HZlUiLCJmbG8iOjJ9.W5D3SqsS94IX8PLESZbMfnnWmBSeYWaclw-qLMeWFvTbAdDXikc6zcfcUiGNHsIUcRhmWbwM33o52XEYOkAdBfn5iDFasvC8wCBHgUEasyJwJcrBnMdoyhur3QBSDUBI-kMfFRl57eROh8NLf5uumFKlncQyVq6p70M6Re5eAOoZznH_sxOkvTVtbvU6W-fE9PiFayV6BNTPtc6ijo4YtmbcQVuL7IqLkNt4CAsc4isCmEqSzurV3aVEDwDnYdIoCmrRZyiqQhLy_pIV0fEHLmfabTMvRyH5pv0CwWcxOGQ3dMdlY4uEw2HPSZlC-J2KbGDjHwdU_tXx1EtLtivTow";
 
 const userAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 `+
 `(KHTML, like Gecko) Chrome/123.0.0.0`;
@@ -17,6 +17,11 @@ export function useSubreddit() {
     return useContext(SubredditContext);
 }
 
+import {generateColorTones,
+    generateNeutralTones,
+    generatePrimaryColorTones,
+    generateSecondaryColorTones} from '../../generic components/utils';
+
 /**
  * Subreddit provider component.
  * @param {Object} props - The props object.
@@ -26,6 +31,7 @@ export function useSubreddit() {
  */
 export function SubredditProvider({children, name}) {
     // const name = 'help';
+    // const name = 'OnePiece';
     // const name = 'ChatGPT';
     const [loading, setLoading] = useState(true);
     const [about, setAbout] = useState(null);
@@ -46,8 +52,29 @@ export function SubredditProvider({children, name}) {
                 setLoading(false);
             }
         };
+
         loadData();
     }, [name]);
+
+    useEffect(() => {
+        if (!about) return;
+
+        const {data: {primary_color: primaryColor}} = about;
+        const isDarkMode = false;
+
+        if (!primaryColor) return;
+
+        let colors = {...generateColorTones(primaryColor, isDarkMode)};
+        colors = {...colors, ...generateNeutralTones(primaryColor, isDarkMode)};
+        colors = {...colors, ...generatePrimaryColorTones(primaryColor, isDarkMode)};
+        colors = {...colors, ...generateSecondaryColorTones(primaryColor, isDarkMode)};
+
+        for (const [key, value] of Object.entries(colors)) {
+            document.documentElement.style.setProperty(`--${key}`, value);
+        }
+    }
+    , [about]);
+
 
     // The value that will be supplied to any descendants of this provider.
     const value = {
