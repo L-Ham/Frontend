@@ -26,12 +26,12 @@ function ProfileMenu() {
             <div className={userMenuDropdownStyles}>
                 {tabSections.map((tabSection, index) => {
                     return (
-                        <>
-                            <ul key={index} className={profileMenuClasses.userMenuList}>
+                        <React.Fragment key={index}>
+                            <ul className={profileMenuClasses.userMenuList}>
                                 {
                                     tabSection.map((tabItem) => {
                                         return (
-                                            <li key={tabItem.key} className={profileMenuClasses.usermenuListItem}>
+                                            <li key={tabItem.key} className={profileMenuClasses.userMenuListItem}>
                                                 {tabItem}
                                             </li>
                                         );
@@ -39,7 +39,7 @@ function ProfileMenu() {
                                 }
                             </ul>
                             <hr/>
-                        </>
+                        </React.Fragment>
                     );
                 })}
             </div>
