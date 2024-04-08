@@ -1,0 +1,55 @@
+/*** GENERAL ***/
+.subreddit-sidebar {
+    @apply text-[0.875rem];
+    font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
+}
+
+.subreddit-sidebar ul,ol {
+    @apply pl-8;
+}
+
+.subreddit-sidebar h2.shortname {
+    @apply m-0;
+}
+
+/*** md ***/
+.subreddit-sidebar div.md ul li {
+    list-style: disc;
+}
+.subreddit-sidebar div.md {
+    @apply mt-1;
+}
+.subreddit-sidebar div.md :first-child {
+    @apply mt-0;
+}
+.subreddit-sidebar div.md :last-child {
+    @apply mb-0;
+}
+
+.subreddit div.md code {
+    @apply whitespace-pre-wrap;
+}
+
+.subreddit-sidebar div.md ol li {
+    @apply list-decimal;
+}
+
+.subreddit-sidebar div.md ul *:not(:first-child):not(:last-child), .subreddit-sidebar div.md ol *:not(:first-child):not(:last-child){
+    @apply mt-1;
+}
+
+.subreddit-sidebar div.md ul p,
+.subreddit-sidebar div.md ol p {
+    @apply m-0;
+}
+
+.subreddit-sidebar div.md ul a:hover, .subreddit-sidebar div.md ol a:hover {
+    @apply underline;
+}
+
+.subreddit-sidebar .my-md {
+    @apply my-4;
+}
+
