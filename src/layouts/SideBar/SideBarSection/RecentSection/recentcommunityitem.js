@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles';
@@ -15,8 +14,7 @@ import PropTypes from 'prop-types';
  * <SidebarRecentCommunity />
  * @return {JSX.Element} The sidebar recent community component
  */
-function RecentCommunityItem({imgURL='https://styles.redditmedia.com/t5_323oy/styles/communityIcon_wqodb68q5gca1.jpg?format=pjpg&s=41993445a49aa828a9f9996e00867bb94fb03269',
-    label='r/CasualConversation', href='https://www.reddit.com/r/CasualConversation/'}) {
+function RecentCommunityItem({imgURL, label, href}) {
     return (
         <NavLink to={href} className={styles.root}>
             <span className={styles.leftItemsWrapper}>
