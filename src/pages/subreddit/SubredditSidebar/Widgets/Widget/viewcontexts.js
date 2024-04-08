@@ -1,0 +1,5 @@
+export const VIEW_CONTEXTS = Object.freeze({
+    NORMAL: 'NORMAL',
+    BOOKMARKS: 'BOOKMARKS',
+    COMMUNITY_DETAILS: 'COMMUNITY_DETAILS',
+});
