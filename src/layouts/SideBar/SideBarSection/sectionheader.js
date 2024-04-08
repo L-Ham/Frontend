@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import {getIconComponent} from '../../../generic components/iconsmap';
 import {sectionHeaderClasses as styles} from './sidebarsection.styles';
+import {useSectionHeader} from './sectionheader.hooks';
 import PropTypes from 'prop-types';
 
 /**
@@ -17,10 +16,10 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The sidebar section header component
  */
 function SectionHeader({sectionName, isOpen, setIsOpen}) {
-    const ArrowUpRoundedIcon = getIconComponent('caret-down', false);
-    // eslint-disable-next-line max-len
-    const arrowIconContainerStyles = isOpen ? `${styles.arrowIconContainer} ${styles.arrowIconContainerOpen}` :
-        `${styles.arrowIconContainer} ${styles.arrowIconContainerClose}`;
+    const {
+        ArrowUpRoundedIcon,
+        arrowIconContainerStyles,
+    } = useSectionHeader({isOpen});
     return (
         <div
             tabIndex='-1'
