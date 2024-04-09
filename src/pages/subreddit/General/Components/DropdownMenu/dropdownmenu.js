@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DropdownMenuItem} from './DropdownMenuItem/dropdownmenuitem';
-import {classes} from './dropdownmenu.styles';
-import {useDropdownMenu} from './dropdownmenu.hooks';
+import {DropdownMenuItem} from './DropdownMenuItem/dropdownmenuitem.js';
+import {classes} from './dropdownmenu.styles.js';
+import {useDropdownMenu} from './dropdownmenu.hooks.js';
 
 /**
  * DropdownMenu component

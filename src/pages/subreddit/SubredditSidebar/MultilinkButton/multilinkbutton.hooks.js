@@ -1,9 +1,7 @@
-// MultiLink.js
-import React from 'react';
+import {useState} from 'react';
 
-export const useMultiLinkButton = (data) => {
-    const [isOptionsVisible, setIsOptionsVisible] = React.useState(false);
-    const {url, children} = data;
+export const useMultiLinkButton = ({url, children}) => {
+    const [isOptionsVisible, setIsOptionsVisible] = useState(false);
     const isSingleOption = !children;
 
     const toggleOptionsVisibility = () => {

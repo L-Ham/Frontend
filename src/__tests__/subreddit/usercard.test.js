@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {describe, it, expect} from '@jest/globals';
-import {UserCard} from '../../pages/subreddit/SubredditSidebar/Widgets/Moderators/Usercard/usercard';
+import {UserCard} from '../../pages/subreddit/SubredditSidebar/Widgets/Moderators/Usercard/usercard.js';
 
 describe('UserCard', () => {
     // Renders user card with all required props

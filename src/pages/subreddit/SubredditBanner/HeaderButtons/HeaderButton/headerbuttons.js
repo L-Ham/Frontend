@@ -1,9 +1,9 @@
 import React from 'react';
-import {JoinButton} from '../JoinButton/joinbutton';
-import {NotificationFrequencyControl} from '../NotificationFrequencyControl/notificationfrequencycontrol';
-import {OverflowControl} from '../OverflowControl/overflowcontrol';
-import {useHeaderButtons} from './headerbuttons.hooks';
-import {classes} from './headerbuttons.styles';
+import {JoinButton} from '../JoinButton/joinbutton.js';
+import {NotificationFrequencyControl} from '../NotificationFrequencyControl/notificationfrequencycontrol.js';
+import {OverflowControl} from '../OverflowControl/overflowcontrol.js';
+import {useHeaderButtons} from './headerbuttons.hooks.js';
+import {classes} from './headerbuttons.styles.js';
 
 
 /**

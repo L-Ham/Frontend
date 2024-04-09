@@ -1,8 +1,8 @@
 import React from 'react';
-import {useSubreddit} from '../../../subredditcontext';
-import {Rule} from './Rule/rule';
+import {useSubreddit} from '../../../subredditcontext.js';
+import {Rule} from './Rule/rule.js';
 
-export const useRulesWidget = (data, display) => {
+export const useRulesWidget = ({data, display}) => {
     const {about} = useSubreddit();
 
     if (!about) return null;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {DropdownMenu} from '../../General/Components/DropdownMenu/dropdownmenu';
-import {getIconComponent} from '../../../../generic components/iconsmap';
-import {useMultiLinkButton} from './multilinkbutton.hooks';
-import {multiLinkButtonClasses} from './multilinkbutton.styles';
+import {DropdownMenu} from '../../General/Components/DropdownMenu/dropdownmenu.js';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
+import {useMultiLinkButton} from './multilinkbutton.hooks.js';
+import {multiLinkButtonClasses} from './multilinkbutton.styles.js';
 
 
 /**
@@ -11,10 +11,9 @@ import {multiLinkButtonClasses} from './multilinkbutton.styles';
  * @param {Object} data - The data for the MultiLinkButton.
  * @return {JSX.Element} The rendered component.
  */
-export function MultiLinkButton({data}) {
-    const {text, icon: Icon} = data;
+export function MultiLinkButton({data: {text, url, children, icon: Icon}}) {
     const CaretDownIcon = getIconComponent('caret-down', false);
-    const {handleClick, isOptionsVisible, menuItems, isSingleOption} = useMultiLinkButton(data);
+    const {handleClick, isOptionsVisible, menuItems, isSingleOption} = useMultiLinkButton({url, children});
 
     const Tag = isSingleOption ? 'a' : 'button';
     return (

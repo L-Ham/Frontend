@@ -1,6 +1,6 @@
 import React from 'react';
-import {communitySettingsWidgetClasses as classes} from './communitysettingswidget.styles';
-import {SubredditWidget} from '../Widget/subredditwidget';
+import {communitySettingsWidgetClasses as classes} from './communitysettingswidget.styles.js';
+import {SubredditWidget} from '../Widget/subredditwidget.js';
 
 
 /**

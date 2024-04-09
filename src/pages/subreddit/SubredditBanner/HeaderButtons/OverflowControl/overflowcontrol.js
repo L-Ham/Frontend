@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from '../../../General/Components/DropdownMenu/dropdownmenu.js';
 import {buttonClasses} from '../../../subreddit.styles.js';
-import {useOverflowControl} from './overflowcontrol.hooks';
-import {classes} from './overflowcontrol.styles';
+import {useOverflowControl} from './overflowcontrol.hooks.js';
+import {classes} from './overflowcontrol.styles.js';
 
 /**
  * Renders an OverflowControl.
@@ -15,15 +15,15 @@ import {classes} from './overflowcontrol.styles';
  * @return {JSX.Element} The rendered component.
  */
 export function OverflowControl({
-    isMuted = false,
+    isMuted,
     onMuteClick,
-    isFavourite = false,
-    onFavouriteClick},
-) {
+    isFavourite,
+    onFavouriteClick,
+}) {
     const {isOtherOptionsVisible,
         handleOtherOptionsClick,
         menuItems,
-        OverflowHorizontalIcon} = useOverflowControl(isMuted, onMuteClick, isFavourite, onFavouriteClick);
+        OverflowHorizontalIcon} = useOverflowControl({isMuted, onMuteClick, isFavourite, onFavouriteClick});
 
     return (
         <div className={classes.container}>
@@ -46,9 +46,9 @@ export function OverflowControl({
 }
 
 OverflowControl.propTypes = {
-    isMuted: PropTypes.bool,
-    onMuteClick: PropTypes.func,
-    isFavourite: PropTypes.bool,
-    onFavouriteClick: PropTypes.func,
+    isMuted: PropTypes.bool.isRequired,
+    onMuteClick: PropTypes.func.isRequired,
+    isFavourite: PropTypes.bool.isRequired,
+    onFavouriteClick: PropTypes.func.isRequired,
 };
 

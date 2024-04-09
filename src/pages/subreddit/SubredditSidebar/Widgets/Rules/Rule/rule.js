@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {classes} from './rule.styles';
-import {useRule} from './rule.hooks';
+import {classes} from './rule.styles.js';
+import {useRule} from './rule.hooks.js';
 
 /**
  * Renders the rule.
@@ -16,7 +16,7 @@ export function Rule({data, display}) {
     const {
         isDescriptionHidden,
         description, priority, shortName,
-        CaretDownIconOutline, toggleDescriptionVisibility} = useRule(data, display);
+        CaretDownIconOutline, toggleDescriptionVisibility} = useRule({data, display});
 
     return (
         <div onClick={() => toggleDescriptionVisibility()}>

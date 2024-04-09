@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {classes} from './dropdownmenuitem.styles';
+import {classes} from './dropdownmenuitem.styles.js';
 
 
 /**
@@ -31,7 +31,7 @@ export function DropdownMenuItem({text, onClick, icon: Icon, isActive=false}) {
 }
 
 DropdownMenuItem.propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
     onClick: PropTypes.func,
     isHidden: PropTypes.bool,
     icon: PropTypes.element,

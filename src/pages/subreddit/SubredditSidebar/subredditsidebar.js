@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSubredditSidebar} from './subredditsidebar.hooks.js';
-import {subredditSidebarClasses as classes} from './subredditsidebar.styles';
+import {subredditSidebarClasses as classes} from './subredditsidebar.styles.js';
 
 /**
  * Renders the subreddit sidebar.

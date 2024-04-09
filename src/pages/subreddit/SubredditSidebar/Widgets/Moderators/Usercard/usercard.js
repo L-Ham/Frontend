@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {userCardClasses as classes} from './usercard.styles';
+import {userCardClasses as classes} from './usercard.styles.js';
 
 /**
  * Renders the user flair.

@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useSubreddit} from '../../../subredditcontext';
+import {useSubreddit} from '../../../subredditcontext.js';
 
 export const useHeaderButtons = () => {
     // states

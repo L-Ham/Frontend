@@ -1,6 +1,6 @@
-import React from 'react';
-import {WIDGETS_MAP} from './Widgets/widgetsmap';
-import {useSubreddit} from '../subredditcontext';
+import React, {Fragment} from 'react';
+import {WIDGETS_MAP} from './Widgets/widgetsmap.js';
+import {useSubreddit} from '../subredditcontext.js';
 
 export const useSubredditSidebar = () => {
     const {widgets, about} = useSubreddit();
@@ -40,10 +40,10 @@ export const useSubredditSidebar = () => {
         const hrClasses = `border-[var(--color-neutral-border-weak)] ${widget.kind === 'id-card' ? '!my-0' : '!my-4'}`;
 
         return (
-            <>
-                {WidgetComponent && <WidgetComponent key={widgetId} {...widget} />}
+            <Fragment key={widgetId}>
+                {WidgetComponent && <WidgetComponent {...widget} />}
                 {WidgetComponent && (index < allWidgets.length - 1) && <hr className={hrClasses}/>}
-            </>
+            </Fragment>
         );
     });
 

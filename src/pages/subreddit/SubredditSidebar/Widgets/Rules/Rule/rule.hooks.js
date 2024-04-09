@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import parse from 'html-react-parser';
-import {getIconComponent} from '../../../../../../generic components/iconsmap';
-import {replaceHtmlEntities} from '../../../../../../generic components/utils';
+import {getIconComponent} from '../../../../../../generic components/iconsmap.js';
+import {replaceHtmlEntities} from '../../../../../../generic components/utils.js';
 
-export const useRule = (data, display) => {
+export const useRule = ({data, display}) => {
     const isCompact = display === 'compact';
     const [isDescriptionHidden, setIsDescriptionHidden] = useState(isCompact);
     const {descriptionHtml, priority, shortName} = data;

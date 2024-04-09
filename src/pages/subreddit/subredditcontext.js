@@ -20,7 +20,7 @@ export function useSubreddit() {
 import {generateColorTones,
     generateNeutralTones,
     generatePrimaryColorTones,
-    generateSecondaryColorTones} from '../../generic components/utils';
+    generateSecondaryColorTones} from '../../generic components/utils.js';
 
 /**
  * Subreddit provider component.

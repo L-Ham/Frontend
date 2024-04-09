@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {communityWidgetClasses as classes} from './communitymoderatorswidget.styles';
-import {useCommunityModeratorsWidget} from './communitymoderatorswidget.hooks';
-import {SubredditWidget} from '../../Widget/subredditwidget';
+import {communityWidgetClasses as classes} from './communitymoderatorswidget.styles.js';
+import {useCommunityModeratorsWidget} from './communitymoderatorswidget.hooks.js';
+import {SubredditWidget} from '../../Widget/subredditwidget.js';
 
 
 /**
@@ -13,7 +13,7 @@ import {SubredditWidget} from '../../Widget/subredditwidget';
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityModeratorsWidget({mods, totalMods}) {
-    const {multiLinkButtonsComponents, moderatorComponents} = useCommunityModeratorsWidget(mods, totalMods);
+    const {multiLinkButtonsComponents, moderatorComponents} = useCommunityModeratorsWidget({mods, totalMods});
 
     if (!moderatorComponents.length) return null;
 

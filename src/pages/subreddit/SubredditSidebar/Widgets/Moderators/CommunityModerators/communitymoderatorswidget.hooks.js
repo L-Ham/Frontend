@@ -1,10 +1,10 @@
 import React from 'react';
-import {UserCard} from '../Usercard/usercard';
-import {MultiLinkButton} from '../../../MultilinkButton/multilinkbutton';
-import {useSubreddit} from '../../../../subredditcontext';
-import {getIconComponent} from '../../../../../../generic components/iconsmap';
+import {UserCard} from '../Usercard/usercard.js';
+import {MultiLinkButton} from '../../../MultilinkButton/multilinkbutton.js';
+import {useSubreddit} from '../../../../subredditcontext.js';
+import {getIconComponent} from '../../../../../../generic components/iconsmap.js';
 
-export const useCommunityModeratorsWidget = (mods, totalMods) => {
+export const useCommunityModeratorsWidget = ({mods, totalMods}) => {
     const {about: {data: {display_name: subredditName}}} = useSubreddit();
     const MessageIcon = getIconComponent('message', false);
 

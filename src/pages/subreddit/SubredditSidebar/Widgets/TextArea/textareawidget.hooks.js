@@ -1,8 +1,8 @@
-import {useSubreddit} from '../../../subredditcontext';
+import {useSubreddit} from '../../../subredditcontext.js';
 import parse from 'html-react-parser';
-import {replaceHtmlEntities} from '../../../../../generic components/utils';
+import {replaceHtmlEntities} from '../../../../../generic components/utils.js';
 
-export const useTextAreaWidget = (textHtml) => {
+export const useTextAreaWidget = ({textHtml}) => {
     const {about} = useSubreddit();
 
     if (!about) return null;

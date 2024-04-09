@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Edit} from '../../../../../generic components/edit';
-import {useSubredditWidget} from './subredditwidget.hooks';
+import {Edit} from '../../../../../generic components/edit.js';
+import {useSubredditWidget} from './subredditwidget.hooks.js';
 
 /**
  * Renders the subreddit sidebar item.
@@ -13,8 +13,8 @@ import {useSubredditWidget} from './subredditwidget.hooks';
  *
  * @return {JSX.Element} The rendered component.
  */
-export function SubredditWidget({title, children, isCustomizable=false, onEditClick, view}) {
-    const {viewClasses} = useSubredditWidget(view);
+export function SubredditWidget({title, children, isCustomizable=false, onEditClick=null, view=null}) {
+    const {viewClasses} = useSubredditWidget({view});
 
     return (
         <div className={viewClasses.container}>

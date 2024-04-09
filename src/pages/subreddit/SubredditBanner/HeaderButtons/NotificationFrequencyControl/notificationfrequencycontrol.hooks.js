@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 
-export const useNotificationFrequencyControl = (notificationLevel, setNotificationLevel) => {
+export const useNotificationFrequencyControl = ({notificationLevel, setNotificationLevel}) => {
     const [isNotificationLevelsVisible, setIsNotificationLevelsVisible] = useState(false);
 
     const FrequentIcon = getIconComponent('frequent', notificationLevel === 'frequent');

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {DropdownMenu} from '../../../General/Components/DropdownMenu/dropdownmenu.js';
-import {classes} from './notificationfrequencycontrol.styles';
-import {useNotificationFrequencyControl} from './notificationfrequencycontrol.hooks';
+import {classes} from './notificationfrequencycontrol.styles.js';
+import {useNotificationFrequencyControl} from './notificationfrequencycontrol.hooks.js';
 import {buttonClasses} from '../../../subreddit.styles.js';
 
 /**
@@ -13,12 +13,11 @@ import {buttonClasses} from '../../../subreddit.styles.js';
  * @param {string} props.setNotificationLevel - The set notification level
  * @return {JSX.Element} The NotificationFrequencyControl component
  */
-export function NotificationFrequencyControl(
-    {notificationLevel, setNotificationLevel}) {
+export function NotificationFrequencyControl({notificationLevel=null, setNotificationLevel}) {
     const {isNotificationLevelsVisible,
         NotificationLevelIcon,
         menuItems,
-        handleNotificationClick} = useNotificationFrequencyControl(notificationLevel, setNotificationLevel);
+        handleNotificationClick} = useNotificationFrequencyControl({notificationLevel, setNotificationLevel});
 
     return (
         <div className={classes.container}>
@@ -42,5 +41,5 @@ export function NotificationFrequencyControl(
 
 NotificationFrequencyControl.propTypes = {
     notificationLevel: PropTypes.string,
-    setNotificationLevel: PropTypes.func,
+    setNotificationLevel: PropTypes.func.isRequired,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import {MultiLinkButton} from '../../MultilinkButton/multilinkbutton';
+import {MultiLinkButton} from '../../MultilinkButton/multilinkbutton.js';
 
-export const useBookmarksWidget = (data) => {
+export const useBookmarksWidget = ({data}) => {
     if (!data) return null;
 
     const multiLinkButtonsComponents = data.map((bookmark) => (

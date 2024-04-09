@@ -1,7 +1,7 @@
-import {classes} from './subredditwidget.styles';
-import {VIEW_CONTEXTS} from './viewcontexts'; // import the constants
+import {classes} from './subredditwidget.styles.js';
+import {VIEW_CONTEXTS} from './viewcontexts.js'; // import the constants
 
-export const useSubredditWidget = (view) => {
+export const useSubredditWidget = ({view}) => {
     let viewClasses;
 
     switch (view) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {useTextAreaWidget} from './textareawidget.hooks';
-import {SubredditWidget} from '../Widget/subredditwidget';
+import {useTextAreaWidget} from './textareawidget.hooks.js';
+import {SubredditWidget} from '../Widget/subredditwidget.js';
 
 /**
  * Renders the text area widget.
@@ -11,7 +11,7 @@ import {SubredditWidget} from '../Widget/subredditwidget';
  * @return {JSX.Element} The rendered component.
  */
 export function TextAreaWidget({textHtml, shortName: title}) {
-    const {text} = useTextAreaWidget(textHtml);
+    const {text} = useTextAreaWidget({textHtml});
 
     if (!text) return null;
 

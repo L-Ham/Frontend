@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {SubredditBanner} from './SubredditBanner/Banner/subredditbanner';
-import {SubredditSidebar} from './SubredditSidebar/subredditsidebar';
-import {SubredditProvider} from './subredditcontext';
-import {classes} from './subreddit.styles';
+import {SubredditBanner} from './SubredditBanner/subredditbanner.js';
+import {SubredditSidebar} from './SubredditSidebar/subredditsidebar.js';
+import {SubredditProvider} from './subredditcontext.js';
+import {classes} from './subreddit.styles.js';
 import './subreddit.css';
 
 
