@@ -1,6 +1,5 @@
 import React from 'react';
 import {Subreddit} from '../pages/subreddit/subreddit.js';
-import {SubredditProvider} from '../pages/subreddit/subredditcontext.js';
 import {Post} from '../generic components/Post/post.js';
 import {useParams} from 'react-router-dom';
 /**
@@ -19,8 +18,6 @@ export function PostRoute() {
 export function SubredditRoute() {
     const {name} = useParams();
     return (
-        <SubredditProvider name={name}>
-            <Subreddit />
-        </SubredditProvider>
+        <Subreddit name={name}/>
     );
 }
