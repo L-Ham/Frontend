@@ -9,7 +9,6 @@ import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
 import {SignUpContinued} from '../pages/registration_pages/signupcontinued.js';
-import {PasswordContinued} from '../pages/registration_pages/passwordcontinued.js';
 import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 /**
  * Renders the main application component.
@@ -25,7 +24,6 @@ function App() {
                 <Route path="/register/continue" element={<SignUpContinued />} />
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
-                <Route path="/resetpasswordold" element={<PasswordContinued />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
                 <Route path="/settings" element={
                     <LayoutWithNavigation>
