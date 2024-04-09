@@ -10,9 +10,6 @@
     @apply pl-8;
 }
 
-.subreddit-sidebar h2.shortname {
-    @apply m-0;
-}
 
 /*** md ***/
 .subreddit-sidebar div.md ul li {
@@ -47,9 +44,5 @@
 
 .subreddit-sidebar div.md ul a:hover, .subreddit-sidebar div.md ol a:hover {
     @apply underline;
-}
-
-.subreddit-sidebar .my-md {
-    @apply my-4;
 }
 
