@@ -44,7 +44,7 @@ export const buttonClasses = {
     inline-flex
     items-center
     justify-center px-[var(--rem10)]
-    text-[color:var(--color-a-default)] no-underline`,
+    text-[color:var(--color-primary)] no-underline`,
 };
 
 
