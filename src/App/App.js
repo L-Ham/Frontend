@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
+import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 
 /**
  * Renders the main application component.
@@ -52,6 +53,7 @@ function App() {
                         <HomePage />
                     </LayoutWithNavigation>
                 } />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
     );

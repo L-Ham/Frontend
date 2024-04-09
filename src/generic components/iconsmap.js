@@ -62,7 +62,7 @@ import {ReactComponent as TopicLawIconOutline} from '../assets/icons/topic-law-o
 import {ReactComponent as RulesIconOutline} from '../assets/icons/rules-outline.svg';
 import {ReactComponent as AddIconOutline} from '../assets/icons/add-outline.svg';
 import ArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
-
+import {ReactComponent as DizzySnooIconOutline} from '../assets/icons/dizzy-snoo-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -88,6 +88,7 @@ const ICONS_MAP = {
     'unfollow-outline': UnfolowIconOutline,
     'follow-outline': FollowIconOutline,
     'threedots-fill': ThreeDotsIconFill,
+    'dizzy-snoo-outline': DizzySnooIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
     'home-outline': HomeIconOutline,
