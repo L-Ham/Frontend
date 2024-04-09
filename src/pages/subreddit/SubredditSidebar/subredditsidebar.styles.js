@@ -1,6 +1,6 @@
 import './subredditsidebar.css';
 
-export const subredditSidebarClasses ={
+export const subredditSidebarClasses = {
     sidebarContainer: `subreddit-sidebar 
     s:block min-[768px]:sticky h-screen
     min-[768px]:top-[56px] min-[768px]:max-h-[calc(100vh-var(--shreddit-header-height)-1px)]
