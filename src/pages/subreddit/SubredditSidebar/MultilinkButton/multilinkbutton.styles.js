@@ -1,4 +1,3 @@
-import '../../../subreddit/subreddit.css';
 import {buttonClasses} from '../../subreddit.styles.js';
 
 
