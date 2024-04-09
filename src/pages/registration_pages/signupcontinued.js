@@ -218,8 +218,8 @@ function SignUpContinued() {
                                     <img src={refreshImage} alt="Image" style={refreshImageStyle} />
                                 </a>
                             </p>
-                            <div className="usernames">
-                                <div className="Onboarding_usernameWrapper">
+                            <div >
+                                <div >
                                     <a className="block bg-transparent pb-2
                                     text-[#0079d3] no-underline" data-username="Sad_Tonight_2694"
                                     href="#" onClick={handleUsernameSuggestionClick}>
@@ -248,11 +248,10 @@ function SignUpContinued() {
                     </div>
                     <div className=" flex min-h-[55px] items-center justify-between border-t border-solid
                      border-t-[hsla(195,2%,65%,0.36)] bg-[#fcfcfb] px-4 py-2">
-                        <a href="/register" className="AnimatedForm__
-                        backLink" data-step="username-and-password">Back</a>
-                        <span className="AnimatedForm__submitStatus" data-step="username-and-password">
-                            <span className="AnimatedForm__submitStatusIcon"></span>
-                            <span className="AnimatedForm__submitStatusMessage"></span>
+                        <a href="/register" data-step="username-and-password">Back</a>
+                        <span data-step="username-and-password">
+                            <span ></span>
+                            <span ></span>
                         </span>
                         <button className="relative inline-block min-h-[35px]
                          w-auto min-w-[155px] max-w-[392px] cursor-pointer truncate rounded border-[none]
