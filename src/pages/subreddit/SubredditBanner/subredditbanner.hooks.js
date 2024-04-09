@@ -1,6 +1,6 @@
-import {useSubreddit} from '../../subredditcontext.js';
+import {useSubreddit} from '../subredditcontext.js';
 import {useNavigate} from 'react-router-dom';
-import {getIconComponent} from '../../../../generic components/iconsmap.js';
+import {getIconComponent} from '../../../generic components/iconsmap.js';
 
 export const useSubredditBanner = () => {
     const {about} = useSubreddit();

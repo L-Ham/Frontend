@@ -23,7 +23,7 @@ export function JoinButton({
         disabled,
         buttonClasses,
         buttonLabel,
-    } = useJoinButton(handleJoinClick, isSubscribed, subscribeLabel, unSubscribeLabel);
+    } = useJoinButton({handleJoinClick, isSubscribed, subscribeLabel, unSubscribeLabel});
 
 
     return (
@@ -38,9 +38,9 @@ export function JoinButton({
 }
 
 JoinButton.propTypes = {
-    subscribeLabel: PropTypes.string,
-    unSubscribeLabel: PropTypes.string,
-    handleJoinClick: PropTypes.func,
-    isSubscribed: PropTypes.bool,
+    subscribeLabel: PropTypes.string.isRequired,
+    unSubscribeLabel: PropTypes.string.isRequired,
+    handleJoinClick: PropTypes.func.isRequired,
+    isSubscribed: PropTypes.bool.isRequired,
 };
 
