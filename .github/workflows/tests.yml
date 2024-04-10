@@ -4,10 +4,11 @@
 name: tests CI
 
 on:
+  # add branch main and dev to watch list
   push:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "dev" ]
 
 jobs:
   build:
