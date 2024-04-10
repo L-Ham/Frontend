@@ -44,6 +44,11 @@ code {
   --size-lg: 1.5rem;
   --btn-primary-bg: #0045ac;
   --btn-primary-bg-hover: #1870f4;
+  --shreddit-header-height: 56px;
+  --styled-scrollbar-background:#ffffff;
+  --shreddit-content-background:#ffffff;
+  --button-height:2rem;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,6 +63,9 @@ code {
     --btn-color-text: #F2F4F5;
     --rem6: 0.375rem;
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    --font-24: normal undefined null / null var(--font-sans);
+    --font-32: normal undefined null / null var(--font-sans);
+    --font-button-sm: normal 700 0.875rem/1.125rem var(--font-sans);
     --font-12-16-semibold: normal 600 0.75rem / 1rem var(--font-sans);
     --font-button-sm: var(--font-12-16-semibold);
     --color-neutral-content: #b8c5c9;
@@ -69,9 +77,24 @@ code {
     --color-a-hover: #a7ccff;
     --color-neutral-border-weak: #ffffff1a;
     --size-lg: 1.5rem;
+    --button-height : 2rem;
     --btn-primary-bg: #0045ac;
     --btn-primary-bg-hover: #1870f4;
     --color-neutral-border-medium: #ffffff80;
+    --button-color-background: #EAEDEF;
+    /***/
+    --color-secondary-background-selected:#D2DADD;
+    --color-neutral-content-strong: #0F1A1C;
+    --color-neutral-content-weak:#576F76;
+    --color-neutral-border-weak:#0000001a;
+    --color-secondary:#0F1A1C;
+    --color-neutral-background-weak: #F9FAFA;
+    --color-neutral-background:#ffffff;
+    --color-secondary-weak: #576F76;
+    --button-color-background-hover:#e2e7e9;
+    --button-border-color: #00000080;
+    --button-border-color-hover: #000000;
+
   }
 }
 

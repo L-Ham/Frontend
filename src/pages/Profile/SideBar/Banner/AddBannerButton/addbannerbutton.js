@@ -1,0 +1,28 @@
+import React from 'react';
+import {useAddBanner} from './addbannerbutton.hook.js';
+import {addBannerButtonClasses} from './addbannerbutton.styles.js';
+/**
+ * AddBannerButton component
+ * @return {React.Component}
+ */
+export function AddBannerButton() {
+    const {AddBannerIcon} = useAddBanner();
+    return (
+        <div className={addBannerButtonClasses.root}>
+            <a
+                href="/settings"
+                aria-label="Edit profile banner"
+                style={{background: 'var(--button-color-background)'}}
+                className={addBannerButtonClasses.a}>
+                <span className={addBannerButtonClasses.span}>
+                    <span className={addBannerButtonClasses.spanC}>
+                        <AddBannerIcon />
+                    </span>
+
+                </span>
+
+            </a>
+
+        </div>
+    );
+}
