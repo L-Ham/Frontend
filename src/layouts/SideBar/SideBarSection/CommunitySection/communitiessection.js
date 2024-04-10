@@ -1,8 +1,9 @@
 import React from 'react';
-import {CommunityItem} from './communityitem';
-import {CreateCommunityItem} from './createcommunityitem';
-import {SectionHeader} from '../sectionheader';
-import {useCommunitiesSection} from './community.hooks';
+import {CommunityItem} from './communityitem.js';
+import {CreateCommunityItem} from './createcommunityitem.js';
+import {SectionHeader} from '../sectionheader.js';
+import {useCommunitiesSection} from './community.hooks.js';
+import uuid from 'react-uuid/uuid';
 
 /**
  * The sidebar recent communities section component
@@ -22,12 +23,9 @@ function CommunitiesSection() {
         <>
             <SectionHeader sectionName='COMMUNITIES' isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className={rootStyles}>
-                <CreateCommunityItem
-                    icon='add'
-                    label='Create Community'
-                />
-                {Communities.map((community, index) => (
-                    <CommunityItem key={index} {...community} />
+                <CreateCommunityItem/>
+                {Communities.map((community) => (
+                    <CommunityItem key={uuid()} {...community} />
                 ))}
             </div>
         </>

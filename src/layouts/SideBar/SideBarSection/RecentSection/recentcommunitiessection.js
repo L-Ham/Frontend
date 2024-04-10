@@ -1,8 +1,8 @@
 import React from 'react';
-import {RecentCommunityItem} from './recentcommunityitem';
-import {SectionHeader} from '../sectionheader';
-// import {sectionClasses as styles} from '../sidebarsection.styles';
-import {useRecentCommunitiesSection} from './recentcommunities.hooks';
+import {RecentCommunityItem} from './recentcommunityitem.js';
+import {SectionHeader} from '../sectionheader.js';
+import {useRecentCommunitiesSection} from './recentcommunities.hooks.js';
+import uuid from 'react-uuid/uuid.js';
 
 /**
  * The sidebar recent communities section component
@@ -21,10 +21,11 @@ function RecentCommunitiesSection() {
     } = useRecentCommunitiesSection();
     return (
         <>
-            <SectionHeader sectionName='RECENT' isOpen={isOpen} setIsOpen={setIsOpen} />
+            <SectionHeader sectionName='RECENT' isOpen={isOpen} setIsOpen={setIsOpen}
+                data-testid='recent-communities-section-header' />
             <div className={rootStyles}>
-                {recentCommunities.map((community, index) => (
-                    <RecentCommunityItem key={index} {...community} />
+                {recentCommunities.map((community) => (
+                    <RecentCommunityItem key={uuid()} {...community} />
                 ))}
             </div>
         </>

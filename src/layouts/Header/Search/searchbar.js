@@ -1,21 +1,21 @@
 import React from 'react';
-import {useSearchBar} from './search.hooks';
-import {searchBarClasses as styles} from './search.styles';
+import {useSearchBar} from './search.hooks.js';
+import {searchBarClasses as styles} from './search.styles.js';
 import PropTypes from 'prop-types';
 
 /**
  * Search bar component
  * @component
- * @param {boolean} isSearchDropdownVisible - Whether or not the search dropdown is visible
+ * @param {boolean} isDropdownVisible - Whether or not the search dropdown is visible
  * @example
  * // Render the search bar
  * <SearchBar />
  * @return {JSX.Element} The search bar component
  * */
-function SearchBar({isSearchDropdownVisible = false}) {
-    const {SearchIcon, rootStyles, formWrapperStyles, handleSearchSubmit} = useSearchBar({isSearchDropdownVisible});
+function SearchBar({isDropdownVisible = false}) {
+    const {SearchIcon, rootStyles, formWrapperStyles, handleSearchSubmit} = useSearchBar({isDropdownVisible});
     return (
-        <div className={rootStyles}>
+        <div className={rootStyles} data-testid='search-bar'>
             <div className={formWrapperStyles}>
                 <form className={styles.searchForm} onSubmit={handleSearchSubmit}>
                     <div className={styles.inputWrapper}>
@@ -35,7 +35,7 @@ function SearchBar({isSearchDropdownVisible = false}) {
 }
 
 SearchBar.propTypes = {
-    isSearchDropdownVisible: PropTypes.bool,
+    isDropdownVisible: PropTypes.bool,
 };
 
 export {SearchBar};

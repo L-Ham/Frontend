@@ -1,8 +1,9 @@
 import React from 'react';
-import {SectionItem} from './sectionitem';
-import {SectionHeader} from '../sectionheader';
-import {sectionClasses as styles} from '../sidebarsection.styles';
-import {useResourcesSection} from './resources.hooks';
+import {SectionItem} from './sectionitem.js';
+import {SectionHeader} from '../sectionheader.js';
+import {sectionClasses as styles} from '../sidebarsection.styles.js';
+import {useResourcesSection} from './resources.hooks.js';
+import uuid from 'react-uuid/uuid.js';
 
 /**
  * The sidebar resources section component
@@ -21,12 +22,13 @@ function ResourcesSection() {
     } = useResourcesSection();
     return (
         <>
-            <SectionHeader sectionName='RESOURCES' isOpen={isOpen} setIsOpen={setIsOpen} />
+            <SectionHeader sectionName='RESOURCES' isOpen={isOpen} setIsOpen={setIsOpen}
+                data-testid='resources-section-header' />
             <div className={rootStyles}>
                 {resources.map((community, index) => (
                     <React.Fragment key={index}>
-                        {community.map((item, itemIndex) => (
-                            <li key={itemIndex} className={styles.listItem}>
+                        {community.map((item) => (
+                            <li key={uuid()} className={styles.listItem}>
                                 <SectionItem {...item} />
                             </li>
                         ))}

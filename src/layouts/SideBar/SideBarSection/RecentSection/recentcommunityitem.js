@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {sectionItemsClasses as styles} from '../sidebarsection.styles';
+import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
  */
 function RecentCommunityItem({imgURL, label, href}) {
     return (
-        <NavLink to={href} className={styles.root}>
+        <NavLink to={href} className={styles.root} data-testid={`recent-community-item-${label}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
                     <img src={imgURL} alt={label} className={styles.img} />
@@ -28,9 +28,9 @@ function RecentCommunityItem({imgURL, label, href}) {
 }
 
 RecentCommunityItem.propTypes = {
-    imgURL: PropTypes.string,
-    label: PropTypes.string,
-    href: PropTypes.string,
+    imgURL: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 export {RecentCommunityItem};

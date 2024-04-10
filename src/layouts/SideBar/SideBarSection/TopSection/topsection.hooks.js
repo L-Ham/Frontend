@@ -1,5 +1,5 @@
-import {sectionItemsClasses} from '../sidebarsection.styles';
-import {getIconComponent} from '../../../../generic components/iconsmap';
+import {sectionItemsClasses} from '../sidebarsection.styles.js';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
 
 // top section hooks
 export const useTopSection = () => {

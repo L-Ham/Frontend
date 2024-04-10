@@ -1,6 +1,6 @@
 import React from 'react';
-import {sectionHeaderClasses as styles} from './sidebarsection.styles';
-import {useSectionHeader} from './sectionheader.hooks';
+import {sectionHeaderClasses as styles} from './sidebarsection.styles.js';
+import {useSectionHeader} from './sectionheader.hooks.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -25,6 +25,7 @@ function SectionHeader({sectionName, isOpen, setIsOpen}) {
             tabIndex='-1'
             className={styles.root}
             onClick={() => setIsOpen(!isOpen)}
+            data-testid={`section-header-${sectionName}`}
         >
             <span className={styles.sectionHeaderWrapper}>
                 <span className={styles.sectionNameWrapper}>

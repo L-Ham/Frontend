@@ -1,11 +1,11 @@
-import {getIconComponent} from '../../../generic components/iconsmap';
-import {searchBarClasses, searchDropDownClasses} from './search.styles';
+import {getIconComponent} from '../../../generic components/iconsmap.js';
+import {searchBarClasses, searchDropDownClasses} from './search.styles.js';
 // search bar hooks
-export const useSearchBar = ({isSearchDropdownVisible}) => {
+export const useSearchBar = ({isDropdownVisible}) => {
     const SearchIcon = getIconComponent('search', false);
-    const rootStyles = isSearchDropdownVisible ? `${searchBarClasses.root} ${searchBarClasses.rootVisible}` :
+    const rootStyles = isDropdownVisible ? `${searchBarClasses.root} ${searchBarClasses.rootVisible}` :
         searchBarClasses.root;
-    const formWrapperStyles = isSearchDropdownVisible ? `${searchBarClasses.formWrapper} bg-white` :
+    const formWrapperStyles = isDropdownVisible ? `${searchBarClasses.formWrapper} bg-white` :
         searchBarClasses.formWrapper;
 
     // function to handle search submit
@@ -23,9 +23,9 @@ export const useSearchBar = ({isSearchDropdownVisible}) => {
 };
 
 // search dropdown hooks
-export const useSearchDropDown = ({isSearchDropdownVisible}) => {
+export const useSearchDropDown = ({isDropdownVisible}) => {
     const TrendingIcon = getIconComponent('trending', false);
-    const rootStyles = isSearchDropdownVisible ? `${searchDropDownClasses.root} ${searchDropDownClasses.rootVisible}` :
+    const rootStyles = isDropdownVisible ? `${searchDropDownClasses.root} ${searchDropDownClasses.rootVisible}` :
         `${searchDropDownClasses.root} ${searchDropDownClasses.rootHidden}`;
     return {
         TrendingIcon,
@@ -37,9 +37,17 @@ export const useSearchDropDown = ({isSearchDropdownVisible}) => {
 export const useSearchHistoryItem = () => {
     const HistoryIcon = getIconComponent('history', false);
     const RemoveIcon = getIconComponent('remove', false);
+
+    // function to handle click
+    const handleClick = (e, label) => {
+        e.preventDefault();
+        alert(`Remove ${label}`);
+    };
+
     return {
         HistoryIcon,
         RemoveIcon,
+        handleClick,
     };
 };
 

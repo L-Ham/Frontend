@@ -1,5 +1,6 @@
 import React from 'react';
-import {getIconComponent} from '../../../generic components/iconsmap';
+import {getIconComponent} from '../../../generic components/iconsmap.js';
+import {menuButtonStyles as styles} from './leftitems.styles.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -14,11 +15,9 @@ import PropTypes from 'prop-types';
 function MenuButton({onClick}) {
     const MenuIcon = getIconComponent('menu', false);
     return (
-        <button className="button-medium inline-flex size-10 items-center
-                            justify-center rounded-full px-2 hover:bg-[#e2e7e9] active:bg-[#d2dadd]
-                            nd:hidden " id="navbar-menu-button" type="button" onClick={onClick}>
-            <span className="flex items-center justify-center">
-                <span className="flex">
+        <button className={styles.button} type="button" onClick={onClick} data-testid="menu-button">
+            <span className={styles.buttonIconWrapper}>
+                <span className={styles.buttonIcon}>
                     <MenuIcon />
                 </span>
             </span>
@@ -27,7 +26,7 @@ function MenuButton({onClick}) {
 }
 
 MenuButton.propTypes = {
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
 };
 
 export {MenuButton};

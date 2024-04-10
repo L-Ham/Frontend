@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {getIconComponent} from '../../../../generic components/iconsmap';
-import {sectionItemsClasses as styles} from '../sidebarsection.styles';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
+import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -16,11 +16,11 @@ import PropTypes from 'prop-types';
  * <SectionItem />
  * @return {JSX.Element} The generic sidebar section item component
  */
-function SectionItem({icon, label, href='/test'}) {
+function SectionItem({icon, label, href}) {
     const Icon = getIconComponent(icon, false);
     return (
 
-        <NavLink to={href} className={styles.root}>
+        <NavLink to={href} className={styles.root} data-testid={`section-item-${label}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
                     <Icon />
@@ -32,9 +32,9 @@ function SectionItem({icon, label, href='/test'}) {
 }
 
 SectionItem.propTypes = {
-    icon: PropTypes.string,
-    label: PropTypes.string,
-    href: PropTypes.string,
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 export {SectionItem};

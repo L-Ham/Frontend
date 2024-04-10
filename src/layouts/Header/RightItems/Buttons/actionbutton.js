@@ -1,7 +1,7 @@
 import React from 'react';
-import {getIconComponent} from '../../../../generic components/iconsmap';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import PropTypes from 'prop-types';
-import {actionButtonClasses as styles} from './buttons.styles';
+import {actionButtonClasses as styles} from './buttons.styles.js';
 import '../../appbar.css';
 
 /**
@@ -14,10 +14,10 @@ import '../../appbar.css';
  * <ActionButton />
  * @return {JSX.Element} The button component
  */
-function ActionButton({icon, onClick = (e) => {}}) {
+function ActionButton({icon, onClick}) {
     const Icon = getIconComponent(icon, false);
     return (
-        <button className={styles.root} onClick={onClick}>
+        <button className={styles.root} onClick={onClick} data-testid={`action-button-${icon}`}>
             <span className={styles.iconContainer}>
                 <Icon />
             </span>
@@ -26,8 +26,8 @@ function ActionButton({icon, onClick = (e) => {}}) {
 }
 
 ActionButton.propTypes = {
-    icon: PropTypes.string,
-    onClick: PropTypes.func,
+    icon: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export {ActionButton};

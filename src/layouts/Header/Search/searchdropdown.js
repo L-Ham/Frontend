@@ -1,28 +1,28 @@
 import React from 'react';
-import {SearchHistoryItem} from './searchhistoryitem';
-import {SearchTrendingItem} from './searchtrendingitem';
-import {useSearchDropDown} from './search.hooks';
-import {searchDropDownClasses as styles} from './search.styles';
+import {SearchHistoryItem} from './searchhistoryitem.js';
+import {SearchTrendingItem} from './searchtrendingitem.js';
+import {useSearchDropDown} from './search.hooks.js';
+import {searchDropDownClasses as styles} from './search.styles.js';
 import PropTypes from 'prop-types';
 
 /**
  * The search dropdown component
  * @component
- * @param {boolean} isSearchDropdownVisible - Whether or not the search dropdown is visible
- * @param {array} searchTrendingItems - The trending search items
- * @param {array} SearchHistoryItems - The search history items
+ * @param {boolean} isDropdownVisible - Whether or not the search dropdown is visible
+ * @param {array} TrendingItems - The trending search items
+ * @param {array} HistoryItems - The search history items
  * @example
  * // Render the search dropdown
  * <SearchDropDown />
  * @return {JSX.Element} The search dropdown component
  * */
-function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = [], SearchHistoryItems = []}) {
-    const {rootStyles, TrendingIcon} = useSearchDropDown({isSearchDropdownVisible});
+function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryItems = []}) {
+    const {rootStyles, TrendingIcon} = useSearchDropDown({isDropdownVisible});
     return (
-        <div className={rootStyles}>
+        <div className={rootStyles} data-testid='search-dropdown'>
             <ul className={styles.recentSearchList}>
                 {
-                    SearchHistoryItems.map((item, index) => (
+                    HistoryItems.map((item, index) => (
                         <React.Fragment key={index}>
                             <li className={styles.listItem}>
                                 <SearchHistoryItem {...item}/>
@@ -40,7 +40,7 @@ function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = 
             </div>
             <ul id='SearchDropdownList' className={styles.trendingList}>
                 {
-                    searchTrendingItems.map((item, index) => (
+                    TrendingItems.map((item, index) => (
                         <React.Fragment key={index}>
                             <li key={index} className={styles.listItem}>
                                 <SearchTrendingItem {...item}/>
@@ -55,9 +55,9 @@ function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = 
 }
 
 SearchDropDown.propTypes = {
-    isSearchDropdownVisible: PropTypes.bool,
-    searchTrendingItems: PropTypes.array,
-    SearchHistoryItems: PropTypes.array,
+    isDropdownVisible: PropTypes.bool,
+    TrendingItems: PropTypes.array,
+    HistoryItems: PropTypes.array,
 };
 
 export {SearchDropDown};

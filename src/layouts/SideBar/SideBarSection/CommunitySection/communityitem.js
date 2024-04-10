@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {sectionItemsClasses as styles} from '../sidebarsection.styles';
-import {useCommunityItem} from './community.hooks';
+import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
+import {useCommunityItem} from './community.hooks.js';
 import PropTypes from 'prop-types';
 
 
@@ -19,8 +19,7 @@ import PropTypes from 'prop-types';
 function CommunityItem({imgURL, label, href}) {
     const {handleStar, StarIcon} = useCommunityItem();
     return (
-        <NavLink to={href} className={styles.root}>
-
+        <NavLink to={href} className={styles.root} data-testid={`community-item-${label}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
                     <img src={imgURL} alt={label} className={styles.img} />
@@ -38,9 +37,9 @@ function CommunityItem({imgURL, label, href}) {
 }
 
 CommunityItem.propTypes = {
-    imgURL: PropTypes.string,
-    label: PropTypes.string,
-    href: PropTypes.string,
+    imgURL: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 export {CommunityItem};

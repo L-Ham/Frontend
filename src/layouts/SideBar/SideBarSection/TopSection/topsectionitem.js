@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {sectionItemsClasses as styles} from '../sidebarsection.styles';
-import {useTopSectionItem} from './topsection.hooks';
+import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
+import {useTopSectionItem} from './topsection.hooks.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 function TopSectionItem({icon, label, href}) {
     const {Icon, rootStyles} = useTopSectionItem({icon, href});
     return (
-        <NavLink to={href} className={rootStyles}>
+        <NavLink to={href} className={rootStyles} data-testid={`top-section-item-${label}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
                     <Icon />
@@ -30,9 +30,9 @@ function TopSectionItem({icon, label, href}) {
 }
 
 TopSectionItem.propTypes = {
-    icon: PropTypes.string,
-    label: PropTypes.string,
-    href: PropTypes.string,
+    icon: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {ProfileIcon} from './profileicon.js';
 import {profileMenuClasses} from './profilemenu.styles.js';
@@ -16,7 +15,7 @@ import '../../appbar.css';
 function ProfileMenu() {
     const {isUserMenuOpen, setIsUserMenuOpen, UserMenuRef, userMenuDropdownStyles, tabSections} = useProfileMenu();
     return (
-        <div ref={UserMenuRef} className={profileMenuClasses.root}>
+        <div ref={UserMenuRef} className={profileMenuClasses.root} data-testid='profile-menu'>
 
             <button className={profileMenuClasses.profileIconWrapper}
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>

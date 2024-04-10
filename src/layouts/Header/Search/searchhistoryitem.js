@@ -1,6 +1,6 @@
 import React from 'react';
-import {useSearchHistoryItem} from './search.hooks';
-import {searchHistoryItemClasses} from './search.styles';
+import {useSearchHistoryItem} from './search.hooks.js';
+import {searchHistoryItemClasses} from './search.styles.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -14,11 +14,11 @@ import PropTypes from 'prop-types';
  * <SearchHistoryItem />
  * @return {JSX.Element} The search history item component
  */
-function SearchHistoryItem({subredditIconURL = '', label = 'test', link = '/test'}) {
-    const {HistoryIcon, RemoveIcon} = useSearchHistoryItem();
+function SearchHistoryItem({subredditIconURL, label, href}) {
+    const {HistoryIcon, RemoveIcon, handleClick} = useSearchHistoryItem();
     return (
-        <a className={searchHistoryItemClasses.root} href="#"
-            tabIndex="-1">
+        <a className={searchHistoryItemClasses.root} href={href} tabIndex="-1"
+            data-testid={`search-history-item-${label}`}>
 
             <span className={searchHistoryItemClasses.itemWrapper}>
                 <span className={searchHistoryItemClasses.iconWrapper}>
@@ -44,7 +44,9 @@ function SearchHistoryItem({subredditIconURL = '', label = 'test', link = '/test
                 <span className={searchHistoryItemClasses.removeButtonContainer}>
                     <button className={searchHistoryItemClasses.removeButton}
                         tabIndex="-1"
-                        onClick={(e) => e.stopPropagation()} >
+                        onClick={(e) => {
+                            handleClick(e, label);
+                        }}>
                         <span className={searchHistoryItemClasses.removeButtonIcon}>
                             <span className="flex">
                                 <RemoveIcon />
@@ -59,8 +61,8 @@ function SearchHistoryItem({subredditIconURL = '', label = 'test', link = '/test
 
 SearchHistoryItem.propTypes = {
     subredditIconURL: PropTypes.string,
-    label: PropTypes.string,
-    link: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 export {SearchHistoryItem};

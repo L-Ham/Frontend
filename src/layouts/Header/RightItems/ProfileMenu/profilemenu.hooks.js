@@ -1,10 +1,9 @@
-// profile menu hooks
 import React, {useEffect, useRef, useState} from 'react';
-import {ProfileMenuListItem} from './profilemenulistitem';
+import {ProfileMenuListItem} from './profilemenulistitem.js';
 import {ProfileMenuSwitchItem} from './profilemenuswitchitem.js';
-import {ProfileIcon} from './profileicon';
-import {getIconComponent} from '../../../../generic components/iconsmap';
-import {profileMenuClasses} from './profilemenu.styles';
+import {ProfileIcon} from './profileicon.js';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
+import {profileMenuClasses} from './profilemenu.styles.js';
 
 export const useProfileMenu = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);

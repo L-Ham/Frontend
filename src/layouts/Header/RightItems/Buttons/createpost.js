@@ -1,19 +1,17 @@
 import React from 'react';
-import {getIconComponent} from '../../../../generic components/iconsmap';
-import {createPostButtonClasses as styles} from './buttons.styles';
-import PropTypes from 'prop-types';
+import {useCreatePost} from './buttons.hooks.js';
+import {createPostButtonClasses as styles} from './buttons.styles.js';
 
 /**
  * Create post component
  * @component
- * @param {string} href - The href for the create post component
  * @example
  * // Render the create post component
  * <CreatePost />
  * @return {JSX.Element} The create post component
  */
-function CreatePost({href='#'}) {
-    const CreatePostIcon = getIconComponent('create-post', false);
+function CreatePost() {
+    const {CreatePostIcon, href} = useCreatePost();
     return (
         <a href={href} className={styles.root}>
             <span className={styles.content}>
@@ -27,9 +25,5 @@ function CreatePost({href='#'}) {
         </a>
     );
 }
-
-CreatePost.propTypes = {
-    href: PropTypes.string,
-};
 
 export {CreatePost};

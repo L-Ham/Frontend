@@ -1,5 +1,5 @@
 import React from 'react';
-import {searchTrendingItemClasses as styles} from './search.styles';
+import {searchTrendingItemClasses as styles} from './search.styles.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -15,11 +15,11 @@ import PropTypes from 'prop-types';
  * <SearchTrendingItem />
  * @return {JSX.Element} The search trending item component
  */
-function SearchTrendingItem({title = 'test', description = 'test', subredditIconURL = '',
-    subredditName = 'r/test', imageURL = ''}) {
+function SearchTrendingItem({title, description, subredditIconURL,
+    subredditName, imageURL, href}) {
     return (
-        <a className={styles.root} href="#"
-            role='menuitem' tabIndex='-1'>
+        <a className={styles.root} href={href}
+            role='menuitem' tabIndex='-1' data-testid={`search-trending-item-${title}`}>
             <span className={styles.itemWrapper}>
                 <span className={styles.itemContainer}>
                     <span className={styles.titleContainer}>
@@ -57,11 +57,12 @@ function SearchTrendingItem({title = 'test', description = 'test', subredditIcon
 }
 
 SearchTrendingItem.propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    subredditIconURL: PropTypes.string,
-    subredditName: PropTypes.string,
-    imageURL: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    subredditIconURL: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
+    imageURL: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 export {SearchTrendingItem};

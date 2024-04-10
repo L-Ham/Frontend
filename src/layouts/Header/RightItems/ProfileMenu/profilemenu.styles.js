@@ -13,7 +13,7 @@ export const profileMenuClasses = {
      items-center justify-center overflow-visible px-2
       hover:rounded-full hover:bg-[#e2e7e9]`,
     userMenuDropdown: `absolute right-2 top-0 z-50 min-w-[256px] translate-y-[56px]
-    rounded-[0.5rem] bg-white test-shadow
+    rounded-[0.5rem] bg-white menu-shadow
     shadow-2xl`,
     userMenuList: 'm-0 my-2 w-full list-none p-0',
     userMenuListItem: 'relative mt-0 list-none',

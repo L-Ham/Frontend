@@ -1,14 +1,13 @@
 import React from 'react';
 import {CustomSwitch as SwitchComponent} from './switch.js';
 import {userDrawerElementClasses as styles} from './profilemenu.styles.js';
-import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import PropTypes from 'prop-types';
 
 
 /**
  * Profile menu switch item component
  * @component
- * @param {string|JSX.Element} icon - The icon to be displayed, either the name of the icon or the icon component
+ * @param {JSX.Element} icon - The icon to be displayed
  * @param {string} label - The main label, can be text or a component
  * @example
  * // Render the profile menu switch item
@@ -16,12 +15,9 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The profile menu switch item component
  */
 function ProfileMenuSwitchItem({icon, label}) {
-    if (typeof icon === 'string') {
-        icon = getIconComponent(icon, false);
-    }
     return (
         <label>
-            <div className={styles.switchItem}>
+            <div className={styles.switchItem} data-testid={`profile-menu-switch-item-${label}`} >
                 <span className={styles.elementContainer}>
                     <span className={styles.iconContainer}>
                         {icon}
@@ -43,8 +39,8 @@ function ProfileMenuSwitchItem({icon, label}) {
 }
 
 ProfileMenuSwitchItem.propTypes = {
-    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-    label: PropTypes.string,
+    icon: PropTypes.PropTypes.element.isRequired,
+    label: PropTypes.string.isRequired,
 };
 
 export {ProfileMenuSwitchItem};

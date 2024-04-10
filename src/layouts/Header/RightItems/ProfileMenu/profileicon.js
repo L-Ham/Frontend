@@ -1,6 +1,6 @@
 import React from 'react';
-import {profileIconClasses as styles} from './profilemenu.styles';
-import {useProfileIcon} from './profilemenu.hooks';
+import {profileIconClasses as styles} from './profilemenu.styles.js';
+import {useProfileIcon} from './profilemenu.hooks.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -15,9 +15,9 @@ import PropTypes from 'prop-types';
 function ProfileIcon({statusColor = '#55bd46'}) {
     const {imgSrc} = useProfileIcon();
     return (
-        <span className={styles.avatarWrapper}>
+        <span className={styles.avatarWrapper} data-testid='profile-icon'>
             <span className={styles.avatarContainer}>
-                <img src={imgSrc} alt='User Avatar' className='max-w-full' />
+                <img src={imgSrc} alt='User Avatar' className={styles.avatar} />
                 <span className={styles.status} style={{backgroundColor: statusColor}}>
                 </span>
             </span>

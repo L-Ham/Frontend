@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {sectionClasses} from '../sidebarsection.styles';
+import {sectionClasses} from '../sidebarsection.styles.js';
 
 // recent communities section hooks
 export const useRecentCommunitiesSection = () => {

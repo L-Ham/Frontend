@@ -23,7 +23,7 @@ function AppBar() {
         isSideBarVisible,
         setIsSideBarVisible,
         searchBarRef,
-        SearchHistoryItems,
+        searchHistoryItems,
         searchTrendingItems,
         searchbarStyles,
         sideBarStyles,
@@ -41,11 +41,11 @@ function AppBar() {
                         <div className={styles.searchBarWrapper}>
                             <div ref={searchBarRef} className={searchbarStyles}
                                 onClick={() => setIsSearchDropdownVisible(true)}>
-                                <SearchBar isSearchDropdownVisible={isSearchDropdownVisible} />
+                                <SearchBar isDropdownVisible={isSearchDropdownVisible} />
                                 <SearchDropDown
-                                    SearchHistoryItems={SearchHistoryItems}
-                                    searchTrendingItems={searchTrendingItems}
-                                    isSearchDropdownVisible={isSearchDropdownVisible}/>
+                                    HistoryItems={searchHistoryItems}
+                                    TrendingItems={searchTrendingItems}
+                                    isDropdownVisible={isSearchDropdownVisible}/>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import {sectionClasses} from '../sidebarsection.styles';
-// import {sectionItemsClasses} from '../sidebarsection.styles';
-import {getIconComponent} from '../../../../generic components/iconsmap';
+import {sectionClasses} from '../sidebarsection.styles.js';
+import {getIconComponent} from '../../../../generic components/iconsmap.js';
 
 // communities section hooks
 export const useCommunitiesSection = () => {
