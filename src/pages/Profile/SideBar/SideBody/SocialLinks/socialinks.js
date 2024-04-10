@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSocialLink} from './sociallinks.hook.js';
 import {socialLinkClasses} from './sociallink.styles.js';
+import {socialLinkStyles} from './sociallink.styles.js';
 /**
  * ShareButton component
  * @return {React.Component}
@@ -8,14 +9,10 @@ import {socialLinkClasses} from './sociallink.styles.js';
 export function SocialLinks() {
     const {AddIcon} = useSocialLink();
     return (
-        <div className={socialLinkClasses.root}
-            style={{unicodeBidi: 'isolate'}}>
-            <div className={socialLinkClasses.rootC}
-                style={{unicodeBidi: 'isolate'}}>
+        <div className={socialLinkClasses.root}>
+            <div className={socialLinkClasses.rootC}>
                 <button className={socialLinkClasses.button}
-                    style={{
-                        border: `var(0.0625rem, 0) solid var(transparent, transparent)`,
-                        font: 'var(--font-12-16-semibold)'}}>
+                    style={socialLinkStyles.root}>
                     <span className={socialLinkClasses.span}>
                         <span className={socialLinkClasses.spanC}>
                             <AddIcon/>

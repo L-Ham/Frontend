@@ -1,6 +1,7 @@
 import React from 'react';
 import {useOptions} from './option.hook.js';
 import {settingClasses} from './setting.styles.js';
+import {settingStyles} from './setting.styles.js';
 /**
  * Represents the Options component
  * @return {React.Component}
@@ -9,10 +10,8 @@ export function Mod() {
     const {ShieldIcon}=useOptions();
     return (
         <li className={settingClasses.li}
-            style={{textAlign: '-webkit-match-parent',
-                unicodeBidi: 'isolate'}}>
-            <div className={settingClasses.divA}
-                style={{unicodeBidi: 'isolate'}}>
+            style={settingStyles.li}>
+            <div className={settingClasses.divA}>
                 <span className={settingClasses.spanA}>
                     <span className={settingClasses.spanB}>
                         <span className={settingClasses.spanC}>
@@ -20,8 +19,7 @@ export function Mod() {
                                 <span className={settingClasses.spanE}>
                                     <span className={settingClasses.spanF}>
                                         <div className={settingClasses.divB}
-                                            style={{unicodeBidi: 'isolate',
-                                                objectFit: 'inherit'}}>
+                                            style={settingStyles.div}>
                                             <ShieldIcon/>
                                         </div>
                                     </span>
@@ -43,9 +41,7 @@ export function Mod() {
                 <span className={settingClasses.spanJ}>
                     <span className={settingClasses.spanK}>
                         <button className={settingClasses.button}
-                            style={{
-                                border: `var(0.0625rem, 0) solid var(transparent, transparent)`,
-                                font: 'var(--font-12-16-semibold)'}}>
+                            style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
                                 <span className={settingClasses.spanM}>
                                     Add Profile

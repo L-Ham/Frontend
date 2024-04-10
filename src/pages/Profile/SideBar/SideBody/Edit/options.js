@@ -1,5 +1,6 @@
 import React from 'react';
 import {settingClasses} from './setting.styles.js';
+import {settingStyles} from './setting.styles.js';
 /**
  * Represents the Options component
  * @return {React.Component}
@@ -7,10 +8,8 @@ import {settingClasses} from './setting.styles.js';
 export function Options() {
     return (
         <li className={settingClasses.li}
-            style={{textAlign: '-webkit-match-parent',
-                unicodeBidi: 'isolate'}}>
-            <div className={settingClasses.divA}
-                style={{unicodeBidi: 'isolate'}}>
+            style={settingStyles.li}>
+            <div className={settingClasses.divA}>
                 <span className={settingClasses.spanA}>
                     <span className={settingClasses.spanB}>
                         <span className={settingClasses.spanC}>
@@ -18,13 +17,11 @@ export function Options() {
                                 <span className={settingClasses.spanE}>
                                     <span className={settingClasses.spanF}>
                                         <div className={settingClasses.divB}
-                                            style={{unicodeBidi: 'isolate',
-                                                objectFit: 'inherit'}}>
+                                            style={settingStyles.div}>
                                             <img className={settingClasses.img}
-                                                style={{overflowClipMarginBlock: 'content-box',
-                                                    objectFit: 'inherit'}}
+                                                style={settingStyles.img}
                                                 src={require('../../../../../assets/images/avatar_default_1.png')}
-                                                alt='yessssss'
+                                                alt='Profile Picture'
                                             />
                                         </div>
                                     </span>
@@ -46,9 +43,7 @@ export function Options() {
                 <span className={settingClasses.spanJ}>
                     <span className={settingClasses.spanK}>
                         <button className={settingClasses.button}
-                            style={{
-                                border: `var(0.0625rem, 0) solid var(transparent, transparent)`,
-                                font: 'var(--font-12-16-semibold)'}}>
+                            style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
                                 <span className={settingClasses.spanM}>
                                     Add Profile

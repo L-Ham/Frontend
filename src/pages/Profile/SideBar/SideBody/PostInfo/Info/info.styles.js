@@ -6,3 +6,12 @@ export const infoClasses = {
     text-xs leading-4 text-[color:var(--color-neutral-content-weak)]`,
     span: `text-sm font-semibold leading-5`,
 };
+export const infoStyles = {
+    p1: {
+        marginBlockStart: '0em',
+        marginBlockEnd: '0em',
+        marginInlineStart: '0px',
+        marginInlineEnd: '0px',
+        unicodeBidi: 'isolate',
+    },
+};

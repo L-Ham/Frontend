@@ -7,3 +7,14 @@ export const sideBodyClasses = {
     text-[color:var(--color-neutral-content-weak)]`,
 
 };
+export const sideBodyStyles = {
+    hr: {unicodeBidi: 'isolate',
+        marginBlockStart: '0.5em',
+        marginBlockEnd: '0.5em',
+        marginInlineStart: 'auto',
+        marginInlineEnd: 'auto',
+        borderStyle: 'inset'},
+    spanA: {
+        marginBlockStart: '0.83em',
+    },
+};

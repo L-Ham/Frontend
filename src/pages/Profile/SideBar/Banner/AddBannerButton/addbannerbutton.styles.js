@@ -5,3 +5,6 @@ export const addBannerButtonClasses = {
     span: `flex items-center justify-center `,
     spanC: `flex`,
 };
+export const addBannerButtonStyles = {
+    root: {background: 'var(--button-color-background)'},
+};

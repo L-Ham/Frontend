@@ -5,44 +5,30 @@ import {PostInfo} from './PostInfo/postinfo.js';
 import {Settings} from './Edit/setting.js';
 import {SocialLinks} from './SocialLinks/socialinks.js';
 import {sideBodyClasses} from './sidebody.styles.js';
+import {sideBodyStyles} from './sidebody.styles.js';
 /**
  * SideBody component
  * @return {React.Component}
  */
 export function SideBody() {
     return (
-        <div className={sideBodyClasses.root}
-            style={{unicodeBidi: 'isolate'}}>
+        <div className={sideBodyClasses.root}>
             <PersonalInfo/>
             <ShareButton/>
             <PostInfo/>
             <hr className={sideBodyClasses.hr}
-                style={{unicodeBidi: 'isolate',
-                    marginBlockStart: '0.5em',
-                    marginBlockEnd: '0.5em',
-                    marginInlineStart: 'auto',
-                    marginInlineEnd: 'auto',
-                    borderStyle: 'inset'}}
+                style={sideBodyStyles.hr}
             />
             <span className={sideBodyClasses.span}
-                style={{
-                    marginBlockStart: '0.83em',
-                }}>
+                style={sideBodyStyles.spanA}>
                 Settings
             </span>
             <Settings/>
             <hr className={sideBodyClasses.hr}
-                style={{unicodeBidi: 'isolate',
-                    marginBlockStart: '0.5em',
-                    marginBlockEnd: '0.5em',
-                    marginInlineStart: 'auto',
-                    marginInlineEnd: 'auto',
-                    borderStyle: 'inset'}}
+                style={sideBodyStyles.hr}
             />
             <span className={sideBodyClasses.span}
-                style={{
-                    marginBlockStart: '0.83em',
-                }}>
+                style={sideBodyStyles.spanA}>
                 Links
             </span>
             <SocialLinks/>

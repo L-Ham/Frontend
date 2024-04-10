@@ -30,4 +30,24 @@ export const settingClasses = {
     spanL: `flex items-center justify-center`,
     spanM: `flex items-center`,
 };
-
+export const settingStyles = {
+    button: {
+        border: `var(0.0625rem, 0) solid var(transparent, transparent)`,
+        font: 'var(--font-12-16-semibold)'},
+    div: {
+        objectFit: 'inherit'},
+    li: {
+        textAlign: '-webkit-match-parent',
+        unicodeBidi: 'isolate',
+    },
+    img: {
+        objectFit: 'inherit',
+        overflowClipMarginBlock: 'content-box',
+    },
+    ul: {marginBlockStart: '1em',
+        marginBlockEnd: '1em',
+        marginInlineStart: '0px',
+        marginInlineEnd: '0px',
+        paddingInlineStart: '0px',
+    },
+};
