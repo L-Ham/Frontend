@@ -7,7 +7,8 @@ import {BasicTabs} from '../pages/Settings/main components/customtabpanel.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
-import {PostRoute, SubredditRoute} from './pageRoutes.js';
+import {PostRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
+
 
 /**
  * Renders the main application component.
@@ -40,6 +41,11 @@ function App() {
                 <Route path="/" element={
                     <LayoutWithNavigation>
                         <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/user/:name/:section?" element={
+                    <LayoutWithNavigation>
+                        <ProfilePageRoute />
                     </LayoutWithNavigation>
                 } />
             </Routes>
