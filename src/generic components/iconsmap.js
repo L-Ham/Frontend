@@ -25,6 +25,11 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
+import {ReactComponent as AddBannerFill} from '../assets/icons/add-banner-fill.svg';
+import {ReactComponent as ShareProfileFill} from '../assets/icons/share-profile-fill.svg';
+import {ReactComponent as SheildOutline} from '../assets/icons/sheild-outline.svg';
+import {ReactComponent as ClothesOutline} from '../assets/icons/clothes-outline.svg';
+import {ReactComponent as AdditionFill} from '../assets/icons/addition-fill.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -52,6 +57,11 @@ const ICONS_MAP = {
     'threedots-fill': ThreeDotsIconFill,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
+    'add-banner-fill': AddBannerFill,
+    'share-profile-fill': ShareProfileFill,
+    'sheild-outline': SheildOutline,
+    'clothes-outline': ClothesOutline,
+    'addition-fill': AdditionFill,
 };
 
 /**
