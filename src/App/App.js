@@ -9,6 +9,7 @@ import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
+import {PopularPage} from '../pages/PopularPage/popularpage.js';
 
 /**
  * Renders the main application component.
@@ -41,6 +42,11 @@ function App() {
                 <Route path="/" element={
                     <LayoutWithNavigation>
                         <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/popular" element={
+                    <LayoutWithNavigation>
+                        <PopularPage />
                     </LayoutWithNavigation>
                 } />
                 <Route path="*" element={<ErrorPage />} />
