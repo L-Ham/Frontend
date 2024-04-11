@@ -1,33 +1,47 @@
 import React from 'react';
 import {History} from './History/history.js';
+import {useSelectors} from './selectors.hook.js';
+import {selectorsClasses} from './selectors.styles.js';
+import {selectorsStyles} from './selectors.styles.js';
+import './selectors.css';
+// import {useEffect} from 'react';
 /**
  * Selectors component
  * @return {React.Component}
  */
 export function Selectors() {
-    const Topics = [
-        {main: 'Overview', link: '/user/Fickle-Guava-3796/'},
-        {main: 'Posts', link: '/user/Fickle-Guava-3796/posts'},
-        {main: 'Comments', link: '/user/Fickle-Guava-3796/comments'},
-        {main: 'Hidden', link: '/user/Fickle-Guava-3796/hidden'},
-        {main: 'Saved', link: '/user/Fickle-Guava-3796/saved'},
-        {main: 'Upvoted', link: '/user/Fickle-Guava-3796/upvoted'},
-        {main: 'Downvoted', link: '/user/Fickle-Guava-3796/downvoted'},
-    ];
+    const {RightIcon, topics, LeftIcon, leftButton, rightButton, scrollLeft, scrollRight, ulRef} = useSelectors();
     return (
-        <div className="mx-1 my-4 block">
-            <div className="relative flex w-fit max-w-full items-center justify-center overflow-hidden"
-                style={{flexFlow: 'row'}}>
-                <div className=" flex items-center gap-[var(--button-gap)] overflow-auto scroll-smooth"
-                    style={{flexFlow: 'row', scrollbarWidth: 'none'}}>
+        <div className={selectorsClasses.root}>
+            <div className={selectorsClasses.rootC}
+                style={selectorsStyles.div}>
+                <div className={selectorsClasses.rootCC} id="test"
+                    style={selectorsStyles.divC} ref={ulRef}>
 
-                    {Topics.map((item, index) => (
+                    {topics.map((item, index) => (
                         <History key={index} Topics={item}/>
                     ))}
                 </div>
-
-
+                <div className={rightButton} style={selectorsStyles.Button} >
+                    <button className={selectorsClasses.button} onClick={scrollRight} >
+                        <span className={selectorsClasses.spanA}>
+                            <span className={selectorsClasses.spanB}>
+                                <RightIcon/>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+                <div className={leftButton} style={selectorsStyles.Button}>
+                    <button className={selectorsClasses.button} onClick={scrollLeft}>
+                        <span className={selectorsClasses.spanA}>
+                            <span className={selectorsClasses.spanB}>
+                                <LeftIcon/>
+                            </span>
+                        </span>
+                    </button>
+                </div>
             </div>
+
 
         </div>
     );

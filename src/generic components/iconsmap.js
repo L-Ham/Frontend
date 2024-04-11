@@ -30,6 +30,8 @@ import {ReactComponent as ShareProfileFill} from '../assets/icons/share-profile-
 import {ReactComponent as SheildOutline} from '../assets/icons/sheild-outline.svg';
 import {ReactComponent as ClothesOutline} from '../assets/icons/clothes-outline.svg';
 import {ReactComponent as AdditionFill} from '../assets/icons/addition-fill.svg';
+import {ReactComponent as RightDirectionFill} from '../assets/icons/right-direction-fill.svg';
+import {ReactComponent as LeftDirectionFill} from '../assets/icons/left-direction-fill.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -62,6 +64,8 @@ const ICONS_MAP = {
     'sheild-outline': SheildOutline,
     'clothes-outline': ClothesOutline,
     'addition-fill': AdditionFill,
+    'right-direction-fill': RightDirectionFill,
+    'left-direction-fill': LeftDirectionFill,
 };
 
 /**
