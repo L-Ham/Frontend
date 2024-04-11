@@ -3,6 +3,7 @@ import {ProfileIcon} from './profileicon.js';
 import {profileMenuClasses} from './profilemenu.styles.js';
 import {useProfileMenu} from './profilemenu.hooks.js';
 import '../../appbar.css';
+import uuid from 'react-uuid';
 
 /**
  * Profile icon component
@@ -23,9 +24,9 @@ function ProfileMenu() {
             </button>
 
             <div className={userMenuDropdownStyles}>
-                {tabSections.map((tabSection, index) => {
+                {tabSections.map((tabSection) => {
                     return (
-                        <React.Fragment key={index}>
+                        <React.Fragment key={uuid()}>
                             <ul className={profileMenuClasses.userMenuList}>
                                 {
                                     tabSection.map((tabItem) => {

@@ -13,7 +13,7 @@ import {createPostButtonClasses as styles} from './buttons.styles.js';
 function CreatePost() {
     const {CreatePostIcon, href} = useCreatePost();
     return (
-        <a href={href} className={styles.root}>
+        <a href={href} className={styles.root} data-testid="appbar-create-post">
             <span className={styles.content}>
                 <span className={styles.iconContainer}>
                     <CreatePostIcon />

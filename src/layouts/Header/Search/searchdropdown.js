@@ -4,6 +4,7 @@ import {SearchTrendingItem} from './searchtrendingitem.js';
 import {useSearchDropDown} from './search.hooks.js';
 import {searchDropDownClasses as styles} from './search.styles.js';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 
 /**
  * The search dropdown component
@@ -22,8 +23,8 @@ function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryI
         <div className={rootStyles} data-testid='search-dropdown'>
             <ul className={styles.recentSearchList}>
                 {
-                    HistoryItems.map((item, index) => (
-                        <React.Fragment key={index}>
+                    HistoryItems.map((item) => (
+                        <React.Fragment key={uuid()}>
                             <li className={styles.listItem}>
                                 <SearchHistoryItem {...item}/>
                             </li>
@@ -36,13 +37,13 @@ function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryI
 
             <div className={styles.trending}>
                 <TrendingIcon/>
-                                    TRENDING TODAY
+                TRENDING TODAY
             </div>
             <ul id='SearchDropdownList' className={styles.trendingList}>
                 {
-                    TrendingItems.map((item, index) => (
-                        <React.Fragment key={index}>
-                            <li key={index} className={styles.listItem}>
+                    TrendingItems.map((item) => (
+                        <React.Fragment key={uuid()}>
+                            <li className={styles.listItem}>
                                 <SearchTrendingItem {...item}/>
                             </li>
                             <hr className={styles.listSeparator}/>
