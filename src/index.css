@@ -94,6 +94,10 @@ code {
     --button-color-background-hover:#e2e7e9;
     --button-border-color: #00000080;
     --button-border-color-hover: #000000;
+    --plain-background:rgba(0, 0, 0, 0);
+    --color-neutral-background:#ffffff;
+    --anim-duration:300ms;
+    --font-14-20-semibold: normal 600 0.875rem / 1.25rem var(--font-sans);
 
   }
 }
