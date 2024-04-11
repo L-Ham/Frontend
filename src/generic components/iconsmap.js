@@ -32,6 +32,7 @@ import {ReactComponent as ClothesOutline} from '../assets/icons/clothes-outline.
 import {ReactComponent as AdditionFill} from '../assets/icons/addition-fill.svg';
 import {ReactComponent as RightDirectionFill} from '../assets/icons/right-direction-fill.svg';
 import {ReactComponent as LeftDirectionFill} from '../assets/icons/left-direction-fill.svg';
+import {ReactComponent as DizzySnooIconOutline} from '../assets/icons/dizzy-snoo-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -57,6 +58,7 @@ const ICONS_MAP = {
     'unfollow-outline': UnfolowIconOutline,
     'follow-outline': FollowIconOutline,
     'threedots-fill': ThreeDotsIconFill,
+    'dizzy-snoo-outline': DizzySnooIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
     'add-banner-fill': AddBannerFill,

@@ -1,6 +1,6 @@
 export const overlayClasses = {
     root: `inline-block relative top-3 -left z-10 min-w-[272px] max-w-[352px] rounded-[16px] 
-    bg-[var(--tooltip-content)] shadow-[0_1px_4px_rgba(0,0,0,0.33),0_4px_4px_rgba(0,0,0,0.33)]`,
+    bg-[var(--color-neutral-background-strong)] shadow-[0_1px_4px_rgba(0,0,0,0.33),0_4px_4px_rgba(0,0,0,0.33)]`,
     commentsContext: ` -left-[0.2rem] top-[1rem] `,
     defaultContext: ` top-[1.4rem] `,
     wrapper: `flex grow flex-col p-4 pl-6`,
@@ -13,6 +13,6 @@ export const overlayStyles = {
         font: 'var(--font-12-16-semibold)',
     },
     buttons: {
-        font: 'var(--font-button-sm)',
+        font: 'var(--font-12-16-semibold)',
     },
 };
