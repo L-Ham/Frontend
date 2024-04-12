@@ -43,6 +43,16 @@ function App() {
                         <HomePage />
                     </LayoutWithNavigation>
                 } />
+                <Route path="/popular" element={
+                    <LayoutWithNavigation>
+                        <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/all" element={
+                    <LayoutWithNavigation>
+                        <HomePage />
+                    </LayoutWithNavigation>
+                } />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>

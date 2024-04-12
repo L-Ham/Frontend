@@ -5,6 +5,7 @@ const API_ROUTES = {
     CAST_VOTE: '/api/vote',
     */
     login: '/auth/login',
+    getAvatar: 'user/avatarImage',
     // Add more routes as needed
 };
 

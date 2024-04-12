@@ -7,20 +7,21 @@ const initialState = {
     avatarImage: '',
     token: '',
 };
-
+let token = null;
 const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
         login: (state, action) => {
             state.token = action.payload.token;
+            token = action.payload.token;
         },
-        increaseKarma: (state) => {
-            state.karma++;
+        setAvatar: (state, action) => {
+            state.avatarImage = action.payload.avatarImage;
         },
     },
 });
 
-export {initialState};
-export const {login, increaseKarma} = userSlice.actions;
+export {initialState, token};
+export const {login, setAvatar} = userSlice.actions;
 export default userSlice.reducer;
