@@ -123,16 +123,13 @@ export const useProfileIcon = () => {
         const fetchAvatar = async () => {
             if (user.token && !user.avatarImage) {
                 try {
-                    console.log('fetching avatar');
-                    const response = await axios.get(API_ROUTES.getAvatar, {
-                        headers: {
-                            Authorization: `Bearer ${user.token}`,
-                        },
-                    });
+                    const response = await axios.get(API_ROUTES.getAvatar);
                     const avatarImage = response.data.url;
                     dispatch(setAvatar({avatarImage}));
                 } catch (e) {
-                    console.error(e);
+                    // TODO: validate error handling and if it failed because of token
+                    // then log out user
+                    console.error('Error fetching avatar', e);
                 }
             }
         };
