@@ -14,5 +14,9 @@ export const emptyStyles = {
     },
     div: {
         objectFit: 'inherit',
+
+    },
+    text: {
+        color: 'var(--color-tone-1)',
     },
 };

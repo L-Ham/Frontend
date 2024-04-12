@@ -1,6 +1,7 @@
 import React from 'react';
 import {useContent} from './content.hook.js';
 import {contentClasses} from './content.styles.js';
+import {contentStyles} from './content.styles.js';
 /**
  * Content component
  * @return {React.Component}
@@ -12,6 +13,7 @@ export function Content() {
             <div className={contentClasses.rootC}>
                 <div className={contentClasses.rootCC}>
                     <a className={contentClasses.a}
+                        style={contentStyles.a}
                         href='/submit'>
                         <span className={contentClasses.span}
                         >

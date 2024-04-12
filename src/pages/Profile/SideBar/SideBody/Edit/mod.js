@@ -44,7 +44,7 @@ export function Mod() {
                             style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
                                 <span className={settingClasses.spanM}>
-                                    Add Profile
+                                    Mod Setting
                                 </span>
                             </span>
                         </button>

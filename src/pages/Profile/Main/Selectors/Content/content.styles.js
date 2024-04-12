@@ -9,3 +9,8 @@ export const contentClasses = {
     spanA: `mr-2 flex`,
     spanB: `flex items-center gap-2`,
 };
+export const contentStyles = {
+    a: {
+        color: 'var(--color-tone-1)',
+    },
+};

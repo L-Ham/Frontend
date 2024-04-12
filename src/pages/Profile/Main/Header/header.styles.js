@@ -14,7 +14,7 @@ export const headerClasses = {
     divD: `w-full `,
     divE: `flex w-full items-center justify-start`,
     divF: `flex items-baseline justify-start`,
-    h1: `m-0 mt-[1em] text-2xl font-bold leading-7`,
+    h1: `m-0 mt-[1em] text-2xl font-bold leading-7 `,
     p: `m-0 block text-sm font-semibold leading-5
     text-[color:var(--color-neutral-content-weak)]`,
 };
@@ -26,11 +26,15 @@ export const headerStyles = {
         marginInlineStart: '0px',
         marginInlineEnd: '0px',
         unicodeBidi: 'isolate',
+        color: 'var(--color-tone-1)',
     },
     p: {
         marginInlineStart: '0px',
         marginInlineEnd: '0px',
         unicodeBidi: 'isolate',
+    },
+    spanB: {
+        color: 'var(--color-tone-1)',
     },
 
 };

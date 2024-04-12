@@ -45,7 +45,7 @@ export function Styling() {
                             style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
                                 <span className={settingClasses.spanM}>
-                                    Add Profile
+                                    Style Avatar
                                 </span>
                             </span>
                         </button>

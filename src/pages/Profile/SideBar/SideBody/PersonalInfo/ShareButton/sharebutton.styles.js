@@ -15,5 +15,6 @@ export const shareButtonClasses = {
 export const shareButtonStyles = {
     button: {
         border: `var(0.0625rem, 0) solid var(transparent, transparent)`,
-        font: 'var(--font-12-16-semibold)'},
+        font: 'var(--font-12-16-semibold)',
+        color: 'var(--color-tone-1)'},
 };

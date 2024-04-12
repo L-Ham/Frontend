@@ -28,7 +28,7 @@ export function Header({username}) {
                         style={headerStyles.a}>
                         <span className={headerClasses.spanA}
                         >
-                            <span className={headerClasses.spanB}>
+                            <span className={headerClasses.spanB} style={headerStyles.spanB}>
                                 <AddBannerIcon />
                             </span>
                         </span>

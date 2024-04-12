@@ -6,5 +6,5 @@ export const addBannerButtonClasses = {
     spanC: `flex`,
 };
 export const addBannerButtonStyles = {
-    root: {background: 'var(--button-color-background)'},
+    root: {background: 'var(--button-color-background)', color: 'var(--color-tone-1)'},
 };

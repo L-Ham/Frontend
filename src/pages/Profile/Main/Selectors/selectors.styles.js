@@ -29,5 +29,6 @@ export const selectorsStyles = {
     divC: {flexFlow: 'row', scrollbarWidth: 'none'},
     Button: {animationName: 'hideButton',
         animationDuration: ' var(--anim-duration, 300ms)',
-        animationFillMode: 'forwards'},
+        animationFillMode: 'forwards',
+        color: 'var(--color-tone-1)'},
 };

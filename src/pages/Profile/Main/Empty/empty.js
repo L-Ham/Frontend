@@ -19,7 +19,7 @@ export function Empty({name, section}) {
                 />
 
             </div>
-            <div className={emptyClasses.div} >
+            <div className={emptyClasses.div} style={emptyStyles.text}>
                 u/{name} hasn&apos;t {verb()} yet
             </div>
 
