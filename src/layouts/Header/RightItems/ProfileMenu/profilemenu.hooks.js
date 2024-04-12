@@ -9,6 +9,7 @@ import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
 import {setAvatar} from '../../../../store/userSlice.js';
+import {jwtDecode} from 'jwt-decode';
 
 export const useProfileMenu = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -22,6 +23,10 @@ export const useProfileMenu = () => {
     const SettingsIcon = getIconComponent('settings', false);
     const AdvertiseIcon = getIconComponent('advertise', false);
     const userMenuDropdownStyles = `${profileMenuClasses.userMenuDropdown} ${isUserMenuOpen? 'block': 'hidden'} `;
+    const user = useSelector((state) => state.user);
+
+    // decode the jwt user.token to get the username
+    const username = user.token ? `u/${jwtDecode(user.token).user.userName}` : 'u/Cute-Area64';
 
     const contributorProgramSubLabel = (
         <span className='inline-flex'>
@@ -37,7 +42,7 @@ export const useProfileMenu = () => {
             (<ProfileMenuListItem
                 key='view-profile'
                 mainLabel='View Profile'
-                subLabel='u/Cute-Area64'
+                subLabel={username}
                 icon={<ProfileIcon/>}
                 href='#'
             />),
@@ -79,7 +84,7 @@ export const useProfileMenu = () => {
                 key='settings'
                 mainLabel='Settings'
                 icon={<SettingsIcon/>}
-                href='#'
+                href='/settings'
             />),
         ],
         [
