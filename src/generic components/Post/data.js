@@ -7,7 +7,7 @@ export const DATA = {
         author_fullname: 't2_bll4twvt',
         author: 'Fit-Courage3123',
         title: 'Struggling to get a job has impacted all my relationships',
-        postType: 'text',
+        postType: 'image',
         permalink: '/r/csMajors/comments/1bugpq6/struggling_to_get_a_job_has_impacted_all_my/',
         created: 1712109452.0,
         selftext_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;I am a 21 yo girl who` +
