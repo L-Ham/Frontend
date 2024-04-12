@@ -18,9 +18,12 @@ const userSlice = createSlice({
         increaseKarma: (state) => {
             state.karma++;
         },
+        setAvatar: (state, action) => {
+            state.avatarImage = action.payload.avatarImage;
+        },
     },
 });
 
 export {initialState};
-export const {login, increaseKarma} = userSlice.actions;
+export const {login, increaseKarma, setAvatar} = userSlice.actions;
 export default userSlice.reducer;
