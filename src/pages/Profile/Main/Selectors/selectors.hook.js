@@ -15,7 +15,7 @@ export const useSelectors = () => {
     ];
     // ////////////////////////////////////////////////////////////////////////////////////////////////
     const [isScrolledToLeft, setIsScrolledToLeft] = useState(true);
-    const [isScrolledToRight, setIsScrolledToRight] = useState(false);
+    const [isScrolledToRight, setIsScrolledToRight] = useState(true);
     const ulRef = useRef();
     const rightButton =isScrolledToRight ?`${selectorsClasses.rightButton} hidden` : selectorsClasses.rightButton;
     const leftButton =isScrolledToLeft ?`${selectorsClasses.leftButton} hidden` : selectorsClasses.leftButton;
