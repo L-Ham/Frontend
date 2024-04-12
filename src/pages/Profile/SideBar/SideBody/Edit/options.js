@@ -1,11 +1,13 @@
 import React from 'react';
 import {settingClasses} from './setting.styles.js';
 import {settingStyles} from './setting.styles.js';
+import {useOptions} from './option.hook.js';
 /**
  * Represents the Options component
  * @return {React.Component}
  */
 export function Options() {
+    const {imgSrc} = useOptions();
     return (
         <li className={settingClasses.li}
             style={settingStyles.li}>
@@ -20,7 +22,7 @@ export function Options() {
                                             style={settingStyles.div}>
                                             <img className={settingClasses.img}
                                                 style={settingStyles.img}
-                                                src={require('../../../../../assets/images/avatar_default_1.png')}
+                                                src={imgSrc}
                                                 alt='Profile Picture'
                                             />
                                         </div>

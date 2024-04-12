@@ -2,18 +2,20 @@ import React from 'react';
 import {useAddBanner} from '../../SideBar/Banner/AddBannerButton/addbannerbutton.hook.js';
 import {headerClasses} from './header.styles.js';
 import {headerStyles} from './header.styles.js';
+import {useHeader} from './header.hook.js';
 /**
  * Header component
  * @return {React.Component}
  */
 export function Header() {
+    const {imgSrc} = useHeader();
     const {AddBannerIcon} = useAddBanner();
     return (
         <div className={headerClasses.root}>
             <div className={headerClasses.rootC}>
                 <img className={headerClasses.img}
                     style={headerStyles.img}
-                    src={require('../../../../assets/images/avatar_default_1.png')}
+                    src={imgSrc}
                     alt="Profile Picture"
                 />
                 <div className={headerClasses.divA}>

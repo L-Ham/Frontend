@@ -1,12 +1,11 @@
-import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 import {useSelector} from 'react-redux';
-import {axiosInstance as axios} from '../../../../../requests/axios.js';
-import {API_ROUTES} from '../../../../../requests/routes.js';
+import {axiosInstance as axios} from '../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
-import {setAvatar} from '../../../../../store/userSlice.js';
+import {setAvatar} from '../../../../store/userSlice.js';
 import {useEffect} from 'react';
 
-export const useOptions = () => {
+export const useHeader = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const imgSrc = user.avatarImage || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
@@ -31,10 +30,6 @@ export const useOptions = () => {
 
         fetchAvatar();
     }, [user, dispatch]);
-    return {
-        ClothesIcon: getIconComponent('clothes', false),
-        ShieldIcon: getIconComponent('sheild', false),
-        imgSrc,
-    };
-};
 
+    return {imgSrc};
+};
