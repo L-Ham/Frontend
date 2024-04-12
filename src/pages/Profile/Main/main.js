@@ -13,8 +13,8 @@ import {Header} from './Header/header.js';
 export function Main({name, section}) {
     return (
         <div className={mainClasses.root}>
-            <Header/>
-            <Selectors/>
+            <Header username={name}/>
+            <Selectors username={name}/>
             {(section === undefined &&<Content/>) || (<div className={mainClasses.div}></div>)}
             <hr className={mainClasses.hr}></hr>
             <Empty name={name} section={section}/>

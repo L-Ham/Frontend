@@ -4,13 +4,15 @@ import {useSelectors} from './selectors.hook.js';
 import {selectorsClasses} from './selectors.styles.js';
 import {selectorsStyles} from './selectors.styles.js';
 import './selectors.css';
+import PropTypes from 'prop-types';
 // import {useEffect} from 'react';
 /**
  * Selectors component
  * @return {React.Component}
  */
-export function Selectors() {
-    const {RightIcon, topics, LeftIcon, leftButton, rightButton, scrollLeft, scrollRight, ulRef} = useSelectors();
+export function Selectors({username}) {
+    const {RightIcon, topics, LeftIcon, leftButton, rightButton, scrollLeft, scrollRight,
+        ulRef} = useSelectors({username});
     return (
         <div className={selectorsClasses.root}>
             <div className={selectorsClasses.rootC}
@@ -46,3 +48,6 @@ export function Selectors() {
         </div>
     );
 }
+Selectors.propTypes = {
+    username: PropTypes.string,
+};

@@ -6,6 +6,7 @@ const API_ROUTES = {
     */
     login: '/auth/login',
     getAvatar: '/user/avatarImage',
+    getBanner: '/user/banner',
     // Add more routes as needed
 };
 

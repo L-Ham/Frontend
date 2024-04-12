@@ -1,8 +1,8 @@
 export const headerClasses = {
     root: `relative flex items-center p-4`,
-    rootC: `relative flex shrink-0 items-center pr-4`,
+    rootC: `relative flex shrink-0 items-center pr-4 `,
     img: `m-0  block size-16 max-w-full overflow-hidden
-    rounded-full border-solid border-[color:var(--color-neutral-border-weak)]`,
+    rounded-full border-solid border-4 border-[color:var(--color-neutral-border-weak)]`,
     divA: `absolute bottom-0 right-2 block`,
     a: `box-border inline-flex  size-[var(--button-height)] w-8 items-center justify-center
     rounded-[999px] bg-[color:var(--button-color-background)]

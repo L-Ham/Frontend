@@ -30,6 +30,6 @@ export const useHeader = () => {
 
         fetchAvatar();
     }, [user, dispatch]);
-
-    return {imgSrc};
+    return {
+        imgSrc};
 };

@@ -16,7 +16,7 @@ export function Profile({name, section}) {
             <div className={profileClasses.rootC}
                 style={profileStyle.root}>
                 <Main name={name} section={section} />
-                <Sidebar />
+                <Sidebar username={name} />
             </div>
         </div>
     );

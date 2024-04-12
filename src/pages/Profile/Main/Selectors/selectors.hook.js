@@ -3,15 +3,15 @@ import {selectorsClasses} from './selectors.styles.js';
 import {useState} from 'react';
 import {useEffect} from 'react';
 import {useRef} from 'react';
-export const useSelectors = () => {
+export const useSelectors = ({username}) => {
     const topics = [
-        {main: 'Overview', link: '/user/Fickle-Guava-3796/'},
-        {main: 'Posts', link: '/user/Fickle-Guava-3796/posts'},
-        {main: 'Comments', link: '/user/Fickle-Guava-3796/comments'},
-        {main: 'Hidden', link: '/user/Fickle-Guava-3796/hidden'},
-        {main: 'Saved', link: '/user/Fickle-Guava-3796/saved'},
-        {main: 'Upvoted', link: '/user/Fickle-Guava-3796/upvoted'},
-        {main: 'Downvoted', link: '/user/Fickle-Guava-3796/downvoted'},
+        {main: 'Overview', link: `/user/${username}/`},
+        {main: 'Posts', link: `/user/${username}/posts`},
+        {main: 'Comments', link: `/user/${username}/comments`},
+        {main: 'Hidden', link: `/user/${username}/hidden`},
+        {main: 'Saved', link: `/user/${username}/saved`},
+        {main: 'Upvoted', link: `/user/${username}/upvoted`},
+        {main: 'Downvoted', link: `/user/${username}/downvoted`},
     ];
     // ////////////////////////////////////////////////////////////////////////////////////////////////
     const [isScrolledToLeft, setIsScrolledToLeft] = useState(true);

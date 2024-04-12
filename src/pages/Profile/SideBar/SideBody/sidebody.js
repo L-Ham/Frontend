@@ -6,14 +6,15 @@ import {Settings} from './Edit/setting.js';
 import {SocialLinks} from './SocialLinks/socialinks.js';
 import {sideBodyClasses} from './sidebody.styles.js';
 import {sideBodyStyles} from './sidebody.styles.js';
+import PropTypes from 'prop-types';
 /**
  * SideBody component
  * @return {React.Component}
  */
-export function SideBody() {
+export function SideBody({username}) {
     return (
         <div className={sideBodyClasses.root}>
-            <PersonalInfo/>
+            <PersonalInfo username={username}/>
             <ShareButton/>
             <PostInfo/>
             <hr className={sideBodyClasses.hr}
@@ -35,3 +36,6 @@ export function SideBody() {
         </div>
     );
 }
+SideBody.propTypes = {
+    username: PropTypes.string,
+};

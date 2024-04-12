@@ -3,11 +3,13 @@ import {useAddBanner} from '../../SideBar/Banner/AddBannerButton/addbannerbutton
 import {headerClasses} from './header.styles.js';
 import {headerStyles} from './header.styles.js';
 import {useHeader} from './header.hook.js';
+import PropTypes from 'prop-types';
 /**
  * Header component
  * @return {React.Component}
+ * @param {string} username
  */
-export function Header() {
+export function Header({username}) {
     const {imgSrc} = useHeader();
     const {AddBannerIcon} = useAddBanner();
     return (
@@ -40,15 +42,18 @@ export function Header() {
                             <div className={headerClasses.divF}>
                                 <h1 className={headerClasses.h1}
                                     style={headerStyles.h1}>
-                                    Fickle-Guava-3796
+                                    {username}
                                 </h1>
                             </div>
                         </div>
                         <p className={headerClasses.p}
-                            style={headerStyles.p}>u/Fickle-Guava-3796</p>
+                            style={headerStyles.p}>u/{username}</p>
                     </div>
                 </div>
             </div>
         </div>
     );
 }
+Header.propTypes = {
+    username: PropTypes.string,
+};
