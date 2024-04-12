@@ -11,7 +11,7 @@ export const usePostText = ({postId, viewContext}) => {
     let postContent = content.replaceAll(startTag, '').replaceAll(closingTag, '');
     postContent = replaceHtmlEntities(postContent);
     postContent = postContent.replaceAll(
-        '<a', '<a className=\'text-[var(--color-a-default)] no-underline break-words\'',
+        '<a', '<a className=\'text-[var(--color-primary)] no-underline break-words\'',
     );
     // if not in comments page, remove all classes starting with md
     postContent = isCommentsPage ? postContent : postContent.replaceAll(
