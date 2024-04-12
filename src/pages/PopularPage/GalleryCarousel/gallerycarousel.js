@@ -13,7 +13,7 @@ function GalleryCarousel() {
     const checkScrollPosition = () => {
         const {scrollLeft, clientWidth, scrollWidth} = ulRef.current;
         setIsScrolledToLeft(scrollLeft === 0);
-        setIsScrolledToRight(scrollLeft + clientWidth >= scrollWidth);
+        setIsScrolledToRight(scrollLeft + clientWidth >= scrollWidth-1);
     };
 
     const handleScroll = () => {
