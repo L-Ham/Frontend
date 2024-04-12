@@ -49,6 +49,11 @@ function App() {
                         <PopularPage />
                     </LayoutWithNavigation>
                 } />
+                <Route path="/all" element={
+                    <LayoutWithNavigation>
+                        <HomePage />
+                    </LayoutWithNavigation>
+                } />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>

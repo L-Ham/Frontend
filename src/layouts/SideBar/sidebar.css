@@ -14,3 +14,9 @@
     width: 10px;
     height: 10px;
 }
+
+.h-screen-without-header{
+    --dvh-unit: 1dvh;
+    --viewport-height: calc(calc(var(--dvh-unit)* 100));
+    height: calc(var(--viewport-height, 100vh) - 56px - 1px);
+}
