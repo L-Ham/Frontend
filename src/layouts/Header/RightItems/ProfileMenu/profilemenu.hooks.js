@@ -52,7 +52,7 @@ export const useProfileMenu = () => {
         if (isThemeDark) {
             root.className='theme-dark';
         } else {
-            root.className='';
+            root.className='theme-light';
         }
     }, [isThemeDark]);
 

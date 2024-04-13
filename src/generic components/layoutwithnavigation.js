@@ -22,7 +22,7 @@ function LayoutWithNavigation(props) {
                     <AppBar />
                 </div>
                 <div className='grid w-full grid-cols-1 bg-[var(--color-neutral-background)]
-                min-[1200px]:grid-cols-[272px_1fr]'>
+                nd:grid-cols-[272px_1fr]'>
                     <div id='sidebar-container' className='isolate order-first hidden nd:block'>
                         <SideBar visible={true} />
                     </div>
