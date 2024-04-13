@@ -19,6 +19,8 @@ export const profileMenuClasses = {
     shadow-2xl`,
     userMenuList: 'm-0 my-2 w-full list-none p-0',
     userMenuListItem: 'relative mt-0 list-none',
+    userMenuListSeparator: 'h-px w-100 bg-[var(--color-neutral-border-weak)] border-0',
+
 };
 
 // user drawer element styles
