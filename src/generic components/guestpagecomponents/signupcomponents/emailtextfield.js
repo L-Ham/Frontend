@@ -9,21 +9,28 @@ import {Emailinput} from '../../../pages/registration_pages/passwordresetcompone
 const EmailLoginForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [emptyemail, setEmptyemail] = useState(false);
 
     const handleContinue = () => {
         if (/\S+@\S+\.\S+/.test(email)) {
             navigate(`/register/continue?email=${encodeURIComponent(email)}`);
         }
+        if (!email) {
+            setEmptyemail(true);
+        }
     };
 
     const handleEmailChange = (value) => {
         setEmail(value);
+        if (email) {
+            setEmptyemail(false);
+        }
     };
 
 
     return (
         <div style={{width: '280px'}}>
-            <Emailinput onEmailChange={handleEmailChange} labelText="EMAIL" />
+            <Emailinput onEmailChange={handleEmailChange} labelText="EMAIL" emptyemail={emptyemail } />
             <div style={{marginBottom: '20px'}} />{' '}
             <Button
                 variant="contained"

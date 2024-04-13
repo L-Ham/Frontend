@@ -11,6 +11,8 @@ import PasswordLoginForm from '../.././generic components/guestpagecomponents/fo
 import {ForgotUsername} from '../.././generic components/guestpagecomponents/forgotpasswordcomponents/passwordforgotusername';
 
 function ForgotPassword() {
+    
+
     return (
         <div className="fixed w-full h-full left-0 top-0">
             <div className="fixed w-full h-full left-0 top-0">

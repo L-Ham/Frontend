@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  *
  * @return {JSX.Element} Password input field
  */
-function Emailinput({onEmailChange, width, labelText}) {
+function Emailinput({onEmailChange, width, labelText, emptyemail}) {
     const imageStyle = {
         position: 'absolute',
         zIndex: 1,
@@ -43,13 +43,13 @@ function Emailinput({onEmailChange, width, labelText}) {
     }
 
     let passwordBorderColor = '#e2e2e1'; // Default border color
-    if (!/\S+@\S+\.\S+/.test(email) && email.length !== 0) {
+    if ((!/\S+@\S+\.\S+/.test(email) && email.length !== 0)||emptyemail) {
         passwordBorderColor = '#ea0027'; // Red border color when password is less than 8 characters
     } else if (/\S+@\S+\.\S+/.test(email)) {
         passwordBorderColor = '#1976d2'; // Blue border color when password is 8 or more characters
     }
 
-    if (!/\S+@\S+\.\S+/.test(email) && email.length !== 0) {
+    if ((!/\S+@\S+\.\S+/.test(email) && email.length !== 0)||emptyemail) {
         passwordUrl = exclamImage;
     } else {
         passwordUrl = checkImage;
@@ -69,6 +69,7 @@ function Emailinput({onEmailChange, width, labelText}) {
         onEmailChange: PropTypes.func.isRequired,
         width: PropTypes.string.isRequired,
         labelText: PropTypes.string.isRequired,
+        emptyemail: PropTypes.bool.isRequired,
     };
 
 
@@ -104,6 +105,9 @@ function Emailinput({onEmailChange, width, labelText}) {
                         duration-[0.2s] ease-[ease-in-out]" data-for="password">
                 {!/\S+@\S+\.\S+/.test(email) && email.length !== 0 && (
                     <>Please fix your email to continue</>
+                )}
+                {emptyemail && (
+                    <>Please enter an email address to continue</>
                 )}
 
             </div>

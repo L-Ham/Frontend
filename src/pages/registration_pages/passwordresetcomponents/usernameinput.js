@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  *
  * @return {JSX.Element} Password input field
  */
-function Usernameinput({onUsernameChange, width, showInvalidCredentials}) {
+function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfakeaccount, emptyusername}) {
     const imageStyle = {
         position: 'absolute',
         zIndex: 1,
@@ -28,6 +28,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials}) {
         const newPassword = event.target.value;
         setPassword(newPassword);
         onUsernameChange(newPassword);
+        console.log(emptyusername);
     };
 
     const [isFocusPassword, setIsFocusPassword] = React.useState(false);
@@ -48,13 +49,15 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials}) {
     }
 
     let passwordBorderColor = '#e2e2e1'; // Default border color
-    if (((password.length < 3 || password.length > 20) && password.length !== 0)||showInvalidCredentials) {
+    if (((password.length < 3 || password.length > 20) &&
+    password.length !== 0)||showInvalidCredentials || showfakeaccount || emptyusername) {
         passwordBorderColor = '#ea0027'; // Red border color when password is less than 8 characters
     } else if (password.length >= 3 && password.length <= 20) {
         passwordBorderColor = '#1976d2'; // Blue border color when password is 8 or more characters
     }
 
-    if (((password.length < 3 || password.length > 20) && password.length !== 0)||showInvalidCredentials) {
+    if (((password.length < 3 || password.length > 20) &&
+     password.length !== 0)||showInvalidCredentials || showfakeaccount || emptyusername) {
         passwordUrl = exclamImage;
     } else {
         passwordUrl = checkImage;
@@ -99,12 +102,16 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials}) {
             <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
                         duration-[0.2s] ease-[ease-in-out]" data-for="password">
-                {(((password.length < 3) || (password.length > 20)) && (password.length != 0)) && (
+                {((((password.length < 3) || (password.length > 20)) && (password.length != 0))||emptyusername) && (
                     <>Username must be between 3 and 20 characters</>
                 )}
                 {showInvalidCredentials && (
                     <>Incorrect username or password</>
                 )}
+                {showfakeaccount && (
+                    <>That user doesn&apos;t exist</>
+                )}
+
             </div>
         </fieldset>
 
@@ -115,6 +122,8 @@ Usernameinput.propTypes = {
     onUsernameChange: PropTypes.func.isRequired,
     width: PropTypes.string.isRequired,
     showInvalidCredentials: PropTypes.bool.isRequired,
+    showfakeaccount: PropTypes.bool.isRequired,
+    emptyusername: PropTypes.bool.isRequired,
 };
 
 export {Usernameinput};

@@ -12,6 +12,8 @@ import {Passwordmessage2}
 import {Verify} from './passwordresetcomponents/verifycomponent';
 import {Links} from './passwordresetcomponents/otherlinks';
 import {Checkbox} from './passwordresetcomponents/checkbox';
+import {axiosInstance as axios} from '../../requests/axios';
+import {API_ROUTES} from '../../requests/routes';
 
 /**
  *
@@ -25,13 +27,25 @@ function ForgotPassword2() {
      *
      * @return {void}
      */
-    function handleLogin() {
+    async function handleLogin() {
         if (passwordfinal.length >= 8 && passwordMatch) {
-            alert('Changing password');
+            try {
+                const response = await axios.patch(API_ROUTES.updatepassword, {
+                    email: 'ziad.wareth@gmail.com',
+                    password: passwordfinal,
+                    passwordConfirm: passwordfinal,
+                });
+                console.log(response);
+                console.log('password reset!');
+            } catch (e) {
+                console.log(e);
+                console.log('Failed');
+            }
         } else {
             alert('Failed');
         }
     }
+
 
     const handlePasswordChangefinal = (newPassword, newMatch) => {
         setPasswordfinal(newPassword);
@@ -71,7 +85,7 @@ function ForgotPassword2() {
                             role="button"
                             sx={{
                                 'backgroundColor': '#1976d2',
-                                'fontFamily': 'IBM Plex Sans, sans-serif',
+                                'fontFamily': 'IBMPlexSans, sans-serif',
                                 'fontSize': '14px',
                                 'fontWeight': 600,
                                 'width': '100%',

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  *
  * @return {JSX.Element} Password input field
  */
-function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelText}) {
+function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelText, emptypassword}) {
     const imageStyle = {
         position: 'absolute',
         zIndex: 1,
@@ -49,13 +49,13 @@ function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelTe
     }
 
     let passwordBorderColor = '#e2e2e1'; // Default border color
-    if ((password.length < 8 && password.length !== 0)||showInvalidCredentials) {
+    if ((password.length < 8 && password.length !== 0)||showInvalidCredentials || emptypassword) {
         passwordBorderColor = '#ea0027'; // Red border color when password is less than 8 characters
     } else if (password.length >= 8) {
         passwordBorderColor = '#1976d2'; // Blue border color when password is 8 or more characters
     }
 
-    if (((password.length < 8)||showInvalidCredentials)) {
+    if (((password.length < 8)||showInvalidCredentials || emptypassword)) {
         passwordUrl = exclamImage;
     } else {
         passwordUrl = checkImage;
@@ -100,7 +100,7 @@ function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelTe
             <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
                         duration-[0.2s] ease-[ease-in-out]" data-for="password">
-                {((password.length < 8) && (password.length != 0)) && (
+                {(((password.length < 8) && (password.length != 0)) ||emptypassword )&& (
                     <>Password must be at least 8 characters long</>
                 )}
 
@@ -115,6 +115,7 @@ Passwordinput.propTypes = {
     width: PropTypes.string.isRequired,
     showInvalidCredentials: PropTypes.bool.isRequired,
     labelText: PropTypes.string.isRequired,
+    emptypassword: PropTypes.bool.isRequired,
 };
 
 export {Passwordinput};

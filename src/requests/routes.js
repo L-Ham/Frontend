@@ -12,6 +12,8 @@ const API_ROUTES = {
     generateusernames: '/auth/generateUsernames',
     GoogleLogin: '/auth/googleLogin',
     GoogleSignUp: '/auth/googleSignUp',
+    forgotpassword: '/auth/forgotPassword',
+    updatepassword: '/auth/updatePassword',
     // Add more routes as needed
 };
 

@@ -12,6 +12,7 @@ const ForgotLoginForm = () => {
 
 
     const [isclicked, setisclicked] = useState(false);
+    const [emptyemail, setEmptyemail] = useState(false);
     /**
      * Handle continue button click
      * Validate email
@@ -35,16 +36,23 @@ const ForgotLoginForm = () => {
                 }
             }
         }
+        if (!email) {
+            setEmptyemail(true);
+        }
     }
 
     const handleEmailChange = (value) => {
         setEmail(value);
+        if (email) {
+            setEmptyemail(false);
+        }
     };
 
 
     return (
         <div style={{width: '392px'}} >
-            <Emailinput onEmailChange={handleEmailChange} width="392px" labelText="EMAIL ADDRESS" />
+            <Emailinput onEmailChange={handleEmailChange} width="392px"
+                labelText="EMAIL ADDRESS" emptyemail={emptyemail} />
             <div style={{marginBottom: '20px'}} />{' '}
             <Button
                 variant="contained"
