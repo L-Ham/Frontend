@@ -9,11 +9,11 @@ import {useEffect} from 'react';
 export const useOptions = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
-    const imgSrc = user.avatarImage || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
+    const imgSrc = user.avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
 
     useEffect(() => {
         const fetchAvatar = async () => {
-            if (user.token && !user.avatarImage) {
+            if (user.token && !user.avatar) {
                 try {
                     console.log('fetching avatar');
                     const response = await axios.get(API_ROUTES.getAvatar, {
@@ -21,8 +21,8 @@ export const useOptions = () => {
                             Authorization: `Bearer ${user.token}`,
                         },
                     });
-                    const avatarImage = response.data.url;
-                    dispatch(setAvatar({avatarImage}));
+                    const avatar = response.data.url;
+                    dispatch(setAvatar({avatar}));
                 } catch (e) {
                     console.error(e);
                 }

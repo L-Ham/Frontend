@@ -143,15 +143,15 @@ export const useProfileMenu = () => {
 export const useProfileIcon = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
-    const imgSrc = user.avatarImage || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
+    const imgSrc = user.avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
 
     useEffect(() => {
         const fetchAvatar = async () => {
-            if (user.token && !user.avatarImage) {
+            if (user.token && !user.avatar) {
                 try {
                     const response = await axios.get(API_ROUTES.getAvatar);
-                    const avatarImage = response.data.url;
-                    dispatch(setAvatar({avatarImage}));
+                    const avatar = response.data.url;
+                    dispatch(setAvatar({avatar}));
                 } catch (e) {
                     // TODO: validate error handling and if it failed because of token
                     // then log out user
