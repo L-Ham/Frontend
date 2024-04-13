@@ -46,10 +46,7 @@ function SearchTrendingItem({title, description, subredditIconURL,
             <span className={styles.imageWrapper}>
                 <span className={styles.imageContainer}>
                     <img className={styles.image}
-                        loading='lazy' src={imageURL}
-                        width='96' height='72' alt=''>
-
-                    </img>
+                        loading='lazy' src={imageURL} alt=''/>
                 </span>
             </span>
         </a>

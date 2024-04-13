@@ -5,8 +5,9 @@ export const useSearchBar = ({isDropdownVisible}) => {
     const SearchIcon = getIconComponent('search', false);
     const rootStyles = isDropdownVisible ? `${searchBarClasses.root} ${searchBarClasses.rootVisible}` :
         searchBarClasses.root;
-    const formWrapperStyles = isDropdownVisible ? `${searchBarClasses.formWrapper} bg-white` :
-        searchBarClasses.formWrapper;
+    let formWrapperStyles = searchBarClasses.formWrapper;
+    formWrapperStyles += isDropdownVisible ? ` ${searchBarClasses.formWrapperActive}` :
+        ` ${searchBarClasses.formWrapperInactive}`;
 
     // function to handle search submit
     const handleSearchSubmit = (e) => {
