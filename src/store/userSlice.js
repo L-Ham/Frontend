@@ -6,6 +6,9 @@ const initialState = {
     about: '',
     avatarImage: '',
     bannerImage: '',
+    postKarma: '',
+    commentKarma: '',
+    createdAt: '',
     token: '',
 };
 
@@ -16,18 +19,24 @@ const userSlice = createSlice({
         login: (state, action) => {
             state.token = action.payload.token;
         },
-        increaseKarma: (state) => {
-            state.karma++;
-        },
         setAvatar: (state, action)=>{
             state.avatarImage = action.payload.avatarImage;
         },
         setBanner: (state, action)=>{
             state.bannerImage = action.payload.bannerImage;
         },
+        setPostKarma: (state, action)=>{
+            state.postKarma=action.payload.postKarma;
+        },
+        setCommentKarma: (state, action)=>{
+            state.commentKarma=action.payload.commentKarma;
+        },
+        setCreatedAt: (state, action)=>{
+            state.createdAt=action.payload.createdAt;
+        },
     },
 });
 
 export {initialState};
-export const {login, increaseKarma, setAvatar, setBanner} = userSlice.actions;
+export const {login, setAvatar, setBanner, setPostKarma, setCommentKarma, setCreatedAt} = userSlice.actions;
 export default userSlice.reducer;
