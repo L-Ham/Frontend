@@ -1,5 +1,5 @@
 import React from 'react';
-import {Main} from './Main/main.js';
+import {ProfileBody} from './Main/profilebody.js';
 import {Sidebar} from './SideBar/sidebar.js';
 import PropTypes from 'prop-types';
 import {profileClasses} from './profile.styles.js';
@@ -15,7 +15,7 @@ export function Profile({name, section}) {
         <div className={profileClasses.root} style={{unicodeBidi: 'isolate'}}>
             <div className={profileClasses.rootC}
                 style={profileStyle.root}>
-                <Main name={name} section={section} />
+                <ProfileBody name={name} section={section} />
                 <Sidebar username={name} />
             </div>
         </div>

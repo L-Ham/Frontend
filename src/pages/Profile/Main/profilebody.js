@@ -3,25 +3,25 @@ import {Selectors} from './Selectors/selectors.js';
 import {Content} from './Selectors/Content/content.js';
 import PropTypes from 'prop-types';
 import {Empty} from './Empty/empty.js';
-import {mainClasses} from './main.styles.js';
+import {profilebodyClasses} from './profilebody.styles.js';
 import {Header} from './Header/header.js';
 /**
- * Main component
+ * Profile Body component
  * @return {React.Component}
  * @param {string} section
  */
-export function Main({name, section}) {
+export function ProfileBody({name, section}) {
     return (
-        <div className={mainClasses.root}>
+        <div className={profilebodyClasses.root}>
             <Header username={name}/>
             <Selectors username={name}/>
-            {(section === undefined &&<Content/>) || (<div className={mainClasses.div}></div>)}
-            <hr className={mainClasses.hr}></hr>
+            {(section === undefined &&<Content/>) || (<div className={profilebodyClasses.div}></div>)}
+            <hr className={profilebodyClasses.hr}></hr>
             <Empty name={name} section={section}/>
         </div>
     );
 }
-Main.propTypes = {
+ProfileBody.propTypes = {
     name: PropTypes.string,
     section: PropTypes.string,
 };
