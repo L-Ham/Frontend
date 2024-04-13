@@ -74,7 +74,7 @@ function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelTe
     return (
         <fieldset className={fieldStylesPassword} id="registerPasswordField">
             <input
-                id="regPassword-prevent"
+                id="regPassword-prevent3"
                 className="h-12 w-full appearance-none rounded
                 border border-solid bg-[#fcfcfb] px-3 pb-2.5 pr-9 pt-[22px]
                 transition-all duration-[0.2s] ease-[ease-in-out] hover:bg-[#FFFFFF]"
@@ -115,7 +115,7 @@ Passwordinput.propTypes = {
     width: PropTypes.string.isRequired,
     showInvalidCredentials: PropTypes.bool.isRequired,
     labelText: PropTypes.string.isRequired,
-    emptypassword: PropTypes.bool.isRequired,
+    emptypassword: PropTypes.bool,
 };
 
 export {Passwordinput};

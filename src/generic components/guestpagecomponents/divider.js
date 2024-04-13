@@ -41,6 +41,6 @@ const Divider = ({length}) => {
     );
 };
 Divider.propTypes = {
-    length: PropTypes.string,
+    length: PropTypes.number,
 };
 export {Divider};

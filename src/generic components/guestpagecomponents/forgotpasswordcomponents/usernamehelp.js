@@ -6,7 +6,7 @@ import React from 'react';
  */
 function UserHelp() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
@@ -42,7 +42,7 @@ function UserHelp() {
                 {' '}
         SIGN UP
             </a>
-        </p>
+        </div>
     );
 }
 export {UserHelp};

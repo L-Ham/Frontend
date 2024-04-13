@@ -15,10 +15,26 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [showInvalidCredentials, setShowInvalidCredentials] = useState(false);
     const dispatch = useDispatch();
-
     /**
-     * Handles the login process
+     * Takes in token for user and retrieve user info
+     * @param {string} token
+     * @return {Promise<void>}
      */
+    async function handleUserData(token) {
+        if (token) {
+            dispatch(login({token: token}));
+            try {
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                dispatch(selfInfo(selfInfoResponse.data.user));
+            } catch (error) {
+                console.error('Error retrieving user info:', error);
+            }
+        }
+    }
     /**
      * Handles the login process
      */
@@ -29,18 +45,9 @@ const LoginForm = () => {
                 password: password,
             });
             console.log(response);
-            if (response.data.token) {
-                dispatch(login({token: response.data.token}));
-                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
-                    headers: {
-                        Authorization: `Bearer ${response.data.token}`,
-                    },
-                });
-                dispatch(selfInfo(selfInfoResponse.data.user));
-            }
+            handleUserData(response.data.token);
         } catch (e) {
             console.log(e);
-
             setShowInvalidCredentials(true);
             console.log(showInvalidCredentials);
         }

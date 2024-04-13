@@ -7,9 +7,9 @@ const initialState = {
     postKarma: 0,
     created: 0,
     avatar: '',
-    about: '',
     token: '',
     theme: 'light',
+    about: '',
     email: '',
 };
 let token = null;

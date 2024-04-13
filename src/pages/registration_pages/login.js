@@ -10,18 +10,40 @@ import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {axiosInstance as axios} from '../.././requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useDispatch} from 'react-redux';
+import {login, selfInfo} from '../../store/userSlice.js';
 
 const Login = () => {
-    const user = useSelector((state) => state.user);
+    const userToken = useSelector((state) => state.user.token);
     const [Token, setToken] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // Redirect user if already logged in
     useEffect(() => {
-        if (user.token) {
+        if (userToken) {
             navigate('/');
         }
-    }, [user, navigate]);
-
+    }, [userToken, navigate]);
+    /**
+     * Takes in token for user and retrieve user info
+     * @param {string} token
+     * @return {Promise<void>}
+     */
+    async function handleUserData(token) {
+        if (token) {
+            dispatch(login({token: token}));
+            try {
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                dispatch(selfInfo(selfInfoResponse.data.user));
+            } catch (error) {
+                console.error('Error retrieving user info:', error);
+            }
+        }
+    }
     // Function to handle access token received from SignUpWithGoogleButton
     const handleAccessToken = async (accessToken) => {
         setToken(accessToken);
@@ -30,6 +52,7 @@ const Login = () => {
         try {
             // Send the access token to the backend
             const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
+            handleUserData(response.data.token);
             console.log('Token sent to backend:', response.data);
             navigate('/');
         } catch (error) {

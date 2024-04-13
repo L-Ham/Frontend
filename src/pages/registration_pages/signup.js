@@ -24,48 +24,70 @@ function SignUp() {
     const [Token, setToken] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const handleAccessToken = async (accessToken) => {
+    /**
+     * Takes in token for user and retrieve user info
+     * @param {string} token
+     * @return {Promise<void>}
+     */
+    async function handleUserData(token) {
+        if (token) {
+            dispatch(login({token: token}));
+            try {
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                dispatch(selfInfo(selfInfoResponse.data.user));
+            } catch (error) {
+                console.error('Error retrieving user info:', error);
+            }
+        }
+    }
+    /**
+     * Performs google login for user given access token
+     * @param {string} accessToken
+     * @return {Promise<void>}
+     */
+    async function googleLoginUser(accessToken) {
+        try {
+            const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
+            handleUserData(response.data.token);
+            navigate('/');
+        } catch (error) {
+            if (error.response.data.message === 'User didn\'t signup using google signup') {
+                navigate('/login');
+            } else {
+                console.error('Error sending token to backend:', error);
+            }
+        }
+    }
+    /**
+     * Given Access token handles user sign up and login if user already exists
+     * @param {string} accessToken
+     * @return {Promise<void>}
+     */
+    async function handleAccessToken(accessToken) {
         setToken(accessToken);
         // You can perform further actions with the access token here
         console.log('Received access token:', accessToken);
         try {
-            // Send the access token to the backend
             const response = await axios.post(API_ROUTES.GoogleSignUp, {token: accessToken});
-            if (response.data.token) {
-                dispatch(login({token: response.data.token}));
-                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
-                    headers: {
-                        Authorization: `Bearer ${response.data.token}`,
-                    },
-                });
-                dispatch(selfInfo(selfInfoResponse.data.user));
-            }
+            handleUserData(response.data.token);
             console.log('Token sent to backend:', response.data);
             navigate('/');
         } catch (error) {
             if (error.response.data.message === 'Email already Exists') {
-                try {
-                    const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
-                    if (response.data.token) {
-                        dispatch(login({token: response.data.token}));
-                        const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
-                            headers: {
-                                Authorization: `Bearer ${response.data.token}`,
-                            },
-                        });
-                        dispatch(selfInfo(selfInfoResponse.data.user));
-                    }
-                } catch (error) {
-                    if (error.response.data.message === 'User didn\'t signup using google signup') {
-                        navigate('/login');
-                    }
-                    console.error('Error sending token to backend:', error);
-                }
+                // If user exists then log in the user
+                googleLoginUser(accessToken);
+            } else {
+                console.error('Error sending token to backend:', error);
             }
-            console.error('Error sending token to backend:', error);
         }
         console.log(Token);
-    };
+    }
+
+
     return (
         <div className="fixed left-0 top-0 size-full">
             <div className="fixed left-0 top-0 size-full">

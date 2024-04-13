@@ -7,7 +7,7 @@ import React from 'react';
  */
 function Usermessage() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
@@ -24,7 +24,7 @@ function Usermessage() {
                 <br />
         account, and we’ll send you an email with your username.{' '}
             </div>{' '}
-        </p>
+        </div>
     );
 }
 export {Usermessage};

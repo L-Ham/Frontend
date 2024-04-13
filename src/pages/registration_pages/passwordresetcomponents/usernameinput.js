@@ -76,7 +76,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
     return (
         <fieldset className={fieldStylesPassword} id="registerPasswordField">
             <input
-                id="regPassword-prevent"
+                id="regPassword-prevent4"
                 className="h-12 w-full appearance-none rounded
                 border border-solid bg-[#fcfcfb] px-3 pb-2.5 pr-9 pt-[22px] transition-all
                   duration-[0.2s] ease-[ease-in-out] hover:bg-[#FFFFFF]"
@@ -122,8 +122,8 @@ Usernameinput.propTypes = {
     onUsernameChange: PropTypes.func.isRequired,
     width: PropTypes.string.isRequired,
     showInvalidCredentials: PropTypes.bool.isRequired,
-    showfakeaccount: PropTypes.bool.isRequired,
-    emptyusername: PropTypes.bool.isRequired,
+    showfakeaccount: PropTypes.bool,
+    emptyusername: PropTypes.bool,
 };
 
 export {Usernameinput};

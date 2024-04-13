@@ -67,7 +67,7 @@ function Emailinput({onEmailChange, width, labelText, emptyemail}) {
 
     Emailinput.propTypes = {
         onEmailChange: PropTypes.func.isRequired,
-        width: PropTypes.string.isRequired,
+        width: PropTypes.string,
         labelText: PropTypes.string.isRequired,
         emptyemail: PropTypes.bool.isRequired,
     };
@@ -76,7 +76,7 @@ function Emailinput({onEmailChange, width, labelText, emptyemail}) {
     return (
         <fieldset className={fieldStylesPassword} id="registerPasswordField">
             <input
-                id="regPassword-prevent"
+                id="regPassword-prevent2"
                 className="hover: h-12 w-full appearance-none
                                         rounded border  border-solid bg-[#fcfcfb] px-3 pb-2.5
                                         pr-9 pt-[22px] transition-all duration-[0.2s]

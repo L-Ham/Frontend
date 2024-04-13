@@ -164,7 +164,7 @@ function PasswordContinued() {
                     <fieldset className={fieldStylesPassword} id="registerPasswordField">
                     <div style={{ position: 'relative' }}>
     <input
-        id="regPassword-prevent"
+        id="regPassword-prevent1"
         className={`relative box-border inline-flex h-14 flex-1 items-center
         rounded-[1.25rem] bg-[#eaedef] pr-5 text-black outline-none ${(password.length<8 && (!isFocusPassword )&& isVisiblePassword) ? 'border-red-500' : ''}`} 
         // Keep paddingRight as it is
