@@ -20,16 +20,16 @@ function ProfileMenu() {
 
             <button className={profileMenuClasses.profileIconWrapper}
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>
-                <ProfileIcon/>
+                <ProfileIcon isOnline={true}/>
             </button>
 
             <div className={userMenuDropdownStyles}>
-                {tabSections.map((tabSection) => {
+                {tabSections.map((tabSection, index) => {
                     return (
                         <React.Fragment key={uuid()}>
                             <ul className={profileMenuClasses.userMenuList}>
                                 {
-                                    tabSection.map((tabItem) => {
+                                    tabSection.map((tabItem, index) => {
                                         return (
                                             <li key={tabItem.key} className={profileMenuClasses.userMenuListItem}>
                                                 {tabItem}
@@ -38,7 +38,7 @@ function ProfileMenu() {
                                     })
                                 }
                             </ul>
-                            <hr/>
+                            {index !== tabSections.length - 1 ? <hr/> : null}
                         </React.Fragment>
                     );
                 })}

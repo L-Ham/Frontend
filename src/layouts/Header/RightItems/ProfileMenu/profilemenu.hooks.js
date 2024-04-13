@@ -8,10 +8,12 @@ import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
-import {setAvatar} from '../../../../store/userSlice.js';
+import {setAvatar, setTheme} from '../../../../store/userSlice.js';
+import {jwtDecode} from 'jwt-decode';
 
 export const useProfileMenu = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+    const isThemeDark = useSelector((state) => state.user.theme === 'dark');
     const UserMenuRef = useRef(null);
     const NightIcon = getIconComponent('night', false);
     const AvatarStyleIcon = getIconComponent('avatar-style', false);
@@ -22,6 +24,11 @@ export const useProfileMenu = () => {
     const SettingsIcon = getIconComponent('settings', false);
     const AdvertiseIcon = getIconComponent('advertise', false);
     const userMenuDropdownStyles = `${profileMenuClasses.userMenuDropdown} ${isUserMenuOpen? 'block': 'hidden'} `;
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
+    // decode the jwt user.token to get the username
+    const username = user.token ? `u/${jwtDecode(user.token).user.userName}` : 'u/Cute-Area64';
 
     const contributorProgramSubLabel = (
         <span className='inline-flex'>
@@ -32,13 +39,30 @@ export const useProfileMenu = () => {
         </span>
     );
 
+    const handleChange = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(setTheme({theme: isThemeDark ? 'light': 'dark'}));
+    };
+
+    useEffect(() => {
+        // get the div with id='root'
+        const root = document.getElementById('root');
+        // add 'theme-dark' to the class list of the element
+        if (isThemeDark) {
+            root.className='theme-dark';
+        } else {
+            root.className='theme-light';
+        }
+    }, [isThemeDark]);
+
     const tabSections = [
         [
             (<ProfileMenuListItem
                 key='view-profile'
                 mainLabel='View Profile'
-                subLabel='u/Cute-Area64'
-                icon={<ProfileIcon/>}
+                subLabel={username}
+                icon={<ProfileIcon isOnline={true}/>}
                 href='#'
             />),
             (<ProfileMenuListItem
@@ -58,6 +82,8 @@ export const useProfileMenu = () => {
                 key='dark-mode'
                 label='Dark Mode'
                 icon={<NightIcon/>}
+                checked={isThemeDark}
+                onChange={handleChange}
             />),
             (<ProfileMenuListItem
                 key='log-out'
@@ -79,7 +105,7 @@ export const useProfileMenu = () => {
                 key='settings'
                 mainLabel='Settings'
                 icon={<SettingsIcon/>}
-                href='#'
+                href='/settings'
             />),
         ],
         [

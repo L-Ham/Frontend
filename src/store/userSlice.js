@@ -6,6 +6,7 @@ const initialState = {
     about: '',
     avatarImage: '',
     token: '',
+    theme: 'light',
 };
 let token = null;
 const userSlice = createSlice({
@@ -19,9 +20,12 @@ const userSlice = createSlice({
         setAvatar: (state, action) => {
             state.avatarImage = action.payload.avatarImage;
         },
+        setTheme: (state, action) => {
+            state.theme = action.payload.theme;
+        },
     },
 });
 
 export {initialState, token};
-export const {login, setAvatar} = userSlice.actions;
+export const {login, setAvatar, setTheme} = userSlice.actions;
 export default userSlice.reducer;

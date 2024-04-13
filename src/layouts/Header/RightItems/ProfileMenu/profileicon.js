@@ -6,27 +6,26 @@ import PropTypes from 'prop-types';
 /**
  * Profile icon component
  * @component
- * @param {string} statusColor - The status color
+ * @param {boolean} isOnline - The status of the user
  * @example
  * // Render the profile icon
  * <ProfileIcon />
  * @return {JSX.Element} The profile icon component
  */
-function ProfileIcon({statusColor = '#55bd46'}) {
+function ProfileIcon({isOnline}) {
     const {imgSrc} = useProfileIcon();
     return (
         <span className={styles.avatarWrapper} data-testid='profile-icon'>
             <span className={styles.avatarContainer}>
                 <img src={imgSrc} alt='User Avatar' className={styles.avatar} />
-                <span className={styles.status} style={{backgroundColor: statusColor}}>
-                </span>
+                {isOnline && <span className={styles.status}></span>}
             </span>
         </span>
     );
 }
 
 ProfileIcon.propTypes = {
-    statusColor: PropTypes.string,
+    isOnline: PropTypes.bool.isRequired,
 };
 
 export {ProfileIcon};
