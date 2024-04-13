@@ -10,6 +10,8 @@ import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.j
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
 import {SignUpContinued} from '../pages/registration_pages/signupcontinued.js';
 import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
+import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
+
 /**
  * Renders the main application component.
  *
@@ -46,6 +48,17 @@ function App() {
                         <HomePage />
                     </LayoutWithNavigation>
                 } />
+                <Route path="/popular" element={
+                    <LayoutWithNavigation>
+                        <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/all" element={
+                    <LayoutWithNavigation>
+                        <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
     );

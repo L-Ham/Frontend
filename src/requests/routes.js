@@ -14,6 +14,7 @@ const API_ROUTES = {
     GoogleSignUp: '/auth/googleSignUp',
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
+    getAvatar: 'user/avatarImage',
     // Add more routes as needed
 };
 

@@ -1,27 +1,34 @@
 import React from 'react';
-// components
-import {SubredditBanner} from './subredditbanner';
-import {SubredditSidebar} from './subredditsidebar';
-import {Feed} from '../../generic components/feed';
-// styles
-import styles from './subreddit.module.css';
+import PropTypes from 'prop-types';
+import {SubredditBanner} from './SubredditBanner/subredditbanner.js';
+import {SubredditSidebar} from './SubredditSidebar/subredditsidebar.js';
+import {SubredditProvider} from './subredditcontext.js';
+import {classes} from './subreddit.styles.js';
+import './subreddit.css';
 
 
 /**
  * Renders the subreddit.
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The subreddit name.
  * @return {JSX.Element} The rendered component.
  */
-export function Subreddit() {
+export function Subreddit({name}) {
     return (
-        <div className={styles.subreddit}>
-            <SubredditBanner
-            />
-            <div className="flex w-full flex-auto">
-                <Feed/>
-                <SubredditSidebar/>
+        <SubredditProvider name={name}>
+            <div className={classes.innerContainer}>
+                <SubredditBanner/>
+                <div className={classes.contentContainer}>
+                    <main className={classes.mainContent}>feed</main>
+                    <SubredditSidebar/>
+                </div>
             </div>
-        </div>
+        </SubredditProvider>
     );
 }
+
+Subreddit.propTypes = {
+    name: PropTypes.string.isRequired,
+};
 
 
