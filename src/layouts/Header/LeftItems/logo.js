@@ -20,7 +20,7 @@ function Logo() {
                     <RedditLogo/>
                 </span>
                 <span className={styles.logoNameWrapper}>
-                    <RedditName className={styles.logoName} style={{color: '#ff4500'}} />
+                    <RedditName className={styles.logoName} />
                 </span>
             </a>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {CustomSwitch as SwitchComponent} from './switch.js';
-import {userDrawerElementClasses as styles} from './profilemenu.styles.js';
+import {profileMenuListItem as styles} from './profilemenu.styles.js';
 import PropTypes from 'prop-types';
 
 
@@ -9,12 +9,14 @@ import PropTypes from 'prop-types';
  * @component
  * @param {JSX.Element} icon - The icon to be displayed
  * @param {string} label - The main label, can be text or a component
+ * @param {boolean} checked - The state of the switch
+ * @param {function} onChange - The function to be called when the switch is toggled
  * @example
  * // Render the profile menu switch item
  * <ProfileMenuSwitchItem />
  * @return {JSX.Element} The profile menu switch item component
  */
-function ProfileMenuSwitchItem({icon, label}) {
+function ProfileMenuSwitchItem({icon, label, checked, onChange}) {
     return (
         <label>
             <div className={styles.switchItem} data-testid={`profile-menu-switch-item-${label}`} >
@@ -30,7 +32,10 @@ function ProfileMenuSwitchItem({icon, label}) {
                 </span>
                 <span className={styles.switchContainer}>
                     <span className={styles.switchWrapper}>
-                        <SwitchComponent/>
+                        <SwitchComponent
+                            checked={checked}
+                            onChange={onChange}
+                        />
                     </span>
                 </span>
             </div>
@@ -41,6 +46,8 @@ function ProfileMenuSwitchItem({icon, label}) {
 ProfileMenuSwitchItem.propTypes = {
     icon: PropTypes.PropTypes.element.isRequired,
     label: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export {ProfileMenuSwitchItem};
