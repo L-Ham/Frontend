@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import {Header} from '../../pages/Profile/Main/Header/Header';
+import {Header} from '../../pages/Profile/Main/Header/header.js';
 import '@testing-library/jest-dom';
 import {Provider} from 'react-redux';
 import store from '../../store/store';
