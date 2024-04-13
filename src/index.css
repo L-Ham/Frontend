@@ -323,6 +323,7 @@ code {
   --elevation-sm-inset: inset 0 0.0625rem 0.125rem 0 #00000021;
   --elevation-button-focus: var(--elevation-focus-ring);
   --elevation-switch-input-default-inset: var(--elevation-sm-inset);
+  --shreddit-color-wordmark: #FF4500;
 }
 .theme-dark {
   /* add dark scheme here */
@@ -407,6 +408,7 @@ code {
   --color-button-plain-inverted-activated-text: var(--color-neutral-background);
   --color-shimmer-background: #ffffff08;
   --color-shimmer-gradient-overlay: linear-gradient(to right, #ffffff00, #ffffff05 20%, #ffffff0f 50%, #ffffff08 70%, #ffffff00 100%);
+  --shreddit-color-wordmark: #ffffff;
 }
 .theme-light {
   /* add light scheme here */

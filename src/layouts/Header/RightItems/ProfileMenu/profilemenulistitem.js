@@ -1,5 +1,5 @@
 import React from 'react';
-import {userDrawerElementClasses as styles} from './profilemenu.styles.js';
+import {profileMenuListItem as styles} from './profilemenu.styles.js';
 import PropTypes from 'prop-types';
 
 /**
