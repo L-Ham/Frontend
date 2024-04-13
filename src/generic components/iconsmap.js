@@ -25,6 +25,13 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
+import {ReactComponent as AddBannerFill} from '../assets/icons/add-banner-fill.svg';
+import {ReactComponent as ShareProfileFill} from '../assets/icons/share-profile-fill.svg';
+import {ReactComponent as SheildOutline} from '../assets/icons/sheild-outline.svg';
+import {ReactComponent as ClothesOutline} from '../assets/icons/clothes-outline.svg';
+import {ReactComponent as AdditionFill} from '../assets/icons/addition-fill.svg';
+import {ReactComponent as RightDirectionFill} from '../assets/icons/right-direction-fill.svg';
+import {ReactComponent as LeftDirectionFill} from '../assets/icons/left-direction-fill.svg';
 import {ReactComponent as GoogleIcon} from '../assets/icons/google.svg';
 import {ReactComponent as HomeIconOutline} from '../assets/icons/home-outline.svg';
 import {ReactComponent as HomeIconFill} from '../assets/icons/home-fill.svg';
@@ -93,6 +100,13 @@ const ICONS_MAP = {
     'dizzy-snoo-outline': DizzySnooIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
+    'add-banner-fill': AddBannerFill,
+    'share-profile-fill': ShareProfileFill,
+    'sheild-outline': SheildOutline,
+    'clothes-outline': ClothesOutline,
+    'addition-fill': AdditionFill,
+    'right-direction-fill': RightDirectionFill,
+    'left-direction-fill': LeftDirectionFill,
     'google': GoogleIcon,
     'home-outline': HomeIconOutline,
     'home-fill': HomeIconFill,
