@@ -26,17 +26,16 @@ function ConnectToTwitterButton() {
         <Button
             variant="contained"
             color="primary"
+            className='min-h-[32px] min-w-[32px] px-4 py-1 text-sm font-bold leading-[17px] tracking-[unset]'
             startIcon={<TwitterIcon />}
             onClick={handleConnectToTwitter}
             style={{
                 textTransform: 'none',
                 borderRadius: '20px',
                 color: 'white',
-                padding: '8px 24px',
+                padding: '4px 20px',
                 fontWeight: 'bold',
-                boxShadow: '0px 3px 1px -2px rgba(0,0,0,0.2), ' +
-                     '0px 2px 2px 0px rgba(0,0,0,0.14), ' +
-                     '0px 1px 5px 0px rgba(0,0,0,0.12)',
+
                 backgroundColor: '#1DA1F2',
             }}
         >

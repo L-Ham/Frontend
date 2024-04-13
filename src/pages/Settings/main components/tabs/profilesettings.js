@@ -1,8 +1,11 @@
-import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
-import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
-import {SettingsTabHeading} from '../../general components/text/settingstabheading';
-
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+{/* import {useToggle} from '../../pop ups/togglecontext';*/}
+import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown.js';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
+import {axiosInstance} from '../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../requests/routes.js';
 /**
  * ProfileSettings function component renders the profile customization settings.
  * It allows users to set and modify their profile information such as display name, about section,
@@ -13,39 +16,157 @@ import {SettingsTabHeading} from '../../general components/text/settingstabheadi
  * @return {React.Component} A div container with settings to customize the user's profile.
  */
 function ProfileSettings() {
+    {/* const {toggleNfsw} = useToggle();*/}
+    const token = useSelector((state) => state.user.token);
+    const [profileSettings, setProfileSettings] = useState({
+        displayName: '',
+        about: '',
+        socialLinks: [],
+        avatarImage: '',
+        bannerImage: '',
+        NSFW: false,
+        allowFollow: true,
+        contentVisibility: true,
+        communitiesVisibility: true,
+        clearHistory: false,
+    });
+
+    useEffect(() => {
+        /**
+ * ProfileSettings function component renders the profile customization settings.
+
+ *
+ * @return {React.Component} A div container with settings to customize the user's profile.
+ */
+        async function fetchProfileSettings() {
+            try {
+                const response = await axiosInstance.get(API_ROUTES.profileSettings, {
+                    headers: {Authorization: `Bearer ${token}`},
+                });
+                setProfileSettings(response.data.profileSettings);
+            } catch (error) {
+                console.error('Failed to fetch profile settings:', error);
+            }
+        }
+
+        fetchProfileSettings();
+    }, [token]);
+
+    /**
+ * Asynchronously updates profile settings using a PATCH request and logs the response.
+ *
+ * @param {Object} updatedSettings - The new settings to be updated.
+ */
+    async function handleUpdateProfileSettings(updatedSettings) {
+        try {
+            const response = await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+            console.log('Profile updated:', response.data);
+        // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update profile settings:', error);
+        }
+    }
+
+
+    /**
+ * Toggles a boolean setting in the profile settings object.
+ *
+ * @param {string} settingKey - The key of the setting to toggle.
+ */
+    function toggleSetting(settingKey) {
+        const newValue = !profileSettings[settingKey];
+        const updatedSettings = {...profileSettings, [settingKey]: newValue};
+        setProfileSettings(updatedSettings); // Update local state
+        handleUpdateProfileSettings(updatedSettings); // Send update request
+        console.log('updated', updatedSettings);
+    }
+
+    /**
+ * Updates a specific setting in the profile settings with a new text value.
+ *
+ * @param {string} settingKey - The key of the setting to update.
+ * @param {string} value - The new text value to set for the specified setting key.
+ */
+    function changeTextSetting(settingKey, value) {
+        const updatedSettings = {...profileSettings, [settingKey]: value};
+        setProfileSettings(updatedSettings); // Update local state
+        handleUpdateProfileSettings(updatedSettings); // Send update request
+        console.log('updated', updatedSettings);
+    }
+
+    /**
+ * Updates social links settings within the profile settings.
+ *
+ * @param {string} settingKey - The key of the setting to update.
+ * @param {string} value - The new value to set for the specified setting key.
+ */
+    function changeSocialLinks(settingKey, value) {
+        const updatedSettings = {...profileSettings, [settingKey]: value};
+        setProfileSettings(updatedSettings); // Update local state
+        handleUpdateProfileSettings(updatedSettings); // Send update request
+        console.log('updated', updatedSettings);
+    }
+
+
     return (
-        <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h1 style={{color: 'black', marginBottom:
-             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Customize Profile</h1>
+        <div className='max-w-[688px] flex-auto'>
+            <h2 className='px-0 py-10 text-xl font-medium
+             not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
+            style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+                Customize profile
+            </h2>
+            {/* Profile information settings */}
             <SettingsTabHeading text="PROFILE INFORMATION " />
+            <SettingsGenericItemDown head="Display name
+             (optional)" text="Set display name" thirdComponent={'text30'}
+            prop={profileSettings.displayName} genericFunction = {changeTextSetting} />
+            <SettingsGenericItemDown head="About (optional)"
+                text="A brief description of yourself shown on your
+              profile." thirdComponent={'text200'} genericFunction = {changeTextSetting}
+                prop ={profileSettings.about} />
+            <SettingsGenericItemDown head="Social links (5 max)"
+                text="People who visit your profile will see your social
+             links." thirdComponent={'social'} prop={profileSettings.socialLinks} genericFunction={changeSocialLinks} />
 
-            <SettingsGenericItemDown head="Display name (optional)" text="Set display name" thirdComponent={'text30'} />
-            <SettingsGenericItemDown head="About (optional)" text="A brief description
-             of yourself shown on your profile." thirdComponent={'text200'} />
-            <SettingsGenericItemDown head="Social links (5 max)" text="People who visit
-             your profile will see your social links." thirdComponent={'social'} />
-
+            {/* Images settings */}
             <SettingsTabHeading text="Images" />
-            <SettingsGenericItemDown head="Avatar and banner image" text="Images
-             must be .png or .jpg format" thirdComponent={'2images'} />
+            <SettingsGenericItemDown head="Avatar and banner image"
+                text="Images must be .png or .jpg format" thirdComponent={'2images'} />
 
+            {/* Profile category settings */}
             <SettingsTabHeading text="PROFILE CATEGORY" />
-            <SettingsGenericItemRight head="NSFW" text="This content is NSFW
-             (may contain nudity, pornography, profanity, or inappropriate
-              content for those under 18)" thirdComponent={'Toggle'} />
+            <SettingsGenericItemRight head="NSFW" text="This content
+             is NSFW (may contain nudity, pornography, profanity, or
+              inappropriate content for those under 18)" thirdComponent={'Toggle'}
+            f={() => toggleSetting('NSFW')} prop={profileSettings.NSFW} />
 
+            {/* Advanced settings */}
             <SettingsTabHeading text="Advanced" />
-            <SettingsGenericItemRight head="People to follow you" text="Followers
-             will be notified about posts you make to your profile and see them in
-              their home feed." thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Control visibility" text="Posts to this
-             profile can appear in r/all and your profile can be discovered in /users" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Active in communities visibility" text="Show
-             which communities I am active in on my profile." thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Clear history" text="Delete your post views
-             history." thirdComponent={'mr'} />
+            <SettingsGenericItemRight head="People to follow you"
+                text="Followers will be notified about posts you make
+             to your profile and see them in their home feed."
+                thirdComponent={'Toggle'} f={() => toggleSetting('allowFollow')}
+                prop={profileSettings.allowFollow} />
+            <SettingsGenericItemRight head="Control visibility"
+                text="Posts to this profile can appear in r/all and
+              your profile can be discovered in /users"
+                thirdComponent={'Toggle'} f={() => toggleSetting('contentVisibility')}
+                prop={profileSettings.contentVisibility} />
+            <SettingsGenericItemRight head="Active in communities visibility"
+                text="Show which communities I am active in on my profile."
+                thirdComponent={'Toggle'} f={() => toggleSetting('communitiesVisibility')}
+                prop={profileSettings.communitiesVisibility} />
+            <SettingsGenericItemRight head="Clear history" text="Delete
+             your post views history." thirdComponent={'clearhistory'} />
 
+            {/* Profile moderation link */}
             <SettingsTabHeading text="PROFILE MODERATION" />
+            <div className="text-[color:var(--newCommunityTheme-bodyText)]">
+                For moderation tools please visit our <a href="/user/Accomplished-Sky5845/about/edit/moderation"
+                    className="text-[color:var(--newRedditTheme-linkText)] underline">Profile Moderation page</a>
+            </div>
         </div>
     );
 }

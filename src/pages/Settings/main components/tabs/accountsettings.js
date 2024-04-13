@@ -1,8 +1,15 @@
 import React from 'react';
-import {LanguageSettings} from '../../tab specific components/account tab/bulk components/languagescomponent';
-import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
-import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
-import {SettingsTabHeading} from '../../general components/text/settingstabheading';
+import {LanguageSettings} from '../../tab specific components/account tab/bulk components/languagescomponent.js';
+import {LocationCustomization} from
+    '../../tab specific components/account tab/bulk components/locationcustomization.js';
+import {ConnectToTwitter} from '../../tab specific components/account tab/bulk components/connecttotwitter.js';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
+import {useState, useEffect} from 'react';
+import {API_ROUTES} from '../../../../requests/routes'; // Import the API_ROUTES constant
+import {axiosInstance} from '../../../../requests/axios';
+import {useSelector} from 'react-redux';
+
 
 /**
  * AccountSettings function component renders the account settings interface.
@@ -11,11 +18,55 @@ import {SettingsTabHeading} from '../../general components/text/settingstabheadi
  *
  * @return {React.Component} A div container with account settings.
  */
-function AccountSettings() {
-    const leftAlignStyle = {textAlign: 'left'};
 
+
+/**
+ * AccountSettings function component renders the account settings interface.
+ * It provides options to customize email
+ *
+ * @return {React.Component} A div container with account settings.
+ *
+ * @example
+ * return (
+ * <AccountSettings />
+ * );
+ *
+ * */
+function AccountSettings() {
+    const token = useSelector((state) => state.user.token);
+    const leftAlignStyle = {textAlign: 'left'};
+    // const email = '';
+    const [accSettings, setAccSettings] = useState({
+        email: 'yourMail@example.com',
+        gender: 'male',
+        connectedToGoogle: true,
+    });
+
+
+    useEffect(() => {
+        /**
+    * ProfileSettings function component renders the profile customization settings.
+
+    *
+    * @return {React.Component} A div container with settings to customize the user's profile.
+    */
+        async function fetchAccountSettings() {
+            try {
+                const response = await axiosInstance.get(API_ROUTES.accountSettings, {
+                    headers: {Authorization: `Bearer ${token}`},
+                });
+                    // Directly use response.data since it matches the expected structure
+                console.log('acc settings recived:', response.data);
+
+                setAccSettings(response.data.accountSettings);
+            } catch (error) {
+                console.error('Failed to fetch feed settings:', error);
+            }
+        }
+        fetchAccountSettings();
+    }, [token]);
     return (
-        <div style={{backgroundColor: 'white', maxWidth: '600px', marginLeft: '50px', ...leftAlignStyle}}>
+        <div className='max-w-[688px] flex-auto'>
             <h2
                 className='px-0 py-10 text-xl font-medium not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
                 style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
@@ -26,11 +77,12 @@ function AccountSettings() {
 
             <SettingsTabHeading text="ACCOUNT PREFERENCES" style={leftAlignStyle} />
 
-            <SettingsGenericItemRight head="Email address" text="yourEmail@gmail.com"
+            <SettingsGenericItemRight head="Email address" text={accSettings.email}
                 thirdComponent={'Change'} style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Gender" text="This information may be used
-             to improve your recommendations and ads." thirdComponent={'GenderMenu'} style={leftAlignStyle} />
+             to improve your recommendations and ads." thirdComponent={'GenderMenu'}
+            item = {accSettings.gender} style={leftAlignStyle} />
 
             <LanguageSettings style={leftAlignStyle} />
 
@@ -38,16 +90,11 @@ function AccountSettings() {
              languages you’d like to see posts, community recommendations,
               and other content in" thirdComponent={'Change'} style={leftAlignStyle} />
 
-            <SettingsGenericItemRight head="Location Customization" text="Specify a
-             location to customize your recommendations and feed. Reddit does
-              not track your precise geolocation data." thirdComponent={'Languages'} style={leftAlignStyle} />
+            <LocationCustomization/>
 
             <SettingsTabHeading text="Connected Accounts" style={leftAlignStyle} />
 
-            <SettingsGenericItemDown head="Connect to twitter" text="Connect
-            a Twitter account to enable the choice to tweet your new posts
-             and display a link on your profile. We will never post to
-              Twitter without your permission." thirdComponent={'Twitter'} style={leftAlignStyle} />
+            <ConnectToTwitter/>
 
             <SettingsGenericItemRight head="Connect to Apple" text="Connect
              account to log in to Reddit with Apple" thirdComponent={'Apple'} style={leftAlignStyle} />

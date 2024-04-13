@@ -1,21 +1,13 @@
 import React from 'react';
-import {useToggle} from '../../pop ups/togglecontext.js';
+
 /**
- * ChangeButton function component renders a styled "Change" button using Material UI.
+ * ClearHistory function component renders a styled "Change" button using Material UI.
  * The button showcases custom styling options and logs a message to the console when clicked.
  * It serves as an example of event handling and component styling in React applications using Material UI.
  *
  * @return {React.Component} A styled Material UI Button component with an onClick event handler.
  */
-function ChangeButton() {
-    /**
-     * handleClick function to be executed when the button is clicked.
-     * Logs a message to the console indicating that the button has been clicked.
-     * This placeholder function can be expanded to include more complex logic,
-     * such as initiating state changes or triggering application-specific actions.
-     */
-    const {toggleDisplay} = useToggle();
-
+function ClearHistory() {
     /**
      * handleClick function to be executed when the button is clicked.
      * Logs a message to the console indicating that the button has been clicked.
@@ -24,10 +16,8 @@ function ChangeButton() {
      */
     function handleClick() {
         console.log('Change Button clicked');
-        toggleDisplay();
         // alert('Change Button clicked');
     }
-
 
     return (
         <button
@@ -43,9 +33,9 @@ function ChangeButton() {
                 borderRadius: '999px',
             }}
         >
-            Change
+            Clear history
         </button>
     );
 }
 
-export {ChangeButton};
+export {ClearHistory};

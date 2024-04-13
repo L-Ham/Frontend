@@ -4,38 +4,42 @@ import PropTypes from 'prop-types';
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
 /**
- * GenderMenu function component for selecting a gender identity from a dropdown menu.
+ * ChatMenu function component for selecting a gender identity from a dropdown menu.
  * This component uses Material UI components to render a form control with a select dropdown.
  * The user's selected gender identity is managed using React's useState hook, and changes are logged to the console.
  *
+ * @param {string} init - The initial value for the selected gender.
+ * @param {function} func - The function to be called when the gender is selected.
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function GenderMenu({func, init}) {
+function ChatMenu({init, func}) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [selectedGender, setSelectedGender] = useState('MAN');
+    const [selectedGender, setSelectedGender] = useState('EVERYONE');
 
     useEffect(() => {
         setSelectedGender(init);
-    }, [init]);
-
+    }
+    , [init]);
 
     /**
- * Toggles the visibility state of a dropdown menu.
+ * Toggles the visibility state of the dropdown menu.
  */
     function toggleDropdown() {
-        setShowDropdown(!showDropdown); // Assuming `showDropdown` is a boolean state variable
+        setShowDropdown(!showDropdown); // Assumes `showDropdown` is a boolean state variable
     }
 
 
     /**
- * Selects a gender and performs additional actions on selection.
+ * Handles the gender selection process by updating the selected gender state,
+ * closing the dropdown menu, and logging the selection.
  *
- * @param {string} gender - The gender value to set.
+ * @param {string} gender - The gender that has been selected.
  */
     function selectGender(gender) {
-        setSelectedGender(gender); // Set the selected gender state
-        // func(gender); // Assuming `func` is a function that does something with the gender
+        setSelectedGender(gender); // Update the selected gender state
         setShowDropdown(false); // Hide the dropdown after selection
+        console.log(`${gender} is now selected`); // Log the selected gender to the console
+        func('chatRequests', gender);
     }
 
     // const [selection, setSelection] = useState('');
@@ -62,7 +66,7 @@ function GenderMenu({func, init}) {
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
-                            {selectedGender.toUpperCase()}
+                            {selectedGender}
                         </button>
                         <span onClick={toggleDropdown}>
                             <svg
@@ -88,23 +92,16 @@ function GenderMenu({func, init}) {
                             fontFamily: '"IBM Plex Sans", sans-serif',
                         }}
                         >
-                            {['Woman', 'Man', 'Non-Binary',
-                                'I Refer To Myself As...', 'I Prefer Not To Say'].map((gender) => (
+                            {['EVERYONE', 'Accounts Older Than 30 Days', 'Nobody'].map((gender) => (
                                 <button key={gender} className='block w-full whitespace-nowrap
-                                border-t border-solid
-                            border-b-[none] border-t-[color:var(--newRedditTheme-line)]
-                             fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
-                            text-sm
-                            font-medium
-                            capitalize
-                            leading-[18px]
+                                fill-[var(--newRedditTheme-actionIcon)] p-2
+                            text-left text-sm font-medium capitalize leading-[18px]
                             text-[color:var(--newRedditTheme-actionIcon)]
-                             hover:bg-[color:var(--newRedditTheme-highlight)]
-                              hover:fill-[var(--newRedditTheme-bodyText)]
-                              hover:text-[color:var(--newRedditTheme-bodyText)]'
+                            hover:bg-[color:var(--newRedditTheme-highlight)]
+                            hover:fill-[var(--newRedditTheme-bodyText)]
+                            hover:text-[color:var(--newRedditTheme-bodyText)]'
                                 onClick={() => selectGender(gender)}>
-                                    <div className='inline-block'>{gender}
-                                    </div>
+                                    <div className='inline-block'>{gender}</div>
                                 </button>
                             ))}
                         </div>
@@ -114,10 +111,12 @@ function GenderMenu({func, init}) {
         </div>
     );
 }
-
-export {GenderMenu};
-
-GenderMenu.propTypes = {
-    func: PropTypes.func.isRequired,
+// write prop validion
+ChatMenu.propTypes = {
     init: PropTypes.string,
+    func: PropTypes.func,
+
 };
+
+
+export {ChatMenu};

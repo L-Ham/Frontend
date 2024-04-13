@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Typography, Box} from '@mui/material';
 
 
-import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu';
-import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton';
-import {ChangeButton} from '../general components/buttons/changebutton';
-import {AppleButton} from '../tab specific components/account tab/buttons/applebutton';
-import {ToggleButton} from '../general components/buttons/togglebutton';
-import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton';
-import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu';
-import {DisplayNameTextBox} from '../tab specific components/profile tab/text boxes/displaynametextbox';
-import {ResizableTextArea} from '../tab specific components/profile tab/text boxes/resizabletextarea';
-import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/doubledropzone';
-import {BlockUserComponent} from '../tab specific components/safety and privacy tab/blockusercomponent';
-import {SocialLinksButton} from '../tab specific components/profile tab/buttons/sociallinksbutton';
+import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu.js';
+import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton.js';
+import {ChangeButton} from '../general components/buttons/changebutton.js';
+import {AppleButton} from '../tab specific components/account tab/buttons/applebutton.js';
+import {ToggleButton} from '../general components/buttons/togglebutton.js';
+import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton.js';
+import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu.js';
+import {DisplayNameTextBox} from '../tab specific components/profile tab/text boxes/displaynametextbox.js';
+import {ResizableTextArea} from '../tab specific components/profile tab/text boxes/resizabletextarea.js';
+import {DoubleDropZone} from '../tab specific components/profile tab/image dropzones/doubledropzone.js';
+import {BlockUserComponent} from '../tab specific components/safety and privacy tab/blockusercomponent.js';
+
+import {SocialContainer} from '../tab specific components/profile tab/addsociallinks/socialcontainer.js';
 
 /**
  * SettingsGenericItemDown function component displays a settings
@@ -28,7 +28,7 @@ import {SocialLinksButton} from '../tab specific components/profile tab/buttons/
  * @param {string} props.thirdComponent - Identifier for the third component to render dynamically.
  * @return {React.Component} The rendered component for a generic settings item.
  */
-function SettingsGenericItemDown({head, text, thirdComponent}) {
+function SettingsGenericItemDown({head, text, thirdComponent, prop, genericFunction}) {
     /**
      * Handles the change email button click event.
      */
@@ -36,28 +36,17 @@ function SettingsGenericItemDown({head, text, thirdComponent}) {
         console.log('Change email button clicked');
     }
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'start',
-                width: '100%',
-                margin: 'auto',
-                backgroundColor: 'white',
-                padding: '20px 0px',
-            }}
-        >
-            <Box>
-                <Typography variant="h6" gutterBottom sx={{color: 'black',
-                    fontSize: '16px', textAlign: 'left', fontWeight: 'bold'}}>
-                    {head}
-                </Typography>
-                <Typography variant="body1" sx={{color: '#7c7c7c', fontSize: '12px', textAlign: 'left'}}>
-                    {text}
-                </Typography>
-            </Box>
-            <Box sx={{alignSelf: thirdComponent === 'Twitter' ? 'end' : 'start', width: '100%'}}>
+        <div className = 'mb-8 flex flex-col flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+            <div className="mr-2 flex max-w-[80%] flex-col">
+                <div className="flex flex-row items-center">
+                    <h3 className="mb-1 flex text-base
+                     font-medium leading-5 text-[color:var(--newCommunityTheme-bodyText)]">{head}
+                    </h3>
+                </div>
+                <p className="text-xs font-normal leading-4 text-[color:var(--newCommunityTheme-metaText)]">{text}
+                </p>
+            </div>
+            <div className='mt-3 flex grow flex-col items-start justify-end'>
                 {thirdComponent === 'Change' && <ChangeButton onClick={handleChangeEmail} />}
                 {thirdComponent === 'GenderMenu' && <GenderMenu />}
                 {thirdComponent === 'Languages' && <LanguagesMenu />}
@@ -65,13 +54,17 @@ function SettingsGenericItemDown({head, text, thirdComponent}) {
                 {thirdComponent === 'Apple' && <AppleButton />}
                 {thirdComponent === 'Toggle' && <ToggleButton />}
                 {thirdComponent === 'Delete' && <DeleteAccountButton />}
-                {thirdComponent === 'text30' && <DisplayNameTextBox />}
-                {thirdComponent === 'text200' && <ResizableTextArea maxCharacters={200} />}
+                {thirdComponent === 'text30' && <DisplayNameTextBox functio = {genericFunction} initialText={prop} />}
+                {thirdComponent === 'text200' && <ResizableTextArea maxCharacters={200}
+                    functio = {genericFunction} initialText={prop} />}
                 {thirdComponent === '2images' && <DoubleDropZone />}
                 {thirdComponent === 'block' && <BlockUserComponent />}
-                {thirdComponent === 'social' && <SocialLinksButton />}
-            </Box>
-        </Box>
+                {thirdComponent === 'social' && <SocialContainer initialList = {prop} />}
+            </div>
+
+        </div>
+
+
     );
 }
 
@@ -79,6 +72,12 @@ SettingsGenericItemDown.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string,
     thirdComponent: PropTypes.string.isRequired,
+    prop: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.string, // Add other types as necessary
+    ]),
+    toggleF: PropTypes.func,
+    genericFunction: PropTypes.func,
 };
 
 export {SettingsGenericItemDown};

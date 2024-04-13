@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ConnectToGoogle} from '../tab specific components/account tab/buttons/connecttogoogle.js';
+import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu.js';
+import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu.js';
+import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton.js';
+import {ChangeButton} from '../general components/buttons/changebutton.js';
 
-import {LanguagesMenu} from '../tab specific components/account tab/menus/languagesmenu';
-import {GenderMenu} from '../tab specific components/account tab/menus/gendermenu';
-import {ConnectToTwitterButton} from '../tab specific components/account tab/buttons/connecttotwitterbutton';
-import {ChangeButton} from '../general components/buttons/changebutton';
-import {AppleButton} from '../tab specific components/account tab/buttons/applebutton';
-import {ToggleButton} from '../general components/buttons/togglebutton';
-import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton';
-import {MarkAsReadButton} from '../general components/buttons/markasreadbutton';
-import {RedditMenu} from '../tab specific components/feed tab/redditmenu';
-import {DropDownMenu} from '../tab specific components/chats tab/dropdownmenu';
+import {ToggleButton} from '../general components/buttons/togglebutton.js';
+import {DeleteAccountButton} from '../tab specific components/account tab/buttons/deleteaccountbutton.js';
+import {MarkAsReadButton} from '../general components/buttons/markasreadbutton.js';
+import {RedditMenu} from '../tab specific components/feed tab/redditmenu.js';
+import {ChatMenu} from '../tab specific components/chats tab/chatmenu.js';
+import {PrivateMenu} from '../tab specific components/chats tab/privatemenu.js';
+import {ClearHistory} from '../tab specific components/profile tab/buttons/clearhistory.js';
 
 
 /**
@@ -24,28 +26,33 @@ import {DropDownMenu} from '../tab specific components/chats tab/dropdownmenu';
  * @param {string} props.thirdComponent - The key for the dynamically loaded component
  * @return {React.Component} A React component representing a generic setting item.
  */
-function SettingsGenericItemRight({head, text, thirdComponent}) {
+function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericFunction, menu, item}) {
     return (
         <div className='mb-8 flex flex-row flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
             <div className="mr-2 flex max-w-[80%] flex-col">
                 <div className="flex flex-row items-center">
                     <h3 className="mb-1 flex text-base font-medium leading-5
-                    text-[color:var(--newCommunityTheme-bodyText)]">{head}</h3>
+                    text-[color:var(--newCommunityTheme-bodyText)]">{head}
+                    </h3>
                 </div>
-                <p className="text-xs font-normal leading-4 text-[color:var(--newCommunityTheme-metaText)]">{text}</p>
+                <p className="text-xs font-normal leading-4 text-[color:var(--newCommunityTheme-metaText)]">{text}
+                </p>
             </div>
             <div className="flex grow items-center justify-end">
                 <div className="relative float-right">
                     {thirdComponent === 'Change' && <ChangeButton />}
-                    {thirdComponent === 'GenderMenu' && <GenderMenu />}
+                    {thirdComponent === 'GenderMenu' && <GenderMenu func = {f} init = {item} />}
                     {thirdComponent === 'Languages' && <LanguagesMenu />}
                     {thirdComponent === 'Twitter' && <ConnectToTwitterButton />}
-                    {thirdComponent === 'Apple' && <AppleButton />}
-                    {thirdComponent === 'Toggle' && <ToggleButton />}
+                    {thirdComponent === 'Apple' && <ConnectToGoogle />}
+                    {thirdComponent === 'Toggle' && <ToggleButton func = {f} init = {prop} />}
                     {thirdComponent === 'Delete' && <DeleteAccountButton />}
                     {thirdComponent === 'mr' && <MarkAsReadButton />}
-                    {thirdComponent === 'rm' && <RedditMenu />}
-                    {thirdComponent === 'chatMenu' && <DropDownMenu />}
+                    {thirdComponent === 'rm' && <RedditMenu list = {menu} changeVal={genericFunction}
+                        changedItem = {item} init = {prop} /> }
+                    {thirdComponent === 'chatMenu' && <ChatMenu init = {item} func = {genericFunction} />}
+                    {thirdComponent === 'privMenu' && <PrivateMenu init = {item} func = {genericFunction} />}
+                    {thirdComponent === 'clearhistory' && <ClearHistory />}
                 </div>
             </div>
         </div>
@@ -57,6 +64,11 @@ SettingsGenericItemRight.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     thirdComponent: PropTypes.string.isRequired,
+    f: PropTypes.func,
+    prop: PropTypes.bool,
+    genericFunction: PropTypes.func,
+    menu: PropTypes.array,
+    item: PropTypes.string,
 };
 
 export {SettingsGenericItemRight};

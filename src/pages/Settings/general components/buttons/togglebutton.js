@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+
 
 /**
  * ToggleButton function component provides a UI element that allows users to toggle a setting on or off.
@@ -9,8 +10,12 @@ import PropTypes from 'prop-types';
  * @param {string} [props.header] - An optional header prop to describe the toggle's purpose. Not strictly required.
  * @return {React.Component} A button that toggles its state between on and off.
  */
-function ToggleButton({header = ''}) { // Default value for header is an empty string if not provided
+function ToggleButton({header = '', func, init}) { // Default value for header is an empty string if not provided
     const [isToggledOn, setIsToggledOn] = useState(false);
+    useEffect(() => {
+        setIsToggledOn(init);
+        console.log(init);
+    }, [init]);
 
     /**
      * Handles the toggle functionality of the button.
@@ -18,14 +23,16 @@ function ToggleButton({header = ''}) { // Default value for header is an empty s
     function handleToggle() {
         setIsToggledOn(!isToggledOn); // Toggle the state
         console.log(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
+        func();
+        console.log(func);
 
         // alert(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
     }
 
     const styles = {
         button: {
-            width: '52px',
-            height: '28px',
+            width: '37.5px',
+            height: '24px',
             cursor: 'pointer',
             border: 'none',
             outline: 'none',
@@ -34,27 +41,32 @@ function ToggleButton({header = ''}) { // Default value for header is an empty s
             position: 'relative',
         },
         circle: {
-            width: '25px',
-            height: '25px',
+            width: '19.5px',
+            height: '19.5px',
             backgroundColor: '#fff',
             top: '2px',
-            left: isToggledOn ? '25px' : '2px', // Adjusted for accurate toggle effect
-            borderRadius: '50%',
+            left: isToggledOn ? '18px' : '1px', // Adjusted for accurate toggle effect
+            borderRadius: '59%',
             transition: 'left 0s', // Added transition time for smooth toggle effect
             position: 'absolute',
         },
     };
 
     return (
-        <button style={styles.button} onClick={handleToggle}>
-            <span style={styles.circle}></span>
-        </button>
+        <div className='relative float-right'>
+            <button style={styles.button} onClick={handleToggle}>
+                <span style={styles.circle}>
+                </span>
+            </button>
+        </div>
     );
 }
 
 // Define PropTypes
 ToggleButton.propTypes = {
     header: PropTypes.string,
+    func: PropTypes.func,
+    init: PropTypes.bool,
 };
 
 export {ToggleButton};
