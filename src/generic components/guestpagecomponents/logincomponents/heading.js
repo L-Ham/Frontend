@@ -15,6 +15,7 @@ function Heading() {
         color: "#1a1a1b",
         fontFamily: '"IBM Plex Sans",sans-serif',
       }}
+      data-testid="login-heading"
     >
       Log in
     </h1>

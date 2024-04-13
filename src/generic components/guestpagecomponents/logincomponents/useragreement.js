@@ -16,6 +16,7 @@ function UserAgreement() {
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="user-agreement"
         >
       By continuing, you agree to our{' '}
             <a

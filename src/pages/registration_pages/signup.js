@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 
 
-import {SignUpWithGoogleButton} from '../.././generic components/guestpagecomponents/signupcomponents/google';
+import {GoogleButton} from '../.././generic components/guestpagecomponents/signupcomponents/google';
 
 import {Divider} from '../.././generic components/guestpagecomponents/divider';
 
@@ -109,7 +109,7 @@ function SignUp() {
                     <div style={{marginBottom: '5px'}} />{' '}
                     {/* Spacer between components */}
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <SignUpWithGoogleButton onAccessToken={handleAccessToken} />
+                        <GoogleButton onAccessToken={handleAccessToken} />
                         <div style={{marginBottom: '35px'}} />{' '}
                         <Divider length={210} />
                         {/* Spacer between components */}

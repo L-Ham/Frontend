@@ -3,7 +3,12 @@ import {useGoogleLogin} from '@react-oauth/google';
 import {getIconComponent} from '../../iconsmap';
 import PropTypes from 'prop-types';
 
-const SignUpWithGoogleButton = ({onAccessToken}) => {
+/**
+ * Takes in a callback function to pass the access token to the parent component
+ * @param {func} onAccessToken
+ * @return {JSX.Element} GoogleButton
+ */
+export function GoogleButton({onAccessToken}) {
     const GoogleIcon = getIconComponent('google');
 
     const onSuccess = async (response) => {
@@ -22,6 +27,7 @@ const SignUpWithGoogleButton = ({onAccessToken}) => {
             })}
             className="flex h-[40px] w-[280px] items-center justify-center
                 rounded-3xl border border-solid border-[#dadce0] bg-white text-[#3c4043] hover:bg-[#4285f40a]"
+            data-testid="google-button"
         >
             <GoogleIcon className="block size-[30px] pl-2" />
             <div className='flex grow justify-center text-sm font-medium'
@@ -30,10 +36,8 @@ const SignUpWithGoogleButton = ({onAccessToken}) => {
             </div>
         </button>
     );
-};
+}
 
-SignUpWithGoogleButton.propTypes = {
+GoogleButton.propTypes = {
     onAccessToken: PropTypes.func.isRequired,
 };
-
-export {SignUpWithGoogleButton};

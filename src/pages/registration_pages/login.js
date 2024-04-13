@@ -5,7 +5,7 @@ import {Divider} from '../.././generic components/guestpagecomponents/divider';
 import LoginForm from '../.././generic components/guestpagecomponents/mergedtextfields';
 import {Forgot} from '../.././generic components/guestpagecomponents/logincomponents/forgot';
 import {NewMember} from '../.././generic components/guestpagecomponents/logincomponents/newmember';
-import {SignUpWithGoogleButton} from '../.././generic components/guestpagecomponents/signupcomponents/google';
+import {GoogleButton} from '../.././generic components/guestpagecomponents/signupcomponents/google';
 import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {axiosInstance as axios} from '../.././requests/axios';
@@ -44,7 +44,7 @@ const Login = () => {
             }
         }
     }
-    // Function to handle access token received from SignUpWithGoogleButton
+    // Function to handle access token received from GoogleButton
     const handleAccessToken = async (accessToken) => {
         setToken(accessToken);
         // You can perform further actions with the access token here
@@ -71,10 +71,12 @@ const Login = () => {
                         src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
                         alt="React Logo"
                         style={{width: '100%', height: '100%'}}
+                        data-testid="login-logo"
                     />
                 </div>
                 <div
                     style={{float: 'right', height: '100%', width: '87%'}}
+                    data-testid="login-container"
                 >
                     <div style={{marginBottom: '95px'}} />{' '}
                     {/* Spacer above Heading */}
@@ -87,7 +89,7 @@ const Login = () => {
                     <div style={{marginBottom: '20px'}} />{' '}
                     {/* Spacer between components */}
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <SignUpWithGoogleButton onAccessToken={handleAccessToken} />
+                        <GoogleButton onAccessToken={handleAccessToken} />
                         <div style={{marginBottom: '60px'}} />{' '}
                         {/* Spacer between components */}
                         <Divider length={210} />

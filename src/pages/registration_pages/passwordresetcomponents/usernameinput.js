@@ -93,15 +93,24 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
                 onMouseOver={() => !isFocusPassword && setMouseOverPassword(true)}
                 onMouseLeave={() => !isFocusPassword && setMouseOverPassword(false)}
                 style={{borderColor: passwordBorderColor, outline: 'none'}}
+                data-testid="username-input-tag"
             />
             {isVisiblePassword && <img src={passwordUrl} alt="Image" style={imageStyle} />}
-            <label className={toPutPassword}
+            <label
+                className={toPutPassword}
                 data-empty={isFocusPassword || mouseOverPassword || password.length !== 0 ? 'false' : 'true'}
-                htmlFor="regPassword">Username</label>
+                htmlFor="regPassword"
+                data-testid="username-label"
+            >
+                    Username
+            </label>
 
-            <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
+            <div
+                className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
-                        duration-[0.2s] ease-[ease-in-out]" data-for="password">
+                        duration-[0.2s] ease-[ease-in-out]" data-for="password"
+                data-testid="username-error"
+            >
                 {((((password.length < 3) || (password.length > 20)) && (password.length != 0))||emptyusername) && (
                     <>Username must be between 3 and 20 characters</>
                 )}

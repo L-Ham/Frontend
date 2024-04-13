@@ -21,6 +21,7 @@ function Passwordmessage2() {
                 fontWeight: 400,
                 lineHeight: '21px',
             }}
+            data-testid="password-message"
         >
             <div>
             Choose a new password here, then log in to your account.
