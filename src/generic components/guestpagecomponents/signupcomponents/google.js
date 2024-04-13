@@ -1,34 +1,43 @@
 import React from 'react';
-import {GoogleLogin, GoogleOAuthProvider} from '@react-oauth/google';
-import {FaGoogle} from 'react-icons/fa';
+import {useGoogleLogin} from '@react-oauth/google';
+import {getIconComponent} from '../../iconsmap';
+import PropTypes from 'prop-types';
 
-export const SignUpWithGoogleButton = () => {
-    const clientId = 'YOUR_GOOGLE_CLIENT_ID'; // Replace this with your Google Client ID
+/**
+ * Takes in a callback function to pass the access token to the parent component
+ * @param {func} onAccessToken
+ * @return {JSX.Element} GoogleButton
+ */
+export function GoogleButton({onAccessToken}) {
+    const GoogleIcon = getIconComponent('google');
 
-    const handleSuccess = (response) => {
-        console.log('Authentication successful:', response);
-    };
+    const onSuccess = async (response) => {
+        const accessToken = response.access_token;
+        // Log the access token for debugging
 
-    const handleError = (error) => {
-        console.error('Authentication error:', error);
+        // Pass the access token to the parent component using the callback function
+        onAccessToken(accessToken);
     };
 
     return (
-        <GoogleOAuthProvider clientId={clientId}>
-            <GoogleLogin
-                onSuccess={handleSuccess}
-                onError={handleError}
-                text="continue_with" // Set the text prop to 'continue_with'
-                shape="circle" // Set the shape prop to 'circle'
-                width="280px" // Set the width prop to '100%'
-
-                buttonText={
-                    <>
-                        <span style={{marginRight: '8px'}}>Continue with Google</span>
-                        <FaGoogle size={18} style={{verticalAlign: 'middle'}} /> {/* Google logo */}
-                    </>
-                }
-            />
-        </GoogleOAuthProvider>
+        <button
+            onClick={useGoogleLogin({
+                scope: 'profile email',
+                onSuccess: onSuccess,
+            })}
+            className="flex h-[40px] w-[280px] items-center justify-center
+                rounded-3xl border border-solid border-[#dadce0] bg-white text-[#3c4043] hover:bg-[#4285f40a]"
+            data-testid="google-button"
+        >
+            <GoogleIcon className="block size-[30px] pl-2" />
+            <div className='flex grow justify-center text-sm font-medium'
+                style={{fontFamily: '"Google Sans", arial, sans-serif'}}>
+                Continue with Google
+            </div>
+        </button>
     );
+}
+
+GoogleButton.propTypes = {
+    onAccessToken: PropTypes.func.isRequired,
 };

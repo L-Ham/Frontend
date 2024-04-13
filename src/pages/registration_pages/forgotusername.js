@@ -11,16 +11,21 @@ import {UserHelp} from '../.././generic components/guestpagecomponents/forgotpas
 
 function ForgotUsername() {
     return (
-        <div className="fixed w-full h-full left-0 top-0">
+        <div className="fixed w-full h-full left-0 top-0"
+            data-testid="forgotusername1234"
+        >
             <div className="fixed w-full h-full left-0 top-0">
                 <div className="float-left h-full w-[10%]">
                     <img
                         src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
                         alt="React Logo"
                         style={{width: '100%', height: '100%'}}
+                        data-testid="redditpic2"
                     />
                 </div>
-                <div className="float-right h-full w-[87%]">
+                <div className="float-right h-full w-[87%]"
+                    data-testid="forgotusername200"
+                >
                     <div style={{marginBottom: '180px'}} /> {/* Spacer above Heading */}
                     <RedditLogo />
                     <div style={{marginBottom: '50px', display: 'inline-block'}} />{' '}
