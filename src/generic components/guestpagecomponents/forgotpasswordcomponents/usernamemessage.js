@@ -7,16 +7,17 @@ import React from 'react';
  */
 function Usermessage() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'IBMPlexSans, sans-serif',
+                fontFamily: '"IBM Plex Sans", sans-serif',
                 fontSize: '14px',
                 fontWeight: 500,
                 lineHeight: '21px',
             }}
+            data-testid="usermessage5"
         >
             {' '}
             <div>
@@ -24,7 +25,7 @@ function Usermessage() {
                 <br />
         account, and we’ll send you an email with your username.{' '}
             </div>{' '}
-        </p>
+        </div>
     );
 }
 export {Usermessage};

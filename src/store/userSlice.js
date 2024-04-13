@@ -1,16 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
+    id: '',
     displayName: '',
-    email: '',
-    about: '',
-    avatarImage: '',
     bannerImage: '',
     postKarma: '',
     commentKarma: '',
-    createdAt: '',
+    created: 0,
+    avatar: '',
     token: '',
     theme: 'light',
+    about: '',
+    email: '',
 };
 let token = null;
 const userSlice = createSlice({
@@ -27,22 +28,20 @@ const userSlice = createSlice({
         setBanner: (state, action)=>{
             state.bannerImage = action.payload.bannerImage;
         },
-        setPostKarma: (state, action)=>{
-            state.postKarma=action.payload.postKarma;
-        },
-        setCommentKarma: (state, action)=>{
-            state.commentKarma=action.payload.commentKarma;
-        },
-        setCreatedAt: (state, action)=>{
-            state.createdAt=action.payload.createdAt;
-        },
         setTheme: (state, action) => {
             state.theme = action.payload.theme;
+        },
+        selfInfo: (state, action) => {
+            state.id = action.payload.id;
+            state.displayName = action.payload.displayName;
+            state.commentKarma = action.payload.commentKarma;
+            state.postKarma = action.payload.postKarma;
+            state.created = action.payload.created;
+            state.avatar = action.payload.avatar;
         },
     },
 });
 
-export {token};
-export {initialState};
-export const {login, setAvatar, setBanner, setPostKarma, setCommentKarma, setCreatedAt, setTheme} = userSlice.actions;
+export {initialState, token};
+export const {login, setAvatar, setBanner, setTheme, selfInfo} = userSlice.actions;
 export default userSlice.reducer;

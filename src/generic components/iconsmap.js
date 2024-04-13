@@ -32,6 +32,7 @@ import {ReactComponent as ClothesOutline} from '../assets/icons/clothes-outline.
 import {ReactComponent as AdditionFill} from '../assets/icons/addition-fill.svg';
 import {ReactComponent as RightDirectionFill} from '../assets/icons/right-direction-fill.svg';
 import {ReactComponent as LeftDirectionFill} from '../assets/icons/left-direction-fill.svg';
+import {ReactComponent as GoogleIcon} from '../assets/icons/google.svg';
 import {ReactComponent as HomeIconOutline} from '../assets/icons/home-outline.svg';
 import {ReactComponent as HomeIconFill} from '../assets/icons/home-fill.svg';
 import {ReactComponent as PopularIconOutline} from '../assets/icons/popular-outline.svg';
@@ -105,6 +106,7 @@ const ICONS_MAP = {
     'addition-fill': AdditionFill,
     'right-direction-fill': RightDirectionFill,
     'left-direction-fill': LeftDirectionFill,
+    'google': GoogleIcon,
     'home-outline': HomeIconOutline,
     'home-fill': HomeIconFill,
     'popular-outline': PopularIconOutline,
