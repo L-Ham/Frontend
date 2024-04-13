@@ -14,6 +14,8 @@ import {ExistingMember} from '../.././generic components/guestpagecomponents/sig
 import {axiosInstance as axios} from '../.././requests/axios';
 import {API_ROUTES} from '../../requests/routes';
 import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {login, selfInfo} from '../../store/userSlice.js';
 /**
  *
  * @return {JSX.Element} App
@@ -21,6 +23,7 @@ import {useNavigate} from 'react-router-dom';
 function SignUp() {
     const [Token, setToken] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleAccessToken = async (accessToken) => {
         setToken(accessToken);
         // You can perform further actions with the access token here
@@ -28,10 +31,37 @@ function SignUp() {
         try {
             // Send the access token to the backend
             const response = await axios.post(API_ROUTES.GoogleSignUp, {token: accessToken});
+            if (response.data.token) {
+                dispatch(login({token: response.data.token}));
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                    headers: {
+                        Authorization: `Bearer ${response.data.token}`,
+                    },
+                });
+                dispatch(selfInfo(selfInfoResponse.data.user));
+            }
             console.log('Token sent to backend:', response.data);
             navigate('/');
         } catch (error) {
-            navigate('/'); // should be changed
+            if (error.response.data.message === 'Email already Exists') {
+                try {
+                    const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
+                    if (response.data.token) {
+                        dispatch(login({token: response.data.token}));
+                        const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                            headers: {
+                                Authorization: `Bearer ${response.data.token}`,
+                            },
+                        });
+                        dispatch(selfInfo(selfInfoResponse.data.user));
+                    }
+                } catch (error) {
+                    if (error.response.data.message === 'User didn\'t signup using google signup') {
+                        navigate('/login');
+                    }
+                    console.error('Error sending token to backend:', error);
+                }
+            }
             console.error('Error sending token to backend:', error);
         }
         console.log(Token);

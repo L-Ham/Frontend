@@ -15,6 +15,7 @@ const API_ROUTES = {
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
     getAvatar: 'user/avatarImage',
+    userSelfInfo: '/user/selfInfo',
     // Add more routes as needed
 };
 

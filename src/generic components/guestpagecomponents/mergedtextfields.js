@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import {axiosInstance as axios} from '../../requests/axios.js';
 import {API_ROUTES} from '../../requests/routes.js';
 import {useDispatch} from 'react-redux';
-import {login} from '../../store/userSlice.js';
+import {login, selfInfo} from '../../store/userSlice.js';
 import {Passwordinput} from '../../pages/registration_pages/passwordresetcomponents/passwordinput.js';
 import {Usernameinput} from '../../pages/registration_pages/passwordresetcomponents/usernameinput.js';
 
@@ -31,6 +31,12 @@ const LoginForm = () => {
             console.log(response);
             if (response.data.token) {
                 dispatch(login({token: response.data.token}));
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
+                    headers: {
+                        Authorization: `Bearer ${response.data.token}`,
+                    },
+                });
+                dispatch(selfInfo(selfInfoResponse.data.user));
             }
         } catch (e) {
             console.log(e);
