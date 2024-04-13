@@ -25,6 +25,7 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
+import {ReactComponent as GoogleIcon} from '../assets/icons/google.svg';
 import {ReactComponent as HomeIconOutline} from '../assets/icons/home-outline.svg';
 import {ReactComponent as HomeIconFill} from '../assets/icons/home-fill.svg';
 import {ReactComponent as PopularIconOutline} from '../assets/icons/popular-outline.svg';
@@ -92,6 +93,7 @@ const ICONS_MAP = {
     'dizzy-snoo-outline': DizzySnooIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
+    'google': GoogleIcon,
     'home-outline': HomeIconOutline,
     'home-fill': HomeIconFill,
     'popular-outline': PopularIconOutline,

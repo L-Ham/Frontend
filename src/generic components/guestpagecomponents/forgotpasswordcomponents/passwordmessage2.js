@@ -9,7 +9,7 @@ import React from 'react';
  * Renders a paragraph with a message for resetting the password.
  * @return {JSX.Element} The rendered paragraph element.
  */
-function Passwordmessage() {
+function Passwordmessage2() {
     return (
         <div
             style={{
@@ -21,18 +21,15 @@ function Passwordmessage() {
                 fontWeight: 400,
                 lineHeight: '21px',
             }}
-            data-testid="passwordmessage2"
+            data-testid="password-message"
         >
             <div>
-        Tell us the username and email address associated with
-                <br />
-        your Reddit account, and we’ll send you an email with a link
-                <br />
-        to reset your password.
+            Choose a new password here, then log in to your account.
+
             </div>{' '}
         </div>
     );
 }
 
 
-export {Passwordmessage};
+export {Passwordmessage2};

@@ -8,6 +8,7 @@ import store from './store/store.js';
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/integration/react';
 import TimeAgo from 'javascript-time-ago';
+import {GoogleOAuthProvider} from '@react-oauth/google';
 
 import en from 'javascript-time-ago/locale/en';
 import ru from 'javascript-time-ago/locale/ru';
@@ -16,13 +17,16 @@ TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const clientId = '332399911432-vjl376a05ukf0hhpj6kq0hnuibij26dh.apps.googleusercontent.com';
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistStore(store)}>
-                <App />
-            </PersistGate>
-        </Provider>
+        <GoogleOAuthProvider clientId={clientId}>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistStore(store)}>
+                    <App />
+                </PersistGate>
+            </Provider>
+        </GoogleOAuthProvider>
     </React.StrictMode>,
 );
 

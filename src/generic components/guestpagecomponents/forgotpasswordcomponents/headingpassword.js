@@ -1,18 +1,14 @@
 
 import React from 'react';
+import {forgotPasswordClasses} from './forgotpassword.styles';
 /**
  * @return {JSX.Element} Heading for password reset page
  */
 function Headingpassword() {
     return (
-        <h1
-            style={{
-                textAlign: 'left',
-                fontSize: 18,
-                fontWeight: 500,
-                color: '#1a1a1b',
-                fontFamily: 'IBMPlexSans, sans-serif',
-            }}
+        <h1 className={forgotPasswordClasses.heading}
+            style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+            data-testid="headingpassword1"
         >
       Reset your password
         </h1>

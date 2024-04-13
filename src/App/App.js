@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
+import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 
 /**
@@ -23,11 +24,13 @@ function App() {
                 <Route path="/register" element={<SignUp />} />
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
+                <Route path="/resetpassword" element={<ForgotPassword2/>} />
                 <Route path="/settings" element={
                     <LayoutWithNavigation>
                         <BasicTabs />
                     </LayoutWithNavigation>
                 } />
+
                 <Route path="/post/:id" element={
                     <LayoutWithNavigation>
                         <PostRoute />
