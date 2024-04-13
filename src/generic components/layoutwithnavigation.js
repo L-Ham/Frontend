@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppBar} from '../layouts/Header/appbar';
-import {SideBar} from '../layouts/SideBar/sidebar';
+import {SideBar} from '../layouts/SideBar/sidebar.js';
 import PropTypes from 'prop-types';
 
 /**
@@ -21,8 +21,8 @@ function LayoutWithNavigation(props) {
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] nd:visible'>
                     <AppBar />
                 </div>
-                <div className='grid w-full grid-cols-1 bg-[var(--color-neutral-background)]
-                min-[1200px]:grid-cols-[272px_1fr]'>
+                <div className='grid h-screen w-full grid-cols-1
+                bg-[var(--color-neutral-background)] nd:grid-cols-[272px_1fr]'>
                     <div id='sidebar-container' className='isolate order-first hidden nd:block'>
                         <SideBar visible={true} />
                     </div>

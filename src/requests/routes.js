@@ -19,6 +19,17 @@ const API_ROUTES = {
     muteCommunity: '/user/muteCommunity',
     emailSettings: '/user/emailSettings',
     chatSettings: '/user/messagingSettings',
+    getAvatar: '/user/avatarImage',
+    getBanner: '/user/banner',
+    getInfo: '/user/selfInfo',
+    signup: '/auth/signUp',
+    forgotusername: '/auth/forgotUsername',
+    generateusernames: '/auth/generateUsernames',
+    GoogleLogin: '/auth/googleLogin',
+    GoogleSignUp: '/auth/googleSignUp',
+    forgotpassword: '/auth/forgotPassword',
+    updatepassword: '/auth/updatePassword',
+    userSelfInfo: '/user/selfInfo',
     // Add more routes as needed
 };
 
