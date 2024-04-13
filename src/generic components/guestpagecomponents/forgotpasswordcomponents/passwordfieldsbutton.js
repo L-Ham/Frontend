@@ -1,24 +1,41 @@
+/*eslint-disable */
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
+import { forgotPasswordClasses } from './forgotpassword.styles';
+import { Emailinput } from '../../../pages/registration_pages/passwordresetcomponents/emailinput';
+import { Usernameinput } from '../../../pages/registration_pages/passwordresetcomponents/usernameinput';
+import { Email } from '@mui/icons-material';
+// Remove the unused import statement for React
 
-const UsernameInputField = ({placeholder, id, showError, errorMessage, onChange}) => {
+
+/**
+ *
+  @return {JSX.Element} Heading for password reset page
+ */
+
+function UsernameInputField({placeholder, id, showError, errorMessage, onChange}) {
     const [isActive, setIsActive] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleFocus = () => setIsActive(true);
-    const handleBlur = () => setIsActive(onChange !== '');
+    function handleFocus() {
+        setIsActive(true);
+    }
 
-    const handleValidation = (value) => {
+    function handleBlur() {
+        setIsActive(onChange !== '');
+    }
+
+    function handleValidation(value) {
         const isValidLength = value.length >= 3 && value.length <= 20;
         setIsValid(isValidLength);
-    };
+    }
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         const value = e.target.value;
         onChange(value);
         handleValidation(value);
-    };
+    }
 
     const styles = {
         container: {
@@ -90,23 +107,39 @@ const UsernameInputField = ({placeholder, id, showError, errorMessage, onChange}
     };
 
     return (
-        <div style={styles.container}>
+        <div className={forgotPasswordClasses.container}>
             <input
+                className={forgotPasswordClasses.input}
+                style={{
+                    background: isActive ? '#fff' : '#fcfcfb',
+                    outline: 'none' ,
+                    border: showError ? '1px solid red' : (isValid ? '1px solid #24a0ed' : '1px solid #ccc'),
+                }}
                 type="text"
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 required
-                style={styles.input}
                 id={id}
             />
-            <label style={styles.placeholder}>{placeholder}</label>
+
+            <label className={placeholder}
+            style={{
+                position: 'absolute',
+                top: isActive ? '10px' : '18px',
+                left: isActive ? '10px' : '10px',
+            color: isActive ? '#999' : '#999',
+            fontSize: isActive ? '8px' : '12px',
+            }}
+            >
+                {placeholder}
+                </label>
             <div style={styles.dot}></div>
             <div style={showError ? styles.errorIcon : styles.checkIcon}>{showError ? '!' : '✓'}</div>
             {showError && <div style={styles.errorMessage}>{errorMessage}</div>}
         </div>
     );
-};
+}
 
 UsernameInputField.propTypes = {
     placeholder: PropTypes.string.isRequired,
@@ -116,23 +149,28 @@ UsernameInputField.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-const EmailInputField = ({placeholder, showError, errorMessage, onChange}) => {
+function EmailInputField({placeholder, showError, errorMessage, onChange}) {
     const [isActive, setIsActive] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleFocus = () => setIsActive(true);
-    const handleBlur = () => setIsActive(onChange !== '');
+    function handleFocus() {
+        setIsActive(true);
+    }
 
-    const handleValidation = (value) => {
+    function handleBlur() {
+        setIsActive(onChange !== '');
+    }
+
+    function handleValidation(value) {
         const isValidEmail = /\S+@\S+\.\S+/.test(value);
         setIsValid(isValidEmail);
-    };
+    }
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         const value = e.target.value;
         onChange(value);
         handleValidation(value);
-    };
+    }
 
     const styles = {
         container: {
@@ -204,22 +242,32 @@ const EmailInputField = ({placeholder, showError, errorMessage, onChange}) => {
     };
 
     return (
-        <div style={styles.container}>
-            <input
+        <div className={forgotPasswordClasses.container}>
+            <input className={forgotPasswordClasses.input}
                 type="text"
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 required
-                style={styles.input}
+                style={{
+                    background: isActive ? '#fff' : '#fcfcfb',
+                    outline: 'none' ,
+                    border: showError ? '1px solid red' : (isValid ? '1px solid #24a0ed' : '1px solid #ccc'),
+                }}
             />
-            <label style={styles.placeholder}>{placeholder}</label>
+            <label className={forgotPasswordClasses.placeholder}
+                 style={{color: isActive ? '#999' : '#999',
+                 fontSize: isActive ? '8px' : '12px',
+                 top: isActive ? '10px' : '20px',
+                 left: isActive ? '10px' : '10px',
+                }}
+            >{placeholder}</label>
             <div style={styles.dot}></div>
             <div style={showError ? styles.errorIcon : styles.checkIcon}>{showError ? '!' : '✓'}</div>
             {showError && <div style={styles.errorMessage}>{errorMessage}</div>}
         </div>
     );
-};
+}
 
 EmailInputField.propTypes = {
     placeholder: PropTypes.string.isRequired,
@@ -228,33 +276,34 @@ EmailInputField.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-const LoginForm = () => {
+function LoginForm() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [showUsernameError, setShowUsernameError] = useState(false);
     const [showEmailError, setShowEmailError] = useState(false);
+    const[isclicked, setIsclicked] = useState(false);
 
-    const handleLogin = () => {
+    function handleLogin() {
         if (!username || !email) {
             setShowUsernameError(!username);
             setShowEmailError(!email);
         } else if (username.length >= 3 && username.length <= 20 && /\S+@\S+\.\S+/.test(email)) {
-            alert('Sending you an email link');
+            setIsclicked(true);
         } else {
             setShowUsernameError(username.length > 0 && (username.length < 3 || username.length > 20));
             setShowEmailError(!/\S+@\S+\.\S+/.test(email));
         }
-    };
+    }
 
-    const handleUsernameChange = (value) => {
+    function handleUsernameChange(value) {
         setUsername(value);
         setShowUsernameError(value.length > 0 && (value.length < 3 || value.length > 20));
-    };
+    }
 
-    const handleEmailChange = (value) => {
+    function handleEmailChange(value) {
         setEmail(value);
         setShowEmailError(!/\S+@\S+\.\S+/.test(value));
-    };
+    }
 
     const containerStyle = {
         display: 'flex',
@@ -263,20 +312,9 @@ const LoginForm = () => {
     };
 
     return (
-        <div style={containerStyle}>
-            <UsernameInputField
-                placeholder="Username"
-                id="username"
-                showError={showUsernameError}
-                errorMessage={'Username must be between 3 and 20 characters'}
-                onChange={handleUsernameChange}
-            />
-            <EmailInputField
-                placeholder="EMAIL ADDRESS"
-                showError={showEmailError}
-                errorMessage={'Please enter a valid email'}
-                onChange={handleEmailChange}
-            />
+        <div style={{width:'392px'}}>
+           <Usernameinput onUsernameChange={handleUsernameChange}   width="392px" showInvalidCredentials={showUsernameError} />
+           <Emailinput onEmailChange={handleEmailChange} width="392px" showInvalidCredentials={showEmailError} labelText="EMAIL ADDRESS" />
             <div style={{marginBottom: '15px'}} />
             <Button
                 type="submit"
@@ -285,7 +323,7 @@ const LoginForm = () => {
                 role="button"
                 sx={{
                     'backgroundColor': '#1976d2',
-                    'fontFamily': 'IBMPlexSans, sans-serif',
+                    'fontFamily': 'IBM Plex Sans, sans-serif',
                     'fontSize': '14px',
                     'fontWeight': 600,
                     'width': '100%',
@@ -298,8 +336,16 @@ const LoginForm = () => {
             >
                 RESET PASSWORD
             </Button>
+            <div className="ml-1.5 pt-0.5 align-top text-xs font-medium leading-5 text-[#24a0ed]"
+             data-for="username" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+                {(isclicked) && (
+                    <>Thanks! If your Reddit username and email address match, you&apos;ll get<br/>
+                     an email with a link to reset your password shortly.</>
+                )}
+
+            </div>
         </div>
     );
-};
+}
 
 export default LoginForm;

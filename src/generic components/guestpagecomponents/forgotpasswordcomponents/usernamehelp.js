@@ -11,7 +11,7 @@ function UserHelp() {
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '12px',
                 fontWeight: 400,
                 lineHeight: '18px',
@@ -33,7 +33,7 @@ function UserHelp() {
                 href="/login"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
-        LOG IN.{' '}
+         LOG IN •{' '}
             </a>
             <a
                 href="/register"

@@ -1,19 +1,32 @@
+/*eslint-disable*/
 import React from 'react';
 import './signup.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Passwordfield} from './signup2components/Passwordfield';
 import {Headings} from './signup2components/Headings';
+import {useLocation} from 'react-router-dom';
+import {axiosInstance as axios} from '../../requests/axios.js';
+import {API_ROUTES} from '../../requests/routes.js';
+import {useNavigate} from 'react-router-dom';
 /**
  *
  * @return {JSX.Element} SignUpContinued
  */
+
 function SignUpContinued() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
+    const [usernames, setUsernames] = useState([]);
+
+    const [responseunqiue, setresponseunqiue] = useState('');
 
     const handleInputChange = (event) => {
         setUsername(event.target.value);
     };
+    useEffect(() => {
+        uniqueusername();
+    }, [username]);
 
 
     const handleInputChangePassword = (password) => {
@@ -23,11 +36,12 @@ function SignUpContinued() {
         setPassword(password);
     };
 
-    const handleUsernameSuggestionClick = (event) => {
-        const clickedUsername = event.target.dataset.username;
+    const handleUsernameSuggestionClick = (event, clickedUsername) => {
+        event.preventDefault();
         setUsername(clickedUsername);
         setIsFocus(true);
     };
+    
 
     const checkImage = 'https://www.redditstatic.com/accountmanager/d489caa9704588f7b7e1d7e1ea7b38b8.svg';
     const refreshImage = 'https://www.redditstatic.com/accountmanager/25f30c472d0243a2d874451a240fe08a.svg';
@@ -57,6 +71,8 @@ function SignUpContinued() {
     const [isFocus, setIsFocus] = React.useState(false);
     const [mouseOver, setMouseOver] = React.useState(false);
 
+
+    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const animDot = `after:ml-[7px] after:inline-block
     after:align-top after:text-xl after:font-medium after:leading-6
@@ -69,8 +85,8 @@ function SignUpContinued() {
     const fieldSetStylesRed = `relative m-0 w-[350px]  p-0 border-red border-solid`;
 
     const fieldClass = fieldSetStyles;
-    let usernameBorderColor = '#fcfcfb'; // Default border color
-    let borderColor = '#fcfcfb';
+    let usernameBorderColor = '#e2e2e1'; // Default border color
+    let borderColor = '#e2e2e1';
     /**
      * Get the border color for the username input field.
      * @param {string} username - The username value
@@ -79,7 +95,7 @@ function SignUpContinued() {
     function getUsernameBorderColor(username) {
         // Default border color
         if (username.length!=0) {
-            if (username.length < 3 || username.length > 20) {
+            if (username.length < 3 || username.length > 20 || !responseunqiue) {
                 borderColor = '#ea0027'; // Red border color when username is less than 3 or more than 20 characters
             } else if (username.length >= 3 && username.length <= 20) {
                 borderColor = '#1976d2'; // Blue border color when username is between 3 and 20 characters
@@ -89,7 +105,7 @@ function SignUpContinued() {
         return borderColor;
     }
     if (username.length!=0) {
-        if (username.length < 3 || username.length > 20) {
+        if (username.length < 3 || username.length > 20 || !responseunqiue) {
             imageUrl=exclamImage;
         } else {
             imageUrl=checkImage;
@@ -150,15 +166,72 @@ function SignUpContinued() {
     /**
      * Handles the login process.
      */
-    function handleLogin() {
-        if (password.length >= 8 && username.length >= 3 && username.length <= 20) {
-            alert('Signing you up !');
-        } else {
-            alert('Failed');
+    async function handleLogin() {
+        if (password.length >= 8 && username.length >= 3 && username.length <= 20 && responseunqiue) {
+            try {
+                console.log(username);
+                console.log(password);
+                console.log(email);
+
+                const response = await axios.post(API_ROUTES.signup, {
+                    userName: username,
+                    password: password,
+                    email: email,
+                    gender: '',
+                });
+                navigate(`/`);
+            } catch (error) {
+                if (error.response) {
+                    console.log(error.response.message);
+                    alert('Failed');
+                }
+            }
         }
     }
+    async function generateUsernames() {
+        try {
+            const response = await axios.get(API_ROUTES.generateusernames);
+            const data = response.data;
+            setUsernames(data.usernames); // Store the received usernames in state
+            console.log('Usernames:', data.usernames);
+        } catch (error) {
+            console.error('Error occurred while generating usernames:', error.response.data.message);
+            // Handle the error, e.g., display an error message to the user
+        }
+    }
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const emailFromUrl = searchParams.get('email'); // Extract email from URL
+
+    // State to hold the email
+    const [email, setEmail] = useState('');
 
 
+    // Set the email from URL when component mounts
+    useEffect(() => {
+        if (emailFromUrl) {
+            setEmail(emailFromUrl);
+        }
+    }, [emailFromUrl]);
+
+    /**
+     * Handles the input change event.
+     */
+    let response;
+    async function uniqueusername() {
+        try {
+            response = await axios.get(`/user/usernameAvailability?username=${username}`);
+
+            setresponseunqiue(true);
+        } catch (error) {
+            if (error.response) {
+                setresponseunqiue(false);
+
+            // This will log "Username already taken"
+            } else {
+            }
+        }
+    }
     return (
         <div className="relative box-border flex h-screen flex-col
         justify-between text-sm font-medium leading-[18px] text-[#1a1a1b]" data-step="username-and-password">
@@ -173,7 +246,7 @@ function SignUpContinued() {
                                     <input
                                         id="regUsername"
                                         className="h-12 w-full appearance-none rounded
-                                        border border-solid  bg-[#fcfcfb] px-3
+                                        border border-solid  bg-[#fcfcfb] hover:bg-[#FFFFFF] px-3
                                         pb-2.5 pr-9 pt-[22px] transition-all duration-[0.2s] ease-[ease-in-out]"
 
 
@@ -198,11 +271,15 @@ function SignUpContinued() {
                                     >
                                         {' '}Choose a Username{' '}
                                     </label>
+                                    
                                     <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                                      text-[#ea0027] opacity-100 transition-all duration-[0.2s]
                                       ease-[ease-in-out]" data-for="username">
-                                        {((username.length < 3 || username.length > 20) && (username.length != 0)) && (
+                                        {((username.length < 3 || username.length > 20) && (username.length != 0)) && responseunqiue && (
                                             <>Username must be between 3 and 20 characters</>
+                                        )}
+                                        {(!responseunqiue && (username.length != 0)) &&(
+                                            <>That username is already taken</>
                                         )}
                                     </div>
                                 </fieldset>
@@ -214,40 +291,26 @@ function SignUpContinued() {
                             <p className="mb-2.5 mt-0 block text-sm font-normal
                             leading-[21px]" style={{fontFamily: '"Noto Sans", sans-serif'}}>
                                 Here are some username suggestions
-                                <a href="#" className="">
+                                <a href="#" onClick={(event) => { event.preventDefault(); generateUsernames(); }}>
                                     <img src={refreshImage} alt="Image" style={refreshImageStyle} />
                                 </a>
+
                             </p>
                             <div >
-                                <div >
-                                    <a className="block bg-transparent pb-2
-                                    text-[#0079d3] no-underline" data-username="Sad_Tonight_2694"
-                                    href="#" onClick={handleUsernameSuggestionClick}>
-                                        Sad_Tonight_2694
-                                    </a>
-                                    <a className="block bg-transparent pb-2 text-[#0079d3] no-underline"
-                                        data-username="Sad_Most1525" href="#" onClick={handleUsernameSuggestionClick}>
-                                        Sad_Most1525
-                                    </a>
-                                    <a className="block bg-transparent pb-2 text-[#0079d3] no-underline"
-                                        data-username="Fit_Can_7218" href="#" onClick={handleUsernameSuggestionClick}>
-                                        Fit_Can_7218
-                                    </a>
-                                    <a className="block bg-transparent pb-2 text-[#0079d3] no-underline"
-                                        data-username="Popular-Tale2861"
-                                        href="#" onClick={handleUsernameSuggestionClick}>
-                                        Popular-Tale2861
-                                    </a>
-                                    <a className="block bg-transparent pb-2 text-[#0079d3] no-underline"
-                                        data-username="Grand_Wind4829" href="#" onClick={handleUsernameSuggestionClick}>
-                                        Grand_Wind4829
-                                    </a>
-                                </div>
+                            <div>
+    {usernames.slice(0, 5).map((username, index) => (
+        <a key={index} className="block bg-transparent pb-2 text-[#0079d3] no-underline" href="#" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+         onClick={(event) => handleUsernameSuggestionClick(event, username)}>
+            {username}
+        </a>
+    ))}
+</div>
+
                             </div>
                         </div>
                     </div>
                     <div className=" flex min-h-[55px] items-center justify-between border-t border-solid
-                     border-t-[hsla(195,2%,65%,0.36)] bg-[#fcfcfb] px-4 py-2">
+                     border-t-[hsla(195,2%,65%,0.36)] bg-[#fcfcfb] hover:bg-[#FFFFFF] px-4 py-2">
                         <a href="/register" data-step="username-and-password">Back</a>
                         <span data-step="username-and-password">
                             <span ></span>

@@ -71,7 +71,7 @@ function ForgotPassword2() {
                             role="button"
                             sx={{
                                 'backgroundColor': '#1976d2',
-                                'fontFamily': 'IBMPlexSans, sans-serif',
+                                'fontFamily': 'IBM Plex Sans, sans-serif',
                                 'fontSize': '14px',
                                 'fontWeight': 600,
                                 'width': '100%',

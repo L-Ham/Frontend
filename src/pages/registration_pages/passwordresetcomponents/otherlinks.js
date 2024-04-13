@@ -12,7 +12,7 @@ function Links() {
                     textAlign: 'left',
 
                     color: 'black',
-                    fontFamily: '"IBMPlexSans", sans-serif',
+                    fontFamily: '"IBM Plex Sans", sans-serif',
                     fontSize: '12px',
                     fontWeight: 400,
                     lineHeight: '18px',
@@ -23,14 +23,14 @@ function Links() {
                 <a
                     href="/login"
                     style={{color: '#0079d3', fontWeight: '700',
-                        fontFamily: '"IBMPlexSans", sans-serif'}} rel="noreferrer"
+                        fontFamily: '"IBM Plex Sans", sans-serif'}} rel="noreferrer"
                 >
                             LOG IN •{' '}
                 </a>
                 <a
                     href="/register"
                     style={{color: '#0079d3', fontWeight: '700',
-                        fontFamily: '"IBMPlexSans", sans-serif'}} rel="noreferrer"
+                        fontFamily: '"IBM Plex Sans", sans-serif'}} rel="noreferrer"
                 >
                     {' '}
                             SIGN UP

@@ -25,7 +25,7 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
-
+import {ReactComponent as GoogleIcon} from '../assets/icons/google.svg';
 // icons map
 const ICONS_MAP = {
     'low-fill': NotificationIconFill,
@@ -52,6 +52,8 @@ const ICONS_MAP = {
     'threedots-fill': ThreeDotsIconFill,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,
+    'google': GoogleIcon,
+
 };
 
 /**

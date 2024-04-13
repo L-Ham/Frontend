@@ -3,6 +3,8 @@ import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Passwordinput} from './passwordinput';
+// import {Emailinput} from './emailinput';
+// import {Usernameinput} from './usernameinput';
 /**
  *
  * @return {JSX.Element} Password input field
@@ -11,7 +13,7 @@ function Verify({onPasswordChange2}) {
     const [password2, setPassword2] = useState('');
     const [password, setPassword] = useState('');
 
-    let passwordBorderColor2 = '#fcfcfb'; // Default border color
+    let passwordBorderColor2 = '#e2e2e1'; // Default border color
     if ((password2.length < 8 && password2.length !== 0) || (password2!=password && password2.length !== 0) ) {
         passwordBorderColor2 = '#ea0027'; // Red border color when password is less than 8 characters
     } else if (password2.length >= 8) {
@@ -47,6 +49,7 @@ function Verify({onPasswordChange2}) {
     const fieldStylesPassword = `mt-6 relative m-0 w-[350px] border-[none] p-0`;
     const [isFocusPassword2, setIsFocusPassword2] = React.useState(false);
     const [mouseOverPassword2, setMouseOverPassword2] = React.useState(false);
+    const [showInvalidCredentials, setShowInvalidCredentials] = useState(false);
 
     const [isVisiblePassword2, setIsVisiblePassword2] = useState(false);
     const handleInputChangePassword2 = (event) => {
@@ -75,6 +78,7 @@ function Verify({onPasswordChange2}) {
     } else {
         if (isVisiblePassword2 == true) {
             setIsVisiblePassword2(false);
+            setShowInvalidCredentials(false);
         }
     }
     Verify.propTypes = {
@@ -82,15 +86,17 @@ function Verify({onPasswordChange2}) {
     };
     return (
         <>
-            <Passwordinput onPasswordChange={handlePasswordChange} />
+            <Passwordinput onPasswordChange={handlePasswordChange} width="350px"
+                showInvalidCredentials={showInvalidCredentials} labelText="NEW PASSWORD"/>
 
 
             <fieldset className={fieldStylesPassword} id="registerPasswordField2">
                 <input
                     id="regPassword-prevent2"
                     className="h-12 w-full appearance-none rounded
-                                        border border-solid  bg-[#fcfcfb] px-3
-                                        pb-2.5 pr-9 pt-[22px] transition-all duration-[0.2s] ease-[ease-in-out]"
+                                        border border-solid  bg-[#fcfcfb] px-3 pb-2.5
+                                        pr-9 pt-[22px] transition-all duration-[0.2s]
+                                         ease-[ease-in-out] hover:bg-[#FFFFFF]"
                     data-hidden=""
                     type="password"
                     name="password-prevent"

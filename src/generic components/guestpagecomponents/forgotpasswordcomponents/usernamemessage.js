@@ -12,7 +12,7 @@ function Usermessage() {
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'IBMPlexSans, sans-serif',
+                fontFamily: '"IBM Plex Sans", sans-serif',
                 fontSize: '14px',
                 fontWeight: 500,
                 lineHeight: '21px',

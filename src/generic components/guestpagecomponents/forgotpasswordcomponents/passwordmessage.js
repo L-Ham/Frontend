@@ -16,7 +16,7 @@ function Passwordmessage() {
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '14px',
                 fontWeight: 400,
                 lineHeight: '21px',

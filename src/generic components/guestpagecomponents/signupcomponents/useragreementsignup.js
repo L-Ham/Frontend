@@ -11,7 +11,7 @@ function UserAgreementSignup() {
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '12px',
                 fontWeight: 400,
                 lineHeight: '18px',
