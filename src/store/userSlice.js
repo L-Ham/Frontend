@@ -10,14 +10,16 @@ const initialState = {
     commentKarma: '',
     createdAt: '',
     token: '',
+    theme: 'light',
 };
-
+let token = null;
 const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
         login: (state, action) => {
             state.token = action.payload.token;
+            token = action.payload.token;
         },
         setAvatar: (state, action)=>{
             state.avatarImage = action.payload.avatarImage;

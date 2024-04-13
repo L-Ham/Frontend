@@ -1,58 +1,34 @@
-/* eslint-disable no-unused-vars */
-import {React, useState} from 'react';
-// import PropTypes from 'prop-types';
+import React from 'react';
 import './sidebar.css';
-// import {ReactComponent as Home} from '../../assets/images/home-icon.svg';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import HomeIcon from '@mui/icons-material/Home';
-import {ReactComponent as Popular} from '../../assets/images/popular-icon.svg';
-import {ReactComponent as All} from '../../assets/images/all-icon.svg';
-import {SideBarSection} from './SideBarSection/sidebarsection';
-
+import {TopSection} from './SideBarSection/TopSection/topsection.js';
+import {RecentCommunitiesSection} from './SideBarSection/RecentSection/recentcommunitiessection.js';
+import {CommunitiesSection} from './SideBarSection/CommunitySection/communitiessection.js';
+import {ResourcesSection} from './SideBarSection/ResourcesSection/resourcessection.js';
+import {sideBarClasses as styles} from './sidebar.styles.js';
+import './sidebar.css';
 
 /**
- * Main application component
+ * The sidebar component
  * @component
  * @example
- * // Render the application
- * <App />
- * @return {JSX.Element} The main application component
+ * // Render the sidebar
+ * <SideBar />
+ * @return {JSX.Element} The sidebar component
  */
 function SideBar() {
-    const tabs = [
-        {
-            icon: <HomeOutlinedIcon />,
-            label: 'Home',
-            link: '/',
-        },
-        {
-            icon: <Popular />,
-            label: 'Popular',
-            link: '/popular',
-        },
-        {
-            icon: <All />,
-            label: 'All',
-            link: '/all',
-        },
-    ];
     return (
 
-        <div className='styled-scrollbars fixed left-0 top-[56px] box-border
-                block h-[calc(100vh-56px)] w-[272px] overflow-hidden border-0
-                border-r-[0.0625rem] border-solid border-r-[#00000033] bg-white px-4 pt-4 hover:overflow-y-scroll'>
+        <div className={styles.sideBarContainer}>
+            <nav className={styles.sideBar}>
 
-            <SideBarSection tabs={tabs} collapsible={false}/>
-            <hr className='my-4 border-t-DEFAULT border-[#eaedef]' />
-
-            <SideBarSection tabs={tabs} collapsible={true} sectionName='RECENT' />
-            <hr className='my-4 border-t-DEFAULT border-[#eaedef]' />
-
-            <SideBarSection tabs={tabs} collapsible={true} sectionName='RECENT' />
-            <hr className='my-4 border-t-DEFAULT border-[#eaedef]' />
-
-            <SideBarSection tabs={tabs} collapsible={true} sectionName='RECENT' />
-            <hr className='my-4 border-t-DEFAULT border-[#eaedef]' />
+                <TopSection />
+                <hr className={styles.divider} />
+                <RecentCommunitiesSection />
+                <hr className={styles.divider} />
+                <CommunitiesSection />
+                <hr className={styles.divider} />
+                <ResourcesSection />
+            </nav>
 
         </div>
     );

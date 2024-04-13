@@ -1,62 +1,51 @@
 import React from 'react';
-import {SearchHistoryItem} from './searchhistoryitem';
-import {SearchTrendingItem} from './searchtrendingitem';
-import {ReactComponent as SearchTrendingIcon} from '../../../assets/images/trending-icon.svg';
+import {SearchHistoryItem} from './searchhistoryitem.js';
+import {SearchTrendingItem} from './searchtrendingitem.js';
+import {useSearchDropDown} from './search.hooks.js';
+import {searchDropDownClasses as styles} from './search.styles.js';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 
 /**
  * The search dropdown component
  * @component
- * @param {boolean} isSearchDropdownVisible - Whether or not the search dropdown is visible
- * @param {array} searchTrendingItems - The trending search items
- * @param {array} SearchHistoryItems - The search history items
+ * @param {boolean} isDropdownVisible - Whether or not the search dropdown is visible
+ * @param {array} TrendingItems - The trending search items
+ * @param {array} HistoryItems - The search history items
  * @example
  * // Render the search dropdown
  * <SearchDropDown />
  * @return {JSX.Element} The search dropdown component
  * */
-function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = [], SearchHistoryItems = []}) {
+function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryItems = []}) {
+    const {rootStyles, TrendingIcon} = useSearchDropDown({isDropdownVisible});
     return (
-        <div id='SearchDropdown' className={`max-h-[calc(100vh-56px-15px-10px)]
-                                    ${isSearchDropdownVisible ? 'block' : 'hidden'}
-                                    overflow-y-auto overflow-x-hidden rounded-b-[1.25rem]
-                                    bg-white shadow-md`}>
-            <ul className='m-0 border-none p-0'>
+        <div className={rootStyles} data-testid='search-dropdown'>
+            <ul className={styles.recentSearchList}>
                 {
-                    SearchHistoryItems.map((item, index) => (
-                        <>
-
-                            <li key={index} className='relative mt-0 list-none '>
+                    HistoryItems.map((item) => (
+                        <React.Fragment key={uuid()}>
+                            <li className={styles.listItem}>
                                 <SearchHistoryItem {...item}/>
                             </li>
-                            <hr className='mx-4 my-0 border-x-0 border-b-0
-                                border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-                        </>
+                        </React.Fragment>
                     ))
                 }
             </ul>
 
-            <hr className='my-0 border-x-0 border-b-0
-                                    border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-
-
-            <div className="mb-1 ml-4 mt-3 flex items-center text-[#576f76]">
-                <SearchTrendingIcon />
-                                    TRENDING TODAY
+            <div className={styles.trending}>
+                <TrendingIcon/>
+                TRENDING TODAY
             </div>
-
-
-            <ul id='SearchDropdownList' className='my-0 list-none p-0'>
+            <ul id='SearchDropdownList' className={styles.trendingList}>
                 {
-                    searchTrendingItems.map((item, index) => (
-                        <>
-
-                            <li key={index} className='relative mt-0 list-none'>
+                    TrendingItems.map((item, index) => (
+                        <React.Fragment key={uuid()}>
+                            <li className={styles.listItem}>
                                 <SearchTrendingItem {...item}/>
                             </li>
-                            <hr className='mx-4 my-0 border-x-0 border-b-0
-                                border-t-[0.0625rem] border-solid border-[#0000001a]'/>
-                        </>
+                            {index !== TrendingItems.length - 1 && <hr className={styles.listSeparator}/>}
+                        </React.Fragment>
                     ))
                 }
             </ul>
@@ -65,9 +54,9 @@ function SearchDropDown({isSearchDropdownVisible = false, searchTrendingItems = 
 }
 
 SearchDropDown.propTypes = {
-    isSearchDropdownVisible: PropTypes.bool,
-    searchTrendingItems: PropTypes.array,
-    SearchHistoryItems: PropTypes.array,
+    isDropdownVisible: PropTypes.bool,
+    TrendingItems: PropTypes.array,
+    HistoryItems: PropTypes.array,
 };
 
 export {SearchDropDown};
