@@ -28,12 +28,10 @@ function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryI
                             <li className={styles.listItem}>
                                 <SearchHistoryItem {...item}/>
                             </li>
-                            <hr className={styles.listSeparator}/>
                         </React.Fragment>
                     ))
                 }
             </ul>
-            <hr className={styles.sectionSeparator}/>
 
             <div className={styles.trending}>
                 <TrendingIcon/>
@@ -41,12 +39,12 @@ function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryI
             </div>
             <ul id='SearchDropdownList' className={styles.trendingList}>
                 {
-                    TrendingItems.map((item) => (
+                    TrendingItems.map((item, index) => (
                         <React.Fragment key={uuid()}>
                             <li className={styles.listItem}>
                                 <SearchTrendingItem {...item}/>
                             </li>
-                            <hr className={styles.listSeparator}/>
+                            {index !== TrendingItems.length - 1 && <hr className={styles.listSeparator}/>}
                         </React.Fragment>
                     ))
                 }
