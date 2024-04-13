@@ -11,7 +11,7 @@ import React from 'react';
  */
 function Passwordmessage2() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
@@ -26,7 +26,7 @@ function Passwordmessage2() {
             Choose a new password here, then log in to your account.
 
             </div>{' '}
-        </p>
+        </div>
     );
 }
 

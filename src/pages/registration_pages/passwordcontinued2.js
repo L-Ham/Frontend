@@ -1,6 +1,6 @@
 
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import React from 'react';
 import {RedditLogo} from '../.././generic components/guestpagecomponents/redditlogo';
 import Button from '@mui/material/Button';
@@ -14,6 +14,7 @@ import {Links} from './passwordresetcomponents/otherlinks';
 import {Checkbox} from './passwordresetcomponents/checkbox';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useSearchParams, useNavigate} from 'react-router-dom';
 
 /**
  *
@@ -22,19 +23,30 @@ import {API_ROUTES} from '../../requests/routes';
 function ForgotPassword2() {
     const [passwordfinal, setPasswordfinal] = useState('');
     const [passwordMatch, setPasswordMatch] = useState(false);
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!searchParams.get('token')) {
+            navigate('/login');
+        }
+    }, [searchParams, navigate]);
     /**
      * Handles the login process.
      *
      * @return {void}
      */
-    async function handleLogin() {
+    async function handleUpdatePwd() {
         if (passwordfinal.length >= 8 && passwordMatch) {
             try {
-                const response = await axios.patch(API_ROUTES.updatepassword, {
-                    email: 'ziad.wareth@gmail.com',
-                    password: passwordfinal,
-                    passwordConfirm: passwordfinal,
-                });
+                const response = await axios.patch(API_ROUTES.updatepassword,
+                    {
+                        password: passwordfinal,
+                        passwordConfirm: passwordfinal,
+                    },
+                    {
+                        headers: {Authorization: `Bearer ${searchParams.get('token')}`},
+                    },
+                );
                 console.log(response);
                 console.log('password reset!');
             } catch (e) {
@@ -81,7 +93,7 @@ function ForgotPassword2() {
                         <Button
                             type="submit"
                             variant="contained"
-                            onClick={handleLogin}
+                            onClick={handleUpdatePwd}
                             role="button"
                             sx={{
                                 'backgroundColor': '#1976d2',
