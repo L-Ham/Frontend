@@ -21,8 +21,6 @@ const clientId = '332399911432-vjl376a05ukf0hhpj6kq0hnuibij26dh.apps.googleuserc
 root.render(
     <React.StrictMode>
         <GoogleOAuthProvider clientId={clientId}>
-
-
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistStore(store)}>
                     <App />
@@ -30,8 +28,6 @@ root.render(
             </Provider>
         </GoogleOAuthProvider>
     </React.StrictMode>,
-
-
 );
 
 // If you want to start measuring performance in your app, pass a function
