@@ -9,7 +9,7 @@ import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
 import {setAvatar, setTheme} from '../../../../store/userSlice.js';
-import {jwtDecode} from 'jwt-decode';
+
 
 export const useProfileMenu = () => {
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -27,8 +27,7 @@ export const useProfileMenu = () => {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
-    // decode the jwt user.token to get the username
-    const username = user.token ? `u/${jwtDecode(user.token).user.userName}` : 'u/Cute-Area64';
+    const username = user.displayName;
 
     const contributorProgramSubLabel = (
         <span className='inline-flex'>
@@ -61,9 +60,9 @@ export const useProfileMenu = () => {
             (<ProfileMenuListItem
                 key='view-profile'
                 mainLabel='View Profile'
-                subLabel={username}
+                subLabel={'u/' + username}
                 icon={<ProfileIcon isOnline={true}/>}
-                href='#'
+                href={'/user/' + username}
             />),
             (<ProfileMenuListItem
                 key='edit-avatar'

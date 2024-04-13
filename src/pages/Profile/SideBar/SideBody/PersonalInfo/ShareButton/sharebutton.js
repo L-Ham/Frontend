@@ -12,13 +12,15 @@ export function ShareButton() {
         <div className={shareButtonClasses.root}>
             <div className={shareButtonClasses.rootC}>
                 <button className={shareButtonClasses.button}
-                    style={shareButtonStyles.button}>
+                    style={shareButtonStyles.button}
+                    onClick={() => navigator.share({text: 'Reddit', url: window.location.href})}
+                >
                     <span className={shareButtonClasses.span}>
                         <span className={shareButtonClasses.spanA}>
                             <ShareIcon/>
                         </span>
                         <span className={shareButtonClasses.spanB}>
-                        Share
+                            Share
                         </span>
                     </span>
                 </button>

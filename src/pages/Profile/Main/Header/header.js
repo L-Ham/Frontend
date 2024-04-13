@@ -22,7 +22,7 @@ export function Header({username}) {
                 />
                 <div className={headerClasses.divA}>
                     <a
-                        href="/settings"
+                        href="/settings/profile"
                         aria-label="Edit profile picture"
                         className={headerClasses.a}
                         style={headerStyles.a}>

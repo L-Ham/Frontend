@@ -39,9 +39,12 @@ const userSlice = createSlice({
             state.created = action.payload.created;
             state.avatar = action.payload.avatar;
         },
+        logout: (state) => {
+            state = initialState;
+        },
     },
 });
 
 export {initialState, token};
-export const {login, setAvatar, setBanner, setTheme, selfInfo} = userSlice.actions;
+export const {login, setAvatar, setBanner, setTheme, selfInfo, logout} = userSlice.actions;
 export default userSlice.reducer;

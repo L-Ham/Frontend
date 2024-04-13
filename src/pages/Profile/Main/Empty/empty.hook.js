@@ -1,7 +1,6 @@
 
 export const useEmpty = (section) => {
     const verb = ()=>{
-        console.log('section', section);
         if (section === 'comments') {
             return 'commented';
         } else if (section === 'posts') {

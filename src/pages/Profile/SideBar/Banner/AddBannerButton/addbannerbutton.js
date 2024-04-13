@@ -11,7 +11,7 @@ export function AddBannerButton() {
     return (
         <div className={addBannerButtonClasses.root}>
             <a
-                href="/settings"
+                href="/settings/profile"
                 aria-label="Edit profile banner"
                 style={addBannerButtonStyles.root}
                 className={addBannerButtonClasses.a}>

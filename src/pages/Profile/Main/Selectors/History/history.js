@@ -24,5 +24,5 @@ export function History({Topics}) {
     );
 }
 History.propTypes = {
-    Topics: PropTypes.string,
+    Topics: PropTypes.object.isRequired,
 };
