@@ -3,8 +3,9 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
     id: '',
     displayName: '',
-    commentKarma: 0,
-    postKarma: 0,
+    bannerImage: '',
+    postKarma: '',
+    commentKarma: '',
     created: 0,
     avatar: '',
     token: '',
@@ -21,8 +22,11 @@ const userSlice = createSlice({
             state.token = action.payload.token;
             token = action.payload.token;
         },
-        setAvatar: (state, action) => {
+        setAvatar: (state, action)=>{
             state.avatarImage = action.payload.avatarImage;
+        },
+        setBanner: (state, action)=>{
+            state.bannerImage = action.payload.bannerImage;
         },
         setTheme: (state, action) => {
             state.theme = action.payload.theme;
@@ -35,9 +39,12 @@ const userSlice = createSlice({
             state.created = action.payload.created;
             state.avatar = action.payload.avatar;
         },
+        logout: (state) => {
+            state = initialState;
+        },
     },
 });
 
 export {initialState, token};
-export const {login, setAvatar, setTheme, selfInfo} = userSlice.actions;
+export const {login, setAvatar, setBanner, setTheme, selfInfo, logout} = userSlice.actions;
 export default userSlice.reducer;

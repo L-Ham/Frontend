@@ -7,6 +7,9 @@ const API_ROUTES = {
     CAST_VOTE: '/api/vote',
     */
     login: '/auth/login',
+    getAvatar: '/user/avatarImage',
+    getBanner: '/user/banner',
+    getInfo: '/user/selfInfo',
     signup: '/auth/signUp',
     forgotusername: '/auth/forgotUsername',
     generateusernames: '/auth/generateUsernames',
@@ -14,7 +17,6 @@ const API_ROUTES = {
     GoogleSignUp: '/auth/googleSignUp',
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
-    getAvatar: 'user/avatarImage',
     userSelfInfo: '/user/selfInfo',
     // Add more routes as needed
 };
