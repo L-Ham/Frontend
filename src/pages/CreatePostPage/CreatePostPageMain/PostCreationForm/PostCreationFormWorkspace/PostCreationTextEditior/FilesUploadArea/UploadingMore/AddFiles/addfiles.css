@@ -1,0 +1,7 @@
+.add-image__plus-icon {
+  @apply fill-[var(--newCommunityTheme-voteText-base)];
+}
+
+.add-image:hover .add-image__plus-icon {
+  @apply fill-[var(--newCommunityTheme-bodyText)];
+}
