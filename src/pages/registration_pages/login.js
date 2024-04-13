@@ -62,7 +62,9 @@ const Login = () => {
     };
 
     return (
-        <div className="fixed left-0 top-0 size-full">
+        <div className="fixed left-0 top-0 size-full"
+            data-testid="login-page"
+        >
             <div className="fixed left-0 top-0 size-full">
                 <div
                     style={{float: 'left', height: '100%', width: '10%'}}
@@ -72,6 +74,7 @@ const Login = () => {
                         alt="React Logo"
                         style={{width: '100%', height: '100%'}}
                         data-testid="login-logo"
+
                     />
                 </div>
                 <div

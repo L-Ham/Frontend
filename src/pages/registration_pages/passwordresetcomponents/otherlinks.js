@@ -6,7 +6,9 @@ import React from 'react';
  */
 function Links() {
     return (
-        <div>
+        <div
+            data-testid="links"
+        >
             <p
                 style={{
                     textAlign: 'left',

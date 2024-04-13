@@ -16,6 +16,7 @@ function UserAgreementSignup() {
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="useragreementsignup35"
         >
             <div>
                 By continuing, you are setting up a Reddit

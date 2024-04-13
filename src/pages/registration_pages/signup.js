@@ -16,12 +16,16 @@ import {API_ROUTES} from '../../requests/routes';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {login, selfInfo} from '../../store/userSlice.js';
+import {SignUpContinued} from './signupcontinued.js';
+
 /**
  *
  * @return {JSX.Element} App
  */
 function SignUp() {
     const [Token, setToken] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [email, setEmail] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     /**
@@ -87,42 +91,62 @@ function SignUp() {
         console.log(Token);
     }
 
-
+    const handleEmailFormSubmit = (isValidEmail, userEmail) => {
+        setValidEmail(isValidEmail);
+        setEmail(userEmail);
+        console.log('Email:', userEmail);
+        console.log('Valid Email:', isValidEmail);
+    };
     return (
-        <div className="fixed left-0 top-0 size-full">
-            <div className="fixed left-0 top-0 size-full">
-                <div style={{float: 'left', height: '100%', width: '10%'}}>
-                    <img
-                        src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
-                        alt="React Logo"
-                        style={{width: '100%', height: '100%'}}
-                    />
-                </div>
-                <div style={{float: 'right', height: '100%', width: '87%'}}>
-                    <div style={{marginBottom: '128px'}} /> {/* Spacer above Heading */}
-                    <HeadingSignUp />
-                    <div style={{marginBottom: '5px'}} /> {/* Spacer below Heading */}
-                    <UserAgreementSignup />
-                    <div style={{marginBottom: '50px'}} />{' '}
-                    {/* Spacer between components */}
 
-                    <div style={{marginBottom: '5px'}} />{' '}
-                    {/* Spacer between components */}
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <GoogleButton onAccessToken={handleAccessToken} />
-                        <div style={{marginBottom: '35px'}} />{' '}
-                        <Divider length={210} />
-                        {/* Spacer between components */}
-                        <EmailLoginForm />
-                        <div style={{marginBottom: '1px'}} />{' '}
-                        {/* Spacer between components */}
-                        <ExistingMember />
-                        <div style={{marginBottom: '10px'}} />{' '}
-                        {/* Spacer between components */}
+        <>
+            {!validEmail && (
+                <div className="fixed left-0 top-0 size-full"
+                    data-testid="signup-page"
+                >
+                    <div className="fixed left-0 top-0 size-full">
+                        <div style={{float: 'left', height: '100%', width: '10%'}}>
+                            <img
+                                src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
+                                alt="React Logo"
+                                style={{width: '100%', height: '100%'}}
+                                data-testid="signup-logo"
+                            />
+                        </div>
+                        <div style={{float: 'right', height: '100%', width: '87%'}}
+                            data-testid="signup-page2"
+                        >
+                            <div style={{marginBottom: '128px'}} /> {/* Spacer above Heading */}
+                            <HeadingSignUp />
+                            <div style={{marginBottom: '5px'}} /> {/* Spacer below Heading */}
+                            <UserAgreementSignup />
+                            <div style={{marginBottom: '50px'}} />{' '}
+                            {/* Spacer between components */}
+
+                            <div style={{marginBottom: '5px'}} />{' '}
+                            {/* Spacer between components */}
+                            <div style={{display: 'flex', flexDirection: 'column'}}>
+                                <GoogleButton onAccessToken={handleAccessToken} />
+                                <div style={{marginBottom: '35px'}} />{' '}
+                                <Divider length={210} />
+                                {/* Spacer between components */}
+                                <EmailLoginForm onFormSubmit={handleEmailFormSubmit} />
+                                <div style={{marginBottom: '1px'}} />{' '}
+                                {/* Spacer between components */}
+                                <ExistingMember />
+                                <div style={{marginBottom: '10px'}} />{' '}
+                                {/* Spacer between components */}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> )}
+            {validEmail && (
+                <SignUpContinued email={email} />
+            )}
+
+
+        </>
+
     );
 }
 

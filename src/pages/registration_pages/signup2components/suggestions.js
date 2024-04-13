@@ -9,14 +9,18 @@ function Suggestions() {
     return (
         <>
             <p className="mb-2.5 mt-0 block text-sm font-normal
-        leading-[21px]" style={{fontFamily: '"Noto Sans", sans-serif'}}>
+        leading-[21px]" style={{fontFamily: '"Noto Sans", sans-serif'}}
+            data-testid="suggestions"
+        >
             Here are some username suggestions
                 <a href="#" className="">
                     <img src={refreshImage} alt="Image" style={refreshImageStyle} />
                 </a>
             </p>
             <div className="usernames">
-                <div className="Onboarding_usernameWrapper">
+                <div className="Onboarding_usernameWrapper"
+                    data-testid="usernameWrapper"
+                >
                     <a className="block bg-transparent pb-2
                 text-[#0079d3] no-underline" data-username="Sad_Tonight_2694"
                     href="#" onClick={handleUsernameSuggestionClick}>

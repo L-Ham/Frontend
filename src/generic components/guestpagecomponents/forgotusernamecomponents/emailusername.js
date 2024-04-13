@@ -50,7 +50,9 @@ const ForgotLoginForm = () => {
 
 
     return (
-        <div style={{width: '392px'}} >
+        <div style={{width: '392px'}}
+            data-testid="forgotusernameform"
+        >
             <Emailinput onEmailChange={handleEmailChange} width="392px"
                 labelText="EMAIL ADDRESS" emptyemail={emptyemail} />
             <div style={{marginBottom: '20px'}} />{' '}
@@ -69,13 +71,16 @@ const ForgotLoginForm = () => {
                         backgroundColor: '#0095ff',
                     },
                 }}
+                data-testid="resetpasswordbutton4"
             >
                 EMAIL ME
             </Button>
 
 
             <div className="ml-1.5 pt-0.5 align-top text-xs font-medium leading-5 text-[#24a0ed]" data-for="username"
-                style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+                style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+                data-testid="forgotusernameformmessage"
+            >
                 {(isclicked) && (
                     <>Thanks! If there are any Reddit accounts associated with that email <br/>
                      address, you&apos;ll get an email with your username(s) shortly.</>

@@ -16,6 +16,7 @@ function ExistingMember() {
                 lineHeight: '18px',
                 marginTop: '8px',
             }}
+            data-testid="existingmember"
         >
       Already a redditor?{' '}
             <a

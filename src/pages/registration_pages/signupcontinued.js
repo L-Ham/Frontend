@@ -1,22 +1,28 @@
-/*eslint-disable*/
+
 import React from 'react';
 import './signup.css';
 import {useState, useEffect} from 'react';
 import {Passwordfield} from './signup2components/Passwordfield';
 import {Headings} from './signup2components/Headings';
-import {useLocation} from 'react-router-dom';
+
 import {axiosInstance as axios} from '../../requests/axios.js';
 import {API_ROUTES} from '../../requests/routes.js';
 import {useNavigate} from 'react-router-dom';
+import PropTypes from 'prop-types';
 /**
  *
  * @return {JSX.Element} SignUpContinued
  */
 
-function SignUpContinued() {
+/**
+ *
+ * @param {string} email
+ * @return  {JSX.Element} SignUpContinued
+ */
+function SignUpContinued({email}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const [usernames, setUsernames] = useState([]);
 
     const [responseunqiue, setresponseunqiue] = useState('');
@@ -41,7 +47,7 @@ function SignUpContinued() {
         setUsername(clickedUsername);
         setIsFocus(true);
     };
-    
+
 
     const checkImage = 'https://www.redditstatic.com/accountmanager/d489caa9704588f7b7e1d7e1ea7b38b8.svg';
     const refreshImage = 'https://www.redditstatic.com/accountmanager/25f30c472d0243a2d874451a240fe08a.svg';
@@ -180,6 +186,7 @@ function SignUpContinued() {
                     gender: '',
                 });
                 navigate(`/`);
+                console.log(response);
             } catch (error) {
                 if (error.response) {
                     console.log(error.response.message);
@@ -188,6 +195,9 @@ function SignUpContinued() {
             }
         }
     }
+    /**
+     * Generates usernames.
+     */
     async function generateUsernames() {
         try {
             const response = await axios.get(API_ROUTES.generateusernames);
@@ -199,42 +209,40 @@ function SignUpContinued() {
             // Handle the error, e.g., display an error message to the user
         }
     }
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const emailFromUrl = searchParams.get('email'); // Extract email from URL
+
 
     // State to hold the email
-    const [email, setEmail] = useState('');
 
 
     // Set the email from URL when component mounts
-    useEffect(() => {
-        if (emailFromUrl) {
-            setEmail(emailFromUrl);
-        }
-    }, [emailFromUrl]);
+
 
     /**
      * Handles the input change event.
      */
     let response;
+    /**
+     * Checks if the username is unique.
+     */
     async function uniqueusername() {
         try {
             response = await axios.get(`/user/usernameAvailability?username=${username}`);
 
             setresponseunqiue(true);
+            console.log(response);
         } catch (error) {
             if (error.response) {
                 setresponseunqiue(false);
 
             // This will log "Username already taken"
-            } else {
             }
         }
     }
     return (
         <div className="relative box-border flex h-screen flex-col
-        justify-between text-sm font-medium leading-[18px] text-[#1a1a1b]" data-step="username-and-password">
+        justify-between text-sm font-medium leading-[18px] text-[#1a1a1b]" data-step="username-and-password"
+        data-testid="signup-continued"
+        >
             <div className="flex flex-1">
                 <div className="flex w-full flex-col self-stretch p-0">
                     <Headings />
@@ -246,8 +254,9 @@ function SignUpContinued() {
                                     <input
                                         id="regUsername"
                                         className="h-12 w-full appearance-none rounded
-                                        border border-solid  bg-[#fcfcfb] hover:bg-[#FFFFFF] px-3
-                                        pb-2.5 pr-9 pt-[22px] transition-all duration-[0.2s] ease-[ease-in-out]"
+                                        border border-solid  bg-[#fcfcfb] px-3 pb-2.5
+                                        pr-9 pt-[22px] transition-all duration-[0.2s]
+                                        ease-[ease-in-out] hover:bg-[#FFFFFF]"
 
 
                                         type="text"
@@ -262,20 +271,25 @@ function SignUpContinued() {
                                         onMouseOver={() => !isFocus && setMouseOver(true)}
                                         onMouseLeave={() => !isFocus && setMouseOver(false)}
                                         style={{borderColor: usernameBorderColor, outline: 'none'}}
+                                        data-testid="username-input-tag123456"
                                     />
                                     {isVisible && <img src={imageUrl} alt="Image" style={imageStyle} />}
                                     <label className={toPut}
                                         htmlFor="regUsername"
                                         style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
                                         data-empty={isFocus || mouseOver|| username.length!=0 ? 'false' : 'true'}
+                                        data-testid="username-label123456"
                                     >
                                         {' '}Choose a Username{' '}
                                     </label>
-                                    
+
                                     <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                                      text-[#ea0027] opacity-100 transition-all duration-[0.2s]
-                                      ease-[ease-in-out]" data-for="username">
-                                        {((username.length < 3 || username.length > 20) && (username.length != 0)) && responseunqiue && (
+                                      ease-[ease-in-out]" data-for="username"
+                                    data-testid="username-error-message100"
+                                    >
+                                        {((username.length < 3 || username.length > 20) && (username.length != 0)) &&
+                                         responseunqiue && (
                                             <>Username must be between 3 and 20 characters</>
                                         )}
                                         {(!responseunqiue && (username.length != 0)) &&(
@@ -287,30 +301,37 @@ function SignUpContinued() {
                                 <Passwordfield onPasswordChange={handleInputChangePassword} />
                             </form>
                         </div>
-                        <div className="block">
+                        <div className="block"
+                            data-testid="username-suggestions"
+                        >
                             <p className="mb-2.5 mt-0 block text-sm font-normal
                             leading-[21px]" style={{fontFamily: '"Noto Sans", sans-serif'}}>
                                 Here are some username suggestions
-                                <a href="#" onClick={(event) => { event.preventDefault(); generateUsernames(); }}>
+                                <a href="#" onClick={(event) => {
+                                    event.preventDefault(); generateUsernames();
+                                }}>
                                     <img src={refreshImage} alt="Image" style={refreshImageStyle} />
                                 </a>
 
                             </p>
                             <div >
-                            <div>
-    {usernames.slice(0, 5).map((username, index) => (
-        <a key={index} className="block bg-transparent pb-2 text-[#0079d3] no-underline" href="#" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
-         onClick={(event) => handleUsernameSuggestionClick(event, username)}>
-            {username}
-        </a>
-    ))}
-</div>
+                                <div>
+                                    {usernames.slice(0, 5).map((username, index) => (
+                                        <a key={index} className="block bg-transparent pb-2 text-[#0079d3] no-underline"
+                                            href="#" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+                                            onClick={(event) => handleUsernameSuggestionClick(event, username)}>
+                                            {username}
+                                        </a>
+                                    ))}
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div className=" flex min-h-[55px] items-center justify-between border-t border-solid
-                     border-t-[hsla(195,2%,65%,0.36)] bg-[#fcfcfb] hover:bg-[#FFFFFF] px-4 py-2">
+                     border-t-[hsla(195,2%,65%,0.36)] bg-[#fcfcfb] px-4 py-2 hover:bg-[#FFFFFF]"
+                    data-testid="signup-continued-footer"
+                    >
                         <a href="/register" data-step="username-and-password">Back</a>
                         <span data-step="username-and-password">
                             <span ></span>
@@ -321,7 +342,9 @@ function SignUpContinued() {
                           bg-[#0079d3] px-2.5 py-[5px] text-center text-sm
                           font-semibold uppercase leading-[unset] tracking-[0.5px]
                            text-white hover:bg-[#3394dc]"
-                        type="submit" data-step="username-and-password" onClick={handleLogin}>
+                        type="submit" data-step="username-and-password" onClick={handleLogin}
+                        data-testid="signup-continued-button"
+                        >
     Sign Up
                         </button>
 
@@ -332,5 +355,8 @@ function SignUpContinued() {
         </div>
     );
 }
+SignUpContinued.propTypes = {
+    email: PropTypes.string.isRequired,
+};
 
 export {SignUpContinued};

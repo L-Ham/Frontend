@@ -21,6 +21,7 @@ function Passwordmessage() {
                 fontWeight: 400,
                 lineHeight: '21px',
             }}
+            data-testid="passwordmessage2"
         >
             <div>
         Tell us the username and email address associated with

@@ -15,6 +15,7 @@ function HeadingSignUp() {
                 color: '#1a1a1b',
                 fontFamily: '"IBM Plex Sans", sans-serif',
             }}
+            data-testid="headingsignup100"
         >
       Sign up
         </h1>

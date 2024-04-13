@@ -33,7 +33,9 @@ const Divider = ({length}) => {
     };
 
     return (
-        <div style={dividerStyle}>
+        <div style={dividerStyle}
+            data-testid="divider"
+        >
             <hr style={lineStyle(length / 2)} />
             <span style={textStyle}>OR</span>
             <hr style={lineStyle(length / 2)} />

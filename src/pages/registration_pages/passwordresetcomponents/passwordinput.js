@@ -72,7 +72,9 @@ function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelTe
     }
 
     return (
-        <fieldset className={fieldStylesPassword} id="registerPasswordField">
+        <fieldset className={fieldStylesPassword} id="registerPasswordField"
+            data-testid="registerPasswordField"
+        >
             <input
                 id="regPassword-prevent3"
                 className="h-12 w-full appearance-none rounded
@@ -91,15 +93,22 @@ function Passwordinput({onPasswordChange, width, showInvalidCredentials, labelTe
                 onMouseOver={() => !isFocusPassword && setMouseOverPassword(true)}
                 onMouseLeave={() => !isFocusPassword && setMouseOverPassword(false)}
                 style={{borderColor: passwordBorderColor, outline: 'none'}}
+                data-testid="regPassword80"
             />
-            {isVisiblePassword && <img src={passwordUrl} alt="Image" style={imageStyle} />}
+            {isVisiblePassword && <img src={passwordUrl} alt="Image" style={imageStyle}
+                data-testid="passwordImage15"
+            />}
             <label className={toPutPassword}
                 data-empty={isFocusPassword || mouseOverPassword || password.length !== 0 ? 'false' : 'true'}
-                htmlFor="regPassword">{labelText}</label>
+                htmlFor="regPassword"
+                data-testid="regPasswordLabel200"
+            >{labelText}</label>
 
             <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
-                        duration-[0.2s] ease-[ease-in-out]" data-for="password">
+                        duration-[0.2s] ease-[ease-in-out]" data-for="password"
+            data-testid="passwordmessage500"
+            >
                 {(((password.length < 8) && (password.length != 0)) ||emptypassword )&& (
                     <>Password must be at least 8 characters long</>
                 )}

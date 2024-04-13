@@ -49,6 +49,7 @@ function ForgotPassword2() {
                 );
                 console.log(response);
                 console.log('password reset!');
+                navigate('/login');
             } catch (e) {
                 console.log(e);
                 console.log('Failed');
@@ -65,13 +66,16 @@ function ForgotPassword2() {
     };
 
     return (
-        <div className="fixed left-0 top-0 size-full">
+        <div className="fixed left-0 top-0 size-full"
+            data-testid="forgotpasswordform12"
+        >
             <div className="fixed left-0 top-0 size-full">
                 <div className="float-left h-full w-[10%]">
                     <img
                         src="https://www.redditstatic.com/accountmanager/bbb584033aa89e39bad69436c504c9bd.png"
                         alt="React Logo"
                         style={{width: '100%', height: '100%'}}
+                        data-testid="redditpic19"
                     />
                 </div>
                 <div className="float-right h-full w-[87%]">
@@ -107,6 +111,7 @@ function ForgotPassword2() {
                                     backgroundColor: '#0095ff',
                                 },
                             }}
+                            data-testid="zehe2t"
                         >
                 SET PASSWORD
                         </Button>

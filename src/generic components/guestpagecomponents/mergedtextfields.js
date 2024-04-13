@@ -69,7 +69,10 @@ const LoginForm = () => {
     };
 
     return (
-        <div style={containerStyle}>
+        <div style={containerStyle}
+
+            data-testid="loginform200"
+        >
             <Usernameinput onUsernameChange={handleUsernameChange}
                 width="280px" showInvalidCredentials={showInvalidCredentials} />
             <Passwordinput onPasswordChange={handlePasswordChange}
@@ -92,6 +95,7 @@ const LoginForm = () => {
                         backgroundColor: '#0095ff',
                     },
                 }}
+                data-testid="loginbutton50"
             >
      LOG IN
             </Button>

@@ -15,6 +15,7 @@ function ForgotUsername() {
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="forgotusername"
         >
             <a
                 href="/username"
@@ -22,6 +23,7 @@ function ForgotUsername() {
             >
     FORGOT USERNAME?
             </a>{' '}
+
         </p>
     );
 }

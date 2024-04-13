@@ -8,6 +8,7 @@ function Headingpassword() {
     return (
         <h1 className={forgotPasswordClasses.heading}
             style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+            data-testid="headingpassword1"
         >
       Reset your password
         </h1>

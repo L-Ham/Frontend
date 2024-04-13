@@ -112,11 +112,13 @@ function LoginForm() {
                         backgroundColor: '#0095ff',
                     },
                 }}
+                data-testid="resetpasswordbutton"
             >
                 RESET PASSWORD
             </Button>
             <div className="ml-1.5 pt-0.5 align-top text-xs font-medium leading-5 text-[#24a0ed]"
-                data-for="username" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
+                data-for="username" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+                data-testid="resetpasswordmessage">
                 {(isclicked &&(!showfakeuser)) && (
                     <>Thanks! If your Reddit username and email address match, you&apos;ll get<br/>
                      an email with a link to reset your password shortly.</>

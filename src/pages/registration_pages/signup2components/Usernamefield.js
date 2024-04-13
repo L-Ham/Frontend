@@ -96,18 +96,22 @@ function Usernamefield({onusernameChange, suggestedUsername}) {
                 onMouseOver={() => !isFocus && setMouseOver(true)}
                 onMouseLeave={() => !isFocus && setMouseOver(false)}
                 style={{borderColor: usernameBorderColor, outline: 'none'}}
+                data-testid="username-input-tag"
             />
             {isVisible && <img src={imageUrl} alt="Image" style={imageStyle} />}
             <label className={toPut}
                 htmlFor="regUsername"
                 style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
                 data-empty={isFocus || mouseOver || username.length!=0 ? 'false' : 'true'}
+                data-testid="username-label123"
             >
                 {' '}Choose a Username{' '}
             </label>
             <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                                      text-[#ea0027] opacity-100 transition-all duration-[0.2s]
-                                      ease-[ease-in-out]" data-for="username">
+                                      ease-[ease-in-out]" data-for="username"
+            data-testid="username-error-message10"
+            >
                 {((username.length < 3 || username.length > 20) && (username.length != 0)) && (
                     <>Username must be between 3 and 20 characters</>
                 )}

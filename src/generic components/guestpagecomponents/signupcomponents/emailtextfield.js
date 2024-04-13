@@ -2,23 +2,25 @@
 import React, {useState} from 'react';
 
 import Button from '@mui/material/Button';
-import {useNavigate} from 'react-router-dom';
+
 import {Emailinput} from '../../../pages/registration_pages/passwordresetcomponents/emailinput';
+import PropTypes from 'prop-types';
 
-
-const EmailLoginForm = () => {
-    const navigate = useNavigate();
+const EmailLoginForm = ({onFormSubmit}) => {
     const [email, setEmail] = useState('');
     const [emptyemail, setEmptyemail] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
 
     const handleContinue = () => {
-        if (/\S+@\S+\.\S+/.test(email)) {
-            navigate(`/register/continue?email=${encodeURIComponent(email)}`);
-        }
+        const isValidEmail = /\S+@\S+\.\S+/.test(email);
+        setValidEmail(isValidEmail); // Update state with the validation result
+        onFormSubmit(isValidEmail, email); // Pass the updated state value to onFormSubmit
+        console.log(validEmail);
         if (!email) {
             setEmptyemail(true);
         }
     };
+
 
     const handleEmailChange = (value) => {
         setEmail(value);
@@ -29,7 +31,9 @@ const EmailLoginForm = () => {
 
 
     return (
-        <div style={{width: '280px'}}>
+        <div style={{width: '280px'}}
+            data-testid="emailloginform2"
+        >
             <Emailinput onEmailChange={handleEmailChange} labelText="EMAIL" emptyemail={emptyemail } />
             <div style={{marginBottom: '20px'}} />{' '}
             <Button
@@ -47,11 +51,15 @@ const EmailLoginForm = () => {
                         backgroundColor: '#0095ff',
                     },
                 }}
+                data-testid="resetpasswordbutton20"
             >
                 CONTINUE
             </Button>
         </div>
     );
+};
+EmailLoginForm.propTypes = {
+    onFormSubmit: PropTypes.func, // Ensure onFormSubmit is a function and required
 };
 
 export default EmailLoginForm;

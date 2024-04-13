@@ -6,7 +6,9 @@ import React from 'react';
  */
 function Headings() {
     return (
-        <div className="block border-b border-solid border-b-[hsla(195,2%,65%,0.36)] px-6 pb-3 pt-6">
+        <div className="block border-b border-solid border-b-[hsla(195,2%,65%,0.36)] px-6 pb-3 pt-6"
+            data-testid="headings12"
+        >
             <h1 className="m-0 block text-lg font-medium
         leading-[22px]" style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
             Choose your username

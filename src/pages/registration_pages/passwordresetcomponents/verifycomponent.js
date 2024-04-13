@@ -110,15 +110,20 @@ function Verify({onPasswordChange2}) {
                     onMouseOver={() => !isFocusPassword2 && setMouseOverPassword2(true)}
                     onMouseLeave={() => !isFocusPassword2 && setMouseOverPassword2(false)}
                     style={{borderColor: passwordBorderColor2, outline: 'none'}}
+                    data-testid="regPassword81"
                 />
                 {isVisiblePassword2 && <img src={passwordUrl2} alt="Image" style={imageStyle} />}
                 <label className={toPutPassword2}
                     data-empty={isFocusPassword2 || mouseOverPassword2 ||password2.length!=0 ? 'false' : 'true'}
-                    htmlFor="regPassword">Verify password</label>
+                    htmlFor="regPassword"
+                    data-testid="regPasswordLabel201"
+                >Verify password</label>
 
                 <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
-                        duration-[0.2s] ease-[ease-in-out]" data-for="password">
+                        duration-[0.2s] ease-[ease-in-out]" data-for="password"
+                data-testid="passwordmessage501"
+                >
                     {((password2.length < 8) && (password2.length != 0) && (password.length == 0)) && (
                         <>Password must be at least 8 characters long</>
                     )}

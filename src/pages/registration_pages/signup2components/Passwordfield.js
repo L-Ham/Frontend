@@ -91,15 +91,19 @@ function Passwordfield({onPasswordChange}) {
                 onMouseOver={() => !isFocusPassword && setMouseOverPassword(true)}
                 onMouseLeave={() => !isFocusPassword && setMouseOverPassword(false)}
                 style={{borderColor: passwordBorderColor, outline: 'none'}}
+                data-testid="password-input-tag"
             />
             {isVisiblePassword && <img src={passwordUrl} alt="Image" style={imageStyle} />}
             <label className={toPutPassword}
                 data-empty={isFocusPassword || mouseOverPassword || password.length!=0 ? 'false' : 'true'}
-                htmlFor="regPassword">password</label>
+                htmlFor="regPassword" data-testid="password-labelll"
+            >password</label>
 
             <div className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
-                        duration-[0.2s] ease-[ease-in-out]" data-for="password">
+                        duration-[0.2s] ease-[ease-in-out]" data-for="password"
+            data-testid="passwordmessage540"
+            >
                 {((password.length < 8) && (password.length != 0)) && (
                     <>Password must be at least 8 characters long</>
                 )}

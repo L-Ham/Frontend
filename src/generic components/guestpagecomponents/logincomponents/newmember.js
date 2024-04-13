@@ -17,6 +17,7 @@ function NewMember() {
                 lineHeight: '18px',
                 marginTop: '8px',
             }}
+            data-testid="newmember"
         >
       New to Reddit?{' '}
             <a

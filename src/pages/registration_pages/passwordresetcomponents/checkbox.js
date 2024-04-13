@@ -10,9 +10,12 @@ function Checkbox() {
             style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
             <input id="revokeSessions" className="absolute -ml-5 mb-0 mr-0 mt-0.5
 box-border inline p-0 leading-[normal]"
-            type="checkbox" name="revokeSessions" data-empty="false"/>
+            type="checkbox" name="revokeSessions" data-empty="false"
+            data-testid="revokeSessions"
+            />
 Changing your password logs you out of all browsers on your <br/> device(s).
 Checking this box also logs you out of all apps you have <br/> authorized.
+
         </label>
     );
 }

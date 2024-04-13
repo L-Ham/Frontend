@@ -16,6 +16,7 @@ function UserHelp() {
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="userhelp"
         >
       Don&apos;t have an email or need assistance logging in?{' '}
             <a

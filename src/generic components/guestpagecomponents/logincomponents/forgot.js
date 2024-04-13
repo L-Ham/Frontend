@@ -16,6 +16,7 @@ function Forgot() {
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="forgotpassword10"
         >
       Forgot your{' '}
             <a

@@ -8,7 +8,6 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
 import {PostRoute, SubredditRoute} from './pageRoutes.js';
-import {SignUpContinued} from '../pages/registration_pages/signupcontinued.js';
 import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 
@@ -23,7 +22,6 @@ function App() {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
-                <Route path="/register/continue" element={<SignUpContinued />} />
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />

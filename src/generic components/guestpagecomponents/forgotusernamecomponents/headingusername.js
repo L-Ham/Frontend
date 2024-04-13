@@ -14,6 +14,7 @@ function HeadingUserName() {
                 color: '#1a1a1b',
                 fontFamily: '"IBM Plex Sans", sans-serif',
             }}
+            data-testid="headingusername10"
         >
     Recover your username
         </h1>
