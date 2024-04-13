@@ -43,9 +43,9 @@ export function Mod() {
                         <button className={settingClasses.button}
                             style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
-                                <span className={settingClasses.spanM}>
+                                <a className={settingClasses.spanM} href='/settings'>
                                     Mod Setting
-                                </span>
+                                </a>
                             </span>
                         </button>
                     </span>

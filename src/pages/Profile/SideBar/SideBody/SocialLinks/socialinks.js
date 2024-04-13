@@ -17,9 +17,9 @@ export function SocialLinks() {
                         <span className={socialLinkClasses.spanC}>
                             <AddIcon/>
                         </span>
-                        <span className={socialLinkClasses.spanCC}>
+                        <a className={socialLinkClasses.spanCC} href='/settings'>
                         Add social Links
-                        </span>
+                        </a>
                     </span>
                 </button>
             </div>

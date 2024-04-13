@@ -15,9 +15,10 @@ export function ProfileBody({name, section}) {
         <div className={profilebodyClasses.root}>
             <Header username={name}/>
             <Selectors username={name}/>
-            {(section === undefined &&<Content/>) || (<div className={profilebodyClasses.div}></div>)}
+            {(section === undefined &&<Content data-testid="profile-createpost"/>) ||
+            (<div className={profilebodyClasses.div}></div>)}
             <hr className={profilebodyClasses.hr}></hr>
-            <Empty name={name} section={section}/>
+            <Empty name={name} section={section} data-testid="profile-empty"/>
         </div>
     );
 }

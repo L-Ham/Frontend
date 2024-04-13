@@ -47,9 +47,9 @@ export function Options() {
                         <button className={settingClasses.button}
                             style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
-                                <span className={settingClasses.spanM}>
+                                <a className={settingClasses.spanM} href='/settings'>
                                     Add Profile
-                                </span>
+                                </a>
                             </span>
                         </button>
                     </span>

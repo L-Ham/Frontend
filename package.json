@@ -49,6 +49,14 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!redux-persist).+\\.js$"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

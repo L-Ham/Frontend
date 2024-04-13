@@ -44,9 +44,9 @@ export function Styling() {
                         <button className={settingClasses.button}
                             style={settingStyles.button}>
                             <span className={settingClasses.spanL}>
-                                <span className={settingClasses.spanM}>
+                                <a className={settingClasses.spanM} href='/settings'>
                                     Style Avatar
-                                </span>
+                                </a>
                             </span>
                         </button>
                     </span>
