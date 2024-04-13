@@ -9,7 +9,7 @@ import {contentStyles} from './content.styles.js';
 export function Content() {
     const {AddIcon} = useContent();
     return (
-        <div className={contentClasses.root}>
+        <div className={contentClasses.root} data-testid={`profile-Createpost`}>
             <div className={contentClasses.rootC}>
                 <div className={contentClasses.rootCC}>
                     <a className={contentClasses.a}

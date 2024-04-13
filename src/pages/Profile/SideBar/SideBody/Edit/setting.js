@@ -11,7 +11,7 @@ import {settingStyles} from './setting.styles';
 export function Settings() {
     return (
         <ul className={settingClasses.root}
-            style={settingStyles.ul}>
+            style={settingStyles.ul} data-testid={`profile-settings`}>
             <Options/>
             <Styling/>
             <Mod/>

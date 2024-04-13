@@ -9,7 +9,7 @@ import {socialLinkStyles} from './sociallink.styles.js';
 export function SocialLinks() {
     const {AddIcon} = useSocialLink();
     return (
-        <div className={socialLinkClasses.root}>
+        <div className={socialLinkClasses.root} data-testid={`profile-links`}>
             <div className={socialLinkClasses.rootC}>
                 <button className={socialLinkClasses.button}
                     style={socialLinkStyles.root}>

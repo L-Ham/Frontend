@@ -14,7 +14,9 @@ import PropTypes from 'prop-types';
 export function SideBody({username}) {
     return (
         <div className={sideBodyClasses.root}>
-            <PersonalInfo username={username}/>
+            <PersonalInfo username={username}
+                data-testid={`profile-side-body`}
+            />
             <ShareButton/>
             <PostInfo/>
             <hr className={sideBodyClasses.hr}

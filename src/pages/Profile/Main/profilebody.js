@@ -12,13 +12,13 @@ import {Header} from './Header/header.js';
  */
 export function ProfileBody({name, section}) {
     return (
-        <div className={profilebodyClasses.root}>
+        <div className={profilebodyClasses.root} data-testid={`profile-body`}>
             <Header username={name}/>
             <Selectors username={name}/>
-            {(section === undefined &&<Content data-testid="profile-createpost"/>) ||
+            {(section === undefined &&<Content />) ||
             (<div className={profilebodyClasses.div}></div>)}
             <hr className={profilebodyClasses.hr}></hr>
-            <Empty name={name} section={section} data-testid="profile-empty"/>
+            <Empty name={name} section={section}/>
         </div>
     );
 }

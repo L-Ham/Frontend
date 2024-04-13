@@ -10,7 +10,7 @@ import {useBanner} from './banner.hook.js';
 export function Banner() {
     const {imgSrc} = useBanner();
     return (
-        <div>
+        <div data-testid={`profile-banner`}>
             {(imgSrc===`not found` &&<div className={bannerClasses.root} style={bannerStyles.root}>
                 <AddBannerButton/>
             </div>)||(<div className={bannerClasses.root} style={{backgroundImage: `url(${imgSrc})`}}>

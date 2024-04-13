@@ -15,8 +15,8 @@ export function Profile({name, section}) {
     return (
         <div className={profileClasses.root} style={{unicodeBidi: 'isolate'}}>
             <div className={profileClasses.rootC} style={profileStyle.root}>
-                <ProfileBody name={name} section={section} data-testid="profile-body" />
-                <Sidebar username={name} data-testid="sidebar" />
+                <ProfileBody name={name} section={section} />
+                <Sidebar username={name} />
             </div>
         </div>
     );

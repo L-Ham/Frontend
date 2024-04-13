@@ -13,7 +13,7 @@ export function Header({username}) {
     const {imgSrc} = useHeader();
     const {AddBannerIcon} = useAddBanner();
     return (
-        <div className={headerClasses.root}>
+        <div className={headerClasses.root} data-testid={`profile-MainBody-Header`}>
             <div className={headerClasses.rootC}>
                 <img className={headerClasses.img}
                     style={headerStyles.img}
@@ -27,7 +27,7 @@ export function Header({username}) {
                         className={headerClasses.a}
                         style={headerStyles.a}>
                         <span className={headerClasses.spanA}
-                        >
+                            data-testid={`profile-add-avatar`}>
                             <span className={headerClasses.spanB} style={headerStyles.spanB}>
                                 <AddBannerIcon />
                             </span>
@@ -41,13 +41,13 @@ export function Header({username}) {
                         <div className={headerClasses.divE}>
                             <div className={headerClasses.divF}>
                                 <h1 className={headerClasses.h1}
-                                    style={headerStyles.h1}>
+                                    style={headerStyles.h1} data-testid={`profile-u/username`}>
                                     {username}
                                 </h1>
                             </div>
                         </div>
                         <p className={headerClasses.p}
-                            style={headerStyles.p}>u/{username}</p>
+                            style={headerStyles.p} data-testid={`profile-u/username-small`}>u/{username}</p>
                     </div>
                 </div>
             </div>

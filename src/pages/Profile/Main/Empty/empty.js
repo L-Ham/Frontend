@@ -11,7 +11,7 @@ import {emptyStyles} from './empty.styles.js';
 export function Empty({name, section}) {
     const {verb} = useEmpty(section);
     return (
-        <div className={emptyClasses.root}>
+        <div className={emptyClasses.root} data-testid={`profile-empty-page`}>
             <div className={emptyClasses.rootC}
                 style ={emptyStyles.div}>
                 <img className={emptyClasses.img}
@@ -19,7 +19,7 @@ export function Empty({name, section}) {
                 />
 
             </div>
-            <div className={emptyClasses.div} style={emptyStyles.text}>
+            <div className={emptyClasses.div} style={emptyStyles.text} data-testid={`profile-empty-text`}>
                 u/{name} hasn&apos;t {verb()} yet
             </div>
 

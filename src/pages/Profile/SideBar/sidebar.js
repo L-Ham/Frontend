@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 export function Sidebar({username}) {
     return (
         <div style={sidebarStyles.root}
-            className={sidebarClasses.root}>
+            className={sidebarClasses.root} data-testid={`profile-sidebar`}>
             <div className={sidebarClasses.rootC}>
                 <Banner />
                 <SideBody username={username}/>

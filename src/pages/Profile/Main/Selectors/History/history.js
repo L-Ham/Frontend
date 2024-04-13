@@ -10,8 +10,8 @@ import {useHistory} from './history.hook.js';
 export function History({Topics}) {
     const {style} = useHistory();
     return (
-        <span className={historyClasses.root}>
-            <NavLink to={Topics.link} className={style} end>
+        <span className={historyClasses.root} data-testid={`profile-history`}>
+            <NavLink to={Topics.link} className={style} end data-testid={`profile-select-history`}>
                 <span className={historyClasses.spanA}>
                     <span className={historyClasses.spanB}>
                         <span className={historyClasses.spanC}>
