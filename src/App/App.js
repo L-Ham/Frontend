@@ -7,7 +7,7 @@ import {BasicTabs} from '../pages/Settings/main components/customtabpanel.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
-import {PostRoute, SubredditRoute} from './pageRoutes.js';
+import {PostRoute, SubredditRoute, CreatePostRoute} from './pageRoutes.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 
 /**
@@ -36,6 +36,11 @@ function App() {
                 <Route path="/r/:name" element={
                     <LayoutWithNavigation>
                         <SubredditRoute />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/r/:name/submit" element={
+                    <LayoutWithNavigation>
+                        <CreatePostRoute />
                     </LayoutWithNavigation>
                 } />
                 <Route path="/" element={
