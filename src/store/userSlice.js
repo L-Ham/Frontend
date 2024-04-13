@@ -36,9 +36,13 @@ const userSlice = createSlice({
         setCreatedAt: (state, action)=>{
             state.createdAt=action.payload.createdAt;
         },
+        setTheme: (state, action) => {
+            state.theme = action.payload.theme;
+        },
     },
 });
 
+export {token};
 export {initialState};
-export const {login, setAvatar, setBanner, setPostKarma, setCommentKarma, setCreatedAt} = userSlice.actions;
+export const {login, setAvatar, setBanner, setPostKarma, setCommentKarma, setCreatedAt, setTheme} = userSlice.actions;
 export default userSlice.reducer;
