@@ -1,6 +1,6 @@
 export const settingClasses = {
     root: `ml-0 block list-disc px-0`,
-    li: `pointer-events-none relative -mx-4 mt-0 list-item list-none`,
+    li: `relative -mx-4 mt-0 list-item list-none`,
     divA: `relative flex
     justify-between gap-2 px-4 py-2
     text-[color:var(--color-secondary)] -outline-offset-1`,
