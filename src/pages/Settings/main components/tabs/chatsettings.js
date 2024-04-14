@@ -1,6 +1,11 @@
 import React from 'react';
-import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
-import {SettingsTabHeading} from '../../general components/text/settingstabheading';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
+import {useEffect, useState} from 'react';
+import {axiosInstance} from '../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../requests/routes.js';
+import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 /**
@@ -10,18 +15,82 @@ import {SettingsTabHeading} from '../../general components/text/settingstabheadi
  *
  * @return {React.Component} A div container with settings to manage chat and messaging preferences.
  */
-function ChatSettings() {
-    return (
-        <div style={{backgroundColor: 'white', maxWidth: '600px', justifyContent: 'left', marginLeft: '50px'}}>
-            <h1 style={{color: 'black', marginBottom:
-             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Chat & Messaging</h1>
-            <SettingsTabHeading text="MESSAGES" />
+function ChatSettings({id}) {
+    const token = useSelector((state) => state.user.token);
+    const [chatSettings, setChatSettings] = useState({
+        chatRequests: 'Everyone',
+        privateMessages: 'Everyone',
+    });
+    /**
+ * Asynchronously updates notification settings using a PATCH request.
+ *
+ * @param {Object} updatedSettings - The new settings to be updated.
+ */
+    async function handleUpdateChatSettings(updatedSettings) {
+        try {
+            await axiosInstance.patch(API_ROUTES.chatSettings, updatedSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+        // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update notification settings:', error);
+        }
+    }/**
+ * Changes a specified setting in the feed settings to a new value.
+ *
+ * @param {string} settingKey - The key of the setting to change.
+ * @param {*} value - The new value to set for the specified setting key.
+ */
+    function changeMenu(settingKey, value) {
+        const newValue = value;
+        const updatedSettings = {...chatSettings, [settingKey]: newValue};
+        setChatSettings(updatedSettings); // Update local state
+        handleUpdateChatSettings(updatedSettings); // Send update request
+        console.log('send feed settings', updatedSettings);
+    }
+    useEffect(() => {
+        /**
+    * ProfileSettings function component renders the profile customization settings.
 
-            <SettingsGenericItemRight head="Who can send you chat requests" thirdComponent={'chatMenu'} />
-            <SettingsGenericItemRight head="Who can send you private messages" thirdComponent={'chatMenu'} />
-            <SettingsGenericItemRight head="Mark all as read" thirdComponent={'mr'} />
+    *
+    * @return {React.Component} A div container with settings to customize the user's profile.
+    */
+        async function fetchChatSettings() {
+            try {
+                const response = await axiosInstance.get(API_ROUTES.chatSettings, {
+                    headers: {Authorization: `Bearer ${token}`},
+                });
+                    // Directly use response.data since it matches the expected structure
+                console.log('feed settings recived:', response.data);
+
+                setChatSettings(response.data);
+            } catch (error) {
+                console.error('Failed to fetch feed settings:', error);
+            }
+        }
+
+        fetchChatSettings();
+    }, [token]);
+    return (
+        <div className='max-w-[688px] flex-auto'>
+            <h2
+                className='px-0 py-10 text-xl font-medium not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
+                style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+            >
+            Chat & messaging
+            </h2>
+            <SettingsTabHeading text="MESSAGES" id = '1' />
+
+            <SettingsGenericItemRight head="Who can send you chat requests" thirdComponent={'chatMenu'}
+                item = {chatSettings.chatRequests} genericFunction={changeMenu} id = '2'/>
+            <SettingsGenericItemRight head="Who can send you private messages" thirdComponent={'privMenu'}
+                item = {chatSettings.privateMessages} genericFunction={changeMenu} id = '3' />
+            <SettingsGenericItemRight head="Mark all as read" thirdComponent={'mr'} id = '4' />
         </div>
     );
 }
 
+ChatSettings.propTypes = {
+    id: PropTypes.string,
+};
 export {ChatSettings};

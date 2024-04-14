@@ -24,6 +24,22 @@ code {
 
 /* define global colors */
 :root {
+  --newRedditTheme-flair: #EDEFF1;
+  --newRedditTheme-linkText: #0079D3;
+  --newRedditTheme-body: #FFFFFF;
+  --newCommunityTheme-body: #FFFFFF;
+  --newCommunityTheme-bodyText: #1c1c1c;
+  --newCommunityTheme-metaText: #7c7c7c;
+  --newCommunityTheme-line: #EDEFF1;
+  --newCommunityTheme-button: #0079D3;
+  --newCommunityTheme-buttonAlpha05: rgba(0, 121, 211, 0.05);
+  --newCommunityTheme-buttonAlpha10: rgba(0, 121, 211, 0.1);
+  --newRedditTheme-button: #0079D3;
+  --newRedditTheme-actionIcon: #878A8C;
+  --newRedditTheme-line: #EDEFF1;
+  --newCommunityTheme-bodyTextAlpha20: rgba(28, 28, 28, 0.2);
+  --newRedditTheme-highlight: #e9f5fd;
+  --newCommunityTheme-field: #F6F7F8;
   --rem360                                        : 22.5rem;
   --rem320                                        : 20rem;
   --rem192                                        : 12rem;
@@ -359,6 +375,10 @@ code {
   --color-neutral-border: #ffffff33;
   --color-neutral-border-medium: #ffffff80;
   --color-neutral-border-weak: #ffffff1a;
+  --size-lg: 1.5rem;
+  --btn-primary-bg: #0045ac;
+  --btn-primary-bg-hover: #1870f4;
+ 
   --color-neutral-border-strong: #F2F4F5;
   --color-primary: #629FFF;
   --color-primary-hover: #A7CCFF;

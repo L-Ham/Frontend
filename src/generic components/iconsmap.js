@@ -25,6 +25,7 @@ import {ReactComponent as UnfolowIconOutline} from '../assets/icons/unfollow-out
 import {ReactComponent as FollowIconOutline} from '../assets/icons/follow-outline.svg';
 import {ReactComponent as BackIcon} from '../assets/icons/back.svg';
 import {ReactComponent as ThreeDotsIconFill} from '../assets/icons/threedots-fill.svg';
+import {ReactComponent as UploadIconOutline} from '../assets/icons/upload-outline.svg';
 import {ReactComponent as AddBannerFill} from '../assets/icons/add-banner-fill.svg';
 import {ReactComponent as ShareProfileFill} from '../assets/icons/share-profile-fill.svg';
 import {ReactComponent as SheildOutline} from '../assets/icons/sheild-outline.svg';
@@ -96,6 +97,7 @@ const ICONS_MAP = {
     'unfollow-outline': UnfolowIconOutline,
     'follow-outline': FollowIconOutline,
     'threedots-fill': ThreeDotsIconFill,
+    'upload-outline': UploadIconOutline,
     'dizzy-snoo-outline': DizzySnooIconOutline,
     'back': BackIcon,
     'default-subreddit': DefaultSubredditIcon,

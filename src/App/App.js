@@ -3,7 +3,7 @@ import {Login} from '../pages/registration_pages/login.js';
 import {SignUp} from '../pages/registration_pages/signup.js';
 import {ForgotPassword} from '../pages/registration_pages/forgotpassword.js';
 import {ForgotUsername} from '../pages/registration_pages/forgotusername.js';
-import {BasicTabs} from '../pages/Settings/main components/customtabpanel.js';
+import {BasicTabs} from '../pages/Settings/main components/styledtabs.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
@@ -25,7 +25,7 @@ function App() {
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
-                <Route path="/settings" element={
+                <Route path="/settings/:tab?" element={
                     <LayoutWithNavigation>
                         <BasicTabs />
                     </LayoutWithNavigation>
