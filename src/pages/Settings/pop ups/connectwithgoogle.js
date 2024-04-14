@@ -50,12 +50,12 @@ function ConnectWithGoogle({id}) {
     const {displayConnectToGoogle} = useToggle();
     const {toggleConnectToGoogle} = useToggle();
     return displayConnectToGoogle ?(
-        <div className="fixed inset-0 z-50 flex size-full items-center
-        justify-center overflow-y-auto bg-gray-600 bg-opacity-50">
+        <div className=" fixed inset-0 z-50 flex size-full
+        items-center justify-center overflow-y-auto bg-gray-600">
             <div className="relative rounded-lg bg-white p-6 shadow-xl md:mx-auto md:max-w-md">
                 <div className="mb-4 flex items-center">
                     {/* SVG icon */}
-                    <svg className="EnvelopeIcon mr-2 size-6 text-gray-700"
+                    <svg className=" mr-2 size-6 text-gray-700"
                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.79,9.16,2.48,3.85A2.49,2.49,0,0,1,3.75,3.5h12.5a2.49,
             2.49,0,0,1,1.27.35L12.21,9.16A3.13,3.13,0,0,1,7.79,9.16Z"></path>
