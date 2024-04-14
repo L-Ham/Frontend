@@ -1,5 +1,8 @@
+/* eslint-disable max-len */
 import React, {useState, useEffect, useRef} from 'react';
-import {CarouselItem} from './CarouselItem/carouselitem';
+import {CarouselItem} from './CarouselItem/carouselitem.js';
+import {ScrollButton} from './scrollbutton.js';
+import {galleryCarouselClasses as styles, galleryCarouselStyles} from './gallerycarousel.styles.js';
 
 /**
  * GalleryCarousel component
@@ -43,74 +46,40 @@ function GalleryCarousel() {
         };
     }, []);
 
+    // eslint-disable-next-line no-unused-vars
+    const data = [];
+    for (let i = 0; i < 6; i++) {
+        data.push((
+            <CarouselItem
+                key={i}
+                imgSrc='https://external-preview.redd.it/monopoly-movie-in-the-works-from-margot-robbie-and-lionsgate-v0-hP5n-D5ZYqJhyEfEXq71jX7nig8nFGZEu9VIZI4nYts.jpg?width=320&crop=smart&auto=webp&s=dbadeabd3dd4c4a4f3a7334d0ad1d81a91d011c0'
+                title='Monopoly movie in the works from Margot Robbie and Lionsgate'
+                description='The film will be directed by Tim Story, who is best known for his work on the Ride Along and Think'
+                communityImgSrc='https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png'
+                communityName='r/movies'
+            />
+        ));
+    }
+    const leftButtonClasses = isScrolledToLeft? `${styles.leftButton} ${styles.buttonInvisible}`: `${styles.leftButton} ${styles.buttonVisible}`;
+    const rightButtonClasses = isScrolledToRight? `${styles.rightButton} ${styles.buttonInvisible}`: `${styles.rightButton} ${styles.buttonVisible}`;
     return (
-        <div className='mt-4'>
-            <div className='block h-[210px] nd:visible nd:overflow-hidden'>
-                <div className='relative'>
-                    <ul id='list' ref={ulRef} className='m-0 flex w-full snap-x snap-mandatory
-                     list-none flex-row overflow-x-scroll scroll-smooth p-0'
-                    style={{
-                        scrollbarWidth: 'none',
-                        WebkitScrollbar: {
-                            display: 'none',
-                            width: '0 !important',
-                        },
-                    }}
-                    >
-                        <CarouselItem/>
-                        <CarouselItem/>
-                        <CarouselItem/>
-                        <CarouselItem/>
-                        <CarouselItem/>
-                        <CarouselItem/>
+        <div className={styles.container}>
+            <div className={styles.contentWrapper}>
+                <div className={styles.content}>
+                    <ul id='list' ref={ulRef} className={styles.list}
+                        style={galleryCarouselStyles.list}>
+                        {data}
+
                     </ul>
 
-                    <span className={`absolute left-[8px] top-[85px] md:inline
-                                ${isScrolledToLeft ? 'invisible' : 'visible'}`}>
-                        <button className='inline-flex size-8 items-center
-                                        justify-center rounded-full
-                                        bg-[#00000099] px-1.5
-                                        text-white hover:bg-[#000000cc]
-                                        active:bg-black'
-                        onClick={scrollLeft} aria-label='Scroll Left'>
-
-                            <span className="flex items-center justify-center">
-                                <span className="flex">
-                                    <svg fill="currentColor"
-                                        height="16"
-                                        viewBox="0 0 20 20" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        {/* eslint-disable-next-line max-len */}
-                                        <path d="m12.793 19.707-9-9a1 1 0 0 1 0-1.414l9-9 1.414 1.414L5.914 10l8.293 8.293-1.414 1.414Z">
-
-                                        </path>
-                                    </svg>
-                                </span>
-                            </span>
-                        </button>
+                    <span className={leftButtonClasses}>
+                        <ScrollButton onClick={scrollLeft} direction='left'/>
                     </span>
 
-                    <span className={`absolute right-[8px] top-[85px] md:inline
-                                ${isScrolledToRight ? 'invisible' : 'visible'}`}>
-                        <button className='inline-flex size-8 items-center
-                                        justify-center rounded-full
-                                        bg-[#00000099] px-1.5
-                                        text-white hover:bg-[#000000cc]
-                                        active:bg-black'
-                        onClick={scrollRight} aria-label='Scroll Right'>
-
-                            <span className="flex items-center justify-center">
-                                <span className="flex">
-                                    <svg fill="currentColor"
-                                        height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg">
-                                        {/* eslint-disable-next-line max-len */}
-                                        <path d="m7.207 19.707-1.414-1.414L14.086 10 5.793 1.707 7.207.293l9 9a1 1 0 0 1 0 1.414l-9 9Z">
-                                        </path>
-                                    </svg>
-                                </span>
-                            </span>
-                        </button>
+                    <span className={rightButtonClasses}>
+                        <ScrollButton onClick={scrollRight} direction='right'/>
                     </span>
+
                 </div>
             </div>
         </div>

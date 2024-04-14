@@ -63,6 +63,8 @@ import {ReactComponent as RulesIconOutline} from '../assets/icons/rules-outline.
 import {ReactComponent as AddIconOutline} from '../assets/icons/add-outline.svg';
 import ArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import {ReactComponent as DizzySnooIconOutline} from '../assets/icons/dizzy-snoo-outline.svg';
+import {ReactComponent as RightArrowIcon} from '../assets/icons/right-arrow.svg';
+import {ReactComponent as LeftArrowIcon} from '../assets/icons/left-arrow.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -128,6 +130,8 @@ const ICONS_MAP = {
     'topic-law-outline': TopicLawIconOutline,
     'rules-outline': RulesIconOutline,
     'add-outline': AddIconOutline,
+    'right-arrow': RightArrowIcon,
+    'left-arrow': LeftArrowIcon,
 };
 
 /**
