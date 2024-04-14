@@ -9,7 +9,7 @@ import {useFollow} from './follow.hooks.js';
  * @return {React.Component}
  */
 export function FollowButtons({
-    authorId,
+    userId,
     isFriend,
 }) {
     const {
@@ -19,22 +19,22 @@ export function FollowButtons({
     return (
         <>
             {isFriend ?
-                <button className={followClasses.unfollow} data-testid={`unfollow-button-${authorId}`}>
+                <button className={followClasses.unfollow} data-testid={`unfollow-button-${userId}`}>
                     <div className={followClasses.unfollowWrapper}>
-                        <div className={followClasses.icon} data-testid={`unfollow-icon-${authorId}`}>
+                        <div className={followClasses.icon} data-testid={`unfollow-icon-${userId}`}>
                             <UnfollowIcon />
                         </div>
-                        <div className={followClasses.text} data-testid={`unfollow-text-${authorId}`}>
+                        <div className={followClasses.text} data-testid={`unfollow-text-${userId}`}>
                             Unfollow
                         </div>
                     </div>
                 </button> :
-                <button className={followClasses.follow} data-testid={`follow-button-${authorId}`}>
+                <button className={followClasses.follow} data-testid={`follow-button-${userId}`}>
                     <div className={followClasses.followWrapper}>
-                        <div className={followClasses.icon} data-testid={`follow-icon-${authorId}`}>
+                        <div className={followClasses.icon} data-testid={`follow-icon-${userId}`}>
                             <FollowIcon />
                         </div>
-                        <div className={followClasses.text} data-testid={`follow-text-${authorId}`}>
+                        <div className={followClasses.text} data-testid={`follow-text-${userId}`}>
                             Follow
                         </div>
                     </div>
@@ -44,6 +44,6 @@ export function FollowButtons({
 }
 
 FollowButtons.propTypes = {
-    authorId: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
     isFriend: PropTypes.bool.isRequired,
 };
