@@ -9,22 +9,25 @@ import PropTypes from 'prop-types';
  * The sidebar community component
  * @component
  * @param {string} imgURL - The URL of the image
- * @param {string} label - The text to be displayed
- * @param {string} href - The link to be redirected to
+ * @param {string} communityName - The text to be displayed
+ * @param {string} communityId - The id of the community
+ * @param {boolean} isFavorite - The favorite status of the community
  * @example
  * // Render the sidebar community
  * <SidebarCommunity />
  * @return {JSX.Element} The sidebar community component
  */
-function CommunityItem({imgURL, label, href}) {
-    const {handleStar, StarIcon} = useCommunityItem();
+function CommunityItem({imgURL, communityName, communityId, isFavorite}) {
+    const {handleStar, StarIcon} = useCommunityItem({communityId, isFavorite});
+    imgURL = imgURL || 'https://via.placeholder.com/150';
+    // console.log({imgURL, communityName, communityId, isFavorite});
     return (
-        <NavLink to={href} className={styles.root} data-testid={`community-item-${label}`}>
+        <NavLink to={'r/' + communityName} className={styles.root} data-testid={`community-item-${communityName}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
-                    <img src={imgURL} alt={label} className={styles.img} />
+                    <img src={imgURL} alt={communityName} className={styles.img} />
                 </span>
-                <span className={styles.label}>{label}</span>
+                <span className={styles.label}>{communityName}</span>
             </span>
             <button
                 className={styles.button}
@@ -37,9 +40,10 @@ function CommunityItem({imgURL, label, href}) {
 }
 
 CommunityItem.propTypes = {
-    imgURL: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+    imgURL: PropTypes.string,
+    communityName: PropTypes.string.isRequired,
+    communityId: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
 };
 
 export {CommunityItem};

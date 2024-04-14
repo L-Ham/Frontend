@@ -2,7 +2,7 @@
 export const profileIconClasses = {
     avatarWrapper: 'flex items-center justify-center',
     avatarContainer: 'relative inline-block size-8 rounded-full [&>:first-child]:mb-0 [&>:first-child]:rounded-full',
-    avatar: 'max-w-full',
+    avatar: 'max-w-full size-8',
     status: `absolute bottom-0 -right-[0.0825rem] flex size-[.5rem]
      rounded-full border-[0.0625rem] border-solid border-[var(--color-neutral-background)] bg-[var(--color-online)]`,
 };
@@ -25,7 +25,7 @@ export const profileMenuClasses = {
 
 // user drawer element styles
 export const profileMenuListItem = {
-    root: `relative flex cursor-pointer justify-between gap-2 px-4 py-2
+    root: `relative flex cursor-pointer justify-between gap-2 px-4 py-2 w-full
     text-[var(--color-secondary)] no-underline -outline-offset-1
     hover:text-[var(--color-secondary-hover)] hover:no-underline hover:bg-[var(--color-neutral-background-hover)]
     active:bg-[var(--color-interactive-pressed)]`,

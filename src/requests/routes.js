@@ -18,6 +18,10 @@ const API_ROUTES = {
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
     userSelfInfo: '/user/selfInfo',
+    getCommunities: '/user/community',
+    setFavorite: '/user/favouriteSubreddit',
+    unsetFavorite: '/user/unFavouriteSubreddit',
+
     // Add more routes as needed
 };
 
