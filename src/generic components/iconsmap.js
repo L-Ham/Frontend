@@ -86,6 +86,8 @@ import {ReactComponent as ReportIconOutline} from '../assets/icons/report-outlin
 import {ReactComponent as ViewCardIconOutline} from '../assets/icons/view-card-outline.svg';
 import {ReactComponent as ViewCardIconFill} from '../assets/icons/view-card-fill.svg';
 import {ReactComponent as ViewClassicIconOutline} from '../assets/icons/view-classic-outline.svg';
+import {ReactComponent as RightArrowIcon} from '../assets/icons/right-arrow.svg';
+import {ReactComponent as LeftArrowIcon} from '../assets/icons/left-arrow.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -174,6 +176,8 @@ const ICONS_MAP = {
     'view-card-outline': ViewCardIconOutline,
     'view-card-fill': ViewCardIconFill,
     'view-classic-outline': ViewClassicIconOutline,
+    'right-arrow': RightArrowIcon,
+    'left-arrow': LeftArrowIcon,
 };
 
 /**

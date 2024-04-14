@@ -16,6 +16,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  scrollbar-width: 16px;
+  scrollbar-color: #9f9f9f var(--scrollbar-bg);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -24,6 +29,7 @@ code {
 
 /* define global colors */
 :root {
+  --scrollbar-bg: transparent;
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;
   --newRedditTheme-body: #FFFFFF;
@@ -359,6 +365,7 @@ code {
 .theme-dark {
   /* add dark scheme here */
   --color-category-spoiler: var(--color-tone-1);
+  --scrollbar-bg: #2c2c2c;
   --newRedditTheme-flair: #343536;
   --newRedditTheme-linkText: #4FBCFF;
   --newRedditTheme-body: #1A1A1B;
@@ -467,8 +474,7 @@ code {
   --button-border-color-hover: #ffffff;
   --plain-background:rgba(1, 1,1, 1);
   --color-neutral-background:#0B1416;
-  --button-border-color:#ffffff80
-
+  --button-border-color:#ffffff80;
   --shreddit-color-wordmark: #ffffff;
 }
 .theme-light {

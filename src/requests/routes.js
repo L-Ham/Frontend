@@ -31,11 +31,18 @@ const API_ROUTES = {
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
     userSelfInfo: '/user/selfInfo',
+    getPopularCommunities: '/subreddit/popularCommunity',
+    getUserCommunities: '/user/community',
+    getTrendingPosts: '/post/trending',
     editSocial: '/user/socialLink',
     Location: '/user/getUserLocation',
     editLocation: '/user/editUserLocation',
     deleteUser: '/auth/deleteAccount',
     googleConnect: '/auth/googleConnect',
+    getCommunities: '/user/community',
+    setFavorite: '/user/favouriteSubreddit',
+    unsetFavorite: '/user/unFavouriteSubreddit',
+
     // Add more routes as needed
 };
 

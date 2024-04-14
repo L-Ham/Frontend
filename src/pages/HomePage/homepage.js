@@ -1,6 +1,7 @@
 import React from 'react';
 import {Feed} from '../../generic components/feed.js';
 import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
+import {RightSidebar} from '../PopularPage/RightSideBar/rightsidebar.js';
 /**
  * Renders the homepage component.
  * @return {JSX.Element} The rendered homepage component.
@@ -14,6 +15,13 @@ function HomePage() {
                 md:scroll-mt-[56px] s:max-w-[calc(100%_-(16px_+_316px))] lxl:max-w-[756px]'>
                     <Feed viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postList={['t3_1bmnuhw',
                         't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
+                </div>
+                <div className='!-top-8 hidden
+                 w-[316px] min-w-[316px] md:sticky md:top-[56px]
+                 md:max-h-[calc(100vh-56px-1px)] md:overflow-y-auto
+                 md:overflow-x-hidden s:block'>
+                    {/* right side bar */}
+                    <RightSidebar/>
                 </div>
             </div>
         </div>

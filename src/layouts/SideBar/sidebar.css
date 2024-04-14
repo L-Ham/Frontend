@@ -1,9 +1,13 @@
 .styled-scrollbars{
-    scrollbar-color: var(--scrollbar-background);
+    scrollbar-color: transparent transparent;
     scrollbar-width: thin;
     --shreddit-content-background: var(--color-neutral-background);
     --styled-scrollbar-background: var(--color-neutral-background);
     --scrollbar-background: var(--styled-scrollbar-background, var(--shreddit-content-background))
+}
+
+.styled-scrollbars:hover {
+    scrollbar-color: var(--color-neutral-border) transparent;
 }
 
 .styled-scrollbars::-webkit-scrollbar {
