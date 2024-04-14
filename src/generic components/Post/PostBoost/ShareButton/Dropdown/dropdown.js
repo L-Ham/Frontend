@@ -30,11 +30,12 @@ export function Dropdown({
                 setIsOpen(false);
             }},
     ];
+    const classes = `absolute left-44 top-6 ${isOpen ? 'hidden':'flex'} 
+    min-w-[170px] flex-col overflow-hidden rounded-lg bg-[var(--color-neutral-background-strong)] z-[2]
+    shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]`;
     return (
         <div className='absolute size-0 '>
-            <div className={`absolute left-44 top-6 ${isOpen ? 'hidden':'flex'} 
-            min-w-[170px] flex-col overflow-hidden rounded-lg bg-[var(--color-neutral-background-strong)] z-[2]
-            shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]`}>
+            <div className={classes}>
                 <ul className='m-0 p-0'>
                     {items.map((item) => {
                         const {text, icon: IconComponent} = item.content;
