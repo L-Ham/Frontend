@@ -11,6 +11,7 @@ import {PostRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
 import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 import {PopularPage} from '../pages/PopularPage/popularpage.js';
+import {CreatePostRoute} from './pageRoutes.js';
 
 /**
  * Renders the main application component.
@@ -42,7 +43,7 @@ function App() {
                         <SubredditRoute />
                     </LayoutWithNavigation>
                 } />
-                <Route path="/r/:name/submit" element={
+                <Route path="/r/:name?/submit" element={
                     <LayoutWithNavigation>
                         <CreatePostRoute />
                     </LayoutWithNavigation>
