@@ -30,7 +30,7 @@ export function Dropdown({
                 setIsOpen(false);
             }},
     ];
-    const classes = `absolute left-44 top-6 ${isOpen ? 'flex':'hiden'} 
+    const classes = `absolute left-44 top-6 ${isOpen ? 'flex':'hidden'} 
     min-w-[170px] flex-col overflow-hidden rounded-lg bg-[var(--color-neutral-background-strong)] z-[2]
     shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]`;
     return (
