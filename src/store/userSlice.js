@@ -51,6 +51,5 @@ const userSlice = createSlice({
 });
 
 export {initialState, token};
-export const {login, setAvatar, setBanner, setTheme, selfInfo, logout} = userSlice.actions;
-export const {login, setAvatar, setTheme, clearRecentPosts} = userSlice.actions;
+export const {login, setAvatar, setBanner, setTheme, selfInfo, logout, clearRecentPosts} = userSlice.actions;
 export default userSlice.reducer;
