@@ -95,6 +95,8 @@ import {ReactComponent as PlayIconFill} from '../assets/icons/play-fill.svg';
 import {ReactComponent as FullScreenIcon} from '../assets/icons/fullscreen.svg';
 import {ReactComponent as PlayIconV2Fill} from '../assets/icons/play-v2-fill.svg';
 import {ReactComponent as TrashIcon} from '../assets/icons/trash.svg';
+import {ReactComponent as RightArrowIcon} from '../assets/icons/right-arrow.svg';
+import {ReactComponent as LeftArrowIcon} from '../assets/icons/left-arrow.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -192,6 +194,8 @@ const ICONS_MAP = {
     'play-v2-fill': PlayIconV2Fill,
     'fullscreen': FullScreenIcon,
     'trash': TrashIcon,
+    'right-arrow': RightArrowIcon,
+    'left-arrow': LeftArrowIcon,
 };
 
 /**

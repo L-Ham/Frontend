@@ -19,13 +19,19 @@ function CommunitiesSection() {
         setIsOpen,
         rootStyles,
         Communities} = useCommunitiesSection();
+    // console.log(Communities);
     return (
         <>
             <SectionHeader sectionName='COMMUNITIES' isOpen={isOpen} setIsOpen={setIsOpen} />
             <div className={rootStyles}>
                 <CreateCommunityItem/>
-                {Communities.map((community) => (
-                    <CommunityItem key={uuid()} {...community} />
+                {Communities?.map((community) => (
+                    <CommunityItem key={uuid()}
+                        imgURL={community.communityAvatar}
+                        communityName={community.communityName}
+                        communityId={community.communityId}
+                        isFavorite={community.isFavorite}
+                    />
                 ))}
             </div>
         </>
