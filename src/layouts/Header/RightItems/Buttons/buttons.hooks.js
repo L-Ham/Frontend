@@ -3,7 +3,7 @@ import {getIconComponent} from '../../../../generic components/iconsmap';
 export const useCreatePost = () => {
     const CreatePostIcon = getIconComponent('create-post', false);
     // href should be the current page url and add /submit to it
-    const href = window.location.href + 'submit';
+    const href = '/submit';
     return {
         CreatePostIcon,
         href,

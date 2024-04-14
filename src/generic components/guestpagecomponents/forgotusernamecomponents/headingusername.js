@@ -12,8 +12,9 @@ function HeadingUserName() {
                 fontSize: 18,
                 fontWeight: 500,
                 color: '#1a1a1b',
-                fontFamily: 'IBMPlexSans, sans-serif',
+                fontFamily: '"IBM Plex Sans", sans-serif',
             }}
+            data-testid="headingusername10"
         >
     Recover your username
         </h1>
