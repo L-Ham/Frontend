@@ -9,10 +9,11 @@ import PropTypes from 'prop-types';
  * The user's selected gender identity is managed using React's useState hook, and changes are logged to the console.
  *
  * @param {string} init - The initial value for the selected gender.
+ *  * @param {string} id - The initial value for the selected gender.
  * @param {function} func - The function to be called when the gender is selected.
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function ChatMenu({init, func}) {
+function ChatMenu({init, func, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedGender, setSelectedGender] = useState('EVERYONE');
 
@@ -62,13 +63,13 @@ function ChatMenu({init, func}) {
             <div className='ml-4 flex items-center'>
                 <div className='cursor-pointer'>
                     <div className='flex items-center'>
-                        <button className='block w-full whitespace-nowrap
+                        <button id = {'m1' + id} className='block w-full whitespace-nowrap
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
                             {selectedGender}
                         </button>
-                        <span onClick={toggleDropdown}>
+                        <span id = {'m2' + id} onClick={toggleDropdown}>
                             <svg
                                 className="ml-0.5 inline-block
                                 size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
@@ -115,6 +116,7 @@ function ChatMenu({init, func}) {
 ChatMenu.propTypes = {
     init: PropTypes.string,
     func: PropTypes.func,
+    id: PropTypes.string,
 
 };
 

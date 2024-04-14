@@ -1,16 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {SocialLinksButton} from '../buttons/sociallinksbutton.js';
+import {useSelector} from 'react-redux';
+import {axiosInstance} from '../../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../../requests/routes.js';
+import {useToggle} from '../../../pop ups/togglecontext.js';
 import CloseIcon from '@mui/icons-material/Close'; // Assuming you're using Material-UI for icons
+import {SocialLinksButton} from '../buttons/sociallinksbutton.js';
+
 
 /**
  * SocialContainer function component renders social media links with logos and a "Delete" button.
  * Each link can be deleted individually, and the component logs the deletion to the console.
+ * Clicking on an item sets the social ID, text, icon, and toggles a modal or similar component.
  *
  * @param {Object} props - Component props including initialList.
  * @return {React.Component} A list of social media links.
  */
-function SocialContainer({initialList}) {
+function SocialContainer({initialList, id}) {
+    const token = useSelector((state) => state.user.token);
+    const {toggleSocialTwo, setSocialId, setSocialText, setSocialIcon, setSocialRequestType} = useToggle();
+
     // Define the mapping from app name to logo URL
     const logoMap = {
         instagram: 'https://www.redditstatic.com/desktop2x/img/social-links/instagram.png',
@@ -21,34 +30,65 @@ function SocialContainer({initialList}) {
         youtube: 'https://www.redditstatic.com/desktop2x/img/social-links/youtube.png',
     };
 
-    // Initialize the list state with the processed initialList
     const [list, setList] = useState(initialList.map((item) => ({
+        _id: item._id,
         displayText: item.appName,
-        logo: logoMap[item.appName.toLowerCase()], // Set logo using appName and logoMap
+        logo: logoMap[item.appName.toLowerCase()],
     })));
 
-    // Update state when initialList changes
     useEffect(() => {
-        const newList = initialList.map((item) => ({
+        setList(initialList.map((item) => ({
+            _id: item._id,
             displayText: item.appName,
-            logo: logoMap[item.appName.toLowerCase()], // Ensure logo is updated if initialList changes
-        }));
-        setList(newList);
+            logo: logoMap[item.appName.toLowerCase()],
+        })));
     }, [initialList]);
 
     /**
- * Deletes an item from a list based on its index and logs the action.
- *
- * @param {number} itemIndex - The index of the item to be deleted from the list.
- * @param {string} itemText - The text of the item being deleted, used for logging.
- */
-    function handleDelete(itemIndex, itemText) {
-        console.log(`${itemText} was deleted`); // Log the deletion to the console.
-        const currList = list.filter((_, index) => index !== itemIndex);
-        // Create a new list excluding the deleted item.
-        setList(currList); // Update the state with the new list.
+     * Handles the deletion of a social link from the list.
+     * The function logs the deletion to the console and updates the list state.
+
+     * @param {string} id - The ID of the item to delete.
+     * */
+    async function handleDeleteSocial(id) {
+        try {
+            console.log('token' + token);
+            console.log('Deleting social link:', id);
+            await axiosInstance.delete(API_ROUTES.editSocial, {
+                headers: {Authorization: `Bearer ${token}`},
+                data: {socialLinkId: id},
+            });
+            console.log('Social link deleted:', id);
+        } catch (error) {
+            console.error('Failed to delete social link:', error);
+        }
     }
 
+    /**
+     * Handles the deletion of a social link from the list.
+     * The function logs the deletion to the console and updates the list state.
+     * @param {number} itemIndex - The index of the item to delete.
+     * @param {string} itemId - The ID of the item to delete.
+     * */
+    function handleDelete(itemIndex, itemId) {
+        console.log(`${list[itemIndex].displayText} was deleted`);
+        handleDeleteSocial(itemId);
+        setList((currList) => currList.filter((_, index) => index !== itemIndex));
+    }
+
+    /**
+     * Handles the deletion of a social link from the list.
+     * The function logs the deletion to the console and updates the list state.
+
+     * @param {string} item - The ID of the item to delete.
+     * */
+    function handleItemClick(item) {
+        setSocialId(item._id);
+        setSocialText(item.displayText);
+        setSocialIcon(item.logo);
+        setSocialRequestType('edit');
+        toggleSocialTwo();
+    }
 
     return (
         <nav className="block w-[1200px]" aria-label="Social Links">
@@ -58,10 +98,14 @@ function SocialContainer({initialList}) {
                         className="flex items-center justify-between whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)] px-2 py-2.5
                         text-xs font-bold leading-4 text-[color:var(--newRedditTheme-bodyText)]"
+                        onClick={() => handleItemClick(item)}
                     >
                         <img className="mr-2" src={item.logo} alt={item.displayText}/>
                         <span className="grow text-center">{item.displayText}</span>
-                        <button onClick={() => handleDelete(index, item.displayText)} className="ml-2">
+                        <button id = {'soc' + id} onClick={(e) => {
+                            e.stopPropagation(); // Prevent onClick event from bubbling to the li element
+                            handleDelete(index, item._id);
+                        }} className="ml-2">
                             <CloseIcon fontSize="small" />
                         </button>
                     </li>
@@ -74,6 +118,7 @@ function SocialContainer({initialList}) {
 
 SocialContainer.propTypes = {
     initialList: PropTypes.array.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export {SocialContainer};

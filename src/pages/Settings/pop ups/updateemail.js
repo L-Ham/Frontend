@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
@@ -10,7 +10,7 @@ import React from 'react';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function UpdateEmail() {
+function UpdateEmail({id}) {
     return (
         <div className="fixed top-0 z-[55] box-border
         flex size-full items-center overflow-auto
@@ -24,7 +24,7 @@ function UpdateEmail() {
                 <div className="relative
         box-border max-w-[432px]
          border border-solid border-[color:var(--newRedditTheme-line)] bg-[color:var(--newRedditTheme-body)] px-8 py-6">
-                    <button className="absolute right-3 top-3 size-5">
+                    <button className="absolute right-3 top-3 size-5" id = 'mail1'>
                         <svg viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg" className="
                             size-4 fill-[var(--newRedditTheme-postIcon)]">
@@ -88,7 +88,7 @@ function UpdateEmail() {
                     </p>
                     <div className="mt-5">
                         <div className="relative mb-6">
-                            <input placeholder="Current password"
+                            <input placeholder="Current password" id = 'mail2'
                                 type="password" className="box-border h-[52px] w-full
                                                 rounded border border-solid
                                                  border-[color:var(--newRedditTheme-line)] px-3
@@ -96,7 +96,7 @@ function UpdateEmail() {
                                                   text-[color:var(--newRedditTheme-bodyText)]" value=""/>
                         </div>
                         <div className="relative mb-6">
-                            <input
+                            <input id = 'mail3'
                                 placeholder="New email" className="box-border h-[52px] w-full
                         rounded border border-solid
                          border-[color:var(--newRedditTheme-line)] px-3
@@ -105,7 +105,7 @@ function UpdateEmail() {
                         </div>
                         <div className="flex flex-row flex-nowrap
                                                     items-center justify-end">
-                            <button role="button"
+                            <button role="button" id = 'mail4'
                                 tabIndex="0" disabled="" className="relative ml-2
                                                     box-border flex min-h-[32px]
                                                      w-auto min-w-[32px]
@@ -127,6 +127,10 @@ function UpdateEmail() {
 
     );
 }
+
+UpdateEmail.propTypes = {
+    id: PropTypes.string,
+};
 
 export {UpdateEmail};
 

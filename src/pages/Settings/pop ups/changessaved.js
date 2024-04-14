@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
@@ -9,7 +10,7 @@ import React from 'react';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function ChangesSaved() {
+function ChangesSaved({id}) {
     // const [selection, setSelection] = useState('');
 
     // /**
@@ -106,6 +107,10 @@ function ChangesSaved() {
         </div>
     );
 }
+
+ChangesSaved.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ChangesSaved};
 

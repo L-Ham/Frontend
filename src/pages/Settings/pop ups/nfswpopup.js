@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {useToggle} from './togglecontext.js';
+import PropTypes from 'prop-types';
 
 // write jsdoc
 
@@ -21,7 +22,7 @@ import {useToggle} from './togglecontext.js';
  * );
  *
  * */
-function NfswPopUp() {
+function NfswPopUp({id}) {
     const {displayNfsw} = useToggle();
 
     return displayNfsw ? (
@@ -37,7 +38,7 @@ function NfswPopUp() {
                      shadow-[0_2px_20px_0_rgba(0,0,0,0.3)]"
                 role="dialog" tabIndex="-1">
                 <div className="relative">
-                    <button className="absolute right-4 top-4 size-4">
+                    <button className="absolute right-4 top-4 size-4" id = 'pop1'>
                         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                             className=" size-4 fill-[var(--newCommunityTheme-actionIcon)]">
                             <polygon fill="inherit" points="11.649 9.882 18.262 3.267
@@ -67,7 +68,7 @@ function NfswPopUp() {
                                       of your account.
                         </p>
                         <div className="flex justify-end">
-                            <button role="button" tabIndex="0"
+                            <button role="button" tabIndex="0" id = 'pop2'
                                 className="relative box-border
                                  flex min-h-[32px]
                                  w-auto min-w-[32px] items-center justify-center rounded-full border border-solid
@@ -78,7 +79,7 @@ function NfswPopUp() {
                                   font-bold uppercase leading-8 tracking-[0.5px]
                                    text-[color:var(--newCommunityTheme-button)]">Cancel
                             </button>
-                            <button role="button" tabIndex="0"
+                            <button role="button" tabIndex="0" id = 'pop3'
                                 className=" relative border border-solid
                                 border-[color:var(--newCommunityTheme-button)]
                                  fill-[var(--newCommunityTheme-button)] text-[color:var(--newCommunityTheme-button)]">
@@ -90,5 +91,9 @@ function NfswPopUp() {
             </div>
         </div>) :null;
 }
+
+NfswPopUp.propTypes = {
+    id: PropTypes.string,
+};
 
 export {NfswPopUp};

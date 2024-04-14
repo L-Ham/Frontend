@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
 /**
@@ -10,7 +11,7 @@ import PropTypes from 'prop-types';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function GenderMenu({func, init}) {
+function GenderMenu({func, init, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedGender, setSelectedGender] = useState('MAN');
 
@@ -58,13 +59,13 @@ function GenderMenu({func, init}) {
             <div className='ml-4 flex items-center'>
                 <div className='cursor-pointer'>
                     <div className='flex items-center'>
-                        <button className='block w-full whitespace-nowrap
+                        <button id = {'b' + id} className='block w-full whitespace-nowrap
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
                             {selectedGender.toUpperCase()}
                         </button>
-                        <span onClick={toggleDropdown}>
+                        <span id = {'span' + id} onClick={toggleDropdown}>
                             <svg
                                 className="ml-0.5 inline-block
                                 size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
@@ -90,7 +91,7 @@ function GenderMenu({func, init}) {
                         >
                             {['Woman', 'Man', 'Non-Binary',
                                 'I Refer To Myself As...', 'I Prefer Not To Say'].map((gender) => (
-                                <button key={gender} className='block w-full whitespace-nowrap
+                                <button id = {'button2' + id} key={gender} className='block w-full whitespace-nowrap
                                 border-t border-solid
                             border-b-[none] border-t-[color:var(--newRedditTheme-line)]
                              fill-[var(--newRedditTheme-actionIcon)] p-2 text-left
@@ -120,4 +121,5 @@ export {GenderMenu};
 GenderMenu.propTypes = {
     func: PropTypes.func.isRequired,
     init: PropTypes.string,
+    id: PropTypes.string,
 };

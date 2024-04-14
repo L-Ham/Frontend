@@ -9,7 +9,7 @@ import {useState, useEffect} from 'react';
 import {API_ROUTES} from '../../../../requests/routes'; // Import the API_ROUTES constant
 import {axiosInstance} from '../../../../requests/axios';
 import {useSelector} from 'react-redux';
-
+import PropTypes from 'prop-types';
 
 /**
  * AccountSettings function component renders the account settings interface.
@@ -32,7 +32,7 @@ import {useSelector} from 'react-redux';
  * );
  *
  * */
-function AccountSettings() {
+function AccountSettings({id}) {
     const token = useSelector((state) => state.user.token);
     const leftAlignStyle = {textAlign: 'left'};
     // const email = '';
@@ -78,41 +78,52 @@ function AccountSettings() {
             <SettingsTabHeading text="ACCOUNT PREFERENCES" style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Email address" text={accSettings.email}
-                thirdComponent={'Change'} style={leftAlignStyle} />
+                thirdComponent={'Change'} style={leftAlignStyle} id = '1' />
 
             <SettingsGenericItemRight head="Gender" text="This information may be used
              to improve your recommendations and ads." thirdComponent={'GenderMenu'}
-            item = {accSettings.gender} style={leftAlignStyle} />
+            item = {accSettings.gender} style={leftAlignStyle} id = '2' />
 
             <LanguageSettings style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Content Languages" text="Add
              languages you’d like to see posts, community recommendations,
-              and other content in" thirdComponent={'Change'} style={leftAlignStyle} />
+              and other content in" thirdComponent={'Change'} style={leftAlignStyle}
+            id = '3' />
 
-            <LocationCustomization/>
+            <LocationCustomization id = '4'/>
 
-            <SettingsTabHeading text="Connected Accounts" style={leftAlignStyle} />
+            <SettingsTabHeading text="Connected Accounts" style={leftAlignStyle}
+                id = '5' />
 
-            <ConnectToTwitter/>
+            <ConnectToTwitter id = '6'/>
 
             <SettingsGenericItemRight head="Connect to Apple" text="Connect
-             account to log in to Reddit with Apple" thirdComponent={'Apple'} style={leftAlignStyle} />
+             account to log in to Reddit with Apple" thirdComponent={'Apple'} style={leftAlignStyle}
+            id = '7' />
 
             <SettingsGenericItemRight head="Connect to Google" text="Connect
-             account to log in to Reddit with Google" thirdComponent={'Apple'} style={leftAlignStyle} />
+             account to log in to Reddit with Google" thirdComponent={'Apple'} style={leftAlignStyle}
+            id = '8' />
 
-            <SettingsTabHeading text="Beta tests" style={leftAlignStyle} />
+            <SettingsTabHeading text="Beta tests" style={leftAlignStyle}
+                id = '9'/>
 
             <SettingsGenericItemRight head="Opt into beta tests" text="See
              the newest features from Reddit and join the r/beta
-             community" thirdComponent={'Toggle'} style={leftAlignStyle} />
+             community" thirdComponent={'Toggle'} style={leftAlignStyle}
+            id = '10' />
 
-            <SettingsTabHeading text="Delete" style={leftAlignStyle} />
+            <SettingsTabHeading text="Delete" style={leftAlignStyle}
+                id = '11' />
 
-            <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle} />
+            <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle}
+                id = '12' />
         </div>
     );
 }
 
+AccountSettings.propTypes = {
+    id: PropTypes.string,
+};
 export {AccountSettings};

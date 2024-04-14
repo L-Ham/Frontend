@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 /**
  * ClearHistory function component renders a styled "Change" button using Material UI.
  * The button showcases custom styling options and logs a message to the console when clicked.
@@ -7,7 +7,7 @@ import React from 'react';
  *
  * @return {React.Component} A styled Material UI Button component with an onClick event handler.
  */
-function ClearHistory() {
+function ClearHistory({id}) {
     /**
      * handleClick function to be executed when the button is clicked.
      * Logs a message to the console indicating that the button has been clicked.
@@ -20,7 +20,7 @@ function ClearHistory() {
     }
 
     return (
-        <button
+        <button id = {'cl' + id}
             onClick={handleClick}
             className='box-border min-h-[32px] w-auto min-w-[32px] border border-solid
             border-[var(--newCommunityTheme-button)] fill-[var(--newCommunityTheme-button)]
@@ -37,5 +37,10 @@ function ClearHistory() {
         </button>
     );
 }
+
+// write prop validation
+ClearHistory.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ClearHistory};

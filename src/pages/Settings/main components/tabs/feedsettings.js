@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
+import PropTypes from 'prop-types';
 
 /**
  * FeedSettings function component renders the user's feed settings interface.
@@ -14,7 +15,7 @@ import {API_ROUTES} from '../../../../requests/routes.js';
  *
  * @return {React.Component} A div container encompassing various settings to customize the Reddit feed experience.
  */
-function FeedSettings() {
+function FeedSettings({id}) {
     const token = useSelector((state) => state.user.token);
     const [feedSettings, setFeedSettings] = useState({
         showNSFW: true,
@@ -105,17 +106,17 @@ function FeedSettings() {
             >
             Feed Settings
             </h2>
-            <SettingsTabHeading text="CONTENT PREFERENCES" />
+            <SettingsTabHeading text="CONTENT PREFERENCES" id = '1' />
 
             <SettingsGenericItemRight
-                head="Show mature (18+) content"
+                head="Show mature (18+) content" id = '2'
                 text="See NSFW (Not Safe for Work) mature and adult
                  images, videos, written content, and other media in your Reddit feeds and search results."
                 thirdComponent={'Toggle'} f={() => toggleSetting('showNSFW')} prop = {feedSettings.showNSFW}
             />
 
 
-            <SettingsGenericItemRight
+            <SettingsGenericItemRight id = '3'
                 head="Enable home feed recommendations"
                 text="Allow us to introduce recommended posts in your home feed."
                 thirdComponent={'Toggle'} f={() => toggleSetting('enableHomeFeedRecommendations')}
@@ -123,27 +124,27 @@ function FeedSettings() {
             />
 
             <SettingsGenericItemRight
-                head="Autoplay media"
+                head="Autoplay media" id = '4'
                 text="Play videos and gifs automatically when in the viewport."
                 thirdComponent={'Toggle'} f={() => toggleSetting('autoplayMedia')} prop = {feedSettings.autoplayMedia}
             />
 
             <SettingsGenericItemRight
-                head="Reduce Animations"
+                head="Reduce Animations" id = '5'
                 text="Reduce animations on posts, comments, and feeds."
                 thirdComponent={'Toggle'} f={() => toggleSetting('reduceAnimations')}
                 prop = {feedSettings.reduceAnimations}
             />
 
             <SettingsGenericItemRight
-                head="Community themes"
+                head="Community themes" id = '6'
                 text="Use custom themes for all communities. You can also turn this off on a per community basis."
                 thirdComponent={'Toggle'} f={() => toggleSetting('communityThemes')}
                 prop = {feedSettings.communityThemes}
             />
 
             <SettingsGenericItemRight
-                head="Community content sort"
+                head="Community content sort" id = '7'
                 text="Choose how you would like content
                  organized in communities you visit. This will not affect global feeds such as Home, or Popular."
                 thirdComponent={'rm'} genericFunction = {changeMenu} menu = {['Hot', 'New', 'Top', 'Rising']
@@ -151,14 +152,14 @@ function FeedSettings() {
             />
 
             <SettingsGenericItemRight
-                head="Global content view"
+                head="Global content view" id = '8'
                 text="Choose how you would like content displayed in feeds. This control is also found above your feed."
                 thirdComponent={'rm'} genericFunction = {changeMenu} menu = {['Card', 'Classic', 'Compact']}
                 prop = {feedSettings.globalContentView} item = 'globalContentView'
             />
 
             <SettingsGenericItemRight
-                head="Open posts in new tab"
+                head="Open posts in new tab" id = '9'
                 text="Enable to always open posts in a new tab."
                 thirdComponent={'Toggle'} f={() => toggleSetting('openPostsInNewTab')}
                 prop = {feedSettings.openPostsInNewTab}
@@ -167,7 +168,7 @@ function FeedSettings() {
             <SettingsTabHeading text="POST PREFERENCES" />
 
             <SettingsGenericItemRight
-                head="Default to markdown"
+                head="Default to markdown" id = '10'
                 text="When posting, your input will default to markdown text instead of fancy pants."
                 thirdComponent={'Toggle'} f={() => toggleSetting('defaultToMarkdown')}
                 prop = {feedSettings.defaultToMarkdown}
@@ -175,5 +176,9 @@ function FeedSettings() {
         </div>
     );
 }
+
+FeedSettings.propTypes = {
+    id: PropTypes.string,
+};
 
 export {FeedSettings};

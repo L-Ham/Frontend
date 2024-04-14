@@ -6,6 +6,7 @@ import {SettingsGenericItemRight} from '../../generic components/settingsgeneric
 import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
+import PropTypes from 'prop-types';
 /**
  * ProfileSettings function component renders the profile customization settings.
  * It allows users to set and modify their profile information such as display name, about section,
@@ -15,7 +16,7 @@ import {API_ROUTES} from '../../../../requests/routes.js';
  *
  * @return {React.Component} A div container with settings to customize the user's profile.
  */
-function ProfileSettings() {
+function ProfileSettings({id}) {
     {/* const {toggleNfsw} = useToggle();*/}
     const token = useSelector((state) => state.user.token);
     const [profileSettings, setProfileSettings] = useState({
@@ -31,24 +32,23 @@ function ProfileSettings() {
         clearHistory: false,
     });
 
-    useEffect(() => {
-        /**
+    /**
  * ProfileSettings function component renders the profile customization settings.
 
  *
  * @return {React.Component} A div container with settings to customize the user's profile.
  */
-        async function fetchProfileSettings() {
-            try {
-                const response = await axiosInstance.get(API_ROUTES.profileSettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                setProfileSettings(response.data.profileSettings);
-            } catch (error) {
-                console.error('Failed to fetch profile settings:', error);
-            }
+    async function fetchProfileSettings() {
+        try {
+            const response = await axiosInstance.get(API_ROUTES.profileSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+            setProfileSettings(response.data.profileSettings);
+        } catch (error) {
+            console.error('Failed to fetch profile settings:', error);
         }
-
+    }
+    useEffect(() => {
         fetchProfileSettings();
     }, [token]);
 
@@ -118,51 +118,54 @@ function ProfileSettings() {
                 Customize profile
             </h2>
             {/* Profile information settings */}
-            <SettingsTabHeading text="PROFILE INFORMATION " />
+            <SettingsTabHeading text="PROFILE INFORMATION " id = '1' />
             <SettingsGenericItemDown head="Display name
-             (optional)" text="Set display name" thirdComponent={'text30'}
+             (optional)" text="Set display name" thirdComponent={'text30'} id = '2'
             prop={profileSettings.displayName} genericFunction = {changeTextSetting} />
             <SettingsGenericItemDown head="About (optional)"
                 text="A brief description of yourself shown on your
-              profile." thirdComponent={'text200'} genericFunction = {changeTextSetting}
+              profile." thirdComponent={'text200'} genericFunction = {changeTextSetting} id = '3'
                 prop ={profileSettings.about} />
             <SettingsGenericItemDown head="Social links (5 max)"
                 text="People who visit your profile will see your social
-             links." thirdComponent={'social'} prop={profileSettings.socialLinks} genericFunction={changeSocialLinks} />
+             links." thirdComponent={'social'} prop={profileSettings.socialLinks} genericFunction={changeSocialLinks}
+                id = '4'
+
+            />
 
             {/* Images settings */}
-            <SettingsTabHeading text="Images" />
+            <SettingsTabHeading text="Images" id = '5' />
             <SettingsGenericItemDown head="Avatar and banner image"
-                text="Images must be .png or .jpg format" thirdComponent={'2images'} />
+                text="Images must be .png or .jpg format" thirdComponent={'2images'} id = '6' />
 
             {/* Profile category settings */}
-            <SettingsTabHeading text="PROFILE CATEGORY" />
+            <SettingsTabHeading text="PROFILE CATEGORY" id = '7' />
             <SettingsGenericItemRight head="NSFW" text="This content
              is NSFW (may contain nudity, pornography, profanity, or
-              inappropriate content for those under 18)" thirdComponent={'Toggle'}
+              inappropriate content for those under 18)" thirdComponent={'Toggle'} id = '8'
             f={() => toggleSetting('NSFW')} prop={profileSettings.NSFW} />
 
             {/* Advanced settings */}
-            <SettingsTabHeading text="Advanced" />
+            <SettingsTabHeading text="Advanced" id = '9' />
             <SettingsGenericItemRight head="People to follow you"
                 text="Followers will be notified about posts you make
-             to your profile and see them in their home feed."
-                thirdComponent={'Toggle'} f={() => toggleSetting('allowFollow')}
+             to your profile and see them in their home feed." id = '10'
+                thirdComponent={'Toggle'} f={() => toggleSetting('allowFollow') }
                 prop={profileSettings.allowFollow} />
             <SettingsGenericItemRight head="Control visibility"
                 text="Posts to this profile can appear in r/all and
-              your profile can be discovered in /users"
+              your profile can be discovered in /users" id = '11'
                 thirdComponent={'Toggle'} f={() => toggleSetting('contentVisibility')}
                 prop={profileSettings.contentVisibility} />
             <SettingsGenericItemRight head="Active in communities visibility"
-                text="Show which communities I am active in on my profile."
+                text="Show which communities I am active in on my profile." id = '12'
                 thirdComponent={'Toggle'} f={() => toggleSetting('communitiesVisibility')}
                 prop={profileSettings.communitiesVisibility} />
             <SettingsGenericItemRight head="Clear history" text="Delete
-             your post views history." thirdComponent={'clearhistory'} />
+             your post views history." thirdComponent={'clearhistory'} id = '13' />
 
             {/* Profile moderation link */}
-            <SettingsTabHeading text="PROFILE MODERATION" />
+            <SettingsTabHeading text="PROFILE MODERATION" id = '14' />
             <div className="text-[color:var(--newCommunityTheme-bodyText)]">
                 For moderation tools please visit our <a href="/user/Accomplished-Sky5845/about/edit/moderation"
                     className="text-[color:var(--newRedditTheme-linkText)] underline">Profile Moderation page</a>
@@ -170,5 +173,9 @@ function ProfileSettings() {
         </div>
     );
 }
+
+ProfileSettings.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ProfileSettings};

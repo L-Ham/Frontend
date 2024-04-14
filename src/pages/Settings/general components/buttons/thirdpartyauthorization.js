@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 /**
  * ThirdPartyAuthorization function component renders a UI element for managing third-party application authorizations.
  * It presents a user-friendly interface to navigate to detailed authorization settings and allows for actions like
@@ -10,7 +11,7 @@ import PropTypes from 'prop-types';
  * @param {number} [props.spacing=2] - Controls the horizontal space between the text and the navigation icon.
  * @return {React.Component} A Material UI Paper component containing the authorization management options.
  */
-function ThirdPartyAuthorization({spacing = 2}) {
+function ThirdPartyAuthorization({spacing = 2, id}) {
     /**
      * handleNavigation function to be called upon user interaction with the component.
      * It is designed to initiate navigation to a detailed settings
@@ -80,6 +81,8 @@ function ThirdPartyAuthorization({spacing = 2}) {
 
 ThirdPartyAuthorization.propTypes = {
     spacing: PropTypes.number,
+    id: PropTypes.string,
+
 };
 
 export {ThirdPartyAuthorization};

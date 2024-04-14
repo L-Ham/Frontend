@@ -1,5 +1,6 @@
 import React from 'react';
 import {useToggle} from '../../pop ups/togglecontext.js';
+import PropTypes from 'prop-types';
 /**
  * ChangeButton function component renders a styled "Change" button using Material UI.
  * The button showcases custom styling options and logs a message to the console when clicked.
@@ -7,7 +8,7 @@ import {useToggle} from '../../pop ups/togglecontext.js';
  *
  * @return {React.Component} A styled Material UI Button component with an onClick event handler.
  */
-function ChangeButton() {
+function ChangeButton({id}) {
     /**
      * handleClick function to be executed when the button is clicked.
      * Logs a message to the console indicating that the button has been clicked.
@@ -32,11 +33,13 @@ function ChangeButton() {
     return (
         <button
             onClick={handleClick}
+            id = {'cl' + id}
             className='box-border min-h-[32px] w-auto min-w-[32px] border border-solid
             border-[var(--newCommunityTheme-button)] fill-[var(--newCommunityTheme-button)]
             px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset]
             text-[var(--newCommunityTheme-button)] hover:bg-[var(--newCommunityTheme-buttonAlpha05)]
             active:bg-[var(--newCommunityTheme-buttonAlpha10)]'
+
             style={{
                 fontFamily: '"Noto Sans", sans-serif',
                 textTransform: 'unset',
@@ -47,5 +50,10 @@ function ChangeButton() {
         </button>
     );
 }
+
+// write prop validation
+ChangeButton.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ChangeButton};

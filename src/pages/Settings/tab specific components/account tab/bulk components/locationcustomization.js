@@ -1,74 +1,125 @@
-import React from 'react';
-
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {axiosInstance} from '../../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../../requests/routes.js';
+import PropTypes from 'prop-types';
+// write jsdoc
 
 /**
- * Provides an interface for selecting a language setting.
+ * LocationCustomization function component renders the location customization interface.
+ * It provides options to customize the user's location for recommendations and feed.
+ * The component allows users to specify a location to personalize their Reddit experience.
  *
- * This component allows users to choose their preferred display language for the interface.
- * It's part of a beta feature where the selection does not affect user-generated content.
- * The chosen language only applies to the UI elements of the platform.
- *
- * @return {JSX.Element} The LanguageSettings component.
+ * @return {React.Component} A div container with location customization settings.
  */
-export function LocationCustomization() {
-    /**
-   * Handles the change in language selection.
-   *
-   * @param {React.ChangeEvent<{ value: unknown }>} event - The change event on the select element.
-   */
+export function LocationCustomization({id}) {
+    const token = useSelector((state) => state.user.token);
+    const [location, setLocation] = useState('');
+    const [options, setOptions] = useState([
+        {value: 'ZZ', text: 'Use approximate location (based on IP)'},
+        {value: 'XZ', text: 'No location specified'},
+        {value: 'AF', text: 'Afghanistan'},
+        // Add other predefined options here...
+    ]);
+        /**
+ * Asynchronously updates feed settings using a PATCH request.
+ *
+ * @param {Object} updatedSettings - The new settings to be updated.
+ */
+    async function handleUpdateLocation(updatedSettings) {
+        try {
+            await axiosInstance.patch(API_ROUTES.editLocation, updatedSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+            // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update Feed settings:', error);
+        }
+    }
 
+    useEffect(() => {
+        // write jsdoc
+
+        /**
+         * Asynchronously fetches the user's location settings using a GET request.
+         * The location is used to customize recommendations and the feed.
+         * The fetched location is stored in the component's state.
+         *
+         * @return {Promise<void>} A promise that resolves when the location is fetched.
+         * @throws {Error} If the request fails or an error occurs during fetching.
+         *
+         *
+         *
+         * */
+        async function fetchLocation() {
+            try {
+                const response = await axiosInstance.get(API_ROUTES.Location, {
+                    headers: {Authorization: `Bearer ${token}`},
+                });
+                const fetchedLocation = response.data.location; // Assuming this is the format of the response
+                setLocation(fetchedLocation);
+
+                // Check if the fetched location is already an option
+                if (!options.some((option) => option.value === fetchedLocation)) {
+                    setOptions((prevOptions) => [
+                        ...prevOptions,
+                        {value: fetchedLocation, text: fetchedLocation},
+                    ]);
+                }
+            } catch (error) {
+                console.error('Failed to fetch location settings:', error);
+            }
+        }
+
+        fetchLocation();
+    }, [token]);
+    // write jsdoc
+
+    /**
+     * Handles the change in location selection by updating the component's state.
+     * This function is called when the user selects a different location from the dropdown.
+     *
+     * @param {Event} event - The event object containing the new location value.
+     *
+     *
+     * */
+    function handleChangeLocation(event) {
+        const newLocation = event.target.value;
+        setLocation(newLocation);
+        handleUpdateLocation({'location': location.location});
+        // Here, handle updating the server with the new location if needed
+    }
 
     return (
         <div className='mb-8 flex flex-row flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
             <div className="mr-2 flex max-w-[80%] flex-col">
-                <label htmlFor="lang"></label>
-                <h3 className="mb-1 flex text-base font-medium leading-5
-                        text-[color:var(--newCommunityTheme-bodyText)]">Location customization
-                </h3>
-
-
+                <label htmlFor="lang" className="mb-1 flex text-base font-medium leading-5
+                text-[color:var(--newCommunityTheme-bodyText)]">
+                    Location customization
+                </label>
                 <p className="text-xs font-normal leading-4 text-[color:var(--newCommunityTheme-metaText)]">
-                    Specify a location to customize your recommendations and
-                    feed. Reddit does not track your precise geolocation data. Learn more.
+                    Specify a location to customize your recommendations and feed.
                 </p>
             </div>
-
             <div className='mb-4 w-0 basis-full'></div>
             <div className='mb-8 flex flex-row flex-wrap pl-8'>
                 <span className='relative inline border border-solid border-transparent
                      bg-[0] fill-[var(--newCommunityTheme-button)] text-[color:var(--newCommunityTheme-button)]'>
-                    <select id="lang" className="appearance-none pl-1 pr-5 text-base font-medium leading-5
+                    <select id="lang" value={location} onChange={handleChangeLocation}
+                        className="appearance-none pl-1 pr-5 text-base font-medium leading-5
                     hover:bg-[var(--newCommunityTheme-buttonAlpha05)]" style={{
-                        fontFamily: '"IBM Plex Sans", sans-serif',
-                    }}>
-                        <option value="ZZ">Use approximate location (based on IP)</option>
-                        <option value="XZ">No location specified</option>
-                        <option value="AF">Afghanistan</option>
-                        <option value="AX">Aland Islands</option>
-                        <option value="AL">Albania</option>
-                        <option value="DZ">Algeria</option>
-                        <option value="AS">American Samoa</option>
-                        <option value="AD">Andorra</option>
-                        <option value="AO">Angola</option>
-                        <option value="AI">Anguilla</option>
-                        <option value="AQ">Antarctica</option>
-                        <option value="AG">Antigua and Barbuda</option>
-                        <option value="AR">Argentina</option>
-                        <option value="AM">Armenia</option>
-                        <option value="AW">Aruba</option>
-
+                            fontFamily: '"IBM Plex Sans", sans-serif',
+                        }}>
+                        {options.map((option) => (
+                            <option key={option.value} value={option.value}>{option.text}</option>
+                        ))}
                     </select>
-                    <svg className="ml-0.5
-                    inline-block
-                    size-5
-                    fill-[var(--newCommunityTheme-actionIcon)] align-middle
-                    active:bg-[var(--newCommunityTheme-buttonAlpha10)]"
-                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.17,9.35,10,13.53,5.83,9.35a.5.5,0,0,1,.35-.85h7.64a.5.5,0,0,1,.35.85"></path>
-                    </svg>
                 </span>
             </div>
         </div>
     );
 }
 
+LocationCustomization.propTypes = {
+    id: PropTypes.string,
+};

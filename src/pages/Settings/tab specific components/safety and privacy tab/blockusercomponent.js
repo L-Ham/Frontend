@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import {axiosInstance} from '../../../../requests/axios';
 import {API_ROUTES} from '../../../../requests/routes';
 import {useSelector} from 'react-redux';
+
 /**
  * Represents a component for blocking a user.
  * Allows input of a user identifier and provides a button to trigger the block action.
  *
  * @return {JSX.Element} A component with a text field and a button for blocking a user.
  */
-function BlockUserComponent({head, text, blocktext, list, type}) {
+function BlockUserComponent({head, text, blocktext, list, type, id}) {
     const token = useSelector((state) => state.user.token);
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');
@@ -68,6 +69,23 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
             console.error('Failed to update Feed settings:', error);
         }
     }
+    /**
+ * Asynchronously updates feed settings using a PATCH request.
+ *
+ * @param {Object} user - The new settings to be updated.
+ */
+    async function handleUnMuteCommunity(user) {
+        try {
+            console.log('unMuting user:', user);
+            await axiosInstance.patch(API_ROUTES.unmuteCommunity, user, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+            console.log('unMuted user:', user);
+            // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update Feed settings:', error);
+        }
+    }
 
     /**
      * Updates the input value based on user input.
@@ -111,7 +129,7 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
             const blockedUser = {'usernameToBlock': inputValue};
             handleBlockUser(blockedUser);
         } else {
-            const mutedCommunity = {'subRedditId': inputValue};
+            const mutedCommunity = {'subRedditName': inputValue};
             handleMuteCommunity(mutedCommunity);
         }
     }
@@ -127,6 +145,9 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
         if (type == 'user') {
             const unBlockedUser = {'UserNameToUnblock': userName};
             handleUnblockUser(unBlockedUser);
+        } else {
+            const unBlockedUser = {'subRedditName': userName};
+            handleUnMuteCommunity(unBlockedUser);
         }
     }
 
@@ -143,7 +164,7 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
              border-[color:var(--newCommunityTheme-line)] px-6 py-0
              ${isFocused || inputValue ? 'border-[color:var(--newCommunityTheme-button)]' : ''}`}>
                 <input
-                    id = "blockUserInput"
+                    id = {'blockUserInput' + id}
                     type="text"
                     style={{fontFamily: '"Noto Sans", sans-serif'}}
                     className="grow bg-[color:var(--newCommunityTheme-body)]
@@ -162,7 +183,7 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
                      transition-[top] duration-[0.4s]`}>
                     {blocktext}
                 </label>
-                <button onClick={handleAdd} disabled={!inputValue.trim()}
+                <button id={'blockUserInput1' + id} onClick={handleAdd} disabled={!inputValue.trim()}
                     className={`ml-4 text-sm font-bold uppercase leading-8 tracking-[0.5px]
                         ${inputValue.length > 0 ? `cursor-pointer text-[color:var(--newCommunityTheme-button)]
                          opacity-100` : 'cursor-not-allowed opacity-40'}`}>
@@ -198,7 +219,7 @@ function BlockUserComponent({head, text, blocktext, list, type}) {
                                 </p>
                             )}
                             <div className="flex grow items-center justify-end">
-                                <button onClick={() => handleRemove(name)}
+                                <button id= {'blockUserInput3' + id} onClick={() => handleRemove(name)}
                                     className="cursor-pointer border-[none] p-[initial]
                 text-sm font-bold uppercase leading-8 tracking-[0.5px]
                 text-[color:var(--newCommunityTheme-button)]">
@@ -223,6 +244,7 @@ BlockUserComponent.propTypes = {
         userName: PropTypes.string,
     })).isRequired,
     type: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 };
 
 export {BlockUserComponent};

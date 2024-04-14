@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 /**
  * Provides an interface for selecting a language setting.
@@ -10,7 +10,7 @@ import React from 'react';
  *
  * @return {JSX.Element} The LanguageSettings component.
  */
-export function LanguageSettings() {
+export function LanguageSettings({id}) {
     /**
    * Handles the change in language selection.
    *
@@ -50,14 +50,14 @@ export function LanguageSettings() {
                      leading-5 hover:bg-[var(--newCommunityTheme-buttonAlpha05)] focus:outline-none" style={{
                         fontFamily: '"IBM Plex Sans", sans-serif',
                     }}>
-                        <option value="de-DE">Deutsch</option>
-                        <option value="en-US">English (US)</option>
-                        <option value="es-ES">Español (ES)</option>
-                        <option value="es-MX">Español (MX)</option>
-                        <option value="fr-FR">Français</option>
-                        <option value="it-IT">Italiano</option>
-                        <option value="pt-BR">Português (BR)</option>
-                        <option value="pt-PT">Português (PT)</option></select>
+                        <option id = 'o1' value="de-DE">Deutsch</option>
+                        <option id = 'o2' value="en-US">English (US)</option>
+                        <option id = 'o3' value="es-ES">Español (ES)</option>
+                        <option id = 'o4' value="es-MX">Español (MX)</option>
+                        <option id = 'o5' value="fr-FR">Français</option>
+                        <option id = 'o6' value="it-IT">Italiano</option>
+                        <option id = 'o7' value="pt-BR">Português (BR)</option>
+                        <option id = '08' value="pt-PT">Português (PT)</option></select>
                     <svg className="ml-0.5
                     inline-block
                     size-5
@@ -73,3 +73,7 @@ export function LanguageSettings() {
 
     );
 }
+
+LanguageSettings.propTypes = {
+    id: PropTypes.string,
+};

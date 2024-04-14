@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import {ConnectToTwitterButton} from '../buttons/connecttotwitterbutton.js';
 
 
@@ -14,7 +14,7 @@ import {ConnectToTwitterButton} from '../buttons/connecttotwitterbutton.js';
  * @param {string} props.thirdComponent - The key for the dynamically loaded component
  * @return {React.Component} A React component representing a generic setting item.
  */
-function ConnectToTwitter() {
+function ConnectToTwitter({id}) {
     return (
         <div className='mb-8 flex flex-row flex-wrap
          justify-between' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
@@ -31,7 +31,7 @@ function ConnectToTwitter() {
             </div>
 
             <div className="flex grow items-center justify-end">
-                <ConnectToTwitterButton/>
+                <ConnectToTwitterButton id = {id}/>
             </div>
 
         </div>
@@ -39,5 +39,8 @@ function ConnectToTwitter() {
     );
 }
 
+ConnectToTwitter.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ConnectToTwitter};

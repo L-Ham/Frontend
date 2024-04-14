@@ -7,7 +7,7 @@ const ToggleContext = createContext();
 // Create a custom hook for using the context
 export const useToggle = () => useContext(ToggleContext);
 
-export const ToggleProvider = ({children}) => {
+export const ToggleProvider = ({children, id}) => {
     const [isDisplayed, setIsDisplayed] = useState(false);
     const [displaySocial, setDisplaySocial] = useState(false);
     const [displayNfsw, setDisplayNfsw] = useState(false);
@@ -15,6 +15,9 @@ export const ToggleProvider = ({children}) => {
     const [displayConnectToGoogle, setDisplayConnectToGoogle] = useState(false);
     const [socialText, setSocialText] = useState('');
     const [socialIcon, setSocialIcon] = useState('');
+    const [socialId, setSocialId] = useState('');
+    const [socialRequestType, setSocialRequestType] = useState('');
+    const [displayDelete, setDisplayDelete] = useState(false);
 
     // Function to toggle the display state
     /**
@@ -59,7 +62,8 @@ export const ToggleProvider = ({children}) => {
         <ToggleContext.Provider value={{isDisplayed, toggleDisplay, displaySocial,
             toggleSocial, displayNfsw, toggleNfsw, displaySocialTwo, toggleSocialTwo,
             displayConnectToGoogle, toggleConnectToGoogle, setSocialText, setSocialIcon,
-            socialIcon, socialText}}>
+            socialIcon, socialText, socialId, setSocialId, socialRequestType, setSocialRequestType,
+            displayDelete, setDisplayDelete}}>
             {children}
         </ToggleContext.Provider>
     );
@@ -67,4 +71,5 @@ export const ToggleProvider = ({children}) => {
 
 ToggleProvider.propTypes = {
     children: PropTypes.node.isRequired,
+    id: PropTypes.string,
 };

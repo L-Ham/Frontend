@@ -2,16 +2,17 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import {useToggle} from '../../../pop ups/togglecontext.js';
+import PropTypes from 'prop-types';
 
 /**
  * Renders a Material UI button with an icon and text that matches the provided design.
  *
  * @return {React.Component} The styled button component.
  */
-function SocialLinksButton() {
+function SocialLinksButton({id}) {
     const {toggleSocial} = useToggle();
     return (
-        <Button onClick={toggleSocial}
+        <Button id = {'soci' + id} onClick={toggleSocial}
             variant="contained"
             disableRipple
             startIcon={<AddIcon />}
@@ -36,5 +37,10 @@ function SocialLinksButton() {
         </Button>
     );
 }
+
+// Prop validation
+SocialLinksButton.propTypes = {
+    id: PropTypes.string,
+};
 
 export {SocialLinksButton};

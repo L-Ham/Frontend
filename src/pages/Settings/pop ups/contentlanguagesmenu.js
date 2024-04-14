@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function ContentLanguages({onClose}) {
+function ContentLanguages({onClose, id}) {
     return (
         <div className ='fixed
        top-0
@@ -34,7 +34,7 @@ function ContentLanguages({onClose}) {
 
                             </div>
                             <div className="flex flex-[1_0_0] justify-end">
-                                <button aria-label="Close">
+                                <button aria-label="Close" id = {'button' + id}>
                                     <i>
                                     </i>
                                 </button>
@@ -77,7 +77,8 @@ function ContentLanguages({onClose}) {
                             <button className="absolute bottom-0 h-12
                              w-full
                                rounded-[100px] text-sm font-normal
-                               leading-5 text-[color:var(--newRedditTheme-lightText)]">Save
+                               leading-5 text-[color:var(--newRedditTheme-lightText)]"
+                            id = {'button2' + id}>Save
                             </button>
                         </div>
                     </div>
@@ -91,6 +92,7 @@ function ContentLanguages({onClose}) {
 
 ContentLanguages.propTypes = {
     onClose: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
 };
 export {ContentLanguages};
 

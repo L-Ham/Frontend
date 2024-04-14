@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
 import {useToggle} from './togglecontext.js';
+import {axiosInstance} from '../../../requests/axios.js';
+import {API_ROUTES} from '../../../requests/routes.js';
+import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
+
+
 /**
  * ChatMenu function component for selecting a gender identity from a dropdown menu.
  * This component uses Material UI components to render a form control with a select dropdown.
@@ -7,14 +13,54 @@ import {useToggle} from './togglecontext.js';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function AddSocialLinksTwo() {
+function AddSocialLinksTwo({id}) {
+    const token = useSelector((state) => state.user.token);
     // useState hook to manage the input's state
     const [inputValue, setInputValue] = useState('');
+    const [inputValue2, setInputValue2] = useState('');
 
     // Correctly using the useToggle hook and destructuring its returned values
     const {displaySocialTwo, toggleSocialTwo} = useToggle();
     const {socialIcon} = useToggle();
     const {socialText} = useToggle();
+    const {socialRequestType} = useToggle();
+    const {socialId} = useToggle();
+    // const {socialRequestType} = useToggle();
+    /**
+ * Asynchronously updates notification settings using a PATCH request.
+ *
+ * @param {Object} updatedSettings - The new settings to be updated.
+ */
+    async function handleUpdateSocial(updatedSettings) {
+        console.log(updatedSettings);
+        try {
+            await axiosInstance.patch(API_ROUTES.editSocial, updatedSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+        // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update social settings:', error);
+        }
+    }
+    // const {socialRequestType} = useToggle();
+    /**
+ * Asynchronously updates notification settings using a PATCH request.
+ *
+ * @param {Object} updatedSettings - The new settings to be updated.
+ */
+    async function handleAddSocial(updatedSettings) {
+        // const {linkId, ...settingsWithoutLinkId} = ;
+        // console.log(linkId);
+        console.log(updatedSettings);
+        try {
+            await axiosInstance.post(API_ROUTES.editSocial, updatedSettings, {
+                headers: {Authorization: `Bearer ${token}`},
+            });
+        // Optionally refresh the profile settings or indicate success to the user
+        } catch (error) {
+            console.error('Failed to update social settings:', error);
+        }
+    }
 
     /**
  * Handles changes to the input field by updating the component's state with the new value.
@@ -23,6 +69,14 @@ function AddSocialLinksTwo() {
  */
     function handleInputChange(event) {
         setInputValue(event.target.value);
+    }
+    /**
+ * Handles changes to the input field by updating the component's state with the new value.
+ *
+ * @param {Event} event - The event triggered by changing the input field.
+ */
+    function handleInputChange2(event) {
+        setInputValue2(event.target.value);
     }
 
 
@@ -33,6 +87,16 @@ function AddSocialLinksTwo() {
     function handleSaveClick() {
         console.log(inputValue); // Assuming `inputValue` is accessible in the scope
         toggleSocialTwo(); // Assuming `toggleSocialTwo` is a function defined to toggle the visibility
+
+        if (socialRequestType === 'add') {
+            handleAddSocial({'linkOrUsername': 'www.' + socialText + '.com/' + inputValue,
+                'appName': socialText,
+                'displayText': inputValue2});
+        } else {
+            handleUpdateSocial({'linkId': socialId, 'linkOrUsername': 'www.' + socialText + '.com/' + inputValue,
+                'appName': socialText,
+                'displayText': inputValue2});
+        }
     }
 
 
@@ -52,7 +116,7 @@ function AddSocialLinksTwo() {
                      border-solid p-4 [color:var(--newCommunityTheme-line)]">
                         <div className="flex flex-row">
                             <div className="flex-[0_0]">
-                                <button>
+                                <button id = 'button6'>
                                     <i className="
                             text-[color:var(--newCommunityTheme-actionIcon)]
                             ">
@@ -66,7 +130,7 @@ function AddSocialLinksTwo() {
                                 </div>
                             </div>
                             <div className="flex-[0_0]">
-                                <button
+                                <button id = 'button7'
                                     role="button"
                                     tabIndex="0"
                                     onClick={handleSaveClick} // Attach the event handler to the Save button
@@ -89,13 +153,13 @@ function AddSocialLinksTwo() {
                           items-center whitespace-nowrap
                            rounded-full bg-[color:var(--newRedditTheme-flair)]
                             px-3 py-2.5 text-xs font-bold leading-4
-                             text-[color:var(--newRedditTheme-bodyText)]">
+                             text-[color:var(--newRedditTheme-bodyText)]" id = 'list1'>
                             <img className="mr-2"
                                 src={socialIcon}
                                 alt="Instagram"/>
                             {socialText}
                         </li>
-                        <input
+                        <input id = 'input1'
                             placeholder="@username"
                             className="mx-0.5 my-1.5 box-border
                             block h-9 w-full rounded border
@@ -106,7 +170,7 @@ function AddSocialLinksTwo() {
                             value={inputValue}
                             onChange={handleInputChange} // Attach the event handler to the input
                         />
-                        <input
+                        <input id = 'input2'
                             placeholder="@display text"
                             className="mx-0.5 my-1.5 box-border
                             block h-9 w-full rounded border
@@ -114,8 +178,8 @@ function AddSocialLinksTwo() {
                              bg-[color:var(--newCommunityTheme-body)] px-2 py-0
                               text-sm font-normal leading-[21px]
                               text-[color:var(--newCommunityTheme-actionIcon)]"
-                            value={inputValue}
-                            onChange={handleInputChange} // Attach the event handler to the input
+                            value={inputValue2}
+                            onChange={handleInputChange2} // Attach the event handler to the input
                         />
                         <div className="mx-0.5 my-1.5
                          text-xs font-normal leading-4
@@ -128,5 +192,9 @@ function AddSocialLinksTwo() {
         </div>
     ) : null;
 }
+
+AddSocialLinksTwo.propTypes = {
+    id: PropTypes.string,
+};
 
 export {AddSocialLinksTwo};

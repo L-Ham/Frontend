@@ -15,6 +15,8 @@ import {AddSocialLinks} from '../pop ups/addsociallinks.js';
 import {NfswPopUp} from '../pop ups/nfswpopup.js';
 import {AddSocialLinksTwo} from '../pop ups/addsociallinkstwo.js';
 import {ConnectWithGoogle} from '../pop ups/connectwithgoogle.js';
+import {DeletePopUp} from '../pop ups/deleteAccPopup.js';
+import PropTypes from 'prop-types';
 
 
 /**
@@ -27,7 +29,7 @@ import {ConnectWithGoogle} from '../pop ups/connectwithgoogle.js';
  * @param {Object} other - Other props passed to the tab panel.
  * @return {React.ReactElement} The tab panel component.
  */
-export function BasicTabs() {
+export function BasicTabs({id}) {
     const [selectedTab, setSelectedTab] = React.useState('Account');
 
 
@@ -73,7 +75,7 @@ export function BasicTabs() {
     return (
         <ToggleProvider>
             <div>
-                <div className='ml-[calc(100vw_-_100%)] min-h-[calc(100vh_-_88px)] pb-10'>
+                <div id='tabsDiv' className='ml-[calc(100vw_-_100%)] min-h-[calc(100vh_-_88px)] pb-10'>
 
                     <div className="relative box-border">
                         <h3 className='mx-auto my-0 max-w-screen-nd fill-white
@@ -87,23 +89,26 @@ export function BasicTabs() {
                  border-b-[color:var(--newCommunityTheme-line)]
                   px-5 py-0'>
                             {['Account', 'Profile', 'Safety & Privacy', 'Feed settings',
-                                'Notifications', 'Emails', 'Subscriptions', 'Chat & Messaging'].map((tab) => (
-                                <a key={tab} className={
-                                    `mr-2 inline-block cursor-pointer
-                                 px-3 pb-3 pt-[15px] text-sm font-bold leading-[unset] ` +
-                                `hover:text-[color:var(--newCommunityTheme-bodyText)] ` +
-                                `focus:text-[color:var(--newCommunityTheme-bodyText)] ` +
-                                `${selectedTab === tab ?
-                                    'border-b-[3px] border-solid border-b-[color:var(--newCommunityTheme-button)] ' +
-                                    'text-[color:var(--newCommunityTheme-bodyText)]' :
-                                    'border-b-[none] text-[color:var(--newCommunityTheme-metaText)]'
-                                }`}
-                                aria-selected={selectedTab === tab ? 'true' : 'false'}
-                                role="tab"
-                                onClick={() => handleTabChange(tab)}>
+                                'Notifications', 'Emails', 'Subscriptions', 'Chat & Messaging'].map((tab, index) => (
+                                <a
+                                    id={`tab-${tab}`} // Using index to ensure uniqueness
+                                    key={tab}
+                                    className={`mr-2 inline-block cursor-pointer
+            px-3 pb-3 pt-[15px] text-sm font-bold leading-[unset] ` +
+            `hover:text-[color:var(--newCommunityTheme-bodyText)] ` +
+            `focus:text-[color:var(--newCommunityTheme-bodyText)] ` +
+            `${selectedTab === tab ?
+                'border-b-[3px] border-solid border-b-[color:var(--newCommunityTheme-button)] ' +
+                'text-[color:var(--newCommunityTheme-bodyText)]' :
+                'border-b-[none] text-[color:var(--newCommunityTheme-metaText)]'
+            }`}
+                                    aria-selected={selectedTab === tab ? 'true' : 'false'}
+                                    role="tab"
+                                    onClick={() => handleTabChange(tab)}>
                                     {tab}
                                 </a>
                             ))}
+
 
                         </div>
                     </div>
@@ -122,9 +127,14 @@ export function BasicTabs() {
                 <NfswPopUp/>
                 <AddSocialLinksTwo/>
                 <ConnectWithGoogle/>
+                <DeletePopUp/>
 
 
             </div>
         </ToggleProvider>
     );
 }
+
+BasicTabs.propTypes = {
+    id: PropTypes.string,
+};

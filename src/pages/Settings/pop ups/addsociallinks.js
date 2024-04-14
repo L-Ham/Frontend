@@ -1,5 +1,6 @@
 import React from 'react';
 import {useToggle} from './togglecontext.js';
+import PropTypes from 'prop-types';
 
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
@@ -10,12 +11,13 @@ import {useToggle} from './togglecontext.js';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function AddSocialLinks() {
+function AddSocialLinks({id}) {
     const {displaySocial} = useToggle();
     const {toggleSocial} = useToggle();
     const {toggleSocialTwo} = useToggle();
     const {setSocialIcon} = useToggle();
     const {setSocialText} = useToggle();
+    const {setSocialRequestType} = useToggle();
     return displaySocial? (
         <div className="fixed top-0 z-[55] box-border
          flex size-full items-center overflow-auto
@@ -49,6 +51,7 @@ function AddSocialLinks() {
                             toggleSocialTwo();
                             setSocialIcon('https://www.redditstatic.com/desktop2x/img/social-links/custom.png');
                             setSocialText('Custom URL');
+                            setSocialRequestType('add');
                         }} className="mx-0.5 my-1.5 mr-2 flex h-5 cursor-pointer
                         items-center whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)]
@@ -57,10 +60,11 @@ function AddSocialLinks() {
                                 src="https://www.redditstatic.com/desktop2x/img/social-links/custom.png"/>
                                 Custom URL
                         </li>
-                        <li onClick={() => {
+                        <li id = 'button4' onClick={() => {
                             toggleSocialTwo();
                             setSocialIcon('https://www.redditstatic.com/desktop2x/img/social-links/reddit.png');
                             setSocialText('Reddit');
+                            setSocialRequestType('add');
                         }} className="mx-0.5 my-1.5 mr-2 flex h-5 cursor-pointer
                         items-center whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)]
@@ -68,10 +72,11 @@ function AddSocialLinks() {
                             <img className=" mr-2"
                                 src="https://www.redditstatic.com/desktop2x/img/social-links/reddit.png"/>Reddit
                         </li>
-                        <li onClick={() => {
+                        <li id = 'button3' onClick={() => {
                             toggleSocialTwo();
                             setSocialIcon('https://www.redditstatic.com/desktop2x/img/social-links/instagram.png');
                             setSocialText('Instagram');
+                            setSocialRequestType('add');
                         }} className="mx-0.5 my-1.5 mr-2 flex h-5 cursor-pointer
                         items-center whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)]
@@ -80,10 +85,11 @@ function AddSocialLinks() {
                             <img className=" mr-2"
                                 src="https://www.redditstatic.com/desktop2x/img/social-links/instagram.png"/>
           Instagram</li>
-                        <li onClick={() => {
+                        <li id = 'button1' onClick={() => {
                             toggleSocialTwo();
                             setSocialIcon('https://www.redditstatic.com/desktop2x/img/social-links/twitter.png');
                             setSocialText('Twitter');
+                            setSocialRequestType('add');
                         }} className="mx-0.5 my-1.5 mr-2 flex h-5 cursor-pointer
                         items-center whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)]
@@ -92,10 +98,11 @@ function AddSocialLinks() {
                             <img className=" mr-2"
                                 src="https://www.redditstatic.com/desktop2x/img/social-links/twitter.png"/>Twitter
                         </li>
-                        <li onClick={() => {
+                        <li id = 'button2' onClick={() => {
                             toggleSocialTwo();
                             setSocialIcon('https://www.redditstatic.com/desktop2x/img/social-links/tiktok.png');
                             setSocialText('TikTok');
+                            setSocialRequestType('add');
                         }} className="mx-0.5 my-1.5 mr-2 flex h-5 cursor-pointer
                         items-center whitespace-nowrap
                         rounded-full bg-[color:var(--newRedditTheme-flair)]
@@ -109,6 +116,10 @@ function AddSocialLinks() {
             </div>
         </div>) : null;
 }
+
+AddSocialLinks.propTypes = {
+    id: PropTypes.string,
+};
 
 export {AddSocialLinks};
 

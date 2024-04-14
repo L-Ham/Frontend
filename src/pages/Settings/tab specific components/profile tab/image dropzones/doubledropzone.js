@@ -8,6 +8,7 @@ import {API_ROUTES} from '../../../../../requests/routes';
 /**
  * DoubleDropZone component to display two drop zones for uploading images
  * @param {object} props - The props of the component
+ * @param {string} id - The ID of the component
  * @return {JSX.Element} - The JSX element of the component
  * @component
  * @example
@@ -15,10 +16,10 @@ import {API_ROUTES} from '../../../../../requests/routes';
  *  <DoubleDropZone />
  * )
  *
-
+*
  *
  * */
-function DoubleDropZone(props) {
+function DoubleDropZone(props, id) {
     // State to store the uploaded image URLs
     const [leftImage, setLeftImage] = useState(null);
     const [rightImage, setRightImage] = useState(null);
@@ -208,11 +209,12 @@ function DoubleDropZone(props) {
                             </div>
                         </>
                     }
-                    <input type="file" accept="image/x-png,image/jpeg" className="hidden" onChange={handleLeftChange}/>
+                    <input id = {'im1' + id} type="file" accept="image/x-png,image/jpeg"
+                        className="hidden" onChange={handleLeftChange}/>
                 </label>
             </div>
             <div className="relative m-0 h-full w-[412px]">
-                <label className="box-border flex size-full cursor-pointer
+                <label id = {'im2' + id} className="box-border flex size-full cursor-pointer
                  flex-col items-center justify-center rounded-lg border border-dashed
                   border-[#d7d7d7] bg-[color:var(--newCommunityTheme-field)] p-1 text-center"
                 onDrop={handleRightDrop} onDragOver={(e) => e.preventDefault()}>
@@ -233,7 +235,8 @@ function DoubleDropZone(props) {
                             </div>
                         </>
                     }
-                    <input type="file" accept="image/x-png,image/jpeg" className="hidden" onChange={handleRightChange}/>
+                    <input id = {'im3' + id} type="file" accept="image/x-png,image/jpeg"
+                        className="hidden" onChange={handleRightChange}/>
                 </label>
             </div>
         </div>
@@ -272,6 +275,10 @@ function SVGComponent({style}) {
 
 SVGComponent.propTypes = {
     style: PropTypes.object,
+};
+
+DoubleDropZone.propTypes = {
+    id: PropTypes.string,
 };
 
 export {DoubleDropZone};

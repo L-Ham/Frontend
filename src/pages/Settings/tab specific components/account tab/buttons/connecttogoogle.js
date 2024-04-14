@@ -1,6 +1,6 @@
 import React from 'react';
 import {useToggle} from '../../../pop ups/togglecontext.js';
-
+import PropTypes from 'prop-types';
 /**
  * AppleButton function component creates a styled button intended to represent or initiate
  * a connection with Apple services. Upon clicking the button, a log message is displayed in
@@ -9,7 +9,7 @@ import {useToggle} from '../../../pop ups/togglecontext.js';
  *
  * @return {React.Component} A button with an Apple logo, styled to match Apple's branding.
  */
-function ConnectToGoogle() {
+function ConnectToGoogle({id}) {
     /**
      * Handles click events on the button, logging a confirmation message to the console.
      * This function serves as a placeholder for actual logic to connect to Apple services.
@@ -30,7 +30,7 @@ function ConnectToGoogle() {
 
 
     return (
-        <button onClick={handleClick} className='relative box-border
+        <button onClick={handleClick} id = {'google' + id} className='relative box-border
          flex min-h-[32px] w-auto
           min-w-[195px] max-w-full items-center
           justify-center whitespace-pre-wrap rounded-full border-[#4286f5]
@@ -77,6 +77,9 @@ function ConnectToGoogle() {
     );
 }
 
+ConnectToGoogle.propTypes = {
+    id: PropTypes.string.isRequired,
+};
 
 export {ConnectToGoogle};
 

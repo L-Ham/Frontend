@@ -17,6 +17,7 @@ const API_ROUTES = {
     blockUser: '/user/blockUser',
     unblockUser: '/user/unblockUser',
     muteCommunity: '/user/muteCommunity',
+    unmuteCommunity: '/user/unmuteCommunity',
     emailSettings: '/user/emailSettings',
     chatSettings: '/user/messagingSettings',
     getAvatar: '/user/avatarImage',
@@ -30,6 +31,11 @@ const API_ROUTES = {
     forgotpassword: '/auth/forgotPassword',
     updatepassword: '/auth/updatePassword',
     userSelfInfo: '/user/selfInfo',
+    editSocial: '/user/socialLink',
+    Location: '/user/getUserLocation',
+    editLocation: '/user/editUserLocation',
+    deleteUser: '/auth/deleteAccount',
+    googleConnect: '/auth/googleConnect',
     // Add more routes as needed
 };
 

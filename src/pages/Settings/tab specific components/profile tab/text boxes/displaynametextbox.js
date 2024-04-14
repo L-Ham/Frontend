@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * the remaining characters allowed based on the MAX_CHARS limit.
  * @return {JSX.Element} The display name text box component. func is for post
  */
-function DisplayNameTextBox({initialText = '', functio}) {
+function DisplayNameTextBox({initialText = '', functio, id}) {
     // Initialize both inputValue and tempValue with f, defaulting to an empty string
 
     const [tempValue, setTempValue] = useState(initialText);
@@ -45,7 +45,7 @@ function DisplayNameTextBox({initialText = '', functio}) {
 
     return (
         <div style={{width: '100%', height: '100%'}}>
-            <input
+            <input id = {'dn1' + id}
                 placeholder="Display name (optional)"
                 maxLength={MAX_CHARS}
                 type="text"
@@ -68,6 +68,7 @@ function DisplayNameTextBox({initialText = '', functio}) {
 DisplayNameTextBox.propTypes = {
     initialText: PropTypes.string,
     functio: PropTypes.func,
+    id: PropTypes.string,
 
 };
 

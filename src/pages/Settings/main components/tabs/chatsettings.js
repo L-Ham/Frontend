@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {useSelector} from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 /**
@@ -14,7 +15,7 @@ import {useSelector} from 'react-redux';
  *
  * @return {React.Component} A div container with settings to manage chat and messaging preferences.
  */
-function ChatSettings() {
+function ChatSettings({id}) {
     const token = useSelector((state) => state.user.token);
     const [chatSettings, setChatSettings] = useState({
         chatRequests: 'Everyone',
@@ -78,15 +79,18 @@ function ChatSettings() {
             >
             Chat & messaging
             </h2>
-            <SettingsTabHeading text="MESSAGES" />
+            <SettingsTabHeading text="MESSAGES" id = '1' />
 
             <SettingsGenericItemRight head="Who can send you chat requests" thirdComponent={'chatMenu'}
-                item = {chatSettings.chatRequests} genericFunction={changeMenu}/>
+                item = {chatSettings.chatRequests} genericFunction={changeMenu} id = '2'/>
             <SettingsGenericItemRight head="Who can send you private messages" thirdComponent={'privMenu'}
-                item = {chatSettings.privateMessages} genericFunction={changeMenu} />
-            <SettingsGenericItemRight head="Mark all as read" thirdComponent={'mr'} />
+                item = {chatSettings.privateMessages} genericFunction={changeMenu} id = '3' />
+            <SettingsGenericItemRight head="Mark all as read" thirdComponent={'mr'} id = '4' />
         </div>
     );
 }
 
+ChatSettings.propTypes = {
+    id: PropTypes.string,
+};
 export {ChatSettings};

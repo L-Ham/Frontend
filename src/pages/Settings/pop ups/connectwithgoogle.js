@@ -1,5 +1,11 @@
 import React from 'react';
 import {useToggle} from './togglecontext.js';
+import {GoogleButton} from '../../../generic components/guestpagecomponents/signupcomponents/google.js';
+import {useState} from 'react';
+
+import {axiosInstance as axios} from '../../../requests/axios';
+import {API_ROUTES} from '../../../requests/routes';
+import PropTypes from 'prop-types';
 // import {FormControl, Select, MenuItem} from '@mui/material';
 
 /**
@@ -9,7 +15,38 @@ import {useToggle} from './togglecontext.js';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function ConnectWithGoogle() {
+function ConnectWithGoogle({id}) {
+    // const userToken = useSelector((state) => state.user.token);
+    const [Token, setToken] = useState('');
+    const [passwordd, setPassword] = useState(''); // State to hold the password
+
+    /**
+     * Handles the change event for the password input field.
+     * Updates the state with the new password value.
+     * @param {Object} event - The event object.
+     * @return {void}
+     * */
+    function handlePasswordChange(event) {
+        setPassword(event.target.value); // Update the state with the new password
+    }
+
+    const handleAccessToken = async (accessToken, pass = passwordd, userToken = userToken ) => {
+        setToken(accessToken);
+        // You can perform further actions with the access token here
+        console.log('Received access token:', accessToken);
+        try {
+            // Send the access token to the backend
+            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: pass},
+                {
+                    headers: {Authorization: `Bearer ${userToken}`},
+                });
+
+            console.log('Token sent to backend:', response.data);
+        } catch (error) {
+            console.error('Error sending token to backend:', error);
+        }
+        console.log(Token);
+    };
     const {displayConnectToGoogle} = useToggle();
     const {toggleConnectToGoogle} = useToggle();
     return displayConnectToGoogle ?(
@@ -31,7 +68,7 @@ function ConnectWithGoogle() {
                 </div>
                 {/* Close button */}
                 <button onClick={toggleConnectToGoogle} className="absolute right-0 top-0
-                 mr-4 mt-4 text-lg font-semibold text-gray-700">
+                 mr-4 mt-4 text-lg font-semibold text-gray-700" id = 'google1'>
           &times;
                 </button>
                 <p className="text-gray-600">To continue, confirm your password and sign in with Google.</p>
@@ -43,13 +80,14 @@ function ConnectWithGoogle() {
                         <input type="password" id="password" className="block w-full
              rounded-lg border border-gray-300 bg-gray-50
               p-2.5 text-gray-900 focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        placeholder="PASSWORD" required />
+                        placeholder="PASSWORD" required onChange={handlePasswordChange} />
                     </div>
                     <div className="flex items-center justify-between">
-                        <button type="submit" className="w-full rounded-lg
+                        <GoogleButton onAccessToken={handleAccessToken} />
+                        {/* <button type="submit" className="w-full rounded-lg
              bg-blue-600 px-5 py-2.5
              text-center text-sm font-medium text-white hover:bg-blue-700 focus:ring-4
-              focus:ring-blue-300 sm:w-auto">Continue</button>
+    focus:ring-blue-300 sm:w-auto">Continue</button>*/}
                     </div>
                 </form>
             </div>
@@ -57,6 +95,9 @@ function ConnectWithGoogle() {
 
     ):null;
 }
+ConnectWithGoogle.propTypes = {
+    id: PropTypes.string,
+};
 
 export {ConnectWithGoogle};
 

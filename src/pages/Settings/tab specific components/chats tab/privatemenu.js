@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
  * @param {function} func - The function to be called when the gender is selected.
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function PrivateMenu({init, func}) {
+function PrivateMenu({init, func, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedGender, setSelectedGender] = useState('EVERYONE');
     useEffect(() => {
@@ -60,13 +60,13 @@ function PrivateMenu({init, func}) {
             <div className='ml-4 flex items-center'>
                 <div className='cursor-pointer'>
                     <div className='flex items-center'>
-                        <button className='block w-full whitespace-nowrap
+                        <button id = {'b1' + id} className='block w-full whitespace-nowrap
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
                             {selectedGender}
                         </button>
-                        <span onClick={toggleDropdown}>
+                        <span id = {'s1' + id} onClick={toggleDropdown}>
                             <svg
                                 className="ml-0.5 inline-block
                                 size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
@@ -91,7 +91,7 @@ function PrivateMenu({init, func}) {
                         }}
                         >
                             {['EVERYONE', 'Nobody'].map((gender) => (
-                                <button key={gender} className='block w-full whitespace-nowrap
+                                <button id = {'b5' + id} key={gender} className='block w-full whitespace-nowrap
                                 fill-[var(--newRedditTheme-actionIcon)] p-2
                             text-left text-sm font-medium capitalize leading-[18px]
                             text-[color:var(--newRedditTheme-actionIcon)]
@@ -112,6 +112,7 @@ function PrivateMenu({init, func}) {
 PrivateMenu.propTypes = {
     init: PropTypes.string,
     func: PropTypes.func,
+    id: PropTypes.string,
 
 };
 

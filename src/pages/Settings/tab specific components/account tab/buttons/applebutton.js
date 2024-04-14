@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 /**
  * AppleButton function component creates a styled button intended to represent or initiate
  * a connection with Apple services. Upon clicking the button, a log message is displayed in
@@ -8,7 +8,7 @@ import React from 'react';
  *
  * @return {React.Component} A button with an Apple logo, styled to match Apple's branding.
  */
-function AppleButton() {
+function AppleButton({id}) {
     /**
      * Handles click events on the button, logging a confirmation message to the console.
      * This function serves as a placeholder for actual logic to connect to Apple services.
@@ -21,7 +21,7 @@ function AppleButton() {
     }
 
     return (
-        <button onClick={handleClick} style={styles.button}>
+        <button onClick={handleClick} style={styles.button} id = {'apple' + id}>
             <div style={styles.logo}>
                 <svg color="#ffffff" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
                     <path d={`M8.8162 4.15385C9.60444 4.15385 10.5925 3.60458 11.1809 2.87222C11.7138 2.20852 12.1` +
@@ -72,5 +72,9 @@ const styles = {
     },
 };
 
+
+AppleButton.propTypes = {
+    id: PropTypes.string,
+};
 export {AppleButton};
 

@@ -6,13 +6,14 @@ import {SettingsGenericItemRight} from '../../generic components/settingsgeneric
 import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
 import {ThirdPartyAuthorization} from '../../general components/buttons/thirdpartyauthorization.js';
 import {BlockUserComponent} from '../../tab specific components/safety and privacy tab/blockusercomponent.js';
+import PropTypes from 'prop-types';
 /**
     * ProfileSettings function component renders the profile customization settings.
 
     *
     * @return {React.Component} A div container with settings to customize the user's profile.
     */
-function SafetySettings() {
+function SafetySettings({id}) {
     const token = useSelector((state) => state.user.token);
     const [safetySettings, setSafetySettings] = useState({
         blockUsers: [],
@@ -102,9 +103,9 @@ function SafetySettings() {
                 </span>.
             </p>
 
-            <SettingsTabHeading text="SAFETY" />
+            <SettingsTabHeading text="SAFETY" id = '1' />
 
-            <BlockUserComponent
+            <BlockUserComponent id = '2'
                 head="People You've Blocked"
                 text="Blocked people can’t send you chat requests or private messages"
                 blocktext='BLOCK NEW USER'
@@ -112,7 +113,7 @@ function SafetySettings() {
                 type = 'user'
             />
 
-            <BlockUserComponent
+            <BlockUserComponent id = '3'
                 head="Communities You've Muted"
                 text="Posts from muted communities won't show up in your feeds or recommendations."
                 blocktext='MUTE NEW COMMUNITY'
@@ -120,40 +121,46 @@ function SafetySettings() {
                 type = 'community'
             />
 
-            <SettingsTabHeading text="PRIVACY" />
+            <SettingsTabHeading text="PRIVACY" id = '4' />
 
-            <SettingsGenericItemRight
+            <SettingsGenericItemRight id = '5'
                 head="Show up in search results"
                 text="Allow search engines like Google to link to your profile in their search results."
                 thirdComponent={'Toggle'}
             />
 
-            <SettingsGenericItemRight
+            <SettingsGenericItemRight id = '6'
                 head="Personalize ads on Reddit based on information and activity from our partners."
                 text="Allow us to use information from our partners to show you better ads on Reddit."
                 thirdComponent={'Toggle'}
             />
 
-            <SettingsTabHeading text="SENSITIVE ADVERTISING CATEGORIES" />
+            <SettingsTabHeading text="SENSITIVE ADVERTISING CATEGORIES" id = '7' />
 
-            <SettingsGenericItemRight head="Alcohol" text="Allowed" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Dating" text="Allowed" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Gambling" text="Allowed" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Pregnancy and parenting" text="Allowed" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Weight loss" text="Allowed" thirdComponent={'Toggle'} />
+            <SettingsGenericItemRight head="Alcohol" text="Allowed" thirdComponent={'Toggle'} id = '8' />
+            <SettingsGenericItemRight head="Dating" text="Allowed" thirdComponent={'Toggle'} id = '9' />
+            <SettingsGenericItemRight head="Gambling" text="Allowed" thirdComponent={'Toggle'} id = '10' />
+            <SettingsGenericItemRight head="Pregnancy and parenting" text="Allowed" thirdComponent={'Toggle'}
+                id = '11' />
+            <SettingsGenericItemRight head="Weight loss" text="Allowed" thirdComponent={'Toggle'}
+                id = '12' />
 
-            <SettingsTabHeading text="ADVANCED SECURITY" />
+            <SettingsTabHeading text="ADVANCED SECURITY" id = '13' />
 
             <SettingsGenericItemRight
                 head="Use two-factor authentication"
                 text="Help protect your account (even if
                     someone gets your password) by requiring a verification code and a password to log in."
-                thirdComponent={'Toggle'}
+                thirdComponent={'Toggle'} id = '14'
             />
 
-            <ThirdPartyAuthorization />
+            <ThirdPartyAuthorization id = '15'/>
         </div>
     );
 }
+
+SafetySettings.propTypes = {
+    id: PropTypes.string,
+};
 
 export {SafetySettings};

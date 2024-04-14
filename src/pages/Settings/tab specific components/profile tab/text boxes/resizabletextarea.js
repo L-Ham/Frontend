@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
  * @param {Function} [props.functio] - A function to call with the text value when the textarea loses focus.
  * @return {JSX.Element} A component consisting of a text area with character count limitation and dynamic updates.
  */
-function ResizableTextArea({maxCharacters, initialText = '', functio}) {
+function ResizableTextArea({maxCharacters, initialText = '', functio, id}) {
     // State to keep track of the text area's temporary value
     const [tempValue, setTempValue] = useState(initialText);
 
@@ -53,7 +53,7 @@ function ResizableTextArea({maxCharacters, initialText = '', functio}) {
 
     return (
         <div style={{width: '100%', height: '100%'}}>
-            <textarea
+            <textarea id = {'text' + id}
                 placeholder="About (optional)"
                 maxLength={maxCharacters}
                 rows="4"
@@ -78,6 +78,7 @@ ResizableTextArea.propTypes = {
     maxCharacters: PropTypes.number.isRequired,
     initialText: PropTypes.string,
     functio: PropTypes.func,
+    id: PropTypes.string,
 };
 
 export {ResizableTextArea};

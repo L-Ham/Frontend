@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {useToggle} from './togglecontext.js';
 
+
 // write jsdoc
 
 /**
@@ -21,7 +22,7 @@ import {useToggle} from './togglecontext.js';
  * );
  *
  * */
-function GenericPopup({head, text}) {
+function GenericPopup({head, text, id}) {
     const {isDisplayed} = useToggle();
     const {toggleDisplay} = useToggle();
     return isDisplayed? (
@@ -38,7 +39,7 @@ function GenericPopup({head, text}) {
                     box-border max-w-[432px]
                     border border-solid border-[color:var(--newRedditTheme-line)]
                      bg-[color:var(--newRedditTheme-body)] px-8 py-6">
-                        <button onClick={toggleDisplay} className="absolute right-3 top-3 size-5">
+                        <button onClick={toggleDisplay} id = 'generic1' className="absolute right-3 top-3 size-5">
                             <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                                 className="size-4 fill-[var(--newRedditTheme-postIcon)]">
                                 <polygon fill="inherit"
@@ -103,7 +104,7 @@ function GenericPopup({head, text}) {
                         </p>
                         <div className="mt-5">
                             <div className="flex flex-row flex-nowrap items-center justify-end">
-                                <button onClick={toggleDisplay} role="button" tabIndex="0"
+                                <button onClick={toggleDisplay} id = 'generic2' role="button" tabIndex="0"
                                     className="relative box-border flex min-h-[32px] w-auto min-w-[32px] items-center
                                 justify-center rounded-full
                                 border border-solid border-[color:var(--newRedditTheme-button)]
@@ -113,7 +114,7 @@ function GenericPopup({head, text}) {
                                  tracking-[unset] text-[color:var(--newRedditTheme-button)]"
                                     style={{fontFamily: 'Noto Sans, Arial, sans-serif'}}>Cancel
                                 </button>
-                                <button
+                                <button id = 'generic3'
                                     onClick={toggleDisplay} role="button"
                                     tabIndex="0" className="relative ml-2 box-border
                                  flex min-h-[32px] w-auto min-w-[32px]
@@ -139,5 +140,6 @@ function GenericPopup({head, text}) {
 GenericPopup.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
 };
 export {GenericPopup};

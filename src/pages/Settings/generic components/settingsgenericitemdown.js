@@ -28,7 +28,7 @@ import {SocialContainer} from '../tab specific components/profile tab/addsociall
  * @param {string} props.thirdComponent - Identifier for the third component to render dynamically.
  * @return {React.Component} The rendered component for a generic settings item.
  */
-function SettingsGenericItemDown({head, text, thirdComponent, prop, genericFunction}) {
+function SettingsGenericItemDown({head, text, thirdComponent, prop, genericFunction, id}) {
     /**
      * Handles the change email button click event.
      */
@@ -47,19 +47,20 @@ function SettingsGenericItemDown({head, text, thirdComponent, prop, genericFunct
                 </p>
             </div>
             <div className='mt-3 flex grow flex-col items-start justify-end'>
-                {thirdComponent === 'Change' && <ChangeButton onClick={handleChangeEmail} />}
-                {thirdComponent === 'GenderMenu' && <GenderMenu />}
-                {thirdComponent === 'Languages' && <LanguagesMenu />}
-                {thirdComponent === 'Twitter' && <ConnectToTwitterButton />}
-                {thirdComponent === 'Apple' && <AppleButton />}
-                {thirdComponent === 'Toggle' && <ToggleButton />}
-                {thirdComponent === 'Delete' && <DeleteAccountButton />}
-                {thirdComponent === 'text30' && <DisplayNameTextBox functio = {genericFunction} initialText={prop} />}
-                {thirdComponent === 'text200' && <ResizableTextArea maxCharacters={200}
+                {thirdComponent === 'Change' && <ChangeButton onClick={handleChangeEmail} id={id} />}
+                {thirdComponent === 'GenderMenu' && <GenderMenu id={id} />}
+                {thirdComponent === 'Languages' && <LanguagesMenu id={id}/>}
+                {thirdComponent === 'Twitter' && <ConnectToTwitterButton id={id} />}
+                {thirdComponent === 'Apple' && <AppleButton id={id} />}
+                {thirdComponent === 'Toggle' && <ToggleButton id={id} />}
+                {thirdComponent === 'Delete' && <DeleteAccountButton id={id} />}
+                {thirdComponent === 'text30' && <DisplayNameTextBox id={id}
                     functio = {genericFunction} initialText={prop} />}
-                {thirdComponent === '2images' && <DoubleDropZone />}
-                {thirdComponent === 'block' && <BlockUserComponent />}
-                {thirdComponent === 'social' && <SocialContainer initialList = {prop} />}
+                {thirdComponent === 'text200' && <ResizableTextArea id={id} maxCharacters={200}
+                    functio = {genericFunction} initialText={prop} />}
+                {thirdComponent === '2images' && <DoubleDropZone id={id} />}
+                {thirdComponent === 'block' && <BlockUserComponent id={id} />}
+                {thirdComponent === 'social' && <SocialContainer id={id} initialList = {prop} />}
             </div>
 
         </div>
@@ -78,6 +79,7 @@ SettingsGenericItemDown.propTypes = {
     ]),
     toggleF: PropTypes.func,
     genericFunction: PropTypes.func,
+    id: PropTypes.string,
 };
 
 export {SettingsGenericItemDown};

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @param {string} [props.header] - An optional header prop to describe the toggle's purpose. Not strictly required.
  * @return {React.Component} A button that toggles its state between on and off.
  */
-function ToggleButton({header = '', func, init}) { // Default value for header is an empty string if not provided
+function ToggleButton({header = '', func, init, id}) { // Default value for header is an empty string if not provided
     const [isToggledOn, setIsToggledOn] = useState(false);
     useEffect(() => {
         setIsToggledOn(init);
@@ -54,7 +54,8 @@ function ToggleButton({header = '', func, init}) { // Default value for header i
 
     return (
         <div className='relative float-right'>
-            <button style={styles.button} onClick={handleToggle}>
+            <button style={styles.button} onClick={handleToggle}
+                id= 'toggleButton1' >
                 <span style={styles.circle}>
                 </span>
             </button>
@@ -67,6 +68,7 @@ ToggleButton.propTypes = {
     header: PropTypes.string,
     func: PropTypes.func,
     init: PropTypes.bool,
+    id: PropTypes.string,
 };
 
 export {ToggleButton};

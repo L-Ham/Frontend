@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function RedditMenu({list, changeVal, changedItem, init}) {
+function RedditMenu({list, changeVal, changedItem, init, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedGender, setSelectedGender] = useState(init);
 
@@ -58,14 +58,14 @@ function RedditMenu({list, changeVal, changedItem, init}) {
             <div className='ml-4 flex items-center'>
                 <div className='cursor-pointer'>
                     <div className='flex items-center'>
-                        <button className='block w-full whitespace-nowrap
+                        <button id = {'r1' + id} className='block w-full whitespace-nowrap
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
                             {selectedGender}
                         </button>
                         <span onClick={toggleDropdown}>
-                            <svg
+                            <svg id = {'r2' + id}
                                 className="ml-0.5 inline-block
                                 size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
                                 viewBox="0 0 20 20"
@@ -89,7 +89,7 @@ function RedditMenu({list, changeVal, changedItem, init}) {
                         }}
                         >
                             {list.map((gender) => (
-                                <button key={gender} className='block w-full whitespace-nowrap
+                                <button id = {'r3' + id} key={gender} className='block w-full whitespace-nowrap
                                 fill-[var(--newRedditTheme-actionIcon)] p-2
                             text-left text-sm font-medium capitalize leading-[18px]
                             text-[color:var(--newRedditTheme-actionIcon)]
@@ -113,6 +113,7 @@ RedditMenu.propTypes = {
     changeVal: PropTypes.func,
     changedItem: PropTypes.string,
     init: PropTypes.string,
+    id: PropTypes.string,
 };
 
 

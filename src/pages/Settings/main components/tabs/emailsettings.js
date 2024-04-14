@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
+import PropTypes from 'prop-types';
 
 /**
  * EmailSettings function component renders the email management settings interface.
@@ -13,7 +14,7 @@ import {API_ROUTES} from '../../../../requests/routes.js';
  *
  * @return {React.Component} A div container with settings to manage email preferences.
  */
-function EmailSettings() {
+function EmailSettings({id}) {
     const token = useSelector((state) => state.user.token);
     const [mailSettings, setmailSettings] = useState({
         privateMessages: false,
@@ -85,35 +86,38 @@ function EmailSettings() {
             >
             Email Settings
             </h2>
-            <SettingsTabHeading text="MESSAGES" />
+            <SettingsTabHeading text="MESSAGES" id = '1' />
 
-            <SettingsGenericItemRight head="Private messages" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Private messages" thirdComponent={'Toggle'} id = '2'
                 f={() => toggleSetting('privateMessages')} prop = {mailSettings.privateMessages} />
             <SettingsGenericItemRight head="Chat requests" thirdComponent={'Toggle'}
-                f={() => toggleSetting('chatRequests')} prop = {mailSettings.chatRequests} />
+                f={() => toggleSetting('chatRequests')} prop = {mailSettings.chatRequests} id = '3' />
 
             <SettingsTabHeading text="ACTIVITY" />
-            <SettingsGenericItemRight head="New user welcome" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="New user welcome" thirdComponent={'Toggle'} id = '4'
                 f={() => toggleSetting('newUserWelcome')} prop = {mailSettings.newUserWelcome} />
-            <SettingsGenericItemRight head="Comments on your posts" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Comments on your posts" thirdComponent={'Toggle'} id = '5'
                 f={() => toggleSetting('commentOnPost')} prop = {mailSettings.commentOnPost} />
-            <SettingsGenericItemRight head="Replies to your comments" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Replies to your comments" thirdComponent={'Toggle'} id = '6'
                 f={() => toggleSetting('repliesToComments')} prop = {mailSettings.repliesToComments}/>
-            <SettingsGenericItemRight head="Upvotes on your posts" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Upvotes on your posts" thirdComponent={'Toggle'} id = '7'
                 f={() => toggleSetting('upvotesOnPosts')} prop = {mailSettings.upvotesOnPosts}/>
-            <SettingsGenericItemRight head="Upvotes on your comments" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Upvotes on your comments" thirdComponent={'Toggle'} id = '8'
                 f={() => toggleSetting('upvotesOnComments')} prop = {mailSettings.upvotesOnComments} />
-            <SettingsGenericItemRight head="Username mentions" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="Username mentions" thirdComponent={'Toggle'} id = '9'
                 f={() => toggleSetting('usernameMentions')} prop = {mailSettings.usernameMentions} />
-            <SettingsGenericItemRight head="New followers" thirdComponent={'Toggle'}
+            <SettingsGenericItemRight head="New followers" thirdComponent={'Toggle'} id = '10'
                 f={() => toggleSetting('newFollowers')} prop = {mailSettings.newFollowers} />
 
-            <SettingsTabHeading text="NEWSLETTERS" />
-            <SettingsGenericItemRight head="Daily Digest" thirdComponent={'Toggle'} />
-            <SettingsGenericItemRight head="Unsubscribe from all emails" thirdComponent={'Toggle'}
+            <SettingsTabHeading text="NEWSLETTERS" id = '11' />
+            <SettingsGenericItemRight head="Daily Digest" thirdComponent={'Toggle'} id = '12' />
+            <SettingsGenericItemRight head="Unsubscribe from all emails" thirdComponent={'Toggle'} id = '13'
                 f={() => toggleSetting('unsubscribeFromEmail')} prop = {mailSettings.unsubscribeFromEmail} />
         </div>
     );
 }
 
+EmailSettings.propTypes = {
+    id: PropTypes.string,
+};
 export {EmailSettings};

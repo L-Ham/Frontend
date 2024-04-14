@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  * @param {string} props.text - The text to display as the heading of the settings tab.
  * @return {React.Component} A styled div element containing the heading text.
  */
-function SettingsTabHeading({text}) {
+function SettingsTabHeading({text, id}) {
     return (
         <div
             className='mb-8 border-b border-solid border-b-[color:var(--newCommunityTheme-line)] pb-1.5 text-[10px]
@@ -25,6 +25,7 @@ function SettingsTabHeading({text}) {
 
 SettingsTabHeading.propTypes = {
     text: PropTypes.string.isRequired,
+    id: PropTypes.string,
 };
 
 export {SettingsTabHeading};

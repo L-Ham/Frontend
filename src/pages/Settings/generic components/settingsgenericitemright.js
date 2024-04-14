@@ -26,7 +26,7 @@ import {ClearHistory} from '../tab specific components/profile tab/buttons/clear
  * @param {string} props.thirdComponent - The key for the dynamically loaded component
  * @return {React.Component} A React component representing a generic setting item.
  */
-function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericFunction, menu, item}) {
+function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericFunction, menu, item, id}) {
     return (
         <div className='mb-8 flex flex-row flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>
             <div className="mr-2 flex max-w-[80%] flex-col">
@@ -40,19 +40,19 @@ function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericF
             </div>
             <div className="flex grow items-center justify-end">
                 <div className="relative float-right">
-                    {thirdComponent === 'Change' && <ChangeButton />}
-                    {thirdComponent === 'GenderMenu' && <GenderMenu func = {f} init = {item} />}
-                    {thirdComponent === 'Languages' && <LanguagesMenu />}
-                    {thirdComponent === 'Twitter' && <ConnectToTwitterButton />}
-                    {thirdComponent === 'Apple' && <ConnectToGoogle />}
-                    {thirdComponent === 'Toggle' && <ToggleButton func = {f} init = {prop} />}
-                    {thirdComponent === 'Delete' && <DeleteAccountButton />}
-                    {thirdComponent === 'mr' && <MarkAsReadButton />}
-                    {thirdComponent === 'rm' && <RedditMenu list = {menu} changeVal={genericFunction}
+                    {thirdComponent === 'Change' && <ChangeButton id={id} />}
+                    {thirdComponent === 'GenderMenu' && <GenderMenu id={id} func = {f} init = {item} />}
+                    {thirdComponent === 'Languages' && <LanguagesMenu id={id} />}
+                    {thirdComponent === 'Twitter' && <ConnectToTwitterButton id={id} />}
+                    {thirdComponent === 'Apple' && <ConnectToGoogle id={id} />}
+                    {thirdComponent === 'Toggle' && <ToggleButton id={id} func = {f} init = {prop} />}
+                    {thirdComponent === 'Delete' && <DeleteAccountButton id={id} />}
+                    {thirdComponent === 'mr' && <MarkAsReadButton id={id} />}
+                    {thirdComponent === 'rm' && <RedditMenu id={id} list = {menu} changeVal={genericFunction}
                         changedItem = {item} init = {prop} /> }
-                    {thirdComponent === 'chatMenu' && <ChatMenu init = {item} func = {genericFunction} />}
-                    {thirdComponent === 'privMenu' && <PrivateMenu init = {item} func = {genericFunction} />}
-                    {thirdComponent === 'clearhistory' && <ClearHistory />}
+                    {thirdComponent === 'chatMenu' && <ChatMenu id={id} init = {item} func = {genericFunction} />}
+                    {thirdComponent === 'privMenu' && <PrivateMenu id={id} init = {item} func = {genericFunction} />}
+                    {thirdComponent === 'clearhistory' && <ClearHistory id={id} />}
                 </div>
             </div>
         </div>
@@ -69,6 +69,7 @@ SettingsGenericItemRight.propTypes = {
     genericFunction: PropTypes.func,
     menu: PropTypes.array,
     item: PropTypes.string,
+    id: PropTypes.string,
 };
 
 export {SettingsGenericItemRight};
