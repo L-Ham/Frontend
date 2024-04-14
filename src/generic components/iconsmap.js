@@ -73,6 +73,19 @@ import {ReactComponent as AddIconOutline} from '../assets/icons/add-outline.svg'
 import ArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import {ReactComponent as DizzySnooIconOutline} from '../assets/icons/dizzy-snoo-outline.svg';
 import {ReactComponent as BigXIcon} from '../assets/icons/big-x.svg';
+import {ReactComponent as NSFWIcon} from '../assets/icons/nsfw.svg';
+import {ReactComponent as SpoilerIcon} from '../assets/icons/spoiler.svg';
+import {ReactComponent as UpvoteIconFill} from '../assets/icons/upvote-fill.svg';
+import {ReactComponent as DownvoteIconFill} from '../assets/icons/downvote-fill.svg';
+import {ReactComponent as LinkPostIconOutline} from '../assets/icons/link-post-outline.svg';
+import {ReactComponent as CrossPostIconOutline} from '../assets/icons/cross-post-outline.svg';
+import {ReactComponent as EmbedIconOutline} from '../assets/icons/embed-outline.svg';
+import {ReactComponent as SaveIconOutline} from '../assets/icons/save-outline.svg';
+import {ReactComponent as HideIconOutline} from '../assets/icons/hide-outline.svg';
+import {ReactComponent as ReportIconOutline} from '../assets/icons/report-outline.svg';
+import {ReactComponent as ViewCardIconOutline} from '../assets/icons/view-card-outline.svg';
+import {ReactComponent as ViewCardIconFill} from '../assets/icons/view-card-fill.svg';
+import {ReactComponent as ViewClassicIconOutline} from '../assets/icons/view-classic-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -148,6 +161,19 @@ const ICONS_MAP = {
     'rules-outline': RulesIconOutline,
     'add-outline': AddIconOutline,
     'big-x': BigXIcon,
+    'nsfw': NSFWIcon,
+    'spoiler': SpoilerIcon,
+    'upvote-fill': UpvoteIconFill,
+    'downvote-fill': DownvoteIconFill,
+    'link-post-outline': LinkPostIconOutline,
+    'cross-post-outline': CrossPostIconOutline,
+    'embed-outline': EmbedIconOutline,
+    'save-outline': SaveIconOutline,
+    'hide-outline': HideIconOutline,
+    'report-outline': ReportIconOutline,
+    'view-card-outline': ViewCardIconOutline,
+    'view-card-fill': ViewCardIconFill,
+    'view-classic-outline': ViewClassicIconOutline,
 };
 
 /**
