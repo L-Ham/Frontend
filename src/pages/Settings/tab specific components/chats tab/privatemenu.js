@@ -8,12 +8,17 @@ import PropTypes from 'prop-types';
  * This component uses Material UI components to render a form control with a select dropdown.
  * The user's selected gender identity is managed using React's useState hook, and changes are logged to the console.
  *
+ * @param {string} init - The initial value for the selected gender.
+ * @param {function} func - The function to be called when the gender is selected.
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function RedditMenu({list, changeVal, changedItem, init, id}) {
+function PrivateMenu({init, func, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const [selectedGender, setSelectedGender] = useState(init);
-
+    const [selectedGender, setSelectedGender] = useState('EVERYONE');
+    useEffect(() => {
+        setSelectedGender(init);
+    }
+    , [init]);
     /**
  * Toggles the visibility state of the dropdown menu.
  */
@@ -21,13 +26,10 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
         setShowDropdown(!showDropdown); // Assumes `showDropdown` is a boolean state variable
     }
 
-    useEffect(() => {
-        setSelectedGender(init);
-        console.log(init);
-    }, [init]);
+
     /**
- * Handles the gender selection by updating the state, logging the selection,
- * hiding the dropdown, and performing an additional action with the selected gender.
+ * Handles the gender selection by updating the state and logging the selection.
+ * It also hides the dropdown menu after a selection is made.
  *
  * @param {string} gender - The gender that has been selected.
  */
@@ -35,7 +37,7 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
         setSelectedGender(gender); // Update the selected gender state
         setShowDropdown(false); // Hide the dropdown after selection
         console.log(`${gender} is now selected`); // Log the selected gender to the console
-        changeVal(changedItem, gender); // Perform additional action with the selected gender
+        func('privateMessages', gender);
     }
 
     // const [selection, setSelection] = useState('');
@@ -58,14 +60,14 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
             <div className='ml-4 flex items-center'>
                 <div className='cursor-pointer'>
                     <div className='flex items-center'>
-                        <button id = {'r1' + id} className='block w-full whitespace-nowrap
+                        <button id = {'b1' + id} className='block w-full whitespace-nowrap
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
                             {selectedGender}
                         </button>
-                        <span onClick={toggleDropdown}>
-                            <svg id = {'r2' + id}
+                        <span id = {'s1' + id} onClick={toggleDropdown}>
+                            <svg
                                 className="ml-0.5 inline-block
                                 size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
                                 viewBox="0 0 20 20"
@@ -88,8 +90,8 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
                             fontFamily: '"IBM Plex Sans", sans-serif',
                         }}
                         >
-                            {list.map((gender) => (
-                                <button id = {'r3' + id} key={gender} className='block w-full whitespace-nowrap
+                            {['EVERYONE', 'Nobody'].map((gender) => (
+                                <button id = {'b5' + id} key={gender} className='block w-full whitespace-nowrap
                                 fill-[var(--newRedditTheme-actionIcon)] p-2
                             text-left text-sm font-medium capitalize leading-[18px]
                             text-[color:var(--newRedditTheme-actionIcon)]
@@ -107,14 +109,11 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
         </div>
     );
 }
-
-RedditMenu.propTypes = {
-    list: PropTypes.array.isRequired,
-    changeVal: PropTypes.func,
-    changedItem: PropTypes.string,
+PrivateMenu.propTypes = {
     init: PropTypes.string,
+    func: PropTypes.func,
     id: PropTypes.string,
+
 };
 
-
-export {RedditMenu};
+export {PrivateMenu};

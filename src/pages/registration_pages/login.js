@@ -33,11 +33,7 @@ const Login = () => {
         if (token) {
             dispatch(login({token: token}));
             try {
-                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
+                const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
                 dispatch(selfInfo(selfInfoResponse.data.user));
             } catch (error) {
                 console.error('Error retrieving user info:', error);

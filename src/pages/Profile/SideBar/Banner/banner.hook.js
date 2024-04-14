@@ -15,11 +15,7 @@ export const useBanner = () => {
         const fetchBanner = async () => {
             if (user.token && !user.bannerImage) {
                 try {
-                    const response = await axios.get(API_ROUTES.getBanner, {
-                        headers: {
-                            Authorization: `Bearer ${user.token}`,
-                        },
-                    });
+                    const response = await axios.get(API_ROUTES.getBanner);
                     console.log('fetching banner');
                     console.log(response);
                     const bannerImage = response.data.url;

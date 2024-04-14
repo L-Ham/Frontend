@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
-
+import PropTypes from 'prop-types';
 /**
  * ConnectToTwitterButton function component to create a button that initiates
  * a connection process to Twitter when clicked. This component utilizes Material UI
@@ -10,7 +10,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
  *
  * @return {React.Component} A button styled with Twitter's branding that logs a click event to the console.
  */
-function ConnectToTwitterButton() {
+function ConnectToTwitterButton({id}) {
     /**
      * Handles the button click event to initiate the connection process to Twitter.
      * This function logs a message to the console and is a placeholder for further connection logic.
@@ -23,20 +23,19 @@ function ConnectToTwitterButton() {
     }
 
     return (
-        <Button
+        <Button id = {'twitter' + id}
             variant="contained"
             color="primary"
+            className='min-h-[32px] min-w-[32px] px-4 py-1 text-sm font-bold leading-[17px] tracking-[unset]'
             startIcon={<TwitterIcon />}
             onClick={handleConnectToTwitter}
             style={{
                 textTransform: 'none',
                 borderRadius: '20px',
                 color: 'white',
-                padding: '8px 24px',
+                padding: '4px 20px',
                 fontWeight: 'bold',
-                boxShadow: '0px 3px 1px -2px rgba(0,0,0,0.2), ' +
-                     '0px 2px 2px 0px rgba(0,0,0,0.14), ' +
-                     '0px 1px 5px 0px rgba(0,0,0,0.12)',
+
                 backgroundColor: '#1DA1F2',
             }}
         >
@@ -45,4 +44,7 @@ function ConnectToTwitterButton() {
     );
 }
 
+ConnectToTwitterButton.propTypes = {
+    id: PropTypes.string,
+};
 export {ConnectToTwitterButton};

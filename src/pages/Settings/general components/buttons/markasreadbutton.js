@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from '@mui/material';
+import PropTypes from 'prop-types';
 
 /**
  * MarkAsReadButton function component renders a button styled with Material UI.
@@ -9,7 +10,7 @@ import {Button} from '@mui/material';
  *
  * @return {React.Component} A Material UI Button component labeled "Mark as Read".
  */
-function MarkAsReadButton() {
+function MarkAsReadButton({id}) {
     /**
      * Handles click events for the MarkAsReadButton.
      * It logs a message to the console upon click. This functionality can be extended
@@ -23,6 +24,7 @@ function MarkAsReadButton() {
 
     return (
         <Button
+            id = 'markAsReadButton1'
             variant="outlined"
             onClick={handleClick}
             sx={{
@@ -42,5 +44,10 @@ function MarkAsReadButton() {
         </Button>
     );
 }
+
+// Prop validation
+MarkAsReadButton.propTypes = {
+    id: PropTypes.string,
+};
 
 export {MarkAsReadButton};
