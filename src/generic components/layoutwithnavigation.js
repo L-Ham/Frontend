@@ -26,7 +26,7 @@ function LayoutWithNavigation(props) {
                     <div id='sidebar-container' className='isolate z-[1] order-first hidden nd:block '>
                         <SideBar />
                     </div>
-                    <div id='main-container' className='block w-full flex-col overflow-x-hidden'>
+                    <div id='main-container' className='block w-full flex-col'>
                         {props.children}
                     </div>
                 </div>

@@ -113,13 +113,10 @@ export const DATA = {
     },
     'csMajors': {
         subredditId: 't5_33vsv',
-        display_name_prefixed: 'r/csMajors',
-        banner_background_image: `https://styles.redditmedia.com/t5_2sokd/styles/bannerBackgroundImag` +
-        `e_at8s941lsun31.png`,
-        user_is_subscriber: false,
-        public_description_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All about studying and 
+        subredditName: 'r/csMajors',
+        bannerImage: `https://res.cloudinary.com/dfb8f6xbh/image/upload/v1713038368/jggqcbwdgbav1ho7wccv.gif`,
+        publicDescription: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All about studying and 
         students of computer science.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
-        publicDescription: 'All about studying and students of computer science.',
         membersCount: 242395,
         membersName: 'Members',
         currentlyViewingCount: 303,
@@ -129,8 +126,8 @@ export const DATA = {
     'MBA': {
         subredditId: 't5_2rbd9',
         display_name_prefixed: 'r/MBA',
-        // banner_background_image: `https://styles.redditmedia.com/t5_2sokd/styles/bannerBackgroundImag` +
-        // `e_at8s941lsun31.png`,
+        bannerImage: `https://styles.redditmedia.com/t5_2sokd/styles/bannerBackgroundImag` +
+        `e_at8s941lsun31.png`,
         user_is_subscriber: true,
         publicDescription: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Learn about MBA programs, 
         applying to them, and what life is like while in one and afterwards. Please make sure to read our rules

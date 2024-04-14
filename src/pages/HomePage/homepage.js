@@ -16,7 +16,7 @@ function HomePage() {
                     <Feed viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postList={['t3_1bmnuhw',
                         't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
                 </div>
-                <div className='!-top-8 hidden
+                <div className='top-0 hidden
                  w-[316px] min-w-[316px] md:sticky md:top-[56px]
                  md:max-h-[calc(100vh-56px-1px)] md:overflow-y-auto
                  md:overflow-x-hidden s:block'>
