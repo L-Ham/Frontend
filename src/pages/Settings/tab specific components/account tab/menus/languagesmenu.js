@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {styled, FormControl, Select, MenuItem} from '@mui/material';
+import PropTypes from 'prop-types';
 
 const StyledFormControl = styled(FormControl)({
     'minWidth': 120,
@@ -37,7 +38,7 @@ const StyledMenuItem = styled(MenuItem)({
  *
  * @return {React.Component} The LanguagesMenu component rendering a styled select dropdown for language selection.
  */
-function LanguagesMenu() {
+function LanguagesMenu({id}) {
     const [language, setLanguage] = useState('');
 
     /**
@@ -54,20 +55,24 @@ function LanguagesMenu() {
 
     return (
         <StyledFormControl variant="outlined">
-            <Select
+            <Select id = {'select' + id}
                 value={language}
                 onChange={handleChangeLanguage}
                 displayEmpty
                 inputProps={{'aria-label': 'Without label'}}
             >
-                <StyledMenuItem value={'English (US)'}>English (US)</StyledMenuItem>
-                <StyledMenuItem value={'Deutsch'}>Deutsch</StyledMenuItem>
-                <StyledMenuItem value={'Español (ES)'}>Español (ES)</StyledMenuItem>
-                <StyledMenuItem value={'Español (MX)'}>Español (MX)</StyledMenuItem>
-                <StyledMenuItem value={'Français'}>Français</StyledMenuItem>
+                <StyledMenuItem id = 'i1' value={'English (US)'}>English (US)</StyledMenuItem>
+                <StyledMenuItem id = 'i2' value={'Deutsch'}>Deutsch</StyledMenuItem>
+                <StyledMenuItem id = 'i3' value={'Español (ES)'}>Español (ES)</StyledMenuItem>
+                <StyledMenuItem id = 'i4' value={'Español (MX)'}>Español (MX)</StyledMenuItem>
+                <StyledMenuItem id = 'i5' value={'Français'}>Français</StyledMenuItem>
             </Select>
         </StyledFormControl>
     );
 }
+
+LanguagesMenu.propTypes = {
+    id: PropTypes.string,
+};
 
 export {LanguagesMenu};

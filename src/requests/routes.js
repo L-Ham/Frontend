@@ -7,6 +7,19 @@ const API_ROUTES = {
     CAST_VOTE: '/api/vote',
     */
     login: '/auth/login',
+    accountSettings: '/user/accountSettings',
+    profileSettings: '/user/profileSettings',
+    safetySettings: '/user/safetyAndPrivacySettings',
+    feedSettings: '/user/feedSettings',
+    notificationSettings: '/user/notificationsSettings',
+    banner: '/user/banner',
+    avatar: '/user/avatarImage',
+    blockUser: '/user/blockUser',
+    unblockUser: '/user/unblockUser',
+    muteCommunity: '/user/muteCommunity',
+    unmuteCommunity: '/user/unmuteCommunity',
+    emailSettings: '/user/emailSettings',
+    chatSettings: '/user/messagingSettings',
     getAvatar: '/user/avatarImage',
     getBanner: '/user/banner',
     getInfo: '/user/selfInfo',
@@ -21,6 +34,11 @@ const API_ROUTES = {
     getPopularCommunities: '/subreddit/popularCommunity',
     getUserCommunities: '/user/community',
     getTrendingPosts: '/post/trending',
+    editSocial: '/user/socialLink',
+    Location: '/user/getUserLocation',
+    editLocation: '/user/editUserLocation',
+    deleteUser: '/auth/deleteAccount',
+    googleConnect: '/auth/googleConnect',
     // Add more routes as needed
 };
 

@@ -1,8 +1,14 @@
 import React from 'react';
-import {LanguageSettings} from '../../tab specific components/account tab/bulk components/languagescomponent';
-import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown';
-import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright';
-import {SettingsTabHeading} from '../../general components/text/settingstabheading';
+import {LanguageSettings} from '../../tab specific components/account tab/bulk components/languagescomponent.js';
+import {LocationCustomization} from
+    '../../tab specific components/account tab/bulk components/locationcustomization.js';
+import {ConnectToTwitter} from '../../tab specific components/account tab/bulk components/connecttotwitter.js';
+import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
+import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
+import {useState, useEffect} from 'react';
+import {API_ROUTES} from '../../../../requests/routes'; // Import the API_ROUTES constant
+import {axiosInstance} from '../../../../requests/axios';
+import PropTypes from 'prop-types';
 
 /**
  * AccountSettings function component renders the account settings interface.
@@ -10,58 +16,101 @@ import {SettingsTabHeading} from '../../general components/text/settingstabheadi
  * The component utilizes various generic items and tab headings to structure the settings.
  *
  * @return {React.Component} A div container with account settings.
+ *
+ * @example
+ * return (
+ * <AccountSettings />
+ * );
+ *
  */
-function AccountSettings() {
+function AccountSettings({id}) {
     const leftAlignStyle = {textAlign: 'left'};
+    // const email = '';
+    const [accSettings, setAccSettings] = useState({
+        email: 'yourMail@example.com',
+        gender: 'male',
+        connectedToGoogle: true,
+    });
 
+
+    useEffect(() => {
+        /**
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
+        async function fetchAccountSettings() {
+            try {
+                const response = await axiosInstance.get(API_ROUTES.accountSettings);
+                // Directly use response.data since it matches the expected structure
+                console.log('acc settings recived:', response.data);
+
+                setAccSettings(response.data.accountSettings);
+            } catch (error) {
+                console.error('Failed to fetch feed settings:', error);
+            }
+        }
+        fetchAccountSettings();
+    }, []);
     return (
-        <div style={{backgroundColor: 'white', maxWidth: '600px', marginLeft: '50px', ...leftAlignStyle}}>
-            <h1 style={{color: 'black', marginBottom:
-             '20px', textAlign: 'left', fontWeight: 'bold', fontSize: '20px'}}>Account Settings</h1>
+        <div className='max-w-[688px] flex-auto'>
+            <h2
+                className='px-0 py-10 text-xl font-medium not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
+                style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
+            >
+                Account settings
+            </h2>
 
 
-            <SettingsTabHeading text="Account Preferences" style={leftAlignStyle} />
+            <SettingsTabHeading text="ACCOUNT PREFERENCES" style={leftAlignStyle} />
 
-            <SettingsGenericItemRight head="Email Address" text="yourEmail@gmail.com"
-                thirdComponent={'Change'} style={leftAlignStyle} />
+            <SettingsGenericItemRight head="Email address" text={accSettings.email}
+                thirdComponent={'Change'} style={leftAlignStyle} id = '1' />
 
             <SettingsGenericItemRight head="Gender" text="This information may be used
-             to improve your recommendations and ads." thirdComponent={'GenderMenu'} style={leftAlignStyle} />
+             to improve your recommendations and ads." thirdComponent={'GenderMenu'}
+            item = {accSettings.gender} style={leftAlignStyle} id = '2' />
 
             <LanguageSettings style={leftAlignStyle} />
 
             <SettingsGenericItemRight head="Content Languages" text="Add
              languages you’d like to see posts, community recommendations,
-              and other content in" thirdComponent={'Change'} style={leftAlignStyle} />
+              and other content in" thirdComponent={'Change'} style={leftAlignStyle}
+            id = '3' />
 
-            <SettingsGenericItemRight head="Location Customization" text="Specify a
-             location to customize your recommendations and feed. Reddit does
-              not track your precise geolocation data." thirdComponent={'Languages'} style={leftAlignStyle} />
+            <LocationCustomization id = '4'/>
 
-            <SettingsTabHeading text="Connected Accounts" style={leftAlignStyle} />
+            <SettingsTabHeading text="Connected Accounts" style={leftAlignStyle}
+                id = '5' />
 
-            <SettingsGenericItemDown head="Connect to twitter" text="Connect
-            a Twitter account to enable the choice to tweet your new posts
-             and display a link on your profile. We will never post to
-              Twitter without your permission." thirdComponent={'Twitter'} style={leftAlignStyle} />
+            <ConnectToTwitter id = '6'/>
 
             <SettingsGenericItemRight head="Connect to Apple" text="Connect
-             account to log in to Reddit with Apple" thirdComponent={'Apple'} style={leftAlignStyle} />
+             account to log in to Reddit with Apple" thirdComponent={'Apple'} style={leftAlignStyle}
+            id = '7' />
 
             <SettingsGenericItemRight head="Connect to Google" text="Connect
-             account to log in to Reddit with Google" thirdComponent={'Apple'} style={leftAlignStyle} />
+             account to log in to Reddit with Google" thirdComponent={'Apple'} style={leftAlignStyle}
+            id = '8' />
 
-            <SettingsTabHeading text="Beta tests" style={leftAlignStyle} />
+            <SettingsTabHeading text="Beta tests" style={leftAlignStyle}
+                id = '9'/>
 
             <SettingsGenericItemRight head="Opt into beta tests" text="See
              the newest features from Reddit and join the r/beta
-             community" thirdComponent={'Toggle'} style={leftAlignStyle} />
+             community" thirdComponent={'Toggle'} style={leftAlignStyle}
+            id = '10' />
 
-            <SettingsTabHeading text="Delete" style={leftAlignStyle} />
+            <SettingsTabHeading text="Delete" style={leftAlignStyle}
+                id = '11' />
 
-            <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle} />
+            <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle}
+                id = '12' />
         </div>
     );
 }
 
+AccountSettings.propTypes = {
+    id: PropTypes.string,
+};
 export {AccountSettings};

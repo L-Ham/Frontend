@@ -1,109 +1,120 @@
-import React, {useState} from 'react';
-import {Menu, MenuItem, ListItemIcon, ListItemText, Button} from '@mui/material';
-import HotIcon from '@mui/icons-material/Whatshot';
-import NewIcon from '@mui/icons-material/FiberNew';
-import TopIcon from '@mui/icons-material/BarChart';
-import RisingIcon from '@mui/icons-material/TrendingUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import React from 'react';
+import {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
+// import {FormControl, Select, MenuItem} from '@mui/material';
 
 /**
- * A menu component for a Reddit-style filtering interface, allowing users to select between
- * "Hot", "New", "Top", and "Rising" filters.
+ * ChatMenu function component for selecting a gender identity from a dropdown menu.
+ * This component uses Material UI components to render a form control with a select dropdown.
+ * The user's selected gender identity is managed using React's useState hook, and changes are logged to the console.
  *
- * Utilizes Material UI components to create a dropdown menu with custom icons for each option.
- * The selected filter is displayed on the button and highlighted within the menu.
- * @return {JSX.Element} The RedditMenu component.
+ * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function RedditMenu() {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [selected, setSelected] = useState('New');
+function RedditMenu({list, changeVal, changedItem, init, id}) {
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [selectedGender, setSelectedGender] = useState(init);
 
     /**
-     * Handles opening the menu by setting the anchor element to the current target.
-     *
-     * @param {React.MouseEvent<HTMLButtonElement>} event The event object representing the click.
-     */
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
+ * Toggles the visibility state of the dropdown menu.
+ */
+    function toggleDropdown() {
+        setShowDropdown(!showDropdown); // Assumes `showDropdown` is a boolean state variable
     }
 
+    useEffect(() => {
+        setSelectedGender(init);
+        console.log(init);
+    }, [init]);
     /**
-     * Handles closing the menu and sets the selected filter.
-     * Logs and alerts the newly selected filter for demonstration purposes.
-     *
-     * @param {string} text The text of the selected menu item.
-     */
-    function handleClose(text) {
-        setSelected(text);
-        setAnchorEl(null);
-        console.log(`The selected item is now ${text}`);
-
-        // alert(`The selected item is now ${text}`);
+ * Handles the gender selection by updating the state, logging the selection,
+ * hiding the dropdown, and performing an additional action with the selected gender.
+ *
+ * @param {string} gender - The gender that has been selected.
+ */
+    function selectGender(gender) {
+        setSelectedGender(gender); // Update the selected gender state
+        setShowDropdown(false); // Hide the dropdown after selection
+        console.log(`${gender} is now selected`); // Log the selected gender to the console
+        changeVal(changedItem, gender); // Perform additional action with the selected gender
     }
 
-    const menuItems = [
-        {text: 'Hot', icon: <HotIcon />},
-        {text: 'New', icon: <NewIcon />},
-        {text: 'Top', icon: <TopIcon />},
-        {text: 'Rising', icon: <RisingIcon />},
-    ];
+    // const [selection, setSelection] = useState('');
 
-    const selectedStyle = {
-        color: 'blue',
-        backgroundColor: 'white',
-    };
+    // /**
+    //  * Handles changing the selected gender identity from the dropdown menu.
+    //  * Updates the component's state with the new selection and logs the selection to the console.
+    //  *
+    //  * @param {Object} event - The event object representing the change event on the select input.
+    //  */
+    // function handleChangeGender(event) {
+    //     setSelection(event.target.value);
+    //     console.log(`${event.target.value} is now selected`);
 
-    const unselectedStyle = {
-        color: 'black',
-        backgroundColor: 'white',
-    };
+    //     // alert(`${event.target.value} is now selected`);
+    // }
 
     return (
-        <div>
-            <Button
-                aria-controls="reddit-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-                endIcon={<ArrowDropDownIcon />}
-                sx={{
-                    'textTransform': 'none',
-                    'color': 'black',
-                    'backgroundColor': 'white',
-                    'fontWeight': 'bold',
-                    '&:hover': {
-                        backgroundColor: '#f0f0f0',
-                    },
-                }}
-            >
-                {selected}
-            </Button>
-            <Menu
-                id="reddit-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={() => setAnchorEl(null)}
-            >
-                {menuItems.map((item) => (
-                    <MenuItem
-                        key={item.text}
-                        onClick={() => handleClose(item.text)}
-                        sx={selected === item.text ? selectedStyle : unselectedStyle}
-                    >
-                        <ListItemIcon sx={selected === item.text ? {color: 'blue'} : {}}>
-                            {item.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={item.text}
-                            primaryTypographyProps={{
-                                color: selected === item.text ? 'blue' : 'inherit',
-                            }}
-                        />
-                    </MenuItem>
-                ))}
-            </Menu>
+        <div className='flex grow items-center justify-end'>
+            <div className='ml-4 flex items-center'>
+                <div className='cursor-pointer'>
+                    <div className='flex items-center'>
+                        <button id = {'r1' + id} className='block w-full whitespace-nowrap
+                        border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
+                        font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
+                        onClick={toggleDropdown}>
+                            {selectedGender}
+                        </button>
+                        <span onClick={toggleDropdown}>
+                            <svg id = {'r2' + id}
+                                className="ml-0.5 inline-block
+                                size-5 fill-[var(--newRedditTheme-actionIcon)] align-middle"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M14.17,9.35,10,13.53,5.83,9.35a.5.5,0,0,1,.35-.85h7.64a.5.5,0,0,1,.35.85">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+                    {showDropdown && (
+                        <div className='absolute z-[1] overflow-hidden
+                    rounded
+                    border
+                    border-solid border-[var(--newCommunityTheme-line)] bg-[color:var(--newCommunityTheme-body)]
+                    text-[var(--newCommunityTheme-bodyText)]
+                    shadow-[0_2px_4px_0_var(--newCommunityTheme-bodyTextAlpha20)]
+                     first:border-none'
+                        style={{
+                            fontFamily: '"IBM Plex Sans", sans-serif',
+                        }}
+                        >
+                            {list.map((gender) => (
+                                <button id = {'r3' + id} key={gender} className='block w-full whitespace-nowrap
+                                fill-[var(--newRedditTheme-actionIcon)] p-2
+                            text-left text-sm font-medium capitalize leading-[18px]
+                            text-[color:var(--newRedditTheme-actionIcon)]
+                            hover:bg-[color:var(--newRedditTheme-highlight)]
+                            hover:fill-[var(--newRedditTheme-bodyText)]
+                            hover:text-[color:var(--newRedditTheme-bodyText)]'
+                                onClick={() => selectGender(gender)}>
+                                    <div className='inline-block'>{gender}</div>
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
+
+RedditMenu.propTypes = {
+    list: PropTypes.array.isRequired,
+    changeVal: PropTypes.func,
+    changedItem: PropTypes.string,
+    init: PropTypes.string,
+    id: PropTypes.string,
+};
+
 
 export {RedditMenu};

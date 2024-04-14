@@ -15,14 +15,12 @@ const initialState = {
     email: '',
     recentPosts: recentPostsData,
 };
-let token = null;
 const userSlice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
         login: (state, action) => {
             state.token = action.payload.token;
-            token = action.payload.token;
         },
         setAvatar: (state, action)=>{
             state.avatarImage = action.payload.avatarImage;
@@ -50,6 +48,6 @@ const userSlice = createSlice({
     },
 });
 
-export {initialState, token};
+export {initialState};
 export const {login, setAvatar, setBanner, setTheme, selfInfo, logout, clearRecentPosts} = userSlice.actions;
 export default userSlice.reducer;

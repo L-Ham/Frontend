@@ -29,5 +29,5 @@ export function SubredditRoute() {
  */
 export function ProfilePageRoute() {
     const {name, section} = useParams();
-    return <Profile name={name} section={section}/>;
+    return <div className='h-screen'><Profile name={name} section={section}/></div>;
 }
