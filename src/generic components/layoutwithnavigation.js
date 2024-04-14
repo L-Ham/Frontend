@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
  * */
 function LayoutWithNavigation(props) {
     return (
-        <div>
+        <>
             <div className='flex justify-evenly pt-[56px]'>
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] nd:visible'>
                     <AppBar />
@@ -26,12 +26,12 @@ function LayoutWithNavigation(props) {
                     <div id='sidebar-container' className='isolate z-[1] order-first hidden nd:block '>
                         <SideBar visible={true} />
                     </div>
-                    <div id='main-container' className='block w-full flex-col'>
+                    <div id='main-container' className='block w-full flex-col overflow-x-hidden'>
                         {props.children}
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
