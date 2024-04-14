@@ -16,11 +16,7 @@ export const useOptions = () => {
             if (user.token && !user.avatar) {
                 try {
                     console.log('fetching avatar');
-                    const response = await axios.get(API_ROUTES.getAvatar, {
-                        headers: {
-                            Authorization: `Bearer ${user.token}`,
-                        },
-                    });
+                    const response = await axios.get(API_ROUTES.getAvatar);
                     const avatar = response.data.url;
                     dispatch(setAvatar({avatar}));
                 } catch (e) {
