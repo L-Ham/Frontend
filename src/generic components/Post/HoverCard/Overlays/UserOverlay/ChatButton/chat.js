@@ -11,7 +11,7 @@ import {useChat} from './chat.hooks';
  */
 export function ChatButton({
     userId,
-    name,
+    displayName,
 }) {
     const {
         ChatIcon,
@@ -20,7 +20,7 @@ export function ChatButton({
         <a
             aria-label="Open chat"
             className={chatClasses.anchor}
-            href={window.location.origin.replace('//', '//chat.')+`/user/${name}`}
+            href={window.location.origin.replace('//', '//chat.')+`/user/${displayName}`}
             target="_blank" rel="noreferrer"
             data-testid={`chat-link-${userId}`}
         >
@@ -36,5 +36,5 @@ export function ChatButton({
 
 ChatButton.propTypes = {
     userId: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
 };

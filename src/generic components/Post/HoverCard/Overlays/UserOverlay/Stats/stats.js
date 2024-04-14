@@ -4,20 +4,20 @@ import {statsClasses} from './stats.styles';
 /**
  * Stats component
  * @param {string} authorId
- * @param {number} linkKarma
+ * @param {number} postKarma
  * @param {number} commentKarma
  * @return {React.Component}
  */
 export function Stats({
     authorId,
-    linkKarma,
+    postKarma,
     commentKarma,
 }) {
     return (
         <div className={statsClasses.root} data-testid={`stats-${authorId}`}>
             <div className={statsClasses.postKarma}>
                 <div className={statsClasses.value} data-testid={`postKarma-${authorId}`}>
-                    {linkKarma.toLocaleString()}
+                    {postKarma.toLocaleString()}
                 </div>
                 <div className={statsClasses.label}>
                     Post Karma
@@ -37,6 +37,6 @@ export function Stats({
 
 Stats.propTypes = {
     authorId: PropTypes.string.isRequired,
-    linkKarma: PropTypes.number.isRequired,
+    postKarma: PropTypes.number.isRequired,
     commentKarma: PropTypes.number.isRequired,
 };
