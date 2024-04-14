@@ -1,13 +1,10 @@
+/*eslint-disable*/
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {axiosInstance as axios} from '../../requests/axios';
+import {API_ROUTES} from '../../requests/routes';
 
 const CreatePostPageContext = createContext();
-
-/* eslint-disable-next-line*/
-const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzEzMDIzOTgyLjc3ODA5LCJpYXQiOjE3MTI5Mzc1ODIuNzc4MDksImp0aSI6InhMeVhvTGRaSE54dFhseWpCV29FQnZ3TlVLajBZQSIsImNpZCI6Ijl0TG9GMHNvcDVSSmdBIiwibGlkIjoidDJfdHpzaGE5MGU5IiwiYWlkIjoidDJfdHpzaGE5MGU5IiwibGNhIjoxNzA3Njc5NTM1MDYzLCJzY3AiOiJlSnhra1ZGdTlEQUloT19pNTV6Z3Y4cXZxbkpzc290cW13aHdWbnY3aXRoa0lfVnRZTDVnbVB3UE8ySllRc3dDR1hVb2hwakRFcUJHTE5aSmlYb3pMekhrakNwbURub3JFVGtzNFltaXhPLXdCTXpRRk5Wa3dRTnFiUEVCWVFtVmNxSzI0ZVBTeXJoMkpaYlI4VkdWY3FGSnpRMHE1VVk2cDVBLXdiX1pTWFJLZ2JJTnBSeTNEZE1vWHZoajk5VzM5UFd6X2M1NFJJVUtJdkVCMXBrM00tekVkcGpFdzk0VDVaNjBNMlRSZHpsSjZXczliNWUtU21KY2pUdkdldmJhVE1ia0hKcWVVZl9kOVl2eHhEM1B5X1RhZ1Jtci0xNjY3Vm03ZjlVT1ZNckFVWW1kLURRY3VYTDV0bDhDN2RyMHIzSDd4QTdmRmFuSkRiODFIYlZjbkRqMU1MNS1Bd0FBX185VmU5N2oiLCJyY2lkIjoiLUdpalk5eWxENmFZcno4amxqU3dmUVpQU1lPb1hzMUFZUFJFVHJSb0dmVSIsImZsbyI6Mn0.Tx4rDTZQpmmV35TM9SjkwZ5UhK9xRz8cRD1Vqzwece9792uWNR_i8Qc7WdoKkdOMu3QS7VbF58wRHew8p-kjzPGXdIV6u9Hepyn8jcLSYnZKYYgWsP-WHezgmqyOhfFcNzoDVVgHSXomL4pvG3vC_usr7GTSpGJf2-fxGhUlXo_NWkhe7L-NiM2Z9KO5K-17Bo7U0NMP5dtIuYJ9vvPmcsWEArzZ9RqiCm1B0cOpjTeIt_Ik8ShDMa3C6sMbVypV44tBp1cTrqzz7MDcQGjjUrJ2fiMfq_gXCyWigLyzUPSOsUDzzD8Kd2XOJ-ovQoXFBrAwnzVh48DGAwX2sw9-tg";
-
-const userAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 `+
-`(KHTML, like Gecko) Chrome/123.0.0.0`;
 
 /**
  * Custom hook for using the subreddit context.
@@ -28,6 +25,8 @@ export function CreatePostPageProvider({children, name}) {
     const [loading, setLoading] = useState(true);
     const [about, setAbout] = useState(null);
     const [rules, setRules] = useState(null);
+    const [isCommunityTheme, setIsCommunityTheme] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         const loadData = async () => {
@@ -35,13 +34,16 @@ export function CreatePostPageProvider({children, name}) {
                 const aboutData = await fetchSubredditAbout(name);
                 setAbout(aboutData);
 
-                const rulesData = await fetchSubredditRules(name);
+                const rulesData = await fetchSubredditRules(aboutData.communityDetails.subredditId);
                 setRules(rulesData);
+
+                console.log('rules data', rulesData)
 
                 setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch subreddit data', error);
                 setLoading(false);
+                setIsError(true);
             }
         };
 
@@ -54,6 +56,8 @@ export function CreatePostPageProvider({children, name}) {
         name,
         about,
         rules,
+        isCommunityTheme, setIsCommunityTheme,
+        isError,
     };
 
     return (
@@ -69,37 +73,15 @@ CreatePostPageProvider.propTypes = {
 };
 
 
-/**
- * Fetches the subreddit about from the Reddit API.
- * @param {string} name The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {Object} The subreddit about.
- * */
 const fetchSubredditAbout = async (name) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${name}/about`, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'User-Agent': userAgent,
-        },
-    });
-    const data = await response.json();
+    const response = await axios.get(API_ROUTES.communityDetails(name));
+    const data = response.data;
     return data;
 };
 
-/**
- * Fetches the subreddit rules from the Reddit API.
- * @param {string} name The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {Object} The subreddit rules.
- * */
-const fetchSubredditRules = async (name) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${name}/about/rules`, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'User-Agent': userAgent,
-        },
-    });
-    const data = await response.json();
+
+const fetchSubredditRules = async (id) => {
+    const response = await axios.get(API_ROUTES.subredditRules(id));
+    const data = response.data.rules.ruleList;
     return data;
 };
-
