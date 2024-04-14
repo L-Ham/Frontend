@@ -1,12 +1,9 @@
 import {getIconComponent} from '../../../iconsmap.js';
-import {DATA} from '../../data.js';
 import {formatNumber} from '../../../utils.js';
 
-export const useComments = ({postId}) => {
-    const {permalink, commentCount} = DATA[postId];
+export const useComments = ({commentCount}) => {
     return {
-        permalink,
-        commentCount: formatNumber(commentCount),
+        count: formatNumber(commentCount),
         CommentsIcon: getIconComponent('comments', false),
     };
 };
