@@ -20,25 +20,16 @@ export function UserOverlay({
     closeOverlay,
     userId,
     viewContext,
-    /*
-    subredditIcon,
-    subredditDescription,
-    subredditMembers,
-    subredditMembersName,
-    subredditOnline,
-    subredditOnlineName,
-     */
 }) {
     const {
-        namePrefixed,
-        name,
-        created,
-        avatar,
-        commentKarma,
-        linkKarma,
-        isFriend,
-        publicDescription,
         classNames,
+        avatar,
+        displayName,
+        createdAt,
+        description,
+        postKarma,
+        commentKarma,
+        isFriend,
     } = useUserOverlay({userId, viewContext});
     return (
         <div
@@ -51,30 +42,29 @@ export function UserOverlay({
             <div className={overlayClasses.wrapper}>
                 <TopBar
                     avatar={avatar}
-                    name={name}
-                    namePrefixed={namePrefixed}
-                    created={created}
+                    displayName={displayName}
+                    createdAt={createdAt}
                 />
-                {publicDescription && <div className={overlayClasses.description}
+                {description && <div className={overlayClasses.description}
                     style={overlayStyles.description}
                     data-testid={`user-overlay-description-${userId}`}
                 >
-                    {publicDescription}
+                    {description}
                 </div>}
                 <Stats
                     authorId={userId}
-                    linkKarma={linkKarma}
+                    postKarma={postKarma}
                     commentKarma={commentKarma}
                 />
                 <InfoButton />
                 <div className={overlayClasses.buttons} style={overlayStyles.buttons}>
                     <FollowButtons
-                        authorId={userId}
+                        userId={userId}
                         isFriend={isFriend}
                     />
                     <ChatButton
                         userId={userId}
-                        name={name}
+                        displayName={displayName}
                     />
                 </div>
             </div>
@@ -87,4 +77,11 @@ UserOverlay.propTypes = {
     closeOverlay: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    postKarma: PropTypes.number.isRequired,
+    commentKarma: PropTypes.number.isRequired,
+    isFriend: PropTypes.bool.isRequired,
 };
