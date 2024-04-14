@@ -96,7 +96,7 @@ export function BasicTabs({id}) {
         <ToggleProvider>
             <>
                 <div id='tabsDiv' className='relative ml-[calc(100vw_-_100%)]
-                min-h-[calc(100vh_-_88px)] pb-10 nd:ml-[calc(100vw_-_110%)]'>
+                min-h-[calc(100vh_-_88px)] pb-10'>
                     <div className="relative box-border">
                         <h3 className='mx-auto my-0 max-w-screen-nd fill-white
                 px-5
