@@ -13,8 +13,9 @@ function HeadingSignUp() {
                 fontSize: 18,
                 fontWeight: 500,
                 color: '#1a1a1b',
-                fontFamily: 'IBMPlexSans, sans-serif',
+                fontFamily: '"IBM Plex Sans", sans-serif',
             }}
+            data-testid="headingsignup100"
         >
       Sign up
         </h1>

@@ -6,39 +6,40 @@ import React from 'react';
  */
 function UserAgreementSignup() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '12px',
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="useragreementsignup35"
         >
             <div>
-        By continuing, you are setting up a Reddit
+                By continuing, you are setting up a Reddit
                 <br />
-        account and agree to our{' '}
+                account and agree to our{' '}
                 <a
                     target="_blank"
                     href="https://www.redditinc.com/policies/user-agreement"
                     style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
                 >
-          User Agreement
+                    User Agreement
                 </a>{' '}
-        and
+                and
             </div>{' '}
             <a
                 target="_blank"
                 href="https://www.redditinc.com/policies/privacy-policy"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
-        Privacy Policy
+                Privacy Policy
             </a>
-      .
-        </p>
+            .
+        </div>
     );
 }
 export {UserAgreementSignup};
