@@ -2,7 +2,7 @@
 export const profileIconClasses = {
     avatarWrapper: 'flex items-center justify-center',
     avatarContainer: 'relative inline-block size-8 rounded-full [&>:first-child]:mb-0 [&>:first-child]:rounded-full',
-    avatar: 'max-w-full',
+    avatar: 'max-w-full size-8',
     status: `absolute bottom-0 -right-[0.0825rem] flex size-[.5rem]
      rounded-full border-[0.0625rem] border-solid border-[var(--color-neutral-background)] bg-[var(--color-online)]`,
 };

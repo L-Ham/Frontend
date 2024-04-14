@@ -28,7 +28,7 @@ export const useProfileMenu = () => {
     const dispatch = useDispatch();
 
     // decode the jwt user.token to get the username
-    const username = user.token ? `u/${jwtDecode(user.token).user.userName}` : 'u/Cute-Area64';
+    const username = user.token ? jwtDecode(user.token).user.userName : 'Cute-Area64';
 
     const contributorProgramSubLabel = (
         <span className='inline-flex'>
@@ -61,9 +61,9 @@ export const useProfileMenu = () => {
             (<ProfileMenuListItem
                 key='view-profile'
                 mainLabel='View Profile'
-                subLabel={username}
+                subLabel={`u/${username}`}
                 icon={<ProfileIcon isOnline={true}/>}
-                href='#'
+                href={`/user/${username}`}
             />),
             (<ProfileMenuListItem
                 key='edit-avatar'
