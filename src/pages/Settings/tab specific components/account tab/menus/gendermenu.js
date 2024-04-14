@@ -63,7 +63,7 @@ function GenderMenu({init, id}) {
                         border-[none] fill-[var(--newRedditTheme-button)] p-1 text-left text-xs
                         font-bold uppercase leading-6 tracking-[0.5px] text-[color:var(--newRedditTheme-button)]'
                         onClick={toggleDropdown}>
-                            {selectedGender.toUpperCase()}
+                            {selectedGender ? selectedGender.toUpperCase():'UNKNOWN'}
                         </button>
                         <span id = {'span' + id} onClick={toggleDropdown}>
                             <svg
