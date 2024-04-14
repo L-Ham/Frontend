@@ -24,7 +24,7 @@ function LayoutWithNavigation(props) {
                 <div className='grid h-screen w-full grid-cols-1
                 bg-[var(--color-neutral-background)] nd:grid-cols-[272px_1fr]'>
                     <div id='sidebar-container' className='isolate order-first hidden nd:block'>
-                        <SideBar visible={true} />
+                        <SideBar/>
                     </div>
                     <div id='main-container' className='block w-full flex-col'>
                         {props.children}
