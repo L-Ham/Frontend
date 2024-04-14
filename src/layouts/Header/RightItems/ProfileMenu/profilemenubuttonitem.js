@@ -3,18 +3,18 @@ import {profileMenuListItem as styles} from './profilemenu.styles.js';
 import PropTypes from 'prop-types';
 
 /**
- * User drawer element component
- * This component is used to render an element in the user drawer
+ * Profile Menu element component
+ * This component is used to render an element in the menu
  * @component
  * @param {JSX.Element} icon - The icon to be displayed
  * @param {string|JSX.Element} mainLabel - The main label, can be text or a component
  * @param {string|JSX.Element} subLabel - The sub label below the main label (optional). Can be text or a component
  * @param {function} onClick - The function to be executed when the button is clicked
  * @example
- * // Render the user drawer element
- * <ProfileMenuListItem />
+ * // Render the profile menu element
+ * <ProfileMenuButtonItem />
  * /
- * @return {JSX.Element} The user drawer element component
+ * @return {JSX.Element} The profile menu element component
  */
 function ProfileMenuButtonItem({icon, mainLabel, subLabel, onClick}) {
     return (
