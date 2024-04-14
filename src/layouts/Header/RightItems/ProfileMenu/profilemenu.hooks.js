@@ -49,8 +49,10 @@ export const useProfileMenu = () => {
         const root = document.getElementById('root');
         // add 'theme-dark' to the class list of the element
         if (isThemeDark) {
+            document.scrollingElement.className='theme-dark';
             root.className='theme-dark';
         } else {
+            document.scrollingElement.className='theme-light';
             root.className='theme-light';
         }
     }, [isThemeDark]);
