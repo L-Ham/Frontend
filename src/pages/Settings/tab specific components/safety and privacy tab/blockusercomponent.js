@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance} from '../../../../requests/axios';
 import {API_ROUTES} from '../../../../requests/routes';
+import {getIconComponent} from '../../../../generic components/iconsmap';
 
 /**
  * Represents a component for blocking a user.
@@ -183,7 +184,8 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
             <div className="mt-4 max-h-60 overflow-y-auto">
                 {usersList.map((item, index) => {
                     const name = type === 'user' ? item.blockedUserName : item.mutedCommunityName;
-                    const avatar = type === 'user' ? item.blockedUserAvatar : item.mutedCommunityAvatar;
+                    const avatar = type === 'user' ? (item.blockedUserAvatar ||
+                        require('../../../../assets/images/avatar_default_0.png')) : item.mutedCommunityAvatar;
                     const blockedAt = item.blockedAt;
 
                     return (
@@ -192,10 +194,12 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
                                 <div className="inline-block flex-[0_0_auto]">
                                     <span className="mr-1.5 inline-block size-6 align-middle"
                                         style={{height: '24px', width: '24px'}}>
-                                        <img alt={`${type === 'user' ? 'User' : 'Community'} avatar`}
-                                            className="box-border size-full rounded border border-solid
+                                        {avatar ?
+                                            <img alt={`${type === 'user' ? 'User' : 'Community'} avatar`}
+                                                className="box-border size-full rounded border border-solid
                                          border-[color:var(--newCommunityTheme-line)]
-                                         object-cover object-center" src={avatar} />
+                                         object-cover object-center" src={avatar} />:
+                                            getIconComponent('default-subreddit')()}
                                     </span>
                                     <span className="inline-block flex-col">
                                         <span>{name}</span>
