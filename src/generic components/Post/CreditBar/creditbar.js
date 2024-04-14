@@ -8,21 +8,28 @@ import {useCreditBar} from './creditbar.hooks.js';
 /**
  * CreditBar component
  * @param {string} postId
+ * @param {string} userId
+ * @param {string} subredditId
+ * @param {string} subredditName
+ * @param {string} subredditAvatar
+ * @param {string} createdAt
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function CreditBar({
     postId,
+    userId,
+    subredditId,
+    subredditName,
+    subredditAvatar: avatarImage,
+    createdAt,
     viewContext,
 }) {
     const {
         handleSubredditRedirect,
         rootClassNames,
         Icon,
-        subredditId,
-        authorId,
-        created,
-    } = useCreditBar({postId, viewContext});
+    } = useCreditBar({subredditName, avatarImage, viewContext});
     return (
         <div className={creditBarClasses.wrapper} data-testid={`creditbar-${postId}`}>
             <div className={rootClassNames}>
@@ -35,9 +42,10 @@ export function CreditBar({
                     <MetadataCard
                         postId={postId}
                         subredditId={subredditId}
-                        authorId={authorId}
+                        subredditName={subredditName}
+                        userId={userId}
                         viewContext={viewContext}
-                        created={created}
+                        createdAt={createdAt}
                     />
                 </div>
             </div>
@@ -47,5 +55,10 @@ export function CreditBar({
 
 CreditBar.propTypes = {
     postId: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
+    subredditId: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
+    subredditAvatar: PropTypes.string,
+    createdAt: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
 };
