@@ -472,8 +472,7 @@ code {
   --button-border-color-hover: #ffffff;
   --plain-background:rgba(1, 1,1, 1);
   --color-neutral-background:#0B1416;
-  --button-border-color:#ffffff80
-
+  --button-border-color:#ffffff80;
   --shreddit-color-wordmark: #ffffff;
 }
 .theme-light {

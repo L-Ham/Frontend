@@ -40,7 +40,7 @@ const userSlice = createSlice({
             state.avatar = action.payload.avatar;
         },
         logout: (state) => {
-            state = initialState;
+            Object.assign(state, initialState);
         },
         clearRecentPosts: (state) => {
             state.recentPosts = [];

@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {ProfileMenuListItem} from './profilemenulistitem.js';
 import {ProfileMenuSwitchItem} from './profilemenuswitchitem.js';
+import {ProfileMenuButtonItem} from './profilemenubuttonitem.js';
 import {ProfileIcon} from './profileicon.js';
 import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import {profileMenuClasses} from './profilemenu.styles.js';
@@ -8,7 +9,8 @@ import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
-import {setAvatar, setTheme} from '../../../../store/userSlice.js';
+import {setAvatar, setTheme, logout} from '../../../../store/userSlice.js';
+import {useNavigate} from 'react-router-dom';
 
 
 export const useProfileMenu = () => {
@@ -26,6 +28,7 @@ export const useProfileMenu = () => {
     const userMenuDropdownStyles = `${profileMenuClasses.userMenuDropdown} ${isUserMenuOpen? 'block': 'hidden'} `;
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const username = user.displayName;
 
@@ -86,11 +89,16 @@ export const useProfileMenu = () => {
                 checked={isThemeDark}
                 onChange={handleChange}
             />),
-            (<ProfileMenuListItem
+            (<ProfileMenuButtonItem
                 key='log-out'
                 mainLabel='Log Out'
                 icon={<LogOut/>}
-                href='#'
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dispatch(logout());
+                    navigate('/login');
+                }}
             />),
         ],
         [
