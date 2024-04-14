@@ -6,6 +6,9 @@ const API_ROUTES = {
     */
     login: '/auth/login',
     getAvatar: 'user/avatarImage',
+    getPopularCommunities: '/subreddit/popularCommunity',
+    getUserCommunities: '/user/community',
+    getTrendingPosts: '/post/trending',
     // Add more routes as needed
 };
 

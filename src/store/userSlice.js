@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {recentPostsData} from '../pages/PopularPage/RightSideBar/data.js';
 
 const initialState = {
     displayName: '',
@@ -7,6 +8,7 @@ const initialState = {
     avatarImage: '',
     token: '',
     theme: 'light',
+    recentPosts: recentPostsData,
 };
 let token = null;
 const userSlice = createSlice({
@@ -23,9 +25,12 @@ const userSlice = createSlice({
         setTheme: (state, action) => {
             state.theme = action.payload.theme;
         },
+        clearRecentPosts: (state) => {
+            state.recentPosts = [];
+        },
     },
 });
 
 export {initialState, token};
-export const {login, setAvatar, setTheme} = userSlice.actions;
+export const {login, setAvatar, setTheme, clearRecentPosts} = userSlice.actions;
 export default userSlice.reducer;

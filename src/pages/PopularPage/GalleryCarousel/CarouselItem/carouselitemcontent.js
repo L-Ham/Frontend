@@ -1,5 +1,5 @@
 import React from 'react';
-import {CommunityInfo} from './communityinfo';
+import {CommunityInfo} from './communityinfo.js';
 import {carouselItemContentClasses, carouselItemContentStyles} from './carouselitem.styles.js';
 import PropTypes from 'prop-types';
 
