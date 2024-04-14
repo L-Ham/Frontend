@@ -19,16 +19,15 @@ export function HoverCard({
     entityName,
     entityId,
     viewContext,
-    icon,
     isUser,
 }) {
     const {
         handlePopoverOpen,
         handlePopoverClose,
-        DefaultSubredditIcon,
+        DisplayIcon,
         overlayOpen,
         prefixedName,
-    } = useHoverCard({entityName, viewContext, isUser});
+    } = useHoverCard({entityName, entityId, viewContext, isUser});
     return (
         <>
             <div
@@ -40,13 +39,7 @@ export function HoverCard({
             >
                 {viewContext !== VIEW_CONTEXTS.COMMENTS_PAGE &&
                 <div className={hoverCardClasses.icon}>
-                    {icon ||
-                    <DefaultSubredditIcon
-                        viewBox="0 0 20 20"
-                        width="25"
-                        height="25"
-                        fill="currentColor"
-                    />}
+                    {DisplayIcon}
                 </div>}
                 {prefixedName}
             </div>
@@ -74,7 +67,6 @@ HoverCard.propTypes = {
     postId: PropTypes.string.isRequired,
     entityName: PropTypes.string,
     viewContext: PropTypes.string.isRequired,
-    icon: PropTypes.element,
     isUser: PropTypes.bool.isRequired,
     entityId: PropTypes.string.isRequired,
 };

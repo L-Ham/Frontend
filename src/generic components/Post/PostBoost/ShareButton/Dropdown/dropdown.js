@@ -33,7 +33,7 @@ export function Dropdown({
     return (
         <div className='absolute size-0 '>
             <div className={`absolute left-44 top-6 flex min-w-[170px] flex-col overflow-hidden
-                rounded-lg bg-[var(--color-neutral-background-strong)] z-[1]
+                rounded-lg bg-[var(--color-neutral-background-strong)] z-[2]
                 shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]
                 ${!isOpen ? 'hidden':''}`}>
 

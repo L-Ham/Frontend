@@ -22,8 +22,6 @@ export function MetadataCard({
     viewContext,
     createdAt,
 }) {
-    const Icon = <img src={require('../../../../assets/images/avatar_default_0.png')}
-        alt='avatar' className='size-6 rounded-full'/>;
     return (
         <div className={metaClasses.root} data-testid={`metadatacard-${postId}`}>
             <div className={metaClasses.base}>
@@ -32,7 +30,6 @@ export function MetadataCard({
                     viewContext={viewContext}
                     entityName={subredditName}
                     entityId={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? userId:subredditId}
-                    icon={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? Icon:null}
                     isUser={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED}
                 />
                 <div className={metaClasses.time}>
@@ -48,7 +45,6 @@ export function MetadataCard({
                     entityId={userId}
                     entityName={subredditName}
                     isUser={true}
-                    icon={Icon}
                 />
             </div>}
         </div>

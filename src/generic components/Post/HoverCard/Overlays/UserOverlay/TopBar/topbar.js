@@ -6,7 +6,7 @@ import {useTopBar} from './topbar.hooks';
  * TopBar component
  * @param {string} avatar
  * @param {string} displayName
- * @param {number} createdAt
+ * @param {string} createdAt
  * @return {React.Component}
  */
 export function TopBar({
@@ -54,7 +54,7 @@ export function TopBar({
 }
 
 TopBar.propTypes = {
-    avatar: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
-    createdAt: PropTypes.number.isRequired,
+    avatar: PropTypes.string,
+    displayName: PropTypes.string,
+    createdAt: PropTypes.string,
 };

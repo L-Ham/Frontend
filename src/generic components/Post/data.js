@@ -95,7 +95,7 @@ export const DATA = {
         avatar: 'https://i.redd.it/snoovatar/avatars/6121c00e-73cd-4315-bd28-cb7d73d53e38.png',
         description: 'Creator of DiscordBotStudio.org and Loopliz.com',
         commentKarma: 21,
-        created: 1632450514.0,
+        createdAt: '2024-04-13T18:24:40.420Z',
         postKarma: 171,
         isFriend: false,
         isBlocked: false,
@@ -106,7 +106,7 @@ export const DATA = {
         avatar: null,
         description: 'I am a bot. Beep boop.',
         commentKarma: 20,
-        created: 1632450514.0,
+        createdAt: '2024-04-13T18:24:40.420Z',
         postKarma: 16,
         isFriend: false,
         isBlocked: false,
@@ -119,11 +119,11 @@ export const DATA = {
         user_is_subscriber: false,
         public_description_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All about studying and 
         students of computer science.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
-        public_description: 'All about studying and students of computer science.',
+        publicDescription: 'All about studying and students of computer science.',
         membersCount: 242395,
         membersName: 'Members',
-        onlineCount: 303,
-        onlineName: 'Online',
+        currentlyViewingCount: 303,
+        currentlyViewingNickname: 'Online',
         isMember: false,
     },
     'MBA': {
@@ -132,15 +132,13 @@ export const DATA = {
         // banner_background_image: `https://styles.redditmedia.com/t5_2sokd/styles/bannerBackgroundImag` +
         // `e_at8s941lsun31.png`,
         user_is_subscriber: true,
-        public_description_html: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Learn about MBA programs, 
+        publicDescription: `&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;Learn about MBA programs, 
         applying to them, and what life is like while in one and afterwards. Please make sure to read our rules
          and wiki before posting. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;`,
-        public_description: `Learn about MBA programs, applying to them, and what life is like while in one and
-         afterwards. Please make sure to read our rules and wiki before posting.`,
         membersCount: 228000,
         membersName: 'Members',
-        onlineCount: 131,
-        onlineName: 'Online',
+        currentlyViewingCount: 131,
+        currentlyViewingNickname: 'Online',
         isMember: true,
     },
     'savedPosts': [

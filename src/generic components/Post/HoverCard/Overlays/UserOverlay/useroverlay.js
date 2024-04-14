@@ -77,11 +77,4 @@ UserOverlay.propTypes = {
     closeOverlay: PropTypes.func.isRequired,
     userId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    postKarma: PropTypes.number.isRequired,
-    commentKarma: PropTypes.number.isRequired,
-    isFriend: PropTypes.bool.isRequired,
 };

@@ -40,7 +40,7 @@ export function Dropdown({
     return (
         <div className='absolute size-0 ' style={{fontFamily: 'var(--font-12-16-semibold)'}}>
             <div className={`absolute top-4 flex min-w-[240px] flex-col overflow-hidden
-                rounded-lg bg-[var(--color-neutral-background-strong)] z-[1] max-h-[25.5rem] overflow-y-auto
+                rounded-lg bg-[var(--color-neutral-background-strong)] z-[2] max-h-[25.5rem] overflow-y-auto
                 shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]
                 ${!isOpen ? 'hidden':''} ${isSubscriber ? '-right-8 min-w-[120px]': '-right-24 min-w-[240px]'}`}
             >

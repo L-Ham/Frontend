@@ -358,6 +358,7 @@ code {
 }
 .theme-dark {
   /* add dark scheme here */
+  --color-category-spoiler: var(--color-tone-1);
   --newRedditTheme-flair: #343536;
   --newRedditTheme-linkText: #4FBCFF;
   --newRedditTheme-body: #1A1A1B;
