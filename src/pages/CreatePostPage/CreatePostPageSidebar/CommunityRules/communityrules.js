@@ -11,7 +11,6 @@ export function CommunityRules() {
     const {rules} = useCreatePostPage();
     if (!rules) return null;
 
-    const {rules: Communityrules} = rules;
 
     return (
         <div className='community-rules mt-[16px] w-[312px] '>
@@ -32,8 +31,8 @@ export function CommunityRules() {
 
                 <div className='max-h-none break-words fill-[var(--newRedditTheme-bodyText)]
                 p-[12px] text-[var(--newRedditTheme-bodyText)]'>
-                    {Communityrules.map((rule) => (
-                        <CommunityRule key={rule.priority} rule={rule}/>
+                    {rules.map((rule, idx) => (
+                        <CommunityRule key={idx} rule={rule} idx={idx}/>
                     ))}
                 </div>
             </div>

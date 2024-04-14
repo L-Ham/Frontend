@@ -9,10 +9,11 @@ import {SubredditWidget} from '../Widget/subredditwidget.js';
  * Renders the rules widget.
  * @param {Object} props - The component props.
  * @param {string} props.display - The widget display.
- * @param {Array} props.data - The widget data.
+ * @param {Array} props.ruleList - The widget data.
  * @return {JSX.Element} The rendered component.
  */
-export function RulesWidget({display, data}) {
+export function RulesWidget({ruleList: data}) {
+    const display = 'compact';
     const {rules} = useRulesWidget({data, display});
 
     if (!rules) return null;
@@ -28,5 +29,5 @@ export function RulesWidget({display, data}) {
 
 RulesWidget.propTypes = {
     display: PropTypes.string.isRequired,
-    data: PropTypes.array.isRequired,
+    ruleList: PropTypes.array.isRequired,
 };

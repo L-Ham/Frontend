@@ -11,8 +11,6 @@ import './image.css';
  * @return {JSX.Element} The rendered component.
  */
 export function Image({file}) {
-    console.log('file', file.name);
-    console.log('image url', URL.createObjectURL(file));
     const XIcon = getIconComponent('x', true);
     return (
         <div draggable="true">

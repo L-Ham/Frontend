@@ -11,24 +11,19 @@ export function RedditRules() {
     const PostingToRedditIcon = getIconComponent('posting-to-reddit');
     const rules = [
         {
-            'short_name': 'Remember the human.',
-            'priority': 0,
+            'rule': 'Remember the human.',
         },
         {
-            'short_name': 'Behave like you would in real life',
-            'priority': 1,
+            'rule': 'Behave like you would in real life',
         },
         {
-            'short_name': 'Look for the original source of content',
-            'priority': 2,
+            'rule': 'Look for the original source of content',
         },
         {
-            'short_name': 'Search for duplicates before posting',
-            'priority': 3,
+            'rule': 'Search for duplicates before posting',
         },
         {
-            'short_name': 'Read the community\'s rules',
-            'priority': 4,
+            'rule': 'Read the community\'s rules',
         },
     ];
     return (
@@ -40,8 +35,8 @@ export function RedditRules() {
              Posting to Reddit
             </div>
             <ol className='list-inside list-decimal pl-0 text-[14px]/[18px] font-[500]'>
-                {rules.map((rule) => (
-                    <RedditRule key={rule.priority} rule={rule}/>
+                {rules.map((rule, idx) => (
+                    <RedditRule key={idx} rule={rule} idx={idx}/>
                 ))}
             </ol>
         </div>

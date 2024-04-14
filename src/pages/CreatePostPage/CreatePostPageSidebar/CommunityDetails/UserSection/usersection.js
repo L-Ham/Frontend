@@ -2,12 +2,15 @@
 import React from 'react';
 import './usersection.css';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
+import {useSelector} from 'react-redux';
 
 /**
  * Renders the user section.
  * @return {JSX.Element} The rendered component.
  */
 export function UserSection() {
+    const displayName = useSelector((state) => state.user.displayName);
+
     const EditIcon = getIconComponent('edit', false);
     const FlairProfileIcon = getIconComponent('flair-profile');
     return (
@@ -53,7 +56,7 @@ export function UserSection() {
                                 <span className="truncate
                             text-[12px]/[16px] font-[500]
                             text-[var(--newCommunityTheme-widgetColors-sidebarWidgetTextColor)]">
-          Equivalent_Serve_549
+                                    {displayName || 'Equivalent_Serve_549'}
                                 </span>
                             </div>
                         </div>

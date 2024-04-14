@@ -13,7 +13,6 @@ import './postcreationtextarea.css';
  */
 export function PostCreationTextArea({setBorderColor}) {
     const {text, setText} = usePostCreation();
-    console.log('text', text);
 
     const handleTextChange = (event) => {
         setText(event.target.value);

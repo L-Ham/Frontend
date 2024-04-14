@@ -1,42 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {CommunityListDropdownGroup} from './CommunityListDropdownGroup/communitylistdropdowngroup.js';
+import {axiosInstance as axios} from '../../../../../requests/axios.js';
+import {API_ROUTES} from '../../../../../requests/routes.js';
 
 /**
  * Renders the community list dropdown.
  * @param {Object} props - The component props.
- * @param {Array} props.userCommunites - The user's communities.
+ * @param {Array} props.userCommunities - The user's communities.
  * @param {string} props.searchInput - The search input.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityListDropdown({searchInput}) {
-    // TODO: fetch user communities
-    const userCommunites = [{name: 'r/OnePiece', members: '3568954',
-        icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'}];
-
     const [otherCommunities, setOtherCommunities] = useState([]);
+    const [userCommunities, setUserCommunities] = useState([]);
 
     useEffect(() => {
-        // TODO fetch  other communities
-        const newOtherCommunities = [{name: 'r/OnePieceTC', members: '79950',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePiecePowerScaling', members: '43452',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePieceSpoilers', members: '26092',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePieceTCG', members: '49877',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePieceLiveAction', members: '41536',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePieceMG', members: '222141',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePieceCircleHook', members: '124563',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'},
-        {name: 'r/OnePiece', members: '1142455',
-            icon: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'}];
+        const loadData = async () => {
+            try {
+                const allUserCommunities = await getUserCommunities();
+                const allCommunities = await getUserCommunities();
+                // const allCommunities = await searchCommunities(searchInput);
 
-        setOtherCommunities(newOtherCommunities);
+
+                console.log('allUserCommunities', allUserCommunities);
+                console.log('allCommunities', allCommunities);
+
+                // TODO_BACKEND
+                // const newOtherCommunities = allCommunities.filter((community) => {
+                //     return !allUserCommunities.includes(community);
+                // });
+
+                // const newUserCommunities = allCommunities.filter((community) => {
+                //     return allUserCommunities.includes(community);
+                // });
+
+                setOtherCommunities(allCommunities);
+                setUserCommunities(allUserCommunities);
+            } catch (error) {
+                console.error('Failed to fetch communitites data', error);
+            }
+        };
+        loadData();
     }, [searchInput]);
+
+    if (!userCommunities.length && !otherCommunities.length) return null;
 
     return (
         <div className='absolute
@@ -46,7 +54,7 @@ export function CommunityListDropdown({searchInput}) {
            border-[color:var(--newCommunityTheme-line)]
            bg-[color:var(--newCommunityTheme-body)]
            shadow-[0_-3px_0_-1px_var(--newCommunityTheme-body),0_0_2px_1px_var(--newCommunityTheme-line)]'>
-            <CommunityListDropdownGroup CommunitiesData={userCommunites} title='Your Communities'
+            <CommunityListDropdownGroup CommunitiesData={userCommunities} title='Your Communities'
                 isContainButton={true} />
             <CommunityListDropdownGroup CommunitiesData={otherCommunities} title='others' />
         </div>
@@ -54,6 +62,21 @@ export function CommunityListDropdown({searchInput}) {
 }
 
 CommunityListDropdown.propTypes = {
-    userCommunites: PropTypes.array.isRequired,
+    userCommunities: PropTypes.array.isRequired,
     searchInput: PropTypes.string.isRequired,
 };
+
+
+const getUserCommunities = async () => {
+    const response = await axios.get(API_ROUTES.getUserCommunities);
+    const data = await response.data.communities;
+    return data;
+};
+
+// const searchCommunities = async (searchInput) => {
+//     const response = await axios.get(API_ROUTES.searchCommunities, {
+//         'search': searchInput,
+//     });
+//     const data = await response.data.communities;
+//     return data;
+// };

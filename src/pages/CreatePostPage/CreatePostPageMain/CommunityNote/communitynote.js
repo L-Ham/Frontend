@@ -9,9 +9,10 @@ export function CommunityNote() {
     Be sure to respect the rules. No spoilers in title 
     (anything not shown in the anime yet). Fanart/Cosplay must redirect to their source. 
     No Meme unless they are 100% original. And remember to be nice to each other. Thank you.`;
+    // TODO_BACKEND: get the submit text from the backend
 
     return (
-        <div className='font
+        submitText && <div className='font
         border-[color:var(--newCommunityTheme-line)]]
          mx-0 my-[12px]
          break-words rounded-[4px]

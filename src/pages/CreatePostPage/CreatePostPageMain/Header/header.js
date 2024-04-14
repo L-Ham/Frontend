@@ -28,7 +28,8 @@ export function Header({numberDrafts}) {
                 Drafts
                 <span className="ml-[4px]
                 border-2
-                bg-[var(--newCommunityTheme-actionIcon)] px-[3px]
+                border-[var(--newCommunityTheme-actionIcon)] bg-[var(--newCommunityTheme-actionIcon)]
+                px-[3px]
                 py-px text-[12px]/[16px]
                 font-[400] text-[var(--newCommunityTheme-body)] ">
                     {numberDrafts}

@@ -1,20 +1,35 @@
 import React, {useState} from 'react';
 import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import {CommunityListDropdown} from './CommunityListDropdown/communitylistdropdown.js';
+import {useCreatePostPage} from '../../createpostpage.context.js';
+import defaultAvatar from '../../../../assets/images/avatar_default_1.png';
 
 /**
  * Renders the community options list.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityOptionsList() {
+    const {about} = useCreatePostPage();
     const [isCommunityOptionsListOpen, setIsCommunityOptionsListOpen] = useState(false);
     const [searchInput, setSearchInput] = useState('');
+
+    // Immediately after hooks, check for 'about' existence and set state if necessary.
+    if (about && searchInput === '' && about.communityDetails.name) {
+        setSearchInput('r/' + about.communityDetails.name);
+        // This condition will only run once due to the `searchInput === ''` check.
+    }
+
+    if (!about) return null;
+
+    const {avatarImage} = about.communityDetails;
     const CarretDownIcon = getIconComponent('caret-down', false);
     const SearchIcon = getIconComponent('search');
     const Tag = isCommunityOptionsListOpen ? SearchIcon : 'img';
     const tagProps = Tag === 'img' ?
-        {style: {backgroundColor: 'rgb(170, 150, 85)'}, alt: 'Subreddit Icon',
-            src: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png'} : '';
+        {
+            style: {backgroundColor: 'rgb(170, 150, 85)'}, alt: 'Subreddit Icon',
+            src: avatarImage || defaultAvatar,
+        } : {};
 
     const handleListClick = (event) => {
         event.preventDefault();
@@ -54,7 +69,7 @@ export function CommunityOptionsList() {
                             outline-none"
                             placeholder="Choose a community"
                             spellCheck="false"
-                            defaultValue="r/OnePiece"
+                            value={searchInput}
                             onFocus={(e) => handleListClick(e)}
                             onChange={(e) => handleSearchInput(e)}
                         />

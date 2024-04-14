@@ -12,8 +12,6 @@ import {usePostCreation} from '../../../postcreationcontext.js';
  */
 export function FilesUploadArea() {
     const {files} = usePostCreation();
-    console.log('files', files);
-    files.length > 0 ? console.log(files[0].type) : '';
     return (
         <div className="rounded-[4px]">
             <div>

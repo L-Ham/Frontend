@@ -2,19 +2,21 @@
 import React, {useState} from 'react';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
 import './communityoptions.css';
+import {useCreatePostPage} from '../../../createpostpage.context.js';
 
 /**
  * Renders the community options.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityOptions() {
-    const [isChecked, setIsChecked] = useState(false);
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
     const CaretDownIcon = getIconComponent('caret-down', false);
-    const EyeIcon = isChecked ? getIconComponent('eye', false) : getIconComponent('eye-slash', false);
+    const {isCommunityTheme, setIsCommunityTheme} = useCreatePostPage();
+    const EyeIcon = isCommunityTheme ? getIconComponent('eye', false) : getIconComponent('eye-slash', false);
+
 
     const handleSwitch = () => {
-        setIsChecked(!isChecked);
+        setIsCommunityTheme(!isCommunityTheme);
     };
 
     return (
@@ -49,12 +51,12 @@ export function CommunityOptions() {
                         Community theme
                     </label>
                     <button
-                        aria-checked={isChecked}
+                        aria-checked={isCommunityTheme}
                         className={`switch-btn relative flex h-[24px] w-[37.5px] flex-[0_0_auto]
                         cursor-pointer items-center
                         rounded-full border-2 border-solid
                         border-transparent
-                         ${isChecked ?
+                         ${isCommunityTheme ?
             'justify-end bg-[var(--newCommunityTheme-active)]' :
             'justify-start bg-[var(--newCommunityTheme-navIconFaded10)]' } `}
                         role="switch"

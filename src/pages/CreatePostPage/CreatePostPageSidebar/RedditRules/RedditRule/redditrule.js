@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * @param {string} props.rule.short_name The short name of the rule.
  * @return {JSX.Element} The rendered component.
  */
-export function RedditRule({rule: {short_name: shortName}}) {
+export function RedditRule({rule: {rule: shortName}}) {
     return (
         <li className="!border-solid !border-[color:var(--newRedditTheme-line)]
         px-[5px] py-[10px] text-[var(--newRedditTheme-bodyText)]"

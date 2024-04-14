@@ -1,5 +1,7 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
+import {useCreatePostPage} from '../../../createpostpage.context';
+import defaultSubreddit from '../../../../../assets/icons/default-subreddit.svg';
 
 /**
  * Renders the community header.
@@ -7,15 +9,18 @@ import {useNavigate} from 'react-router-dom';
  */
 export function CommunityHeader() {
     const navigate = useNavigate();
-    const prefixedName = 'r/OnePiece';
+    const {about} = useCreatePostPage();
+    if (!about) return null;
+    const {communityDetails: {name, avatarImage}} = about;
+
     return (
         <div className="mb-[8px] flex items-center">
             <img
                 style={{backgroundPosition: '50%', backgroundSize: '100%'}}
                 alt="Subreddit Icon"
-                src="https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png?"
+                src={avatarImage || defaultSubreddit}
                 className="mr-[8px] box-border
-                size-[54px] flex-none rounded-full bg-[color:#0079D3]
+                size-[54px] flex-none rounded-full bg-[var(--newCommunityTheme-active)]
                 bg-no-repeat
                 fill-[var(--newRedditTheme-bodyText)]
                 text-[54px] leading-[54px] text-[var(--newRedditTheme-bodyText)]"
@@ -29,7 +34,7 @@ export function CommunityHeader() {
                     }}
                 >
                     <span className="inline-block text-[16px]/[20px] font-[500]" title="r/OnePiece">
-                        {prefixedName}
+                        {`r/${name}`}
                     </span>
                 </a>
             </div>

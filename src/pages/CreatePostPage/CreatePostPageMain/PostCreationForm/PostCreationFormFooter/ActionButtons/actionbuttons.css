@@ -29,3 +29,11 @@
 .post-creation-form-footer__borderedBtn:hover::before{
     opacity: .08;
 }
+
+.post-creation-form-footer__primaryBtn:disabled{
+    cursor: not-allowed;
+    filter: grayscale(1);
+    background-color: var(--newCommunityTheme-buttonTinted80);
+    color: var(--newCommunityTheme-bodyAlpha50);
+    fill: var(--newCommunityTheme-bodyAlpha50);
+}

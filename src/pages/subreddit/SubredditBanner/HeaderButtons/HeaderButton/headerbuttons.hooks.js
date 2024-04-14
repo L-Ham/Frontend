@@ -11,18 +11,23 @@ export const useHeaderButtons = () => {
     const {about} = useSubreddit();
     if (!about) return {};
 
-    const {data: {id, display_name_prefixed: prefixedName, display_name: displayName}} = about;
+    const {communityDetails: {subredditId: id, name}} = about;
+
+    // TODO_BACKEND: remove this block once the backend is ready
+    const prefixedName = `r/${name}`;
+    const displayName = name;
 
     useEffect(() => {
         if (about) {
             const {
-                data: {
-                    user_is_subscriber: userIsSubscriber,
-                    user_is_muted: userIsMuted,
-                    user_has_favourited: userHasFavourited,
-                    notification_level: notificationLevel,
+                communityDetails: {
+                    isMember: userIsSubscriber,
+                    isMuted: userIsMuted,
+                    isFavorite: userHasFavourited,
                 },
             } = about;
+
+            const notificationLevel = null;
 
             setIsMuted(userIsMuted);
             setIsFavourite(userHasFavourited);

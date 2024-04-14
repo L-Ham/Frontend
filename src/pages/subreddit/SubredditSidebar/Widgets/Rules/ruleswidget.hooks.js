@@ -1,17 +1,16 @@
 import React from 'react';
-import {useSubreddit} from '../../../subredditcontext.js';
 import {Rule} from './Rule/rule.js';
 
 export const useRulesWidget = ({data, display}) => {
-    const {about} = useSubreddit();
+    if (!data) return {};
 
-    if (!about) return null;
-
-    const rules = data.map((ruleData) => (
+    console.log('rules', data);
+    const rules = data.map((ruleData, idx) => (
         <Rule
-            key={ruleData.priority}
+            key={idx}
             data={ruleData}
             display={display}
+            idx = {idx}
         />
     ));
 

@@ -1,15 +1,15 @@
 import React from 'react';
+import {useCreatePostPage} from '../../../createpostpage.context';
+
 
 /**
  * Renders the community description.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityDescription() {
-    const description = `Welcome to r/OnePiece, 
-    the community for Eiichiro Oda's manga and anime series One Piece.
-     From the East Blue to the New World,
-     anything related to the world of One Piece belongs here! 
-     If you've just set sail with the Straw Hat Pirates, be wary of spoilers on this subreddit!`;
+    const {about} = useCreatePostPage();
+    if (!about) return null;
+    const {communityDetails: {description}} = about;
 
     return (
         <div className="relative mb-[8px] break-words fill-[var(--newRedditTheme-bodyText)]

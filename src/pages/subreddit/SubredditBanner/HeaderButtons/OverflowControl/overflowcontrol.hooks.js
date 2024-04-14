@@ -10,7 +10,8 @@ export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouri
         setIsOtherOptionsVisible(!isOtherOptionsVisible);
     };
 
-    const {data: {display_name_prefixed: prefixedName}} = about;
+    const {communityDetails: {name}} = about;
+    const prefixedName = `r/${name}`;
 
     const menuItems = [
         {

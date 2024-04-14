@@ -7,6 +7,7 @@ import {getIconComponent} from '../../../../../generic components/iconsmap';
  */
 export function CreationDetails() {
     const CreationDate = 'Jan 14, 2010';
+    // TODO-BACKEND: Get the creation date from the backend.
     const CakeIcon = getIconComponent('cake', false);
 
     return (

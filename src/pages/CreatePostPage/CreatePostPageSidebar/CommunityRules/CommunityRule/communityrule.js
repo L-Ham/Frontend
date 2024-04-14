@@ -8,9 +8,10 @@ import './communityrule.css';
 /**
  * Renders the community rules.
  * @param {Object} rule The rule to render.
+ * @param {number} idx The index of the rule.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityRule({rule: {short_name: shortName, priority, description_html: descriptionHtml}}) {
+export function CommunityRule({rule: {ruleText: shortName, descriptionHtml}, idx}) {
     // const description = parse(replaceHtmlEntities(descriptionHtml).replace(/class="md"/g, 'class="md px-4"'));
     const description = parse(replaceHtmlEntities(descriptionHtml));
     const [isDescriptionVisible, setIsDescriptionVisible] = React.useState(false);
@@ -26,7 +27,7 @@ export function CommunityRule({rule: {short_name: shortName, priority, descripti
                     setIsDescriptionVisible(!isDescriptionVisible);
                 }}>
                 <div className="flex-[0_0] cursor-pointer">
-                    <div className="cursor-pointer pr-[2px]">{priority + 1}.</div>
+                    <div className="cursor-pointer pr-[2px]">{idx + 1}.</div>
                 </div>
 
                 <div className="w-full flex-[1_1_100%]">
@@ -49,4 +50,5 @@ export function CommunityRule({rule: {short_name: shortName, priority, descripti
 
 CommunityRule.propTypes = {
     rule: PropTypes.object.isRequired,
+    idx: PropTypes.number.isRequired,
 };

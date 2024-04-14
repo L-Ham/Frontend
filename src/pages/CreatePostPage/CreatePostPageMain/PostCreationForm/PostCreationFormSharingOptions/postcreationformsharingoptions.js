@@ -71,11 +71,9 @@ export function PostCreationFormSharingOptions() {
                             </div>
                             <div
                                 onMouseEnter={() => {
-                                    console.log('mouse enter');
                                     if (!isInfoDivVisible);setIsInfoDivVisible(true);
                                 }}
                                 onMouseLeave={() => {
-                                    console.log('mouse leave');
                                     if (isInfoDivVisible);setIsInfoDivVisible(false);
                                 }}
                                 className='relative'
