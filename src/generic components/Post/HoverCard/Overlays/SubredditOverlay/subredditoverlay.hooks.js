@@ -1,21 +1,22 @@
 import {DATA, VIEW_CONTEXTS} from '../../../data.js';
 import {overlayClasses} from './subredditoverlay.styles.js';
 
-export const useSubredditOverlay = ({subredditId, viewContext}) => {
-    const {display_name_prefixed: subredditPrefixedName, banner_background_image: bannerLink,
-        user_is_subscriber: isSubscriber, public_description_html: publicDescription,
-        membersCount, membersName, onlineCount, onlineName} = DATA[subredditId];
+export const useSubredditOverlay = ({subredditName, viewContext}) => {
+    // request
+    const {bannerImage, isMember, description, membersCount, avatarImage,
+        membersNickname, currentlyViewingCount, currentlyViewingNickname} = DATA[subredditName];
     const rootClasses = `${overlayClasses.root} ${viewContext === VIEW_CONTEXTS.COMMENTS_PAGE ?
         overlayClasses.commentsContext : overlayClasses.defaultContext}`;
     return {
-        subredditPrefixedName,
-        bannerLink,
-        isSubscriber,
-        publicDescription,
+        subredditPrefixedName: 'r/' + subredditName,
+        bannerImage,
+        isMember,
+        description,
+        avatarImage,
         membersCount,
-        membersName,
-        onlineCount,
-        onlineName,
+        membersNickname,
+        currentlyViewingCount,
+        currentlyViewingNickname,
         rootClasses,
     };
 };
