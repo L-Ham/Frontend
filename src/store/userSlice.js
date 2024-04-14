@@ -39,7 +39,6 @@ const userSlice = createSlice({
         },
         logout: (state) => {
             Object.assign(state, initialState);
-            token = null;
         },
     },
 });

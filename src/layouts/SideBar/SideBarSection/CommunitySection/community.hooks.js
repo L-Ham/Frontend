@@ -3,7 +3,6 @@ import {sectionClasses} from '../sidebarsection.styles.js';
 import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
-import {useSelector} from 'react-redux';
 
 // communities section hooks
 export const useCommunitiesSection = () => {
@@ -12,18 +11,14 @@ export const useCommunitiesSection = () => {
         `${sectionClasses.root} ${sectionClasses.close}`;
 
     // fetch communities
-    const token = useSelector((state) => state.user.token);
     const [Communities, setCommunities] = useState([]);
     useEffect(() => {
-        axios.get(API_ROUTES.getCommunities, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        }).then((response) => {
-            setCommunities(response.data.communities);
-        }).catch((error) => {
-            console.error('Error fetching communities:', error);
-        });
+        axios.get(API_ROUTES.getCommunities)
+            .then((response) => {
+                setCommunities(response.data.communities);
+            }).catch((error) => {
+                console.error('Error fetching communities:', error);
+            });
     }, []);
 
 
@@ -40,7 +35,6 @@ export const useCommunityItem = ({communityId, isFavorite}) => {
     const [starred, setStarred] = useState(isFavorite);
     // console.log({communityId, isFavorite});
     const StarIcon = getIconComponent('star', starred);
-    const token = useSelector((state) => state.user.token);
 
     /**
      * Handles the star button click
@@ -53,10 +47,6 @@ export const useCommunityItem = ({communityId, isFavorite}) => {
         const toggleFavorite = (route) => {
             axios.patch(route, {
                 subRedditId: communityId,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
             }).catch((error) => {
                 console.error(`Error:`, error);
             });
