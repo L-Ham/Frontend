@@ -121,8 +121,9 @@ export function BasicTabs({id}) {
                 </div>
 
 
-                <GenericPopup head='Change your email address' text = "To change your email address,
-                 you need to create a Reddit password first. We'll walk you through it." />
+                <GenericPopup head='Change your email address'
+                    text="To change your email address you need to create a
+                     Reddit password first. We'll walk you through it." />
                 <AddSocialLinks/>
                 <NfswPopUp/>
                 <AddSocialLinksTwo/>
