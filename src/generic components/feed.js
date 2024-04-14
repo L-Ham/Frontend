@@ -12,11 +12,11 @@ export function Feed() {
     const postId = 't3_1bmnuhw';
     const posts = [DATA[postId]];
     return (
-        <>
+        <div className='h-screen'>
             {posts.map((post) => (
                 <Post key={post.name} viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postId={postId}/>
             ))}
-        </>
+        </div>
     );
 }
 // Post({
