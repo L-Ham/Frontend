@@ -42,7 +42,12 @@ const API_ROUTES = {
     getCommunities: '/user/community',
     setFavorite: '/user/favouriteSubreddit',
     unsetFavorite: '/user/unFavouriteSubreddit',
-
+    communityDetails: (name) => `/subreddit/communityDetails?subRedditName=${name}`,
+    subredditRules: (id) => `/subreddit/rule?subredditId=${id}`,
+    widgets: (id) => `/subreddit/widget?subredditId=${id}`,
+    searchCommunities: `/subreddit/nameSearch`,
+    createPost: '/post/createPost',
+    // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };
 
