@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from '../../../iconsmap';
 
-
 /**
  * PostImage component
  * @param {string} postId
+ * @param {string} image
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function PostImage({
     postId,
+    image,
     viewContext,
 }) {
     const [imageOpened, setImageOpened] = React.useState(false);
@@ -46,25 +47,13 @@ export function PostImage({
                             className="absolute left-0 top-1/2 w-full -translate-y-1/2 scale-[1.2]
                         object-cover opacity-30 blur-xl"
                             loading="lazy"
-                            src={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s=` +
-                            `6dd3f3cecd4f3735d74623db2a6a21c9549889a1`}
-                            srcSet={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?width=320` +
-                            `&crop=smart&auto=webp&s=c02a65a13abb2d3654222ed2f3206b86d8bc168d 320w, https://p` +
-                            `review.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s=6dd3f3cecd4f37` +
-                            `35d74623db2a6a21c9549889a1 567w`}
-                            sizes="(min-width: 1415px) 750px, (min-width: 768px) 50vw, 100vw"
+                            src={image}
                         />
                         <img
                             alt="r/Dinosaure - AVIS AU POLICIER!"
                             className="relative size-full h-[540px] max-h-[100vw] object-contain"
                             loading="lazy"
-                            src={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s=` +
-                            `6dd3f3cecd4f3735d74623db2a6a21c9549889a1`}
-                            srcSet={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?width=320` +
-                            `&crop=smart&auto=webp&s=c02a65a13abb2d3654222ed2f3206b86d8bc168d 320w, https://p` +
-                            `review.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s=6dd3f3cecd4f37` +
-                            `35d74623db2a6a21c9549889a1 567w`}
-                            sizes="(min-width: 1415px) 750px, (min-width: 768px) 50vw, 100vw"
+                            src={image}
                         />
                     </div>
                     <div className={imageOpened ? 'block': 'hidden'}>
@@ -78,25 +67,13 @@ export function PostImage({
                                     className="absolute left-0 top-1/2 w-full -translate-y-1/2 scale-[1.2]
                                         object-cover opacity-30 blur-xl"
                                     loading="lazy"
-                                    src={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=we` +
-                                        `bp&s=6dd3f3cecd4f3735d74623db2a6a21c9549889a1`}
-                                    srcSet={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?widt` +
-                                        `h=320&crop=smart&auto=webp&s=c02a65a13abb2d3654222ed2f3206b86d8bc168d 320w,` +
-                                        ` https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s` +
-                                        `=6dd3f3cecd4f3735d74623db2a6a21c9549889a1 567w`}
-                                    sizes="(min-width: 1415px) 750px, (min-width: 768px) 50vw, 100vw"
+                                    src={image}
                                 />
                                 <img
                                     alt="r/Dinosaure - AVIS AU POLICIER!"
                                     className="relative size-full max-h-none object-contain"
                                     loading="lazy"
-                                    src={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=we` +
-                                        `bp&s=6dd3f3cecd4f3735d74623db2a6a21c9549889a1`}
-                                    srcSet={`https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?widt` +
-                                        `h=320&crop=smart&auto=webp&s=c02a65a13abb2d3654222ed2f3206b86d8bc168d 320w,` +
-                                        ` https://preview.redd.it/avis-au-policier-v0-6r60kel9eosc1.jpeg?auto=webp&s` +
-                                        `=6dd3f3cecd4f3735d74623db2a6a21c9549889a1 567w`}
-                                    sizes="(min-width: 1415px) 750px, (min-width: 768px) 50vw, 100vw"
+                                    src={image}
                                 />
                             </div>
                             <button className='absolute right-3 top-3 inline-flex h-12 items-center
@@ -124,5 +101,6 @@ export function PostImage({
 
 PostImage.propTypes = {
     postId: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
 };
