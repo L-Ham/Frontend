@@ -7,7 +7,7 @@ import {Forgot} from '../.././generic components/guestpagecomponents/logincompon
 import {NewMember} from '../.././generic components/guestpagecomponents/logincomponents/newmember';
 import {GoogleButton} from '../.././generic components/guestpagecomponents/signupcomponents/google';
 import {useSelector} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import {axiosInstance as axios} from '../.././requests/axios';
 import {API_ROUTES} from '../../requests/routes';
 import {useDispatch} from 'react-redux';
@@ -18,10 +18,13 @@ const Login = () => {
     const [Token, setToken] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
     // Redirect user if already logged in
     useEffect(() => {
         if (userToken) {
-            navigate('/');
+            const redirectUrl = searchParams.get('url') || '/';
+            console.log(redirectUrl);
+            navigate(redirectUrl);
         }
     }, [userToken, navigate]);
     /**
@@ -50,7 +53,9 @@ const Login = () => {
             const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
             handleUserData(response.data.token);
             console.log('Token sent to backend:', response.data);
-            navigate('/');
+            const redirectUrl = searchParams.get('url') || '/';
+            console.log(redirectUrl);
+            navigate(redirectUrl);
         } catch (error) {
             console.error('Error sending token to backend:', error);
         }

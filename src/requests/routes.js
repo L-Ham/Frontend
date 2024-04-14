@@ -36,6 +36,10 @@ const API_ROUTES = {
     editLocation: '/user/editUserLocation',
     deleteUser: '/auth/deleteAccount',
     googleConnect: '/auth/googleConnect',
+    getCommunities: '/user/community',
+    setFavorite: '/user/favouriteSubreddit',
+    unsetFavorite: '/user/unFavouriteSubreddit',
+
     // Add more routes as needed
 };
 

@@ -17,8 +17,9 @@ import {AddSocialLinksTwo} from '../pop ups/addsociallinkstwo.js';
 import {ConnectWithGoogle} from '../pop ups/connectwithgoogle.js';
 import {DeletePopUp} from '../pop ups/deleteAccPopup.js';
 import PropTypes from 'prop-types';
-import {useParams} from 'react-router-dom';
-
+import {useNavigate, useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {useEffect} from 'react';
 
 /**
  * CustomTabPanel component renders the tab panel content based on the current active tab.
@@ -32,6 +33,13 @@ import {useParams} from 'react-router-dom';
  */
 export function BasicTabs({id}) {
     const {tab} = useParams();
+    const token = useSelector((state) => state.user.token);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!token) {
+            navigate('/login?url=/settings/' + TABS[selectedTab]);
+        }
+    }, [token]);
     const TABS = Object.freeze({
         'Account': 'account',
         'Profile': 'profile',
