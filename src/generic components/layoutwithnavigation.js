@@ -21,9 +21,9 @@ function LayoutWithNavigation(props) {
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] nd:visible'>
                     <AppBar />
                 </div>
-                <div className='grid w-full grid-cols-1 bg-[var(--color-neutral-background)]
-                nd:grid-cols-[272px_1fr]'>
-                    <div id='sidebar-container' className='isolate order-first hidden nd:block'>
+                <div className='grid  w-full grid-cols-1
+                bg-[var(--color-neutral-background)] nd:grid-cols-[272px_1fr]'>
+                    <div id='sidebar-container' className='isolate z-[1] order-first hidden nd:block '>
                         <SideBar visible={true} />
                     </div>
                     <div id='main-container' className='block w-full flex-col'>

@@ -6,16 +6,17 @@ import React from 'react';
  */
 function UserHelp() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '12px',
                 fontWeight: 400,
                 lineHeight: '18px',
             }}
+            data-testid="userhelp"
         >
       Don&apos;t have an email or need assistance logging in?{' '}
             <a
@@ -33,7 +34,7 @@ function UserHelp() {
                 href="/login"
                 style={{color: '#0088de', fontWeight: '700'}} rel="noreferrer"
             >
-        LOG IN.{' '}
+         LOG IN •{' '}
             </a>
             <a
                 href="/register"
@@ -42,7 +43,7 @@ function UserHelp() {
                 {' '}
         SIGN UP
             </a>
-        </p>
+        </div>
     );
 }
 export {UserHelp};

@@ -3,11 +3,12 @@ import {Login} from '../pages/registration_pages/login.js';
 import {SignUp} from '../pages/registration_pages/signup.js';
 import {ForgotPassword} from '../pages/registration_pages/forgotpassword.js';
 import {ForgotUsername} from '../pages/registration_pages/forgotusername.js';
-import {BasicTabs} from '../pages/Settings/main components/customtabpanel.js';
+import {BasicTabs} from '../pages/Settings/main components/styledtabs.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
-import {PostRoute, SubredditRoute, CreatePostRoute} from './pageRoutes.js';
+import {PostRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
+import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 
 /**
@@ -23,11 +24,13 @@ function App() {
                 <Route path="/register" element={<SignUp />} />
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
-                <Route path="/settings" element={
+                <Route path="/resetpassword" element={<ForgotPassword2/>} />
+                <Route path="/settings/:tab?" element={
                     <LayoutWithNavigation>
                         <BasicTabs />
                     </LayoutWithNavigation>
                 } />
+
                 <Route path="/post/:id" element={
                     <LayoutWithNavigation>
                         <PostRoute />
@@ -46,6 +49,11 @@ function App() {
                 <Route path="/" element={
                     <LayoutWithNavigation>
                         <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/user/:name/:section?" element={
+                    <LayoutWithNavigation>
+                        <ProfilePageRoute />
                     </LayoutWithNavigation>
                 } />
                 <Route path="/popular" element={

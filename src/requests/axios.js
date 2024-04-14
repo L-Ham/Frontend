@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {token} from '../store/userSlice.js';
+import store from '../store/store.js';
 // Setup a base URL
 // const BASE_URL = 'http://localhost:5000';
 const BASE_URL = 'https://reddit-bylham.me/api';
@@ -18,8 +18,9 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     (config) => {
         // Perform actions before request is sent, like setting auth tokens
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
+        const state = store.getState();
+        if (state.user.token) {
+            config.headers.Authorization = `Bearer ${state.user.token}`;
         }
         return config;
     },

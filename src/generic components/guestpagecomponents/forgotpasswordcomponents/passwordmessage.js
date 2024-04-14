@@ -11,16 +11,17 @@ import React from 'react';
  */
 function Passwordmessage() {
     return (
-        <p
+        <div
             style={{
                 textAlign: 'left',
 
                 color: 'black',
-                fontFamily: 'Noto Sans, sans-serif',
+                fontFamily: '"Noto Sans", sans-serif',
                 fontSize: '14px',
                 fontWeight: 400,
                 lineHeight: '21px',
             }}
+            data-testid="passwordmessage2"
         >
             <div>
         Tell us the username and email address associated with
@@ -29,7 +30,7 @@ function Passwordmessage() {
                 <br />
         to reset your password.
             </div>{' '}
-        </p>
+        </div>
     );
 }
 
