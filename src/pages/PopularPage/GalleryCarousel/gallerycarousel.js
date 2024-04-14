@@ -57,6 +57,7 @@ function GalleryCarousel() {
                 description='The film will be directed by Tim Story, who is best known for his work on the Ride Along and Think'
                 communityImgSrc='https://styles.redditmedia.com/t5_2r0ij/styles/communityIcon_yor9myhxz5x11.png'
                 communityName='r/movies'
+                href='#'
             />
         ));
     }
