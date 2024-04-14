@@ -29,7 +29,8 @@ function RecentPosts() {
                             <React.Fragment key={index}>
                                 <PostPreview
                                     postId={post.postId}
-                                    fullName={post.fullName}
+                                    subredditName={post.subredditName}
+                                    subredditId={post.subredditId}
                                     viewContext={post.viewContext}
                                     postUrl={post.postUrl}
                                     postTitle={post.postTitle}

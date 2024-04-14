@@ -14,7 +14,7 @@ export const postPreviewClasses = {
 
 // post stats classes
 export const postStatsClasses = {
-    container: 'text-xs text-[var(--color-neutral-content-weak]',
+    container: 'text-xs text-[var(--color-neutral-content-weak)]',
     dot: 'mx-1',
 };
 
