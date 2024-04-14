@@ -17,7 +17,7 @@ describe('History', () => {
         render(
             <Provider store={store}>
             <Router>
-                <History Topics={topics}key={0} />
+                <History Topics={topics[0]}key={0} />
 
             </Router>
             </Provider>,

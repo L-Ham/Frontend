@@ -2,7 +2,7 @@ import React from 'react';
 import {useToggle} from './togglecontext.js';
 import {GoogleButton} from '../../../generic components/guestpagecomponents/signupcomponents/google.js';
 import {useState} from 'react';
-
+import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../../requests/axios';
 import {API_ROUTES} from '../../../requests/routes';
 import PropTypes from 'prop-types';
@@ -16,8 +16,7 @@ import PropTypes from 'prop-types';
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
 function ConnectWithGoogle({id}) {
-    // const userToken = useSelector((state) => state.user.token);
-    const [Token, setToken] = useState('');
+    const userToken = useSelector((state) => state.user.token);
     const [passwordd, setPassword] = useState(''); // State to hold the password
 
     /**
@@ -30,28 +29,26 @@ function ConnectWithGoogle({id}) {
         setPassword(event.target.value); // Update the state with the new password
     }
 
-    const handleAccessToken = async (accessToken, pass = passwordd, userToken = userToken ) => {
-        setToken(accessToken);
+    const handleAccessToken = async (accessToken) => {
         // You can perform further actions with the access token here
         console.log('Received access token:', accessToken);
         try {
             // Send the access token to the backend
-            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: pass},
+            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd},
                 {
                     headers: {Authorization: `Bearer ${userToken}`},
                 });
-
+            toggleConnectToGoogle();
             console.log('Token sent to backend:', response.data);
         } catch (error) {
             console.error('Error sending token to backend:', error);
         }
-        console.log(Token);
     };
     const {displayConnectToGoogle} = useToggle();
     const {toggleConnectToGoogle} = useToggle();
     return displayConnectToGoogle ?(
-        <div className=" fixed inset-0 z-50 flex size-full
-        items-center justify-center overflow-y-auto bg-gray-600">
+        <div className=" fixed inset-0 z-50 flex size-full items-center
+        justify-center overflow-y-auto bg-[rgba(28,28,28,0.9)]">
             <div className="relative rounded-lg bg-white p-6 shadow-xl md:mx-auto md:max-w-md">
                 <div className="mb-4 flex items-center">
                     {/* SVG icon */}
@@ -73,7 +70,7 @@ function ConnectWithGoogle({id}) {
                 </button>
                 <p className="text-gray-600">To continue, confirm your password and sign in with Google.</p>
                 {/* Form */}
-                <form className="mt-4 space-y-6">
+                <div className="mt-4 space-y-6">
                     <div>
                         <label htmlFor="password" className="mb-2 block text-sm font-medium
              text-gray-900 dark:text-gray-300">Password</label>
@@ -89,7 +86,7 @@ function ConnectWithGoogle({id}) {
              text-center text-sm font-medium text-white hover:bg-blue-700 focus:ring-4
     focus:ring-blue-300 sm:w-auto">Continue</button>*/}
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 

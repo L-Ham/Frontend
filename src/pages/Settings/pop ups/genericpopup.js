@@ -22,12 +22,12 @@ import {useToggle} from './togglecontext.js';
  * );
  *
  * */
-function GenericPopup({head, text, id}) {
+function GenericPopup({head, text}) {
     const {isDisplayed} = useToggle();
     const {toggleDisplay} = useToggle();
     return isDisplayed? (
-        <div className="">
-            <div className="fixed top-0 z-[55]
+        <div className="" data-testid="popUp">
+            <div className="fixed left-0 top-0 z-[55]
              box-border flex size-full items-center overflow-auto
               bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]">
                 <div aria-modal="true" className="pointer-events-auto
@@ -140,6 +140,5 @@ function GenericPopup({head, text, id}) {
 GenericPopup.propTypes = {
     head: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
 };
 export {GenericPopup};

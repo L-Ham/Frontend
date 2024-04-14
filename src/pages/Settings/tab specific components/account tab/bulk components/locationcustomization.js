@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../requests/routes.js';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 // write jsdoc
 
 /**
@@ -111,7 +112,7 @@ export function LocationCustomization({id}) {
                             fontFamily: '"IBM Plex Sans", sans-serif',
                         }}>
                         {options.map((option) => (
-                            <option key={option.value} value={option.value}>{option.text}</option>
+                            <option key={uuid()} value={option.value}>{option.text}</option>
                         ))}
                     </select>
                 </span>

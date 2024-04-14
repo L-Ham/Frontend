@@ -17,6 +17,7 @@ import {AddSocialLinksTwo} from '../pop ups/addsociallinkstwo.js';
 import {ConnectWithGoogle} from '../pop ups/connectwithgoogle.js';
 import {DeletePopUp} from '../pop ups/deleteAccPopup.js';
 import PropTypes from 'prop-types';
+import {useParams} from 'react-router-dom';
 
 
 /**
@@ -30,8 +31,19 @@ import PropTypes from 'prop-types';
  * @return {React.ReactElement} The tab panel component.
  */
 export function BasicTabs({id}) {
-    const [selectedTab, setSelectedTab] = React.useState('Account');
-
+    const {tab} = useParams();
+    const TABS = Object.freeze({
+        'Account': 'account',
+        'Profile': 'profile',
+        'Safety & Privacy': 'privacy',
+        'Feed settings': 'feed',
+        'Notifications': 'notifications',
+        'Emails': 'emails',
+        'Subscriptions': 'premium',
+        'Chat & Messaging': 'messaging',
+    });
+    const [selectedTab, setSelectedTab] = React.useState(tab && Object.values(TABS).includes(tab) ?
+        Object.keys(TABS).find((key) => TABS[key] === tab) : 'Account');
 
     /**
  * Updates the currently selected tab.
@@ -74,8 +86,9 @@ export function BasicTabs({id}) {
 
     return (
         <ToggleProvider>
-            <div>
-                <div id='tabsDiv' className='ml-[calc(100vw_-_100%)] min-h-[calc(100vh_-_88px)] pb-10'>
+            <>
+                <div id='tabsDiv' className=' absolute ml-[calc(100vw_-_100%)] min-h-[calc(100vh_-_88px)]
+                pb-10 nd:ml-[calc(100vw_-_85%)]'>
 
                     <div className="relative box-border">
                         <h3 className='mx-auto my-0 max-w-screen-nd fill-white
@@ -93,6 +106,7 @@ export function BasicTabs({id}) {
                                 <a
                                     id={`tab-${tab}`} // Using index to ensure uniqueness
                                     key={tab}
+                                    href={'/settings/' + TABS[tab]}
                                     className={`mr-2 inline-block cursor-pointer
             px-3 pb-3 pt-[15px] text-sm font-bold leading-[unset] ` +
             `hover:text-[color:var(--newCommunityTheme-bodyText)] ` +
@@ -123,7 +137,7 @@ export function BasicTabs({id}) {
 
                 <GenericPopup head='Change your email address'
                     text="To change your email address you need to create a
-                     Reddit password first. We'll walk you through it." />
+                     Reddit password first. We'll walk you through it."/>
                 <AddSocialLinks/>
                 <NfswPopUp/>
                 <AddSocialLinksTwo/>
@@ -131,7 +145,7 @@ export function BasicTabs({id}) {
                 <DeletePopUp/>
 
 
-            </div>
+            </>
         </ToggleProvider>
     );
 }

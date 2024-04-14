@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
  *
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
-function GenderMenu({func, init, id}) {
+function GenderMenu({init, id}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [selectedGender, setSelectedGender] = useState('MAN');
 
@@ -119,7 +119,6 @@ function GenderMenu({func, init, id}) {
 export {GenderMenu};
 
 GenderMenu.propTypes = {
-    func: PropTypes.func.isRequired,
     init: PropTypes.string,
     id: PropTypes.string,
 };

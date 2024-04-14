@@ -62,10 +62,10 @@ function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericF
 
 SettingsGenericItemRight.propTypes = {
     head: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     thirdComponent: PropTypes.string.isRequired,
     f: PropTypes.func,
-    prop: PropTypes.bool,
+    prop: PropTypes.any,
     genericFunction: PropTypes.func,
     menu: PropTypes.array,
     item: PropTypes.string,

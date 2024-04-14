@@ -25,7 +25,7 @@ function App() {
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
-                <Route path="/settings" element={
+                <Route path="/settings/:tab?" element={
                     <LayoutWithNavigation>
                         <BasicTabs />
                     </LayoutWithNavigation>

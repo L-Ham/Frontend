@@ -67,7 +67,7 @@ function ToggleButton({header = '', func, init, id}) { // Default value for head
 ToggleButton.propTypes = {
     header: PropTypes.string,
     func: PropTypes.func,
-    init: PropTypes.bool,
+    init: PropTypes.any,
     id: PropTypes.string,
 };
 
