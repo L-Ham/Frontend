@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {getIconComponent} from '../../iconsmap';
-import {DATA, VIEW_CONTEXTS} from '../data.js';
-export const useHoverCard = ({fullName, postId, viewContext}) => {
+import {VIEW_CONTEXTS} from '../data.js';
+export const useHoverCard = ({entityName, viewContext, isUser}) => {
     const [overlayOpen, setOverlayOpen] = useState(false);
     const [hoverTimer, setHoverTimer] = useState(null);
 
@@ -34,12 +34,9 @@ export const useHoverCard = ({fullName, postId, viewContext}) => {
         }, toClose);
         setHoverTimer(timer);
     };
-    let {display_name_prefixed: prefixedName} = DATA[fullName];
-    const {subreddit_id: subredditId, author_fullname: authorId} = DATA[postId];
-    const isUser = fullName[1] === '2';
     const isUserOnCommentPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE && isUser;
-    if (isUserOnCommentPage) {
-        prefixedName = prefixedName.replace('u/', '');
+    if (!isUserOnCommentPage) {
+        entityName = isUser ? 'u/' + entityName : 'r/' + entityName;
     }
     const DefaultSubredditIcon = getIconComponent('default-subreddit');
     return {
@@ -47,9 +44,6 @@ export const useHoverCard = ({fullName, postId, viewContext}) => {
         handlePopoverClose,
         DefaultSubredditIcon,
         overlayOpen,
-        prefixedName,
-        subredditId,
-        authorId,
-        isUser,
+        prefixedName: entityName,
     };
 };
