@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../requests/routes.js';
 import PropTypes from 'prop-types';
@@ -14,7 +13,6 @@ import uuid from 'react-uuid';
  * @return {React.Component} A div container with location customization settings.
  */
 export function LocationCustomization({id}) {
-    const token = useSelector((state) => state.user.token);
     const [location, setLocation] = useState('');
     const [options, setOptions] = useState([
         {value: 'ZZ', text: 'Use approximate location (based on IP)'},
@@ -22,16 +20,14 @@ export function LocationCustomization({id}) {
         {value: 'AF', text: 'Afghanistan'},
         // Add other predefined options here...
     ]);
-        /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+    /**
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateLocation(updatedSettings) {
         try {
-            await axiosInstance.patch(API_ROUTES.editLocation, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.editLocation, updatedSettings);
             // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update Feed settings:', error);
@@ -48,15 +44,10 @@ export function LocationCustomization({id}) {
          *
          * @return {Promise<void>} A promise that resolves when the location is fetched.
          * @throws {Error} If the request fails or an error occurs during fetching.
-         *
-         *
-         *
          * */
         async function fetchLocation() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.Location, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
+                const response = await axiosInstance.get(API_ROUTES.Location);
                 const fetchedLocation = response.data.location; // Assuming this is the format of the response
                 setLocation(fetchedLocation);
 
@@ -73,7 +64,7 @@ export function LocationCustomization({id}) {
         }
 
         fetchLocation();
-    }, [token]);
+    }, []);
     // write jsdoc
 
     /**

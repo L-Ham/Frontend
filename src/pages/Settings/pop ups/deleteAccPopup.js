@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close'; // Assuming you're using Material-UI for icons
 import {axiosInstance} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
@@ -15,7 +14,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} Rendered component for account deletion.
  */
 function DeletePopUp({id}) {
-    const token = useSelector((state) => state.user.token);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [understand, setUnderstand] = useState(false);
@@ -36,12 +34,8 @@ function DeletePopUp({id}) {
         const obj = {leavingReason: l, userName: u, password: p};
         console.log('object', obj);
         try {
-            console.log('token' + token);
-
             await axiosInstance.delete(API_ROUTES.deleteUser, {
-                headers: {Authorization: `Bearer ${token}`},
                 data: {leavingReason: l, userName: u, password: p},
-
             });
             console.log('accdeleted:', u);
         } catch (error) {
@@ -59,34 +53,30 @@ function DeletePopUp({id}) {
             handleDeleteUser(reason, username, password);
         }
     }
-
-    // if (!isVisible) {
-    // return null; // Do not render anything if the popup is not supposed to be visible
-    // }
     /**
- * Handles changes to the reason input field.
- * This function updates the state with the new value of the reason textarea when the user types into it.
- *
- * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
- */
+     * Handles changes to the reason input field.
+     * This function updates the state with the new value of the reason textarea when the user types into it.
+     *
+     * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
+     */
     function handleChangeUsername(e) {
         setUsername(e.target.value);
     }
     /**
- * Handles changes to the reason input field.
- * This function updates the state with the new value of the reason textarea when the user types into it.
- *
- * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
- */
+     * Handles changes to the reason input field.
+     * This function updates the state with the new value of the reason textarea when the user types into it.
+     *
+     * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
+     */
     function handleChangePassword(e) {
         setPassword(e.target.value);
     }
     /**
- * Handles changes to the reason input field.
- * This function updates the state with the new value of the reason textarea when the user types into it.
- *
- * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
- */
+     * Handles changes to the reason input field.
+     * This function updates the state with the new value of the reason textarea when the user types into it.
+     *
+     * @param {React.ChangeEvent<HTMLTextAreaElement>} e - The event object that contains the textarea input value.
+     */
     function handleChangeReason(e) {
         setReason(e.target.value);
     }

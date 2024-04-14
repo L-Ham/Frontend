@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
@@ -14,7 +13,6 @@ import PropTypes from 'prop-types';
     * @return {React.Component} A div container with settings to customize the user's profile.
     */
 function SafetySettings({id}) {
-    const token = useSelector((state) => state.user.token);
     const [safetySettings, setSafetySettings] = useState({
         blockUsers: [],
         muteCommunities: [],
@@ -22,16 +20,13 @@ function SafetySettings({id}) {
 
     useEffect(() => {
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchSafetySettings() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.safetySettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
+                const response = await axiosInstance.get(API_ROUTES.safetySettings);
                 // Directly use response.data since it matches the expected structure
                 console.log('Safety settings:', response.data);
                 const transformedSettings = transformSafetySettings(response.data);
@@ -43,7 +38,7 @@ function SafetySettings({id}) {
         }
 
         fetchSafetySettings();
-    }, [token]);
+    }, []);
 
 
     /**

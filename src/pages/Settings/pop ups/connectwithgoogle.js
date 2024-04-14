@@ -2,7 +2,6 @@ import React from 'react';
 import {useToggle} from './togglecontext.js';
 import {GoogleButton} from '../../../generic components/guestpagecomponents/signupcomponents/google.js';
 import {useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../../requests/axios';
 import {API_ROUTES} from '../../../requests/routes';
 import PropTypes from 'prop-types';
@@ -16,7 +15,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
 function ConnectWithGoogle({id}) {
-    const userToken = useSelector((state) => state.user.token);
     const [passwordd, setPassword] = useState(''); // State to hold the password
 
     /**
@@ -34,10 +32,7 @@ function ConnectWithGoogle({id}) {
         console.log('Received access token:', accessToken);
         try {
             // Send the access token to the backend
-            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd},
-                {
-                    headers: {Authorization: `Bearer ${userToken}`},
-                });
+            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd});
             toggleConnectToGoogle();
             console.log('Token sent to backend:', response.data);
         } catch (error) {

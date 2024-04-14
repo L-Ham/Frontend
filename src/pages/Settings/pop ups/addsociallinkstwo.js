@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useToggle} from './togglecontext.js';
 import {axiosInstance} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
-import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
 
@@ -14,7 +13,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} The GenderMenu component rendering a select dropdown for gender identity selection.
  */
 function AddSocialLinksTwo({id}) {
-    const token = useSelector((state) => state.user.token);
     // useState hook to manage the input's state
     const [inputValue, setInputValue] = useState('');
     const [inputValue2, setInputValue2] = useState('');
@@ -27,35 +25,30 @@ function AddSocialLinksTwo({id}) {
     const {socialId} = useToggle();
     // const {socialRequestType} = useToggle();
     /**
- * Asynchronously updates notification settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates notification settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateSocial(updatedSettings) {
         console.log(updatedSettings);
         try {
-            await axiosInstance.patch(API_ROUTES.editSocial, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.editSocial, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update social settings:', error);
         }
     }
-    // const {socialRequestType} = useToggle();
     /**
- * Asynchronously updates notification settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates notification settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleAddSocial(updatedSettings) {
         // const {linkId, ...settingsWithoutLinkId} = ;
         // console.log(linkId);
         console.log(updatedSettings);
         try {
-            await axiosInstance.post(API_ROUTES.editSocial, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.post(API_ROUTES.editSocial, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update social settings:', error);

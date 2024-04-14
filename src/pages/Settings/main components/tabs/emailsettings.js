@@ -2,7 +2,6 @@ import React from 'react';
 import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
 import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
 import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import PropTypes from 'prop-types';
@@ -15,7 +14,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} A div container with settings to manage email preferences.
  */
 function EmailSettings({id}) {
-    const token = useSelector((state) => state.user.token);
     const [mailSettings, setmailSettings] = useState({
         privateMessages: false,
         chatRequests: true,
@@ -29,15 +27,13 @@ function EmailSettings({id}) {
         unsubscribeFromEmail: true,
     });
     /**
- * Asynchronously updates notification settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates notification settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateEmailSettings(updatedSettings) {
         try {
-            await axiosInstance.patch(API_ROUTES.emailSettings, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.emailSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update notification settings:', error);
@@ -57,17 +53,14 @@ function EmailSettings({id}) {
     }
     useEffect(() => {
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchEmailSettings() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.emailSettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                    // Directly use response.data since it matches the expected structure
+                const response = await axiosInstance.get(API_ROUTES.emailSettings);
+                // Directly use response.data since it matches the expected structure
                 console.log('feed settings recived:', response.data);
 
                 setmailSettings(response.data.emailSettings);
@@ -77,7 +70,7 @@ function EmailSettings({id}) {
         }
 
         fetchEmailSettings();
-    }, [token]);
+    }, []);
     return (
         <div className='max-w-[688px] flex-auto'>
             <h2

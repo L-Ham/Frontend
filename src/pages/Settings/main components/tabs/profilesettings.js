@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 {/* import {useToggle} from '../../pop ups/togglecontext';*/}
 import {SettingsGenericItemDown} from '../../generic components/settingsgenericitemdown.js';
 import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
@@ -18,7 +17,6 @@ import PropTypes from 'prop-types';
  */
 function ProfileSettings({id}) {
     {/* const {toggleNfsw} = useToggle();*/}
-    const token = useSelector((state) => state.user.token);
     const [profileSettings, setProfileSettings] = useState({
         displayName: '',
         about: '',
@@ -33,16 +31,13 @@ function ProfileSettings({id}) {
     });
 
     /**
- * ProfileSettings function component renders the profile customization settings.
-
- *
- * @return {React.Component} A div container with settings to customize the user's profile.
- */
+     * ProfileSettings function component renders the profile customization settings.
+     *
+     * @return {React.Component} A div container with settings to customize the user's profile.
+     */
     async function fetchProfileSettings() {
         try {
-            const response = await axiosInstance.get(API_ROUTES.profileSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            const response = await axiosInstance.get(API_ROUTES.profileSettings);
             setProfileSettings(response.data.profileSettings);
         } catch (error) {
             console.error('Failed to fetch profile settings:', error);
@@ -50,18 +45,16 @@ function ProfileSettings({id}) {
     }
     useEffect(() => {
         fetchProfileSettings();
-    }, [token]);
+    }, []);
 
     /**
- * Asynchronously updates profile settings using a PATCH request and logs the response.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates profile settings using a PATCH request and logs the response.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateProfileSettings(updatedSettings) {
         try {
-            const response = await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            const response = await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings);
             console.log('Profile updated:', response.data);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {

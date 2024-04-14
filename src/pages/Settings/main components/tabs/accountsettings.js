@@ -8,7 +8,6 @@ import {SettingsTabHeading} from '../../general components/text/settingstabheadi
 import {useState, useEffect} from 'react';
 import {API_ROUTES} from '../../../../requests/routes'; // Import the API_ROUTES constant
 import {axiosInstance} from '../../../../requests/axios';
-import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
 /**
@@ -17,23 +16,14 @@ import PropTypes from 'prop-types';
  * The component utilizes various generic items and tab headings to structure the settings.
  *
  * @return {React.Component} A div container with account settings.
- */
-
-
-/**
- * AccountSettings function component renders the account settings interface.
- * It provides options to customize email
- *
- * @return {React.Component} A div container with account settings.
  *
  * @example
  * return (
  * <AccountSettings />
  * );
  *
- * */
+ */
 function AccountSettings({id}) {
-    const token = useSelector((state) => state.user.token);
     const leftAlignStyle = {textAlign: 'left'};
     // const email = '';
     const [accSettings, setAccSettings] = useState({
@@ -45,17 +35,14 @@ function AccountSettings({id}) {
 
     useEffect(() => {
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchAccountSettings() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.accountSettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                    // Directly use response.data since it matches the expected structure
+                const response = await axiosInstance.get(API_ROUTES.accountSettings);
+                // Directly use response.data since it matches the expected structure
                 console.log('acc settings recived:', response.data);
 
                 setAccSettings(response.data.accountSettings);
@@ -64,7 +51,7 @@ function AccountSettings({id}) {
             }
         }
         fetchAccountSettings();
-    }, [token]);
+    }, []);
     return (
         <div className='max-w-[688px] flex-auto'>
             <h2

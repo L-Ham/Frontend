@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance} from '../../../../requests/axios';
 import {API_ROUTES} from '../../../../requests/routes';
-import {useSelector} from 'react-redux';
 
 /**
  * Represents a component for blocking a user.
@@ -11,7 +10,6 @@ import {useSelector} from 'react-redux';
  * @return {JSX.Element} A component with a text field and a button for blocking a user.
  */
 function BlockUserComponent({head, text, blocktext, list, type, id}) {
-    const token = useSelector((state) => state.user.token);
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [usersList, setUsersList] = useState(list);
@@ -20,15 +18,13 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
         setUsersList(list);
     }, [list]);
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} community - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} community - The new settings to be updated.
+     */
     async function handleMuteCommunity(community) {
         try {
-            await axiosInstance.patch(API_ROUTES.muteCommunity, community, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.muteCommunity, community);
             console.log('muted community:', community);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
@@ -37,16 +33,14 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
     }
 
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} blockedUser - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} blockedUser - The new settings to be updated.
+     */
     async function handleBlockUser(blockedUser) {
         console.log('Blocking user:', blockedUser);
         try {
-            await axiosInstance.patch(API_ROUTES.blockUser, blockedUser, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.blockUser, blockedUser);
             console.log('Blocked user:', blockedUser);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
@@ -54,15 +48,13 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
         }
     }
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} user - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} user - The new settings to be updated.
+     */
     async function handleUnblockUser(user) {
         try {
-            await axiosInstance.patch(API_ROUTES.unblockUser, user, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.unblockUser, user);
             console.log('unBlocked user:', user);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
@@ -70,16 +62,14 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
         }
     }
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} user - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} user - The new settings to be updated.
+     */
     async function handleUnMuteCommunity(user) {
         try {
             console.log('unMuting user:', user);
-            await axiosInstance.patch(API_ROUTES.unmuteCommunity, user, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.unmuteCommunity, user);
             console.log('unMuted user:', user);
             // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {

@@ -2,7 +2,6 @@ import React from 'react';
 import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
 import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
 import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import PropTypes from 'prop-types';
@@ -16,7 +15,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} A div container encompassing various settings to customize the Reddit feed experience.
  */
 function FeedSettings({id}) {
-    const token = useSelector((state) => state.user.token);
     const [feedSettings, setFeedSettings] = useState({
         showNSFW: true,
         blurNSFW: true,
@@ -31,15 +29,13 @@ function FeedSettings({id}) {
         defaultToMarkdown: true,
     });
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateFeedSettings(updatedSettings) {
         try {
-            await axiosInstance.patch(API_ROUTES.feedSettings, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.feedSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update Feed settings:', error);
@@ -76,17 +72,14 @@ function FeedSettings({id}) {
 
 
     useEffect(() => {
-    /**
-* ProfileSettings function component renders the profile customization settings.
-
-*
-* @return {React.Component} A div container with settings to customize the user's profile.
-*/
+        /**
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchFeedSettings() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.feedSettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
+                const response = await axiosInstance.get(API_ROUTES.feedSettings);
                 // Directly use response.data since it matches the expected structure
                 console.log('feed settings recived:', response.data);
 
@@ -97,7 +90,7 @@ function FeedSettings({id}) {
         }
 
         fetchFeedSettings();
-    }, [token]);
+    }, []);
     return (
         <div className='max-w-[688px] flex-auto'>
             <h2

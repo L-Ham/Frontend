@@ -2,7 +2,6 @@ import React from 'react';
 import {SettingsGenericItemRight} from '../../generic components/settingsgenericitemright.js';
 import {SettingsTabHeading} from '../../general components/text/settingstabheading.js';
 import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 import PropTypes from 'prop-types';
@@ -15,7 +14,6 @@ import PropTypes from 'prop-types';
  * @return {React.Component} A div container with notification settings organized into categories.
  */
 function NotificationSettings({id}) {
-    const token = useSelector((state) => state.user.token);
     const [notificationSettings, setNotificationSettings] = useState({
         inboxMessage: false,
         chatMessages: true,
@@ -29,15 +27,13 @@ function NotificationSettings({id}) {
         modNotifications: true,
     });
     /**
- * Asynchronously updates notification settings using a PATCH request.
- *
- * @param {Object} updatedSettings - The new settings to be updated.
- */
+     * Asynchronously updates notification settings using a PATCH request.
+     *
+     * @param {Object} updatedSettings - The new settings to be updated.
+     */
     async function handleUpdateNotificationSettings(updatedSettings) {
         try {
-            await axiosInstance.patch(API_ROUTES.notificationSettings, updatedSettings, {
-                headers: {Authorization: `Bearer ${token}`},
-            });
+            await axiosInstance.patch(API_ROUTES.notificationSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update notification settings:', error);
@@ -59,17 +55,14 @@ function NotificationSettings({id}) {
 
     useEffect(() => {
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchNotificationSettings() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.notificationSettings, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                    // Directly use response.data since it matches the expected structure
+                const response = await axiosInstance.get(API_ROUTES.notificationSettings);
+                // Directly use response.data since it matches the expected structure
                 console.log('feed settings recived:', response.data);
 
                 setNotificationSettings(response.data.notificationSettings);
@@ -79,7 +72,7 @@ function NotificationSettings({id}) {
         }
 
         fetchNotificationSettings();
-    }, [token]);
+    }, []);
     return (
         <div className='max-w-[688px] flex-auto'>
             <h2

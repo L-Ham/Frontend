@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance} from '../../../../../requests/axios';
-import {useSelector} from 'react-redux';
 import {API_ROUTES} from '../../../../../requests/routes';
 
 
@@ -23,20 +22,18 @@ function DoubleDropZone(props, id) {
     // State to store the uploaded image URLs
     const [leftImage, setLeftImage] = useState(null);
     const [rightImage, setRightImage] = useState(null);
-    const token = useSelector((state) => state.user.token);
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} bannerImage - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} bannerImage - The new settings to be updated.
+     */
     async function handleUpdateAvatar(bannerImage) {
         const file = new FormData();
         file.append('file', bannerImage);
         console.log('banner image file', file);
         try {
             await axiosInstance.post(API_ROUTES.avatar, file, {
-                headers: {'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'},
+                headers: {'Content-Type': 'multipart/form-data'},
             });
 
         // Optionally refresh the profile settings or indicate success to the user
@@ -45,18 +42,17 @@ function DoubleDropZone(props, id) {
         }
     }
     /**
- * Asynchronously updates feed settings using a PATCH request.
- *
- * @param {Object} bannerImage - The new settings to be updated.
- */
+     * Asynchronously updates feed settings using a PATCH request.
+     *
+     * @param {Object} bannerImage - The new settings to be updated.
+     */
     async function handleUpdateBanner(bannerImage) {
         const file = new FormData();
         file.append('file', bannerImage);
         console.log('banner image file', file);
         try {
             await axiosInstance.post(API_ROUTES.banner, file, {
-                headers: {'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data'},
+                headers: {'Content-Type': 'multipart/form-data'},
             });
 
         // Optionally refresh the profile settings or indicate success to the user
@@ -67,17 +63,14 @@ function DoubleDropZone(props, id) {
 
     useEffect(() => {
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchBanner() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.banner, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                    // Directly use response.data since it matches the expected structure
+                const response = await axiosInstance.get(API_ROUTES.banner);
+                // Directly use response.data since it matches the expected structure
                 setRightImage(response.data.url);
 
 
@@ -87,17 +80,14 @@ function DoubleDropZone(props, id) {
             }
         }
         /**
-    * ProfileSettings function component renders the profile customization settings.
-
-    *
-    * @return {React.Component} A div container with settings to customize the user's profile.
-    */
+         * ProfileSettings function component renders the profile customization settings.
+         *
+         * @return {React.Component} A div container with settings to customize the user's profile.
+         */
         async function fetchAvatar() {
             try {
-                const response = await axiosInstance.get(API_ROUTES.avatar, {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-                    // Directly use response.data since it matches the expected structure
+                const response = await axiosInstance.get(API_ROUTES.avatar);
+                // Directly use response.data since it matches the expected structure
                 setLeftImage(response.data.url);
 
 
@@ -109,7 +99,7 @@ function DoubleDropZone(props, id) {
 
         fetchBanner();
         fetchAvatar();
-    }, [token]);
+    }, []);
 
     /**
  * Prevents the default action and updates the left image state based on dropped files.
