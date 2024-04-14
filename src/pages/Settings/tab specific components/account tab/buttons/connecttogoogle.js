@@ -32,10 +32,10 @@ function ConnectToGoogle({id}) {
     return (
         <button onClick={handleClick} id = {'google' + id} className='relative box-border
          flex min-h-[32px] w-auto
-          min-w-[195px] max-w-full items-center
-          justify-center whitespace-pre-wrap rounded-full border-[#4286f5]
-          border-[none] bg-[#4286f5] fill-[var(--newCommunityTheme-body)] px-4 py-1 text-center text-sm
-          font-bold leading-[17px] tracking-[unset] text-[color:var(--newCommunityTheme-body)]'>
+          min-w-[195px] max-w-full items-center justify-center
+          whitespace-pre-wrap rounded-full border border-[#4286f5]
+          bg-[var(--newCommunityTheme-body)]  fill-[var(--newCommunityTheme-body)] px-4 py-1 text-center text-sm
+          font-bold leading-[17px] tracking-[unset] text-[color:var(--newCommunityTheme-metaText)]'>
             <span className='ml-[18px] max-h-[51px]
              overflow-hidden text-ellipsis whitespace-normal leading-[17px]'>
                 <svg className="absolute bottom-0 left-2 h-full w-[18px] flex-none" viewBox="0 0 18 18"
