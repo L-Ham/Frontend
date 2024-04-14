@@ -8,37 +8,44 @@ import {metaClasses} from './metadatacard.styles.js';
  * MetadataCard component
  * @param {string} postId
  * @param {string} subredditId
- * @param {string} authorId
+ * @param {string} subredditName
+ * @param {string} userId
  * @param {string} viewContext
- * @param {number} created
+ * @param {string} createdAt
  * @return {React.Component}
  */
 export function MetadataCard({
     postId,
     subredditId,
-    authorId,
+    subredditName,
+    userId,
     viewContext,
-    created,
+    createdAt,
 }) {
-    const Icon = <img src={require('../../../../assets/images/avatar_default_0.png')}
-        alt='avatar' className='size-6 rounded-full'/>;
     return (
         <div className={metaClasses.root} data-testid={`metadatacard-${postId}`}>
             <div className={metaClasses.base}>
                 <HoverCard
                     postId={postId}
                     viewContext={viewContext}
-                    fullName={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? authorId:subredditId}
-                    icon={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? Icon:null}
+                    entityName={subredditName}
+                    entityId={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED ? userId:subredditId}
+                    isUser={viewContext == VIEW_CONTEXTS.SUBREDDIT_FEED}
                 />
                 <div className={metaClasses.time}>
                     <div className={metaClasses.dot}>•</div>
-                    <ReactTimeAgo date={new Date(created * 1000)} locale="en-US" className='ml-1' />
+                    <ReactTimeAgo date={new Date(createdAt)} locale="en-US" className='ml-1' />
                 </div>
             </div>
             {viewContext === VIEW_CONTEXTS.COMMENTS_PAGE &&
             <div className={metaClasses.comments}>
-                <HoverCard postId={postId} viewContext={viewContext} fullName={authorId}/>
+                <HoverCard
+                    postId={postId}
+                    viewContext={viewContext}
+                    entityId={userId}
+                    entityName={subredditName}
+                    isUser={true}
+                />
             </div>}
         </div>
     );
@@ -47,7 +54,8 @@ export function MetadataCard({
 MetadataCard.propTypes = {
     postId: PropTypes.string.isRequired,
     subredditId: PropTypes.string.isRequired,
-    authorId: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
-    created: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
 };

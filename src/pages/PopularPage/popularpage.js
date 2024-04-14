@@ -3,7 +3,7 @@ import React from 'react';
 import {GalleryCarousel} from './GalleryCarousel/gallerycarousel.js';
 import {Feed} from '../../generic components/feed.js';
 import {RightSidebar} from './RightSideBar/rightsidebar.js';
-
+import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
 
 /**
  * Renders the popular page component.
@@ -21,7 +21,8 @@ function PopularPage() {
                 {/* Content */}
                 <main className=' w-full scroll-mt-[56px] nd:max-h-[calc(100%-(16px+316px))]'>
                     {/* posts */}
-                    <Feed/>
+                    <Feed viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postList={['t3_1bmnuhw',
+                        't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
                 </main>
                 <div className='top-0 hidden
                  w-[316px] min-w-[316px] md:sticky md:top-[56px]

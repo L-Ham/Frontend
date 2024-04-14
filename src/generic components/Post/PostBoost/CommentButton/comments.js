@@ -5,20 +5,23 @@ import {useComments} from './comments.hooks.js';
 /**
  * Comments Button component
  * @param {string} postId
+ * @param {string} url
+ * @param {number} commentCount
  * @return {React.Component}
  */
 export function Comments({
     postId,
+    url,
+    commentCount,
 }) {
     const {
-        permalink,
-        commentCount,
+        count,
         CommentsIcon,
-    } = useComments({postId});
+    } = useComments({commentCount});
     return (
         <a
             className={commentsClasses.root}
-            href={permalink}
+            href={url}
             target='_self'
             style={commentsStyles.root}
             onClick={(e) => e.stopPropagation()}
@@ -28,7 +31,7 @@ export function Comments({
                 <div className={commentsClasses.icon} data-testid={`comments-icon-${postId}`}>
                     <CommentsIcon />
                 </div>
-                <div data-testid={`comments-count-${postId}`}>{commentCount}</div>
+                <div data-testid={`comments-count-${postId}`}>{count}</div>
             </div>
         </a>
     );
@@ -36,4 +39,6 @@ export function Comments({
 
 Comments.propTypes = {
     postId: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    commentCount: PropTypes.number.isRequired,
 };

@@ -7,20 +7,23 @@ import PropTypes from 'prop-types';
 /**
  * The post content component. Renders the subreddit's name, post title.
  * @param {string} postId - The post id.
- * @param {string} fullName - The full name.
+ * @param {string} subredditName - The subreddit name.
+ * @param {string} subredditId - The subreddit id.
  * @param {string} viewContext - The view context.
  * @param {string} postUrl - The post URL.
  * @param {string} postTitle - The post title.
  * @return {JSX.Element} The post content component.
  */
-function PostContent({postId, fullName, viewContext, postUrl, postTitle}) {
+function PostContent({postId, subredditName, subredditId, viewContext, postUrl, postTitle}) {
     return (
         <div className={styles.container}>
             <div className={styles.hoverCard}>
                 <HoverCard
                     postId={postId}
-                    fullName={fullName}
+                    entityName={subredditName}
+                    entityId={subredditId}
                     viewContext={viewContext}
+                    isUser={false}
                 />
             </div>
             <div className={styles.postTitleLink}>
@@ -35,7 +38,8 @@ function PostContent({postId, fullName, viewContext, postUrl, postTitle}) {
 
 PostContent.propTypes = {
     postId: PropTypes.string.isRequired,
-    fullName: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
+    subredditId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
     postUrl: PropTypes.string.isRequired,
     postTitle: PropTypes.string.isRequired,

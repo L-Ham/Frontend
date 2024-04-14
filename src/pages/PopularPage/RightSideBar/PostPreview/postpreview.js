@@ -8,19 +8,21 @@ import PropTypes from 'prop-types';
 /**
  * Post preview component.
  * @param {string} postId - The post id.
- * @param {string} fullName - The full name.
+ * @param {string} subredditName - The subreddit name.
+ * @param {string} subredditId - The subreddit id.
  * @param {string} viewContext - The view context.
  * @param {string} postUrl - The post url.
  * @param {string} postTitle - The post title.
  * @return {JSX.Element} The post preview component.
  */
-function PostPreview({postId, fullName, viewContext, postUrl, postTitle}) {
+function PostPreview({postId, subredditName, subredditId, viewContext, postUrl, postTitle}) {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
                 <PostContent
                     postId={postId}
-                    fullName={fullName}
+                    subredditName={subredditName}
+                    subredditId={subredditId}
                     viewContext={viewContext}
                     postUrl={postUrl}
                     postTitle={postTitle}
@@ -39,7 +41,8 @@ function PostPreview({postId, fullName, viewContext, postUrl, postTitle}) {
 
 PostPreview.propTypes = {
     postId: PropTypes.string.isRequired,
-    fullName: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
+    subredditId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
     postUrl: PropTypes.string.isRequired,
     postTitle: PropTypes.string.isRequired,

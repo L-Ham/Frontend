@@ -13,7 +13,7 @@ export function BackButton({
     const {
         handleBackClick,
         BackIcon,
-    } = useBackButton({postId});
+    } = useBackButton();
     return (
         <button
             aria-label="Back"

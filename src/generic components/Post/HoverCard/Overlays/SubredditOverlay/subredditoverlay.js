@@ -12,6 +12,7 @@ import {useSubredditOverlay} from './subredditoverlay.hooks.js';
  * @param {function} openOverlay
  * @param {function} closeOverlay
  * @param {string} subredditId
+ * @param {string} subredditName
  * @param {string} viewContext
  * @return {React.Component}
  */
@@ -19,27 +20,21 @@ export function SubredditOverlay({
     openOverlay,
     closeOverlay,
     subredditId,
+    subredditName,
     viewContext,
-    /*
-    subredditIcon,
-    subredditDescription,
-    subredditMembers,
-    subredditMembersName,
-    subredditOnline,
-    subredditOnlineName,
-     */
 }) {
     const {
         subredditPrefixedName,
+        bannerImage,
+        isMember,
         publicDescription,
+        avatarImage,
         membersCount,
-        membersName,
-        onlineCount,
-        onlineName,
-        isSubscriber,
-        bannerLink,
+        membersNickname,
+        currentlyViewingCount,
+        currentlyViewingNickname,
         rootClasses,
-    } = useSubredditOverlay({subredditId, viewContext});
+    } = useSubredditOverlay({subredditName, viewContext});
     return (
         <div
             className={rootClasses}
@@ -48,26 +43,28 @@ export function SubredditOverlay({
             onClick={(e) => e.stopPropagation()}
             data-testid={`subreddit-overlay-${subredditId}`}
         >
-            {bannerLink &&
+            {bannerImage &&
             <Banner
                 subredditId={subredditId}
-                bannerLink={bannerLink}
+                bannerLink={bannerImage}
             />}
             <TopBar
                 subredditId={subredditId}
                 subredditPrefixedName={subredditPrefixedName}
-                isSubscriber={isSubscriber}
+                isSubscriber={isMember}
+                icon={avatarImage}
             />
+            {publicDescription &&
             <div className={overlayClasses.description} data-testid={`subreddit-overlay-description-${subredditId}`}>
                 {parse(replaceHtmlEntities(publicDescription))}
-            </div>
+            </div>}
             <hr className={overlayClasses.hr}/>
             <Stats
                 subredditId={subredditId}
                 membersCount={membersCount}
-                membersName={membersName}
-                onlineCount={onlineCount}
-                onlineName={onlineName}
+                membersName={membersNickname}
+                onlineCount={currentlyViewingCount}
+                onlineName={currentlyViewingNickname}
             />
         </div>
     );
@@ -77,6 +74,7 @@ SubredditOverlay.propTypes = {
     openOverlay: PropTypes.func.isRequired,
     closeOverlay: PropTypes.func.isRequired,
     subredditId: PropTypes.string.isRequired,
+    subredditName: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
     /*
     subredditIcon: PropTypes.element.isRequired,

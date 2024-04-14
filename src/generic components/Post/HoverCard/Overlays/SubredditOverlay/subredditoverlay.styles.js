@@ -1,6 +1,7 @@
 export const overlayClasses = {
     root: `-m-2 w-[90vw] max-w-[360px] overflow-hidden rounded-[15px] p-0 flex flex-col 
-    absolute z-20 bg-[var(--color-neutral-background-strong)] text-[var(--color-neutral-content)] tooltip-shadow `,
+    absolute z-20 bg-[var(--color-neutral-background-strong)] text-[var(--color-neutral-content)] 
+    shadow-[0_1px_4px_rgba(0,0,0,0.15),0_4px_4px_rgba(0,0,0,0.15)]`,
     commentsContext: ` top-6 `,
     defaultContext: ` left-[0.2rem] top-[2.1rem] `,
     banner: `relative h-[80px] w-auto overflow-hidden rounded-t-[16px]`,
