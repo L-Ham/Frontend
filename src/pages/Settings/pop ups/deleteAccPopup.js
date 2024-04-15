@@ -163,9 +163,9 @@ function DeletePopUp({id}) {
                         />
                         <div className="mt-4 flex items-center">
                             <button onClick={toggleUnderstand} id={'button4' + id}
-                                className={`mx-1 size-4 shrink-0 border-2 border-black flex flex-col justify-center 
-                                 p-1 text-sm font-bold text-[var(--newRedditTheme-checkbox)] items-center
-                                 transition-colors bg-transparent`}>
+                                className="mx-1 flex size-4 shrink-0 flex-col items-center justify-center border-2
+                                 border-black bg-transparent p-1 text-sm font-bold
+                                 text-[var(--newRedditTheme-checkbox)] transition-colors">
                                 {understand ? '✓' : ''}
                             </button>
                             <label className="ml-2 text-xs font-medium
@@ -174,10 +174,10 @@ function DeletePopUp({id}) {
                         </div>
                         <div className="mt-4 flex justify-end">
                             <button onClick={handleDelete} disabled={!canDelete} id = {'button3' + id}
-                                className={`rounded-full bg-blue-500 
-                                px-4 py-2 text-sm font-bold uppercase text-white transition-opacity ${
-        canDelete ? 'cursor-pointer opacity-100' : 'cursor-not-allowed opacity-50'
-        }`}>
+                                className={canDelete ? `cursor-pointer rounded-full bg-blue-500 px-4
+                                py-2 text-sm font-bold uppercase text-white opacity-100 transition-opacity`:
+                                    `cursor-not-allowed rounded-full bg-blue-500 px-4
+                            py-2 text-sm font-bold uppercase text-white opacity-50 transition-opacity`}>
                                 Delete
                             </button>
                         </div>
