@@ -1,41 +1,36 @@
 import React from 'react';
-// import {useSubreddit} from '../pages/subreddit/subredditcontext';
 import {Post} from './Post/post.js';
+import {PropTypes} from 'prop-types';
+import {FeedFilter} from './FeedFilter/feedfilter.js';
 import {DATA} from './Post/data.js';
-import {VIEW_CONTEXTS} from './Post/data.js';
 /**
  * Renders the Feed component.
+ * @param {string} viewContext The view context.
+ * @param {string[]} postList The list of post ids.
+ * @param {string} type The type of feed.
  * @return {JSX.Element} The rendered component.
  */
-export function Feed() {
-    // const {userIsModerator} = useSubreddit();
-    const postId = 't3_1bmnuhw';
-    const posts = [DATA[postId]];
+export function Feed({
+    viewContext,
+    postList,
+    type,
+}) {
+    if (type === 'ids') {
+        postList = postList.map((postId) => DATA[postId]);
+    }
     return (
-        <div className='h-screen'>
-            {posts.map((post) => (
-                <Post key={post.name} viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postId={postId}/>
+        <>
+            <FeedFilter />
+            {postList.map((post) => (
+                <Post key={post._id} viewContext={viewContext} {...post} />
             ))}
-        </div>
+        </>
     );
 }
-// Post({
-//     postId,
-//     viewContext,
-// })
-/**
- * Returns the empty feed component.
- * @return {JSX.Element} The rendered component.
- */
-// function getEmptyFeed() {
-//     return (
-//         <div className='z-10 flex h-screen flex-col items-center justify-center'>
-//             <h1 className='mb-2 text-center text-4xl'>This Community doesn&apos;t have any posts yet</h1>
-//             <p className='mb-2 text-[#444444]'>Make one and get this feed started</p>
-//             <button className={`mx-2 rounded-3xl px-5 py-2 bg-[#0045ac]
-//              text-[white] hover:bg-[#003584]`}>
-//                 Create a post
-//             </button>
-//         </div>
-//     );
-// }
+
+Feed.propTypes = {
+    viewContext: PropTypes.string.isRequired,
+    postList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    type: PropTypes.string.isRequired,
+};
+

@@ -22,7 +22,7 @@ function CommunityItem({imgURL, communityName, communityId, isFavorite}) {
     imgURL = imgURL || 'https://via.placeholder.com/150';
     // console.log({imgURL, communityName, communityId, isFavorite});
     return (
-        <NavLink to={'r/' + communityName} className={styles.root} data-testid={`community-item-${communityName}`}>
+        <NavLink to={'/r/' + communityName} className={styles.root} data-testid={`community-item-${communityName}`}>
             <span className={styles.leftItemsWrapper}>
                 <span className={styles.leftIconContainer}>
                     <img src={imgURL} alt={communityName} className={styles.img} />

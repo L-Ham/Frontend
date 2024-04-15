@@ -10,4 +10,5 @@ export const topbarClasses = {
     hover:underline`,
     name: `flex items-start justify-start text-[var(--color-neutral-content-weak)]`,
     date: `flex items-center text-[var(--color-neutral-content-weak)]`,
+    displayName: `text-[var(--color-neutral-content-weak)]`,
 };

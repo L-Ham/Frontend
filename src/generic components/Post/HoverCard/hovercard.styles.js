@@ -1,7 +1,7 @@
 export const hoverCardClasses = {
     root: `inline-flex max-w-full items-center gap-1 cursor-pointer text-xs font-semibold
     text-[var(--color-neutral-content)] hover:text-[var(--color-primary-hover)]`,
-    icon: `overflow-hidden rounded-full text-[var(--color-primary-background)]`,
+    icon: `overflow-hidden rounded-full text-[var(--color-secondary)]`,
     overlay: `absolute size-0`,
 };
 

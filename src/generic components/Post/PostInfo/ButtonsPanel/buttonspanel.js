@@ -7,25 +7,29 @@ import {panelClasses} from './buttonspanel.styles.js';
 /**
  * ButtonsPanel component
  * @param {string} postId
+ * @param {string} subredditId
  * @param {string} viewContext
- * @param {boolean} isSubscriber
+ * @param {boolean} isMember
  * @return {React.Component}
  */
 export function ButtonsPanel({
     postId,
+    subredditId,
     viewContext,
-    isSubscriber,
+    isMember,
 }) {
     return (
         <div className={panelClasses.root}>
-            {(!isSubscriber && viewContext === VIEW_CONTEXTS.AGGREGATE_FEED) && <JoinButton postId={postId} />}
-            <OptionsButton postId={postId} />
+            {(!isMember && viewContext === VIEW_CONTEXTS.AGGREGATE_FEED) &&
+            <JoinButton postId={postId} subredditId={subredditId} />}
+            <OptionsButton postId={postId} isMember={isMember} />
         </div>
     );
 }
 
 ButtonsPanel.propTypes = {
     postId: PropTypes.string.isRequired,
+    subredditId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
-    isSubscriber: PropTypes.bool.isRequired,
+    isMember: PropTypes.bool.isRequired,
 };

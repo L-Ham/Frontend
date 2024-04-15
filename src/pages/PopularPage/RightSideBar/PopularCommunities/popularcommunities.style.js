@@ -23,7 +23,8 @@ export const popularCommunitiesClasses = {
     title: 'my-3 text-xs font-semibold uppercase',
     listItem: 'list-none',
     list: 'mb-4 p-0',
-    button: `inline-flex h-8 items-center justify-center gap-2
+    button: `inline-flex h-8 items-center justify-center gap-2 text-sm font-semibold
+    text-[var(--color-secondary-plain)]
      rounded-full px-2.5 hover:bg-[var(--color-secondary-background-hover)]
      active:bg-[var(--color-interactive-pressed)]`,
 };

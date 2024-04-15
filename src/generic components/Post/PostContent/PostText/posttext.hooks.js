@@ -1,10 +1,9 @@
 import {textClasses} from './posttext.styles';
-import {DATA, VIEW_CONTEXTS} from '../../data.js';
+import {VIEW_CONTEXTS} from '../../data.js';
 import {replaceHtmlEntities} from '../../../utils.js';
 import parse from 'html-react-parser';
 
-export const usePostText = ({postId, viewContext}) => {
-    const {selftext_html: content} = DATA[postId];
+export const usePostText = ({content, viewContext}) => {
     const isCommentsPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE;
     const startTag = '&lt;!-- SC_OFF --&gt;';
     const closingTag = '&lt;!-- SC_ON --&gt;';

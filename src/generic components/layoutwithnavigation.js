@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
  * */
 function LayoutWithNavigation(props) {
     return (
-        <div>
+        <>
             <div className='flex justify-evenly pt-[56px]'>
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] nd:visible'>
                     <AppBar />
@@ -31,7 +31,7 @@ function LayoutWithNavigation(props) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

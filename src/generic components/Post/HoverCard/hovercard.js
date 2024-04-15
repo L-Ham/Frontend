@@ -8,45 +8,38 @@ import {hoverCardClasses, hoverCardStyles} from './hovercard.styles.js';
 /**
  * HoverCard component
  * @param {string} postId
- * @param {string} fullName
+ * @param {string} entityName
  * @param {string} viewContext
  * @param {React.Component} icon
+ * @param {boolean} isUser
  * @return {React.Component}
  */
 export function HoverCard({
     postId,
-    fullName,
+    entityName,
+    entityId,
     viewContext,
-    icon,
+    isUser,
 }) {
     const {
         handlePopoverOpen,
         handlePopoverClose,
-        DefaultSubredditIcon,
+        DisplayIcon,
         overlayOpen,
         prefixedName,
-        subredditId,
-        authorId,
-        isUser,
-    } = useHoverCard({fullName, postId, viewContext});
+    } = useHoverCard({entityName, entityId, viewContext, isUser});
     return (
         <>
             <div
                 className={hoverCardClasses.root}
                 style={hoverCardStyles.root}
-                data-testid={`hovercard-${postId}-${fullName}`}
+                data-testid={`hovercard-${postId}-${name}`}
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
                 {viewContext !== VIEW_CONTEXTS.COMMENTS_PAGE &&
                 <div className={hoverCardClasses.icon}>
-                    {icon ||
-                    <DefaultSubredditIcon
-                        viewBox="0 0 20 20"
-                        width="25"
-                        height="25"
-                        fill="currentColor"
-                    />}
+                    {DisplayIcon}
                 </div>}
                 {prefixedName}
             </div>
@@ -55,13 +48,14 @@ export function HoverCard({
                     <UserOverlay
                         openOverlay={handlePopoverOpen}
                         closeOverlay={handlePopoverClose}
-                        userId={authorId}
+                        userId={entityId}
                         viewContext={viewContext}
                     /> :
                     <SubredditOverlay
                         openOverlay={handlePopoverOpen}
                         closeOverlay={handlePopoverClose}
-                        subredditId={subredditId}
+                        subredditId={entityId}
+                        subredditName={entityName}
                         viewContext={viewContext}
                     />)}
             </div>
@@ -71,7 +65,8 @@ export function HoverCard({
 
 HoverCard.propTypes = {
     postId: PropTypes.string.isRequired,
-    fullName: PropTypes.string.isRequired,
+    entityName: PropTypes.string,
     viewContext: PropTypes.string.isRequired,
-    icon: PropTypes.element,
+    isUser: PropTypes.bool.isRequired,
+    entityId: PropTypes.string.isRequired,
 };

@@ -1,10 +1,23 @@
 import {useState, useEffect} from 'react';
 import {getIconComponent} from '../../iconsmap';
 import {DATA, VIEW_CONTEXTS} from '../data.js';
-export const useHoverCard = ({fullName, postId, viewContext}) => {
+import React from 'react';
+export const useHoverCard = ({entityName, entityId, viewContext, isUser}) => {
     const [overlayOpen, setOverlayOpen] = useState(false);
     const [hoverTimer, setHoverTimer] = useState(null);
-
+    const DefaultSubredditIcon = getIconComponent('default-subreddit');
+    let DisplayIcon =
+    <DefaultSubredditIcon viewBox="0 0 20 20"
+        width="25"
+        height="25"
+        fill="currentColor"
+    />;
+    if (isUser) {
+        const {displayName, avatar} = DATA[entityId];
+        entityName = displayName;
+        DisplayIcon = <img src={avatar || require('../../../assets/images/avatar_default_0.png')}
+            alt='avatar' className='size-6 rounded-full'/>;
+    }
     useEffect(() => {
     // Clean up the timer when the component unmounts
         return () => {
@@ -34,22 +47,15 @@ export const useHoverCard = ({fullName, postId, viewContext}) => {
         }, toClose);
         setHoverTimer(timer);
     };
-    let {display_name_prefixed: prefixedName} = DATA[fullName];
-    const {subreddit_id: subredditId, author_fullname: authorId} = DATA[postId];
-    const isUser = fullName[1] === '2';
     const isUserOnCommentPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE && isUser;
-    if (isUserOnCommentPage) {
-        prefixedName = prefixedName.replace('u/', '');
+    if (!isUserOnCommentPage) {
+        entityName = isUser ? 'u/' + entityName : 'r/' + entityName;
     }
-    const DefaultSubredditIcon = getIconComponent('default-subreddit');
     return {
         handlePopoverOpen,
         handlePopoverClose,
-        DefaultSubredditIcon,
+        DisplayIcon,
         overlayOpen,
-        prefixedName,
-        subredditId,
-        authorId,
-        isUser,
+        prefixedName: entityName,
     };
 };
