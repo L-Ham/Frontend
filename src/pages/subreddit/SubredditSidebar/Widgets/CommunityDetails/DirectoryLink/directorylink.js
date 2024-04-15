@@ -13,7 +13,7 @@ export function DirectoryLink({ExternalIcon}) {
     const navigate = useNavigate();
     return (
         <div className={classes.directoryLink}>
-            <strong id="position">Top 1%</strong>
+            <strong id="position" className='text-[var(--color-tone-1)]'>Top 1%</strong>
             <a
                 className={classes.rankLink}
                 onClick = {() => navigate('/best/communities/1/#t5_2rfz5')}

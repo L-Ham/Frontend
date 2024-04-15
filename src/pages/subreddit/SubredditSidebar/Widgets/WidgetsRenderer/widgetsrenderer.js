@@ -17,7 +17,7 @@ export function WidgetsRenderer() {
 
     return allWidgets.map((widgetId, index) => {
         const widget = items[widgetId] || {};
-        const WidgetComponent = WIDGETS_MAP[widget.kind];
+        const WidgetComponent = WIDGETS_MAP[widget.kind || 'subreddit-rules'];
         const hrClasses = `border-[var(--color-neutral-border-weak)] ${widget.kind === 'id-card' ? '!my-0' : '!my-4'}`;
 
         return (

@@ -1,0 +1,19 @@
+.post-creation-form__tab.active::after{
+    content: "";
+    box-sizing: border-box;
+    background-color: var(--newRedditTheme-button);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+}
+
+.post-creation-form__tab.active{
+    @apply bg-none !text-[color:var(--newRedditTheme-button)];
+}
+
+.post-creation-form__tab:hover:not(:disabled), .post-creation-form__tab:focus{
+    color: var(--newRedditTheme-actionIcon);
+    background-color: var(--newRedditTheme-buttonAlpha05);
+}

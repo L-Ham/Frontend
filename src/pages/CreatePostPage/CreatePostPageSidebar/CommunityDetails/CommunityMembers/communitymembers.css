@@ -1,0 +1,5 @@
+.community-members .online-div:before{
+    content: "●";
+    margin-right: 4px;
+    color: #46d160;
+}

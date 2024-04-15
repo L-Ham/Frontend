@@ -6,7 +6,7 @@ import {replaceHtmlEntities} from '../../../../../../generic components/utils.js
 export const useRule = ({data, display}) => {
     const isCompact = display === 'compact';
     const [isDescriptionHidden, setIsDescriptionHidden] = useState(isCompact);
-    const {descriptionHtml, priority, shortName} = data;
+    const {descriptionHtml, ruleText: shortName} = data;
 
     if (!data) return null;
 
@@ -21,7 +21,6 @@ export const useRule = ({data, display}) => {
         isCompact,
         isDescriptionHidden,
         description,
-        priority,
         shortName,
         CaretDownIconOutline,
         toggleDescriptionVisibility,

@@ -1,0 +1,6 @@
+.button-with-tooltip:hover .options-list-item-tooltip {
+    opacity: 1 !important;
+}
+.options-list-item-tooltip {
+    opacity: 0;
+}

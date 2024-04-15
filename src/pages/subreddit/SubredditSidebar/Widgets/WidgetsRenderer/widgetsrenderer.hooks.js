@@ -2,31 +2,22 @@ import {useSubreddit} from '../../../subredditcontext.js';
 
 export const useWidgetsRenderer = () => {
     const {widgets, about} = useSubreddit();
-
+    // TODO_BACKEND: update destructuring to match the actual data structure
     if (!widgets || !about) return {};
 
-    const {
-        data: {
-            user_is_moderator: userIsModerator,
-        },
-    } = about;
+    // const {
+    //     data: {
+    //         user_is_moderator: userIsModerator,
+    //     },
+    // } = about;
+
+    const userIsModerator = false;
 
     const {
-        items,
-        layout: {
-            idCardWidget,
-            topbar,
-            sidebar,
-            moderatorWidget,
-        },
+        order: allWidgets,
     } = widgets;
 
-    const allWidgets = [
-        idCardWidget,
-        ...topbar.order,
-        ...sidebar.order,
-        moderatorWidget,
-    ];
+    const items = widgets;
 
     if (userIsModerator) {
         allWidgets.push('community-settings');

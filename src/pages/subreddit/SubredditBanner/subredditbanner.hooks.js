@@ -8,21 +8,21 @@ export const useSubredditBanner = () => {
 
     if (!about) return {};
 
+
     const {
-        data: {
-            banner_background_image: bannerBgImg,
-            community_icon: comIcon,
-            display_name_prefixed: displayNamePrefixed,
-            active_user_count: activeUserCount,
-            subscribers: subscribersCount,
-            primary_color: primaryColor,
+        communityDetails: {
+            bannerImage: bannerBackgroundImage,
+            avatarImage: communityIcon,
+            name,
+            currentlyViewingCount: activeUserCount,
+            membersCount: subscribersCount,
         },
     } = about;
 
     // constants
-    const bannerBackgroundImage = bannerBgImg.split('width')[0];
-    const communityIcon = comIcon.split('width')[0];
     const PlusIcon = getIconComponent('plus', true);
+    const primaryColor = '#0079d3';
+    const displayNamePrefixed = `r/${name}`;
 
     // functions
     const handleCreatePost = () => {

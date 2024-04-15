@@ -1,0 +1,15 @@
+.post-types-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    background: var(--newCommunityTheme-actionIcon);
+    opacity: 0;
+}
+
+.post-types-btn:hover::before{
+    opacity: .08;
+}
