@@ -1,7 +1,8 @@
 import {useSelector} from 'react-redux';
 export const usePostInfo = () => {
     const user = useSelector((state) => state.user);
-    new Date(user.created * 1000).getFullYear();
+    const year= Date(user.created * 1000).getFullYear();
+
     const info=[
         {info: user.postKarma, title: 'Post Karma'},
         {info: user.commentKarma, title: 'Comment Karma'},
