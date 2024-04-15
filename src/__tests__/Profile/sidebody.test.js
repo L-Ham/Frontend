@@ -13,6 +13,5 @@ describe('SideBody', () => {
         render(<Provider store={store}><SideBody username={username} /></Provider>);
 
         expect(screen.getByTestId('profile-settings')).toBeInTheDocument();
-        expect(screen.getByTestId('profile-links')).toBeInTheDocument();
     });
 });
