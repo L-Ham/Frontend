@@ -1,0 +1,48 @@
+/*** md ***/
+.community-rules div.md {
+    @apply mt-1;
+    font-family: "Noto Sans JP",Arial,sans-serif;
+    font-style: normal;
+    word-wrap:break-word;
+}
+
+.community-rules div.md :first-child {
+    @apply mt-0;
+}
+.community-rules div.md :last-child {
+    @apply mb-0;
+}
+
+.subreddit div.md code {
+    @apply whitespace-pre-wrap;
+}
+
+.community-rules div.md ul{
+    list-style: disc outside !important;
+    margin: 4px 0 4px 8px;
+}
+
+.community-rules div.md ul li{
+    @apply !list-disc;
+    margin: .4em 1em;
+}
+
+.community-rules div.md ol li {
+    @apply list-decimal;
+    margin: .4em 1em;
+}
+
+.community-rules div.md ul *:not(:first-child):not(:last-child), .community-rules div.md ol *:not(:first-child):not(:last-child){
+    @apply mt-1;
+}
+
+.community-rules div.md ul p,
+.community-rules div.md ol p {
+    @apply m-0 p-0;
+}
+
+.community-rules div.md ul a:hover, .community-rules div.md ol a:hover {
+    @apply underline;
+}
+
+

@@ -1,0 +1,21 @@
+.community-list-dropdown-group__button{
+    font-family: "Noto Sans JP", Arial, sans-serif;
+    font-style: normal;
+    text-transform: unset;
+}
+
+.community-list-dropdown-group__button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    background: var(--newCommunityTheme-bodyText);
+    opacity: 0;
+}
+
+.community-list-dropdown-group__button:hover::before{
+    opacity: .08;
+}

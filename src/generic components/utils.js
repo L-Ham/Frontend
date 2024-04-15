@@ -27,6 +27,17 @@ export function formatNumber(number, isCap = true) {
     return `${number < 0 ? '-' : ''}${formattedNumber}${abbreviations[index]}`;
 }
 
+/**
+ * Formats a number with commas.
+ * @param {number} number - The number to be formatted.
+ * @return {string} The formatted number with commas.
+ * @example
+ * // Returns '1,234,567'
+ * formatNumberWithCommas(1234567);
+ */
+export function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
 
 /**
  * Replaces html entities with their respective characters
@@ -251,3 +262,15 @@ export function generateSecondaryColorTones(hex, isDark) {
     }
     return result;
 }
+
+
+export const validateLink = (url) => {
+    // Regular expression to check if the URL is valid
+    const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return !!pattern.test(url);
+};

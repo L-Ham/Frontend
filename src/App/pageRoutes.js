@@ -1,5 +1,6 @@
 import React from 'react';
 import {Subreddit} from '../pages/subreddit/subreddit.js';
+import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
 import {Post} from '../generic components/Post/post.js';
 import {useParams} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
@@ -21,6 +22,17 @@ export function SubredditRoute() {
     const {name} = useParams();
     return (
         <Subreddit name={name}/>
+    );
+}
+
+/**
+ * Renders a route for a specific subreddit.
+ * @return {JSX.Element} The rendered SubredditRoute component.
+ */
+export function CreatePostRoute() {
+    const {name} = useParams();
+    return (
+        <CreatePostPage name={name}/>
     );
 }
 

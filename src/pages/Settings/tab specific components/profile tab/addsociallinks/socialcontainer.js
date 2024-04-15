@@ -47,7 +47,6 @@ function SocialContainer({initialList, id}) {
     /**
      * Handles the deletion of a social link from the list.
      * The function logs the deletion to the console and updates the list state.
-
      * @param {string} id - The ID of the item to delete.
      * */
     async function handleDeleteSocial(id) {
@@ -55,7 +54,6 @@ function SocialContainer({initialList, id}) {
             console.log('token' + token);
             console.log('Deleting social link:', id);
             await axiosInstance.delete(API_ROUTES.editSocial, {
-                headers: {Authorization: `Bearer ${token}`},
                 data: {socialLinkId: id},
             });
             console.log('Social link deleted:', id);

@@ -6,17 +6,19 @@ import './md.css';
 /**
  * PostText component
  * @param {string} postId
+ * @param {string} content
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function PostText({
     postId,
+    content,
     viewContext,
 }) {
     const {
         classNames,
         postContent,
-    } = usePostText({postId, viewContext});
+    } = usePostText({content, viewContext});
     return (
         <div className={classNames} data-testid={`content-${postId}-${viewContext}`} style={textStyles.root}>
             {postContent}
@@ -26,5 +28,6 @@ export function PostText({
 
 PostText.propTypes = {
     postId: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
 };

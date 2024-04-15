@@ -18,6 +18,8 @@ export function TopBar({
 }) {
     const {
         DefaultIcon,
+        isJoined,
+        setIsJoined,
     } = useTopBar();
     return (
         <div className={topbarClasses.root}>
@@ -38,10 +40,12 @@ export function TopBar({
                 className={topbarClasses.joinButton}
                 style={topbarStyles.joinButton}
                 type='button'
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                    e.stopPropagation(); setIsJoined(!isJoined);
+                }}
                 data-testid={`join-button-${subredditId}`}
             >
-                Join
+                {isJoined ? 'Leave':'Join'}
             </button>}
         </div>
     );

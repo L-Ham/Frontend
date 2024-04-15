@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" version="1.1">
+	<rect x="1.6" y="1.6" width="12.8" height="9.6" rx="1.6" ry="1.6" fill="lightgray" stroke="black" stroke_width="0.32"/>
+	<rect x="3.2" y="8" width="9.6" height="1.6" fill="black"/>
+	<polygon points="4,8 6.4,4.8 8.8,8" fill="black" stroke="black" stroke_width="0.32"/>
+	<circle cx="11.2" cy="4.8" r="1.6" fill="black" stroke="black" stroke_width="0.32"/>
+</svg>

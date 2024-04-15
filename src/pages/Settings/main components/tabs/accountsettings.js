@@ -9,7 +9,8 @@ import {useState, useEffect} from 'react';
 import {API_ROUTES} from '../../../../requests/routes'; // Import the API_ROUTES constant
 import {axiosInstance} from '../../../../requests/axios';
 import PropTypes from 'prop-types';
-
+import {useDispatch} from 'react-redux';
+import {selfInfo} from '../../../../store/userSlice.js';
 /**
  * AccountSettings function component renders the account settings interface.
  * It provides options to customize email address, gender, language preferences, and more.
@@ -31,8 +32,20 @@ function AccountSettings({id}) {
         gender: 'male',
         connectedToGoogle: true,
     });
-
-
+    const dispatch = useDispatch();
+    /**
+     * Takes in token for user and retrieve user info
+     * @param {string} token
+     * @return {Promise<void>}
+     */
+    async function handleUserData() {
+        try {
+            const selfInfoResponse = await axiosInstance.get(API_ROUTES.userSelfInfo);
+            dispatch(selfInfo(selfInfoResponse.data.user));
+        } catch (error) {
+            console.error('Error retrieving user info:', error);
+        }
+    }
     useEffect(() => {
         /**
          * ProfileSettings function component renders the profile customization settings.
@@ -44,8 +57,8 @@ function AccountSettings({id}) {
                 const response = await axiosInstance.get(API_ROUTES.accountSettings);
                 // Directly use response.data since it matches the expected structure
                 console.log('acc settings recived:', response.data);
-
                 setAccSettings(response.data.accountSettings);
+                handleUserData();
             } catch (error) {
                 console.error('Failed to fetch feed settings:', error);
             }

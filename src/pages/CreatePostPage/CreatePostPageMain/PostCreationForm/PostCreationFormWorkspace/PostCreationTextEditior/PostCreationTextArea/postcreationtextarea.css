@@ -1,0 +1,10 @@
+.post-creation__text-container:not(.empty)::after{
+    bottom: 0;
+    color: var(--newCommunityTheme-actionIcon);
+    content: 'Text (required)';
+    cursor: text;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+

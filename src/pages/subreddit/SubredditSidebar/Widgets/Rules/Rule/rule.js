@@ -8,14 +8,15 @@ import {useRule} from './rule.hooks.js';
  * @param {Object} props - The component props.
  * @param {Object} props.data - The rule data.
  * @param {string} props.display - The rule display.
+ * @param {number} props.idx - The rule index.
  * @return {JSX.Element} The rendered component.
  */
-export function Rule({data, display}) {
+export function Rule({data, display, idx: priority}) {
     if (!data) return null;
 
     const {
         isDescriptionHidden,
-        description, priority, shortName,
+        description, shortName,
         CaretDownIconOutline, toggleDescriptionVisibility} = useRule({data, display});
 
     return (
@@ -56,4 +57,5 @@ export function Rule({data, display}) {
 Rule.propTypes = {
     data: PropTypes.object.isRequired,
     display: PropTypes.string.isRequired,
+    idx: PropTypes.number.isRequired,
 };

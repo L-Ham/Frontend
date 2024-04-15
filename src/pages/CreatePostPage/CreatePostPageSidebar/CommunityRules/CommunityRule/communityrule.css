@@ -1,0 +1,4 @@
+/*** GENERAL ***/
+.create-post-page__community-rule:not(:last-child){
+    @apply border-b-[1px];
+}

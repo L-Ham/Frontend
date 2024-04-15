@@ -1,0 +1,7 @@
+.post-creation__image-x-btn{
+    @apply hidden;
+}
+
+.post-creation__image:hover .post-creation__image-x-btn{
+    @apply block;
+}
