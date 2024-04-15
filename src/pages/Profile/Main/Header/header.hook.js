@@ -9,7 +9,7 @@ export const useHeader = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const imgSrc = user.avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
-
+    const name = user.displayName || 'User';
     useEffect(() => {
         const fetchAvatar = async () => {
             if (user.token && !user.avatar) {
@@ -27,5 +27,6 @@ export const useHeader = () => {
         fetchAvatar();
     }, [user, dispatch]);
     return {
-        imgSrc};
+        imgSrc,
+        name};
 };

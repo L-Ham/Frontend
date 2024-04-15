@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @param {string} username
  */
 export function Header({username}) {
-    const {imgSrc} = useHeader();
+    const {imgSrc, name} = useHeader();
     const {AddBannerIcon} = useAddBanner();
     return (
         <div className={headerClasses.root} data-testid={`profile-MainBody-Header`}>
@@ -42,7 +42,7 @@ export function Header({username}) {
                             <div className={headerClasses.divF}>
                                 <h1 className={headerClasses.h1}
                                     style={headerStyles.h1} data-testid={`profile-u/username`}>
-                                    {username}
+                                    {name==='User'&&username||name}
                                 </h1>
                             </div>
                         </div>
