@@ -88,6 +88,7 @@ import {ReactComponent as ViewCardIconFill} from '../assets/icons/view-card-fill
 import {ReactComponent as ViewClassicIconOutline} from '../assets/icons/view-classic-outline.svg';
 import {ReactComponent as RightArrowIcon} from '../assets/icons/right-arrow.svg';
 import {ReactComponent as LeftArrowIcon} from '../assets/icons/left-arrow.svg';
+import {ReactComponent as LinkFillIcon} from '../assets/icons/link-fill.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -178,6 +179,7 @@ const ICONS_MAP = {
     'view-classic-outline': ViewClassicIconOutline,
     'right-arrow': RightArrowIcon,
     'left-arrow': LeftArrowIcon,
+    'link-fill': LinkFillIcon,
 };
 
 /**

@@ -7,11 +7,13 @@ import {SocialLinks} from './SocialLinks/socialinks.js';
 import {sideBodyClasses} from './sidebody.styles.js';
 import {sideBodyStyles} from './sidebody.styles.js';
 import PropTypes from 'prop-types';
+import {useSidebody} from './sidebody.hook.js';
 /**
  * SideBody component
  * @return {React.Component}
  */
 export function SideBody({username}) {
+    const {links}=useSidebody();
     return (
         <div className={sideBodyClasses.root}>
             <PersonalInfo username={username}
@@ -34,7 +36,11 @@ export function SideBody({username}) {
                 style={sideBodyStyles.spanA}>
                 Links
             </span>
-            <SocialLinks/>
+            {links.map((link, index) => (
+                <SocialLinks key={index} title={link.title}
+                    links={link.link} addlinks={link.addIcon}
+                />
+            ))}
         </div>
     );
 }
