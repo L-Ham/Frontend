@@ -4,15 +4,15 @@ import {recentPostsData} from '../pages/PopularPage/RightSideBar/data.js';
 const initialState = {
     id: '',
     displayName: '',
+    username: '', // display name is different than username
     bannerImage: '',
     postKarma: '',
     commentKarma: '',
     created: 0,
-    avatar: '',
+    avatar: '', // or avatarImage
     token: '',
     theme: 'light',
-    about: '',
-    email: '',
+    publicDescription: '', // or about
     recentPosts: recentPostsData,
 };
 const userSlice = createSlice({
@@ -22,22 +22,11 @@ const userSlice = createSlice({
         login: (state, action) => {
             state.token = action.payload.token;
         },
-        setAvatar: (state, action)=>{
-            state.avatarImage = action.payload.avatarImage;
-        },
-        setBanner: (state, action)=>{
-            state.bannerImage = action.payload.bannerImage;
-        },
         setTheme: (state, action) => {
             state.theme = action.payload.theme;
         },
         selfInfo: (state, action) => {
-            state.id = action.payload.id;
-            state.displayName = action.payload.displayName;
-            state.commentKarma = action.payload.commentKarma;
-            state.postKarma = action.payload.postKarma;
-            state.created = action.payload.created;
-            state.avatar = action.payload.avatar;
+            Object.assign(state, action.payload);
         },
         logout: (state) => {
             Object.assign(state, initialState);
@@ -49,5 +38,5 @@ const userSlice = createSlice({
 });
 
 export {initialState};
-export const {login, setAvatar, setBanner, setTheme, selfInfo, logout, clearRecentPosts} = userSlice.actions;
+export const {login, setTheme, selfInfo, logout, clearRecentPosts} = userSlice.actions;
 export default userSlice.reducer;
