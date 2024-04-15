@@ -36,11 +36,12 @@ export function SideBody({username}) {
                 style={sideBodyStyles.spanA}>
                 Links
             </span>
-            {links.map((link, index) => (
-                <SocialLinks key={index} title={link.title}
-                    links={link.link} addlinks={link.addIcon}
+            { links.map((link, index) => (
+                <SocialLinks key={index} title={link.appName}
+                    links={link.linkOrUsername} addlinks={'0'}
                 />
             ))}
+            <SocialLinks title={`Add Social Links`} links={`/settings/profile`} addlinks={`1`}/>
         </div>
     );
 }

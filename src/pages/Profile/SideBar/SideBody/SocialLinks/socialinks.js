@@ -18,6 +18,7 @@ export function SocialLinks({title, links, addlinks}) {
                         <span className={socialLinkClasses.spanC}>
                             {(addlinks==='1'&&<AddIcon/>)||<LinkIcon/>}
                         </span>
+
                         <a className={socialLinkClasses.spanCC} href={links} target='_blank' rel="noreferrer">
                             {title}
                         </a>
