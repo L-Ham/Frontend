@@ -1,0 +1,33 @@
+.community-options .switch-btn{
+    transition: border-color 0.15s linear, background-color 0.15s linear;
+}
+
+.community-options{
+    --textColor: var(--newRedditTheme-widgetColors-sidebarWidgetTextColor);
+    --textColorHover: var(--newRedditTheme-widgetColors-sidebarWidgetTextColorShaded80);
+}
+
+.community-options .btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    background: var(--newCommunityTheme-bodyText);
+    opacity: 0;
+}
+
+.community-options .btn:hover::before{
+    opacity: .08;
+}
+
+.community-options .btn:hover{
+    color: var(--textColorHover);
+    fill: var(--textColorHover);
+}
+
+.community-options .btn:focus::before{
+    opacity: 0.16;
+}

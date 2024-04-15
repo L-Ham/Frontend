@@ -72,6 +72,29 @@ import {ReactComponent as RulesIconOutline} from '../assets/icons/rules-outline.
 import {ReactComponent as AddIconOutline} from '../assets/icons/add-outline.svg';
 import ArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import {ReactComponent as DizzySnooIconOutline} from '../assets/icons/dizzy-snoo-outline.svg';
+import {ReactComponent as SearchIcon} from '../assets/icons/search.svg';
+import {ReactComponent as FlairProfileIcon} from '../assets/icons/flair-profile.svg';
+import {ReactComponent as PostingToRedditIcon} from '../assets/icons/posting-to-reddit.svg';
+import {ReactComponent as CheckedIcon} from '../assets/icons/checked.svg';
+import {ReactComponent as UnCheckedIcon} from '../assets/icons/un-checked.svg';
+import {ReactComponent as InfoIcon} from '../assets/icons/info.svg';
+import {ReactComponent as OptionDragIcon} from '../assets/icons/option-drag.svg';
+import {ReactComponent as BoldIcon} from '../assets/icons/bold.svg';
+import {ReactComponent as EyeIconOutline} from '../assets/icons/eye-outline.svg';
+import {ReactComponent as EyeSlashIconOutline} from '../assets/icons/eye-slash-outline.svg';
+import {ReactComponent as PostIconOutline} from '../assets/icons/post-outline.svg';
+import {ReactComponent as PostIconFill} from '../assets/icons/post-fill.svg';
+import {ReactComponent as ImageIconOutline} from '../assets/icons/image-outline.svg';
+import {ReactComponent as ImageIconFill} from '../assets/icons/image-fill.svg';
+import {ReactComponent as LinkIcon} from '../assets/icons/link.svg';
+import {ReactComponent as PollIcon} from '../assets/icons/poll.svg';
+import {ReactComponent as PlusIconV2Fill} from '../assets/icons/plus-v2-fill.svg';
+import {ReactComponent as XIconFill} from '../assets/icons/x-fill.svg';
+import {ReactComponent as CheckmarkIconFill} from '../assets/icons/checkmark-fill.svg';
+import {ReactComponent as PlayIconFill} from '../assets/icons/play-fill.svg';
+import {ReactComponent as FullScreenIcon} from '../assets/icons/fullscreen.svg';
+import {ReactComponent as PlayIconV2Fill} from '../assets/icons/play-v2-fill.svg';
+import {ReactComponent as TrashIcon} from '../assets/icons/trash.svg';
 import {ReactComponent as BigXIcon} from '../assets/icons/big-x.svg';
 import {ReactComponent as NSFWIcon} from '../assets/icons/nsfw.svg';
 import {ReactComponent as SpoilerIcon} from '../assets/icons/spoiler.svg';
@@ -163,6 +186,29 @@ const ICONS_MAP = {
     'topic-law-outline': TopicLawIconOutline,
     'rules-outline': RulesIconOutline,
     'add-outline': AddIconOutline,
+    'search': SearchIcon,
+    'flair-profile': FlairProfileIcon,
+    'posting-to-reddit': PostingToRedditIcon,
+    'checked': CheckedIcon,
+    'un-checked': UnCheckedIcon,
+    'info': InfoIcon,
+    'option-drag': OptionDragIcon,
+    'bold': BoldIcon,
+    'eye-outline': EyeIconOutline,
+    'eye-slash-outline': EyeSlashIconOutline,
+    'post-outline': PostIconOutline,
+    'post-fill': PostIconFill,
+    'image-outline': ImageIconOutline,
+    'image-fill': ImageIconFill,
+    'link': LinkIcon,
+    'poll': PollIcon,
+    'plus-v2-fill': PlusIconV2Fill,
+    'x-fill': XIconFill,
+    'checkmark-fill': CheckmarkIconFill,
+    'play-fill': PlayIconFill,
+    'play-v2-fill': PlayIconV2Fill,
+    'fullscreen': FullScreenIcon,
+    'trash': TrashIcon,
     'big-x': BigXIcon,
     'nsfw': NSFWIcon,
     'spoiler': SpoilerIcon,

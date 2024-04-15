@@ -6,10 +6,8 @@ import {ProfileIcon} from './profileicon.js';
 import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import {profileMenuClasses} from './profilemenu.styles.js';
 import {useSelector} from 'react-redux';
-import {axiosInstance as axios} from '../../../../requests/axios.js';
-import {API_ROUTES} from '../../../../requests/routes.js';
 import {useDispatch} from 'react-redux';
-import {setAvatar, setTheme, logout} from '../../../../store/userSlice.js';
+import {setTheme, logout} from '../../../../store/userSlice.js';
 import {useNavigate} from 'react-router-dom';
 
 
@@ -150,27 +148,9 @@ export const useProfileMenu = () => {
 };
 
 export const useProfileIcon = () => {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const imgSrc = user.avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
 
-    useEffect(() => {
-        const fetchAvatar = async () => {
-            if (user.token && !user.avatar) {
-                try {
-                    const response = await axios.get(API_ROUTES.getAvatar);
-                    const avatar = response.data.url;
-                    dispatch(setAvatar({avatar}));
-                } catch (e) {
-                    // TODO: validate error handling and if it failed because of token
-                    // then log out user
-                    console.error('Error fetching avatar', e);
-                }
-            }
-        };
-
-        fetchAvatar();
-    }, [user, dispatch]);
 
     return {imgSrc};
 };

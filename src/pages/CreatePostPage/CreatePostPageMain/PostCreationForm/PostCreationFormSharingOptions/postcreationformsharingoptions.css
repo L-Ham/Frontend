@@ -1,0 +1,23 @@
+.hidden-info-div {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.visible-info-div::after{
+    border-top-color: var(--newCommunityTheme-body);
+    margin-top: -1px;
+    border-top: 5px solid #ffffff;
+    top: 100%;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: "";
+    margin-left: -5px;
+    width: 0;
+    left: 50%;
+    position: absolute;
+}
+
+.visible-info-div {
+    visibility:visible;
+    opacity: 1;
+}

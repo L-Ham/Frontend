@@ -1,14 +1,12 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {axiosInstance as axios} from '../../requests/axios';
+import {API_ROUTES} from '../../requests/routes';
+import {useNavigate} from 'react-router-dom';
 
 // Define the context
 const SubredditContext = createContext();
 
-/* eslint-disable-next-line*/
-const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzEyNjU1NjkwLjQ2NzQ0MywiaWF0IjoxNzEyNTY5MjkwLjQ2NzQ0MywianRpIjoiZXFSa0pYb005bmRIa0ZXNUFGMWVxQWVOYUktWllRIiwiY2lkIjoiOXRMb0Ywc29wNVJKZ0EiLCJsaWQiOiJ0Ml90enNoYTkwZTkiLCJhaWQiOiJ0Ml90enNoYTkwZTkiLCJsY2EiOjE3MDc2Nzk1MzUwNjMsInNjcCI6ImVKeGtrZEdPdERBSWhkLWwxejdCX3lwX05odHNjWWFzTFFhb2szbjdEVm9jazcwN2NMNGlIUDhuS0lxRkxFMnVCS0drS1dFRld0T1VOaUx2NTh5OU9aRUZTeUZUUjg0M3l3b2thVXBQVW1ONXB5bFJ3V1prTGxmYXNVS0RCNllwVlM2WjIwS1BTNXZRM0kxRnowNk1xbHhXSHRUWW8zSnBiR01LMnhQanpjWnFReXF1eTZsTVlGa29uOFdMZnZ5Ry10WS1mN2JmaEhZd3JLZ0tEX1RPdUZ4d1lfSERGSGJfbnByMGJGMndxTDNYZzlRLTEtTjI3Yk5tb2RtNV9WelB2emFTY1RtRzVpZll2N3QtQ1IxNDVIbVpVUWN3WWcwX3lyQWo2X0N2T29ES0JRV01KWWhQSTVBcmwyX19KZGl1VGY4YXR5ZC0tR2JFVFdfNHJSbW81eExFb1VfajZ6Y0FBUF9fWERfZTR3IiwicmNpZCI6Ii1HaWpZOXlsRDZhWXJ6OGpsalN3ZlFaUFNZT29YczFBWVBSRVRyUm9HZlUiLCJmbG8iOjJ9.W5D3SqsS94IX8PLESZbMfnnWmBSeYWaclw-qLMeWFvTbAdDXikc6zcfcUiGNHsIUcRhmWbwM33o52XEYOkAdBfn5iDFasvC8wCBHgUEasyJwJcrBnMdoyhur3QBSDUBI-kMfFRl57eROh8NLf5uumFKlncQyVq6p70M6Re5eAOoZznH_sxOkvTVtbvU6W-fE9PiFayV6BNTPtc6ijo4YtmbcQVuL7IqLkNt4CAsc4isCmEqSzurV3aVEDwDnYdIoCmrRZyiqQhLy_pIV0fEHLmfabTMvRyH5pv0CwWcxOGQ3dMdlY4uEw2HPSZlC-J2KbGDjHwdU_tXx1EtLtivTow";
-
-const userAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 `+
-`(KHTML, like Gecko) Chrome/123.0.0.0`;
 /**
  * Custom hook for using the subreddit context.
  * @return {Object} The subreddit context.
@@ -16,11 +14,6 @@ const userAgent = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 
 export function useSubreddit() {
     return useContext(SubredditContext);
 }
-
-import {generateColorTones,
-    generateNeutralTones,
-    generatePrimaryColorTones,
-    generateSecondaryColorTones} from '../../generic components/utils.js';
 
 /**
  * Subreddit provider component.
@@ -30,51 +23,50 @@ import {generateColorTones,
  * @return {JSX.Element} The rendered component.
  */
 export function SubredditProvider({children, name}) {
-    // const name = 'help';
-    // const name = 'OnePiece';
-    // const name = 'ChatGPT';
     const [loading, setLoading] = useState(true);
     const [about, setAbout] = useState(null);
     const [widgets, setWidgets] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const loadData = async () => {
+        const fetchSubredditData = async (subredditName) => {
             try {
-                const aboutData = await fetchSubredditAbout(name);
-                setAbout(aboutData);
-
-                const widgetsData = await fetchSubredditWidgets(name);
-                setWidgets(widgetsData);
-
-                setLoading(false);
+                const aboutData = await fetchSubredditAbout(subredditName);
+                const widgetsData = await fetchSubredditWidgets(aboutData.communityDetails.subredditId);
+                return {aboutData, widgetsData};
             } catch (error) {
-                console.error('Failed to fetch subreddit data', error);
-                setLoading(false);
+                console.error('Failed to fetch subreddit data:', error);
+                navigate('/page-not-found');
+                throw error;
             }
         };
 
-        loadData();
-    }, [name]);
+        const processData = async (widgetsData) =>{
+            const updatedTextWidgets = Object.values(widgetsData.textWidgets).reduce((acc, widget) => {
+                return {...acc, [widget._id]: {...widget, kind: 'textarea'}};
+            }, {});
 
-    useEffect(() => {
-        if (!about) return;
+            return {
+                'message': widgetsData.message,
+                '1': {...widgetsData.communityDetails, kind: 'id-card'},
+                '2': {moderators: [...widgetsData.moderators], kind: 'moderators'},
+                'order': ['1', ...widgetsData.orderWidget, '2'],
+                ...updatedTextWidgets,
+                ...widgetsData,
+            };
+        };
 
-        const {data: {primary_color: primaryColor}} = about;
-        const isDarkMode = false;
+        const loadData = async () => {
+            setLoading(true);
+            const {aboutData, widgetsData} = await fetchSubredditData(name);
+            const structuredWidgetsData = await processData(widgetsData);
+            setAbout(aboutData);
+            setWidgets(structuredWidgetsData);
+            setLoading(false);
+        };
 
-        if (!primaryColor) return;
-
-        let colors = {...generateColorTones(primaryColor, isDarkMode)};
-        colors = {...colors, ...generateNeutralTones(primaryColor, isDarkMode)};
-        colors = {...colors, ...generatePrimaryColorTones(primaryColor, isDarkMode)};
-        colors = {...colors, ...generateSecondaryColorTones(primaryColor, isDarkMode)};
-
-        for (const [key, value] of Object.entries(colors)) {
-            document.documentElement.style.setProperty(`--${key}`, value);
-        }
-    }
-    , [about]);
-
+        loadData().catch(() => setLoading(false));
+    }, [name, navigate, setAbout, setWidgets, setLoading]);
 
     // The value that will be supplied to any descendants of this provider.
     const value = {
@@ -96,38 +88,16 @@ SubredditProvider.propTypes = {
     name: PropTypes.string.isRequired,
 };
 
-
-/**
- * Fetches the subreddit about from the Reddit API.
- * @param {string} name The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {Object} The subreddit about.
- * */
 const fetchSubredditAbout = async (name) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${name}/about`, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'User-Agent': userAgent,
-        },
-    });
-    const data = await response.json();
+    const response = await axios.get(API_ROUTES.communityDetails(name));
+    const data = response.data;
     return data;
 };
 
-/**
- * Fetches the subreddit widgets from the Reddit API.
- * @param {string} name The name of the subreddit.
- * @return {Promise} The promise object representing the API call.
- * @return {Object} The subreddit widgets.
- * */
-const fetchSubredditWidgets = async (name) => {
-    const response = await fetch(`https://oauth.reddit.com/r/${name}/api/widgets`, {
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'User-Agent': userAgent,
-        },
-    });
-    const data = await response.json();
+const fetchSubredditWidgets = async (id) => {
+    const response = await axios.get(API_ROUTES.widgets(id));
+    const data = await response.data;
     return data;
 };
+
 

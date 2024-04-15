@@ -15,15 +15,15 @@ import {VIEW_CONTEXTS} from '../Widget/viewcontexts.js';
  * @param {object} props - The props.
  * @param {string} props.description - The description of the subreddit.
  * @param {number} props.currentlyViewingCount - The number of users currently viewing the subreddit.
- * @param {number} props.subscribersCount - The number of subscribers to the subreddit.
+ * @param {number} props.membersCount - The number of subscribers to the subreddit.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityDetailsWidget({description, currentlyViewingCount, subscribersCount}) {
+export function CommunityDetailsWidget({description, currentlyViewingCount, membersCount: subscribersCount}) {
     const {about} = useSubreddit();
 
-    if (!about || !description || !currentlyViewingCount || !subscribersCount) return null;
+    if (about === undefined) return null;
 
-    const {title} = about.data;
+    const {communityDetails: {name: title}} = about;
     const ExternalIcon = getIconComponent('external', false);
 
 
@@ -42,5 +42,5 @@ export function CommunityDetailsWidget({description, currentlyViewingCount, subs
 CommunityDetailsWidget.propTypes = {
     description: propTypes.string.isRequired,
     currentlyViewingCount: propTypes.number.isRequired,
-    subscribersCount: propTypes.number.isRequired,
+    membersCount: propTypes.number.isRequired,
 };

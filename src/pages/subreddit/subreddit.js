@@ -5,7 +5,8 @@ import {SubredditSidebar} from './SubredditSidebar/subredditsidebar.js';
 import {SubredditProvider} from './subredditcontext.js';
 import {classes} from './subreddit.styles.js';
 import './subreddit.css';
-
+import {Feed} from '../../generic components/feed.js';
+import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
 
 /**
  * Renders the subreddit.
@@ -19,7 +20,10 @@ export function Subreddit({name}) {
             <div className={classes.innerContainer}>
                 <SubredditBanner/>
                 <div className={classes.contentContainer}>
-                    <main className={classes.mainContent}>feed</main>
+                    <main className={classes.mainContent}>
+                        <Feed viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postList={['t3_1bmnuhw',
+                            't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
+                    </main>
                     <SubredditSidebar/>
                 </div>
             </div>

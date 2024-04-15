@@ -9,6 +9,8 @@ import {axiosInstance as axios} from '../../requests/axios.js';
 import {API_ROUTES} from '../../requests/routes.js';
 import {useNavigate} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {useDispatch} from 'react-redux';
+import {login, selfInfo} from '../../store/userSlice.js';
 /**
  *
  * @return {JSX.Element} SignUpContinued
@@ -22,7 +24,7 @@ import PropTypes from 'prop-types';
 function SignUpContinued({email}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
 
     const [responseunqiue, setresponseunqiue] = useState('');
@@ -170,6 +172,19 @@ function SignUpContinued({email}) {
     }
     updateVisibilityAndStyles(username, isVisible, setIsVisible, imageUrl, fieldClass);
     /**
+     * Takes in token for user and retrieve user info
+     * @param {string} token
+     * @return {Promise<void>}
+     */
+    async function handleUserData() {
+        try {
+            const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
+            dispatch(selfInfo(selfInfoResponse.data.user));
+        } catch (error) {
+            console.error('Error retrieving user info:', error);
+        }
+    }
+    /**
      * Handles the login process.
      */
     async function handleLogin() {
@@ -179,13 +194,21 @@ function SignUpContinued({email}) {
                 console.log(password);
                 console.log(email);
 
-                const response = await axios.post(API_ROUTES.signup, {
+                await axios.post(API_ROUTES.signup, {
                     userName: username,
                     password: password,
                     email: email,
                     gender: '',
                 });
-                navigate(`/`);
+                // TODO: remove the need to login request once backend fixed it
+                const response = await axios.post(API_ROUTES.login, {
+                    userName: username,
+                    password: password,
+                });
+                // dispatch userselfinfoaxios
+                dispatch(login({token: response.data.token}));
+                handleUserData();
+                navigate('/');
                 console.log(response);
             } catch (error) {
                 if (error.response) {

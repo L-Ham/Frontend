@@ -65,13 +65,15 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
     /**
      * Asynchronously updates feed settings using a PATCH request.
      *
-     * @param {Object} user - The new settings to be updated.
+     * @param {Object} community - The new settings to be updated.
      */
-    async function handleUnMuteCommunity(user) {
+    async function handleUnMuteCommunity(community) {
         try {
-            console.log('unMuting user:', user);
-            await axiosInstance.patch(API_ROUTES.unmuteCommunity, user);
-            console.log('unMuted user:', user);
+            console.log('unMuting user:', community);
+            await axiosInstance.delete(API_ROUTES.unmuteCommunity, {
+                data: community,
+            });
+            console.log('unMuted user:', community);
             // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
             console.error('Failed to update Feed settings:', error);

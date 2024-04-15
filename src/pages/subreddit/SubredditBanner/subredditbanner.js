@@ -14,7 +14,7 @@ import {classes} from './subredditbanner.styles.js';
 export function SubredditBanner() {
     const bannerData = useSubredditBanner();
 
-    if (!bannerData.activeUserCount) return null;
+    if (bannerData.activeUserCount === undefined) return null;
 
     const {
         bannerBackgroundImage,
@@ -26,6 +26,8 @@ export function SubredditBanner() {
         PlusIcon,
         handleCreatePost,
     } = bannerData;
+
+    console.log('bannerData', bannerData);
 
     return (
         <div className={classes.container}>

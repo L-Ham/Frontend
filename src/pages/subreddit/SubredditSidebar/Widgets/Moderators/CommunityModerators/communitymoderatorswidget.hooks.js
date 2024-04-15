@@ -4,17 +4,21 @@ import {MultiLinkButton} from '../../../MultilinkButton/multilinkbutton.js';
 import {useSubreddit} from '../../../../subredditcontext.js';
 import {getIconComponent} from '../../../../../../generic components/iconsmap.js';
 
-export const useCommunityModeratorsWidget = ({mods, totalMods}) => {
-    const {about: {data: {display_name: subredditName}}} = useSubreddit();
+export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
+    const {about} = useSubreddit();
+    if (!about) return null;
+
+    const {communityDetails: {name: subredditName}} = about;
+
     const MessageIcon = getIconComponent('message', false);
 
     // Initialize the array with the first component
     const multiLinkButtonsComponents = [
         <MultiLinkButton
-            key='message-the-mods'
+            key='message-the-moderators'
             data={{
                 icon: <MessageIcon/>,
-                text: 'Message the mods',
+                text: 'Message the moderators',
                 url: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
             }}
         />,
@@ -24,7 +28,7 @@ export const useCommunityModeratorsWidget = ({mods, totalMods}) => {
     if (totalMods > 10) {
         multiLinkButtonsComponents.push(
             <MultiLinkButton
-                key='view-all-mods'
+                key='view-all-moderators'
                 data={{
                     text: 'View all moderators',
                     url: `https://www.reddit.com/r/${subredditName}/about/moderators/`,
@@ -34,10 +38,10 @@ export const useCommunityModeratorsWidget = ({mods, totalMods}) => {
     }
 
     // Preparing moderator components
-    const moderatorComponents = mods.map((moderator, index) => (
+    const moderatorComponents = moderators.map((moderator, index) => (
         <UserCard
-            key={moderator.name || index}
-            name={moderator.name}
+            key={moderator.username || index}
+            name={moderator.username}
             pictureSrc={`https://www.redditstatic.com/avatars/defaults/v2/avatar_default_7.png`}
         />
     ));

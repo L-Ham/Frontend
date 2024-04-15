@@ -72,10 +72,8 @@ function DoubleDropZone(props, id) {
                 const response = await axiosInstance.get(API_ROUTES.banner);
                 // Directly use response.data since it matches the expected structure
                 setRightImage(response.data.url);
-
-
-                // setBanner(response.data);
             } catch (error) {
+                if (error?.response?.data?.message === 'Banner image not found') return;
                 console.error('Failed to fetch banner:', error);
             }
         }
@@ -89,10 +87,8 @@ function DoubleDropZone(props, id) {
                 const response = await axiosInstance.get(API_ROUTES.avatar);
                 // Directly use response.data since it matches the expected structure
                 setLeftImage(response.data.url);
-
-
-                // setBanner(response.data);
             } catch (error) {
+                if (error?.response?.data?.message === 'Avatar image not found') return;
                 console.error('Failed to fetch banner:', error);
             }
         }
