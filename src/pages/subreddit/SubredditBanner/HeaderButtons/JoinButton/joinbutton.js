@@ -32,6 +32,7 @@ export function JoinButton({
             className={buttonClasses}
             onClick={handleClick}
             disabled={isDisabled}
+            data-testid="join-button"
         >
             {buttonLabel}
         </button>

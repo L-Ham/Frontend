@@ -11,16 +11,17 @@ import {classes} from './createpostbutton.styles.js';
  */
 export function CreatePostButton({handleCreatePost, PlusIcon}) {
     return (
-        <span className={classes.container}>
+        <span className={classes.container} data-testid="container">
             <a
                 className={`${classes.createPostButton}`}
                 onClick={handleCreatePost}
+                data-testid="create-post-button"
             >
-                <span className={classes.flexContainer}>
-                    <span className={classes.iconWrapper}>
+                <span className={classes.flexContainer} data-testid="flex-container">
+                    <span className={classes.iconWrapper} data-testid="icon-wrapper">
                         <PlusIcon/>
                     </span>
-                    <span className={classes.textWrapper}>Create a post</span>
+                    <span className={classes.textWrapper} data-testid="text-wrapper">Create a post</span>
                 </span>
             </a>
         </span>

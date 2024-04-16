@@ -13,13 +13,13 @@ import {classes} from './statsitem.styles.js';
  */
 export function StatsItem({count, label, isCap}) {
     return (
-        <div className={classes.statsItem}>
-            <span>
-                <strong>
-                    <NumberFormatter isFormattedNumber={true} number={count} isCap={isCap}/>
+        <div className={classes.statsItem} data-testid="stats-item">
+            <span data-testid="count-span">
+                <strong data-testid="count-strong">
+                    <NumberFormatter isFormattedNumber={true} number={count} isCap={isCap} data-testid="number-formatter"/>
                 </strong>
             </span>
-            <span className={classes.statsText}>{label}</span>
+            <span className={classes.statsText} data-testid="label-span">{label}</span>
         </div>
     );
 }

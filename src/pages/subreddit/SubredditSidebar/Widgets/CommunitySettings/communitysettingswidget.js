@@ -9,9 +9,9 @@ import {SubredditWidget} from '../Widget/subredditwidget.js';
  */
 export function CommunitySettingsWidget() {
     return (
-        <SubredditWidget title='Community Settings'>
-            <button className={classes.widgetsButton}>
-                Edit Widgets
+        <SubredditWidget title='Community Settings' data-testid="subreddit-widget">
+            <button className={classes.widgetsButton} data-testid="widgets-button">
+        Edit Widgets
             </button>
         </SubredditWidget>
     );

@@ -11,35 +11,37 @@ import {userCardClasses as classes} from './usercard.styles.js';
  */
 export function UserCard({name, displayName='', pictureSrc}) {
     return (
-        <li className={classes.container}>
-            <div className={classes.innerContainer}>
-                <span className={classes.imageContainer}>
-                    <span className={classes.imageWrapper}>
-                        <span className={classes.imageInnerWrapper}>
+        <li className={classes.container} data-testid="usercard-container">
+            <div className={classes.innerContainer} data-testid="inner-container">
+                <span className={classes.imageContainer} data-testid="image-container">
+                    <span className={classes.imageWrapper} data-testid="image-wrapper">
+                        <span className={classes.imageInnerWrapper} data-testid="image-inner-wrapper">
                             <img
                                 src={pictureSrc}
                                 alt={`u/${name} avatar`}
                                 className={classes.image}
+                                data-testid="user-avatar"
                             />
                         </span>
                     </span>
                 </span>
-                <span className={classes.textContainer}>
-                    <span className={classes.username}>
+                <span className={classes.textContainer} data-testid="text-container">
+                    <span className={classes.username} data-testid="username-span">
                         <a
                             className={classes.usernameLink}
                             target="_blank"
                             onClick={() => window.open(`/user/${name}`, '_blank')}
+                            data-testid="username-link"
                         >
                             {`u/${name}`}
                         </a>
                     </span>
-                    <span className={classes.displayName}>
+                    <span className={classes.displayName} data-testid="display-name-span">
                         {displayName}
                     </span>
                 </span>
-                <span className={classes.extraContainer}>
-                    <span className={classes.extraContent} />
+                <span className={classes.extraContainer} data-testid="extra-container">
+                    <span className={classes.extraContent} data-testid="extra-content" />
                 </span>
             </div>
         </li>

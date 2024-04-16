@@ -19,8 +19,8 @@ export function RulesWidget({ruleList: data}) {
     if (!rules) return null;
 
     return (
-        <SubredditWidget title='rules'>
-            <div className={classes.subContainer}>
+        <SubredditWidget title='rules' data-testid="subreddit-widget">
+            <div className={classes.subContainer} data-testid="sub-container">
                 {rules}
             </div>
         </SubredditWidget>

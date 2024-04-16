@@ -17,10 +17,10 @@ export function SubredditWidget({title, children, isCustomizable=false, onEditCl
     const {viewClasses} = useSubredditWidget({view});
 
     return (
-        <div className={viewClasses.container}>
-            {isCustomizable && <Edit onClick={onEditClick} />}
-            <div className={viewClasses.header}>
-                <h2 className={viewClasses.title}>
+        <div className={viewClasses.container} data-testid="subreddit-widget-container">
+            {isCustomizable && <Edit onClick={onEditClick} data-testid="edit-button" />}
+            <div className={viewClasses.header} data-testid="header-div">
+                <h2 className={viewClasses.title} data-testid="title-h2">
                     {title}
                 </h2>
             </div>

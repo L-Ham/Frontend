@@ -16,15 +16,15 @@ import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
  */
 export function Subreddit({name}) {
     return (
-        <SubredditProvider name={name}>
-            <div className={classes.innerContainer}>
-                <SubredditBanner/>
-                <div className={classes.contentContainer}>
-                    <main className={classes.mainContent}>
+        <SubredditProvider name={name} data-testid="subreddit-provider">
+            <div className={classes.innerContainer} data-testid="inner-container">
+                <SubredditBanner data-testid="subreddit-banner"/>
+                <div className={classes.contentContainer} data-testid="content-container">
+                    <main className={classes.mainContent} data-testid="main-content">
                         <Feed viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED} postList={['t3_1bmnuhw',
-                            't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
+                            't3_1bvwbgd', 't3_1c2k4vg']} type='ids' data-testid="feed"/>
                     </main>
-                    <SubredditSidebar/>
+                    <SubredditSidebar data-testid="subreddit-sidebar"/>
                 </div>
             </div>
         </SubredditProvider>

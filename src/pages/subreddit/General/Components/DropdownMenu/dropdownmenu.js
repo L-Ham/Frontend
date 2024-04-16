@@ -31,15 +31,16 @@ export function DropdownMenu({className = '', position, items, isHidden = true, 
     const {processedItems} = useDropdownMenu({items, activeItem});
 
     return (
-        <div className={`${className} ${classes.container} ${position}`}>
-            <ul className={classes.list} hidden={isHidden}>
-                {processedItems && processedItems.map(({text, onClick, icon, isActive}) => (
+        <div className={`${className} ${classes.container} ${position}`} data-testid="dropdown-container">
+            <ul className={classes.list} hidden={isHidden} data-testid="dropdown-list">
+                {processedItems && processedItems.map(({text, onClick, icon, isActive}, index) => (
                     <DropdownMenuItem
                         key={text}
                         text={text}
                         onClick={onClick}
                         icon={icon}
                         isActive={isActive}
+                        data-testid={`dropdown-item-${index}`}
                     />
                 ))}
             </ul>

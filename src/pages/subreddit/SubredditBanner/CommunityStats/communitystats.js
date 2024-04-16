@@ -13,21 +13,21 @@ import {NumberFormatter} from '../../General/Components/numberformatter.js';
  */
 export function CommunityStats({displayNamePrefixed, subscribersCount, activeUserCount}) {
     return (
-        <div className={classes.container}>
-            <h1 className={classes.communityHeader}>
+        <div className={classes.container} data-testid="container">
+            <h1 className={classes.communityHeader} data-testid="community-header">
                 {displayNamePrefixed}
             </h1>
-            <div className={classes.statsContainer}>
-                <span className={classes.memberCountText}>
+            <div className={classes.statsContainer} data-testid="stats-container">
+                <span className={classes.memberCountText} data-testid="member-count-text">
                     <NumberFormatter number={subscribersCount} isFormattedNumber={true} isCap={false}/>
-                members
+            members
                 </span>
-                <div className={classes.onlineUsersContainer}>
-                    <span className={classes.onlineIndicator} />
-                    <span className={classes.onlineCountText}>
+                <div className={classes.onlineUsersContainer} data-testid="online-users-container">
+                    <span className={classes.onlineIndicator} data-testid="online-indicator" />
+                    <span className={classes.onlineCountText} data-testid="online-count-text">
                         <NumberFormatter number={activeUserCount}
                             isFormattedNumber={true} isCap={true}/>
-                    online
+                online
                     </span>
                 </div>
             </div>

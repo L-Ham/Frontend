@@ -13,7 +13,7 @@ import {formatNumber} from '../../../../generic components/utils.js';
  */
 export function NumberFormatter({number, isFormattedNumber = false, isCap = false}) {
     return (
-        <div className='mr-1 text-[var(--color-tone-1)]'>
+        <div className='mr-1 text-[var(--color-tone-1)]' data-testid="number-formatter">
             {isFormattedNumber ? formatNumber(number, isCap) : number}
         </div>
     );
