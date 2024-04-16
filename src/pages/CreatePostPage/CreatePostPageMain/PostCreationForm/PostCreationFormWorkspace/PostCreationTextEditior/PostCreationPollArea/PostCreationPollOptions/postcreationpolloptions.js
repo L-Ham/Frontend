@@ -2,6 +2,7 @@ import React from 'react';
 import {PostCreationPollOption} from './PostCreationPollOption/postcreationpolloption.js';
 import './postcreationpolloptions.css';
 import {usePostCreation} from '../../../../postcreationcontext.js';
+import {classes} from './postcreationpolloptions.styles.js';
 
 /**
  * Renders the poll options for the post creation form.
@@ -10,7 +11,7 @@ import {usePostCreation} from '../../../../postcreationcontext.js';
 export function PostCreationPollOptions() {
     const {pollData, setPollData} = usePostCreation();
     return (
-        <div className="w-full grow ">
+        <div className={classes.postCreationPollOptionsDiv}>
             <div>
                 {Object.entries(pollData.options).map(([key, option], index) => (
                     <PostCreationPollOption
@@ -19,20 +20,11 @@ export function PostCreationPollOptions() {
                     />
                 ))}
             </div>
-            {/**/}
-            <div className="mt-[8px] flex items-center justify-between
-            pr-[20px] ">
+            <div className={classes.postCreationPollOptionsDiv2}>
                 <button
                     role="button"
                     tabIndex={0}
-                    className="post-creation-btn font add-option-btn relative
-                    box-border flex min-h-[32px]
-                    w-auto min-w-[32px] cursor-pointer items-center justify-center
-                    rounded-full border-DEFAULT border-solid border-transparent bg-transparent
-                    fill-[var(--newCommunityTheme-button)] px-[16px] py-[4px] text-center text-[14px]/[17px]
-                    font-[700]
-                    text-[var(--newCommunityTheme-button)]
-                    "
+                    className={classes.postCreationPollOptionsButton}
                     onClick={() => {
                         const newPollData = {...pollData};
                         const newIndex = Object.keys(newPollData.options).length;
@@ -41,23 +33,18 @@ export function PostCreationPollOptions() {
                     }}
                     disabled={Object.keys(pollData.options).length >= 6}
                 >
-                Add Option
+        Add Option
                 </button>
-                <div className="flex items-center">
-                    <div className="mr-[10px] text-[13px]/[20px]
-                    text-[var(--newCommunityTheme-actionIcon)]">Voting length:</div>
+                <div className={classes.postCreationPollOptionsDiv3}>
+                    <div className={classes.postCreationPollOptionsDiv4}>Voting length:</div>
                     <div
-                        className="relative "
+                        className={classes.postCreationPollOptionsDiv5}
                         id="poll-creation-voting-length"
                     >
-                        <div className="mr-[10px] flex cursor-pointer
-                        items-center
-                        fill-[var(--newCommunityTheme-bodyText)] text-[13px]/[20px]
-                        text-[var(--newCommunityTheme-bodyText)]">
+                        <div className={classes.postCreationPollOptionsDiv6}>
                             <div>3 days</div>
                             <svg
-                                className="ml-[8px] inline-block size-[20px]
-                                fill-[var(--newRedditTheme-actionIcon)] align-middle"
+                                className={classes.postCreationPollOptionsSvg}
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
                             >

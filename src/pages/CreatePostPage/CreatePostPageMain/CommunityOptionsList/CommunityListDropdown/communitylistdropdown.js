@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {CommunityListDropdownGroup} from './CommunityListDropdownGroup/communitylistdropdowngroup.js';
 import {axiosInstance as axios} from '../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../requests/routes.js';
+import {classes} from './communitylistdropdown.styles.js';
 
 /**
  * Renders the community list dropdown.
@@ -21,10 +22,6 @@ export function CommunityListDropdown({searchInput}) {
                 const allUserCommunities = await getUserCommunities();
                 const allCommunities = await getUserCommunities();
                 // const allCommunities = await searchCommunities(searchInput);
-
-
-                console.log('allUserCommunities', allUserCommunities);
-                console.log('allCommunities', allCommunities);
 
                 // TODO_BACKEND
                 // const newOtherCommunities = allCommunities.filter((community) => {
@@ -47,13 +44,7 @@ export function CommunityListDropdown({searchInput}) {
     if (!userCommunities.length && !otherCommunities.length) return null;
 
     return (
-        <div className='absolute
-        -inset-x-px top-full z-[11]
-         max-h-[400px] overflow-y-scroll rounded-[0_0_4px_4px]
-          border-DEFAULT border-solid
-           border-[color:var(--newCommunityTheme-line)]
-           bg-[color:var(--newCommunityTheme-body)]
-           shadow-[0_-3px_0_-1px_var(--newCommunityTheme-body),0_0_2px_1px_var(--newCommunityTheme-line)]'>
+        <div className={classes.communityListDropdownDiv}>
             <CommunityListDropdownGroup CommunitiesData={userCommunities} title='Your Communities'
                 isContainButton={true} />
             <CommunityListDropdownGroup CommunitiesData={otherCommunities} title='others' />

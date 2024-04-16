@@ -1,4 +1,5 @@
 import React from 'react';
+import {classes} from './communitynote.styles.js';
 
 /**
  * Renders the community note.
@@ -12,13 +13,7 @@ export function CommunityNote() {
     // TODO_BACKEND: get the submit text from the backend
 
     return (
-        submitText && <div className='font
-        border-[color:var(--newCommunityTheme-line)]]
-         mx-0 my-[12px]
-         break-words rounded-[4px]
-         border-DEFAULT
-         border-solid bg-[var(--newCommunityTheme-body)] px-[16px] py-[8px] text-[12px]/[18px]
-         font-[400] text-[var(--newCommunityTheme-bodyText)]'>
+        submitText && <div className={classes.noteDiv}>
             {submitText}
         </div>
     );

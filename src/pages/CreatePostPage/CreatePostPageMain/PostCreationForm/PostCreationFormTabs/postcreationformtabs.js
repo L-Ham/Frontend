@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 import {PostCreationFormTab} from './PostCreationFormTab/postcreationformtab.js';
-import {usePostCreation} from '../postcreationcontext.js';
+import {classes} from './postcreationformtabs.styles.js';
+import {usePostCreationTabs} from './postcreationformtabs.hooks.js';
 
 
 /**
@@ -13,43 +13,11 @@ import {usePostCreation} from '../postcreationcontext.js';
  * @return {JSX.Element} The rendered component.
  */
 export function PostCreationFormTabs() {
-    const {activeTab, setActiveTab} = usePostCreation();
-    const PostIconOutline = getIconComponent('post', false);
-    const PostIconFill = getIconComponent('post', true);
-    const ImageIconOutline = getIconComponent('image', false);
-    const ImageIconFill = getIconComponent('image', true);
-    const LinkIcon = getIconComponent('link');
-    const PollIcon = getIconComponent('poll');
-
-
-    const tabs = [{
-        title: 'Post',
-        Icon: activeTab === 'post' ? <PostIconFill className="icon mr-[8px]"/> :
-            <PostIconOutline className="icon mr-[8px]"/>,
-        isActive: activeTab === 'post',
-        onClick: () => setActiveTab('post'),
-    }, {
-        title: 'Images & Video',
-        Icon: activeTab === 'img' ? <ImageIconFill className="icon mr-[8px]"/> :
-            <ImageIconOutline className="icon mr-[8px]"/>,
-        isActive: activeTab === 'img',
-        onClick: () => setActiveTab('img'),
-    },
-    {
-        title: 'Link',
-        Icon: <LinkIcon className="icon mr-[8px]"/>,
-        isActive: activeTab === 'link',
-        onClick: () => setActiveTab('link'),
-    }, {
-        title: 'Poll',
-        Icon: <PollIcon className="icon mr-[8px]"/>,
-        isActive: activeTab === 'poll',
-        onClick: () => setActiveTab('poll'),
-    }];
+    const {tabs} = usePostCreationTabs();
 
     return (
-        <div className="m-[0_0_12px]">
-            <div className="flex items-stretch">
+        <div className={classes.postCreationFormTabsDiv}>
+            <div className={classes.postCreationFormTabsInnerDiv}>
                 {tabs.map((tab) => (<PostCreationFormTab key={tab.title} {...tab}/>))}
             </div>
         </div>

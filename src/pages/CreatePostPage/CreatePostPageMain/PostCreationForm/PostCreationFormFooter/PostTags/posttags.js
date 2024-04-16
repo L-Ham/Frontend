@@ -2,6 +2,7 @@ import React from 'react';
 import {PostTag} from './PostTag/posttag.js';
 import './posttags.css';
 import {usePostCreation} from '../../postcreationcontext.js';
+import {classes} from './posttags.styles.js';
 
 /**
  * Renders the post types..
@@ -12,8 +13,8 @@ export function PostTags() {
     const tags = ['OC', 'SPOILER', 'NSFW'];
 
     return (
-        <div className="flex min-w-0 max-w-full flex-col flex-nowrap ">
-            <div className="flex max-w-[530px] flex-row flex-wrap items-center">
+        <div className={classes.postTagsDiv}>
+            <div className={classes.postTagsInnerDiv}>
                 {tags.map((tag) => (
                     <PostTag key={tag} tag={tag}
                         setPostTags={setPostTags} isActive={postTags.includes(tag)}/>

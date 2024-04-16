@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {classes} from './redditrule.styles.js';
 
 /**
  * Renders the Reddit rule.
@@ -10,9 +11,8 @@ import PropTypes from 'prop-types';
  */
 export function RedditRule({rule: {rule: shortName}}) {
     return (
-        <li className="!border-solid !border-[color:var(--newRedditTheme-line)]
-        px-[5px] py-[10px] text-[var(--newRedditTheme-bodyText)]"
-        style={{borderBottomWidth: '1px'}}>{shortName}</li>
+        <li className={classes.redditRuleLi}
+            style={{borderBottomWidth: '1px'}}>{shortName}</li>
     );
 }
 RedditRule.propTypes = {

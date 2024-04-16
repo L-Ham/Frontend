@@ -3,6 +3,7 @@ import React from 'react';
 import {usePostCreation} from '../../../postcreationcontext.js';
 import PropTypes from 'prop-types';
 import './postcreationtextarea.css';
+import {classes} from './postcreationtextarea.styles.js';
 
 
 /**
@@ -20,43 +21,30 @@ export function PostCreationTextArea({setBorderColor}) {
 
     return (
         <div>
+        <div>
             <div>
-                <div>
-                    <div className="relative overflow-auto">
-                        <div className="relative z-[1] border-l-[none]
-                        bg-[hsla(0,0%,100%,0)]">
-                            <textarea 
-                                onFocus={() => setBorderColor('border-[color:var(--newCommunityTheme-navIcon)]')}
-                                onBlur={() => setBorderColor('border-[color:var(--newCommunityTheme-line)]')}
-                                className="font size-full
-                                min-h-[122px]
-                                resize-y
-                                overflow-hidden rounded-[4px]
-                                bg-[var(--newCommunityTheme-body)]
-                                p-[8px_16px]
-                                text-[14px]/[21px]
-                                font-[400]
-                                text-[var(--newRedditTheme-bodyText)]
-                                caret-[var(--newRedditTheme-bodyText)]
-                                flex
-                                "
-                                spellCheck="true"
-                                style={{
-                                    outline: 'none',
-                                    userSelect: 'text',
-                                    whiteSpace: 'pre-wrap',
-                                    overflowWrap: 'break-word',
-                                }}
-                                onChange={(e) => handleTextChange(e)}
-                                value = {text}
-                            />
-                        </div>
+                <div className={classes.postCreationTextareaDiv}>
+                    <div className={classes.postCreationTextareaInnerDiv}>
+                        <textarea 
+                            onFocus={() => setBorderColor('border-[color:var(--newCommunityTheme-navIcon)]')}
+                            onBlur={() => setBorderColor('border-[color:var(--newCommunityTheme-line)]')}
+                            className={classes.postCreationTextarea}
+                            spellCheck="true"
+                            style={{
+                                outline: 'none',
+                                userSelect: 'text',
+                                whiteSpace: 'pre-wrap',
+                                overflowWrap: 'break-word',
+                            }}
+                            onChange={(e) => handleTextChange(e)}
+                            value = {text}
+                        />
                     </div>
                 </div>
-                <div className={`left-0 right-0 pointer-events-none transition-[top] duration-[0.2s]
-                text-[var(--newCommunityTheme-bodyText)] absolute z-[100]`} />
             </div>
+            <div className={classes.postCreationTextareaDiv2} />
         </div>
+    </div>
     );
 }
 

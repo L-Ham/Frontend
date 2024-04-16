@@ -3,6 +3,7 @@ import {Header} from './Header/header.js';
 import {CommunityOptionsList} from './CommunityOptionsList/communityoptionslist.js';
 import {CommunityNote} from './CommunityNote/communitynote.js';
 import {PostCreationForm} from './PostCreationForm/postcreationform.js';
+import {classes} from './createpostpagemain.styles.js';
 
 /**
  * Renders the sidebar for the create post page.
@@ -10,7 +11,7 @@ import {PostCreationForm} from './PostCreationForm/postcreationform.js';
  */
 export function CreatePostPageMain() {
     return (
-        <div className='flex flex-[1_1_100%] min-[960px]:w-[640px] min-[960px]:max-w-[740px]'>
+        <div className={classes.mainDiv}>
             <div>
                 <Header numberDrafts={0}/>
                 <CommunityOptionsList/>

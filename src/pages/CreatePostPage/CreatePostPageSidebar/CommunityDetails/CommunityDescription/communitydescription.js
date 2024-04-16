@@ -1,5 +1,6 @@
 import React from 'react';
 import {useCreatePostPage} from '../../../createpostpage.context';
+import {classes} from './communitydescription.styles.js';
 
 
 /**
@@ -11,9 +12,8 @@ export function CommunityDescription() {
     const {communityDetails: {description}} = about;
 
     return (
-        <div className="relative mb-[8px] break-words fill-[var(--newRedditTheme-bodyText)]
-         text-[var(--newRedditTheme-bodyText)]">
-            <div className="font break-words text-[14px]/[21px] font-[400]">
+        <div className={classes.communityDescriptionDiv}>
+            <div className={classes.communityDescriptionInnerDiv}>
                 {description}
             </div>
         </div>
