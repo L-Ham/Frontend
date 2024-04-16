@@ -14,11 +14,11 @@ function CreatePost() {
     const {CreatePostIcon, href} = useCreatePost();
     return (
         <a href={href} className={styles.root} data-testid="appbar-create-post">
-            <span className={styles.content}>
-                <span className={styles.iconContainer}>
+            <span className={styles.content} data-testid="create-post-content">
+                <span className={styles.iconContainer} data-testid="create-post-icon-container">
                     <CreatePostIcon />
                 </span>
-                <span className={styles.label}>
+                <span className={styles.label} data-testid="create-post-label">
                     Create
                 </span>
             </span>
