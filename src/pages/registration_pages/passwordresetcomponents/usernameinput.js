@@ -109,7 +109,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
                 className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
                         duration-[0.2s] ease-[ease-in-out]" data-for="password"
-                data-testid="username-error"
+                data-testid="username-errorr"
             >
                 {((((password.length < 3) || (password.length > 20)) && (password.length != 0))||emptyusername) && (
                     <>Username must be between 3 and 20 characters</>
@@ -120,6 +120,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
                 {showfakeaccount && (
                     <>That user doesn&apos;t exist</>
                 )}
+
 
             </div>
         </fieldset>

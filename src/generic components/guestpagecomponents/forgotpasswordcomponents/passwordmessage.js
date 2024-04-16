@@ -24,9 +24,9 @@ function Passwordmessage() {
             data-testid="passwordmessage2"
         >
             <div>
-        Tell us the username and email address associated with
+        Tell us the username and email address associated with{' '}
                 <br />
-        your Reddit account, and we’ll send you an email with a link
+                your Reddit account, and we&apos;ll send you an email with a link{' '}
                 <br />
         to reset your password.
             </div>{' '}

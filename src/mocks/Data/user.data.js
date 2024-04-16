@@ -19,3 +19,18 @@ export const LOGIN = {
         },
     },
 };
+const userName = 'ali';
+
+const email = 'ali@yahoo.com';
+export const SIGNUP = {
+    userName,
+    email,
+};
+export const FORGOTUSERNAME = {
+    email,
+};
+
+const email2 = 'sherifhatem91@gmail.com';
+export const FORGOTPASSWORD = {
+    email2,
+};
