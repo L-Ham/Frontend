@@ -15,9 +15,9 @@ import {classes} from './postcreationformtab.styles';
  */
 export function PostCreationFormTab({isActive, onClick, Icon, title}) {
     return (
-        <button className={`${classes.postCreationFormTabButton} ${isActive ? 'active' : ''}`} onClick={onClick}>
-    {Icon && Icon}
-    {title}
+      <button className={`${classes.postCreationFormTabButton} ${isActive ? 'active' : ''}`} onClick={onClick} data-testid="post-creation-form-tab-button">
+    {Icon && <div data-testid="post-creation-form-tab-icon">{Icon}</div>}
+    <span data-testid="post-creation-form-tab-title">{title}</span>
 </button>
     );
 }

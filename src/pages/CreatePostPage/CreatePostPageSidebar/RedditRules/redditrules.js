@@ -13,14 +13,14 @@ export function RedditRules() {
     const PostingToRedditIcon = getIconComponent('posting-to-reddit');
     const {rules} = useRedditRules();
     return (
-        <div className={classes.redditRulesDiv}>
-            <div className={classes.redditRulesInnerDiv}>
-                <PostingToRedditIcon className={classes.redditRulesIcon}/>
+        <div className={classes.redditRulesDiv} data-testid="reddit-rules-div">
+            <div className={classes.redditRulesInnerDiv} data-testid="reddit-rules-inner-div">
+                <PostingToRedditIcon className={classes.redditRulesIcon} data-testid="posting-to-reddit-icon"/>
         Posting to Reddit
             </div>
-            <ol className={classes.redditRulesOl}>
+            <ol className={classes.redditRulesOl} data-testid="reddit-rules-ol">
                 {rules.map((rule, idx) => (
-                    <RedditRule key={idx} rule={rule} idx={idx}/>
+                    <RedditRule key={idx} rule={rule} idx={idx} data-testid={`reddit-rule-${idx}`}/>
                 ))}
             </ol>
         </div>

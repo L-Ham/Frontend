@@ -11,9 +11,9 @@ import {classes} from './errormessage.styles.js';
  */
 export function ErrorMessage({errorMessage, position = ''}) {
     return (
-        <div>
-            <div className={classes(position)}>
-                <span className="truncate">{errorMessage}</span>
+        <div data-testid="error-message-div">
+            <div className={classes(position)} data-testid="error-message-inner-div">
+                <span className="truncate" data-testid="error-message-span">{errorMessage}</span>
             </div>
         </div>
     );

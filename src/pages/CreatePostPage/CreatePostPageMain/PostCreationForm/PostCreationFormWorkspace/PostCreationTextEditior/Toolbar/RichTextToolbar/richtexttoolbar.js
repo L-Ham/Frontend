@@ -21,14 +21,14 @@ export function RichTextToolbar() {
 
 
     return (
-        <div ref={toolbarRef} className={classes.richTextToolbarDiv}>
-            <div className={classes.richTextToolbarInnerDiv}>
+        <div ref={toolbarRef} className={classes.richTextToolbarDiv} data-testid="rich-text-toolbar-div">
+            <div className={classes.richTextToolbarInnerDiv} data-testid="rich-text-toolbar-inner-div">
                 {visibleOptionsList.map((option) =>
-                    (<FormatOption key={option.name} option={option}/>))}
+                    (<FormatOption key={option.name} option={option} data-testid={`format-option-${option.name}`}/>))}
                 <span>
-                    <div className={classes.richTextToolbarSpan} />
+                    <div className={classes.richTextToolbarSpan} data-testid="rich-text-toolbar-span" />
                 </span>
-                <div className={classes.richTextToolbarDiv2}>
+                <div className={classes.richTextToolbarDiv2} data-testid="rich-text-toolbar-div2">
                     {(visibleOptionsList.length != optionsList.length) && <button
                         aria-expanded="false"
                         aria-haspopup="true"
@@ -37,12 +37,15 @@ export function RichTextToolbar() {
                         data-adclicklocation="overflow_menu"
                         className={classes.richTextToolbarButton}
                         onClick={() => setIsMoreOptionsVisible(!isMoreOptionsVisible)}
+                        data-testid="rich-text-toolbar-button"
                     >
-                        <ThreeDotsIcon className="icon h-[32px] text-[var(--newCommunityTheme-actionIcon)]"/>
+                        <ThreeDotsIcon className="icon h-[32px]
+                        text-[var(--newCommunityTheme-actionIcon)]" data-testid="three-dots-icon"/>
                     </button>}
-                    <div className={classes.richTextToolbarDiv3}>
+                    <div className={classes.richTextToolbarDiv3} data-testid="rich-text-toolbar-div3">
                         {isMoreOptionsVisible && nonVisibleOptionsList.map((option) =>
-                            (<FormatOption key={option.name} option={option}/>))}
+                            (<FormatOption key={option.name} option={option}
+                                data-testid={`non-visible-format-option-${option.name}`}/>))}
                     </div>
                 </div>
             </div>

@@ -17,25 +17,25 @@ export function CommunityMembers() {
         currentlyViewingNickname, currentlyViewingCount}} = about;
 
     return (
-        <div className={classes.communityMembersDiv}>
-            <div className={classes.communityMembersFlexColDiv}>
-                <div className={classes.communityMembersTextDiv}>
+        <div className={classes.communityMembersDiv} data-testid="community-members-div">
+            <div className={classes.communityMembersFlexColDiv} data-testid="community-members-flexcol-div-1">
+                <div className={classes.communityMembersTextDiv} data-testid="community-members-text-div">
                     {formatNumber(membersCount, false)}
                 </div>
-                <p className={classes.communityMembersP}>
+                <p className={classes.communityMembersP} data-testid="community-members-p-1">
                     {membersNickname}
                 </p>
             </div>
-            <div className={classes.communityMembersFlexColDiv}>
-                <div className={classes.communityMembersOnlineDiv}>
+            <div className={classes.communityMembersFlexColDiv} data-testid="community-members-flexcol-div-2">
+                <div className={classes.communityMembersOnlineDiv} data-testid="community-members-online-div">
                     {formatNumber(currentlyViewingCount, true)}
                 </div>
-                <p className={classes.communityMembersP}>
+                <p className={classes.communityMembersP} data-testid="community-members-p-2">
                     {currentlyViewingNickname}
                 </p>
             </div>
-            <div />
-            <div />
+            <div data-testid="community-members-div-1" />
+            <div data-testid="community-members-div-2" />
         </div>
     );
 }

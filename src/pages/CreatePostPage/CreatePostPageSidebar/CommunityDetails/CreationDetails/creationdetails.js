@@ -12,11 +12,11 @@ export function CreationDetails() {
     const CakeIcon = getIconComponent('cake', false);
 
     return (
-        <div className={classes.creationDetailsDiv}>
-            <div className={classes.creationDetailsInnerDiv}>
-                <CakeIcon className={classes.creationDetailsIcon}/>
-                <span className={classes.creationDetailsSpan}>
-                Created {/* */}{formattedDate}
+        <div className={classes.creationDetailsDiv} data-testid="creation-details-div">
+            <div className={classes.creationDetailsInnerDiv} data-testid="creation-details-inner-div">
+                <CakeIcon className={classes.creationDetailsIcon} data-testid="creation-details-icon"/>
+                <span className={classes.creationDetailsSpan} data-testid="creation-details-span">
+            Created {/* */}{formattedDate}
                 </span>
             </div>
         </div>

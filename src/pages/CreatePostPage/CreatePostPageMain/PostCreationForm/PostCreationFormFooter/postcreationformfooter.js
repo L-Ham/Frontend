@@ -9,10 +9,10 @@ import {classes} from './postcreationformfooter.styles.js';
  */
 export function PostCreationFormFooter() {
     return (
-        <div className={classes.postCreationFormFooterDiv}>
-            <PostTags/>
-            <hr className={classes.postCreationFormFooterHr}/>
-            <ActionButtons/>
+        <div className={classes.postCreationFormFooterDiv} data-testid="post-creation-form-footer-div">
+            <PostTags data-testid="post-tags"/>
+            <hr className={classes.postCreationFormFooterHr} data-testid="post-creation-form-footer-hr"/>
+            <ActionButtons data-testid="action-buttons"/>
         </div>
     );
 }

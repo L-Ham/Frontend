@@ -16,13 +16,15 @@ export function PostCreationPollOption({index}) {
     const TrashIcon = getIconComponent('trash');
 
     return (
-        <div draggable="true">
+        <div draggable="true" data-testid="post-creation-poll-option-div-outer">
             <div
                 className={classes.postCreationPollOptionDiv}
                 style={{left: 0, opacity: 1}}
+                data-testid="post-creation-poll-option-div-inner"
             >
                 <OptionDragIcon
                     className={classes.optionDragIcon}
+                    data-testid="option-drag-icon"
                 />
                 <input
                     className={classes.postCreationPollOptionInput}
@@ -31,11 +33,12 @@ export function PostCreationPollOption({index}) {
                     defaultValue=""
                     style={{borderWidth: '1px'}}
                     onChange={handleChange}
+                    data-testid="post-creation-poll-option-input"
                 />
                 <div className={classes.postCreationPollOptionDiv2} onClick={() => {
                     handleDelete();
-                }}>
-                    {(index > 1 ) && <TrashIcon className={classes.trashIcon} />}
+                }} data-testid="post-creation-poll-option-delete-div">
+                    {(index > 1 ) && <TrashIcon className={classes.trashIcon} data-testid="trash-icon"/>}
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@ export function CommunityDescription() {
     const {communityDetails: {description}} = about;
 
     return (
-        <div className={classes.communityDescriptionDiv}>
-            <div className={classes.communityDescriptionInnerDiv}>
+        <div className={classes.communityDescriptionDiv} data-testid="community-description-div">
+            <div className={classes.communityDescriptionInnerDiv} data-testid="community-description-inner-div">
                 {description}
             </div>
         </div>

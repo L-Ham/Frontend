@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {usePostCreation} from '../../../postcreationcontext.js';
-import {validateLink} from '../../../../../../../generic components/utils.js';
 import {ErrorMessage} from '../../ErrorMessage/errormessage.js';
 import {classes} from './postcreationlinkarea.styles.js';
-
+import {usePostCreationLinkArea} from './postcreationlinkarea.hooks.js';
 
 /**
  * Renders the link area for the post creation form.
@@ -15,43 +13,36 @@ import {classes} from './postcreationlinkarea.styles.js';
  * @return {JSX.Element} The rendered component.
  */
 export function PostCreationLinkArea() {
-    const {link, setLink,
-        linkErrorMessage: errorMessage,
-        setLinkErrorMessage: setErrorMessage} = usePostCreation();
-    const [borderColor, setBorderColor] = useState('border-[color:var(--newCommunityTheme-line)]');
+    const {
+        link,
+        errorMessage,
+        setErrorMessage,
+        borderColor,
+        handleFocus,
+        handleBlur,
+        handleChange,
+        handleBlurTextarea,
+    } = usePostCreationLinkArea();
 
     return (
         <div
             className={classes.postCreationLinkAreaDiv}
-            onFocus={() => setBorderColor('border-[color:var(--newCommunityTheme-navIcon)]')}
-            onBlur={() => setBorderColor('border-[color:var(--newCommunityTheme-line)]')}
+            onBlur={handleBlur}
+            data-testid="post-creation-link-area-div"
         >
             <textarea
                 placeholder="Url"
                 className={`${classes.postCreationLinkAreaTextarea}
-                 ${borderColor} ${errorMessage ? '!border-[red]' : ''}`}
+         ${borderColor} ${errorMessage ? '!border-[red]' : ''}`}
                 rows={1}
                 value={link}
-                onChange={(e) => setLink(e.target.value)}
-                onBlur={(e) => {
-                    const url = e.target.value;
-                    if (url.length === 0) {
-                        if (errorMessage) {
-                            setErrorMessage('');
-                        }
-                        return;
-                    }
-                    if (!validateLink(url)) {
-                        setErrorMessage('Link doesn\'t look right');
-                    } else {
-                        setErrorMessage('');
-                    }
-                }}
-                onFocus={() => {
-                    setBorderColor('border-[color:var(--newCommunityTheme-navIcon)]');
-                }}
+                onChange={handleChange}
+                onBlur={handleBlurTextarea}
+                onFocus={handleFocus}
+                data-testid="post-creation-link-area-textarea"
             />
-            {errorMessage && <ErrorMessage errorMessage={errorMessage} setErrorMessage={setErrorMessage}/> }
+            {errorMessage && <ErrorMessage errorMessage={errorMessage}
+                setErrorMessage={setErrorMessage} data-testid="error-message"/> }
         </div>
     );
 }

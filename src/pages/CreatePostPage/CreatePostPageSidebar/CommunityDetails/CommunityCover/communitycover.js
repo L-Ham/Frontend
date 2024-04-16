@@ -23,6 +23,8 @@ export function CommunityCover() {
 
     return (
         <div className={classes.communityCoverDiv}
-            style={divStyle}/>
+            style={divStyle}
+            data-testid="community-cover-div"
+        />
     );
 }

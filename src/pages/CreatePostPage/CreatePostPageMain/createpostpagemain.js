@@ -11,12 +11,12 @@ import {classes} from './createpostpagemain.styles.js';
  */
 export function CreatePostPageMain() {
     return (
-        <div className={classes.mainDiv}>
-            <div>
-                <Header numberDrafts={0}/>
-                <CommunityOptionsList/>
-                <CommunityNote/>
-                <PostCreationForm/>
+        <div className={classes.mainDiv} data-testid="main-div">
+            <div data-testid="inner-div">
+                <Header numberDrafts={0} data-testid="header"/>
+                <CommunityOptionsList data-testid="community-options-list"/>
+                <CommunityNote data-testid="community-note"/>
+                <PostCreationForm data-testid="post-creation-form"/>
             </div>
         </div>
     );

@@ -11,16 +11,17 @@ import {classes} from './postcreationpolloptions.styles.js';
 export function PostCreationPollOptions() {
     const {pollData, setPollData} = usePostCreation();
     return (
-        <div className={classes.postCreationPollOptionsDiv}>
-            <div>
+        <div className={classes.postCreationPollOptionsDiv} data-testid="post-creation-poll-options-div">
+            <div data-testid="post-creation-poll-options-inner-div">
                 {Object.entries(pollData.options).map(([key, option], index) => (
                     <PostCreationPollOption
                         key={index}
                         index={index}
+                        data-testid={`post-creation-poll-option-${index}`}
                     />
                 ))}
             </div>
-            <div className={classes.postCreationPollOptionsDiv2}>
+            <div className={classes.postCreationPollOptionsDiv2} data-testid="post-creation-poll-options-div2">
                 <button
                     role="button"
                     tabIndex={0}
@@ -32,21 +33,26 @@ export function PostCreationPollOptions() {
                         setPollData({...newPollData});
                     }}
                     disabled={Object.keys(pollData.options).length >= 6}
+                    data-testid="post-creation-poll-options-button"
                 >
-        Add Option
+            Add Option
                 </button>
-                <div className={classes.postCreationPollOptionsDiv3}>
-                    <div className={classes.postCreationPollOptionsDiv4}>Voting length:</div>
+                <div className={classes.postCreationPollOptionsDiv3} data-testid="post-creation-poll-options-div3">
+                    <div className={classes.postCreationPollOptionsDiv4}
+                        data-testid="post-creation-poll-options-div4">Voting length:</div>
                     <div
                         className={classes.postCreationPollOptionsDiv5}
                         id="poll-creation-voting-length"
+                        data-testid="poll-creation-voting-length"
                     >
-                        <div className={classes.postCreationPollOptionsDiv6}>
-                            <div>3 days</div>
+                        <div className={classes.postCreationPollOptionsDiv6}
+                            data-testid="post-creation-poll-options-div6">
+                            <div data-testid="voting-length">3 days</div>
                             <svg
                                 className={classes.postCreationPollOptionsSvg}
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
+                                data-testid="voting-length-svg"
                             >
                                 <path d="M14.17,9.35,10,13.53,5.83,9.35a.5.5,0,0,1,.35-.85h7.64a.5.5,0,0,1,.35.85" />
                             </svg>

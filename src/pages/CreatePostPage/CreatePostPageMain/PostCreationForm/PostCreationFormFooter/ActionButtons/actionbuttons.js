@@ -13,21 +13,23 @@ export function ActionButtons() {
         setErrorMessage} = useActionButtons();
 
     return (
-        <div className={classes.actionButtonsDiv}>
-            <div className={classes.actionButtonsInnerDiv}>
-                <div className={classes.actionButtonsFlexDiv}>
-                    <div className={classes.actionButtonsBoxDiv}>
+        <div className={classes.actionButtonsDiv} data-testid="action-buttons-div">
+            <div className={classes.actionButtonsInnerDiv} data-testid="action-buttons-inner-div">
+                <div className={classes.actionButtonsFlexDiv} data-testid="action-buttons-flex-div">
+                    <div className={classes.actionButtonsBoxDiv} data-testid="action-buttons-box-div-1">
                         <button className={classes.actionButtonsPrimaryBtn}
                             onClick={handlePost}
                             disabled={!canPost}
+                            data-testid="action-buttons-primary-btn"
                         >
-                        Post
+                Post
                         </button>
                     </div>
-                    <div className={classes.actionButtonsBoxDiv}>
+                    <div className={classes.actionButtonsBoxDiv} data-testid="action-buttons-box-div-2">
                         <button className={classes.actionButtonsBorderedBtn}
                             style={{borderWidth: '1px'}}
                             onClick={handleClick}
+                            data-testid="action-buttons-bordered-btn"
                         >
                             {btnText}
                         </button>
@@ -35,7 +37,7 @@ export function ActionButtons() {
                 </div>
             </div>
             {errorMessage && <ErrorMessage errorMessage={errorMessage}
-                setErrorMessage={setErrorMessage} position='end'/> }
+                setErrorMessage={setErrorMessage} position='end' data-testid="error-message"/> }
         </div>
     );
 }

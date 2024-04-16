@@ -9,11 +9,11 @@ import {classes} from './postcreationpollarea.styles.js';
  */
 export function PostCreationPollArea() {
     return (
-        <div className={classes.postCreationPollAreaDiv}>
+        <div className={classes.postCreationPollAreaDiv} data-testid="post-creation-poll-area-div">
             <div data-testid="poll-creator">
-                <div className={classes.postCreationPollAreaInnerDiv}>
-                    <PostCreationPollOptions/>
-                    <PostCreationpollTips/>
+                <div className={classes.postCreationPollAreaInnerDiv} data-testid="post-creation-poll-area-inner-div">
+                    <PostCreationPollOptions data-testid="post-creation-poll-options"/>
+                    <PostCreationpollTips data-testid="post-creation-poll-tips"/>
                 </div>
             </div>
         </div>

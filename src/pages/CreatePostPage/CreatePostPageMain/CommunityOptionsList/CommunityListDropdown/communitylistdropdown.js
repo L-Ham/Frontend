@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {CommunityListDropdownGroup} from './CommunityListDropdownGroup/communitylistdropdowngroup.js';
-import {axiosInstance as axios} from '../../../../../requests/axios.js';
-import {API_ROUTES} from '../../../../../requests/routes.js';
 import {classes} from './communitylistdropdown.styles.js';
+import {useCommunityListDropDown} from './communitylistdropdown.hooks.js';
 
 /**
  * Renders the community list dropdown.
@@ -13,41 +12,16 @@ import {classes} from './communitylistdropdown.styles.js';
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityListDropdown({searchInput}) {
-    const [otherCommunities, setOtherCommunities] = useState([]);
-    const [userCommunities, setUserCommunities] = useState([]);
-
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const allUserCommunities = await getUserCommunities();
-                const allCommunities = await getUserCommunities();
-                // const allCommunities = await searchCommunities(searchInput);
-
-                // TODO_BACKEND
-                // const newOtherCommunities = allCommunities.filter((community) => {
-                //     return !allUserCommunities.includes(community);
-                // });
-
-                // const newUserCommunities = allCommunities.filter((community) => {
-                //     return allUserCommunities.includes(community);
-                // });
-
-                setOtherCommunities(allCommunities);
-                setUserCommunities(allUserCommunities);
-            } catch (error) {
-                console.error('Failed to fetch communitites data', error);
-            }
-        };
-        loadData();
-    }, [searchInput]);
+    const {otherCommunities, userCommunities} = useCommunityListDropDown(searchInput);
 
     if (!userCommunities.length && !otherCommunities.length) return null;
 
     return (
-        <div className={classes.communityListDropdownDiv}>
+        <div className={classes.communityListDropdownDiv} data-testid="community-list-dropdown-div">
             <CommunityListDropdownGroup CommunitiesData={userCommunities} title='Your Communities'
-                isContainButton={true} />
-            <CommunityListDropdownGroup CommunitiesData={otherCommunities} title='others' />
+                isContainButton={true} data-testid="community-list-dropdown-group-1"/>
+            <CommunityListDropdownGroup CommunitiesData={otherCommunities} title='others'
+                data-testid="community-list-dropdown-group-2"/>
         </div>
     );
 }
@@ -56,18 +30,3 @@ CommunityListDropdown.propTypes = {
     userCommunities: PropTypes.array.isRequired,
     searchInput: PropTypes.string.isRequired,
 };
-
-
-const getUserCommunities = async () => {
-    const response = await axios.get(API_ROUTES.getUserCommunities);
-    const data = await response.data.communities;
-    return data;
-};
-
-// const searchCommunities = async (searchInput) => {
-//     const response = await axios.get(API_ROUTES.searchCommunities, {
-//         'search': searchInput,
-//     });
-//     const data = await response.data.communities;
-//     return data;
-// };

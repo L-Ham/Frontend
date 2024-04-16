@@ -12,8 +12,9 @@ import {classes} from './playbutton.styles';
 export function PlayButton() {
     const PlayIcon = getIconComponent('play', true);
     return (
-        <div className={classes.playButtonDiv} style={{transform: 'translateY(0%)'}}>
-            <PlayIcon className={classes.playButtonIcon} style={{transformOrigin: '0px 0px'}}/>
+        <div className={classes.playButtonDiv} style={{transform: 'translateY(0%)'}} data-testid="play-button-div">
+            <PlayIcon className={classes.playButtonIcon} style={{transformOrigin: '0px 0px'}}
+                data-testid="play-button-icon"/>
         </div>
     );
 }

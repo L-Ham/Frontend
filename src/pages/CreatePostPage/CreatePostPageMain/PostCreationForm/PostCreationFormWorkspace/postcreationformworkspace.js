@@ -13,14 +13,16 @@ export function PostCreationFormWorkspace() {
     const [errorMessage, setErrorMessage] = useState('');
 
     return (
-        <div className={classes.postCreationFormWorkspaceDiv}>
-            <div className={classes.postCreationFormWorkspaceInnerDiv}>
-                <div className={classes.postCreationFormWorkspaceRelativeDiv}>
+        <div className={classes.postCreationFormWorkspaceDiv} data-testid="post-creation-form-workspace-div">
+            <div className={classes.postCreationFormWorkspaceInnerDiv}
+                data-testid="post-creation-form-workspace-inner-div">
+                <div className={classes.postCreationFormWorkspaceRelativeDiv}
+                    data-testid="post-creation-form-workspace-relative-div">
                     <textarea
                         maxLength={300}
                         placeholder="Title"
                         className={`${classes.postCreationFormWorkspaceTextarea} 
-                    ${errorMessage ? '!border-[red]' :
+                ${errorMessage ? '!border-[red]' :
             'border-[color:var(--newCommunityTheme-line)]'}`}
                         rows={1}
                         style={{overflowX: 'hidden', overflowWrap: 'break-word', height: 39, borderWidth: '1px'}}
@@ -33,14 +35,16 @@ export function PostCreationFormWorkspace() {
                             }
                             setErrorMessage('');
                         }}
+                        data-testid="post-creation-form-workspace-textarea"
                     />
-                    <div className={classes.postCreationFormWorkspaceDiv2}>
+                    <div className={classes.postCreationFormWorkspaceDiv2}
+                        data-testid="post-creation-form-workspace-div2">
                         {postTitle.length}{/* */}/{/* */}300
                     </div>
                 </div>
-                {errorMessage && <ErrorMessage errorMessage={errorMessage}/> }
+                {errorMessage && <ErrorMessage errorMessage={errorMessage} data-testid="error-message"/> }
             </div>
-            <PostCreationTextEditor/>
+            <PostCreationTextEditor data-testid="post-creation-text-editor"/>
         </div>
     );
 }
