@@ -27,7 +27,7 @@ export function SubredditOverlay({
         subredditPrefixedName,
         bannerImage,
         isMember,
-        publicDescription,
+        description,
         avatarImage,
         membersCount,
         membersNickname,
@@ -54,9 +54,9 @@ export function SubredditOverlay({
                 isSubscriber={isMember}
                 icon={avatarImage}
             />
-            {publicDescription &&
+            {description &&
             <div className={overlayClasses.description} data-testid={`subreddit-overlay-description-${subredditId}`}>
-                {parse(replaceHtmlEntities(publicDescription))}
+                {parse(replaceHtmlEntities(description))}
             </div>}
             <hr className={overlayClasses.hr}/>
             <Stats

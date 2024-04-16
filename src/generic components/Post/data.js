@@ -275,8 +275,9 @@ export const DATA = {
     ],
     '65f5f5c26c3fec25017c306d': {
         userId: '65f5f5c26c3fec25017c306d',
-        displayName: 'Marly',
-        publicDescription: 'wana wayaya ba3ee44',
+        username: 'Marly',
+        displayName: null,
+        description: 'wana wayaya ba3ee44',
         commentKarma: 0,
         created: 1712938904,
         postKarma: 1,
@@ -286,8 +287,9 @@ export const DATA = {
     },
     '661910577aceb521f1f65a27': {
         userId: '661910577aceb521f1f65a27',
-        displayName: 'amrashraf',
-        publicDescription: null,
+        username: 'amrashraf',
+        displayName: 'amoor el amoor',
+        description: null,
         commentKarma: 0,
         created: 1712918615,
         postKarma: 0,
@@ -297,8 +299,9 @@ export const DATA = {
     },
     '6619d16849a19d248e4b9f43': {
         userId: '6619d16849a19d248e4b9f43',
-        displayName: 'gaser',
-        publicDescription: null,
+        username: 'gaser',
+        displayName: 'geso beso',
+        description: null,
         commentKarma: 0,
         created: 1712968040,
         postKarma: 0,
@@ -317,6 +320,7 @@ export const DATA = {
         currentlyViewingNickname: 'Online',
         currentlyViewingCount: 1,
         isMember: false,
+        createdAt: 1713048427,
     },
     'Tohotmous brime': {
         name: 'Tohotmous brime',
@@ -330,6 +334,7 @@ export const DATA = {
         currentlyViewingNickname: 'Assemble',
         currentlyViewingCount: 1,
         isMember: true,
+        createdAt: 1713048427,
     },
 };
 

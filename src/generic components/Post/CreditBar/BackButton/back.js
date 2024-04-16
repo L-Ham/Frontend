@@ -23,7 +23,7 @@ export function BackButton({
             type="button"
         >
             <div className={backClasses.root}>
-                <div className={backClasses.base}>
+                <div className={backClasses.base} data-testid={`back-icon-${postId}`}>
                     <BackIcon />
                 </div>
             </div>

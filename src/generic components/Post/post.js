@@ -80,7 +80,7 @@ export function Post({
                 viewContext={viewContext}
             />
             <div className={postClasses.body} data-testid={`body-${postId}`}>
-                <ContentTag tag={tag} />
+                <ContentTag tag={tag} postId={postId} />
                 <PostTitle postId={postId} title={title} isCommentsPage={isCommentsPage} />
                 <PostContent
                     postId={postId}
