@@ -24,8 +24,8 @@ export function UserOverlay({
     const {
         classNames,
         avatar,
-        displayName,
-        createdAt,
+        created,
+        username,
         description,
         postKarma,
         commentKarma,
@@ -42,8 +42,8 @@ export function UserOverlay({
             <div className={overlayClasses.wrapper}>
                 <TopBar
                     avatar={avatar}
-                    displayName={displayName}
-                    createdAt={createdAt}
+                    username={username}
+                    created={created}
                 />
                 {description && <div className={overlayClasses.description}
                     style={overlayStyles.description}
@@ -64,7 +64,7 @@ export function UserOverlay({
                     />
                     <ChatButton
                         userId={userId}
-                        displayName={displayName}
+                        username={username}
                     />
                 </div>
             </div>

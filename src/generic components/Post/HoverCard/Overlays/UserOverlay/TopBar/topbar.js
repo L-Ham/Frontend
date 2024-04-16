@@ -5,27 +5,27 @@ import {useTopBar} from './topbar.hooks';
 /**
  * TopBar component
  * @param {string} avatar
- * @param {string} displayName
- * @param {string} createdAt
+ * @param {string} username
+ * @param {string} created
  * @return {React.Component}
  */
 export function TopBar({
     avatar,
-    displayName,
-    createdAt,
+    username,
+    created,
 }) {
     const {
         CakeIcon,
         displayDate,
-    } = useTopBar({createdAt});
+    } = useTopBar({created});
     return (
-        <div className={topbarClasses.root} data-testid={`topbar-user-${displayName}`}>
+        <div className={topbarClasses.root} data-testid={`topbar-user-${username}`}>
             <div className={topbarClasses.avatarWrapper}>
                 <img
                     src={avatar || require('../../../../../../assets/images/avatar_default_0.png')}
-                    alt={'u/'+ displayName + ' avatar'}
+                    alt={'u/'+ username + ' avatar'}
                     className={topbarClasses.avatar}
-                    data-testid={`topbar-user-avatar-${displayName}`}
+                    data-testid={`topbar-user-avatar-${username}`}
                 />
             </div>
             <div className={topbarClasses.userDetails}>
@@ -33,18 +33,18 @@ export function TopBar({
                     <div className={topbarClasses.uname}>
                         <a
                             className={topbarClasses.unameLink}
-                            href={'/user/' + displayName}
+                            href={'/user/' + username}
                             target="_blank" rel="noreferrer"
-                            data-testid={`topbar-user-name-${displayName}`}
+                            data-testid={`topbar-user-name-${username}`}
                         >
-                            {displayName}
+                            {username}
                         </a>
                     </div>
                 </div>
                 <div className={topbarClasses.displayName}>
-                    <div className="truncate">{'u/' + displayName}</div>
+                    <div className="truncate">{'u/' + username}</div>
                 </div>
-                <div className={topbarClasses.date} data-testid={`topbar-user-date-${displayName}`}>
+                <div className={topbarClasses.date} data-testid={`topbar-user-date-${username}`}>
                     <CakeIcon className="mr-1"/>
                     {displayDate}
                 </div>
@@ -55,6 +55,6 @@ export function TopBar({
 
 TopBar.propTypes = {
     avatar: PropTypes.string,
-    displayName: PropTypes.string,
-    createdAt: PropTypes.string,
+    username: PropTypes.string,
+    created: PropTypes.string,
 };

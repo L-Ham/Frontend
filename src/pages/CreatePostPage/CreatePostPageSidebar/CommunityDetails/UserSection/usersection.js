@@ -9,7 +9,7 @@ import {useSelector} from 'react-redux';
  * @return {JSX.Element} The rendered component.
  */
 export function UserSection() {
-    const displayName = useSelector((state) => state.user.displayName);
+    const user = useSelector((state) => state.user);
 
     const EditIcon = getIconComponent('edit', false);
     const FlairProfileIcon = getIconComponent('flair-profile');
@@ -56,7 +56,7 @@ export function UserSection() {
                                 <span className="truncate
                             text-[12px]/[16px] font-[500]
                             text-[var(--newCommunityTheme-widgetColors-sidebarWidgetTextColor)]">
-                                    {displayName || 'Equivalent_Serve_549'}
+                                    {user.displayName || user.username || 'Equivalent_Serve_549'}
                                 </span>
                             </div>
                         </div>

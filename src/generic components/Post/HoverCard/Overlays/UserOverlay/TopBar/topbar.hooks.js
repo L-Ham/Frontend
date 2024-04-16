@@ -1,8 +1,8 @@
 import {getIconComponent} from '../../../../../iconsmap';
 
-export const useTopBar = ({createdAt}) => {
+export const useTopBar = ({created}) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const creationDate = new Date(createdAt);
+    const creationDate = new Date(created * 1000);
     const displayDate = months[creationDate.getMonth()] + ' ' + creationDate.getDate() + ', ' +
                         creationDate.getFullYear();
     return {

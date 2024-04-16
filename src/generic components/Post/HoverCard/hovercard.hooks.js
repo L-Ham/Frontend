@@ -13,8 +13,8 @@ export const useHoverCard = ({entityName, entityId, viewContext, isUser}) => {
         fill="currentColor"
     />;
     if (isUser) {
-        const {displayName, avatar} = DATA[entityId];
-        entityName = displayName;
+        const {username, avatar} = DATA[entityId];
+        entityName = username;
         DisplayIcon = <img src={avatar || require('../../../assets/images/avatar_default_0.png')}
             alt='avatar' className='size-6 rounded-full'/>;
     }
