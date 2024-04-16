@@ -131,7 +131,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
 Usernameinput.propTypes = {
     onUsernameChange: PropTypes.func.isRequired,
     width: PropTypes.string.isRequired,
-    showInvalidCredentials: PropTypes.bool.isRequired,
+    showInvalidCredentials: PropTypes.bool,
     showfakeaccount: PropTypes.bool,
     emptyusername: PropTypes.bool,
 };
