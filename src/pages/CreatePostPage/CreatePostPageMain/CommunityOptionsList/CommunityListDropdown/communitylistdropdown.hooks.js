@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
+import {axiosInstance as axios} from '../../../../../requests/axios';
 import {API_ROUTES} from '../../../../../requests/routes';
 
 export const useCommunityListDropDown = (searchInput) => {
