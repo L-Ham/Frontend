@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
 import {useCommunityItem} from './community.hooks.js';
 import PropTypes from 'prop-types';
-
+import defaultSubreddit from '../../../../assets/icons/default-subreddit.svg';
 
 /**
  * The sidebar community component
@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
  */
 function CommunityItem({imgURL, communityName, communityId, isFavorite}) {
     const {handleStar, StarIcon} = useCommunityItem({communityId, isFavorite});
-    imgURL = imgURL || 'https://via.placeholder.com/150';
+    imgURL = imgURL || defaultSubreddit;
     // console.log({imgURL, communityName, communityId, isFavorite});
     return (
         <NavLink to={'/r/' + communityName} className={styles.root} data-testid={`community-item-${communityName}`}>

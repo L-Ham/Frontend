@@ -1,13 +1,18 @@
 import React from 'react';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
+import {useCreatePostPage} from '../../../createpostpage.context.js';
 
 /**
  * Renders the creation details.
  * @return {JSX.Element} The rendered component.
  */
 export function CreationDetails() {
-    const CreationDate = 'Jan 14, 2010';
-    // TODO-BACKEND: Get the creation date from the backend.
+    const {about: {communityDetails: {createdAt}}} = useCreatePostPage();
+    // created at is seconds since the creation date
+    // convert seconds to the year, month, and day
+    const creationDate = new Date(createdAt * 1000);
+    const options = {year: 'numeric', month: 'long', day: 'numeric'};
+    const formattedDate = creationDate.toLocaleDateString(undefined, options);
     const CakeIcon = getIconComponent('cake', false);
 
     return (
@@ -17,7 +22,7 @@ export function CreationDetails() {
             >
                 <CakeIcon className="icon m-[-2px_8px_0_0]"/>
                 <span className="text-[var(--newCommunityTheme-metaText)]">
-                                Created {/* */}{CreationDate}
+                                Created {/* */}{formattedDate} {/* */}
                 </span>
             </div>
         </div>

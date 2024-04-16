@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {userCardClasses as classes} from './usercard.styles.js';
+import defaultSubreddit from '../../../../../../assets/icons/default-subreddit.svg';
+
 
 /**
  * Renders the user flair.
@@ -17,7 +19,7 @@ export function UserCard({name, displayName='', pictureSrc}) {
                     <span className={classes.imageWrapper}>
                         <span className={classes.imageInnerWrapper}>
                             <img
-                                src={pictureSrc}
+                                src={pictureSrc || defaultSubreddit}
                                 alt={`u/${name} avatar`}
                                 className={classes.image}
                             />

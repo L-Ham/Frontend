@@ -6,6 +6,7 @@ import {CommunityDescription} from './CommunityDescription/communitydescription.
 import {CommunityMembers} from './CommunityMembers/communitymembers.js';
 import {UserSection} from './UserSection/usersection.js';
 import {CommunityOptions} from './CommunityOptions/communityoptions.js';
+import {useCreatePostPage} from '../../createpostpage.context.js';
 
 
 /**
@@ -13,6 +14,8 @@ import {CommunityOptions} from './CommunityOptions/communityoptions.js';
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityDetails() {
+    const {about} = useCreatePostPage();
+    if (!about) return null;
     return (
         <div className="mt-[16px] w-[312px]">
             <div className="overflow-visible break-words rounded-[4px] border-DEFAULT
