@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {usePostCreation} from './path/to/usePostCreation';
+import {usePostCreation} from '../../../postcreationcontext.js';
 import {validateLink} from '../../../../../../../generic components/utils.js';
 
 export const usePostCreationLinkArea = () => {
