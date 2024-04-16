@@ -10,7 +10,6 @@ import defaultSubreddit from '../../../../../assets/icons/default-subreddit.svg'
 export function CommunityHeader() {
     const navigate = useNavigate();
     const {about} = useCreatePostPage();
-    if (!about) return null;
     const {communityDetails: {name, avatarImage}} = about;
 
     return (

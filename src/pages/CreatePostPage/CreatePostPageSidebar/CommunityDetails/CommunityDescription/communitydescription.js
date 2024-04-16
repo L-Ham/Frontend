@@ -8,7 +8,6 @@ import {useCreatePostPage} from '../../../createpostpage.context';
  */
 export function CommunityDescription() {
     const {about} = useCreatePostPage();
-    if (!about) return null;
     const {communityDetails: {description}} = about;
 
     return (

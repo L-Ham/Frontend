@@ -20,6 +20,7 @@ export function ActionButtons() {
     if (!about) return null;
     const {communityDetails: {subredditId}} = about;
 
+
     // switch case on active tab
     // for each type of tab (post,img,link,poll) we have different checks)
     // checking on title is regardless of the tab must be at least 10 characters
@@ -64,7 +65,7 @@ export function ActionButtons() {
     }
 
 
-    const handlePost = () => {
+    const handlePost = async () => {
         const post ={
             title: postTitle,
             subRedditId: subredditId,
@@ -104,8 +105,13 @@ export function ActionButtons() {
         default:
             break;
         }
-
-        createPost(post);
+        try {
+            await createPost(post);
+            alert('Post created successfully');
+        } catch (error) {
+            alert('Failed to create post');
+            console.log('Failed to create post:', error.message);
+        }
     };
 
 

@@ -3,16 +3,17 @@ import React from 'react';
 import './usersection.css';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
 import {useSelector} from 'react-redux';
+import avatarDefault from '../../../../../assets/images/avatar_default_0.png';
 
 /**
  * Renders the user section.
  * @return {JSX.Element} The rendered component.
  */
 export function UserSection() {
-    const user = useSelector((state) => state.user);
-
+    const displayName = useSelector((state) => state.user.displayName);
+    const src = useSelector((state) => state.user.avatar);
+    const username = useSelector((state) => state.user.username);
     const EditIcon = getIconComponent('edit', false);
-    const FlairProfileIcon = getIconComponent('flair-profile');
     return (
         <div className="user-section mt-[12px]">
             <hr className="mx-0
@@ -41,13 +42,14 @@ export function UserSection() {
                 <div className="mx-0 my-[8px] flex w-full ">
                     <div className="flex max-w-full items-center justify-center ">
                         <div className="relative h-full ">
-                            <FlairProfileIcon
+                            <img
                                 className="content-box mt-[6px] box-border
-                             size-[28px] overflow-hidden border-DEFAULT border-solid
-                              bg-[#d7dfe2] fill-white object-cover
-                              object-center"
-                                viewBox="0 0 320 320"
+                             size-[28px] overflow-hidden border-DEFAULT
+                              border-solid bg-[#d7dfe2] fill-white
+                              object-cover
+                               object-center"
                                 xmlns="http://www.w3.org/2000/svg"
+                                src={ src || avatarDefault}
                             />
                         </div>
                         <div className="ml-[8px] flex min-w-0 flex-col items-start fill-[var(--newRedditTheme-bodyText)]
@@ -56,7 +58,7 @@ export function UserSection() {
                                 <span className="truncate
                             text-[12px]/[16px] font-[500]
                             text-[var(--newCommunityTheme-widgetColors-sidebarWidgetTextColor)]">
-                                    {user.displayName || user.username || 'Equivalent_Serve_549'}
+                                    {displayName || username || 'Equivalent_Serve_549'}
                                 </span>
                             </div>
                         </div>
