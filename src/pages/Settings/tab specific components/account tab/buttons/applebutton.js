@@ -14,7 +14,6 @@ function AppleButton({id}) {
      * This function serves as a placeholder for actual logic to connect to Apple services.
      */
     function handleClick() {
-        console.log('apple button clicked');
 
         // alert('apple button clicked');
         // Placeholder for actual connection logic

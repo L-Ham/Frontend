@@ -17,7 +17,6 @@ function MarkAsReadButton({id}) {
      * to perform actions such as marking notifications or messages as read in an application's context.
      */
     function handleClick() {
-        console.log('Mark as read Button clicked');
 
         // alert('Mark as read Button clicked');
     }
