@@ -46,6 +46,14 @@ const login = async ({request, params, cookies}) => {
     }
 };
 
+const avatar = async ({request, params, cookies}) => {
+    const response = {
+        _id: '66195f995f9d6032ae3ebd6e',
+        url: 'https://res.cloudinary.com/dfb8f6xbh/image/upload/v1712938904/glhz7yipxedh3hqnpqim.jpg',
+        originalname: 'avatarImagejpg.jpg',
+    };
+    return HttpResponse.json(response, {status: 200});
+};
 const signup = async ({request, params, cookies}) => {
     try {
         const body = await request.json();
@@ -120,6 +128,7 @@ export const userHandlers = [
     http.get(url(API_ROUTES.banner), banner),
     http.get(url(API_ROUTES.userSelfInfo), userSelfInfo),
     http.post(url(API_ROUTES.login), login),
+    http.get(url(API_ROUTES.avatar), avatar),
     http.post(url(API_ROUTES.forgotusername), forgotusername),
     http.post(url(API_ROUTES.forgotpassword), forgotpassword),
     http.post(url(API_ROUTES.signup), signup),

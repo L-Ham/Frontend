@@ -68,7 +68,7 @@ describe('HoverCard component', () => {
     it('conditionally renders DisplayIcon when not on COMMENTS_PAGE', () => {
         const {getByTestId} = render(
             <HoverCard postId="post2" entityId="subreddit1" entityName="Subreddit"
-                viewContext={VIEW_CONTEXTS.PROFILE_PAGE} isUser={false} />,
+                viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} isUser={false} />,
         );
         expect(getByTestId('displayicon-post2-subreddit1')).toBeInTheDocument();
         expect(getByTestId('displayicon-post2-subreddit1')).toContainHTML('<div>Icon</div>');
@@ -85,7 +85,7 @@ describe('HoverCard component', () => {
     it('renders the UserOverlay component for a user entity when overlay is open', () => {
         const {getByTestId} = render(
             <HoverCard postId="post4" entityId="user124" entityName="User Entity"
-                viewContext={VIEW_CONTEXTS.PROFILE_PAGE} isUser={true} />,
+                viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} isUser={true} />,
         );
         expect(getByTestId('overlay-post4-user124')).toContainHTML('<UserOverlay');
     });
@@ -93,7 +93,7 @@ describe('HoverCard component', () => {
     it('renders the SubredditOverlay component for a subreddit entity when overlay is open', () => {
         const {getByTestId} = render(
             <HoverCard postId="post5" entityId="subreddit3" entityName="Subreddit"
-                viewContext={VIEW_CONTEXTS.PROFILE_PAGE} isUser={false} />,
+                viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} isUser={false} />,
         );
         expect(getByTestId('overlay-post5-subreddit3')).toContainHTML('<SubredditOverlay');
     });

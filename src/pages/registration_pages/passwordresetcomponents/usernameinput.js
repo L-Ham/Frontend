@@ -28,7 +28,6 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
         const newPassword = event.target.value;
         setPassword(newPassword);
         onUsernameChange(newPassword);
-        console.log(emptyusername);
     };
 
     const [isFocusPassword, setIsFocusPassword] = React.useState(false);
@@ -131,7 +130,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
 Usernameinput.propTypes = {
     onUsernameChange: PropTypes.func.isRequired,
     width: PropTypes.string.isRequired,
-    showInvalidCredentials: PropTypes.bool.isRequired,
+    showInvalidCredentials: PropTypes.bool,
     showfakeaccount: PropTypes.bool,
     emptyusername: PropTypes.bool,
 };
