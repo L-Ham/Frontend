@@ -18,7 +18,7 @@ function ActionButton({icon, onClick}) {
     const Icon = getIconComponent(icon, false);
     return (
         <button className={styles.root} onClick={onClick} data-testid={`action-button-${icon}`}>
-            <span className={styles.iconContainer}>
+            <span className={styles.iconContainer} data-testid={`action-button-icon-container-${icon}`}>
                 <Icon />
             </span>
         </button>
