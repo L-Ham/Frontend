@@ -1,8 +1,8 @@
 import axios from 'axios';
 import store from '../store/store.js';
 // Setup a base URL
-// const BASE_URL = 'http://localhost:5000';
-const BASE_URL = 'https://reddit-bylham.me/api';
+// export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'https://reddit-bylham.me/api';
 
 // Create an Axios instance with the base URL and any other default configurations
 const axiosInstance = axios.create({

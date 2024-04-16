@@ -15,10 +15,11 @@ import ru from 'javascript-time-ago/locale/ru';
 
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
-
+import {worker} from './mocks/broswer.js';
+const mocks = async () => worker.start();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const clientId = '332399911432-vjl376a05ukf0hhpj6kq0hnuibij26dh.apps.googleusercontent.com';
-root.render(
+const render = () => root.render(
     <React.StrictMode>
         <GoogleOAuthProvider clientId={clientId}>
             <Provider store={store}>
@@ -29,6 +30,10 @@ root.render(
         </GoogleOAuthProvider>
     </React.StrictMode>,
 );
+
+const enableMock = false;
+
+enableMock ? mocks().then(render()) : render();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

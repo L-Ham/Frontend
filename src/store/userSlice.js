@@ -26,11 +26,9 @@ const userSlice = createSlice({
             state.theme = action.payload.theme;
         },
         selfInfo: (state, action) => {
-            console.log(action.payload);
             Object.assign(state, action.payload);
         },
         logout: (state) => {
-            console.log(initialState);
             Object.assign(state, initialState);
         },
         clearRecentPosts: (state) => {
