@@ -23,7 +23,6 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
 
     useEffect(() => {
         setSelectedGender(init);
-        console.log(init);
     }, [init]);
     /**
  * Handles the gender selection by updating the state, logging the selection,
