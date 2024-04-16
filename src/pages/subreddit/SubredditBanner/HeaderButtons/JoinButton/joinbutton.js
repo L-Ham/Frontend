@@ -10,6 +10,7 @@ import {useJoinButton} from './joinbutton.hooks';
  * @param {string} props.unSubscribeLabel - The unsubscribe label
  * @param {function} props.handleJoinClick - The handle join click function
  * @param {boolean} props.isSubscribed - The is subscribed status
+ * @param {boolean} props.isDisabled - The disabled status
  * @return {JSX.Element} The JoinButton component
  */
 export function JoinButton({
@@ -17,10 +18,10 @@ export function JoinButton({
     unSubscribeLabel,
     handleJoinClick,
     isSubscribed,
+    isDisabled,
 }) {
     const {
         handleClick,
-        disabled,
         buttonClasses,
         buttonLabel,
     } = useJoinButton({handleJoinClick, isSubscribed, subscribeLabel, unSubscribeLabel});
@@ -30,7 +31,7 @@ export function JoinButton({
         <button
             className={buttonClasses}
             onClick={handleClick}
-            disabled={disabled}
+            disabled={isDisabled}
         >
             {buttonLabel}
         </button>
@@ -42,5 +43,6 @@ JoinButton.propTypes = {
     unSubscribeLabel: PropTypes.string.isRequired,
     handleJoinClick: PropTypes.func.isRequired,
     isSubscribed: PropTypes.bool.isRequired,
+    isDisabled: PropTypes.bool,
 };
 

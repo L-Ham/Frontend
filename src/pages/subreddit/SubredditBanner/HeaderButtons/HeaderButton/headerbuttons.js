@@ -21,6 +21,7 @@ export function HeaderButtons() {
         handleFavouriteClick,
         isSubscribed,
         handleJoinClick,
+        isJoinDisabled,
     } = useHeaderButtons();
 
     if (!handleMuteClick) return null;
@@ -39,6 +40,7 @@ export function HeaderButtons() {
                     unSubscribeLabel="Joined"
                     handleJoinClick={handleJoinClick}
                     isSubscribed={isSubscribed}
+                    isDisabled={isJoinDisabled}
                 />
                 <OverflowControl
                     onFavouriteClick={handleFavouriteClick}
