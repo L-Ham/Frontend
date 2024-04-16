@@ -19,26 +19,32 @@ export function CommunityRule({rule: {ruleText: shortName, descriptionHtml}, idx
     const CaretDownIcon = getIconComponent('caret-down', false);
     return (
         <div className={classes.communityRuleDiv}
-            style={{borderColor: 'var(--newCommunityTheme-widgetColors-lineColor)'}}>
+            style={{borderColor: 'var(--newCommunityTheme-widgetColors-lineColor)'}}
+            data-testid="community-rule-div">
             <div className={classes.communityRuleInnerDiv} onClick={() => {
                 setIsDescriptionVisible(!isDescriptionVisible);
-            }}>
-                <div className={classes.communityRuleNumberDiv}>
-                    <div className={classes.communityRuleNumberInnerDiv}>{idx + 1}.</div>
+            }} data-testid="community-rule-inner-div">
+                <div className={classes.communityRuleNumberDiv} data-testid="community-rule-number-div">
+                    <div className={classes.communityRuleNumberInnerDiv}
+                        data-testid="community-rule-number-inner-div">{idx + 1}.</div>
                 </div>
 
-                <div className={classes.communityRuleNameDiv}>
-                    <div className={classes.communityRuleNameInnerDiv}>{shortName}</div>
+                <div className={classes.communityRuleNameDiv} data-testid="community-rule-name-div">
+                    <div className={classes.communityRuleNameInnerDiv}
+                        data-testid="community-rule-name-inner-div">{shortName}</div>
                 </div>
 
-                <div className={classes.communityRuleIconDiv}>
-                    <div className={classes.communityRuleIconInnerDiv}>
-                        <CaretDownIcon className={`icon ${isDescriptionVisible ? 'rotate-180' : 'rotate-0'}`}/>
+                <div className={classes.communityRuleIconDiv} data-testid="community-rule-icon-div">
+                    <div className={classes.communityRuleIconInnerDiv} data-testid="community-rule-icon-inner-div">
+                        <CaretDownIcon className={`icon ${isDescriptionVisible ?
+                            'rotate-180' : 'rotate-0'}`} data-testid="caret-down-icon"/>
                     </div>
                 </div>
             </div>
-            {isDescriptionVisible && <div className={classes.communityRuleDescriptionDiv}>
-                <div className={classes.communityRuleDescriptionInnerDiv}>{description}</div>
+            {isDescriptionVisible && <div
+                className={classes.communityRuleDescriptionDiv} data-testid="community-rule-description-div">
+                <div className={classes.communityRuleDescriptionInnerDiv}
+                    data-testid="community-rule-description-inner-div">{description}</div>
             </div>}
         </div>
     );

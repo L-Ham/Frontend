@@ -16,17 +16,18 @@ import {classes} from './formatoption.styles';
 export function FormatOption({option: {icon, name}}) {
     const Icon = getIconComponent(icon);
     return (
-        <span className={classes.formatOptionSpan}>
+        <span className={classes.formatOptionSpan} data-testid="format-option-span">
             <button
                 role="button"
                 tabIndex={-1}
                 aria-label="Bold"
                 aria-selected="false"
                 className={classes.formatOptionButton}
+                data-testid="format-option-button"
             >
-                <Icon className={classes.formatOptionIcon} />
-                <div className={classes.formatOptionDiv}>
-                    <div className={classes.formatOptionInnerDiv}>
+                <Icon className={classes.formatOptionIcon} data-testid="format-option-icon" />
+                <div className={classes.formatOptionDiv} data-testid="format-option-div">
+                    <div className={classes.formatOptionInnerDiv} data-testid="format-option-inner-div">
                         {name}
                     </div>
                 </div>

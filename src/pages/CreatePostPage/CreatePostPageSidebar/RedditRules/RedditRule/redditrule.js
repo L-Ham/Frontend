@@ -12,7 +12,8 @@ import {classes} from './redditrule.styles.js';
 export function RedditRule({rule: {rule: shortName}}) {
     return (
         <li className={classes.redditRuleLi}
-            style={{borderBottomWidth: '1px'}}>{shortName}</li>
+            style={{borderBottomWidth: '1px'}}
+            data-testid="reddit-rule-li">{shortName}</li>
     );
 }
 RedditRule.propTypes = {

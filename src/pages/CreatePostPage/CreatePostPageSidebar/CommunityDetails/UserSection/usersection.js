@@ -16,32 +16,34 @@ export function UserSection() {
     const username = useSelector((state) => state.user.username);
     const EditIcon = getIconComponent('edit', false);
     return (
-        <div className={classes.userSectionDiv}>
-            <hr className={classes.userSectionHr}/>
-            <div className={classes.userSectionInnerDiv}>
-                <div className={classes.userSectionPreviewDiv}>
+        <div className={classes.userSectionDiv} data-testid="user-section-div">
+            <hr className={classes.userSectionHr} data-testid="user-section-hr"/>
+            <div className={classes.userSectionInnerDiv} data-testid="user-section-inner-div">
+                <div className={classes.userSectionPreviewDiv} data-testid="user-section-preview-div">
             preview
                     <button
                         role="button"
                         tabIndex={0}
                         className={classes.userSectionButton}
                         onClick={() => alert('not supported yet :)')}
+                        data-testid="user-section-button"
                     >
-                        <EditIcon className={classes.userSectionEditIcon}/>
+                        <EditIcon className={classes.userSectionEditIcon} data-testid="user-section-edit-icon"/>
                     </button>
                 </div>
-                <div className={classes.userSectionMxDiv}>
-                    <div className={classes.userSectionFlexDiv}>
-                        <div className={classes.userSectionRelativeDiv}>
+                <div className={classes.userSectionMxDiv} data-testid="user-section-mx-div">
+                    <div className={classes.userSectionFlexDiv} data-testid="user-section-flex-div">
+                        <div className={classes.userSectionRelativeDiv} data-testid="user-section-relative-div">
                             <img
                                 className={classes.userSectionFlairProfileIcon}
                                 xmlns="http://www.w3.org/2000/svg"
                                 src={ src || avatarDefault}
+                                data-testid="user-section-flair-profile-icon"
                             />
                         </div>
-                        <div className={classes.userSectionMlDiv}>
-                            <div className={classes.userSectionWFullDiv}>
-                                <span className={classes.userSectionSpan}>
+                        <div className={classes.userSectionMlDiv} data-testid="user-section-ml-div">
+                            <div className={classes.userSectionWFullDiv} data-testid="user-section-wfull-div">
+                                <span className={classes.userSectionSpan} data-testid="user-section-span">
                                     {displayName || username || 'Equivalent_Serve_549'}
                                 </span>
                             </div>

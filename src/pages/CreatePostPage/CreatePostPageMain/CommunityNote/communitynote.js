@@ -13,7 +13,7 @@ export function CommunityNote() {
     // TODO_BACKEND: get the submit text from the backend
 
     return (
-        submitText && <div className={classes.noteDiv}>
+        submitText && <div className={classes.noteDiv} data-testid="note-div">
             {submitText}
         </div>
     );

@@ -14,10 +14,10 @@ import {classes} from './createpostpage.styles.js';
  */
 export function CreatePostPage({name}) {
     return (
-        <CreatePostPageProvider name={name}>
-            <div className={classes.div}>
-                <CreatePostPageMain />
-                <CreatePostPageSidebar />
+        <CreatePostPageProvider name={name} data-testid="create-post-page-provider">
+            <div className={classes.div} data-testid="main-div">
+                <CreatePostPageMain data-testid="create-post-page-main" />
+                <CreatePostPageSidebar data-testid="create-post-page-sidebar" />
             </div>
         </CreatePostPageProvider>
     );

@@ -15,11 +15,11 @@ import {classes} from './postcreationform.styles';
 export function PostCreationForm() {
     return (
         <PostCreationProvider>
-            <div className={classes.postCreationFormDiv}>
-                <PostCreationFormTabs />
-                <PostCreationFormWorkspace />
-                <PostCreationFormFooter />
-                <PostCreationFormSharingOptions />
+            <div className={classes.postCreationFormDiv} data-testid="post-creation-form-div">
+                <PostCreationFormTabs data-testid="post-creation-form-tabs" />
+                <PostCreationFormWorkspace data-testid="post-creation-form-workspace" />
+                <PostCreationFormFooter data-testid="post-creation-form-footer" />
+                <PostCreationFormSharingOptions data-testid="post-creation-form-sharing-options" />
             </div>
         </PostCreationProvider>
     );

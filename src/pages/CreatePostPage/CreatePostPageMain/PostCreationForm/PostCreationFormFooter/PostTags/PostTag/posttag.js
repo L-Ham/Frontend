@@ -15,9 +15,9 @@ export function PostTag({tag, setPostTags, isActive}) {
     const {handleTagClick, Icon} = usePostTag(tag, setPostTags, isActive);
 
     return (
-        <button className={btnClasses(isActive, tag)} onClick={() => handleTagClick()}>
-            <Icon className={iconClasses(isActive)} />
-            <span>{tag}</span>
+        <button className={btnClasses(isActive, tag)} onClick={() => handleTagClick()} data-testid="post-tag-button">
+            <Icon className={iconClasses(isActive)} data-testid="post-tag-icon" />
+            <span data-testid="post-tag-span">{tag}</span>
         </button>
     );
 }

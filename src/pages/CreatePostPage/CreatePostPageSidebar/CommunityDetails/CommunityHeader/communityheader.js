@@ -14,22 +14,25 @@ export function CommunityHeader() {
     const {communityDetails: {name, avatarImage}} = about;
 
     return (
-        <div className={classes.communityHeaderDiv}>
+        <div className={classes.communityHeaderDiv} data-testid="community-header-div">
             <img
                 style={{backgroundPosition: '50%', backgroundSize: '100%'}}
                 alt="Subreddit Icon"
                 src={avatarImage || defaultSubreddit}
                 className={classes.communityHeaderImg}
+                data-testid="community-header-img"
             />
-            <div className={classes.communityHeaderInnerDiv}>
+            <div className={classes.communityHeaderInnerDiv} data-testid="community-header-inner-div">
                 <a
                     className={classes.communityHeaderA}
                     target="_blank"
                     onClick={() => {
                         navigate('/r/OnePiece/');
                     }}
+                    data-testid="community-header-a"
                 >
-                    <span className={classes.communityHeaderSpan} title="r/OnePiece">
+                    <span className={classes.communityHeaderSpan}
+                        title="r/OnePiece" data-testid="community-header-span">
                         {`r/${name}`}
                     </span>
                 </a>

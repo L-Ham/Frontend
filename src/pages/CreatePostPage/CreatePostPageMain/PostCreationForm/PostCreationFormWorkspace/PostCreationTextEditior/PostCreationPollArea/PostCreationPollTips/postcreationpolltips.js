@@ -15,13 +15,16 @@ export function PostCreationpollTips() {
         'Options can\'t be edited after post creation'];
 
     return (
-        <div className={classes.postCreationPollTipsDiv}>
-            <div className={classes.postCreationPollTipsInnerDiv}>
-                <InfoIcon className={classes.postCreationPollTipsInfoIcon} />
-                <div className={classes.postCreationPollTipsDiv2}>Tips on Better Polls</div>
+        <div className={classes.postCreationPollTipsDiv} data-testid="post-creation-poll-tips-div">
+            <div className={classes.postCreationPollTipsInnerDiv} data-testid="post-creation-poll-tips-inner-div">
+                <InfoIcon className={classes.postCreationPollTipsInfoIcon}
+                    data-testid="post-creation-poll-tips-info-icon" />
+                <div className={classes.postCreationPollTipsDiv2}
+                    data-testid="post-creation-poll-tips-div2">Tips on Better Polls</div>
             </div>
-            <ol className={classes.postCreationPollTipsOl}>
-                {tipsList.map((tip)=>(<li className={tipsClasses} key={tip} >{tip}</li>))}
+            <ol className={classes.postCreationPollTipsOl} data-testid="post-creation-poll-tips-ol">
+                {tipsList.map((tip, index)=>(<li className={tipsClasses}
+                    key={tip} data-testid={`post-creation-poll-tip-${index}`}>{tip}</li>))}
             </ol>
         </div>
     );

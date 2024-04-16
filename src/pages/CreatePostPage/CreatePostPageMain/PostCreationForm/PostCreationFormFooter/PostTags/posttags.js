@@ -13,11 +13,11 @@ export function PostTags() {
     const tags = ['OC', 'SPOILER', 'NSFW'];
 
     return (
-        <div className={classes.postTagsDiv}>
-            <div className={classes.postTagsInnerDiv}>
-                {tags.map((tag) => (
+        <div className={classes.postTagsDiv} data-testid="post-tags-div">
+            <div className={classes.postTagsInnerDiv} data-testid="post-tags-inner-div">
+                {tags.map((tag, index) => (
                     <PostTag key={tag} tag={tag}
-                        setPostTags={setPostTags} isActive={postTags.includes(tag)}/>
+                        setPostTags={setPostTags} isActive={postTags.includes(tag)} data-testid={`post-tag-${index}`}/>
                 ))}
             </div>
         </div>

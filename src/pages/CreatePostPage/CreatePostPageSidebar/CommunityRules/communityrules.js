@@ -16,15 +16,16 @@ export function CommunityRules() {
 
 
     return (
-        <div className={classes.communityRulesDiv}>
-            <div className={classes.communityRulesInnerDiv}>
-                <div className={classes.communityRulesHeaderDiv}>
-                    <div className={classes.communityRulesHeaderInnerDiv}>r/OnePiece Rules</div>
+        <div className={classes.communityRulesDiv} data-testid="community-rules-div">
+            <div className={classes.communityRulesInnerDiv} data-testid="community-rules-inner-div">
+                <div className={classes.communityRulesHeaderDiv} data-testid="community-rules-header-div">
+                    <div className={classes.communityRulesHeaderInnerDiv}
+                        data-testid="community-rules-header-inner-div">r/OnePiece Rules</div>
                 </div>
 
-                <div className={classes.communityRulesContentDiv}>
+                <div className={classes.communityRulesContentDiv} data-testid="community-rules-content-div">
                     {rules.map((rule, idx) => (
-                        <CommunityRule key={idx} rule={rule} idx={idx}/>
+                        <CommunityRule key={idx} rule={rule} idx={idx} data-testid={`community-rule-${idx}`}/>
                     ))}
                 </div>
             </div>

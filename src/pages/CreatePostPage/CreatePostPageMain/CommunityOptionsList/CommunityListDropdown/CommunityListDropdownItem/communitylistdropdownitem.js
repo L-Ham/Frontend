@@ -16,18 +16,23 @@ export function CommunityListDropdownItem({communityData}) {
     return (
         <div className={classes.communityListDropdownItemDiv} onClick={() => {
             window.location.href = window.location.origin + `/r/${communityName}/submit`;
-        }}>
-            <div className={classes.communityListDropdownItemInnerDiv}>
+        }} data-testid="community-list-dropdown-item-div">
+            <div className={classes.communityListDropdownItemInnerDiv}
+                data-testid="community-list-dropdown-item-inner-div">
                 <img
                     alt="Subreddit Icon"
                     role="presentation"
                     src={communityAvatar || defaultAvatar}
                     className={classes.communityListDropdownItemImage}
                     style={{backgroundColor: 'rgb(170, 150, 85)'}}
+                    data-testid="community-list-dropdown-item-image"
                 />
-                <div className={classes.communityListDropdownItemInnerDiv2}>
-                    <span className={classes.communityListDropdownItemSpan1}>{communityName}</span>
-                    <span className={classes.communityListDropdownItemSpan2}>
+                <div className={classes.communityListDropdownItemInnerDiv2}
+                    data-testid="community-list-dropdown-item-inner-div2">
+                    <span className={classes.communityListDropdownItemSpan1}
+                        data-testid="community-list-dropdown-item-span1">{communityName}</span>
+                    <span className={classes.communityListDropdownItemSpan2}
+                        data-testid="community-list-dropdown-item-span2">
                         {formatNumberWithCommas(memberCount || 0)} members
                     </span>
                 </div>
