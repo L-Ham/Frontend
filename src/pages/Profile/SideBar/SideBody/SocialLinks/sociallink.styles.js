@@ -1,5 +1,5 @@
 export const socialLinkClasses = {
-    root: `block`,
+    root: `inline-flex gap-xs flex-wrap`,
     rootC: `flex items-center gap-2`,
     button: `box-border block h-8 items-center
     justify-center overflow-hidden rounded-[999px] border
@@ -8,7 +8,7 @@ export const socialLinkClasses = {
     text-center
     leading-[calc(var(--button-height)_-(2*_var(0.0625,0px)))]
      hover:bg-[color:var(--button-color-background-hover)]
-     hover:underline`,
+     hover:underline m-1`,
     span: `flex items-center justify-center`,
     spanC: `mr-2 flex`,
     spanCC: `flex items-center`,

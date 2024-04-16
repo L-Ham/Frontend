@@ -6,12 +6,12 @@ import {useChat} from './chat.hooks';
 /**
  * ChatButton component
  * @param {string} userId
- * @param {string} name
+ * @param {string} username
  * @return {React.Component}
  */
 export function ChatButton({
     userId,
-    displayName,
+    username,
 }) {
     const {
         ChatIcon,
@@ -20,7 +20,7 @@ export function ChatButton({
         <a
             aria-label="Open chat"
             className={chatClasses.anchor}
-            href={window.location.origin.replace('//', '//chat.')+`/user/${displayName}`}
+            href={window.location.origin.replace('//', '//chat.')+`/user/${username}`}
             target="_blank" rel="noreferrer"
             data-testid={`chat-link-${userId}`}
         >
@@ -36,5 +36,5 @@ export function ChatButton({
 
 ChatButton.propTypes = {
     userId: PropTypes.string.isRequired,
-    displayName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
 };

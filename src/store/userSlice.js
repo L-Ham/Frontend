@@ -2,17 +2,17 @@ import {createSlice} from '@reduxjs/toolkit';
 import {recentPostsData} from '../pages/PopularPage/RightSideBar/data.js';
 
 const initialState = {
-    id: '',
+    userId: '',
     displayName: '',
     username: '', // display name is different than username
-    bannerImage: '',
-    postKarma: '',
     commentKarma: '',
     created: 0,
-    avatar: '', // or avatarImage
+    postKarma: '',
+    avatar: '',
+    banner: '',
+    About: '',
     token: '',
     theme: 'light',
-    publicDescription: '', // or about
     recentPosts: recentPostsData,
 };
 const userSlice = createSlice({
@@ -26,9 +26,11 @@ const userSlice = createSlice({
             state.theme = action.payload.theme;
         },
         selfInfo: (state, action) => {
+            console.log(action.payload);
             Object.assign(state, action.payload);
         },
         logout: (state) => {
+            console.log(initialState);
             Object.assign(state, initialState);
         },
         clearRecentPosts: (state) => {

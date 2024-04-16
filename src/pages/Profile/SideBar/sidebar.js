@@ -4,6 +4,7 @@ import {SideBody} from './SideBody/sidebody.js';
 import {sidebarClasses} from './sidebar.styles.js';
 import {sidebarStyles} from './sidebar.styles.js';
 import PropTypes from 'prop-types';
+import '../../../layouts/SideBar/sidebar.css';
 /**
  * Sidebar component
  * @return {React.Component}
