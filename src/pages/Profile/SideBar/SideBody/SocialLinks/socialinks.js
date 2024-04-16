@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
  * ShareButton component
  * @return {React.Component}
  */
-export function SocialLinks({title, links, addlinks}) {
+export function SocialLinks({title, links, addlinks, id}) {
     const {AddIcon, LinkIcon} = useSocialLink();
     return (
-        <div className={socialLinkClasses.root} data-testid={`profile-links-${links}`}>
+        <div className={socialLinkClasses.root} data-testid={`profile-links-${links}-${id}`}>
             <div className={socialLinkClasses.rootC}>
                 <button className={socialLinkClasses.button}
                     style={socialLinkStyles.root}>
@@ -32,4 +32,5 @@ SocialLinks.propTypes = {
     title: PropTypes.string,
     links: PropTypes.string,
     addlinks: PropTypes.string,
+    id: PropTypes.string,
 };

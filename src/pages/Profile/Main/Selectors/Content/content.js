@@ -14,7 +14,8 @@ export function Content() {
                 <div className={contentClasses.rootCC}>
                     <a className={contentClasses.a}
                         style={contentStyles.a}
-                        href='/submit'>
+                        href='/submit'
+                        data-testid={`profile-createpost`}>
                         <span className={contentClasses.span}
                         >
                             <span className={contentClasses.spanA}>
