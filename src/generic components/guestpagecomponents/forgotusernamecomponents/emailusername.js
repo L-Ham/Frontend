@@ -54,7 +54,9 @@ const ForgotLoginForm = () => {
             data-testid="forgotusernameform"
         >
             <Emailinput onEmailChange={handleEmailChange} width="392px"
-                labelText="EMAIL ADDRESS" emptyemail={emptyemail} />
+                labelText="EMAIL ADDRESS" emptyemail={emptyemail}
+                data-testid="emailInput"
+            />
             <div style={{marginBottom: '20px'}} />{' '}
             <Button
                 variant="contained"

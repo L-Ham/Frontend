@@ -3,6 +3,9 @@ import {API_ROUTES} from '../requests/routes.js';
 import {USER_INFO} from './Data/user.data.js';
 import {LOGIN} from './Data/user.data.js';
 import {url} from './setup.mock.js';
+import {FORGOTUSERNAME} from './Data/user.data.js';
+import {FORGOTPASSWORD} from './Data/user.data.js';
+import {SIGNUP} from './Data/user.data.js';
 
 
 const banner = async ({request, params, cookies}) => {
@@ -51,6 +54,72 @@ const avatar = async ({request, params, cookies}) => {
     };
     return HttpResponse.json(response, {status: 200});
 };
+const signup = async ({request, params, cookies}) => {
+    try {
+        const body = await request.json();
+        const {userName, email, password} = body;
+        let responseBody; let status;
+        if (userName == SIGNUP.userName || email == SIGNUP.email) {
+            responseBody = {message: 'user already exists'};
+            status = {status: 400};
+        } else if (password.length < 8) {
+            responseBody = {message: 'Password must be at least 8 characters'};
+            status = {status: 400};
+        } else {
+            responseBody = {message: 'user registered succesfully'};
+            status = {status: 200};
+        }
+        return HttpResponse.json(responseBody, status);
+    } catch (error) {
+        console.error('Error processing login:', error);
+        return HttpResponse.json({error: 'Internal server error'}, {status: 500});
+    }
+};
+
+
+const forgotusername = async ({request, params, cookies}) => {
+    try {
+        const body = await request.json();
+
+        const {email} = body;
+        console.log(email);
+        let responseBody; let status;
+        console.log(FORGOTUSERNAME[email]);
+        if (email !== FORGOTUSERNAME.email) {
+            responseBody = {message: 'Invalid email'};
+            status = {status: 400};
+        } else {
+            responseBody = FORGOTUSERNAME[email];
+            status = {status: 200};
+        }
+        return HttpResponse.json(responseBody, status);
+    } catch (error) {
+        console.error('Error processing forgot username:', error);
+        return HttpResponse.json({error: 'Internal server error'}, {status: 500});
+    }
+};
+
+const forgotpassword = async ({request, params, cookies}) => {
+    try {
+        const body = await request.json();
+
+        const {email} = body;
+        console.log(email);
+        let responseBody; let status;
+        console.log(FORGOTPASSWORD[email]);
+        if (email !== FORGOTPASSWORD.email2) {
+            responseBody = {message: 'Invalid email'};
+            status = {status: 400};
+        } else {
+            responseBody = FORGOTUSERNAME[email];
+            status = {status: 200};
+        }
+        return HttpResponse.json(responseBody, status);
+    } catch (error) {
+        console.error('Error processing forgot username:', error);
+        return HttpResponse.json({error: 'Internal server error'}, {status: 500});
+    }
+};
 
 
 export const userHandlers = [
@@ -60,4 +129,8 @@ export const userHandlers = [
     http.get(url(API_ROUTES.userSelfInfo), userSelfInfo),
     http.post(url(API_ROUTES.login), login),
     http.get(url(API_ROUTES.avatar), avatar),
+    http.post(url(API_ROUTES.forgotusername), forgotusername),
+    http.post(url(API_ROUTES.forgotpassword), forgotpassword),
+    http.post(url(API_ROUTES.signup), signup),
+
 ];
