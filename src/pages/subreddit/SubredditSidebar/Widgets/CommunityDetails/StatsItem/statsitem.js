@@ -16,7 +16,8 @@ export function StatsItem({count, label, isCap}) {
         <div className={classes.statsItem} data-testid="stats-item">
             <span data-testid="count-span">
                 <strong data-testid="count-strong">
-                    <NumberFormatter isFormattedNumber={true} number={count} isCap={isCap} data-testid="number-formatter"/>
+                    <NumberFormatter isFormattedNumber={true}
+                        number={count} isCap={isCap} data-testid="number-formatter"/>
                 </strong>
             </span>
             <span className={classes.statsText} data-testid="label-span">{label}</span>
