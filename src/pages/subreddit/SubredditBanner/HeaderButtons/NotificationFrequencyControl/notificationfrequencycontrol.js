@@ -20,20 +20,24 @@ export function NotificationFrequencyControl({notificationLevel=null, setNotific
         handleNotificationClick} = useNotificationFrequencyControl({notificationLevel, setNotificationLevel});
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} data-testid="notification-frequency-control-container">
             <button
                 className={buttonClasses.notificationFrequncyButton}
                 onClick={handleNotificationClick}
+                data-testid="notification-frequency-button"
             >
-                <span className={classes.button}>
-                    <span className={classes.iconContainer}>
-                        {NotificationLevelIcon && <NotificationLevelIcon/>}
+                <span className={classes.button} data-testid="button-span">
+                    <span className={classes.iconContainer} data-testid="icon-container">
+                        {NotificationLevelIcon && <NotificationLevelIcon data-testid="notification-level-icon"/>}
                     </span>
                 </span>
             </button>
             <DropdownMenu
                 position="top-[48px] right-0"
-                items={menuItems} activeItem = {notificationLevel} isHidden={!isNotificationLevelsVisible}
+                items={menuItems}
+                activeItem={notificationLevel}
+                isHidden={!isNotificationLevelsVisible}
+                data-testid="dropdown-menu"
             />
         </div>
     );

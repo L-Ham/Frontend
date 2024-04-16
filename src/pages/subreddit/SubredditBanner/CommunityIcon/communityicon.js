@@ -16,13 +16,14 @@ export function CommunityIcon({icon=null, displayNamePrefixed, primaryColor}) {
     const {Tag, tagProps} = useCommunityIcon({icon, primaryColor});
 
     return (
-        <div className={classes.communityIconWrapper}>
-            <div className={classes.iconHolder}>
+        <div className={classes.communityIconWrapper} data-testid="community-icon-wrapper">
+            <div className={classes.iconHolder} data-testid="icon-holder">
                 <Tag
                     src={icon}
                     alt={`${displayNamePrefixed} icon`}
                     loading="lazy"
                     {...tagProps}
+                    data-testid="tag"
                 />
             </div>
         </div>

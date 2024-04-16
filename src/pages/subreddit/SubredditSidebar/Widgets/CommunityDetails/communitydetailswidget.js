@@ -28,12 +28,12 @@ export function CommunityDetailsWidget({description, currentlyViewingCount, memb
 
 
     return (
-        <SubredditWidget title={title} view={VIEW_CONTEXTS.COMMUNITY_DETAILS}>
-            <DescriptionSection description={description} />
-            <div className={classes.statsContainer}>
-                <StatsItem count={subscribersCount} label="Members" isCap={true} />
-                <OnlineIndicator count={currentlyViewingCount} />
-                <DirectoryLink ExternalIcon={ExternalIcon} />
+        <SubredditWidget title={title} view={VIEW_CONTEXTS.COMMUNITY_DETAILS} data-testid="subreddit-widget">
+            <DescriptionSection description={description} data-testid="description-section" />
+            <div className={classes.statsContainer} data-testid="stats-container">
+                <StatsItem count={subscribersCount} label="Members" isCap={true} data-testid="stats-item" />
+                <OnlineIndicator count={currentlyViewingCount} data-testid="online-indicator" />
+                <DirectoryLink ExternalIcon={ExternalIcon} data-testid="directory-link" />
             </div>
         </SubredditWidget>
     );

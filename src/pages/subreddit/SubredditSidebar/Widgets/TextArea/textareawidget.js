@@ -16,8 +16,8 @@ export function TextAreaWidget({textHtml, shortName: title}) {
     if (!text) return null;
 
     return (
-        <SubredditWidget title={title}>
-            <div>
+        <SubredditWidget title={title} data-testid="subreddit-widget">
+            <div data-testid="text-container">
                 {text}
             </div>
         </SubredditWidget>

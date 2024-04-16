@@ -17,24 +17,27 @@ export function MultiLinkButton({data: {text, url, children, icon: Icon}}) {
 
     const Tag = isSingleOption ? 'a' : 'button';
     return (
-        <div className={multiLinkButtonClasses.relativeContainer} >
+        <div className={multiLinkButtonClasses.relativeContainer} data-testid="relative-container">
             <Tag
                 className={isSingleOption ? multiLinkButtonClasses.singleOption : multiLinkButtonClasses.multiOption}
                 onClick={handleClick}
+                data-testid="tag"
             >
-                <span className={multiLinkButtonClasses.flexContainer}>
-                    {Icon && <span className="mr-2 flex">{Icon}</span>}
-                    <span className={multiLinkButtonClasses.textContainer}>
-                        <span>{text}</span>
+                <span className={multiLinkButtonClasses.flexContainer} data-testid="flex-container">
+                    {Icon && <span className="mr-2 flex" data-testid="icon-span">{Icon}</span>}
+                    <span className={multiLinkButtonClasses.textContainer} data-testid="text-container">
+                        <span data-testid="text-span">{text}</span>
                     </span>
                 </span>
-                {!isSingleOption && <span className={multiLinkButtonClasses.caretIcon}>
-                    <CaretDownIcon height='16' width='16'/>
+                {!isSingleOption && <span className={multiLinkButtonClasses.caretIcon} data-testid="caret-icon">
+                    <CaretDownIcon height='16' width='16' data-testid="caret-down-icon"/>
                 </span>
                 }
             </Tag>
             <DropdownMenu
-                position={multiLinkButtonClasses.dropdownMenuPosition} items={menuItems} isHidden={!isOptionsVisible}/>
+                position={multiLinkButtonClasses.dropdownMenuPosition}
+                items={menuItems} isHidden={!isOptionsVisible} data-testid="dropdown-menu"
+            />
         </div>
     );
 }

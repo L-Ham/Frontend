@@ -14,15 +14,16 @@ import {classes} from './dropdownmenuitem.styles.js';
  */
 export function DropdownMenuItem({text, onClick, icon: Icon, isActive=false}) {
     return (
-        <li className={classes.listItem} onClick={onClick}>
+        <li className={classes.listItem} onClick={onClick} data-testid="list-item">
             <div
                 className={`${classes.itemContainer} ${isActive ? classes.activeItem : ''}`}
+                data-testid="item-container"
             >
-                <span className={classes.contentContainer}>
-                    {Icon && <span className={classes.iconContainer}>{Icon}</span>}
-                    <span className={classes.textContainer}>{text}</span>
+                <span className={classes.contentContainer} data-testid="content-container">
+                    {Icon && <span className={classes.iconContainer} data-testid="icon-container">{Icon}</span>}
+                    <span className={classes.textContainer} data-testid="text-container">{text}</span>
                 </span>
-                <span>
+                <span data-testid="gap-span">
                     {/** This span is used to apply a gap in the dropdown menu layout. */}
                 </span>
             </div>

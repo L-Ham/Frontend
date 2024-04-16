@@ -21,9 +21,10 @@ export function WidgetsRenderer() {
         const hrClasses = `border-[var(--color-neutral-border-weak)] ${widget.kind === 'id-card' ? '!my-0' : '!my-4'}`;
 
         return (
-            <Fragment key={widgetId}>
-                {WidgetComponent && <WidgetComponent {...widget} />}
-                {WidgetComponent && (index < allWidgets.length - 1) && <hr className={hrClasses}/>}
+            <Fragment key={widgetId} data-testid={`widget-fragment-${widgetId}`}>
+                {WidgetComponent && <WidgetComponent {...widget} data-testid={`widget-component-${widgetId}`} />}
+                {WidgetComponent && (index < allWidgets.length - 1) &&
+                 <hr className={hrClasses} data-testid={`hr-${widgetId}`}/>}
             </Fragment>
         );
     });
