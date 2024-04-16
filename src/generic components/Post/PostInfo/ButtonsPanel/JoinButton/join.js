@@ -21,7 +21,6 @@ export function JoinButton({
                 e.stopPropagation();
                 setIsJoined(!isJoined);
                 // send req
-                console.log('Join/Leave' + subredditId);
             }}
             type='button'
         >

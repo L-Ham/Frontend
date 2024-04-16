@@ -33,17 +33,17 @@ export function HoverCard({
             <div
                 className={hoverCardClasses.root}
                 style={hoverCardStyles.root}
-                data-testid={`hovercard-${postId}-${name}`}
+                data-testid={`hovercard-${postId}-${entityId}`}
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
                 {viewContext !== VIEW_CONTEXTS.COMMENTS_PAGE &&
-                <div className={hoverCardClasses.icon}>
+                <div className={hoverCardClasses.icon} data-testid={`displayicon-${postId}-${entityId}`}>
                     {DisplayIcon}
                 </div>}
                 {prefixedName}
             </div>
-            <div className={hoverCardClasses.overlay}>
+            <div className={hoverCardClasses.overlay} data-testid={`overlay-${postId}-${entityId}`}>
                 {overlayOpen && (isUser ?
                     <UserOverlay
                         openOverlay={handlePopoverOpen}
