@@ -14,7 +14,7 @@ function AdvertiseButton() {
     const {AddvertiseIcon, href} = useAdvertiseButton();
     return (
         <a className={styles.root} href={href} data-testid="advertise-button">
-            <span className={styles.iconContainer}>
+            <span className={styles.iconContainer} data-testid="advertise-button-icon-container">
                 <AddvertiseIcon />
             </span>
         </a>

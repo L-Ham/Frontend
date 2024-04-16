@@ -14,12 +14,12 @@ function Logo() {
     const RedditLogo = getIconComponent('reddit-logo', false);
     const RedditName = getIconComponent('reddit-name', false);
     return (
-        <div className={styles.logoContainer} data-testid="logo">
-            <a href='/' className={styles.logoLink}>
-                <span className={styles.logoIconWrapper}>
+        <div className={styles.logoContainer} data-testid="logo-container">
+            <a href='/' className={styles.logoLink} data-testid="logo-link">
+                <span className={styles.logoIconWrapper} data-testid="logo-icon-wrapper">
                     <RedditLogo/>
                 </span>
-                <span className={styles.logoNameWrapper}>
+                <span className={styles.logoNameWrapper} data-testid="logo-name-wrapper">
                     <RedditName className={styles.logoName} />
                 </span>
             </a>
