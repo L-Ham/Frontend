@@ -35,15 +35,16 @@ export function Dropdown({
     shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]`;
     return (
         <div className='absolute size-0 '>
-            <div className={classes}>
+            <div className={classes} data-testid={`share-dropdown-${postId}`}>
                 <ul className='m-0 p-0'>
-                    {items.map((item) => {
+                    {items.map((item, index) => {
                         const {text, icon: IconComponent} = item.content;
                         return (
                             <li
                                 className="relative mt-0 list-none"
                                 key={text}
                                 onClick={item.onClick}
+                                data-testid={`share-item-${index}-${postId}`}
                             >
                                 <div className='relative flex cursor-pointer justify-between gap-2 px-4
                                     py-2 pr-[16px] text-[var(--color-secondary)]
@@ -53,13 +54,14 @@ export function Dropdown({
                                     hover:no-underline active:bg-[var(--color-interactive-pressed)]'>
                                     <span className='flex min-w-0 shrink items-center gap-2'>
                                         <span className='flex size-8 shrink-0 items-center justify-center
-                                            text-xl leading-4'>
+                                            text-xl leading-4' data-testid={`share-icon-${index}-${postId}`}>
                                             {IconComponent ? <IconComponent /> : null}
                                         </span>
                                         <span className='flex min-w-0 shrink flex-col justify-center py-1.5'>
                                             <span className='text-sm '>
                                                 <span className='ml-[2px] text-base leading-5
-                                                    text-[var(--color-secondary)]'>
+                                                    text-[var(--color-secondary)]'
+                                                data-testid={`share-text-${index}-${postId}`}>
                                                     {text}
                                                 </span>
                                             </span>

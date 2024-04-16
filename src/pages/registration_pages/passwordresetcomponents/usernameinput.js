@@ -28,7 +28,6 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
         const newPassword = event.target.value;
         setPassword(newPassword);
         onUsernameChange(newPassword);
-        console.log(emptyusername);
     };
 
     const [isFocusPassword, setIsFocusPassword] = React.useState(false);
@@ -109,7 +108,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
                 className="mt-1 max-h-[1000px] text-xs font-medium leading-4
                         text-[#ea0027] opacity-100 transition-all
                         duration-[0.2s] ease-[ease-in-out]" data-for="password"
-                data-testid="username-error"
+                data-testid="username-errorr"
             >
                 {((((password.length < 3) || (password.length > 20)) && (password.length != 0))||emptyusername) && (
                     <>Username must be between 3 and 20 characters</>
@@ -121,6 +120,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
                     <>That user doesn&apos;t exist</>
                 )}
 
+
             </div>
         </fieldset>
 
@@ -130,7 +130,7 @@ function Usernameinput({onUsernameChange, width, showInvalidCredentials, showfak
 Usernameinput.propTypes = {
     onUsernameChange: PropTypes.func.isRequired,
     width: PropTypes.string.isRequired,
-    showInvalidCredentials: PropTypes.bool.isRequired,
+    showInvalidCredentials: PropTypes.bool,
     showfakeaccount: PropTypes.bool,
     emptyusername: PropTypes.bool,
 };

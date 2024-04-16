@@ -38,7 +38,7 @@ export function SideBody({username}) {
             </span>
             { links.map((link, index) => (
                 <SocialLinks key={index} title={link.appName}
-                    links={link.linkOrUsername} addlinks={'0'}
+                    links={link.linkOrUsername} addlinks={'0'} id={link._id}
                 />
             ))}
             <SocialLinks title={`Add Social Links`} links={`/settings/profile`} addlinks={`1`}/>

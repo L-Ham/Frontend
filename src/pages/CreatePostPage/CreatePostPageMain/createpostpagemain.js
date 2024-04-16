@@ -12,7 +12,7 @@ import {classes} from './createpostpagemain.styles.js';
 export function CreatePostPageMain() {
     return (
         <div className={classes.mainDiv} data-testid="main-div">
-            <div data-testid="inner-div">
+            <div data-testid="inner-div" className='h-screen'>
                 <Header numberDrafts={0} data-testid="header"/>
                 <CommunityOptionsList data-testid="community-options-list"/>
                 <CommunityNote data-testid="community-note"/>
