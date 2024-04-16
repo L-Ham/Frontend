@@ -24,11 +24,10 @@ export const useProfileMenu = () => {
     const SettingsIcon = getIconComponent('settings', false);
     const AdvertiseIcon = getIconComponent('advertise', false);
     const userMenuDropdownStyles = `${profileMenuClasses.userMenuDropdown} ${isUserMenuOpen? 'block': 'hidden'} `;
-    const user = useSelector((state) => state.user);
+    const username = useSelector((state) => state.user.username);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const username = user.displayName;
 
     const contributorProgramSubLabel = (
         <span className='inline-flex'>
@@ -148,9 +147,8 @@ export const useProfileMenu = () => {
 };
 
 export const useProfileIcon = () => {
-    const user = useSelector((state) => state.user);
-    const imgSrc = user.avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
-
+    const avatar = useSelector((state) => state.user.avatar);
+    const imgSrc = avatar || 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png';
 
     return {imgSrc};
 };

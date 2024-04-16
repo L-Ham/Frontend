@@ -21,7 +21,7 @@ export function Subreddit({name}) {
                 <SubredditBanner/>
                 <div className={classes.contentContainer}>
                     <main className={classes.mainContent}>
-                        <Feed viewContext={VIEW_CONTEXTS.AGGREGATE_FEED} postList={['t3_1bmnuhw',
+                        <Feed viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED} postList={['t3_1bmnuhw',
                             't3_1bvwbgd', 't3_1c2k4vg']} type='ids'/>
                     </main>
                     <SubredditSidebar/>

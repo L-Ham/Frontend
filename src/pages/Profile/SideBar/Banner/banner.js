@@ -11,11 +11,14 @@ export function Banner() {
     const {imgSrc} = useBanner();
     return (
         <div data-testid={`profile-banner`}>
-            {(imgSrc || <div className={bannerClasses.root} style={bannerStyles.root}>
-                <AddBannerButton/>
-            </div>)||(<div className={bannerClasses.root} style={{backgroundImage: `url(${imgSrc})`}}>
-
-                <AddBannerButton/></div>)}
+            {imgSrc ?
+                <div className={bannerClasses.root} style={{backgroundImage: `url(${imgSrc})`}}>
+                    <AddBannerButton/>
+                </div> :
+                <div className={bannerClasses.root} style={bannerStyles.root}>
+                    <AddBannerButton/>
+                </div>
+            }
         </div>
     );
 }
