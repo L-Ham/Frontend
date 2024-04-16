@@ -1,5 +1,3 @@
-
-
 // Define your API endpoints as key-value pairs for easy reference
 const API_ROUTES = {
     /* Example
@@ -47,6 +45,8 @@ const API_ROUTES = {
     widgets: (id) => `/subreddit/widget?subredditId=${id}`,
     searchCommunities: `/subreddit/nameSearch`,
     createPost: '/post/createPost',
+    joinCommunity: '/user/joinCommunity',
+    leaveCommunity: '/user/unjoinCommunity',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };
