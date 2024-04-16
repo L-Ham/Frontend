@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useCreatePostPage} from '../../../../createpostpage.context.js';
 import {usePostCreation} from '../../postcreationcontext.js';
-import axios from 'axios';
+import {axiosInstance as axios} from '../../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../../requests/routes.js';
 
 export const useActionButtons = () => {
