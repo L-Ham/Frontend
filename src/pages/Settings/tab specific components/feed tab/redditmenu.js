@@ -34,7 +34,6 @@ function RedditMenu({list, changeVal, changedItem, init, id}) {
     function selectGender(gender) {
         setSelectedGender(gender); // Update the selected gender state
         setShowDropdown(false); // Hide the dropdown after selection
-        console.log(`${gender} is now selected`); // Log the selected gender to the console
         changeVal(changedItem, gender); // Perform additional action with the selected gender
     }
 
