@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {classes} from './errormessage.styles.js';
 
 /**
  * Renders the error message.
@@ -9,10 +10,9 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The rendered component.
  */
 export function ErrorMessage({errorMessage, position = ''}) {
-    const positionCLass = `${position ? 'justify-${position}' : ''}`;
     return (
         <div>
-            <div className={`flex pt-[4px] ${positionCLass} text-[12px]/[16px] font-[400] text-[red]`}>
+            <div className={classes(position)}>
                 <span className="truncate">{errorMessage}</span>
             </div>
         </div>

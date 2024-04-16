@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {usePostCreation} from '../postcreationcontext.js';
 import {PostCreationTextEditor} from './PostCreationTextEditior/postcreationtexteditor.js';
 import {ErrorMessage} from './ErrorMessage/errormessage.js';
+import {classes} from './postcreationformworkspace.styles.js';
 
 /**
  * Renders the workspace for the post creation form.
@@ -12,21 +13,15 @@ export function PostCreationFormWorkspace() {
     const [errorMessage, setErrorMessage] = useState('');
 
     return (
-        <div className="p-[16px]">
-            <div className='mb-[8px]'>
-                <div className='relative'>
+        <div className={classes.postCreationFormWorkspaceDiv}>
+            <div className={classes.postCreationFormWorkspaceInnerDiv}>
+                <div className={classes.postCreationFormWorkspaceRelativeDiv}>
                     <textarea
                         maxLength={300}
                         placeholder="Title"
-                        className={`box-border block h-[39px]
-                         w-full
-                        resize-none overflow-hidden
-                        break-words rounded-[4px] border-solid
-                        focus:border-[var(--newCommunityTheme-navIcon)]
-                        ${errorMessage ? '!border-[red]' : 'border-[color:var(--newCommunityTheme-line)]'}
-                        bg-transparent
-                        p-[8px_68px_8px_16px] text-[color:var(--newRedditTheme-bodyText)]
-                        caret-[color:var(--newRedditTheme-bodyText)] outline-none`}
+                        className={`${classes.postCreationFormWorkspaceTextarea} 
+                    ${errorMessage ? '!border-[red]' :
+            'border-[color:var(--newCommunityTheme-line)]'}`}
                         rows={1}
                         style={{overflowX: 'hidden', overflowWrap: 'break-word', height: 39, borderWidth: '1px'}}
                         defaultValue={''}
@@ -39,8 +34,7 @@ export function PostCreationFormWorkspace() {
                             setErrorMessage('');
                         }}
                     />
-                    <div className="pointer-events-none absolute bottom-[12px] right-[12px] text-[10px]/[12px]
-                    font-[700] uppercase tracking-[0.5px] text-[var(--newCommunityTheme-actionIcon)]">
+                    <div className={classes.postCreationFormWorkspaceDiv2}>
                         {postTitle.length}{/* */}/{/* */}300
                     </div>
                 </div>

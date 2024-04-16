@@ -12,14 +12,15 @@ import {classes} from './descriptionsection.styles.js';
  */
 export function DescriptionSection({description, isShowMoreVisible = false}) {
     return (
-        <div>
-            <div className={classes.description}>
+        <div data-testid="description-section">
+            <div className={classes.description} data-testid="description">
                 {description}
             </div>
-            {isShowMoreVisible && <button className={classes.showMoreButton} id="show-more-btn">
-                <span className="flex items-center justify-center">
-                    <span className="flex items-center gap-2">
-                        Show more
+            {isShowMoreVisible && <button
+                className={classes.showMoreButton} id="show-more-btn" data-testid="show-more-btn">
+                <span className="flex items-center justify-center" data-testid="button-content">
+                    <span className="flex items-center gap-2" data-testid="button-text">
+                Show more
                     </span>
                 </span>
             </button>}

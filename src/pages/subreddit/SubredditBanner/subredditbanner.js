@@ -30,25 +30,28 @@ export function SubredditBanner() {
     console.log('bannerData', bannerData);
 
     return (
-        <div className={classes.container}>
-            <BannerImage backgroundImage={bannerBackgroundImage} />
-            <section className={classes.sectionContainer}>
-                <div className={classes.flexContainer}>
-                    <div className={classes.innerFlexContainer}>
+        <div className={classes.container} data-testid="container">
+            <BannerImage backgroundImage={bannerBackgroundImage} data-testid="banner-image" />
+            <section className={classes.sectionContainer} data-testid="section-container">
+                <div className={classes.flexContainer} data-testid="flex-container">
+                    <div className={classes.innerFlexContainer} data-testid="inner-flex-container">
                         <CommunityIcon
                             icon={communityIcon}
                             displayNamePrefixed={displayNamePrefixed}
                             primaryColor={primaryColor}
+                            data-testid="community-icon"
                         />
                         <CommunityStats
                             displayNamePrefixed={displayNamePrefixed}
                             subscribersCount={subscribersCount}
                             activeUserCount={activeUserCount}
+                            data-testid="community-stats"
                         />
                     </div>
-                    <div className={classes.buttonsContainer}>
-                        <CreatePostButton handleCreatePost={handleCreatePost} PlusIcon={PlusIcon} />
-                        <HeaderButtons />
+                    <div className={classes.buttonsContainer} data-testid="buttons-container">
+                        <CreatePostButton handleCreatePost={handleCreatePost}
+                            PlusIcon={PlusIcon} data-testid="create-post-button" />
+                        <HeaderButtons data-testid="header-buttons" />
                     </div>
                 </div>
             </section>

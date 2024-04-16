@@ -5,6 +5,7 @@ import {PostCreationFormSharingOptions} from './PostCreationFormSharingOptions/p
 import {PostCreationFormTabs} from './PostCreationFormTabs/postcreationformtabs';
 import {PostCreationFormWorkspace} from './PostCreationFormWorkspace/postcreationformworkspace';
 import {PostCreationProvider} from './postcreationcontext';
+import {classes} from './postcreationform.styles';
 
 
 /**
@@ -14,7 +15,7 @@ import {PostCreationProvider} from './postcreationcontext';
 export function PostCreationForm() {
     return (
         <PostCreationProvider>
-            <div className='mb-[15px] rounded-[5px] bg-[var(--newRedditTheme-post)]'>
+            <div className={classes.postCreationFormDiv}>
                 <PostCreationFormTabs />
                 <PostCreationFormWorkspace />
                 <PostCreationFormFooter />

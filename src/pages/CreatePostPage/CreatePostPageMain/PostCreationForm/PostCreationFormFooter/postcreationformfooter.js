@@ -1,6 +1,7 @@
 import React from 'react';
 import {ActionButtons} from './ActionButtons/actionbuttons.js';
 import {PostTags} from './PostTags/posttags.js';
+import {classes} from './postcreationformfooter.styles.js';
 
 /**
  * Renders the post creation form footer.
@@ -8,10 +9,9 @@ import {PostTags} from './PostTags/posttags.js';
  */
 export function PostCreationFormFooter() {
     return (
-        <div className="p-[0_16px_16px]">
+        <div className={classes.postCreationFormFooterDiv}>
             <PostTags/>
-            <hr className="my-[0.5em] w-full border-b-0
-            border-t-DEFAULT border-solid border-[color:var(--newCommunityTheme-line)]"/>
+            <hr className={classes.postCreationFormFooterHr}/>
             <ActionButtons/>
         </div>
     );

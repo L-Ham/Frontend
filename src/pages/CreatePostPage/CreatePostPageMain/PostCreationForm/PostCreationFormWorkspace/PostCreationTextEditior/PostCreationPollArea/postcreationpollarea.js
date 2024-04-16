@@ -1,6 +1,7 @@
 import React from 'react';
 import {PostCreationPollOptions} from './PostCreationPollOptions/postcreationpolloptions.js';
 import {PostCreationpollTips} from './PostCreationPollTips/postcreationpolltips.js';
+import {classes} from './postcreationpollarea.styles.js';
 
 /**
  * Renders the poll area for the post creation form.
@@ -8,11 +9,9 @@ import {PostCreationpollTips} from './PostCreationPollTips/postcreationpolltips.
  */
 export function PostCreationPollArea() {
     return (
-        <div className="border-solid border-[0px_1px_1px_1px]
-        border-[color:var(--newRedditTheme-body)] bg-[var(--newRedditTheme-body)] px-0
-        py-[8px]">
+        <div className={classes.postCreationPollAreaDiv}>
             <div data-testid="poll-creator">
-                <div className="flex">
+                <div className={classes.postCreationPollAreaInnerDiv}>
                     <PostCreationPollOptions/>
                     <PostCreationpollTips/>
                 </div>

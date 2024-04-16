@@ -14,8 +14,8 @@ export function BookmarksWidget({data}) {
     const {multiLinkButtonsComponents} = useBookmarksWidget({data});
 
     return (
-        <SubredditWidget title='Community Bookmarks' view={VIEW_CONTEXTS.BOOKMARKS}>
-            <div className={classes.bookmarksContainer}>
+        <SubredditWidget title='Community Bookmarks' view={VIEW_CONTEXTS.BOOKMARKS} data-testid="subreddit-widget">
+            <div className={classes.bookmarksContainer} data-testid="bookmarks-container">
                 {multiLinkButtonsComponents && multiLinkButtonsComponents}
             </div>
         </SubredditWidget>

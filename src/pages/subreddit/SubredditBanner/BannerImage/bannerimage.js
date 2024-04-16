@@ -10,12 +10,13 @@ import {classes} from './bannerimage.styles.js';
  */
 export function BannerImage({backgroundImage}) {
     return (
-        <div style={{containerType: 'inline-size'}}>
+        <div style={{containerType: 'inline-size'}} data-testid="outer-div">
             <div
                 className={classes.banner}
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
                 }}
+                data-testid="banner-div"
             />
         </div>
     );

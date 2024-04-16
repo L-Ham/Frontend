@@ -12,14 +12,15 @@ import {classes} from './directorylink.styles.js';
 export function DirectoryLink({ExternalIcon}) {
     const navigate = useNavigate();
     return (
-        <div className={classes.directoryLink}>
-            <strong id="position" className='text-[var(--color-tone-1)]'>Top 1%</strong>
+        <div className={classes.directoryLink} data-testid="directory-link">
+            <strong id="position" className='text-[var(--color-tone-1)]' data-testid="position-strong">Top 1%</strong>
             <a
                 className={classes.rankLink}
                 onClick = {() => navigate('/best/communities/1/#t5_2rfz5')}
+                data-testid="rank-link"
             >
-            Rank by size{' '}
-                <ExternalIcon className="relative bottom-[-2px] ml-1"/>
+        Rank by size{' '}
+                <ExternalIcon className="relative bottom-[-2px] ml-1" data-testid="external-icon"/>
             </a>
         </div>
     );

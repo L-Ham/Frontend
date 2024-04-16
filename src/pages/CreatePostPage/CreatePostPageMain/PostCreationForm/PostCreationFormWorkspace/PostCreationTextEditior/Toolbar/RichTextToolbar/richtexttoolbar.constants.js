@@ -1,0 +1,17 @@
+export const optionsList = [
+    {name: 'bold', icon: 'bold'},
+    {name: 'italics', icon: 'bold'},
+    {name: 'link', icon: 'bold'},
+    {name: 'strikethrough', icon: 'bold'},
+    {name: 'inline code', icon: 'bold'},
+    {name: 'superscript', icon: 'bold'},
+    {name: 'spoiler', icon: 'bold'},
+    {name: 'heading', icon: 'bold'},
+    {name: 'bulleted list', icon: 'bold'},
+    {name: 'numbered list', icon: 'bold'},
+    {name: 'quote block', icon: 'bold'},
+    {name: 'code block', icon: 'bold'},
+    {name: 'table', icon: 'bold'},
+    {name: 'add an image', icon: 'bold'},
+    {name: 'add a video', icon: 'bold'},
+];

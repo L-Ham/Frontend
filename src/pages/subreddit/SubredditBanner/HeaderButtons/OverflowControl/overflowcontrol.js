@@ -26,21 +26,24 @@ export function OverflowControl({
         OverflowHorizontalIcon} = useOverflowControl({isMuted, onMuteClick, isFavourite, onFavouriteClick});
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} data-testid="overflow-control-container">
             <button
                 className={buttonClasses.overflowControlButton}
                 onClick={handleOtherOptionsClick}
+                data-testid="overflow-control-button"
             >
-                <span className={classes.button}>
-                    <span className={classes.iconContainer}>
-                        <OverflowHorizontalIcon/>
+                <span className={classes.button} data-testid="button-span">
+                    <span className={classes.iconContainer} data-testid="icon-container">
+                        <OverflowHorizontalIcon data-testid="overflow-horizontal-icon"/>
                     </span>
                 </span>
             </button>
             <DropdownMenu
                 position="top-[48px] right-0"
                 items={menuItems}
-                isHidden={!isOtherOptionsVisible}/>
+                isHidden={!isOtherOptionsVisible}
+                data-testid="dropdown-menu"
+            />
         </div>
     );
 }

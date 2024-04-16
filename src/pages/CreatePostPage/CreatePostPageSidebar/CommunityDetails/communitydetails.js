@@ -7,7 +7,7 @@ import {CommunityMembers} from './CommunityMembers/communitymembers.js';
 import {UserSection} from './UserSection/usersection.js';
 import {CommunityOptions} from './CommunityOptions/communityoptions.js';
 import {useCreatePostPage} from '../../createpostpage.context.js';
-
+import {classes} from './communitydetails.styles.js';
 
 /**
  * Renders the community details.
@@ -17,19 +17,15 @@ export function CommunityDetails() {
     const {about} = useCreatePostPage();
     if (!about) return null;
     return (
-        <div className="mt-[16px] w-[312px]">
-            <div className="overflow-visible break-words rounded-[4px] border-DEFAULT
-            border-solid border-[var(--newRedditTheme-widgetColors-sidebarWidgetBorderColor)]
-            bg-[var(--newRedditTheme-widgetColors-sidebarWidgetBackgroundColor)]
-            fill-[var(--newRedditTheme-bodyText)] text-[var(--newRedditTheme-bodyText)]">
-                <div className='box-border max-h-none w-[310px] p-[12px]'>
+        <div className={classes.communityDetailsDiv}>
+            <div className={classes.communityDetailsInnerDiv}>
+                <div className={classes.communityDetailsContentDiv}>
                     <CommunityCover/>
                     <CommunityHeader/>
                     <CommunityDescription/>
                     <CreationDetails/>
-                    <div className="mt-[8px]" />
-                    <hr className="mx-0
-                    my-[16px] h-px border-none bg-[var(--newCommunityTheme-widgetColors-lineColor)]"/>
+                    <div className={classes.communityDetailsSpacingDiv} />
+                    <hr className={classes.communityDetailsHr}/>
                     <CommunityMembers/>
                     <UserSection/>
                     <CommunityOptions/>

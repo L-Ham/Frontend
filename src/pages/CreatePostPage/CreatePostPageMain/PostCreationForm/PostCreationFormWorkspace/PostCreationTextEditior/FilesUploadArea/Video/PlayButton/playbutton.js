@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from '../../../../../../../../../generic components/iconsmap';
-
+import {classes} from './playbutton.styles';
 
 /**
  * Renders the play button.
@@ -12,11 +12,8 @@ import {getIconComponent} from '../../../../../../../../../generic components/ic
 export function PlayButton() {
     const PlayIcon = getIconComponent('play', true);
     return (
-        <div className="absolute left-2/4 top-2/4 z-[11] ml-[-30px] mt-[-30px] inline-flex"
-            style={{transform: 'translateY(0%)'}}>
-            <PlayIcon className='size-[50px] opacity-95 transition-all duration-[0.1s] ease-linear'
-                style={{transformOrigin: '0px 0px'}}
-            />
+        <div className={classes.playButtonDiv} style={{transform: 'translateY(0%)'}}>
+            <PlayIcon className={classes.playButtonIcon} style={{transformOrigin: '0px 0px'}}/>
         </div>
     );
 }

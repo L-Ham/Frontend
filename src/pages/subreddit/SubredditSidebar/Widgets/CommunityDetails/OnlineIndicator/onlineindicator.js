@@ -16,13 +16,14 @@ export function OnlineIndicator({count}) {
             count={count}
             label={
                 <>
-                    <span className={classes.onlineIndicator} />
-                    <span>
-                        Online
+                    <span className={classes.onlineIndicator} data-testid="online-indicator-span" />
+                    <span data-testid="online-label-span">
+                Online
                     </span>
                 </>
             }
             isCap={true}
+            data-testid="stats-item"
         />
     );
 }

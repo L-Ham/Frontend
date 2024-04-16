@@ -2,6 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useCreatePostPage} from '../../../createpostpage.context';
 import defaultSubreddit from '../../../../../assets/icons/default-subreddit.svg';
+import {classes} from './communityheader.styles.js';
 
 /**
  * Renders the community header.
@@ -13,31 +14,26 @@ export function CommunityHeader() {
     const {communityDetails: {name, avatarImage}} = about;
 
     return (
-        <div className="mb-[8px] flex items-center">
+        <div className={classes.communityHeaderDiv}>
             <img
                 style={{backgroundPosition: '50%', backgroundSize: '100%'}}
                 alt="Subreddit Icon"
                 src={avatarImage || defaultSubreddit}
-                className="mr-[8px] box-border
-                size-[54px] flex-none rounded-full bg-[var(--newCommunityTheme-active)]
-                bg-no-repeat
-                fill-[var(--newRedditTheme-bodyText)]
-                text-[54px] leading-[54px] text-[var(--newRedditTheme-bodyText)]"
+                className={classes.communityHeaderImg}
             />
-            <div className="inline-block align-middle ">
+            <div className={classes.communityHeaderInnerDiv}>
                 <a
-                    className="overflow-hidden text-ellipsis fill-[var(--newRedditTheme-bodyText)]"
+                    className={classes.communityHeaderA}
                     target="_blank"
                     onClick={() => {
                         navigate('/r/OnePiece/');
                     }}
                 >
-                    <span className="inline-block text-[16px]/[20px] font-[500]" title="r/OnePiece">
+                    <span className={classes.communityHeaderSpan} title="r/OnePiece">
                         {`r/${name}`}
                     </span>
                 </a>
             </div>
         </div>
-
     );
 }

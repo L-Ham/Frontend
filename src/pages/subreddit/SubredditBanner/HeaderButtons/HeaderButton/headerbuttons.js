@@ -21,17 +21,19 @@ export function HeaderButtons() {
         handleFavouriteClick,
         isSubscribed,
         handleJoinClick,
+        isJoinDisabled,
     } = useHeaderButtons();
 
     if (!handleMuteClick) return null;
 
     return (
-        <div>
-            <div className={classes.container}>
+        <div data-testid="outer-div">
+            <div className={classes.container} data-testid="container">
                 {isSubscribed && (
                     <NotificationFrequencyControl
                         notificationLevel={activeNotificationLevel}
                         setNotificationLevel={setActiveNotificationLevel}
+                        data-testid="notification-frequency-control"
                     />
                 )}
                 <JoinButton
@@ -39,12 +41,15 @@ export function HeaderButtons() {
                     unSubscribeLabel="Joined"
                     handleJoinClick={handleJoinClick}
                     isSubscribed={isSubscribed}
+                    isDisabled={isJoinDisabled}
+                    data-testid="join-button"
                 />
                 <OverflowControl
                     onFavouriteClick={handleFavouriteClick}
                     isFavourite={isFavourite}
                     onMuteClick={handleMuteClick}
                     isMuted={isMuted}
+                    data-testid="overflow-control"
                 />
             </div>
         </div>

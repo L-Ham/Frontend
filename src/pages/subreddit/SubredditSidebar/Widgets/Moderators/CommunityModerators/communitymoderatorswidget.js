@@ -20,12 +20,12 @@ export function CommunityModeratorsWidget({moderators}) {
     if (!moderatorComponents.length) return null;
 
     return (
-        <SubredditWidget title='moderators'>
-            <div>
-                <ul className={classes.list}>
+        <SubredditWidget title='moderators' data-testid="subreddit-widget">
+            <div data-testid="moderators-container">
+                <ul className={classes.list} data-testid="moderators-list">
                     {moderatorComponents}
                 </ul>
-                <div className={classes.flexColumn}>
+                <div className={classes.flexColumn} data-testid="multi-link-buttons-container">
                     {multiLinkButtonsComponents}
                 </div>
             </div>

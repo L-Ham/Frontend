@@ -2,6 +2,7 @@ import React from 'react';
 import './communitymembers.css';
 import {useCreatePostPage} from '../../../createpostpage.context';
 import {formatNumber} from '../../../../../generic components/utils.js';
+import {classes} from './communitymembers.styles.js';
 
 
 /**
@@ -16,31 +17,25 @@ export function CommunityMembers() {
         currentlyViewingNickname, currentlyViewingCount}} = about;
 
     return (
-        <div className="community-members
-        flex justify-between break-words text-[var(--newRedditTheme-bodyText)]">
-            <div className='flex flex-col items-start'>
-                <div className="break-words
-                text-[16px]/[20px] font-[500]">{formatNumber(membersCount, false)}</div>
-                <p
-                    className="inline-block break-words
-                    text-[12px]/[16px] font-[400] text-[var(--newCommunityTheme-metaText)] "
-                >
+        <div className={classes.communityMembersDiv}>
+            <div className={classes.communityMembersFlexColDiv}>
+                <div className={classes.communityMembersTextDiv}>
+                    {formatNumber(membersCount, false)}
+                </div>
+                <p className={classes.communityMembersP}>
                     {membersNickname}
                 </p>
             </div>
-            <div className='flex flex-col items-start'>
-                <div className="online-div text-[16px]/[20px] font-[500]">
-                    {formatNumber(currentlyViewingCount, true)}</div>
-                <p
-                    className="inline-block break-words
-                    text-[12px]/[16px] font-[400] text-[var(--newCommunityTheme-metaText)]"
-                >
+            <div className={classes.communityMembersFlexColDiv}>
+                <div className={classes.communityMembersOnlineDiv}>
+                    {formatNumber(currentlyViewingCount, true)}
+                </div>
+                <p className={classes.communityMembersP}>
                     {currentlyViewingNickname}
                 </p>
             </div>
             <div />
             <div />
         </div>
-
     );
 }

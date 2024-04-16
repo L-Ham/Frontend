@@ -33,6 +33,7 @@ export function SubredditProvider({children, name}) {
             try {
                 const aboutData = await fetchSubredditAbout(subredditName);
                 const widgetsData = await fetchSubredditWidgets(aboutData.communityDetails.subredditId);
+                console.log('wd', widgetsData);
                 return {aboutData, widgetsData};
             } catch (error) {
                 console.error('Failed to fetch subreddit data:', error);
@@ -46,13 +47,17 @@ export function SubredditProvider({children, name}) {
                 return {...acc, [widget._id]: {...widget, kind: 'textarea'}};
             }, {});
 
+
             return {
                 'message': widgetsData.message,
                 '1': {...widgetsData.communityDetails, kind: 'id-card'},
                 '2': {moderators: [...widgetsData.moderators], kind: 'moderators'},
                 'order': ['1', ...widgetsData.orderWidget, '2'],
                 ...updatedTextWidgets,
-                ...widgetsData,
+                [widgetsData.rules._id]: {
+                    ruleList: widgetsData.rules.ruleList,
+                    kind: 'subreddit-rules',
+                },
             };
         };
 
@@ -60,6 +65,7 @@ export function SubredditProvider({children, name}) {
             setLoading(true);
             const {aboutData, widgetsData} = await fetchSubredditData(name);
             const structuredWidgetsData = await processData(widgetsData);
+            console.log('sd', structuredWidgetsData);
             setAbout(aboutData);
             setWidgets(structuredWidgetsData);
             setLoading(false);

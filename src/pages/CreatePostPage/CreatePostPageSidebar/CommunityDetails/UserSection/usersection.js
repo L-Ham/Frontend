@@ -4,6 +4,7 @@ import './usersection.css';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
 import {useSelector} from 'react-redux';
 import avatarDefault from '../../../../../assets/images/avatar_default_0.png';
+import {classes} from './usersection.styles.js';
 
 /**
  * Renders the user section.
@@ -15,49 +16,32 @@ export function UserSection() {
     const username = useSelector((state) => state.user.username);
     const EditIcon = getIconComponent('edit', false);
     return (
-        <div className="user-section mt-[12px]">
-            <hr className="mx-0
-            my-[16px] h-px border-none bg-[var(--newCommunityTheme-widgetColors-lineColor)]"/>
-            <div className="mt-[12px]">
-                <div className="flex items-center
-            justify-between text-[10px]/[12px]
-            font-[700] uppercase tracking-[0.5px]">
-                    preview
+        <div className={classes.userSectionDiv}>
+            <hr className={classes.userSectionHr}/>
+            <div className={classes.userSectionInnerDiv}>
+                <div className={classes.userSectionPreviewDiv}>
+            preview
                     <button
                         role="button"
                         tabIndex={0}
-                        className="font relative ml-auto box-border flex min-h-[32px]
-                    w-auto min-w-[32px]
-                    cursor-pointer items-center justify-center break-words rounded-full border-DEFAULT
-                    border-solid border-transparent bg-transparent fill-[var(--newCommunityTheme-button)]
-                     p-0 text-center text-[14px]/[17px]
-                     font-[700] tracking-[unset] text-[var(--newCommunityTheme-button)]"
+                        className={classes.userSectionButton}
                         onClick={() => alert('not supported yet :)')}
                     >
-                        <EditIcon className="icon cursor-pointer
-                    break-words
-                    fill-[var(--newCommunityTheme-button)] text-center text-[var(--newCommunityTheme-button)]"/>
+                        <EditIcon className={classes.userSectionEditIcon}/>
                     </button>
                 </div>
-                <div className="mx-0 my-[8px] flex w-full ">
-                    <div className="flex max-w-full items-center justify-center ">
-                        <div className="relative h-full ">
+                <div className={classes.userSectionMxDiv}>
+                    <div className={classes.userSectionFlexDiv}>
+                        <div className={classes.userSectionRelativeDiv}>
                             <img
-                                className="content-box mt-[6px] box-border
-                             size-[28px] overflow-hidden border-DEFAULT
-                              border-solid bg-[#d7dfe2] fill-white
-                              object-cover
-                               object-center"
+                                className={classes.userSectionFlairProfileIcon}
                                 xmlns="http://www.w3.org/2000/svg"
                                 src={ src || avatarDefault}
                             />
                         </div>
-                        <div className="ml-[8px] flex min-w-0 flex-col items-start fill-[var(--newRedditTheme-bodyText)]
-                    text-[var(--newRedditTheme-bodyText)]">
-                            <div className="flex w-full items-center break-words">
-                                <span className="truncate
-                            text-[12px]/[16px] font-[500]
-                            text-[var(--newCommunityTheme-widgetColors-sidebarWidgetTextColor)]">
+                        <div className={classes.userSectionMlDiv}>
+                            <div className={classes.userSectionWFullDiv}>
+                                <span className={classes.userSectionSpan}>
                                     {displayName || username || 'Equivalent_Serve_549'}
                                 </span>
                             </div>

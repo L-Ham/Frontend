@@ -4,6 +4,7 @@ import {MultiLinkButton} from '../../../MultilinkButton/multilinkbutton.js';
 import {useSubreddit} from '../../../../subredditcontext.js';
 import {getIconComponent} from '../../../../../../generic components/iconsmap.js';
 
+
 export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
     const {about} = useSubreddit();
     if (!about) return null;
@@ -42,7 +43,7 @@ export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
         <UserCard
             key={moderator.username || index}
             name={moderator.username}
-            pictureSrc={`https://www.redditstatic.com/avatars/defaults/v2/avatar_default_7.png`}
+            pictureSrc={moderator.avatarImage}
         />
     ));
 
