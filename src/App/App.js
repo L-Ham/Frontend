@@ -12,6 +12,8 @@ import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 import {PopularPage} from '../pages/PopularPage/popularpage.js';
 import {CreatePostRoute} from './pageRoutes.js';
+import {NotificationProvider} from '../generic components/Notifications/notificationsContext.js';
+import {Notifications} from '../generic components/Notifications/notifications.js';
 
 /**
  * Renders the main application component.
@@ -28,45 +30,69 @@ function App() {
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
                 <Route path="/settings/:tab?" element={
-                    <LayoutWithNavigation>
-                        <BasicTabs />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <BasicTabs />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
 
                 <Route path="/post/:id" element={
-                    <LayoutWithNavigation>
-                        <PostRoute />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <PostRoute />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/r/:name" element={
-                    <LayoutWithNavigation>
-                        <SubredditRoute />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <SubredditRoute />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/r/:name?/submit" element={
-                    <LayoutWithNavigation>
-                        <CreatePostRoute />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <CreatePostRoute />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/" element={
-                    <LayoutWithNavigation>
-                        <HomePage />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <HomePage />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/user/:name/:section?" element={
-                    <LayoutWithNavigation>
-                        <ProfilePageRoute />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <ProfilePageRoute />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/popular" element={
-                    <LayoutWithNavigation>
-                        <PopularPage />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <PopularPage />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="/all" element={
-                    <LayoutWithNavigation>
-                        <HomePage />
-                    </LayoutWithNavigation>
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <HomePage />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
                 } />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
