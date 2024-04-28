@@ -1,0 +1,70 @@
+.notification-container {
+    transition: transform 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.notification-container span{
+    font-family: "Noto Sans", Arial, sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.scale-up {
+    animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.scale-down {
+    animation: scaleDown 0.3s forwards;
+}
+
+@keyframes scaleDown {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0);
+    }
+}
+
+.notification-container:not(.success){
+    --Toaster-indicatorColor: #EA0027;
+}
+
+.notification-container.success{
+    --Toaster-indicatorColor: #24A0ED;
+}
+
+.notification-container::before{
+    transition: width .3s;
+    /**/
+    background-color: var(--Toaster-indicatorColor);
+    border: 1px solid var(--Toaster-indicatorColor);
+    border-radius: 4px 0 0 4px;
+    content: "";
+    height: 100%;
+    left: 0;
+    margin: 0px;
+    position: absolute;
+    top: 0;
+    width: 8px;
+}
+
+.notification-container:hover{
+ padding-left: 24px;
+}
+
+.notification-container:hover::before{
+   width: 24px;
+}
+
+.notification-container:hover .close-icon{
+    opacity: 1;
+}
