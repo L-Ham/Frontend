@@ -7,7 +7,7 @@ import {BasicTabs} from '../pages/Settings/main components/styledtabs.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/homepage.js';
 import {LayoutWithNavigation} from '../generic components/layoutwithnavigation.js';
-import {PostRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
+import {CommentsRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
 import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js';
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 import {PopularPage} from '../pages/PopularPage/popularpage.js';
@@ -21,6 +21,16 @@ import {Notifications} from '../generic components/Notifications/notifications.j
  * @return {JSX.Element} The rendered application component.
  */
 function App() {
+    const renderWithLayout = (component) => {
+        return (
+            <NotificationProvider>
+                <LayoutWithNavigation>
+                    {component}
+                </LayoutWithNavigation>
+                <Notifications />
+            </NotificationProvider>
+        );
+    };
     return (
         <Router>
             <Routes>
@@ -29,71 +39,14 @@ function App() {
                 <Route path="/password" element={<ForgotPassword />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
-                <Route path="/settings/:tab?" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <BasicTabs />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-
-                <Route path="/post/:id" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <PostRoute />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/r/:name" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <SubredditRoute />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/r/:name?/submit" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <CreatePostRoute />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <HomePage />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/user/:name/:section?" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <ProfilePageRoute />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/popular" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <PopularPage />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
-                <Route path="/all" element={
-                    <NotificationProvider>
-                        <LayoutWithNavigation>
-                            <HomePage />
-                        </LayoutWithNavigation>
-                        <Notifications />
-                    </NotificationProvider>
-                } />
+                <Route path="/settings/:tab?" element={renderWithLayout(<BasicTabs />)} />
+                <Route path="/r/:name/comments/:postId" element={renderWithLayout(<CommentsRoute />)} />
+                <Route path="/r/:name" element={renderWithLayout(<SubredditRoute />)} />
+                <Route path="/r/:name?/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/" element={renderWithLayout(<HomePage />)} />
+                <Route path="/user/:name/:section?" element={renderWithLayout(<ProfilePageRoute />)} />
+                <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
+                <Route path="/all" element={renderWithLayout(<HomePage />)} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
