@@ -769,6 +769,12 @@ code {
   --newRedditTheme-wordmark: #FFFFFF;
   --subredditContext-isCommentsPage: initial;
   --subredditContext-isOverlay: initial;
+  --color-tooltip-bg-neutral: var(--color-neutral-background-strong);
+  --color-tooltip-text-neutral: var(--color-neutral-content);
+  --color-tooltip-bg-inverted: var(--color-neutral-content);
+  --color-tooltip-text-inverted: var(--color-neutral-background);
+  --color-tooltip-bg-primary: var(--color-primary-background);
+  --color-tooltip-text-primary: var(--color-primary-onBackground);
 }
 .theme-light {
   /* add light scheme here */
@@ -1163,4 +1169,10 @@ code {
     --newRedditTheme-wordmark: #ff4500;
     --subredditContext-isCommentsPage: initial;
     --subredditContext-isOverlay: initial;
+    --color-tooltip-bg-neutral: var(--color-neutral-background-strong);
+    --color-tooltip-text-neutral: var(--color-neutral-content);
+    --color-tooltip-bg-inverted: var(--color-neutral-content);
+    --color-tooltip-text-inverted: var(--color-neutral-background);
+    --color-tooltip-bg-primary: var(--color-primary-background);
+    --color-tooltip-text-primary: var(--color-primary-onBackground);
 }
