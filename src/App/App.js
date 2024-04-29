@@ -14,6 +14,7 @@ import {PopularPage} from '../pages/PopularPage/popularpage.js';
 import {CreatePostRoute} from './pageRoutes.js';
 import {NotificationProvider} from '../generic components/Notifications/notificationsContext.js';
 import {Notifications} from '../generic components/Notifications/notifications.js';
+import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js';
 
 /**
  * Renders the main application component.
@@ -90,6 +91,14 @@ function App() {
                     <NotificationProvider>
                         <LayoutWithNavigation>
                             <HomePage />
+                        </LayoutWithNavigation>
+                        <Notifications />
+                    </NotificationProvider>
+                } />
+                <Route path="/notifications" element={
+                    <NotificationProvider>
+                        <LayoutWithNavigation>
+                            <NotificationsPage />
                         </LayoutWithNavigation>
                         <Notifications />
                     </NotificationProvider>
