@@ -5,7 +5,7 @@ export const usePost = ({isNSFW, isSpoiler, viewContext}) => {
     // postTypes: gallery, text, image, link, video, multiMedia
     // viewType: cardView, compactView
     const isCommentsPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE;
-    const classNames = `${postClasses.root} ${isCommentsPage ? '' : postClasses.rootC}`;
+    const classNames = `${postClasses.root} ${isCommentsPage ? 'px-0 py-1' : postClasses.rootC}`;
     const tag = isNSFW ? 'nsfw' : isSpoiler ? 'spoiler' : '';
     return {
         isCommentsPage,

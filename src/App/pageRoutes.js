@@ -1,17 +1,16 @@
 import React from 'react';
 import {Subreddit} from '../pages/subreddit/subreddit.js';
 import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
-import {Post} from '../generic components/Post/post.js';
 import {useParams} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
-
+import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
 /**
  * Renders a route for displaying a post based on the provided ID.
  * @return {JSX.Element} The rendered Post component.
  */
-export function PostRoute() {
-    const {id} = useParams();
-    return <Post postId={id} viewContext='AggregateFeed' />;
+export function CommentsRoute() {
+    const {name, postId} = useParams();
+    return <CommentsPage postId={postId} subredditName={name} />;
 }
 
 /**
