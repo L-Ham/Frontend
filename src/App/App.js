@@ -14,6 +14,7 @@ import {PopularPage} from '../pages/PopularPage/popularpage.js';
 import {CreatePostRoute} from './pageRoutes.js';
 import {NotificationProvider} from '../generic components/Notifications/notificationsContext.js';
 import {Notifications} from '../generic components/Notifications/notifications.js';
+import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js';
 
 /**
  * Renders the main application component.
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/user/:name/:section?" element={renderWithLayout(<ProfilePageRoute />)} />
                 <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
                 <Route path="/all" element={renderWithLayout(<HomePage />)} />
+                <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
