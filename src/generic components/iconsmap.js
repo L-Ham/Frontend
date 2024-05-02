@@ -117,6 +117,7 @@ import {ReactComponent as SadFaceIcon} from '../assets/icons/sad-face.svg';
 import {ReactComponent as CloseIcon} from '../assets/icons/close.svg';
 import {ReactComponent as GifPostIconOutline} from '../assets/icons/gif-post-outline.svg';
 import {ReactComponent as FormatIconOutline} from '../assets/icons/format-outline.svg';
+import {ReactComponent as CalendarIcon} from '../assets/icons/calendar.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -236,6 +237,7 @@ const ICONS_MAP = {
     'close': CloseIcon,
     'gif-post-outline': GifPostIconOutline,
     'format-outline': FormatIconOutline,
+    'calendar': CalendarIcon,
 };
 
 /**
