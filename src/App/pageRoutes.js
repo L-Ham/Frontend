@@ -50,5 +50,5 @@ export function ProfilePageRoute() {
  */
 export function MessagesRoute() {
     const {name, section} = useParams();
-    return <div className='h-screen'><Messages name={name} section={section}/></div>;
+    return <Messages name={name} section={section}/>;
 }
