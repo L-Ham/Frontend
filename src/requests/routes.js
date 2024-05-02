@@ -1,3 +1,4 @@
+
 // Define your API endpoints as key-value pairs for easy reference
 const API_ROUTES = {
     /* Example
@@ -47,6 +48,12 @@ const API_ROUTES = {
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
+    sentMessages: '/message/getSentMessages',
+    unreadMessages: '/message/inbox/unread',
+    markAsRead: '/message/read',
+    markAsUnread: '/message/unread',
+    allInbox: '/message/getAllInbox',
+    composeMessage: '/message/compose',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

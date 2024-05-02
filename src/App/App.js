@@ -12,7 +12,7 @@ import {ForgotPassword2} from '../pages/registration_pages/passwordcontinued2.js
 import {ErrorPage} from '../pages/ErrorPage/errorpage.js';
 import {PopularPage} from '../pages/PopularPage/popularpage.js';
 import {CreatePostRoute} from './pageRoutes.js';
-
+import {MessagesRoute} from './pageRoutes.js';
 /**
  * Renders the main application component.
  *
@@ -66,6 +66,11 @@ function App() {
                 <Route path="/all" element={
                     <LayoutWithNavigation>
                         <HomePage />
+                    </LayoutWithNavigation>
+                } />
+                <Route path="/message/:name/:section?" element={
+                    <LayoutWithNavigation>
+                        <MessagesRoute />
                     </LayoutWithNavigation>
                 } />
                 <Route path="*" element={<ErrorPage />} />
