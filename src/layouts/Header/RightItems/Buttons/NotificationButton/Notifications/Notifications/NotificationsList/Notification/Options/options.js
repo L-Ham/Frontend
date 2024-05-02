@@ -25,6 +25,14 @@ export function Options({type}) {
                 alert('Don\'t get updates on this');
             },
         },
+        {
+            content: {
+                text: 'Hide notification',
+            },
+            onClick: () => {
+                alert('hide');
+            },
+        }
     ];
 
     return (
