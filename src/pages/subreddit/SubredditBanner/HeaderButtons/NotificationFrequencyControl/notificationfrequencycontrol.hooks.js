@@ -12,6 +12,7 @@ export const useNotificationFrequencyControl = ({notificationLevel, setNotificat
     const NotificationLevelIcon = notificationLevel ? getIconComponent(notificationLevel, true) :
         getIconComponent('low', true);
 
+
     const menuItems = [
         {
             content: {

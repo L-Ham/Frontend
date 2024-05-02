@@ -50,6 +50,7 @@ export function HeaderButtons() {
                     onMuteClick={handleMuteClick}
                     isMuted={isMuted}
                     data-testid="overflow-control"
+                    handleJoinClick={handleJoinClick}
                 />
             </div>
         </div>

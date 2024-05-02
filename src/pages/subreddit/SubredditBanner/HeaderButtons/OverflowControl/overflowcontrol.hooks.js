@@ -2,8 +2,9 @@ import {useState} from 'react';
 import {useSubreddit} from '../../../subredditcontext.js';
 import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 
-export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouriteClick}) => {
-    const {about} = useSubreddit();
+export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouriteClick,
+    handleJoinClick}) => {
+    const {about, isModerator} = useSubreddit();
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = useState(false);
 
     const handleOtherOptionsClick = () => {
@@ -27,6 +28,19 @@ export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouri
             onClick: onMuteClick,
         },
     ];
+
+    const {communityDetails: {isMember}} = about;
+
+    if (isModerator) {
+        menuItems.push({
+            content: {
+                text: isMember ? 'Leave' : 'Join',
+            },
+            onClick: () => {
+                handleJoinClick(false, true);
+            },
+        });
+    }
 
     const OverflowHorizontalIcon = getIconComponent('overflow-horizontal', false);
 
