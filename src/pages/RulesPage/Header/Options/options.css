@@ -1,0 +1,83 @@
+.reorder-rules-btn{
+        position: relative;
+        border: 1px solid transparent;
+        color: var(--newCommunityTheme-button);
+        fill: var(--newCommunityTheme-button);
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: unset;
+        line-height: 17px;
+        text-transform: unset;
+        min-height: 32px;
+        min-width: 32px;
+        padding: 4px 16px;
+        align-items: center;
+        border-radius: 9999px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: auto;
+        background: transparent;
+        cursor: pointer;
+}
+
+.reorder-rules-btn::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+        background: var(--newCommunityTheme-bodyText);
+        opacity: 0;
+}
+
+.reorder-rules-btn:hover::before{
+        opacity: 0.08;
+}
+
+.add-rule-btn{
+        margin-left: 8px;
+        font-family: "Noto Sans", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: unset;
+        line-height: 17px;
+        text-transform: unset;
+        min-height: 32px;
+        min-width: 32px;
+        padding: 4px 16px;
+        align-items: center;
+        border-radius: 9999px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: auto;
+        background: transparent;
+        cursor: pointer;
+        position: relative;
+        background-color: var(--newCommunityTheme-button);
+        border: none;
+        color: var(--newCommunityTheme-body);
+        fill: var(--newCommunityTheme-body);
+}
+
+.add-rule-btn::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+        background: var(--newCommunityTheme-body);
+        opacity: 0;
+}
+
+.add-rule-btn:hover::before{
+        opacity: 0.08;
+}
