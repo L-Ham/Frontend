@@ -6,10 +6,10 @@ import {getIconComponent} from '../../../../generic components/iconsmap.js';
 export const useCommunityOptions = () => {
     const {about} = useCreatePostPage();
     const [isCommunityOptionsListOpen, setIsCommunityOptionsListOpen] = useState(false);
-    const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('r/');
 
     // Initialize search input based on about data
-    if (about && searchInput === '' && about.communityDetails.name) {
+    if (about && searchInput === 'r/' && about.communityDetails.name) {
         setSearchInput('r/' + about.communityDetails.name);
     }
 
