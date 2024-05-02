@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
  * Header component
  * @return {React.Component}
  */
-export function Header({name, section}) {
+export function Header({name}) {
     return (
-        <div className='relative z-[3] m-0 block border-b-[none] bg-[#818384] p-0'>
+        <div className='relative z-[3] m-0 block border-b-[none] bg-[var(--message-header)] p-0'>
             <div
                 className='my-0 ml-[100px] mr-5 block p-0 text-[larger]'
                 style={{unicodeBidi: 'isolate'}}
@@ -30,8 +30,8 @@ export function Header({name, section}) {
                     >
                         <a
                             className={`inline-block cursor-pointer border-[none] bg-transparent px-2.5 py-0 
-                            text-[larger] font-bold capitalize text-[#343536] ${
-        name === 'send' ? 'text-[#296081]' : ''
+                            text-[larger] font-bold capitalize ${
+        name === 'send' ? 'text-[var(--message-header-text)]' : 'text-[var(--message-header-text-high)] '
         }`}
                             style={{
                                 fontSize: '18px',
@@ -48,8 +48,8 @@ export function Header({name, section}) {
                         <a
                             className={`inline-block cursor-pointer 
                             border-[none] bg-transparent px-2.5 py-0 text-[larger] 
-                            font-bold capitalize text-[#343536] ${
-        name === 'inbox' ? 'text-[#296081]' : ''
+                            font-bold capitalize ${
+        name === 'inbox' ? 'text-[var(--message-header-text)]' : 'text-[var(--message-header-text-high)] '
         }`}
                             style={{
                                 font: 'normal verdana, arial, helvetica, sans-serif',
@@ -65,8 +65,8 @@ export function Header({name, section}) {
                     >
                         <a
                             className={`inline-block cursor-pointer border-[none] bg-transparent
-                             px-2.5 py-0 text-[larger] font-bold capitalize text-[#343536] ${
-        name === 'sent' ? 'text-[#296081]' : ''
+                             px-2.5 py-0 text-[larger] font-bold capitalize ${
+        name === 'sent' ? 'text-[var(--message-header-text)]' : 'text-[var(--message-header-text-high)] '
         }`}
                             style={{
                                 font: 'normal verdana, arial, helvetica, sans-serif',

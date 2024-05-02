@@ -15,7 +15,7 @@ export function UnreadMessage({subject, to, message, isEven}) {
     const handleReplyClick=()=>{
         setShowReply(!showReply);
     };
-    return ( <div className={`m-0 block ${isEven===true ?'bg-[#272729] ':''}px-[15px] py-2.5`}>
+    return ( <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
         <p className='m-0 mb-[4px] block p-0 font-[bold] text-[large]'
             style={{marginBlockStart: '1em',
 
@@ -23,8 +23,8 @@ export function UnreadMessage({subject, to, message, isEven}) {
             {subject}
         </p>
         <div className='m-0 block overflow-hidden
-border-DEFAULT border-solid border-[#343536] bg-[#030303] px-[9px] py-[5px] text-[#d7dadc]
-opacity-100'>
+        border-DEFAULT border-solid border-[#343536] bg-[var(--color-neutral-background)] px-[9px] py-[5px] text-[var(--message-content-text)]
+        opacity-100'>
             <p className='float-left m-0 block p-0 pl-3.5 text-[x-small]
     text-[orangered]'
             style={{marginBlockStart: '1em',

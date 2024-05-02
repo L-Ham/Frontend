@@ -34,8 +34,8 @@ export function MessageSent() {
     return (
         <div className='m-0 block bg-none'>
             <div className='mx-auto my-5 block
-            w-[70%] min-w-[700px] list-none bg-[#1a1a1b]
-            text-[#d7dadc]'>
+            w-[70%] min-w-[700px] list-none bg-[var(--message-content-odd)]
+            text-[var(--message-content-text)]'>
                 {sentMessages?.map((message, index) => (
                     <Sent
                         key={message.messageId}

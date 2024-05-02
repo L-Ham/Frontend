@@ -42,7 +42,7 @@ export function SendingMessage() {
     };
 
     return (
-        <div className='mx-auto my-5 block w-[70%] min-w-[700px] bg-[#1a1a1b] px-5 py-2.5 text-[#d7dadc]' style={{ unicodeBidi: 'isolate' }}>
+        <div className='mx-auto my-5 block w-[70%] min-w-[700px] bg-[var(--message-content-even)] px-5 py-2.5 text-[var(--message-content-text)]' style={{ unicodeBidi: 'isolate' }}>
             <h1 className='mx-0 my-2.5 mt-auto block p-0 font-[normal] text-lg capitalize'
                 style={{ unicodeBidi: 'isolate', marginBlockStart: '0.67em', marginBlockEnd: '0.67em', marginInlineStart: '0px', marginInlineEnd: '0px' }}>
                 send a private message

@@ -14,10 +14,9 @@ import {UnreadInbox} from './UnreadInbox/unreadInbox.js';
  */
 export function Messages({name, section}) {
     return (
-        <div className='order-2  mx-auto box-border flex w-full flex-col md:px-4 nd:col-start-2
-        nd:w-[1120px] nd:max-w-[calc(100vw_-_272px)]'
-        style={{font: 'inherit'}}>
-            <div className=' z-0 m-0 block min-h-screen text-clip p-0 text-[#d7dadc]'
+        <div className='order-2  box-border flex w-full flex-col  nd:col-start-2'
+            style={{font: 'inherit'}}>
+            <div className=' z-0 m-0 block min-h-screen text-clip p-0 text-[var(--message-text)]'
                 style={{
                     font: ' normal x-small verdana, arial, helvetica, sans-serif'}}>
                 <Header name={name} section={section}

@@ -32,14 +32,14 @@ export function UnreadInbox() {
     };
     return (
         <div className='m-0 block bg-none'>
-            <div className='m-0 overflow-hidden border-b-0 bg-[#818384] p-0 text-[larger]'>
+            <div className='m-0 overflow-hidden border-b-0 bg-[var(--message-header)] p-0 text-[larger]'>
                 <div className='m-0 inline p-0'>
                     <ul className='mx-0 my-[100px] mb-[20px] inline list-none p-0'>
                         <li className='m-0 inline p-0 font-bold '>
                             <a className='mx-2.5 my-0 ml-[150px] inline-block
                              cursor-pointer border-x-[none]
                             border-t-[none] bg-transparent px-2.5 pb-[5px]
-                            pt-0 font-normal capitalize text-[#343536]
+                            pt-0 font-normal capitalize text-[var(--message-header-text-high)]
                             ' href='/message/inbox/all'>
 
                             All
@@ -47,9 +47,9 @@ export function UnreadInbox() {
                         </li>
                         <li className='m-0 inline p-0 font-bold '>
                             <a className='mx-2.5 my-0  inline-block cursor-pointer
-                            border-b-2 border-x-[none] border-b-[#1a1a1b]
-                            border-b-[solid] border-t-[none] bg-transparent px-2.5 pb-[5px]
-                            pt-0 font-normal capitalize text-[#343536]
+                            border-b-2 border-x-[none] border-b-[var(--message-header-text)]
+                             border-t-[none] bg-transparent px-2.5 pb-[5px]
+                            pt-0 font-normal capitalize text-[var(--message-header-text)]
                             ' href='/message/inbox/unread'>
                             Unread
                             </a>
@@ -60,8 +60,8 @@ export function UnreadInbox() {
 
             </div>
             <div className='mx-auto my-5 block
-            w-[70%] min-w-[700px] list-none bg-[#1a1a1b]
-            text-[#d7dadc]'>
+            w-[70%] min-w-[700px] list-none bg-[var(--message-content-odd)]
+            text-[var(--message-content-text)]'>
                 {sentMessages?.map((message, index) => (
                     <UnreadMessage
                         key={message.index}
