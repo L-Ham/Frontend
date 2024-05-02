@@ -1,0 +1,63 @@
+.seeall-button-medium{
+        --button-height: var(--size-button-md-h);
+        --button-padding: var(--spacer-xs);
+        --button-font: var(--font-button-md);
+        --button-border-width-default: var(--line-button-md-border);
+}
+
+.seeall-button-secondary {
+    --button-color-background-default  : var(--color-button-secondary-background);
+    --button-color-background-focus    : var(--color-button-secondary-background-focus);
+    --button-color-background-hover    : var(--color-button-secondary-background-hover);
+    --button-color-background-active   : linear-gradient(var(--color-button-secondary-background-hover), var(--color-button-secondary-background-hover));
+    --button-color-background-disabled : var(--color-button-secondary-background-disabled);
+    --button-color-background-activated: var(--color-button-secondary-background-activated);
+    --button-color-text-default        : var(--color-button-secondary-text);
+    --button-color-text-disabled       : var(--color-button-secondary-text-disabled);
+    --button-color-text-activated      : var(--color-button-secondary-text-activated);
+    --button-border-color-default      : var(--color-button-secondary-border);
+    --button-border-color-hover        : var(--color-button-secondary-border);
+  }
+
+  .seeall-button {
+    @apply border-[color:var(--button-border-color)] border-[length:var(--button-border-width)] bg-[color:var(--button-color-background)] text-[color:var(--button-color-text)]
+    h-[var(--button-height)];
+    --button-border-color: var(--button-border-color-default);
+    --button-border-width: var(--button-border-width-default);
+    --button-color-background: var(--button-color-background-default);
+    --button-color-text: var(--button-color-text-default);
+    line-height: calc(var(--button-height) - (2 * var(--button-border-width)));
+    border-radius: 999px;
+    border: none;
+    border: var(--button-border-width, 0) solid var(--button-border-color, transparent);
+    box-shadow: var(--button-shadow);
+    cursor: pointer;
+    font: var(--button-font);
+    text-decoration: none;
+}
+
+.seeall-button:focus {
+    --button-color-overlay: var(--color-button-overlay-focus);
+  }
+  
+  .seeall-button:hover {
+    --button-color-overlay   : var(--color-button-overlay-focus);
+    --button-border-color    : var(--button-border-color-hover);
+    --button-color-background: var(--button-color-background-hover);
+    --button-color-text      : var(--button-color-text-hover, var(--button-color-text-default))
+  }
+  
+  
+  .seeall-button:active {
+    --button-color-overlay   : var(--color-button-overlay-active);
+    /* --button-color-background: linear-gradient(var(--color-interactive-pressed), var(--color-interactive-pressed)), var(--button-color-background-active) */
+    --button-color-background: var(--color-interactive-pressed);
+  }
+  
+  .seeall-button:disabled {
+    --button-border-color-hover: var(--button-border-color-default);
+    --button-color-background: var(--button-color-background-disabled);
+    --button-color-text: var(--button-color-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none
+  }

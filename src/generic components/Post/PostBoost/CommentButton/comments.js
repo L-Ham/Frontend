@@ -24,7 +24,17 @@ export function Comments({
             href={url}
             target='_self'
             style={commentsStyles.root}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+                e.stopPropagation();
+                // check if id #comment exists
+                const element = document.getElementById('#comment');
+                if (element) {
+                    e.target.scrollIntoView({
+                        top: element.getBoundingClientRect().top + window.pageYOffset - 45,
+                        behavior: 'smooth',
+                    });
+                }
+            }}
             data-testid={`comments-button-${postId}`}
         >
             <div className={commentsClasses.wrapper} data-testid={`comments-wrapper-${postId}`}>
