@@ -3,9 +3,8 @@ import {Subreddit} from '../pages/subreddit/subreddit.js';
 import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
 import {useParams} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
-import {Messages} from '../pages/Message/messages.js';
-
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
+import {Messages} from '../pages/Message/messages.js';
 /**
  * Renders a route for displaying a post based on the provided ID.
  * @return {JSX.Element} The rendered Post component.
