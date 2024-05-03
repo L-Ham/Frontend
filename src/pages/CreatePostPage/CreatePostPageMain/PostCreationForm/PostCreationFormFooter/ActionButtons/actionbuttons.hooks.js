@@ -117,7 +117,7 @@ export const useActionButtons = () => {
                 addNotification({message: response.message, type: 'success'});
             }
         } catch (error) {
-            addNotification({message: error.response.data.message, type: 'failure'});
+            addNotification({message: error.response ?error.response.message : 'el file size kberr', type: 'failure'});
             console.error('Failed to create post:', error);
         }
     };
