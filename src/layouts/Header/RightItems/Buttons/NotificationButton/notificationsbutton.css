@@ -1,0 +1,20 @@
+._1-nIsCaWhGBFN-L4ZHnbGp {
+    background: #ff4500;
+    border-radius: 12px;
+    box-shadow: 0 0 0 2px var(--newCommunityTheme-body);
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    height: 16px;
+    left: 20px;
+    line-height: 16px;
+    padding: 0 4px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    vertical-align: middle;
+    min-width: 16px;
+    width: auto;
+    z-index: 1;
+}

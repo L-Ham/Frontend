@@ -18,7 +18,6 @@ export function CommunityOptionsList() {
         CarretDownIcon,
     } = useCommunityOptions();
 
-    if (!searchInput && !isCommunityOptionsListOpen) return null;
     return (
         <div className={classes.communityOptionsDiv} data-testid="community-options-div">
             <div className={classes.communityOptionsInnerDiv} data-testid="community-options-inner-div">

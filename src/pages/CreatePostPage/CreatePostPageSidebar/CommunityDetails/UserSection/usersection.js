@@ -5,12 +5,14 @@ import {getIconComponent} from '../../../../../generic components/iconsmap';
 import {useSelector} from 'react-redux';
 import avatarDefault from '../../../../../assets/images/avatar_default_0.png';
 import {classes} from './usersection.styles.js';
+import {useNotifications} from '../../../../../generic components/Notifications/notificationsContext.js';
 
 /**
  * Renders the user section.
  * @return {JSX.Element} The rendered component.
  */
 export function UserSection() {
+    const {addNotification} = useNotifications();
     const displayName = useSelector((state) => state.user.displayName);
     const src = useSelector((state) => state.user.avatar);
     const username = useSelector((state) => state.user.username);
@@ -25,7 +27,7 @@ export function UserSection() {
                         role="button"
                         tabIndex={0}
                         className={classes.userSectionButton}
-                        onClick={() => alert('not supported yet :)')}
+                        onClick={() => addNotification({type: 'failure', message: 'Not supported yet :('})}
                         data-testid="user-section-button"
                     >
                         <EditIcon className={classes.userSectionEditIcon} data-testid="user-section-edit-icon"/>

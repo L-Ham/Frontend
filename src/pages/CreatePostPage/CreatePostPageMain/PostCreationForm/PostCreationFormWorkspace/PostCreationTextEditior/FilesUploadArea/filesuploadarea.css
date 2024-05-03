@@ -17,3 +17,6 @@
 .post-creation-upload_btn:active::before{
     opacity: .16;
 }
+.dragging {
+    background-color: rgba(0, 0, 255, 0.2);
+}

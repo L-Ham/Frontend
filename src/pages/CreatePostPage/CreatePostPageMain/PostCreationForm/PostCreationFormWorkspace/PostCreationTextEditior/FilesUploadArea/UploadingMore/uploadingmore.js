@@ -9,9 +9,41 @@ import {classes} from './uploadingmore.styles.js';
  * @return {JSX.Element} The rendered component.
  */
 export function UploadingMore() {
-    const {files} = usePostCreation();
+    const {files, setFiles} = usePostCreation();
+    const [isDragging, setIsDragging] = React.useState(false);
+
+    const handleDragOver = (event) => {
+        event.preventDefault();
+        setIsDragging(true);
+    };
+
+    const handleDragEnter = (event) => {
+        event.preventDefault();
+        setIsDragging(true);
+    };
+
+    const handleDragLeave = (event) => {
+        event.preventDefault();
+        setIsDragging(false);
+    };
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        const newFiles = Array.from(event.dataTransfer.files);
+        if (newFiles.length > 0) {
+            setFiles((prevState) => [...prevState, ...newFiles]);
+            setIsDragging(false);
+        }
+    };
+
+
     return (
-        <div className={classes.uploadingMoreDiv}>
+        <div className={`${classes.uploadingMoreDiv}  ${isDragging ? 'dragging' : ''}`}
+            onDragOver={handleDragOver}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+        >
             <div className={classes.uploadingMoreDiv2}>
                 <div className={classes.uploadingMoreDiv3}>
                     <div className={classes.uploadingMoreDiv4}>

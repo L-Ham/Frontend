@@ -112,6 +112,12 @@ import {ReactComponent as ViewClassicIconOutline} from '../assets/icons/view-cla
 import {ReactComponent as RightArrowIcon} from '../assets/icons/right-arrow.svg';
 import {ReactComponent as LeftArrowIcon} from '../assets/icons/left-arrow.svg';
 import {ReactComponent as LinkFillIcon} from '../assets/icons/link-fill.svg';
+import {ReactComponent as HappyFaceIcon} from '../assets/icons/happy-face.svg';
+import {ReactComponent as SadFaceIcon} from '../assets/icons/sad-face.svg';
+import {ReactComponent as CloseIcon} from '../assets/icons/close.svg';
+import {ReactComponent as GifPostIconOutline} from '../assets/icons/gif-post-outline.svg';
+import {ReactComponent as FormatIconOutline} from '../assets/icons/format-outline.svg';
+import {ReactComponent as CalendarIcon} from '../assets/icons/calendar.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -226,6 +232,12 @@ const ICONS_MAP = {
     'right-arrow': RightArrowIcon,
     'left-arrow': LeftArrowIcon,
     'link-fill': LinkFillIcon,
+    'happy-face': HappyFaceIcon,
+    'sad-face': SadFaceIcon,
+    'close': CloseIcon,
+    'gif-post-outline': GifPostIconOutline,
+    'format-outline': FormatIconOutline,
+    'calendar': CalendarIcon,
 };
 
 /**

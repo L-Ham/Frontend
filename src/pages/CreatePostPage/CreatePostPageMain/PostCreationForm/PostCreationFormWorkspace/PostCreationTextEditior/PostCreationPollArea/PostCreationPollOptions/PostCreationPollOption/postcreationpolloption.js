@@ -8,15 +8,28 @@ import {usePostCreationPollOption} from './postcreationpolloption.hooks';
  * Renders the poll option.
  * @param {Object} props - The component props.
  * @param {number} props.index - The index of the option.
+ * @param {string} props.value - The value of the option.
  * @return {JSX.Element} The rendered component.
  */
-export function PostCreationPollOption({index}) {
-    const {pollData, handleDelete, handleChange} = usePostCreationPollOption(index);
+export function PostCreationPollOption({index, value}) {
+    const {handleDelete, handleChange,
+        handleDragStart,
+        handleDragEnd,
+        handleDragEnter,
+        handleDragLeave,
+    } = usePostCreationPollOption(index);
     const OptionDragIcon = getIconComponent('option-drag');
     const TrashIcon = getIconComponent('trash');
 
     return (
-        <div draggable="true" data-testid="post-creation-poll-option-div-outer">
+        <div draggable="true" data-testid="post-creation-poll-option-div-outer"
+            onDragStart={handleDragStart}
+            onDrop={handleDragEnd}
+            onDragOver={(e) => e.preventDefault()}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            id={`div12312-${index}`}
+        >
             <div
                 className={classes.postCreationPollOptionDiv}
                 style={{left: 0, opacity: 1}}
@@ -29,8 +42,8 @@ export function PostCreationPollOption({index}) {
                 <input
                     className={classes.postCreationPollOptionInput}
                     maxLength={120}
-                    placeholder={pollData[index] || `Option ${index + 1}`}
-                    defaultValue=""
+                    placeholder={`Option ${index + 1}`}
+                    value ={value}
                     style={{borderWidth: '1px'}}
                     onChange={handleChange}
                     data-testid="post-creation-poll-option-input"
@@ -47,4 +60,5 @@ export function PostCreationPollOption({index}) {
 
 PostCreationPollOption.propTypes = {
     index: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
 };

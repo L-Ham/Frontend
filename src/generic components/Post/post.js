@@ -71,7 +71,8 @@ export function Post({
     return (
         <div className={classNames}>
             {!isCommentsPage &&
-            <a href={url} className={postClasses.a} target="_self" data-testid={`link-${postId}`}/>}
+            <a href={'/r/' + subredditName + '/comments/' + postId} className={postClasses.a}
+                target="_self" data-testid={`link-${postId}`}/>}
             <PostInfo
                 postId={postId}
                 userId={user}
@@ -98,7 +99,7 @@ export function Post({
                 isUpvoted={isUpvoted}
                 isDownvoted={isDownvoted}
                 commentCount={commentCount}
-                url={url}
+                url={'/r/' + subredditName + '/comments/' + postId}
                 viewContext={viewContext}
             />
         </div>
