@@ -51,7 +51,7 @@ const API_ROUTES = {
     leaveCommunity: '/user/unjoinCommunity',
     reorderRules: '/subreddit/reorderRules',
     addRule: '/subreddit/rule',
-    getRemovalReasons: (id) => `/subreddit/removalReason?subredditId=${id}`,
+    getRemovalReasons: (id) => `/subreddit/removalReasons?subredditId=${id}`,
     removalReason: '/subreddit/removalReason',
     suggestCommunity: '/subreddit/suggest',
     editCommunityDetails: '/subreddit/communityDetails',
