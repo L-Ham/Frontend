@@ -105,16 +105,18 @@ export const useActionButtons = () => {
         }
 
         try {
-            if (activeTab === 'img' || activeTab === 'link') {
+            if (activeTab === 'img') {
                 const response = await axios.post(API_ROUTES.createPost, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
+                window.open(`/r/${about.communityDetails.name}`, '_self');
                 addNotification({message: response.data.message, type: 'success'});
             } else {
                 const response = await axios.post(API_ROUTES.createPost, postData);
-                addNotification({message: response.message, type: 'success'});
+                window.open(`/r/${about.communityDetails.name}`, '_self');
+                addNotification({message: response.data.message, type: 'success'});
             }
         } catch (error) {
             addNotification({message: error.response ?error.response.message : 'el file size kberr', type: 'failure'});

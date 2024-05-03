@@ -43,10 +43,10 @@ export function RulesPageProvider({children, name, type}) {
             try {
                 const aboutData = await fetchSubredditAbout(name);
                 const rulesData = await fetchSubredditRules(aboutData.communityDetails.subredditId);
-                const removalReasonsData = await fetchRemovalReasons(aboutData.communityDetails.subredditId);
+                // const removalReasonsData = await fetchRemovalReasons(aboutData.communityDetails.subredditId);
                 const rulesOrder = rulesData.map((rule) => rule._id);
 
-                setRemovalReasons(removalReasonsData);
+                // setRemovalReasons(removalReasonsData);
                 setAbout(aboutData);
                 setRules(rulesData);
                 setRulesOrder(rulesOrder);
@@ -56,6 +56,8 @@ export function RulesPageProvider({children, name, type}) {
             } catch (error) {
                 addNotification({type: 'failure', message: error.response.data.message});
                 console.error('Failed to fetch subreddit data', error);
+                // console .log the error and request details
+                console.log(error.response);
                 setLoading(false);
                 setIsError(true);
             }
