@@ -51,6 +51,7 @@ export function HeaderButtons() {
                     isMuted={isMuted}
                     data-testid="overflow-control"
                     handleJoinClick={handleJoinClick}
+                    isSubscribed={isSubscribed}
                 />
             </div>
         </div>
