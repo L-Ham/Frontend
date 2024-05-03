@@ -69,26 +69,25 @@ export function SubredditSidebar() {
 // /////////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-const GenericForm = ({inputConfigs, onSubmit, onClose}) => {
+const GenericForm = ({inputConfigs, onSubmit, onClose, onDelete, isDeleteDisabled}) => {
     const [formData, setFormData] = useState(
         inputConfigs.reduce((acc, input) => ({...acc, [input.name]: input.value || input.defaultValue || ''}), {}),
     );
 
+    // CSS classes for action buttons
     const actionButtonsPrimaryBtn = `post-creation-form-footer__primaryBtn 
     font relative box-border flex min-h-[32px] w-full min-w-[32px] 
-    cursor-pointer items-center justify-center rounded-full
-     border-none bg-[color:var(--newCommunityTheme-button)]
-      fill-[color:var(--newCommunityTheme-body)] px-[16px]
-       py-[4px] text-center align-middle text-[14px]/[17px]
-       font-[700] tracking-[unset] text-[color:var(--newCommunityTheme-body)]`;
+    cursor-pointer items-center justify-center rounded-full border-none bg-[color:var(--newCommunityTheme-button)] 
+    fill-[color:var(--newCommunityTheme-body)] px-[16px] py-[4px] text-center align-middle text-[14px]/[17px] 
+    font-[700] tracking-[unset] text-[color:var(--newCommunityTheme-body)]`;
 
-    const actionButtonsBorderedBtn = `post-creation-form-footer__borderedBtn 
+    const actionButtonsDeleteBtn = `post-creation-form-footer__borderedBtn 
     font relative box-border flex min-h-[32px] min-w-[32px] 
-    cursor-pointer items-center justify-center rounded-full 
-    border-solid border-[color:var(--newCommunityTheme-button)] 
-    bg-transparent fill-[color:var(--newCommunityTheme-button)] 
-    p-[4px_16px] text-[14px]/[17px] font-[700] text-[color:var(--newCommunityTheme-button)]`;
+    cursor-pointer items-center justify-center rounded-full border-solid border-[color:var(--newCommunityTheme-button)] 
+    bg-transparent fill-[color:var(--newCommunityTheme-button)] p-[4px_16px] text-[14px]/[17px] font-[700] 
+    text-[color:var(--newCommunityTheme-button)] w-full`;
 
+    // Handle form field changes
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -96,12 +95,19 @@ const GenericForm = ({inputConfigs, onSubmit, onClose}) => {
         });
     };
 
+    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(formData);
         onClose();
     };
 
+    const handleDelete = () => {
+        onDelete();
+        onClose();
+    };
+
+    // Styles for form, labels, inputs, and close button
     const formStyle = {
         position: 'fixed',
         top: '50%',
@@ -113,6 +119,7 @@ const GenericForm = ({inputConfigs, onSubmit, onClose}) => {
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         width: '300px',
         zIndex: '1000',
+        backgroundColor: 'var(--newCommunityTheme-field)',
     };
 
     const labelStyle = {
@@ -127,12 +134,20 @@ const GenericForm = ({inputConfigs, onSubmit, onClose}) => {
         border: '2px solid #ddd',
         borderRadius: '5px',
         width: '95%',
-        backgroundColor: 'var(--newCommunityTheme-field)',
     };
 
+    const closeButtonStyle = {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        cursor: 'pointer',
+        fontSize: '20px',
+        fontWeight: 'bold',
+    };
 
     return (
-        <form style={formStyle} onSubmit={(e) => handleSubmit(e)} className='bg-[var(--background)]'>
+        <form style={formStyle} onSubmit={handleSubmit} className='bg-[var(--background)]'>
+            <div style={closeButtonStyle} onClick={onClose}>X</div>
             {inputConfigs.map((input) => (
                 <div key={input.name}>
                     <label style={labelStyle} htmlFor={input.name}>{input.label}:</label>
@@ -160,11 +175,12 @@ const GenericForm = ({inputConfigs, onSubmit, onClose}) => {
                     }
                 </div>
             ))}
-            <div className='flex flex-row items-center justify-between gap-2'>
-                <button
-                    className={`top-1 min-h-[32px] w-full ${actionButtonsBorderedBtn}`}
-                    type="button" onClick={onClose} style={{borderWidth: '1px'}}>Close</button>
-                <button className={`${actionButtonsPrimaryBtn} mb-2 mt-4`} type="submit">Submit</button>
+            <div className='mt-5 flex flex-col-reverse items-center justify-between gap-2'>
+                {!isDeleteDisabled && <button
+                    className={actionButtonsDeleteBtn}
+                    type="button" onClick={handleDelete} style={{borderWidth: '1px'}}
+                >Delete</button>}
+                <button className={`${actionButtonsPrimaryBtn}`} type="submit">Submit</button>
             </div>
         </form>
     );
@@ -180,6 +196,8 @@ GenericForm.propTypes = {
     })).isRequired,
     onSubmit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
+    onDelete: PropTypes.func,
+    isDeleteDisabled: PropTypes.bool,
 };
 
 const CommunityDetailsForm = () => {
@@ -248,6 +266,7 @@ const CommunityDetailsForm = () => {
             inputConfigs={inputConfigs}
             onSubmit={onSubmit}
             onClose={onClose}
+            isDeleteDisabled={true}
         />
     );
 };
@@ -255,7 +274,7 @@ const CommunityDetailsForm = () => {
 
 const TextWidgetForm = () => {
     const {textWidgetId, textWidget, setIsTextWidgetFormVisible, about, setTextWidgetId,
-        setAbout, setWidgets, setLoading,
+        setAbout, setWidgets, setLoading, setTextWidget,
     } = useSubreddit();
     const {addNotification} = useNotifications();
 
@@ -282,6 +301,18 @@ const TextWidgetForm = () => {
         return data;
     };
 
+    const deleteTextWidget = async () => {
+        const subredditId = about.communityDetails.subredditId;
+        const response = await axios.delete(API_ROUTES.editTextWidget, {
+            data: {
+                'subredditId': subredditId,
+                'textWidgetId': textWidgetId,
+            },
+        });
+        const data = response.data;
+        return data;
+    };
+
     const editTextWidget = async (formData) => {
         const subredditId = about.communityDetails.subredditId;
         const response = await axios.patch(API_ROUTES.editTextWidget, {
@@ -296,7 +327,21 @@ const TextWidgetForm = () => {
         return data;
     };
 
-    const onClose = () => setIsTextWidgetFormVisible(false);
+    const onClose = () => {
+        setIsTextWidgetFormVisible(false);
+        setTextWidgetId(null);
+        setTextWidget({});
+    };
+
+    const onDelete = async () => {
+        try {
+            await deleteTextWidget();
+            loadData(name, null, setAbout, setWidgets, setLoading, isModerator, addNotification);
+            addNotification({message: 'Text Widget deleted successfully', type: 'success'});
+        } catch (error) {
+            addNotification({message: 'failed to delete text widget T T', type: 'error'});
+        }
+    };
 
     const onSubmit = async (formData) => {
         try {
@@ -327,6 +372,8 @@ const TextWidgetForm = () => {
             inputConfigs={inputConfigs}
             onSubmit={onSubmit}
             onClose={onClose}
+            isDeleteDisabled={!isEdit}
+            onDelete={onDelete}
         />
     );
 };
@@ -346,7 +393,10 @@ const BookmarksForm = () => {
 
     const isEdit = bookmarkWidgetId !== null;
 
-    const onClose = () => setIsBookmarksFormVisible(false);
+    const onClose = () => {
+        setIsBookmarksFormVisible(false);
+        setBookmarkWidgetId(null);
+    };
 
     // add only button with the initial add
     const addBookmarksWidget = async (formData) => {
@@ -366,6 +416,18 @@ const BookmarksForm = () => {
         return data;
     };
 
+    const deleteBookmarksWidget = async () => {
+        const subredditId = about.communityDetails.subredditId;
+        const response = await axios.delete(API_ROUTES.addBookmarksWidget, {
+            data: {
+                'subredditId': subredditId,
+                'widgetId': bookmarkWidgetId,
+            },
+        });
+        const data = response.data;
+        return data;
+    };
+
     const addBookmark = async (formData) => {
         const subredditId = about.communityDetails.subredditId;
         const response = await axios.post(API_ROUTES.addBookmark, {
@@ -378,6 +440,17 @@ const BookmarksForm = () => {
         });
         const data = response.data;
         return data;
+    };
+
+    const onDelete = async () => {
+        try {
+            await deleteBookmarksWidget();
+            setBookmarkWidgetId(null);
+            loadData(name, null, setAbout, setWidgets, setLoading, isModerator, addNotification);
+            addNotification({message: 'Bookmark deleted successfully', type: 'success'});
+        } catch (error) {
+            addNotification({message: 'failed to delete bookmark T T', type: 'error'});
+        }
     };
 
     const onSubmit = async (formData) => {
@@ -420,6 +493,8 @@ const BookmarksForm = () => {
             inputConfigs={inputConfigs}
             onSubmit={onSubmit}
             onClose={onClose}
+            isDeleteDisabled={!isEdit}
+            onDelete={onDelete}
         />
     );
 };
@@ -433,7 +508,8 @@ BookmarksForm.propTypes = {
 // contains three buttons that open forms for adding new widgets
 // each one have label and onclick function
 const AddNewWidgets = () => {
-    const {setIsBookmarksFormVisible, setIsTextWidgetFormVisible, setIsAddNewWidgetsVisible,
+    const {setIsBookmarksFormVisible, setIsTextWidgetFormVisible,
+        setIsAddNewWidgetsVisible,
         about} = useSubreddit();
 
     const classes = {
@@ -441,6 +517,7 @@ const AddNewWidgets = () => {
         addNewWidgetsBtn: `bg-[var(--newCommunityTheme-button)] 
         text-[color:var(--newCommunityTheme-body)] text-[14px]/[17px] 
         font-[700] tracking-[unset] text-center align-middle cursor-pointer px-[16px] py-[4px] rounded-full`,
+        closeButton: `absolute top-0 right-0 p-2 cursor-pointer`,
     };
 
     const formStyle = {
@@ -460,6 +537,9 @@ const AddNewWidgets = () => {
         <div className={classes.addNewWidgetsContainer}
             style = {formStyle} data-testid="add-new-widgets-container"
         >
+            <div className={classes.closeButton} onClick={() => setIsAddNewWidgetsVisible(false)}>
+                X
+            </div>
             <button
                 className={classes.addNewWidgetsBtn}
                 onClick={() => {
