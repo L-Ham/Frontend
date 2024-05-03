@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Header} from './Header/header.js';
 import {CommunityOptionsList} from './CommunityOptionsList/communityoptionslist.js';
 import {CommunityNote} from './CommunityNote/communitynote.js';
 import {PostCreationForm} from './PostCreationForm/postcreationform.js';
 import {classes} from './createpostpagemain.styles.js';
-import {useCreatePostPage} from '../createpostpage.context.js';
-import {usePostCreation} from './PostCreationForm/postcreationcontext.js';
+
 
 /**
  * Renders the sidebar for the create post page.

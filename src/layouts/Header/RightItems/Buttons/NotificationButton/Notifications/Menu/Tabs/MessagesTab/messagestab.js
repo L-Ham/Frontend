@@ -15,7 +15,7 @@ export function MessagesTab() {
             !p-0
             font-semibold
             text-[var(--color-secondary-weak)] no-underline hover:text-[var(--color-secondary-weak)] hover:no-underline"
-            href="/message/messages"
+            href="/message/sent"
         >
             <div
             >
