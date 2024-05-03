@@ -49,10 +49,10 @@ export function WidgetsRenderer() {
             }
         };
 
-        const widget = items[widgetId] || {};
-        const WidgetComponent = WIDGETS_MAP[widget.kind || 'subreddit-rules'];
+        const widget = items[widgetId];
+        if (!widget) return null;
 
-        console.log(widget);
+        const WidgetComponent = WIDGETS_MAP[widget.kind || 'subreddit-rules'];
 
         const hrClasses = `border-[var(--color-neutral-border-weak)] ${widget.kind === 'id-card' ? '!my-0' : '!my-4'}`;
 
