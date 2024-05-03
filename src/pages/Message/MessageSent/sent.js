@@ -25,7 +25,7 @@ export function Sent({id,subject, to, message,isEven}) {
    
    const test =parse(message);
     return (
-        <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
+        <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`} data-testid={`message-message-sent`}>
             <p
                 className='m-0 block p-0 font-[bold] text-[large]'
                 style={{marginBlockStart: '1em'}}

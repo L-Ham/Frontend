@@ -1,11 +1,12 @@
 import React from 'react';
+
 /**
  * Footer component
  * @return {React.Component}
  */
 export function Footer() {
     return (
-        <div className='clear-both m-0 block p-0 pt-10 text-center text-[larger]'>
+        <div className='clear-both m-0 block p-0 pt-10 text-center text-[larger]' data-testid={`message-fotter`}>
             <div className='mx-auto my-[15px] max-w-[600px] rounded-[7px] border border-solid border-[#F0F0F0] p-[5px]
             text-[gray]'
             style={{display: '-webkit-flex'}}>

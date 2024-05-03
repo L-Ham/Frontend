@@ -1,6 +1,5 @@
 import React from 'react';
 import {UnreadMessage} from './unreadmessage.js';
-import {useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {axiosInstance as axios} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
@@ -9,7 +8,6 @@ import {API_ROUTES} from '../../../requests/routes.js';
  * @return {React.Component}
  */
 export function UnreadInbox() {
-    const user = useSelector((state) => state.user);
     // Correctly destructure useState return value
     const [sentMessages, setsentMessages] = useState([]);
 
@@ -20,7 +18,7 @@ export function UnreadInbox() {
             return sentmessages;
         };
         fetchsentMessages();
-    }, [user.token]);
+    }, []);
 
     const fetchsent = async () => {
         try {
@@ -31,7 +29,8 @@ export function UnreadInbox() {
         }
     };
     return (
-        <div className='m-0 block bg-none'>
+        <div className='m-0 block bg-none' data-testid={`message-unreadinbox`}>
+
             <div className='m-0 overflow-hidden border-b-0 bg-[var(--message-header)] p-0 text-[larger]'>
                 <div className='m-0 inline p-0'>
                     <ul className='mx-0 my-[100px] mb-[20px] inline list-none p-0'>

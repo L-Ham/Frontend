@@ -1,5 +1,4 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {axiosInstance as axios} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
@@ -10,7 +9,6 @@ import {Sent} from './sent.js';
  * @return {React.Component}
  */
 export function MessageSent() {
-    const user = useSelector((state) => state.user);
     // Correctly destructure useState return value
     const [sentMessages, setsentMessages] = useState([]);
 
@@ -21,7 +19,7 @@ export function MessageSent() {
             return sentmessages;
         };
         fetchsentMessages();
-    }, [user.token]);
+    }, );
 
     const fetchsent = async () => {
         try {
@@ -32,7 +30,8 @@ export function MessageSent() {
         }
     };
     return (
-        <div className='m-0 block bg-none'>
+        <div className='m-0 block bg-none' data-testid={`message-cent`}>
+        
             <div className='mx-auto my-5 block
             w-[70%] min-w-[700px] list-none bg-[var(--message-content-odd)]
             text-[var(--message-content-text)]'>
