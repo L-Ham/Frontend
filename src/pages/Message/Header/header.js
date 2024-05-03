@@ -7,7 +7,8 @@ import PropTypes from 'prop-types';
  */
 export function Header({name}) {
     return (
-        <div className='relative z-[3] m-0 block border-b-[none] bg-[var(--message-header)] p-0'>
+        <div className='relative z-[3] m-0 block border-b-[none] bg-[var(--message-header)] p-0'
+            data-testid={`message-header`}>
             <div
                 className='my-0 ml-[100px] mr-5 block p-0 text-[larger]'
                 style={{unicodeBidi: 'isolate'}}
@@ -37,7 +38,7 @@ export function Header({name}) {
                                 fontSize: '18px',
                                 font: 'normal verdana, arial, helvetica, sans-serif',
                             }}
-                            href='/message/send' >
+                            href='/message/send' data-testid={`message-header-send`}>
                             Send a private message
                         </a>
                     </li>
@@ -55,7 +56,7 @@ export function Header({name}) {
                                 font: 'normal verdana, arial, helvetica, sans-serif',
                                 fontSize: '18px',
                             }}
-                            href='/message/inbox/all'>
+                            href='/message/inbox/all' data-testid={`message-header-inbox`}>
                             Inbox
                         </a>
                     </li>
@@ -72,7 +73,7 @@ export function Header({name}) {
                                 font: 'normal verdana, arial, helvetica, sans-serif',
                                 fontSize: '18px',
                             }}
-                            href ='/message/sent'>
+                            href ='/message/sent' data-testid={`message-header-sent`}>
                             Sent
                         </a>
                     </li>

@@ -54,6 +54,7 @@ const API_ROUTES = {
     markAsUnread: '/message/unread',
     allInbox: '/message/getAllInbox',
     composeMessage: '/message/compose',
+    unsendMessage: '/message/getSentMessages/unsend',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

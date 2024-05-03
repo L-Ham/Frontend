@@ -54,7 +54,8 @@ export function SendingMessage() {
                         <span className='text-[smaller] text-[#818384]'>username, or /r/name for that subreddits moderators</span>
                         <div className='m-0 mt-[5px] block border-[none] p-0 align-top'>
                             <input className={`m-0 w-[492px] border border-solid p-[3px] text-[100%] text-[black] ${usernameError || fetchError ? 'border-[red]' : 'border-[gray]'}`}
-                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refusername}></input>
+                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refusername}
+                                data-testid={`message-username-send`}></input>
                             {usernameError && <span className='text-[red] text-[12px] block'>You need to fill this field</span>}
                             {fetchError && <span  className='text-[red] text-[12px] block'>Username or subreddit isn't available</span>}
                         </div>
@@ -65,7 +66,8 @@ export function SendingMessage() {
                         <span className='mt-auto'> Subject </span>
                         <div className='m-0 mt-[5px] block border-[none] p-0 align-top'>
                             <input className={`m-0 w-[492px] border border-solid p-[3px] text-[100%] text-[black] ${subjectError ? 'border-[red]' : 'border-[gray]'}`}
-                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refSubject}></input>
+                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refSubject}
+                                data-testid={`message-input-subject--send`}></input>
                             {subjectError && <span className='text-[red] text-[12px] block'>You need to fill this field</span>}
                         </div>
                     </div>
@@ -75,13 +77,15 @@ export function SendingMessage() {
                         <span className='mt-auto'> message </span>
                         <div className='m-0 mt-[5px] block border-[none] p-0 align-top'>
                             <textarea className={`m-0 w-[492px] border border-solid p-[3px] text-[100%] text-[black] ${messageError ? 'border-[red]' : 'border-[gray]'}`}
-                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refMessage}></textarea>
+                                style={{ paddingBlock: '1px', paddingInline: '2px' }} name='to' ref={refMessage}
+                                data-testid={`message-send-text`}></textarea>
                             {messageError && <span className='text-[red] text-[12px] block'>You need to fill this field</span>}
                         </div>
                     </div>
                 </div>
                 <button className='inline-block cursor-pointer rounded border-[#d7dadc] bg-[#d7dadc] px-4 pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
-                    style={{ WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset', borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold' }} type='submit'>
+                    style={{ WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset', borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold' }} type='submit'
+                    data-testid={`message-sendbutton`}>
                     send
                 </button>
             </form>

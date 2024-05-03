@@ -40,7 +40,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
     };
     const test =parse(message);
     return (
-        <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
+        <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`} >
             <p className='m-0 block p-0 font-[bold] text-[large]'
                 style={{marginBlockStart: '1em',
 
@@ -77,24 +77,17 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                         </a>
 
                     </li>
-                    <li className='m-0  mr-2 whitespace-nowrap p-0'
-                        style={{textAlign: '-webkit-match-parent'}}>
-                        <a className='cursor-pointer p-0 py-px font-bold text-[#888]'>
-                                    Delete
-                        </a>
-
-                    </li>
 
                     <li className='m-0  mr-2 whitespace-nowrap p-0'
                         style={{textAlign: '-webkit-match-parent'}}>
-                       <a className='cursor-pointer p-0 py-px font-bold text-[#888]' onClick={handleUnread}>
+                       <a className='cursor-pointer p-0 py-px font-bold text-[#888]' onClick={handleUnread} data-testid={`message-send-handle`}>
                                    { (unread===false) ?'Mark Unread':'Mark Read'}
                         </a>
                     </li>
                     <li className='m-0  mr-2 whitespace-nowrap p-0'
                         style={{textAlign: '-webkit-match-parent'}}>
                         <a className='cursor-pointer p-0 py-px font-bold text-[#888]'
-                            onClick={handleReplyClick}>
+                            onClick={handleReplyClick} data-testid={`message-send-reply`}>
                                     Reply
                         </a>
                     </li>
@@ -125,7 +118,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                                  pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
                         style={{WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset',
                             borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold'}} 
-                            type="submit">
+                            type="submit" onClick={handleReplyClick} data-testid={`message-send-read`}>
                                  send
                         </button>
                     </div>

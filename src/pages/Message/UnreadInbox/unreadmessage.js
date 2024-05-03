@@ -25,18 +25,8 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
             console.error(`Error:`, error);
         });
     }, []);
-    const test =parse( `  <div class="md">
-    <p>gadzooks! 
-    <strong>you are invited to become a moderator</strong>
-     of 
-    <a href="/r/{subredditName}/about/moderators" className="text-[#4fbcff]">/r/{subredditName}: {subredditName}</a>!
-    </p>
-    
-    <p><strong><em>to accept</em>, visit the <a href="/r/{subredditName}/about/moderators" className="text-[#4fbcff]">moderators page for /r/{subredditName}</a> and click "accept".</strong></p>
-    
-    <p><em>otherwise,</em> if you did not expect to receive this, you can simply ignore this invitation or report it.</p>
-    </div>`);
-    return ( <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
+    const test =parse(message);
+    return ( <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`} data-testid={`message-message-unread`}>
         <p className='m-0 mb-[4px] block p-0 font-[bold] text-[large]'
             style={{marginBlockStart: '1em',
 
@@ -77,14 +67,8 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
                 </li>
                 <li className='m-0  mr-2 whitespace-nowrap p-0'
                     style={{textAlign: '-webkit-match-parent'}}>
-                    <a className='cursor-pointer p-0 py-px font-bold text-[#888]'>
-                Delete
-                    </a>
-
-                </li>
-                <li className='m-0  mr-2 whitespace-nowrap p-0'
-                    style={{textAlign: '-webkit-match-parent'}}>
-                    <a className='cursor-pointer p-0 py-px font-bold text-[#888]' onClick={handleReplyClick}>
+                    <a className='cursor-pointer p-0 py-px font-bold text-[#888]' onClick={handleReplyClick}
+                    data-testid={`message-unread-reply`}>
                 Reply
                     </a>
                 </li>
@@ -115,7 +99,7 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
                                  pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
                         style={{WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset',
                             borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold'}} 
-                            type="submit">
+                            type="submit" onClick={handleReplyClick}>
                                  send
                         </button>
                     </div>

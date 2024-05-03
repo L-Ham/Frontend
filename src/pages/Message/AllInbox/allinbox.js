@@ -42,7 +42,7 @@ export function AllInbox() {
                             border-b-2 border-x-[none]
                             border-b-[var(--message-header-text)] border-t-[none] bg-transparent px-2.5 pb-[5px]
                             pt-0 font-normal capitalize text-[var(--message-header-text)]
-                            ' href='/message/inbox/all'>
+                            ' href='/message/inbox/all' data-testid={`message-header-all`}>
                             All
                             </a>
                         </li>
@@ -51,7 +51,7 @@ export function AllInbox() {
                              border-x-[none]
                             border-t-[none] bg-transparent px-2.5 pb-[5px]
                             pt-0 font-normal capitalize text-[var(--message-header-text-high)]
-                            ' href='/message/inbox/unread'>
+                            ' href='/message/inbox/unread' data-testid={`message-header-unread`}>
                             Unread
                             </a>
                         </li>

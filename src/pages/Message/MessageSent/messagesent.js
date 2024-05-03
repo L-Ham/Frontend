@@ -39,6 +39,7 @@ export function MessageSent() {
                 {sentMessages?.map((message, index) => (
                     <Sent
                         key={message.messageId}
+                        id={message.messageId}
                         subject={message.subject}
                         to={message.receiver}
                         created={message.createdAt}

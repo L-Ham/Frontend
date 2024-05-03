@@ -1,13 +1,27 @@
 import React from 'react';
 import propType from 'prop-types';
 import parse from 'html-react-parser';
-
+import {axiosInstance as axios} from '../../../requests/axios.js';
+import {API_ROUTES} from '../../../requests/routes.js';
 /*eslint-disable */
 /**
  * MessageSent component
  * @return {React.Component}
  */
-export function Sent({subject, to, message,isEven}) {
+export function Sent({id,subject, to, message,isEven}) {
+    const handleUnsend=()=>{
+        console.log(id);
+        const toggleFavorite = (route) => {
+            axios.delete(route, {
+                messageId: id,
+            }).catch((error) => {
+                console.log(id);
+                console.error(`Error:`, error);
+            });
+        };
+        toggleFavorite(API_ROUTES.unsendMessage);
+        
+    };
    
    const test =parse(message);
     return (
@@ -40,9 +54,18 @@ export function Sent({subject, to, message,isEven}) {
                     </div>
                 </div> 
                 
-                <ul className='m-0 my-2.5 ml-[15px] block list-none p-0' style={{listStyle: 'none'}}>
-                    <li className='m-0 whitespace-nowrap p-0' style={{textAlign: '-webkit-match-parent'}}>
+                <ul className='m-0 my-2.5 ml-[15px] block list-none p-0'
+                style={{listStyle: 'none', display: 'flex'}}>
+                    <li className='m-0 mr-2 whitespace-nowrap p-0'
+                    style={{textAlign: '-webkit-match-parent'}}>
                         <a className='cursor-pointer p-0 py-px font-bold text-[#888]'>Permalink</a>
+                    </li>
+                    <li className='m-0  mr-2 whitespace-nowrap p-0'
+                        style={{textAlign: '-webkit-match-parent'}}>
+                        <a className='cursor-pointer p-0 py-px font-bold text-[#888]' onClick={handleUnsend} data-testid={`message-unsend`}>
+                                    Unsend
+                        </a>
+
                     </li>
                 </ul>
             </div>
