@@ -24,17 +24,14 @@ export const usePostCreationPollOption = (index) => {
 
     const handleDragEnter = (e) => {
         e.preventDefault();
-        document.getElementById(`div12312-${index}`).style.backgroundColor = 'lightgrey';
     };
 
     const handleDragLeave = (e) => {
-        document.getElementById(`div12312-${index}`).style.backgroundColor = 'white';
     };
 
 
     const handleDragEnd = (e) => {
         e.preventDefault();
-        document.getElementById(`div12312-${index}`).style.backgroundColor = 'white';
         // e.target.style.backgroundColor = 'white';
 
         const draggedIndex = e.dataTransfer.getData('text/plain');
