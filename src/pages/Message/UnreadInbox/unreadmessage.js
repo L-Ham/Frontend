@@ -2,19 +2,40 @@ import React from 'react';
 import propType from 'prop-types';
 import {useState} from 'react';
 import {useRef} from 'react';
-// import {axiosInstance as axios} from '../../../requests/axios.js';
-// import {API_ROUTES} from '../../../requests/routes.js';
+import parse from 'html-react-parser';
+import {axiosInstance as axios} from '../../../requests/axios.js';
+import {API_ROUTES} from '../../../requests/routes.js';
+import {useEffect} from 'react';
 /*eslint-disable */
 /**
  * Renders a route for displaying messages.
  * @return {React.Component}
  */
-export function UnreadMessage({subject, to, message, isEven}) {
+export function UnreadMessage({id,subject, to, message, isEven}) {
     const ref=useRef(); 
     const [showReply, setShowReply] = useState(false);
     const handleReplyClick=()=>{
         setShowReply(!showReply);
     };
+    useEffect(() => {
+        
+        axios.patch(API_ROUTES.markAsRead, {
+            messageId: id,
+        }).catch((error) => {
+            console.error(`Error:`, error);
+        });
+    }, []);
+    const test =parse( `  <div class="md">
+    <p>gadzooks! 
+    <strong>you are invited to become a moderator</strong>
+     of 
+    <a href="/r/{subredditName}/about/moderators" className="text-[#4fbcff]">/r/{subredditName}: {subredditName}</a>!
+    </p>
+    
+    <p><strong><em>to accept</em>, visit the <a href="/r/{subredditName}/about/moderators" className="text-[#4fbcff]">moderators page for /r/{subredditName}</a> and click "accept".</strong></p>
+    
+    <p><em>otherwise,</em> if you did not expect to receive this, you can simply ignore this invitation or report it.</p>
+    </div>`);
     return ( <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
         <p className='m-0 mb-[4px] block p-0 font-[bold] text-[large]'
             style={{marginBlockStart: '1em',
@@ -39,7 +60,7 @@ export function UnreadMessage({subject, to, message, isEven}) {
                 <div className=' m-0 my-[5px] max-w-[60em] p-0 text-[1.0769230769230769em] font-normal'
                     style={{wordWrap: 'break-word'}}>
                     <p className='text-[1em] leading-[1.5em]'>
-                        {message}
+                        {test}
                     </p>
                 </div>
 
@@ -106,6 +127,7 @@ export function UnreadMessage({subject, to, message, isEven}) {
     );
 }
 UnreadMessage.propTypes = {
+    id: propType.string,
     subject: propType.string,
     to: propType.string,
     message: propType.string,

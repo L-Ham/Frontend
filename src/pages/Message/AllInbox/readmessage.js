@@ -4,6 +4,7 @@ import propType from 'prop-types';
 import {axiosInstance as axios} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
 import {useRef} from 'react';
+import parse from 'html-react-parser';
 /*eslint-disable*/
 /**
  * Renders a route for displaying messages.
@@ -37,6 +38,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
     const handleReplyClick=()=>{
         setShowReply(!showReply);
     };
+    const test =parse(message);
     return (
         <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`}>
             <p className='m-0 block p-0 font-[bold] text-[large]'
@@ -60,7 +62,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                     <div className=' m-0 my-[5px] max-w-[60em] p-0 text-[1.0769230769230769em] font-normal'
                         style={{wordWrap: 'break-word'}}>
                         <p className='text-[1em] leading-[1.5em]'>
-                                    {message}
+                                    {test}
                         </p>
                     </div>
 

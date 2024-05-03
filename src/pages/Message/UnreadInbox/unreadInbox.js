@@ -64,7 +64,8 @@ export function UnreadInbox() {
             text-[var(--message-content-text)]'>
                 {sentMessages?.map((message, index) => (
                     <UnreadMessage
-                        key={message.index}
+                        key={message.messageId}
+                        id={message.messageId}
                         subject={message.subject}
                         to={message.sender}
                         message={message.message}
