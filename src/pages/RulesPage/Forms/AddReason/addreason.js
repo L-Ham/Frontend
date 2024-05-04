@@ -11,7 +11,7 @@ import {useNotifications} from '../../../../generic components/Notifications/not
  * Renders the AddReason component.
  * @return {JSX.Element} The rendered component.
  */
-export function AddReason({reason: {Title: reasonTitle, Message: reasonMessage, _id: reasonId}, idx, reason}) {
+export function AddReason({reason: {title: reasonTitle, message: reasonMessage, _id: reasonId}, idx, reason}) {
     const {setAddReasonView, about, setRemovalReasons} = useRulesPage();
 
     const [Title, setTitle] = useState(reasonTitle || '');
@@ -82,14 +82,16 @@ export function AddReason({reason: {Title: reasonTitle, Message: reasonMessage, 
         try {
             const subredditId = about.communityDetails.subredditId;
             const response = await axios.delete(API_ROUTES.removalReason, {
+               data:{
                 'subredditId': subredditId,
                 'reasonId': reasonId,
+               }
             });
             const removalReasonsData = await fetchRemovalReasons(about.communityDetails.subredditId);
             setRemovalReasons(removalReasonsData);
 
             setAddReasonView(false);
-            addNotification({type: 'success', message: response.message});
+            addNotification({type: 'success', message: response.data.message});
         } catch (error) {
             console.error('Failed to delete reason', error);
             addNotification({type: 'failure', message: error.response.data.message});
@@ -140,7 +142,7 @@ export function AddReason({reason: {Title: reasonTitle, Message: reasonMessage, 
                  HNozj_dKjQZ59ZsfEegz8 _2nelDm85zKKmuD94NequP0"
                     onClick={handleSubmit}
                 >
-                    Add new reason
+                    {isEdit ? 'Save' : 'Add new reason'}
                 </button>
                 <button
                     role="button" tabIndex="0"
@@ -149,11 +151,11 @@ export function AddReason({reason: {Title: reasonTitle, Message: reasonMessage, 
                  _2nelDm85zKKmuD94NequP0"
                     onClick={handleClose}
                 >Cancel</button>
-                <button role="button" tabIndex="0" className="_2ulRgczjI5SWCMgSA1CNLj
+            {   isEdit &&  <button role="button" tabIndex="0" className="_2ulRgczjI5SWCMgSA1CNLj
                   _3LU38GqHnVONELmzr-6CjS _2iuoyPiKHN3kfOoeIQalDT
                  _3zbhtNO0bdck0oYbYRhjMC HNozj_dKjQZ59ZsfEegz8 "
                 onClick={handleDelete}
-                >Delete</button>
+                >Delete</button>}
             </footer>
         </section>
 
