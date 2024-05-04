@@ -11,7 +11,7 @@ import {useRulesPage} from '../../rulespagecontext';
  * @param {string} type The type of the reason.
  * @return {JSX.Element} The rendered component.
  */
-export function Reason({reason: {Title}, idx, reason}) {
+export function Reason({reason: {title}, idx, reason}) {
     const {setAddReasonView, setReasonToAdd} = useRulesPage();
     const EditIcon = getIconComponent('edit', false);
 
@@ -20,7 +20,7 @@ export function Reason({reason: {Title}, idx, reason}) {
             <div className='container-1223'
             >
                 <span className="span-13214">{idx + 1}</span>
-                <span className="span-15212">{Title}</span>
+                <span className="span-15212">{title}</span>
                 <span className="ml-auto flex pr-[4px]">
                     {
                         <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
