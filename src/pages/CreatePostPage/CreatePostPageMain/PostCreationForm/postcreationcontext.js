@@ -29,6 +29,7 @@ export function PostCreationProvider({children}) {
     const [postTags, setPostTags] = useState([]);
     const [activeFilters, setActiveFilters] = useState([]);
     const [isSendPostNotifications, setIsSendPostNotifications] = useState(true);
+    const [scheduledData, setScheduledData] = useState({Date: '', Time: ''});
 
     const value = {
         loading, setLoading,
@@ -42,6 +43,7 @@ export function PostCreationProvider({children}) {
         postTags, setPostTags,
         activeFilters, setActiveFilters,
         isSendPostNotifications, setIsSendPostNotifications,
+        scheduledData, setScheduledData,
     };
 
     return (

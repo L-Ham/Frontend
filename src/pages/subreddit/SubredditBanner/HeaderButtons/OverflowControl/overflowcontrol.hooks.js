@@ -2,8 +2,10 @@ import {useState} from 'react';
 import {useSubreddit} from '../../../subredditcontext.js';
 import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 
-export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouriteClick}) => {
-    const {about} = useSubreddit();
+export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouriteClick,
+    handleJoinClick,
+    isSubscribed}) => {
+    const {about, isModerator} = useSubreddit();
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = useState(false);
 
     const handleOtherOptionsClick = () => {
@@ -18,15 +20,34 @@ export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouri
             content: {
                 text: (isFavourite ? 'Remove from favorites' : 'Add to favorites'),
             },
-            onClick: onFavouriteClick,
+            onClick: () => {
+                onFavouriteClick();
+                setIsOtherOptionsVisible(false);
+            },
         },
         {
             content: {
                 text: (isMuted ? `Unmute ${prefixedName}` : `Mute ${prefixedName}`),
             },
-            onClick: onMuteClick,
+            onClick: () => {
+                onMuteClick();
+                setIsOtherOptionsVisible(false);
+            },
         },
     ];
+
+
+    if (isModerator) {
+        menuItems.push({
+            content: {
+                text: isSubscribed ? 'Leave' : 'Join',
+            },
+            onClick: () => {
+                handleJoinClick(false, true);
+                setIsOtherOptionsVisible(false);
+            },
+        });
+    }
 
     const OverflowHorizontalIcon = getIconComponent('overflow-horizontal', false);
 

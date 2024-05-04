@@ -12,6 +12,8 @@ import {classes} from './overflowcontrol.styles.js';
  * @param {Function} props.onMuteClick - The function to call when the mute button is clicked.
  * @param {boolean} props.isFavourite - Whether the post is a favourite.
  * @param {Function} props.onFavouriteClick - The function to call when the favourite button is clicked.
+ * @param {Function} props.handleJoinClick - The function to call when the join button is clicked.
+ * @param {boolean} props.isSubscribed - Whether the user is subscribed.
  * @return {JSX.Element} The rendered component.
  */
 export function OverflowControl({
@@ -19,11 +21,14 @@ export function OverflowControl({
     onMuteClick,
     isFavourite,
     onFavouriteClick,
+    handleJoinClick,
+    isSubscribed,
 }) {
     const {isOtherOptionsVisible,
         handleOtherOptionsClick,
         menuItems,
-        OverflowHorizontalIcon} = useOverflowControl({isMuted, onMuteClick, isFavourite, onFavouriteClick});
+        OverflowHorizontalIcon} = useOverflowControl({isMuted, onMuteClick, isFavourite, onFavouriteClick,
+        handleJoinClick, isSubscribed});
 
     return (
         <div className={classes.container} data-testid="overflow-control-container">
@@ -53,5 +58,7 @@ OverflowControl.propTypes = {
     onMuteClick: PropTypes.func.isRequired,
     isFavourite: PropTypes.bool.isRequired,
     onFavouriteClick: PropTypes.func.isRequired,
+    handleJoinClick: PropTypes.func.isRequired,
+    isSubscribed: PropTypes.bool.isRequired,
 };
 

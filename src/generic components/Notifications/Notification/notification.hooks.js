@@ -12,7 +12,7 @@ export const useNotification = ({notification, onClose}) => {
 
     const autoClose = () => {
         // add class scale-down and remove class scale-up
-        const toaster = document.getElementById('toaster');
+        const toaster = document.getElementById(`toaster-${id}`);
         if (!toaster) {
             console.error('Element with id "toaster" not found');
             return;

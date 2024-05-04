@@ -16,6 +16,9 @@ import {NotificationProvider} from '../generic components/Notifications/notifica
 import {Notifications} from '../generic components/Notifications/notifications.js';
 import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js';
 import {MessagesRoute} from './pageRoutes.js';
+import {RemovalPageRoute, RulesPageRoute} from './pageRoutes.js';
+import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
+import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
 
 /**
  * Renders the main application component.
@@ -45,14 +48,18 @@ function App() {
                 <Route path="/r/:name/comments/:postId" element={renderWithLayout(<CommentsRoute />)} />
                 <Route path="/r/:name" element={renderWithLayout(<SubredditRoute />)} />
                 <Route path="/r/:name?/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/submit" element={renderWithLayout(<CreatePostRoute />)} />
                 <Route path="/" element={renderWithLayout(<HomePage />)} />
                 <Route path="/user/:name/:section?" element={renderWithLayout(<ProfilePageRoute />)} />
                 <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
                 <Route path="/all" element={renderWithLayout(<HomePage />)} />
                 <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
-                <Route path="*" element={<ErrorPage />} />
-
+                <Route path="/r/:name/about/rules" element={renderWithLayout( <RulesPageRoute/>)} />
+                <Route path="/r/:name/about/removal" element={renderWithLayout(<RemovalPageRoute/>)} />
+                <Route path='/r/:name?/about/settings' element={renderWithLayout(<AboutSettings />)} />
+                <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
     );

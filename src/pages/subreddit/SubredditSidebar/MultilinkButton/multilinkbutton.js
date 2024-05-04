@@ -11,7 +11,7 @@ import {multiLinkButtonClasses} from './multilinkbutton.styles.js';
  * @param {Object} data - The data for the MultiLinkButton.
  * @return {JSX.Element} The rendered component.
  */
-export function MultiLinkButton({data: {text, url, children, icon: Icon}}) {
+export function MultiLinkButton({data: {label: text, link: url, children, icon: Icon}}) {
     const CaretDownIcon = getIconComponent('caret-down', false);
     const {handleClick, isOptionsVisible, menuItems, isSingleOption} = useMultiLinkButton({url, children});
 
