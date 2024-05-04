@@ -5,6 +5,7 @@ import {CommunityNote} from './CommunityNote/communitynote.js';
 import {PostCreationForm} from './PostCreationForm/postcreationform.js';
 import {classes} from './createpostpagemain.styles.js';
 
+
 /**
  * Renders the sidebar for the create post page.
  * @return {JSX.Element} The rendered sidebar.
@@ -18,6 +19,8 @@ export function CreatePostPageMain() {
                 <CommunityNote data-testid="community-note"/>
                 <PostCreationForm data-testid="post-creation-form"/>
             </div>
+
         </div>
     );
 }
+
