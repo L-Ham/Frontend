@@ -15,6 +15,7 @@ import {CreatePostRoute} from './pageRoutes.js';
 import {NotificationProvider} from '../generic components/Notifications/notificationsContext.js';
 import {Notifications} from '../generic components/Notifications/notifications.js';
 import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js';
+import {MessagesRoute} from './pageRoutes.js';
 import {RemovalPageRoute, RulesPageRoute} from './pageRoutes.js';
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
 import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
@@ -57,6 +58,7 @@ function App() {
                 <Route path="/r/:name/about/removal" element={renderWithLayout(<RemovalPageRoute/>)} />
                 <Route path='/r/:name?/about/settings' element={renderWithLayout(<AboutSettings />)} />
                 <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
+                <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>

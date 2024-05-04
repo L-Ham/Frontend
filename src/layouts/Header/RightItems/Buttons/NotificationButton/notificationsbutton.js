@@ -20,7 +20,7 @@ function NotificationButton() {
     };
 
     return (
-        <div className='relative m-0 p-0' datatestid="notif-button-outer-continer-#TDSF&YOISNADJA(D*">
+        <div className='relative m-0 p-0' data-testid="notif-button-outer-continer-#TDSF&YOISNADJA(D*">
             <button className={`${styles.root} relative top-1`}
                 onClick={handleClick} data-testid={`action-button-low-##33443@@-geso`}>
                 <span className={styles.iconContainer} data-testid={`action-button-icon-container-low-#534#@_90-gesoo`}>
