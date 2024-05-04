@@ -4,6 +4,7 @@ import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
 import {useParams, useLocation} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
+import {Messages} from '../pages/Message/messages.js';
 import {RulesPage} from '../pages/RulesPage/rulespage.js';
 import {RemovalPage} from '../pages/RulesPage/removalpage.js';
 
@@ -47,6 +48,14 @@ export function CreatePostRoute() {
 export function ProfilePageRoute() {
     const {name, section} = useParams();
     return <div className='h-screen'><Profile name={name} section={section}/></div>;
+}
+/**
+ * Renders a route for displaying messages.
+ * @return {JSX.Element} The rendered Messages component.
+ */
+export function MessagesRoute() {
+    const {name, section} = useParams();
+    return <Messages name={name} section={section}/>;
 }
 
 

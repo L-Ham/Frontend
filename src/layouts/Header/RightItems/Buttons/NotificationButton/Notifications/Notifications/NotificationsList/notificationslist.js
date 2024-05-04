@@ -59,7 +59,7 @@ export function NotificationsList({view}) {
     ];
 
     return (
-        <div className='block' datatestid="#main-div-r23rtad">
+        <div className='block' data-testid="#main-div-r23rtad">
             {
                 notifications
                     .slice(0, view === 'COMPACT' ? 4 : notifications.length)
