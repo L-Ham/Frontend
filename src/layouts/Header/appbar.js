@@ -3,6 +3,7 @@ import {SearchDropDown} from './Search/searchdropdown.js';
 import {SearchBar} from './Search/searchbar.js';
 import {SideBar} from '../SideBar/sidebar.js';
 import {RightItems} from './RightItems/rightitems.js';
+import {RightItemsLoggedout} from './RightItems/rightitemsloggedout.js';
 import {MenuButton} from './LeftItems/menubutton.js';
 import {Logo} from './LeftItems/logo.js';
 import {appBarClasses as styles} from './appbar.styles.js';
@@ -27,6 +28,7 @@ function AppBar() {
         searchTrendingItems,
         searchbarStyles,
         sideBarStyles,
+        isLoggedin,
     } = useAppBar();
     return (
         <>
@@ -50,7 +52,9 @@ function AppBar() {
                         </div>
                     </div>
 
-                    <RightItems/>
+                    {isLoggedin ? <RightItems/> :
+                        <RightItemsLoggedout/>
+                    }
 
                 </nav>
             </header>

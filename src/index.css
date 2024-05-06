@@ -362,6 +362,7 @@ code {
   --anim-duration:300ms;
   --font-14-20-semibold: normal 600 0.875rem / 1.25rem var(--font-sans);
   --shreddit-color-wordmark: #FF4500;
+  --color-brand-background-active: #7e2200;
 }
 .theme-dark {
   /* add dark scheme here */
@@ -782,6 +783,7 @@ code {
   --message-content-even:#272729;
   --message-content-odd:#1A1A1B;
   --message-content-text:#d7dadc;
+  --color-brand-background-active: #a74b29;
 }
 .theme-light {
   /* add light scheme here */
@@ -1189,4 +1191,5 @@ code {
     --message-content-odd:#f6f7f8;
     --message-content-even:#f0f0f0;
     --message-content-text:#000000;
+    --color-brand-background-active: #7e2200;
 }

@@ -25,18 +25,6 @@
     z-index: 3;
     top: 89px;
 }
-.pr-0 {
-    padding-right: 0px;
-}
-.bg-neutral-background {
-    background-color: var(--color-neutral-background);
-}
-.mb-xs {
-    margin-bottom: 0.5rem;
-}
-.fixed {
-    position: fixed;
-}
 
 ._10BQ7pjWbeYP63SAPNS8Ts {
     position: relative;

@@ -118,6 +118,8 @@ import {ReactComponent as CloseIcon} from '../assets/icons/close.svg';
 import {ReactComponent as GifPostIconOutline} from '../assets/icons/gif-post-outline.svg';
 import {ReactComponent as FormatIconOutline} from '../assets/icons/format-outline.svg';
 import {ReactComponent as CalendarIcon} from '../assets/icons/calendar.svg';
+import {ReactComponent as QRCodeIcon} from '../assets/icons/qr-code-outline.svg';
+import {ReactComponent as TopicMarketPlaceIcon} from '../assets/icons/topic-marketplace.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -238,6 +240,8 @@ const ICONS_MAP = {
     'gif-post-outline': GifPostIconOutline,
     'format-outline': FormatIconOutline,
     'calendar': CalendarIcon,
+    'qrcode': QRCodeIcon,
+    'topic-marketplace-outline': TopicMarketPlaceIcon,
 };
 
 /**
