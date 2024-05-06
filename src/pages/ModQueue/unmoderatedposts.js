@@ -8,7 +8,7 @@ import propTypes from 'prop-types';
  *
  * @return {JSX.Element} mod post
  */
-function Modpost({isremoved, isreported}) {
+function Modpost({isremoved, isreported, children}) {
     return (
         <div className='overflow-hidden rounded rounded-b-none'>
             <div className='relative mb-2.5 cursor-pointer  overflow-hidden rounded border
@@ -36,9 +36,7 @@ function Modpost({isremoved, isreported}) {
 
                 </div>
 
-                <div id='post_here'>
-
-                </div>
+                {children}
 
                 {isreported &&<Reportbanner />}
                 {isremoved && <Removedbanner />}
@@ -106,6 +104,7 @@ function Modpost({isremoved, isreported}) {
 Modpost.propTypes = {
     isremoved: propTypes.bool,
     isreported: propTypes.bool,
+    children: propTypes.node,
 };
 
 

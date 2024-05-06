@@ -66,7 +66,7 @@ function App() {
                 <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
                 <Route path="/r/:name/about/usermanagement" element={<Usermanagementroute />} />
-                <Route path="/r/:name/about/modqueue" element={<ModqueueRoute />} />
+                <Route path="/r/:name/about/:tab" element={<ModqueueRoute />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>

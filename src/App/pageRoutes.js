@@ -4,8 +4,8 @@ import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
 import {useParams, useLocation} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
-import {Usermanagement} from '../usermanagementcomp/usermanagement.js';
-import {Modqueue} from '../modqueue/modqueue.js';
+import {Usermanagement} from '../pages/UserManagement/usermanagement.js';
+import {Modqueue} from '../pages/ModQueue/modqueue.js';
 import {Messages} from '../pages/Message/messages.js';
 import {RulesPage} from '../pages/RulesPage/rulespage.js';
 import {RemovalPage} from '../pages/RulesPage/removalpage.js';
@@ -48,9 +48,9 @@ export function Usermanagementroute() {
  * @return  {JSX.Element} The rendered Modqueue component.
  */
 export function ModqueueRoute() {
-    const {name} = useParams();
+    const {name, tab} = useParams();
     return (
-        <Modqueue name={name}/>
+        <Modqueue name={name} tab={tab}/>
     );
 }
 

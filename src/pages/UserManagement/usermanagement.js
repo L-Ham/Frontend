@@ -2,12 +2,12 @@
 
 import React from 'react';
 import {useState} from 'react';
-import {Banned} from '../usermanagementcomp/banned';
-import {Moderators} from '../usermanagementcomp/moderators';
-import {Muted} from '../usermanagementcomp/muted';
-import {Approved} from '../usermanagementcomp/approved';
+import {Banned} from './banned';
+import {Moderators} from './moderators';
+import {Muted} from './muted';
+import {Approved} from './approved';
 import PropTypes from 'prop-types';
-import {axiosInstance as axios} from '../requests/axios';
+import {axiosInstance as axios} from '../../requests/axios';
 import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {Approve} from './approvemod';

@@ -3,8 +3,8 @@ import React from 'react';
 
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-import {axiosInstance as axios} from '../requests/axios';
-import {API_ROUTES} from '../requests/routes';
+import {axiosInstance as axios} from '../../requests/axios';
+import {API_ROUTES} from '../../requests/routes';
 /**
  *
  * @return {JSX.Element} UserHelp

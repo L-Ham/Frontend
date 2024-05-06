@@ -5,7 +5,7 @@ import {Banneduserentry} from './banneduserentry';
 import PropTypes from 'prop-types';
 import {useEffect} from 'react';
 
-import {axiosInstance as axios} from '../requests/axios';
+import {axiosInstance as axios} from '../../requests/axios';
 /**
  *
  *

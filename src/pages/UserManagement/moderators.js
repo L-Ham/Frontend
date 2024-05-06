@@ -5,7 +5,7 @@ import {useState} from 'react';
 import {Invitepopup} from './invitemod';
 // eslint-disable-next-line no-unused-vars
 import {Approve} from './approvemod';
-import {axiosInstance as axios} from '../requests/axios';
+import {axiosInstance as axios} from '../../requests/axios';
 import PropTypes from 'prop-types';
 import {Moderatorentry} from './moderatorentry';
 

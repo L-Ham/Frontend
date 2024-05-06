@@ -2,13 +2,9 @@
 
 
 import React from 'react';
-import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {Queue} from './queue';
-import {Reported} from './reported';
-import {Removed} from './removed';
-import {Unmoderated} from './unmoderated';
-import {Edited} from './edited';
+import {useNavigate} from 'react-router-dom';
 
 /**
  *
@@ -20,82 +16,12 @@ import {Edited} from './edited';
  *
  * @return  {JSX.Element} Modqueue
  */
-function Modqueue({name}) {
+function Modqueue({name, tab}) {
     // eslint-disable-next-line no-unused-vars
-    const [ismodqueuepressed, setissmodqueuepressed] = useState(true);
-    const [isreportedpressed, setisreportedpressed] = useState(false);
+    const navigate = useNavigate();
 
-    const [iseditedpressed, setiseditedpressed] = useState(false);
-
-    const [isremovedpressed, setisremovedpressed] = useState(false);
-    const [isunmoderatedpressed, setisunmoderatedpressed] = useState(false);
-
-    let bgmodqueue = 'bg-[#d2dadd]';
-    let bgreported = 'bg-white';
-    let bgedited = 'bg-white';
-    let bgremoved = 'bg-white';
-    let bgunmoderated = 'bg-white';
-    if (ismodqueuepressed) {
-        bgmodqueue = 'bg-[#d2dadd]';
-    } else {
-        bgmodqueue = 'bg-white';
-    }
-    if (isreportedpressed) {
-        bgreported = 'bg-[#d2dadd]';
-    } else {
-        bgreported = 'bg-white';
-    }
-    if (iseditedpressed) {
-        bgedited = 'bg-[#d2dadd]';
-    } else {
-        bgedited = 'bg-white';
-    }
-    if (isremovedpressed) {
-        bgremoved = 'bg-[#d2dadd]';
-    } else {
-        bgremoved = 'bg-white';
-    }
-    if (isunmoderatedpressed) {
-        bgunmoderated = 'bg-[#d2dadd]';
-    } else {
-        bgunmoderated = 'bg-white';
-    }
-
-    const handlemodqueueclick = () => {
-        setissmodqueuepressed(true);
-        setisreportedpressed(false);
-        setiseditedpressed(false);
-        setisremovedpressed(false);
-        setisunmoderatedpressed(false);
-    };
-    const handlereportedclick = () => {
-        setisreportedpressed(true);
-        setissmodqueuepressed(false);
-        setiseditedpressed(false);
-        setisremovedpressed(false);
-        setisunmoderatedpressed(false);
-    };
-    const handleditedclick = () => {
-        setiseditedpressed(true);
-        setisreportedpressed(false);
-        setissmodqueuepressed(false);
-        setisremovedpressed(false);
-        setisunmoderatedpressed(false);
-    };
-    const handleremovedclick = () => {
-        setisremovedpressed(true);
-        setiseditedpressed(false);
-        setisreportedpressed(false);
-        setissmodqueuepressed(false);
-        setisunmoderatedpressed(false);
-    };
-    const handleunmoderatedClick = () => {
-        setisunmoderatedpressed(true);
-        setisremovedpressed(false);
-        setiseditedpressed(false);
-        setisreportedpressed(false);
-        setissmodqueuepressed(false);
-    };
+    const highlighted = 'bg-[#d2dadd]';
+    const white = 'bg-white';
 
     return (
         <div className='pt-12 transition-[margin-top] duration-[0.3s] ease-[ease]'>
@@ -108,30 +34,30 @@ function Modqueue({name}) {
                                 <div className="text-lg font-bold leading-6">Queues</div>
                                 <div className="mt-3 flex overflow-auto">
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${bgmodqueue}
+                                 rounded-full px-4 py-3 text-sm ${tab === 'modqueue' ? highlighted : white}
                                   font-bold leading-5 text-[#576f76]
                                   no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={handlemodqueueclick}>Mod Queue</a>
+                                    href="#" onClick={() => navigate(`/r/${name}/about/modqueue`)}>Mod Queue</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${bgreported}
+                                 rounded-full px-4 py-3 text-sm ${tab === 'reported' ? highlighted : white}
                                   font-bold leading-5 text-[#576f76]
                                   no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#"onClick={handlereportedclick}>Reported</a>
+                                    href="#"onClick={() => navigate(`/r/${name}/about/reports`)}>Reported</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${bgremoved}
+                                 rounded-full px-4 py-3 text-sm ${tab === 'removed' ? highlighted : white}
                                   font-bold leading-5 text-[#576f76]
                                   no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={handleremovedclick}>Removed</a>
+                                    href="#" onClick={() => navigate(`/r/${name}/about/spam`)}>Removed</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${bgedited}
+                                 rounded-full px-4 py-3 text-sm ${tab === 'edited' ? highlighted : white}
                                   font-bold leading-5 text-[#576f76]
                                   no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={handleditedclick}>Edited</a>
+                                    href="#" onClick={() => navigate(`/r/${name}/about/edited`)}>Edited</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${bgunmoderated}
+                                 rounded-full px-4 py-3 text-sm ${tab === 'unmoderated' ? highlighted : white}
                                   font-bold leading-5 text-[#576f76]
                                   no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={handleunmoderatedClick}>Unmoderated</a>
+                                    href="#" onClick={() => navigate(`/r/${name}/about/unmoderated`)}>Unmoderated</a>
 
 
                                 </div>
@@ -249,13 +175,7 @@ function Modqueue({name}) {
                                         </span><span className="text-left">
                                                                 0 selected</span></div>
                                 </div>
-                                {ismodqueuepressed&& <Queue name={name} />}
-                                {isreportedpressed&& <Reported name={name} />}
-                                {iseditedpressed&& <Edited name={name} />}
-                                {isremovedpressed&& <Removed name={name} />}
-                                {isunmoderatedpressed&& <Unmoderated name={name} />}
-
-
+                                <Queue name={name} tab={tab}/>
                             </div>
 
 
@@ -277,6 +197,7 @@ function Modqueue({name}) {
 }
 Modqueue.propTypes = {
     name: PropTypes.string,
+    tab: PropTypes.string,
 };
 export {Modqueue};
 

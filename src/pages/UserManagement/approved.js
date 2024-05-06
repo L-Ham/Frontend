@@ -7,7 +7,7 @@ import {Userpopupban} from './userpopupban';
 import {useState} from 'react';
 import {Approveduserentry} from './approveduserentry';
 
-import {axiosInstance as axios} from '../requests/axios';
+import {axiosInstance as axios} from '../../requests/axios';
 import PropTypes from 'prop-types';
 /**
  *

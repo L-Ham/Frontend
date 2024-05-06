@@ -5,8 +5,8 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import {Invitemodcheck} from './invitemodcheck';
-import {axiosInstance as axios} from '../requests/axios';
-import {API_ROUTES} from '../requests/routes';
+import {axiosInstance as axios} from '../../requests/axios';
+import {API_ROUTES} from '../../requests/routes';
 /**
  *
  * @return {JSX.Element} UserHelp
