@@ -1,5 +1,5 @@
 export const classes = {
-    toolbarDiv: `sticky top-[48px] z-[4] box-border flex
+    toolbarDiv: `sticky top-[48px] z-[3] box-border flex
      flex-nowrap items-center rounded-[4px] bg-[var(--newCommunityTheme-field)]`,
     toolbarButton: `swtch-to-mdwn-btn relative
      box-border flex min-h-[24px] w-auto min-w-[24px] 

@@ -20,6 +20,10 @@ import {CreateCommunity} from '../createcommunity/createcommunity.js';
 import {Usermanagementroute} from './pageRoutes.js';
 import {ModqueueRoute} from './pageRoutes.js';
 
+import {MessagesRoute} from './pageRoutes.js';
+import {RemovalPageRoute, RulesPageRoute} from './pageRoutes.js';
+import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
+import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
 
 /**
  * Renders the main application component.
@@ -46,46 +50,24 @@ function App() {
                 <Route path="/createcommunity" element={<CreateCommunity />} />
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
-                <Route path="/settings/:tab?" element={
-                    <LayoutWithNavigation>
-                        <BasicTabs />
-                    </LayoutWithNavigation>
-                } />
-
-
-                <Route path="/r/:name" element={
-                    <LayoutWithNavigation>
-                        <SubredditRoute />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="/r/:name?/submit" element={
-                    <LayoutWithNavigation>
-                        <CreatePostRoute />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="/" element={
-                    <LayoutWithNavigation>
-                        <HomePage />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="/user/:name/:section?" element={
-                    <LayoutWithNavigation>
-                        <ProfilePageRoute />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="/popular" element={
-                    <LayoutWithNavigation>
-                        <PopularPage />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="/all" element={
-                    <LayoutWithNavigation>
-                        <HomePage />
-                    </LayoutWithNavigation>
-                } />
-                <Route path="*" element={<ErrorPage />} />
+                <Route path="/settings/:tab?" element={renderWithLayout(<BasicTabs />)} />
+                <Route path="/r/:name/comments/:postId" element={renderWithLayout(<CommentsRoute />)} />
+                <Route path="/r/:name" element={renderWithLayout(<SubredditRoute />)} />
+                <Route path="/r/:name?/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/" element={renderWithLayout(<HomePage />)} />
+                <Route path="/user/:name/:section?" element={renderWithLayout(<ProfilePageRoute />)} />
+                <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
+                <Route path="/all" element={renderWithLayout(<HomePage />)} />
+                <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
+                <Route path="/r/:name/about/rules" element={renderWithLayout( <RulesPageRoute/>)} />
+                <Route path="/r/:name/about/removal" element={renderWithLayout(<RemovalPageRoute/>)} />
+                <Route path='/r/:name?/about/settings' element={renderWithLayout(<AboutSettings />)} />
+                <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
+                <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
                 <Route path="/r/:name/about/usermanagement" element={<Usermanagementroute />} />
-                <Route path="/r/:name/about/modqueue" element={<ModqueueRoute />} />
+                <Route path="/r/:name/about/:tab" element={<ModqueueRoute />} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
     );

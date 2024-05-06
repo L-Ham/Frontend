@@ -12,11 +12,12 @@ import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
  * Renders the subreddit.
  * @param {Object} props - The component props.
  * @param {string} props.name - The subreddit name.
+ * @param {Object} props.style - The style object.
  * @return {JSX.Element} The rendered component.
  */
-export function Subreddit({name}) {
+export function Subreddit({name, style}) {
     return (
-        <SubredditProvider name={name} data-testid="subreddit-provider">
+        <SubredditProvider name={name} data-testid="subreddit-provider" style={style}>
             <div className={classes.innerContainer} data-testid="inner-container">
                 <SubredditBanner data-testid="subreddit-banner"/>
                 <div className={classes.contentContainer} data-testid="content-container">
@@ -33,6 +34,7 @@ export function Subreddit({name}) {
 
 Subreddit.propTypes = {
     name: PropTypes.string.isRequired,
+    style: PropTypes.object,
 };
 
 

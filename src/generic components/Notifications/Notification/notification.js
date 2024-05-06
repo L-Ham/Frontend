@@ -15,11 +15,11 @@ export function Notification({notification, onClose}) {
     if (!notification) return null;
 
     const {Icon, CloseIcon, handleClose} = useNotification({notification, onClose});
-    const {type, message} = notification;
+    const {type, message, id} = notification;
 
     return (
         <div data-testid="toaster-123@@#324sd"
-            id='toaster'
+            id = {`toaster-${id}`}
             className={`${classes.notificationContainer} ${type}`}
             style={{pointerEvents: 'auto'}} >
             <div data-testid="inner-container-124321asd12" className={classes.innerContainer}>

@@ -2,16 +2,11 @@ import {useSubreddit} from '../../../subredditcontext.js';
 
 export const useWidgetsRenderer = () => {
     const {widgets, about} = useSubreddit();
+
     // TODO_BACKEND: update destructuring to match the actual data structure
     if (!widgets || !about) return {};
 
-    // const {
-    //     data: {
-    //         user_is_moderator: userIsModerator,
-    //     },
-    // } = about;
-
-    const userIsModerator = false;
+    const userIsModerator = true;
 
     const {
         order: allWidgets,
@@ -19,9 +14,5 @@ export const useWidgetsRenderer = () => {
 
     const items = widgets;
 
-    if (userIsModerator) {
-        allWidgets.push('community-settings');
-    }
-
-    return {allWidgets, items};
+    return {allWidgets, items, userIsModerator, about};
 };

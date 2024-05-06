@@ -8,15 +8,19 @@ import {SubredditWidget} from '../Widget/subredditwidget.js';
  * @param {object} props - The props.
  * @param {string} props.textHtml - The text in HTML format.
  * @param {string} props.shortName - The short name of the widget.
+ * @param {boolean} props.isCustomizable - The flag to check if the widget is customizable.
+ * @param {function} props.onEditClick - The function to call when the edit button is clicked.
  * @return {JSX.Element} The rendered component.
  */
-export function TextAreaWidget({textHtml, shortName: title}) {
+export function TextAreaWidget({textHtml, shortName: title, isCustomizable=false, onEditClick=null}) {
     const {text} = useTextAreaWidget({textHtml});
 
     if (!text) return null;
 
     return (
-        <SubredditWidget title={title} data-testid="subreddit-widget">
+        <SubredditWidget title={title} data-testid="subreddit-widget"
+            isCustomizable={isCustomizable}
+            onEditClick={onEditClick}>
             <div data-testid="text-container">
                 {text}
             </div>
@@ -27,4 +31,6 @@ export function TextAreaWidget({textHtml, shortName: title}) {
 TextAreaWidget.propTypes = {
     textHtml: propTypes.string.isRequired,
     shortName: propTypes.string.isRequired,
+    isCustomizable: propTypes.bool,
+    onEditClick: propTypes.func,
 };

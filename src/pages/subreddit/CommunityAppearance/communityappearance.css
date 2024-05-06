@@ -1,0 +1,97 @@
+.commset-button.commset-icon {
+    width: var(--button-height);
+}
+
+.commset-button {
+    border-radius: 999px;
+    border: none;
+    border: var(--button-border-width, 0) solid var(--button-border-color, transparent);
+    box-shadow: var(--button-shadow);
+    cursor: pointer;
+    font: var(--button-font);
+    line-height: calc(var(--button-height) - (2 * var(--button-border-width,0px)));
+    text-decoration: none;
+    --button-border-color: var(--button-border-color-default);
+    --button-border-width: var(--button-border-width-default);
+    --button-color-background: var(--button-color-background-default);
+    --button-color-text: var(--button-color-text-default);
+}
+
+.commset-button-secondary {
+    --button-color-background-default: var(--color-button-secondary-background);
+    --button-color-background-focus: var(--color-button-secondary-background-focus);
+    --button-color-background-hover: var(--color-button-secondary-background-hover);
+    --button-color-background-active: linear-gradient(var(--color-button-secondary-background-hover), var(--color-button-secondary-background-hover));
+    --button-color-background-disabled: var(--color-button-secondary-background-disabled);
+    --button-color-background-activated: var(--color-button-secondary-background-activated);
+    --button-color-text-default: var(--color-button-secondary-text);
+    --button-color-text-disabled: var(--color-button-secondary-text-disabled);
+    --button-color-text-activated: var(--color-button-secondary-text-activated);
+    --button-border-color-default: var(--color-button-secondary-border);
+}
+
+.commset-button-small {
+    --button-height: var(--size-button-sm-h);
+    --button-padding: var(--spacer-2xs);
+    --button-font: var(--font-button-sm);
+    --button-border-width-default: var(--line-button-sm-border);
+}
+
+.commset-button-primary {
+    --button-color-background-default: var(--color-primary-background);
+    --button-color-background-focus: var(--color-primary-background);
+    --button-color-background-hover: var(--color-button-primary-background-hover);
+    --button-color-background-active: linear-gradient(var(--color-button-primary-background-hover), var(--color-button-primary-background-hover));
+    --button-color-background-disabled: var(--color-button-primary-background-disabled);
+    --button-color-background-activated: var(--color-button-primary-background-activated);
+    --button-color-text-default: var(--color-global-white);
+    --button-color-text-disabled: var(--color-button-primary-text-disabled);
+    --button-color-text-activated: var(--color-button-primary-text-activated);
+    --button-border-color-default: transparent;
+}
+.commset-button-small {
+    --button-height: var(--size-button-sm-h);
+    --button-padding: var(--spacer-2xs);
+    --button-font: var(--font-button-sm);
+    --button-border-width-default: var(--line-button-sm-border);
+}
+
+.commset-button {
+    @apply border-[color:var(--button-border-color)] border-[length:var(--button-border-width)] bg-[color:var(--button-color-background)] text-[color:var(--button-color-text)]
+    h-[var(--button-height)];
+    --button-border-color: var(--button-border-color-default);
+    --button-border-width: var(--button-border-width-default);
+    --button-color-background: var(--button-color-background-default);
+    --button-color-text: var(--button-color-text-default);
+    line-height: calc(var(--button-height) - (2 * var(--button-border-width)));
+  }
+  
+  .commset-button:focus {
+    --button-color-overlay: var(--color-button-overlay-focus);
+  }
+  
+  .commset-button:hover {
+    --button-color-overlay   : var(--color-button-overlay-focus);
+    --button-border-color    : var(--button-border-color-hover);
+    --button-color-background: var(--button-color-background-hover);
+    --button-color-text      : var(--button-color-text-hover, var(--button-color-text-default))
+  }
+  
+  
+  .commset-button:active {
+    --button-color-overlay   : var(--color-button-overlay-active);
+    /* --button-color-background: linear-gradient(var(--color-interactive-pressed), var(--color-interactive-pressed)), var(--button-color-background-active) */
+    --button-color-background: var(--color-interactive-pressed);
+  }
+  
+  .commset-button:disabled {
+    --button-border-color-hover: var(--button-border-color-default);
+    --button-color-background: var(--button-color-background-disabled);
+    --button-color-text: var(--button-color-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none
+  }
+  
+  
+
+

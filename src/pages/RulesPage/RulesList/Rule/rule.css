@@ -1,0 +1,49 @@
+.container-1223{
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    background-color: var(--newCommunityTheme-body);
+    border: 1px solid var(--newCommunityTheme-line);
+    color: var(--newCommunityTheme-bodyText);
+}
+
+.span-13214{
+    justify-content: center;
+    width: 48px;
+    flex: 0 0 48px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: 400;
+}
+
+.span-15212{
+    
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 16px 8px;
+    word-break: break-word;
+
+}
+
+.icon-123455{
+    color: var(--newCommunityTheme-actionIcon);
+    fill: var(--newCommunityTheme-actionIcon);
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    /* padding: 2px 12px; */
+}
