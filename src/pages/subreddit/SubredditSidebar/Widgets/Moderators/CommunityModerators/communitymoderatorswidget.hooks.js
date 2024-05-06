@@ -19,7 +19,7 @@ export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
             key='message-the-moderators'
             data={{
                 icon: <MessageIcon/>,
-                text: 'Message the moderators',
+                label: 'Message the moderators',
                 url: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
             }}
         />,
@@ -31,7 +31,7 @@ export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
             <MultiLinkButton
                 key='view-all-moderators'
                 data={{
-                    text: 'View all moderators',
+                    label: 'View all moderators',
                     url: `https://www.reddit.com/r/${subredditName}/about/moderators/`,
                 }}
             />,

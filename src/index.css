@@ -775,6 +775,13 @@ code {
   --color-tooltip-text-inverted: var(--color-neutral-background);
   --color-tooltip-bg-primary: var(--color-primary-background);
   --color-tooltip-text-primary: var(--color-primary-onBackground);
+  --message-text: #d7dadc;
+  --message-header:#818384;
+  --message-header-text:#296081;
+  --message-header-text-high:#343536;
+  --message-content-even:#272729;
+  --message-content-odd:#1A1A1B;
+  --message-content-text:#d7dadc;
 }
 .theme-light {
   /* add light scheme here */
@@ -1175,4 +1182,11 @@ code {
     --color-tooltip-text-inverted: var(--color-neutral-background);
     --color-tooltip-bg-primary: var(--color-primary-background);
     --color-tooltip-text-primary: var(--color-primary-onBackground);
+    --message-text: #373c3f;
+    --message-header: #0079d3;
+    --message-header-text:#edeff1;
+    --message-header-text-high:#80BCE9;
+    --message-content-odd:#f6f7f8;
+    --message-content-even:#f0f0f0;
+    --message-content-text:#000000;
 }

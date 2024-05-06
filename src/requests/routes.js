@@ -1,3 +1,4 @@
+
 // Define your API endpoints as key-value pairs for easy reference
 const API_ROUTES = {
     /* Example
@@ -12,6 +13,8 @@ const API_ROUTES = {
     notificationSettings: '/user/notificationsSettings',
     banner: '/user/banner',
     avatar: '/user/avatarImage',
+    subredditAvatar: '/subreddit/avatarImage',
+    subredditBanner: '/subreddit/banner',
     blockUser: '/user/blockUser',
     unblockUser: '/user/unblockUser',
     muteCommunity: '/user/muteCommunity',
@@ -43,7 +46,7 @@ const API_ROUTES = {
     communityDetails: (name) => `/subreddit/communityDetails?subRedditName=${name}`,
     subredditRules: (id) => `/subreddit/rule?subredditId=${id}`,
     widgets: (id) => `/subreddit/widget?subredditId=${id}`,
-    searchCommunities: `/subreddit/nameSearch`,
+    searchCommunities: (name) => `/subreddit/nameSearch?search=${name}`,
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
@@ -57,6 +60,21 @@ const API_ROUTES = {
     inviteMod: '/subreddit/mod/invite',
     acceptModinvite: '/subreddit/mod/invite/accept',
     declineModinvite: '/subreddit/mod/invite/decline',
+    sentMessages: '/message/getSentMessages',
+    unreadMessages: '/message/inbox/unread',
+    markAsRead: '/message/read',
+    markAsUnread: '/message/unread',
+    allInbox: '/message/getAllInbox',
+    unsendMessage: '/message/getSentMessages/unsend',
+    reorderRules: '/subreddit/reorderRules',
+    addRule: '/subreddit/rule',
+    getRemovalReasons: (id) => `/subreddit/removalReasons?subredditId=${id}`,
+    removalReason: '/subreddit/removalReason',
+    suggestCommunity: '/subreddit/suggest',
+    editCommunityDetails: '/subreddit/communityDetails',
+    editTextWidget: '/subreddit/TextWidget',
+    addBookmark: '/subreddit/bookmark/button',
+    addBookmarksWidget: '/subreddit/widget/bookmark',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

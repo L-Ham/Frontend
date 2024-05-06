@@ -7,31 +7,67 @@ export const usePostCreationPollOption = (index) => {
      * Handles the deletion of a poll option.
      */
     const handleDelete = () => {
-        const newOptions = {...pollData.options};
+        const options = Object.values(pollData.options);
+        options.splice(index, 1);
+        const newOptions = {};
 
-        // Remove the option at the current index
-        delete newOptions[index];
-
-        // Create a new options object to reorder and fill gaps
-        const reorderedOptions = Object.keys(newOptions).reduce((acc, key) => {
-            const keyNum = parseInt(key);
-            // If the current key is greater than the index of the option being deleted,
-            // shift it one position to the left
-            if (keyNum > index) {
-                acc[keyNum - 1] = newOptions[key];
-            } else if (keyNum < index) {
-                // If the key is less than the index, keep it as is
-                acc[keyNum] = newOptions[key];
-            }
-            return acc;
-        }, {});
-
-        // Setting the new poll data with reordered options and unchanged votingLength
-        setPollData({
-            ...pollData,
-            options: reorderedOptions,
+        options.forEach((option, i) => {
+            newOptions[i] = option;
         });
+
+        setPollData({...pollData, options: newOptions});
     };
+
+    const handleDragStart = (e) => {
+        e.dataTransfer.setData('text/plain', index);
+    };
+
+    const handleDragEnter = (e) => {
+        e.preventDefault();
+    };
+
+    const handleDragLeave = (e) => {
+    };
+
+
+    const handleDragEnd = (e) => {
+        e.preventDefault();
+        // e.target.style.backgroundColor = 'white';
+
+        const draggedIndex = e.dataTransfer.getData('text/plain');
+        const targetIndex = index;
+
+        if (draggedIndex === targetIndex) {
+            return;
+        }
+
+        if (draggedIndex === undefined || targetIndex === undefined) {
+            return;
+        }
+
+
+        const options = Object.values(pollData.options);
+        console.log('options drag end', options);
+        console.log('draggedIndex', draggedIndex);
+        console.log('targetIndex', targetIndex);
+
+        // swap the options
+        const temp = options[draggedIndex];
+        options[draggedIndex] = options[targetIndex];
+        options[targetIndex] = temp;
+
+        console.log('options after swap', options);
+
+        const newOptionsObject = {};
+        options.forEach((option, i) => {
+            newOptionsObject[i] = option;
+        });
+
+        console.log(newOptionsObject);
+
+        setPollData({...pollData, options: newOptionsObject});
+    };
+
 
     /**
      * Handles the change of value in the input field.
@@ -39,14 +75,17 @@ export const usePostCreationPollOption = (index) => {
      * @param {React.ChangeEvent<HTMLInputElement>} e - The change event.
      */
     const handleChange = (e) => {
-        const newPollData = {...pollData};
-        newPollData[index] = e.target.value;
-        setPollData({...newPollData});
+        const newPollOptions = pollData.options;
+        newPollOptions[index] = e.target.value;
+        setPollData({...pollData, options: newPollOptions});
     };
 
     return {
-        pollData,
         handleDelete,
         handleChange,
+        handleDragStart,
+        handleDragEnd,
+        handleDragEnter,
+        handleDragLeave,
     };
 };

@@ -2,10 +2,12 @@ import {useState, useEffect, useCallback} from 'react';
 import {useSubreddit} from '../../../subredditcontext.js';
 import {API_ROUTES} from '../../../../../requests/routes.js';
 import {axiosInstance as axios} from '../../../../../requests/axios.js';
+import {useNotifications} from '../../../../../generic components/Notifications/notificationsContext.js';
 
 
 export const useHeaderButtons = () => {
     const {about} = useSubreddit();
+    const {addNotification} = useNotifications();
 
     const {communityDetails: {subredditId: id, name, isMember: userIsSubscriber,
         isMuted: userIsMuted,
@@ -34,9 +36,10 @@ export const useHeaderButtons = () => {
         try {
             await axios.patch(API_ROUTES.muteCommunity, {subRedditName: name});
             setIsMuted(true);
+            addNotification({type: 'success', message: `muted r/${name}`});
         } catch (error) {
+            addNotification({type: 'error', message: error.response.data.message});
             console.error('Failed to mute community', error);
-            alert('Failed to mute community');
         }
     }, [name]);
 
@@ -44,9 +47,9 @@ export const useHeaderButtons = () => {
         try {
             await axios.delete(API_ROUTES.unmuteCommunity, {data: {subRedditName: name}});
             setIsMuted(false);
+            addNotification({type: 'success', message: `unmuted r/${name}`});
         } catch (error) {
-            console.error('Failed to unmute community', error);
-            alert('Failed to unmute community');
+            addNotification({type: 'error', message: error.response.data.message});
         }
     }, [name]);
 
@@ -65,7 +68,10 @@ export const useHeaderButtons = () => {
             await axios.patch(API_ROUTES.joinCommunity, {subRedditId: id});
             setIsSubscribed(true);
             setActiveNotificationLevel(null);
+            addNotification({type: 'success',
+                message: `You've joined r/${name}!`});
         } catch (error) {
+            addNotification({type: 'error', message: error.response.data.message});
             console.error('Failed to join community', error);
         }
     }, [id]);
@@ -75,12 +81,17 @@ export const useHeaderButtons = () => {
             await axios.delete(API_ROUTES.leaveCommunity, {data: {subRedditId: id}});
             setIsSubscribed(false);
             if (activeNotificationLevel !== null) setActiveNotificationLevel(null);
+            addNotification({type: 'success',
+                message: `You've left r/${name}`});
         } catch (error) {
+            addNotification({type: 'error',
+                message: error.response.data.message});
             console.error('Failed to leave community', error);
         }
     }, [id, activeNotificationLevel]);
 
-    const handleJoinClick = useCallback(async (forceJoin = false) => {
+    const handleJoinClick = useCallback(async (forceJoin = false, isModerator = false) => {
+        // TODO: handle moderator join/ leave
         setIsJoinDisabled(true);
         try {
             if (forceJoin) {
@@ -107,9 +118,10 @@ export const useHeaderButtons = () => {
         try {
             await axios.patch(API_ROUTES.setFavorite, {subRedditId: id});
             setIsFavourite(true);
+            addNotification({type: 'success', message: `added r/${name} to favorites`});
         } catch (error) {
+            addNotification({type: 'failure', message: error.response.data.message});
             console.error('Failed to set favorite', error);
-            alert('Failed to set favorite');
         }
     }, [id]);
 
@@ -117,9 +129,10 @@ export const useHeaderButtons = () => {
         try {
             await axios.patch(API_ROUTES.unsetFavorite, {subRedditId: id});
             setIsFavourite(false);
+            addNotification({type: 'success', message: `removed r/${name} from favorites`});
         } catch (error) {
+            addNotification({type: 'failure', message: error.response.data.message});
             console.error('Failed to unset favorite', error);
-            alert('Failed to unset favorite');
         }
     }, [id]);
 

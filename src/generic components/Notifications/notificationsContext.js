@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 // Create a context for the notification data
@@ -20,12 +20,16 @@ export function useNotifications() {
  */
 export function NotificationProvider({children}) {
     const [notifications, setNotifications] = useState([]);
+    // Using useRef to keep a mutable object that persists across renders
+    const notificationIdRef = useRef(0);
 
     // Function to add a notification
     const addNotification = (notification) => {
         console.log('notification', notification);
-        setNotifications((prevNotifications) => [...prevNotifications,
-            {...notification, id: prevNotifications.length}]);
+        // Access the current value of the ref and increment it
+        const id = notificationIdRef.current++;
+        console.log(id);
+        setNotifications((prevNotifications) => [...prevNotifications, {...notification, id: id}]);
     };
 
     // Function to remove a notification with a specific id

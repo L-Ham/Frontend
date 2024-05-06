@@ -6,12 +6,13 @@ import {getIconComponent} from '../../../../generic components/iconsmap.js';
 export const useCommunityOptions = () => {
     const {about} = useCreatePostPage();
     const [isCommunityOptionsListOpen, setIsCommunityOptionsListOpen] = useState(false);
-    const [searchInput, setSearchInput] = useState('');
+    const [searchInput, setSearchInput] = useState('r/');
+    const [isNotFirstRender, setIsNotFirstRender] = useState(false);
 
-    // Initialize search input based on about data
-    if (about && searchInput === '' && about.communityDetails.name) {
+    if (about && searchInput === 'r/' && about.communityDetails.name && !isNotFirstRender) {
         setSearchInput('r/' + about.communityDetails.name);
     }
+
 
     const avatarImage = about?.communityDetails?.avatarImage;
     const CarretDownIcon = getIconComponent('caret-down', false);
@@ -38,6 +39,9 @@ export const useCommunityOptions = () => {
 
     const handleSearchInput = (event) => {
         setSearchInput(event.target.value);
+        if (!isNotFirstRender) {
+            setIsNotFirstRender(true);
+        }
     };
 
     return {searchInput, handleSearchInput, handleListClick, isCommunityOptionsListOpen, Tag, tagProps, CarretDownIcon};
