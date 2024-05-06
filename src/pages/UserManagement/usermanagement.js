@@ -13,7 +13,6 @@ import {useSelector} from 'react-redux';
 import {Approve} from './approvemod';
 import {Modonly} from './modonly';
 import {Modsidebar} from '../../modsidebar/modsidebar';
-import {Mod} from '../pages/Profile/SideBar/SideBody/Edit/mod';
 
 /**
  *
