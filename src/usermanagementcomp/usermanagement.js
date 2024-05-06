@@ -12,6 +12,8 @@ import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {Approve} from './approvemod';
 import {Modonly} from './modonly';
+import {Modsidebar} from '../modsidebar/modsidebar';
+import {Mod} from '../pages/Profile/SideBar/SideBody/Edit/mod';
 
 /**
  *
@@ -189,6 +191,7 @@ function Usermanagement({name}) {
 
                     </div>
                     <div className='mx-0 my-10 flex'>
+                        <Modsidebar name={name}/>
                         <div className=' box-border w-full pl-[280px]'>
                             <div className=' mx-24 overflow-hidden rounded-[0_0_4px_4px]  pt-4'>
                                 <div className='mb-2'>
