@@ -1,0 +1,7 @@
+.Zfyj5B049nkMNmpt2F4PK {
+    flex-flow: row wrap;
+}
+._-0i7atRJ5NBsrRM5wuPpX {
+    @apply bg-[color:var(--newCommunityTheme-line)] border-t-[color:var(--newCommunityTheme-line)] flex justify-end p-4 rounded-br rounded-bl border-t border-solid;
+    -ms-flex-pack: end;
+}

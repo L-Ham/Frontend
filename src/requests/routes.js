@@ -47,6 +47,16 @@ const API_ROUTES = {
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
+    createCommunity: '/subreddit/createCommunity',
+    banUser: '/subreddit/user/ban',
+    unbanUser: '/subreddit/user/unban',
+    composeMessage: '/message/compose',
+    leaveMod: '/subreddit/mod/leave',
+    approveUser: '/subreddit/user/approve',
+    unapproveUser: '/subreddit/user/unapprove',
+    inviteMod: '/subreddit/mod/invite',
+    acceptModinvite: '/subreddit/mod/invite/accept',
+    declineModinvite: '/subreddit/mod/invite/decline',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

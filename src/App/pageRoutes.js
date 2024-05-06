@@ -4,6 +4,8 @@ import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
 import {useParams} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
+import {Usermanagement} from '../usermanagementcomp/usermanagement.js';
+import {Modqueue} from '../modqueue/modqueue.js';
 /**
  * Renders a route for displaying a post based on the provided ID.
  * @return {JSX.Element} The rendered Post component.
@@ -21,6 +23,27 @@ export function SubredditRoute() {
     const {name} = useParams();
     return (
         <Subreddit name={name}/>
+    );
+}
+/**
+ *
+ * @return {JSX.Element} The rendered Usermanagement component.
+
+ */
+export function Usermanagementroute() {
+    const {name} = useParams();
+    return (
+        <Usermanagement name={name}/>
+    );
+}
+/**
+ *
+ * @return  {JSX.Element} The rendered Modqueue component.
+ */
+export function ModqueueRoute() {
+    const {name} = useParams();
+    return (
+        <Modqueue name={name}/>
     );
 }
 
