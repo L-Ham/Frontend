@@ -2,17 +2,18 @@
 
 import React from 'react';
 import {useState} from 'react';
-import {Banned} from './banned';
-import {Moderators} from './moderators';
-import {Muted} from './muted';
-import {Approved} from './approved';
+import {Banned} from '../usermanagementcomp/banned';
+import {Moderators} from '../usermanagementcomp/moderators';
+import {Muted} from '../usermanagementcomp/muted';
+import {Approved} from '../usermanagementcomp/approved';
 import PropTypes from 'prop-types';
-import {axiosInstance as axios} from '../../requests/axios';
+import {axiosInstance as axios} from '../requests/axios';
 import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {Approve} from './approvemod';
 import {Modonly} from './modonly';
-import {Modsidebar} from '../../layouts/modsidebar/modsidebar';
+import {Modsidebar} from '../layouts/modsidebar/modsidebar';
+import {Mod} from '../pages/Profile/SideBar/SideBody/Edit/mod';
 
 /**
  *
@@ -177,14 +178,21 @@ function Usermanagement({name}) {
         <div>
             {showpopup && !isxclicked && <Approve onAccept={handleAccept}
                 onDecline={handleDecline} name={name} onxclick={handlexclick} />}
+            {!isamod && <Modonly name={name} />}
 
-
-            <div className=' transition-[margin-top] duration-[0.3s] ease-[ease]'>
+            {isamod &&
+            <div className='pt-12 transition-[margin-top] duration-[0.3s] ease-[ease]'>
                 <div className=' flex min-h-screen flex-col overflow-x-auto text-[#1c1c1c]'>
+                    <div className='fixed z-30 flex h-10 w-full flex-row items-center border-b
+                border-solid border-neutral-200 bg-white pl-6 text-xs  font-bold uppercase leading-6 tracking-[0.5px]'>
+                        <a className=' mr-3 inline-block text-[#0079d3]' href='/r/'>r/{name}
+                        </a>
+                    /MODERATORS
 
-                    <div className='mx-0 flex'>
-
-                        <div className=' box-border w-full '>
+                    </div>
+                    <div className='mx-0 my-10 flex'>
+                        <Modsidebar name={name}/>
+                        <div className=' box-border w-full pl-[280px]'>
                             <div className=' mx-24 overflow-hidden rounded-[0_0_4px_4px]  pt-4'>
                                 <div className='mb-2'>
                                     <div className="text-lg font-bold leading-6">User Management</div>
@@ -229,7 +237,7 @@ function Usermanagement({name}) {
 
 
             </div>
-
+            }
         </div>
 
 

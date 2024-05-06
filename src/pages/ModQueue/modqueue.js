@@ -24,11 +24,11 @@ function Modqueue({name, tab}) {
     const white = 'bg-white';
 
     return (
-        <div className='pt-12 transition-[margin-top] duration-[0.3s] ease-[ease]'>
+        <div className=' transition-[margin-top] duration-[0.3s] ease-[ease]'>
             <div className=' flex min-h-screen flex-col overflow-x-auto text-[#1c1c1c]'>
 
-                <div className='mx-0 my-10 flex'>
-                    <div className=' box-border w-full pl-[280px]'>
+                <div className='mx-0  flex'>
+                    <div className=' box-border w-full '>
                         <div className=' mx-24 overflow-hidden rounded-[0_0_4px_4px]  pt-4'>
                             <div className='mb-2'>
                                 <div className="text-lg font-bold leading-6">Queues</div>

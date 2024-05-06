@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import React from 'react';
 import {Login} from '../pages/registration_pages/login.js';
 import {SignUp} from '../pages/registration_pages/signup.js';
@@ -24,6 +24,8 @@ import {MessagesRoute} from './pageRoutes.js';
 import {RemovalPageRoute, RulesPageRoute} from './pageRoutes.js';
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
 import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
+import {Modlayout} from '../generic components/modlayout.js';
+
 
 /**
  * Renders the main application component.
@@ -37,6 +39,16 @@ function App() {
                 <LayoutWithNavigation>
                     {component}
                 </LayoutWithNavigation>
+                <Notifications />
+            </NotificationProvider>
+        );
+    };
+    const renderModPage = (component) => {
+        return (
+            <NotificationProvider>
+                <Modlayout>
+                    {component}
+                </Modlayout>
                 <Notifications />
             </NotificationProvider>
         );
@@ -60,13 +72,14 @@ function App() {
                 <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
                 <Route path="/all" element={renderWithLayout(<HomePage />)} />
                 <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
-                <Route path="/r/:name/about/rules" element={renderWithLayout( <RulesPageRoute/>)} />
-                <Route path="/r/:name/about/removal" element={renderWithLayout(<RemovalPageRoute/>)} />
-                <Route path='/r/:name?/about/settings' element={renderWithLayout(<AboutSettings />)} />
-                <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
+                <Route path="/r/:name/about/rules" element={renderModPage( <RulesPageRoute/>)} />
+                <Route path="/r/:name/about/removal" element={renderModPage(<RemovalPageRoute/>)} />
+                <Route path='/r/:name?/about/settings' element={renderModPage(<AboutSettings />)} />
+                <Route path='/r/:name?/about/scheduledposts' element={renderModPage(<ScheduledPosts />)} />
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
-                <Route path="/r/:name/about/usermanagement" element={<Usermanagementroute />} />
-                <Route path="/r/:name/about/:tab" element={<ModqueueRoute />} />
+                <Route path="/r/:name/about/modqueue" element={renderModPage(<ModqueueRoute />)} />
+                <Route path="/r/:name/about/usermanagement" element={renderModPage(<Usermanagementroute />)} />
+
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
