@@ -6,13 +6,11 @@ export const useWidgetsRenderer = () => {
     // TODO_BACKEND: update destructuring to match the actual data structure
     if (!widgets || !about) return {};
 
-    const userIsModerator = true;
-
     const {
         order: allWidgets,
     } = widgets;
 
     const items = widgets;
 
-    return {allWidgets, items, userIsModerator, about};
+    return {allWidgets, items, about};
 };

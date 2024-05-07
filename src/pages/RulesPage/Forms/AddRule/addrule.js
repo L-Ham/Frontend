@@ -134,15 +134,15 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
 
     return (
         <section className='m-[20px] block
-        min-h-[410px] max-w-[838px] bg-[var(--background)]'>
+        min-h-[410px] max-w-[350px] w-[350px] bg-[var(--background)]' data-testid="rule-section">
             {/* Header */}
-            <header className="_1Fa5Xv7f16v5IC2Tq1m2Fy">
+            <header className="_1Fa5Xv7f16v5IC2Tq1m2Fy" data-testid="rule-header">
                 <div className="_1zTJo0Ndih4fp__5DjbClN">
                     <div className="_5gAwSCo7K8G413IoE78Ml">
-                        <div className="eLnlHLGCDxjFf3jfGTcZu">Add rule</div></div>
+                        <div className="eLnlHLGCDxjFf3jfGTcZu" data-testid="rule-title">{isEdit ? "Edit rule" : "Add rule"}</div></div>
                     <div className="_2ghjBMFIsORwdO3oh2Kq6g">
                         <button className="qYzY57HWQ8W424hj3s10- zKQ8lyAF3pYyDoSlTpTjA"
-                            onClick={handleClose}>
+                            onClick={handleClose} data-testid="rule-close-button">
                             <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                                 className="_3XSQHPxjCTSWWZh_u-d0Xf">
                                 <polygon fill="inherit" points="11.649
@@ -155,22 +155,25 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
                 </div>
             </header>
             {/* Body */}
-            <div className="_1uaasV6RaxBfRyVgQJdiKs">
-                <label className="_3xiY8nTCVp16qSb6CGW2Kv">
+            <div className="_1uaasV6RaxBfRyVgQJdiKs" data-testid="rule-body">
+                <label className="_3xiY8nTCVp16qSb6CGW2Kv" data-testid="rule-label">
                     <p className="mFTHPdbEAklUs8yhT4Xm7 _1AlCnggMuPLxxDUbWWhG2q">Rule</p>
                     <textarea placeholder="Rule displayed (e.g. &quot;No photos&quot;)"
                         className="_2h8O7PjrCXfaJJWKrAxJPL QP-_TXfrh6G1-IRJif4Cy"
                         value={rule}
-                        onChange={handleRuleChange}>
-                    </textarea><div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f">100 Characters remaining
-                    </div></label><label className="_3xiY8nTCVp16qSb6CGW2Kv">
+                        onChange={handleRuleChange}
+                        maxLength={100}
+                        data-testid="rule-textarea">
+                    </textarea><div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f">{100 - rule.length} Characters remaining
+                    </div></label><label className="_3xiY8nTCVp16qSb6CGW2Kv" data-testid="applies-to-label">
                     <p className="mFTHPdbEAklUs8yhT4Xm7 _2I1A_fyvhaC7TYrYwA047Y">Applies to</p>
-                    <div aria-label="RULE_KIND_PICKER" role="radiogroup">
+                    <div aria-label="RULE_KIND_PICKER" role="radiogroup" data-testid="rule-kind-picker">
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <input type="radio" value="posts and comments" checked={appliedTo === 'posts and comments'}
                                 onChange={() => {
                                     setAppliedTo('posts and comments');
                                 }}
+                                data-testid="rule-kind-picker-posts-comments"
                             />
                             <div aria-checked="true" role="radio" tabIndex="0"
                                 className="XZK-LTFT5CgGo9MvPQQsy
@@ -185,6 +188,7 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
                                 checked={appliedTo === 'posts only'} onChange={() => {
                                     setAppliedTo('posts only');
                                 }}
+                                data-testid="rule-kind-picker-posts-only"
                             />
                             <div aria-checked="false" role="radio"
                                 tabIndex="-1" className="XZK-LTFT5CgGo9MvPQQsy
@@ -200,6 +204,7 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
                                 onChange={() => {
                                     setAppliedTo('comments only');
                                 }}
+                                data-testid="rule-kind-picker-comments-only"
                             />
                             <div aria-checked="false"
                                 role="radio" tabIndex="-1"
@@ -210,44 +215,49 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
                             </div>
                         </div>
                     </div>
-                </label><label className="_3xiY8nTCVp16qSb6CGW2Kv">
+                </label><label className="_3xiY8nTCVp16qSb6CGW2Kv" data-testid="report-reason-label">
                     <p className="mFTHPdbEAklUs8yhT4Xm7 _1y0X9006mE_5nlHfol1nc2">Report reason
                     </p><div className="_27eskYssCs-urVW1uHI4YI
-                    _21sqmEi4OnC4uXlcUGDT_T">
+                    _21sqmEi4OnC4uXlcUGDT_T mb-2">
                         Defaults to rule name if left blank</div><textarea
                         placeholder="Reason rule is broken (e.g. &quot;This is a photo&quot;)"
                         className="_2h8O7PjrCXfaJJWKrAxJPL _1hdSGf--gQDRwsU96bzao1"
                         value={reportReason}
                         onChange={handleReportReasonChange}
+                        maxLength={100}
+                        data-testid="report-reason-textarea"
                     ></textarea><div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f">
-                            100 Characters remaining</div></label><div className="_26a81Mk5bsppGjI9AXbmWS">
+                            {100 - reportReason.length} Characters remaining</div></label><div className="_26a81Mk5bsppGjI9AXbmWS">
                     <p className="mFTHPdbEAklUs8yhT4Xm7 _2I1A_fyvhaC7TYrYwA047Y">Full description</p><textarea
                         placeholder="Enter the full description of the rule."
                         className="_2h8O7PjrCXfaJJWKrAxJPL _1brIoxFWlohWpvu34OwZQP"
                         value={description}
                         onChange={handleDescriptionChange}
+                        maxLength={500}
+                        data-testid="full-description-textarea"
                     ></textarea>
-                    <div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f">500 Characters remaining</div>
+                    <div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f">{500 - description.length} Characters remaining</div>
                 </div>
             </div>
             {/* footer */}
-            <footer className="_-0i7atRJ5NBsrRM5wuPpX R-9ebJbU9igzPDfUi4Txg">
+            <footer className="_-0i7atRJ5NBsrRM5wuPpX R-9ebJbU9igzPDfUi4Txg" data-testid="rule-footer">
                 <button role="button" tabIndex="0" disabled=""
                     className="hHFW3BkgX7tSn5Nev-ooY _2iuoyPiKHN3kfOoeIQalDT
                   _10BQ7pjWbeYP63SAPNS8Ts HNozj_dKjQZ59ZsfEegz8 "
                     onClick={handleSubmit}
-                >Add new rule</button>
+                    data-testid="rule-submit-button"
+                >{isEdit ? 'Save' : 'Add new rule'}</button>
                 <button role="button" tabIndex="0"
                     className="_1QUX9-zZuGtifS6jJBUyh- _2iuoyPiKHN3kfOoeIQalDT
                    _2tU8R9NTqhvBrhoNAXWWcP HNozj_dKjQZ59ZsfEegz8
                   "
-                    onClick={handleClose}>Cancel</button>
+                    onClick={handleClose} data-testid="rule-cancel-button">Cancel</button>
                 {isEdit && <button role="button" tabIndex="0" className="
                     _2ulRgczjI5SWCMgSA1CNLj
                      _2yAePObDkhgZql3P1FHRu1
                     _2iuoyPiKHN3kfOoeIQalDT _3zbhtNO0bdck0oYbYRhjMC
                     HNozj_dKjQZ59ZsfEegz8 "
-                onClick={handleDelete}
+                onClick={handleDelete} data-testid="rule-delete-button"
                 >Delete</button>}
             </footer>
         </section>

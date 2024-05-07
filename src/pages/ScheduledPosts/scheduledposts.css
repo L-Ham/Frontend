@@ -25,16 +25,16 @@
     z-index: 3;
     top: 89px;
 }
-.pr-0 {
+.hhh-pr-0 {
     padding-right: 0px;
 }
-.bg-neutral-background {
+.hhh-bg-neutral-background {
     background-color: var(--color-neutral-background);
 }
-.mb-xs {
+.hhh-mb-xs {
     margin-bottom: 0.5rem;
 }
-.fixed {
+.hhh-fixed {
     position: fixed;
 }
 

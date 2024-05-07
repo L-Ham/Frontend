@@ -7,7 +7,7 @@ import React from 'react';
  */
 export function RemovalReasons() {
     return (
-        <div>
+        <div data-testid="remov-reasons">
             Removal Reasons
         </div>
     );

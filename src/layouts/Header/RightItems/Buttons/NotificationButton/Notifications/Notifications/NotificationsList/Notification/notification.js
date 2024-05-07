@@ -3,6 +3,9 @@ import propTypes from 'prop-types';
 import {Img} from './Img/img';
 import {Content} from './Content/content';
 import {Options} from './Options/options';
+import {API_ROUTES} from '../../../../../../../../../requests/routes';
+import {useNotifications} from '../../../../../../../../../generic components/Notifications/notificationsContext';
+import {axiosInstance as axios} from '../../../../../../../../../requests/axios';
 
 /**
  * Notification
@@ -14,12 +17,31 @@ import {Options} from './Options/options';
  * */
 export function Notification({notification, view}) {
     if (!notification) return null;
-    console.log(notification);
 
-    const {id, title, description, time, status, img, type} = notification;
+    const {id, title, description, time, status, img, type, subredditName} = notification;
+    const {addNotification} = useNotifications();
+
+    const markAsRead = async () => {
+        try {
+            await axios.patch(API_ROUTES.markNotificationAsRead, {
+                'notificationId': id,
+            });
+            addNotification({type: 'success', message: 'Notification marked as read'});
+        } catch (error) {
+            addNotification({type: 'error', message: error.message});
+        }
+    };
+
+    const handleClick = async () => {
+        if (status === 'unread') {
+            await markAsRead();
+        }
+        // then go the subreddit
+        window.open(`/r/${subredditName ? subredditName : ''}`, '_self');
+    };
 
     return (
-        <div>
+        <div onClick={handleClick}>
             <a className='!hover:no-underline !focus:no-underline !active:no-underline a !m-0 !border-0
             !p-0 text-inherit !no-underline
             visited:text-inherit

@@ -15,19 +15,19 @@ export function Menu() {
     ];
 
     return (
-        <div className='mb-2'>
+        <div className='mb-2' data-testid="menu-container">
             <div className="text-[1.125rem] font-bold leading-6
-            text-[var(--newCommunityTheme-bodyText)]">Rules and Removal Reasons</div>
-            <div className='mt-3 flex overflow-auto'>
+    text-[var(--newCommunityTheme-bodyText)]" data-testid="menu-title">Rules and Removal Reasons</div>
+            <div className='mt-3 flex overflow-auto' data-testid="menu-tabs-container">
                 {tabs.map((tab) => (
                     <a key={tab.name}
                         className={`mr-4 cursor-pointer rounded-full
-                ${tab.type !== type ? 'bg-transparent' : 'bg-[var(--color-secondary-background-selected)]'} px-4
-                py-3 text-[0.875rem]/[1.25rem]
-                font-semibold text-[var(--color-neutral-content-strong)]
-                no-underline
-                hover:no-underline`}
-                        href={tab.url}>{tab.name}</a>
+            ${tab.type !== type ? 'bg-transparent' : 'bg-[var(--color-secondary-background-selected)]'} px-4
+            py-3 text-[0.875rem]/[1.25rem]
+            font-semibold text-[var(--color-neutral-content-strong)]
+            no-underline
+            hover:no-underline`}
+                        href={tab.url} data-testid={`menu-tab-${tab.name}`}>{tab.name}</a>
                 ))}
             </div>
         </div>

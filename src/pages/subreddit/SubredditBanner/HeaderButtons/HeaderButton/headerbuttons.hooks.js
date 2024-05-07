@@ -9,6 +9,8 @@ export const useHeaderButtons = () => {
     const {about} = useSubreddit();
     const {addNotification} = useNotifications();
 
+    if (!about) return {};
+
     const {communityDetails: {subredditId: id, name, isMember: userIsSubscriber,
         isMuted: userIsMuted,
         isFavorite: userHasFavourited}} = about;

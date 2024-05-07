@@ -19,17 +19,17 @@ export function RulesList() {
     // if the type is removal reasons, we want to show the removal reasons instead of the rules
     if (type === 'removal-reasons') {
         return (
-            <div className='community-rules w-full rounded-b'>
+            <div className='community-rules w-full rounded-b' data-testid="community-reasons">
                 {removalReasons.map((reason, idx) => (
                     <Reason key={idx} reason={reason}
-                        idx={idx} data-testid={`community-rule-${idx}`} type={type}/>
+                        idx={idx} data-testid={`reason-component-${idx}`} type={type}/>
                 ))}
             </div>
         );
     }
 
     return (
-        <div className='community-rules w-full rounded-b'>
+        <div className='community-rules w-full rounded-b' data-testid="community-rules" >
             {sortedRules.map((rule, idx) => (
                 <Rule key={idx} rule={rule} idx={idx} data-testid={`community-rule-${idx}`} type={type}/>
             ))}

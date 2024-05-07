@@ -36,7 +36,7 @@ export function Options({type}) {
     ];
 
     return (
-      <div className="flex flex-col items-center justify-start" data-testid="main-div-&(^KMSAJHVBUbkjl">
+      <div className="flex flex-col items-center justify-start z-[10]" data-testid="main-div-&(^KMSAJHVBUbkjl">
     <div data-testid="inner-div-^&*@XZMKLDSAsssss">
         <div className='relative' data-testid="button-container-#%^$#jnz<anSNJSA">
             <button
@@ -46,7 +46,10 @@ export function Options({type}) {
                 nav-bar-noti-menu__list-button
                 inline-flex items-center
                 justify-center px-[var(--rem6)]"
-                onClick={() => setShowOptions(!showOptions)}
+                onClick={(e) => {
+                    setShowOptions(!showOptions);
+                    e.stopPropagation();
+                }}
                 data-testid="options-button-~!@#@#~!@sdJ"
             >
                 <span className="flex items-center justify-center" data-testid="button-span">

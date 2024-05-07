@@ -2,12 +2,14 @@ import {buttonClasses as classes} from '../../../subreddit.styles.js';
 import {useSubreddit} from '../../../subredditcontext.js';
 
 export const useJoinButton = ({handleJoinClick, isSubscribed, subscribeLabel, unSubscribeLabel}) => {
-    const {isModerator, about} = useSubreddit();
+    const {about} = useSubreddit();
 
-    if (isModerator) {
+    if (!about) return {};
+
+    if (about.communityDetails.isModerator) {
         return {
             handleClick: () => {
-                window.open(`r/${about.communityDetails.name}/about/modqueue`, '_blank');
+                window.open(`${about.communityDetails.name}/about/modqueue`, '_blank');
             },
             buttonClasses: classes.joinedButton,
             buttonLabel: 'Mod Tools',

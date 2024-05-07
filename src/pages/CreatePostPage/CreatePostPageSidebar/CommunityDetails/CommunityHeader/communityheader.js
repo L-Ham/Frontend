@@ -27,12 +27,12 @@ export function CommunityHeader() {
                     className={classes.communityHeaderA}
                     target="_blank"
                     onClick={() => {
-                        navigate('/r/OnePiece/');
+                        navigate(`/r/${name}/`);
                     }}
                     data-testid="community-header-a"
                 >
                     <span className={classes.communityHeaderSpan}
-                        title="r/OnePiece" data-testid="community-header-span">
+                        title={`r/${name}`} data-testid="community-header-span">
                         {`r/${name}`}
                     </span>
                 </a>

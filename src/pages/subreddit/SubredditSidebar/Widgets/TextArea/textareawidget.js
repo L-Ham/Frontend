@@ -13,6 +13,8 @@ import {SubredditWidget} from '../Widget/subredditwidget.js';
  * @return {JSX.Element} The rendered component.
  */
 export function TextAreaWidget({textHtml, shortName: title, isCustomizable=false, onEditClick=null}) {
+    console.log('TextAreaWidgetCustom', isCustomizable, onEditClick);
+
     const {text} = useTextAreaWidget({textHtml});
 
     if (!text) return null;

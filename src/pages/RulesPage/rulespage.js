@@ -13,10 +13,10 @@ import {RulesPageProvider} from './rulespagecontext.js';
 export function RulesPage({name}) {
     return (
         <RulesPageProvider name={name} type="rules">
-            <div className='box-border size-full min-h-lvh'>
+            <div className='box-border size-full min-h-lvh' data-testid="rules-page">
                 <div className='mx-[24px] overflow-hidden rounded-[0_0_4_4] pt-[16px]'>
-                    <Header/>
-                    <RulesList/>
+                    <Header data-testid="header-component"/>
+                    <RulesList data-testid="rules-list-component"/>
                 </div>
             </div>
         </RulesPageProvider>
