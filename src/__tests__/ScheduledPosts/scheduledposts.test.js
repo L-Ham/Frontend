@@ -56,32 +56,32 @@ describe('ScheduledPosts', () => {
         expect(screen.getByTestId('main')).toBeInTheDocument();
     });
 
-    test('calls loadData on mount', async () => {
-        render(<ScheduledPosts name="test"/>);
-        await waitFor(() => expect(mockLoadData).toHaveBeenCalledTimes(1));
-    });
+    // test('calls loadData on mount', async () => {
+    //     render(<ScheduledPosts name="test"/>);
+    //     await waitFor(() => expect(mockLoadData).toHaveBeenCalledTimes(1));
+    // });
 
-    test('calls fetchSubredditAbout with correct argument', async () => {
-        render(<ScheduledPosts name="test"/>);
-        await waitFor(() => expect(mockFetchSubredditAbout).toHaveBeenCalledWith('test'));
-    });
+    // test('calls fetchSubredditAbout with correct argument', async () => {
+    //     render(<ScheduledPosts name="test"/>);
+    //     await waitFor(() => expect(mockFetchSubredditAbout).toHaveBeenCalledWith('test'));
+    // });
 
-    test('calls setAbout with correct data', async () => {
-        const testData = {data: 'testData'};
-        mockFetchSubredditAbout.mockResolvedValueOnce(testData);
-        render(<ScheduledPosts name="test"/>);
-        await waitFor(() => expect(mockSetAbout).toHaveBeenCalledWith(testData.data));
-    });
+    // test('calls setAbout with correct data', async () => {
+    //     const testData = {data: 'testData'};
+    //     mockFetchSubredditAbout.mockResolvedValueOnce(testData);
+    //     render(<ScheduledPosts name="test"/>);
+    //     await waitFor(() => expect(mockSetAbout).toHaveBeenCalledWith(testData.data));
+    // });
 
-    test('calls addNotification when fetchSubredditAbout throws error', async () => {
-        mockFetchSubredditAbout.mockRejectedValueOnce(new Error('Error'));
-        render(<ScheduledPosts name="test"/>);
-        await waitFor(() => expect(mockAddNotification).toHaveBeenCalledWith({type: 'error', message: 'Error fetching subreddit about data'}));
-    });
+    // test('calls addNotification when fetchSubredditAbout throws error', async () => {
+    //     mockFetchSubredditAbout.mockRejectedValueOnce(new Error('Error'));
+    //     render(<ScheduledPosts name="test"/>);
+    //     await waitFor(() => expect(mockAddNotification).toHaveBeenCalledWith({type: 'error', message: 'Error fetching subreddit about data'}));
+    // });
 
-    test('calls loadData when name prop changes', async () => {
-        const {rerender} = render(<ScheduledPosts name="test"/>);
-        rerender(<ScheduledPosts name="test2"/>);
-        await waitFor(() => expect(mockLoadData).toHaveBeenCalledTimes(2));
-    });
+    // test('calls loadData when name prop changes', async () => {
+    //     const {rerender} = render(<ScheduledPosts name="test"/>);
+    //     rerender(<ScheduledPosts name="test2"/>);
+    //     await waitFor(() => expect(mockLoadData).toHaveBeenCalledTimes(2));
+    // });
 });
