@@ -1,6 +1,7 @@
 
 import React, {useEffect} from 'react';
 
+
 // eslint-disable-next-line no-unused-vars
 import {Banbutton} from './banbutton';
 import {Userpopupban} from './userpopupban';
@@ -8,7 +9,9 @@ import {useState} from 'react';
 import {Approveduserentry} from './approveduserentry';
 
 import {axiosInstance as axios} from '../../requests/axios';
+
 import PropTypes from 'prop-types';
+import {Pendinguserentry} from './pendinguserentry';
 /**
  *
  * @return {JSX.Element} UserHelp
@@ -42,6 +45,8 @@ function Approved({name}) {
     // eslint-disable-next-line no-unused-vars
     const hardcodedUsernames = ['Marly', 'ziad', 'Rana', 'amr', 'hussein', 'sarraa', 'david'];
     const [approved, setapproved] = useState([]);
+    const [pending, setpending] = useState([]);
+
     /**
      * @return {void}
      */
@@ -79,6 +84,29 @@ function Approved({name}) {
         // Call the Getmoderators function once when the component mounts
         getapproved();
     }, []);
+
+
+    /**
+     * @return {void}
+     */
+    async function getpending() {
+        try {
+            const response = await axios.get(`/subreddit/users/pending?subredditName=${name}`);
+            // If the API call is successful, update the state with the moderators' data
+            setpending(response.data.pendingMembers);
+            console.log(response);
+            console.log(pending);
+        } catch (error) {
+            console.log(error);
+        }
+        console.log(name);
+    }
+    useEffect(() => {
+        // Call the Getmoderators function once when the component mounts
+        getpending();
+    }, []);
+
+
     /**
      * @return {void}
      */
@@ -91,6 +119,20 @@ function Approved({name}) {
      *
      */
     async function handlenewapproved() {
+        getapproved();
+    }
+
+    /**
+     * @return {void}
+     */
+    async function handlenewrejected() {
+        getpending();
+    }
+    /**
+     * @return {void}
+     */
+    async function handlenewaccepted() {
+        getpending();
         getapproved();
     }
 
@@ -141,6 +183,31 @@ function Approved({name}) {
 
                             />
                         ) : null
+                    ))}
+
+                </div>
+            </div>
+            <div style={{paddingTop: '40px'}} />
+            <div className="mb-2 ml-1 text-sm font-medium leading-[18px]
+             text-[#1c1c1c] ">Pending Users</div>
+
+            <div className=' border border-solid border-[#EDEFF1]'>
+                <div data-scroller-first>
+                    {/* Map over the hardcodedUsernames array and render
+                     Approveduserentry component for each username */}
+                    {pending &&pending.map((user, index) => (
+
+                        <Pendinguserentry
+                            key={index}
+                            username={user.userName}
+                            imageurl={user.avatarImage}
+                            name={name}
+                            onremove={handlenewrejected}
+                            onapprove={handlenewaccepted}
+
+
+                        />
+
                     ))}
 
                 </div>

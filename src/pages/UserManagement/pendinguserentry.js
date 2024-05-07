@@ -8,25 +8,48 @@ import {API_ROUTES} from '../../requests/routes';
 
 /**
  *
- * @return {JSX.Element} UserHelp
+ * @return {JSX.Element} Pendinguserentry
  */
-function Approveduserentry({username, imageurl, name, onremove}) {
-    Approveduserentry.propTypes = {
+function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
+    Pendinguserentry.propTypes = {
         username: PropTypes.string,
         imageurl: PropTypes.string,
         name: PropTypes.string,
         onremove: PropTypes.func,
+        onapprove: PropTypes.func,
     };
+    /**
+     * @return {void}
+     */
+    async function approveuser() {
+        try {
+            const response = await axios.patch(API_ROUTES.approveUser, {
+                subredditName: {name},
+                username: username,
+
+            });
+            console.log(response);
+            onapprove(true);
+            console.log(name);
+            console.log(username);
+        } catch (error) {
+            console.log(error);
+            console.log(name);
+            console.log(username);
+        }
+    }
     /**
      * @return {void}
      */
     async function unapproveuser() {
         try {
-            const response = await axios.patch(API_ROUTES.removeUser, {
+            const response = await axios.patch(API_ROUTES.unapproveUser, {
                 subredditName: {name},
                 userName: username,
             });
             console.log(response);
+            console.log(name);
+            console.log(username);
             onremove(true);
         } catch (error) {
             console.log(error);
@@ -65,8 +88,8 @@ function Approveduserentry({username, imageurl, name, onremove}) {
                                                 border border-solid border-transparent fill-[#0079d3]
                                                  px-4 py-1 text-center text-sm
                                                  font-bold leading-[17px] tracking-[unset]
-                                                  text-[#0079d3] hover:bg-[#edeff1]">
-                                            Send message</button>
+                                                  text-[#0079d3] hover:bg-[#edeff1]" onClick={approveuser}>
+                                            Approve</button>
 
                     <button role="button" tabIndex="0"
                         className="relative box-border flex min-h-[32px]
@@ -74,7 +97,7 @@ function Approveduserentry({username, imageurl, name, onremove}) {
                                                 rounded-full border border-solid border-transparent fill-[#0079d3]
                                                 px-4 py-1 text-center text-sm font-bold
                                                  leading-[17px] tracking-[unset] text-[#0079d3]
-                                                 hover:bg-[#edeff1]"onClick={unapproveuser}>Remove
+                                                 hover:bg-[#edeff1]"onClick={unapproveuser}>Reject
                     </button>
 
 
@@ -89,4 +112,4 @@ function Approveduserentry({username, imageurl, name, onremove}) {
     );
 }
 
-export {Approveduserentry};
+export {Pendinguserentry};

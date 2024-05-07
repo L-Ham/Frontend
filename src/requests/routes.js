@@ -57,6 +57,7 @@ const API_ROUTES = {
     leaveMod: '/subreddit/mod/leave',
     approveUser: '/subreddit/user/approve',
     unapproveUser: '/subreddit/user/unapprove',
+    removeUser: '/subreddit/user/remove',
     inviteMod: '/subreddit/mod/invite',
     acceptModinvite: '/subreddit/mod/invite/accept',
     declineModinvite: '/subreddit/mod/invite/decline',

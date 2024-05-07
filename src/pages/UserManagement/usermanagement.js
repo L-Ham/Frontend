@@ -90,26 +90,6 @@ function Usermanagement({name}) {
         setIsbanPressed(false);
     };
 
-    /**
-     * @return {void}
-     */
-    async function getinvitedmods() {
-        try {
-            const response = await axios.get(`/subreddit/moderators/invited?subredditName=${name}`);
-            // If the API call is successful, update the state with the moderators' data
-            setinvited(response.data.invitedModerators);
-            console.log(response);
-            console.log(invited);
-            console.log('invitedapi in usermanagement');
-        } catch (error) {
-            console.log(error);
-        }
-        console.log(name);
-    }
-    useEffect(() => {
-        // Call the Getmoderators function once when the component mounts
-        getinvitedmods();
-    }, []);
 
     /**
      * @return {void}
@@ -131,32 +111,7 @@ function Usermanagement({name}) {
         // Call the Getmoderators function once when the component mounts
         getmoderators();
     }, []); // Empty dependency array ensures that this effect runs only once when the component mounts
-    /**
-        * @return {void}
-     */
-    async function handleAccept() {
-        getmoderators();
-    }
-    /**
-     * @return {void}
-     */
-    async function handleDecline() {
-        getmoderators();
-        getinvitedmods();
-    }
 
-
-    useEffect(() => {
-        // Check if the invited array has been set and then set showpopup accordingly
-        if (invited.length > 0) {
-            invited.forEach((invitedMod) => {
-                if (invitedMod.userName === username) {
-                    setshowpopup(true);
-                }
-            });
-        }
-        console.log('showpopup', showpopup);
-    }, [invited, username]);
 
     useEffect(() => {
         // Check if the moderators array has been set and then set isamod accordingly
@@ -175,8 +130,6 @@ function Usermanagement({name}) {
 
     return (
         <div>
-            {showpopup && !isxclicked && <Approve onAccept={handleAccept}
-                onDecline={handleDecline} name={name} onxclick={handlexclick} />}
 
 
             <div className=' transition-[margin-top] duration-[0.3s] ease-[ease]'>
