@@ -66,6 +66,11 @@ const API_ROUTES = {
     editTextWidget: '/subreddit/TextWidget',
     addBookmark: '/subreddit/bookmark/button',
     addBookmarksWidget: '/subreddit/widget/bookmark',
+    addScheduledPost: '/post/scheduledPost',
+    getScheduledPosts: '/post/scheduledPosts',
+    getNotifications: (limit) => `/notification/user?limit${limit}`,
+    markNotificationAsRead: '/notification/markRead',
+    markAllNotificationsAsRead: '/notification/markAllRead',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };
