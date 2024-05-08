@@ -782,6 +782,7 @@ code {
   --message-content-even:#272729;
   --message-content-odd:#1A1A1B;
   --message-content-text:#d7dadc;
+  --graytowhite: #ffffff;
 }
 .theme-light {
   /* add light scheme here */
@@ -1189,4 +1190,5 @@ code {
     --message-content-odd:#f6f7f8;
     --message-content-even:#f0f0f0;
     --message-content-text:#000000;
+    --graytowhite: rgb(237, 239, 241);
 }

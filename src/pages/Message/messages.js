@@ -16,9 +16,10 @@ export function Messages({name, section}) {
     return (
         <div className='order-2  box-border flex w-full flex-col  nd:col-start-2'
             style={{font: 'inherit'}} data-testid={`message-main`}>
-            <div className=' z-0 m-0 block min-h-screen text-clip p-0 text-[var(--message-text)]'
-                style={{
-                    font: ' normal x-small verdana, arial, helvetica, sans-serif'}}>
+            <div className=' z-0 m-0 block min-h-screen text-clip p-0
+             text-[var(--message-text)]'
+            style={{
+                font: ' normal x-small verdana, arial, helvetica, sans-serif'}}>
                 <Header name={name} section={section}
                 />
                 { name==='send' &&<SendingMessage/> }
