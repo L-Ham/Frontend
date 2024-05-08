@@ -16,7 +16,7 @@ import {CreatePostRoute} from './pageRoutes.js';
 import {NotificationProvider} from '../generic components/Notifications/notificationsContext.js';
 import {Notifications} from '../generic components/Notifications/notifications.js';
 import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js';
-import {CreateCommunity} from '../createcommunity/createcommunity.js';
+
 import {Usermanagementroute} from './pageRoutes.js';
 import {ModqueueRoute} from './pageRoutes.js';
 
@@ -59,7 +59,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
                 <Route path="/password" element={<ForgotPassword />} />
-                <Route path="/createcommunity" element={<CreateCommunity />} />
+
                 <Route path="/username" element={<ForgotUsername />} />
                 <Route path="/resetpassword" element={<ForgotPassword2/>} />
                 <Route path="/settings/:tab?" element={renderWithLayout(<BasicTabs />)} />
