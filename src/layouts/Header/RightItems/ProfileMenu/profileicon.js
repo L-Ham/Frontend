@@ -16,9 +16,9 @@ function ProfileIcon({isOnline}) {
     const {imgSrc} = useProfileIcon();
     return (
         <span className={styles.avatarWrapper} data-testid='profile-icon'>
-            <span className={styles.avatarContainer}>
-                <img src={imgSrc} alt='User Avatar' className={styles.avatar} />
-                {isOnline && <span className={styles.status}></span>}
+            <span className={styles.avatarContainer} data-testid='avatar-container'>
+                <img src={imgSrc} alt='User Avatar' className={styles.avatar} data-testid='avatar-image' />
+                {isOnline && <span className={styles.status} data-testid='status'></span>}
             </span>
         </span>
     );

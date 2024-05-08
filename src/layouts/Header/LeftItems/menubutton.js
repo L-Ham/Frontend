@@ -16,8 +16,8 @@ function MenuButton({onClick}) {
     const MenuIcon = getIconComponent('menu', false);
     return (
         <button className={styles.button} type="button" onClick={onClick} data-testid="menu-button">
-            <span className={styles.buttonIconWrapper}>
-                <span className={styles.buttonIcon}>
+            <span className={styles.buttonIconWrapper} data-testid="button-icon-wrapper">
+                <span className={styles.buttonIcon} data-testid="button-icon">
                     <MenuIcon />
                 </span>
             </span>
