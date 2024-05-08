@@ -47,6 +47,11 @@ const API_ROUTES = {
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
+    getAllChats: '/conversation/getUserChats',
+    getUsernamesForSearch: (input) => `/user/searchUsernames?search=${input}`,
+    createChat: '/conversation/create',
+    sendChatMessage: '/chat/sendMessage',
+
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

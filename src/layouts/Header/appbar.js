@@ -8,6 +8,7 @@ import {Logo} from './LeftItems/logo.js';
 import {appBarClasses as styles} from './appbar.styles.js';
 import {useAppBar} from './appbar.hooks.js';
 import './appbar.css';
+
 /**
  * Main application component
  * @component
@@ -28,6 +29,7 @@ function AppBar() {
         searchbarStyles,
         sideBarStyles,
     } = useAppBar();
+
     return (
         <>
             <header className={styles.header}>
@@ -63,10 +65,15 @@ function AppBar() {
                     <div
                         className={styles.sidebarCloseOverlay}
                         onClick={() => setIsSideBarVisible(false)}
-                    ></div>
+                    >
+
+                    </div>
                 </div>
 
+
             </div>
+
+
         </>
     );
 }
