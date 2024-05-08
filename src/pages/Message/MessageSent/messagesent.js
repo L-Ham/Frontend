@@ -44,6 +44,7 @@ export function MessageSent() {
                         created={message.createdAt}
                         message={message.message}
                         isEven={index % 2 === 0}
+                        createdAt={message.createdAt}
                     />
                 ))}
             </div>

@@ -8,42 +8,37 @@ import {useCreditBar} from './creditbar.hooks.js';
 /**
  * CreditBar component
  * @param {string} postId
- * @param {string} userId
- * @param {string} subredditId
- * @param {string} subredditName
- * @param {string} subredditAvatar
+ * @param {object} userData
+ * @param {object} subredditData
  * @param {string} createdAt
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function CreditBar({
     postId,
-    userId,
-    subredditId,
-    subredditName,
-    subredditAvatar: avatarImage,
+    userData,
+    subredditData,
     createdAt,
     viewContext,
 }) {
     const {
-        handleSubredditRedirect,
+        handleRedirect,
         rootClassNames,
         Icon,
-    } = useCreditBar({subredditName, avatarImage, viewContext});
+    } = useCreditBar({subredditData, userData, viewContext});
     return (
         <div className={creditBarClasses.wrapper} data-testid={`creditbar-${postId}`}>
             <div className={rootClassNames}>
                 {viewContext === VIEW_CONTEXTS.COMMENTS_PAGE && <BackButton postId={postId}/>}
-                <div className={creditBarClasses.base} onClick={handleSubredditRedirect}>
+                <div className={creditBarClasses.base} onClick={handleRedirect}>
                     {viewContext === VIEW_CONTEXTS.COMMENTS_PAGE &&
                     <div className={creditBarClasses.icon} data-testid={`subreddit-icon-${postId}`}>
                         {Icon}
                     </div>}
                     <MetadataCard
                         postId={postId}
-                        subredditId={subredditId}
-                        subredditName={subredditName}
-                        userId={userId}
+                        userData={userData}
+                        subredditData={subredditData}
                         viewContext={viewContext}
                         createdAt={createdAt}
                     />
@@ -55,10 +50,8 @@ export function CreditBar({
 
 CreditBar.propTypes = {
     postId: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    subredditId: PropTypes.string.isRequired,
-    subredditName: PropTypes.string.isRequired,
-    subredditAvatar: PropTypes.string,
+    userData: PropTypes.object.isRequired,
+    subredditData: PropTypes.object.isRequired,
     createdAt: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
 };

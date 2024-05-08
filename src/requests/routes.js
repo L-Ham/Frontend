@@ -50,12 +50,22 @@ const API_ROUTES = {
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
+    createCommunity: '/subreddit/createCommunity',
+    banUser: '/subreddit/user/ban',
+    unbanUser: '/subreddit/user/unban',
+    composeMessage: '/message/compose',
+    leaveMod: '/subreddit/mod/leave',
+    approveUser: '/subreddit/user/approve',
+    unapproveUser: '/subreddit/user/unapprove',
+    removeUser: '/subreddit/user/remove',
+    inviteMod: '/subreddit/mod/invite',
+    acceptModinvite: '/subreddit/mod/invite/accept',
+    declineModinvite: '/subreddit/mod/invite/decline',
     sentMessages: '/message/getSentMessages',
     unreadMessages: '/message/inbox/unread',
     markAsRead: '/message/read',
     markAsUnread: '/message/unread',
     allInbox: '/message/getAllInbox',
-    composeMessage: '/message/compose',
     unsendMessage: '/message/getSentMessages/unsend',
     reorderRules: '/subreddit/reorderRules',
     addRule: '/subreddit/rule',
@@ -71,6 +81,52 @@ const API_ROUTES = {
     getNotifications: (limit) => `/notification/user?limit${limit}`,
     markNotificationAsRead: '/notification/markRead',
     markAllNotificationsAsRead: '/notification/markAllRead',
+    userUpvotedPosts: (username) => (page, limit) => {
+        return `/user/upvotedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userSavedPosts: (username) => (page, limit) => {
+        return `/user/savedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userDownvotedPosts: (username) => (page, limit) => {
+        return `/user/downvotedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userHiddenPosts: (username) => (page, limit) => {
+        return `/user/hiddenPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userAllPosts: (username) => (page, limit) => {
+        return `/user/posts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userComments: (username) => (page, limit) => {
+        return `/user/comments?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userInfo: (userId) => `/user/info?userId=${userId}`,
+    getPost: (postId) => `/post/get?postId=${postId}`,
+    homeFeed: (sortBy) => (page, limit) => {
+        return `/post/homepage/feed?sort=${sortBy}&page=${page}&limit=${limit}`;
+    },
+    communityFeed: (subredditName, sortBy) => (page, limit) => {
+        return `/subreddit/feed?subredditName=${subredditName}&sort=${sortBy}&page=${page}&limit=${limit}`;
+    },
+    upvote: '/post/upvote',
+    downvote: '/post/downvote',
+    cancelUpvote: '/post/cancelUpvote',
+    cancelDownvote: '/post/cancelDownvote',
+    unmoderatedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/unmoderatedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    reportedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/reportedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    editedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/editedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    removedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/removedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    savePost: '/post/save',
+    unsavePost: '/post/unsave',
+    hidePost: '/post/hide',
+    unhidePost: '/post/unhide',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

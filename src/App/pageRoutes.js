@@ -1,9 +1,11 @@
 import React from 'react';
 import {Subreddit} from '../pages/subreddit/subreddit.js';
 import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
+import {Usermanagement} from '../pages/UserManagement/usermanagement.js';
+import {Modqueue} from '../pages/ModQueue/modqueue.js';
 import {Messages} from '../pages/Message/messages.js';
 import {RulesPage} from '../pages/RulesPage/rulespage.js';
 import {RemovalPage} from '../pages/RulesPage/removalpage.js';
@@ -14,8 +16,13 @@ import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
  * @return {JSX.Element} The rendered Post component.
  */
 export function CommentsRoute() {
-    const {name, postId} = useParams();
-    return <CommentsPage postId={postId} subredditName={name} />;
+    const {type, name, postId} = useParams();
+    // if type is not "user" or "r", then redirect to 404 "*" page
+    const navigate = useNavigate();
+    if (type !== 'user' && type !== 'r') {
+        navigate('/ERROR');
+    }
+    return <CommentsPage postId={postId} isUserPost={type=== 'user'} name={name}/>;
 }
 
 /**
@@ -29,6 +36,27 @@ export function SubredditRoute() {
     const style = queryParams.get('style');
     return (
         <Subreddit name={name} style={style}/>
+    );
+}
+/**
+ *
+ * @return {JSX.Element} The rendered Usermanagement component.
+
+ */
+export function Usermanagementroute() {
+    const {name} = useParams();
+    return (
+        <Usermanagement name={name}/>
+    );
+}
+/**
+ *
+ * @return  {JSX.Element} The rendered Modqueue component.
+ */
+export function ModqueueRoute() {
+    const {name, tab} = useParams();
+    return (
+        <Modqueue name={name} tab={tab}/>
     );
 }
 
@@ -48,7 +76,7 @@ export function CreatePostRoute() {
  */
 export function ProfilePageRoute() {
     const {name, section} = useParams();
-    return <div className='h-screen'><Profile name={name} section={section}/></div>;
+    return <Profile name={name} section={section}/>;
 }
 /**
  * Renders a route for displaying messages.

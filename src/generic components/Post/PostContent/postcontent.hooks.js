@@ -8,6 +8,12 @@ export const usePostContent = ({postId, type, text, imageUrls, viewContext}) => 
         postContent = <PostText postId={postId} content={text} viewContext={viewContext} />;
     } else if (type === 'image' && imageUrls.length === 1) {
         postContent = <PostImage postId={postId} image={imageUrls[0]} viewContext={viewContext} />;
+    } else {
+        postContent = (
+            <div>
+                Unexptected post type
+            </div>
+        );
     }
     return {
         postContent,

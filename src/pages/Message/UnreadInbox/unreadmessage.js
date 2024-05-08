@@ -11,7 +11,7 @@ import {useEffect} from 'react';
  * Renders a route for displaying messages.
  * @return {React.Component}
  */
-export function UnreadMessage({id,subject, to, message, isEven}) {
+export function UnreadMessage({id,subject, to, message, isEven,createdAt}) {
     const ref=useRef(); 
     const [showReply, setShowReply] = useState(false);
     const handleReplyClick=()=>{
@@ -26,6 +26,43 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
         });
     }, []);
     const test =parse(message);
+
+    const calcTimeSince = (time) => {
+        const now = new Date()
+        const diff = now - new Date(time)
+        const seconds = diff / 1000
+        const minutes = seconds / 60
+        const hours = minutes / 60
+        const days = hours / 24
+        const weeks = days / 7
+        const months = weeks / 4
+        const years = months / 12
+
+        if (years >= 1) {
+            return `${Math.floor(years)} year${Math.floor(years) > 1 ? 's' : ''} ago`
+        }
+        if (months >= 1) {
+            return `${Math.floor(months)} month${Math.floor(months) > 1 ? 's' : ''} ago`
+        }
+        if (weeks >= 1) {
+            return `${Math.floor(weeks)} week${Math.floor(weeks) > 1 ? 's' : ''} ago`
+        }
+        if (days >= 1) {
+            return `${Math.floor(days)} day${Math.floor(days) > 1 ? 's' : ''} ago`
+        }
+        if (hours >= 1) {
+            return `${Math.floor(hours)} hour${Math.floor(hours) > 1 ? 's' : ''} ago`
+        }
+        if (minutes >= 1) {
+            return `${Math.floor(minutes)} minute${Math.floor(minutes) > 1 ? 's' : ''} ago`
+        }
+        if (seconds >= 1) {
+            return `${Math.floor(seconds)} second${Math.floor(seconds) > 1 ? 's' : ''} ago`
+        }
+        return 'just now'
+    }
+    
+    
     return ( <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`} data-testid={`message-message-unread`}>
         <p className='m-0 mb-[4px] block p-0 font-[bold] text-[large]'
             style={{marginBlockStart: '1em',
@@ -43,7 +80,7 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
                 <span> from</span>
                 <a className='cursor-pointer text-[#4fbcff]'
                 > /u/{to}</a>
-                <span> sent 18 hours ago</span>
+                <span> sent {calcTimeSince(createdAt)}</span>
             </p>
             <div className="clear-left m-0 ml-[15px] mt-[1.5em] block p-0 text-xs"
                 style={{unicodeBidi: 'isolate'}}>
@@ -111,7 +148,7 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
     );
 }
 UnreadMessage.propTypes = {
-    id: propType.string,
+    id: propType.any,
     subject: propType.string,
     to: propType.string,
     message: propType.string,

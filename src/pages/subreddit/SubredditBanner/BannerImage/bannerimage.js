@@ -15,6 +15,7 @@ export function BannerImage({backgroundImage=''}) {
                 className={classes.banner}
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
+                    height: backgroundImage ? '8rem' : '4rem',
                 }}
                 data-testid="banner-div"
             />

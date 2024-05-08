@@ -72,6 +72,7 @@ export function AllInbox() {
                             message={message.message}
                             isEven={index % 2 === 0}
                             isRead={message.isRead}
+                            createdAt={message.createdAt}
                         />
 
                     ))}

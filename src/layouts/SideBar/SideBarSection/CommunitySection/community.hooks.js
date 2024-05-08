@@ -4,6 +4,7 @@ import {getIconComponent} from '../../../../generic components/iconsmap.js';
 import {axiosInstance as axios} from '../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../requests/routes.js';
 
+
 // communities section hooks
 export const useCommunitiesSection = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -33,6 +34,7 @@ export const useCommunitiesSection = () => {
 // community item hooks
 export const useCommunityItem = ({communityId, isFavorite}) => {
     const [starred, setStarred] = useState(isFavorite);
+
     // console.log({communityId, isFavorite});
     const StarIcon = getIconComponent('star', starred);
 
@@ -72,6 +74,7 @@ export const useCommunityItem = ({communityId, isFavorite}) => {
 // create community item hooks
 export const useCreateCommunityItem = () => {
     const Icon = getIconComponent('add', false);
+    const [isclicked, setisclicked] = useState(false);
 
     /**
      * Handles the create community click event
@@ -80,11 +83,14 @@ export const useCreateCommunityItem = () => {
      * */
     function onClick(e) {
         e.preventDefault();
-        alert('Create Community');
+        setisclicked(!isclicked);
+        console.log('isclicked:', isclicked);
     }
 
     return {
         Icon,
         onClick,
+        isclicked,
+        setisclicked,
     };
 };
