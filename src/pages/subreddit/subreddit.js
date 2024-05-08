@@ -5,8 +5,10 @@ import {SubredditSidebar} from './SubredditSidebar/subredditsidebar.js';
 import {SubredditProvider} from './subredditcontext.js';
 import {classes} from './subreddit.styles.js';
 import './subreddit.css';
-import {Feed} from '../../generic components/feed.js';
+import {Feed, SubredditEmptyFeed} from '../../generic components/feed.js';
 import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
+import {API_ROUTES} from '../../requests/routes.js';
+import {useSearchParams} from 'react-router-dom';
 
 /**
  * Renders the subreddit.
@@ -16,14 +18,21 @@ import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
  * @return {JSX.Element} The rendered component.
  */
 export function Subreddit({name, style}) {
+    const [searchParams] = useSearchParams();
     return (
         <SubredditProvider name={name} data-testid="subreddit-provider" style={style}>
             <div className={classes.innerContainer} data-testid="inner-container">
                 <SubredditBanner data-testid="subreddit-banner"/>
                 <div className={classes.contentContainer} data-testid="content-container">
                     <main className={classes.mainContent} data-testid="main-content">
-                        <Feed viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED} postList={['t3_1bmnuhw',
-                            't3_1bvwbgd', 't3_1c2k4vg']} type='ids' data-testid="feed"/>
+                        <Feed
+                            key={name}
+                            viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED}
+                            endpoint={API_ROUTES.communityFeed(name, searchParams.get('sort') || 'Hot')}
+                            name="subredditPosts"
+                            type='posts'
+                            FallbackComponent={<SubredditEmptyFeed/>}
+                        />
                     </main>
                     <SubredditSidebar data-testid="subreddit-sidebar"/>
                 </div>

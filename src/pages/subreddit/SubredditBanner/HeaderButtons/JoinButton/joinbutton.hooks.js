@@ -7,7 +7,7 @@ export const useJoinButton = ({handleJoinClick, isSubscribed, subscribeLabel, un
     if (isModerator) {
         return {
             handleClick: () => {
-                window.open(`r/${about.communityDetails.name}/about/modqueue`, '_blank');
+                window.open(`/r/${about.communityDetails.name}/about/modqueue`, '_blank');
             },
             buttonClasses: classes.joinedButton,
             buttonLabel: 'Mod Tools',

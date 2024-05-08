@@ -57,7 +57,7 @@ export function WidgetsRenderer() {
         const hrClasses = `border-[var(--color-neutral-border-weak)] ${widget.kind === 'id-card' ? '!my-0' : '!my-4'}`;
 
         return (
-            <Fragment key={widgetId} data-testid={`widget-fragment-${widgetId}`}>
+            <Fragment key={widgetId}>
                 {WidgetComponent && <WidgetComponent {...widget} isCustomizable={userIsModerator &&
                  widget.kind !== 'community-settings' ||
                  widget.kind !== 'moderators'}
