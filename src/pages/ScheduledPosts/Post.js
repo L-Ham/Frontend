@@ -1,14 +1,14 @@
-/* eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from '../../generic components/iconsmap';
+import './scheduledposts.css';
 
 /**
  * Renders the SheduledPosts component.
  * @return {JSX.Element} The rendered component.
  */
 export function Post({title, user, subreddit, scheduledTime, scheduledDate, isNsfw, isSpoiler}) {
-    const PostIcon = getIconComponent('create-post', false);
+    const PostIcon = getIconComponent('post', false);
     return (
         <div className="_2toQcR3aw1_hj1A49e4wi7 mb-2 bg-[var(--background)]" data-testid="post-container">
             <div data-scroller-first="">
@@ -59,7 +59,7 @@ export function Post({title, user, subreddit, scheduledTime, scheduledDate, isNs
                                         Vote</div>
                                     <button className="mvlZFfW9BWm1bmljE_0Rg" aria-label="downvote"
                                         data-testid="downvote-button">
-                                        <span className="_1iKd82bq_nqObFvSH1iC_Q Q0BxYHtCOJ_rNSPJMU2Y7 ">
+                                        <span className="_1iKd82bq_nqObFvSH1iC_Q Q0BxYHtCOJ_rNSPJMU2Y7">
                                             <i className="geso-icon geso-icon-downvote ZyxIIl4FP5gHGrJDzNpUC">
                                             </i>
                                         </span>
@@ -67,10 +67,11 @@ export function Post({title, user, subreddit, scheduledTime, scheduledDate, isNs
                                 </div>
                             </div>
                             <div
-                                style={{backgroundColor: '#1A1A1B'}}
-                                className="_2KWv8ukh9RMgpOturAiV9z">
+                                className="_2KWv8ukh9RMgpOturAiV9z !bg-[var(--background)]">
                                 <div className="_3pHV3zwe-Q9-xNEB0iM3WT bg-[var(--background)]">
-                                    <div className="_2UwJRJuqEbkRCV8O6REq8h">
+                                    <div className="_2UwJRJuqEbkRCV8O6REq8h mb-[8px] flex size-full items-center p-2"
+                                        style={{height: '100%'}}
+                                    >
                                         <div className="_38EcSQ9jzVrdtzkXO1cydX">
                                             <div className="_2MkcR85HDnYngvlVW2gMMa">
                                                 <div className="_2c1ElNxHftd8W_nZtcG9zf
@@ -171,6 +172,7 @@ export function Post({title, user, subreddit, scheduledTime, scheduledDate, isNs
                                             </span>
                                         </div>
                                     </div>
+                                    {/** Post actions */}
                                 </div>
                             </div>
                         </div>

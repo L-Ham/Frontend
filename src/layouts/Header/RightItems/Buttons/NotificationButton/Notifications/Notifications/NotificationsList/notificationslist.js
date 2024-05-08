@@ -16,16 +16,19 @@ export function NotificationsList({view}) {
         case 'reply':
             return `u/${notification.senderName} replied to your comment in 
             r/${notification.subredditName ? notification.subredditName : ''}`;
-        case 'comment':
+        case 'commentedPost':
             return `u/${notification.senderName} replied to your post in 
             r/${notification.subredditName ? notification.subredditName : ''}`;
         case 'post':
             return `u/${notification.senderName} posted in
              r/${notification.subredditName ? notification.subredditName : ''}`;
-        case 'follow':
+        case 'followed':
             return `u/${notification.senderName} followed you`;
         case 'upvotedPost':
             return `u/${notification.senderName} upvoted your post
+             in r/${notification.subredditName ? notification.subredditName : ''}`;
+        case 'downvotedPost':
+            return `u/${notification.senderName} downvoted your post
              in r/${notification.subredditName ? notification.subredditName : ''}`;
         default:
             return '';
@@ -37,14 +40,16 @@ export function NotificationsList({view}) {
         switch (notification.type) {
         case 'reply':
             return notification.commentContent;
-        case 'comment':
+        case 'commentedPost':
             return notification.commentContent;
         case 'post':
             return notification.postContent;
-        case 'follow':
+        case 'followed':
             return '';
         case 'upvotedPost':
             return 'upvote';
+        case 'downvotedPost':
+            return 'downvote';
         default:
             return '';
         }

@@ -24,8 +24,8 @@ export function ScheduledPosts({name}) {
 
     const loadData = async () => {
         try {
-            const response = await fetchSubredditAbout(name);
-            setAbout(response.data);
+            const data = await fetchSubredditAbout(name);
+            setAbout(data);
         } catch (error) {
             addNotification({type: 'error', message: 'Error fetching subreddit about data'});
             console.error('Error fetching subreddit about data', error);
@@ -35,6 +35,10 @@ export function ScheduledPosts({name}) {
     React.useEffect(() => {
         loadData();
     }, [name]);
+
+    if(!about) {
+        return null;
+    }
 
     return (
         <div className='_2Z3MiFrgj2rofHXrH1YVKn _1haViLcso0RRPvkDGZgDLJ

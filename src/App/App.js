@@ -18,7 +18,8 @@ import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js
 import {MessagesRoute} from './pageRoutes.js';
 import {RemovalPageRoute, RulesPageRoute} from './pageRoutes.js';
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
-import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
+import {ScheduledPostsRoute} from './pageRoutes.js';
+
 
 /**
  * Renders the main application component.
@@ -56,8 +57,8 @@ function App() {
                 <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
                 <Route path="/r/:name/about/rules" element={renderWithLayout( <RulesPageRoute/>)} />
                 <Route path="/r/:name/about/removal" element={renderWithLayout(<RemovalPageRoute/>)} />
-                <Route path='/r/:name?/about/settings' element={renderWithLayout(<AboutSettings />)} />
-                <Route path='/r/:name?/about/scheduledposts' element={renderWithLayout(<ScheduledPosts />)} />
+                <Route path='/r/:name/about/settings' element={renderWithLayout(<AboutSettings />)} />
+                <Route path='/r/:name/about/scheduledposts' element={renderWithLayout(<ScheduledPostsRoute />)} />
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>

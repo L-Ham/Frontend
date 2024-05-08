@@ -67,7 +67,7 @@ const API_ROUTES = {
     addBookmark: '/subreddit/bookmark/button',
     addBookmarksWidget: '/subreddit/widget/bookmark',
     addScheduledPost: '/post/scheduledPost',
-    getScheduledPosts: '/post/scheduledPosts',
+    getScheduledPosts: (id) => `subreddit/mod/scheduledPosts?subredditId=${id}`,
     getNotifications: (limit) => `/notification/user?limit${limit}`,
     markNotificationAsRead: '/notification/markRead',
     markAllNotificationsAsRead: '/notification/markAllRead',
