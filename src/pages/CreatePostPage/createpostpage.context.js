@@ -3,6 +3,7 @@ import React, {createContext, useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import { useNotifications } from '../../generic components/Notifications/notificationsContext.js';
 
 const CreatePostPageContext = createContext();
 
@@ -27,8 +28,11 @@ export function CreatePostPageProvider({children, name}) {
     const [rules, setRules] = useState(null);
     const [isCommunityTheme, setIsCommunityTheme] = useState(false);
     const [isError, setIsError] = useState(false);
+    const {addNotification} = useNotifications();
+    const [isScheduleFormVisble, setIsScheduleFormVisble] = useState(false);
 
     useEffect(() => {
+        if(!name) return;
         const loadData = async () => {
             try {
                 const aboutData = await fetchSubredditAbout(name);
@@ -37,10 +41,9 @@ export function CreatePostPageProvider({children, name}) {
                 const rulesData = await fetchSubredditRules(aboutData.communityDetails.subredditId);
                 setRules(rulesData);
 
-                console.log('rules data', rulesData)
-
                 setLoading(false);
             } catch (error) {
+                addNotification({type: 'failure', message: 'Failed to fetch subreddit data, please try again later'});
                 console.error('Failed to fetch subreddit data', error);
                 setLoading(false);
                 setIsError(true);
@@ -58,6 +61,7 @@ export function CreatePostPageProvider({children, name}) {
         rules,
         isCommunityTheme, setIsCommunityTheme,
         isError,
+        isScheduleFormVisble, setIsScheduleFormVisble,
     };
 
     return (

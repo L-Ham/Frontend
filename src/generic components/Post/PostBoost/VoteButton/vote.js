@@ -28,7 +28,7 @@ export function Vote({
         rootClasses,
         upvoteClasses,
         downvoteClasses,
-    } = useVote({upvotes, downvotes, isUpvoted, isDownvoted});
+    } = useVote({postId, upvotes, downvotes, isUpvoted, isDownvoted});
     return (
         <div className={rootClasses}>
             <button

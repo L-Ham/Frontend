@@ -13,11 +13,12 @@ export function PostCreationPollOptions() {
     return (
         <div className={classes.postCreationPollOptionsDiv} data-testid="post-creation-poll-options-div">
             <div data-testid="post-creation-poll-options-inner-div">
-                {Object.entries(pollData.options).map(([key, option], index) => (
+                {Object.entries(pollData.options).map(([key, option]) => (
                     <PostCreationPollOption
-                        key={index}
-                        index={index}
-                        data-testid={`post-creation-poll-option-${index}`}
+                        key={key}
+                        index={Number(key)}
+                        data-testid={`post-creation-poll-option-${key}`}
+                        value={option}
                     />
                 ))}
             </div>
@@ -27,10 +28,10 @@ export function PostCreationPollOptions() {
                     tabIndex={0}
                     className={classes.postCreationPollOptionsButton}
                     onClick={() => {
-                        const newPollData = {...pollData};
-                        const newIndex = Object.keys(newPollData.options).length;
-                        newPollData.options[newIndex] = '';
-                        setPollData({...newPollData});
+                        const newPollOptions = pollData.options;
+                        const newIndex = Object.keys(newPollOptions).length;
+                        newPollOptions[newIndex] = '';
+                        setPollData({...pollData, options: newPollOptions});
                     }}
                     disabled={Object.keys(pollData.options).length >= 6}
                     data-testid="post-creation-poll-options-button"

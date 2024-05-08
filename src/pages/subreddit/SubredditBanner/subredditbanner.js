@@ -27,7 +27,6 @@ export function SubredditBanner() {
         handleCreatePost,
     } = bannerData;
 
-    console.log('bannerData', bannerData);
 
     return (
         <div className={classes.container} data-testid="container">

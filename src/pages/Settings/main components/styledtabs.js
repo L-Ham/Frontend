@@ -17,7 +17,7 @@ import {AddSocialLinksTwo} from '../pop ups/addsociallinkstwo.js';
 import {ConnectWithGoogle} from '../pop ups/connectwithgoogle.js';
 import {DeletePopUp} from '../pop ups/deleteAccPopup.js';
 import PropTypes from 'prop-types';
-import {useNavigate, useParams} from 'react-router-dom';
+import {NavLink, useNavigate, useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {useEffect} from 'react';
 
@@ -110,10 +110,10 @@ export function BasicTabs({id}) {
                   px-5 py-0'>
                             {['Account', 'Profile', 'Safety & Privacy', 'Feed settings',
                                 'Notifications', 'Emails', 'Subscriptions', 'Chat & Messaging'].map((tab, index) => (
-                                <a
+                                <NavLink
                                     id={`tab-${tab}`} // Using index to ensure uniqueness
                                     key={tab}
-                                    href={'/settings/' + TABS[tab]}
+                                    to={'/settings/' + TABS[tab]}
                                     className={`mr-2 inline-block cursor-pointer
             px-3 pb-3 pt-[15px] text-sm font-bold leading-[unset] ` +
             `hover:text-[color:var(--newCommunityTheme-bodyText)] ` +
@@ -127,7 +127,7 @@ export function BasicTabs({id}) {
                                     role="tab"
                                     onClick={() => handleTabChange(tab)}>
                                     {tab}
-                                </a>
+                                </NavLink>
                             ))}
 
 

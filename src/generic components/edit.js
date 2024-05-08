@@ -1,6 +1,8 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from './iconsmap';
+import './edit.css';
 
 /**
  * Renders the edit icon.
@@ -12,9 +14,17 @@ import {getIconComponent} from './iconsmap';
 export function Edit({onClick, className}) {
     const EditIcon = getIconComponent('edit', false);
     return (
-        <button className={`absolute right-1 top-1 rounded-3xl
-        bg-white p-2 hover:bg-[#e2e7e9] ${className}`} onClick={onClick}>
-            <EditIcon/>
+        <button className={`w-6 h-6
+        editt-button-x-small px-[var(--rem6)]
+        editt-button-secondary
+        icon
+        items-center justify-center
+        editt-button inline-flex absolute right-5 top-2`} onClick={onClick}>
+            <span className='flex items-center justify-center'>
+                <span className='flex'>
+                    <EditIcon/>
+                </span>
+            </span>
         </button>
     );
 }

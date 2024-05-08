@@ -4,7 +4,7 @@ export const logoStyles = {
     logoLink: 'flex items-center',
     logoIconWrapper: 'flex items-center pr-0 s:pr-2',
     logoNameWrapper: 'hidden s:flex',
-    logoName: 'h-[22px] text-[var(--shreddit-color-wordmark)]',
+    logoName: 'h-[22px] text-[var(--shreddit-color-wordmark)] ml-2',
 };
 
 // MenuButton styles classnames

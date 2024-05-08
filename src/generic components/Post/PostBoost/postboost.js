@@ -4,6 +4,7 @@ import {Vote} from './VoteButton/vote.js';
 import {Comments} from './CommentButton/comments.js';
 import {Share} from './ShareButton/share.js';
 import {usePostBoost} from './postboost.hooks.js';
+import {VIEW_CONTEXTS} from '../data.js';
 /**
  * PostBoost (Post footer) component
  * @param {string} postId
@@ -40,7 +41,7 @@ export function PostBoost({
             />
             <Comments
                 postId={postId}
-                url={url}
+                url={viewContext===VIEW_CONTEXTS.COMMENTS_PAGE ? '#comment' : url}
                 commentCount={commentCount}
             />
             <Share postId={postId} url={url}/>

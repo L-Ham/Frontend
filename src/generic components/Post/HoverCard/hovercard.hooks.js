@@ -1,22 +1,23 @@
 import {useState, useEffect} from 'react';
 import {getIconComponent} from '../../iconsmap';
-import {DATA, VIEW_CONTEXTS} from '../data.js';
+import {VIEW_CONTEXTS} from '../data.js';
 import React from 'react';
-export const useHoverCard = ({entityName, entityId, viewContext, isUser}) => {
+
+export const useHoverCard = ({entityData, viewContext, isUser}) => {
     const [overlayOpen, setOverlayOpen] = useState(false);
     const [hoverTimer, setHoverTimer] = useState(null);
     const DefaultSubredditIcon = getIconComponent('default-subreddit');
-    let DisplayIcon =
-    <DefaultSubredditIcon viewBox="0 0 20 20"
-        width="25"
-        height="25"
-        fill="currentColor"
-    />;
-    if (isUser) {
-        const {username, avatar} = DATA[entityId];
-        entityName = username;
-        DisplayIcon = <img src={avatar || require('../../../assets/images/avatar_default_0.png')}
-            alt='avatar' className='size-6 rounded-full'/>;
+    const avatar = isUser ? entityData.avatar || require('../../../assets/images/avatar_default_0.png'):
+        entityData.avatarImage;
+    let DisplayIcon = null;
+    if (avatar) {
+        DisplayIcon = <img src={avatar} alt='Icon' className='size-6 rounded-full'/>;
+    } else {
+        DisplayIcon = <DefaultSubredditIcon viewBox="0 0 20 20"
+            width="25"
+            height="25"
+            fill="currentColor"
+        />;
     }
     useEffect(() => {
     // Clean up the timer when the component unmounts
@@ -26,7 +27,6 @@ export const useHoverCard = ({entityName, entityId, viewContext, isUser}) => {
             }
         };
     }, [hoverTimer]);
-
     // time in ms
     const toOpen = 750;
     const toClose = 350;
@@ -48,14 +48,19 @@ export const useHoverCard = ({entityName, entityId, viewContext, isUser}) => {
         setHoverTimer(timer);
     };
     const isUserOnCommentPage = viewContext === VIEW_CONTEXTS.COMMENTS_PAGE && isUser;
+    let entityName = isUser ? entityData.username : entityData.name;
     if (!isUserOnCommentPage) {
         entityName = isUser ? 'u/' + entityName : 'r/' + entityName;
     }
+    const entityId = isUser ? entityData.userId : entityData.subredditId;
+    const url = isUser ? '/user/' + entityData.username : '/r/' + entityData.name;
     return {
         handlePopoverOpen,
         handlePopoverClose,
+        url,
         DisplayIcon,
         overlayOpen,
         prefixedName: entityName,
+        entityId,
     };
 };

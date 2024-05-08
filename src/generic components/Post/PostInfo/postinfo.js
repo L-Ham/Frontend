@@ -3,54 +3,62 @@ import PropTypes from 'prop-types';
 import {CreditBar} from '../CreditBar/creditbar.js';
 import {ButtonsPanel} from './ButtonsPanel/buttonspanel.js';
 import {postInfoClasses} from './postinfo.styles.js';
-import {usePostInfo} from './postinfo.hooks.js';
 
 /**
  * PostInfo component
  * @param {string} postId
- * @param {string} userId
- * @param {string} subredditName
+ * @param {string} userData
+ * @param {string} subredditData
  * @param {string} createdAt
+ * @param {string} isSaved
  * @param {string} viewContext
+ * @param {string} isHidden
  * @return {React.Component}
  */
-export function PostInfo({
+function PostInfoNonMemo({
     postId,
-    userId,
-    subredditName,
+    userData,
+    subredditData,
     createdAt,
+    isSaved,
     viewContext,
+    isHidden,
 }) {
-    const {
-        isMember,
-        subredditAvatar,
-        subredditId,
-    } = usePostInfo({subredditName});
     return (
         <div className={postInfoClasses.root} data-testid={`post-info-${postId}`}>
             <CreditBar
                 postId={postId}
-                userId={userId}
-                subredditId={subredditId}
-                subredditName={subredditName}
-                subredditAvatar={subredditAvatar}
+                userData={userData}
+                subredditData={subredditData}
                 createdAt={createdAt}
                 viewContext={viewContext}
             />
             <ButtonsPanel
                 postId={postId}
-                subredditId={subredditId}
+                subredditId={subredditData.subredditId}
+                isMember={subredditData.isMember}
+                isSaved={isSaved}
                 viewContext={viewContext}
-                isMember={isMember}
+                isHidden={isHidden}
             />
         </div>
     );
 }
-
-PostInfo.propTypes = {
+export const PostInfo = React.memo(PostInfoNonMemo, (prevProps, nextProps) => {
+    return prevProps.postId === nextProps.postId &&
+        prevProps.userData === nextProps.userData &&
+        prevProps.subredditData === nextProps.subredditData &&
+        prevProps.createdAt === nextProps.createdAt &&
+        prevProps.isSaved === nextProps.isSaved &&
+        prevProps.isHidden === nextProps.isHidden &&
+        prevProps.viewContext === nextProps.viewContext;
+});
+PostInfoNonMemo.propTypes = {
     postId: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    subredditName: PropTypes.string.isRequired,
+    userData: PropTypes.object.isRequired,
+    subredditData: PropTypes.object.isRequired,
     createdAt: PropTypes.string.isRequired,
+    isSaved: PropTypes.bool.isRequired,
     viewContext: PropTypes.string.isRequired,
+    isHidden: PropTypes.bool.isRequired,
 };
