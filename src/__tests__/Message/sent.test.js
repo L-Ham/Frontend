@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import {Sent} from './sent';
+import {Sent} from '../../pages/Message/MessageSent/sent';
 /*eslint-disable*/
 
 describe('Sent', () => {
