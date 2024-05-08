@@ -69,8 +69,16 @@ export function UnreadInbox() {
                         to={message.sender}
                         message={message.message}
                         isEven={index % 2 === 0}
+                        createdAt={message.createdAt}
                     />
                 ))}
+                {!sentMessages && (
+                    <div id="siteTable" className="mx-auto
+                    my-[20px] min-w-[700px] list-none bg-[var(--graytowhite)] text-[#373c3f]">
+                        <p id="noresults"
+                            className="mr-auto p-[20px]
+                            text-sm text-[#373c3f]">there doesn&apos;t seem to be anything here</p></div>
+                )}
             </div>
         </div>
 
