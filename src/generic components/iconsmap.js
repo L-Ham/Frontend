@@ -238,6 +238,7 @@ const ICONS_MAP = {
     'gif-post-outline': GifPostIconOutline,
     'format-outline': FormatIconOutline,
     'calendar': CalendarIcon,
+
 };
 
 /**

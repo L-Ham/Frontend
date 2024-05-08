@@ -5,15 +5,16 @@ import {Communityname} from './components/communityname';
 import {Communityradio} from './components/communityradio';
 import {Communitytoggle} from './components/communitytoggle';
 
-import {axiosInstance as axios} from '.././requests/axios';
-import {API_ROUTES} from '.././requests/routes';
+import {axiosInstance as axios} from '../../../../../requests/axios';
+import {API_ROUTES} from '../../../../../requests/routes';
 import {useNavigate} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  *
  * @return {JSX.Element} UserHelp
  */
-function CreateCommunity() {
+function CreateCommunity({setisclicked}) {
     const navigate = useNavigate();
     // eslint-disable-next-line no-unused-vars
     const [cname, setcname] = useState('');
@@ -36,6 +37,9 @@ function CreateCommunity() {
         setMature(mature);
         console.log(mature);
     };
+    const handlexclick = () => {
+        setisclicked(false);
+    };
     const handleCommunityTypeChange = (communityType) => {
         setCommunityType(communityType);
         console.log(communityType);
@@ -56,6 +60,7 @@ function CreateCommunity() {
                 ageRestriction: mature,
             });
             console.log(response);
+            setisclicked(false);
             navigate(`/r/${cname}`);
         } catch (e) {
             setistaken(true);
@@ -69,6 +74,7 @@ function CreateCommunity() {
           basis-full flex-col
           rounded-xl bg-white font-sans
            shadow-none lg:shadow-sm" style={{
+
             width: '500px',
             height: '650px',
             top: '40px',
@@ -94,7 +100,8 @@ function CreateCommunity() {
 
                             <div className='flex items-center'>
                                 <button className='inline-flex size-8 items-center justify-center
-                                 rounded-full bg-[#eaedef] px-1.5' data-testid="qowefnwqinfuy3bve">
+                                 rounded-full bg-[#eaedef] px-1.5'
+                                data-testid="qowefnwqinfuy3bve" onClick={handlexclick}>
                                     <span className='flex items-center justify-center'>
                                         <svg fill="#000000"
                                             height="16"
@@ -202,7 +209,8 @@ function CreateCommunity() {
                               inline-flex h-12 items-center justify-center
                             rounded-full border border-gray-200 bg-[#eaedef]
                             px-3.5 py-2 text-lg" slot="secondaryButton"
-                        title="Close Form and Cancel creating a community" data-testid="oqwarebgtsireiure">
+                        title="Close Form and Cancel creating a community"
+                        data-testid="oqwarebgtsireiure" onClick={handlexclick}>
                             <span className="flex items-center justify-center">
                                 <span className="flex items-center gap-2">Cancel</span>
                             </span> </button>
@@ -230,4 +238,8 @@ py-2 text-lg "
 
     );
 }
+
+CreateCommunity.propTypes = {
+    setisclicked: PropTypes.func.isRequired,
+};
 export {CreateCommunity};
