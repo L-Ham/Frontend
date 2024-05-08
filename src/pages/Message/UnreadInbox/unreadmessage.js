@@ -111,7 +111,7 @@ export function UnreadMessage({id,subject, to, message, isEven}) {
     );
 }
 UnreadMessage.propTypes = {
-    id: propType.string,
+    id: propType.any,
     subject: propType.string,
     to: propType.string,
     message: propType.string,
