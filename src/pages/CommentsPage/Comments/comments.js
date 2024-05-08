@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CommentTextField} from './MakeComment/makecomment';
 import {CommentTree} from './CommentTree/commenttree';
-import {Sorter} from './Sorter/sorter';
 
 /**
  * Renders Comments Components
@@ -30,7 +29,6 @@ export function Comments({
                 Add a comment
                 </button> :
                 <CommentTextField postId={postId} onCancel={handleCloseComment}/>}
-            <Sorter />
             <CommentTree postId={postId} />
         </>
     );
