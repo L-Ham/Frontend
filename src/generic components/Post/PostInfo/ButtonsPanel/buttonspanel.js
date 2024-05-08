@@ -7,9 +7,10 @@ import {panelClasses} from './buttonspanel.styles.js';
 /**
  * ButtonsPanel component
  * @param {string} postId
- * @param {string} subredditId
+ * @param {object} subredditData
  * @param {string} viewContext
  * @param {boolean} isMember
+ * @param {boolean} isSaved
  * @return {React.Component}
  */
 export function ButtonsPanel({
@@ -17,12 +18,14 @@ export function ButtonsPanel({
     subredditId,
     viewContext,
     isMember,
+    isSaved,
+    isHidden,
 }) {
     return (
         <div className={panelClasses.root}>
-            {(!isMember && viewContext === VIEW_CONTEXTS.AGGREGATE_FEED) &&
+            {(!isMember && viewContext === VIEW_CONTEXTS.AGGREGATE_FEED && subredditId !== 'loading') &&
             <JoinButton postId={postId} subredditId={subredditId} />}
-            <OptionsButton postId={postId} isMember={isMember} />
+            <OptionsButton postId={postId} isMember={isMember} isSaved={isSaved} isHidden={isHidden}/>
         </div>
     );
 }
@@ -32,4 +35,6 @@ ButtonsPanel.propTypes = {
     subredditId: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
     isMember: PropTypes.bool.isRequired,
+    isSaved: PropTypes.bool.isRequired,
+    isHidden: PropTypes.bool.isRequired,
 };
