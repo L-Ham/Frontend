@@ -52,7 +52,7 @@ export const usePost = ({isNSFW, isSpoiler, viewContext, userId, subredditName})
             }
         };
         fetchUser();
-    });
+    }, []);
     return {
         isCommentsPage,
         classNames,
