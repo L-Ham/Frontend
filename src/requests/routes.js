@@ -106,6 +106,22 @@ const API_ROUTES = {
     downvote: '/post/downvote',
     cancelUpvote: '/post/cancelUpvote',
     cancelDownvote: '/post/cancelDownvote',
+    unmoderatedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/unmoderatedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    reportedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/reportedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    editedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/editedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    removedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/removedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    savePost: '/post/save',
+    unsavePost: '/post/unsave',
+    hidePost: '/post/hide',
+    unhidePost: '/post/unhide',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {getIconComponent} from '../../../../generic components/iconsmap';
+import {getIconComponent} from '../../../../../generic components/iconsmap';
 
 
 /**
