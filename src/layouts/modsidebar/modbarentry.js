@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
 function Modbarentry({iconpath, entryname, link, secondsvg, weirdredthing, label, id}) {
     return (
         <div className="z-10 mx-0 flex w-full items-center p-0 text-[#576f76]">
-            <a className="flex w-full items-center text-[#576f76] no-underline hover:bg-[#edeff1] "
-                href={link} target="_self" rel="" data-testid={id}>
+            <a className="flex w-full items-center text-[#576f76] no-underline
+            hover:bg-[var(--color-secondary-background-selected)]"
+            href={link} target="_self" rel="" data-testid={id}>
                 <div className="mr-4 h-12 w-2 " ></div>
                 <span className="inline-flex text-[#576f76]">
                     <svg xmlns="http://www.w3.org/2000/svg"
