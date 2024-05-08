@@ -9,7 +9,7 @@ import {axiosInstance as axios} from '../requests/axios.js';
 import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {Approve} from '../pages/UserManagement/approvemod.js';
-// import {Modtopbar} from '../layouts/modsidebar/modtopbar.js';
+import {Modtopbar} from '../layouts/modsidebar/modtopbar.js';
 
 
 /**
@@ -53,7 +53,7 @@ function Modlayout(props) {
                 }
             });
         }
-        console.log('showpopup', showpopup);
+        // console.log('showpopup', showpopup);
     }, [invited, username]);
     const handlexclick = () => {
         setIsxclicked(true);
@@ -67,13 +67,13 @@ function Modlayout(props) {
             const response = await axios.get(`/subreddit/moderators?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setModerators(response.data.moderators);
-            console.log(response);
-            console.log(moderators);
-            console.log('get mods in usermanagement');
+            // console.log(response);
+            // console.log(moderators);
+            // console.log('get mods in usermanagement');
         } catch (error) {
             console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts
@@ -88,7 +88,7 @@ function Modlayout(props) {
                 }
             });
         }
-        console.log('is a mod', isamod);
+        // console.log('is a mod', isamod);
     }, [moderators, username]);
 
 
@@ -100,13 +100,13 @@ function Modlayout(props) {
             const response = await axios.get(`/subreddit/moderators/invited?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setinvited(response.data.invitedModerators);
-            console.log(response);
-            console.log(invited);
-            console.log('invitedapi in usermanagement');
+            // console.log(response);
+            // console.log(invited);
+            // console.log('invitedapi in usermanagement');
         } catch (error) {
             console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts
@@ -118,12 +118,11 @@ function Modlayout(props) {
         <>
             {isamod && <div className='flex justify-evenly pt-[56px]'>
                 <div id='header-container' className='fixed inset-x-0 top-0 z-[4] flex flex-col nd:visible'>
-                    <AppBar />
-
+                    <AppBar ModTopBar={<Modtopbar name={name}/>} />
 
                 </div>
-                <div className='grid  w-full grid-cols-1 overflow-x-clip
-                bg-[var(--color-neutral-background)] nd:grid-cols-[272px_1fr] '>
+                <div className='grid  w-full grid-cols-1 overflow-x-clip bg-[var(--color-neutral-background)]
+                pt-[40px] nd:grid-cols-[272px_1fr] '>
                     <div id='sidebar-container' className='isolate z-[1] order-first hidden nd:block '>
                         <Modsidebar name={name} />
                     </div>
