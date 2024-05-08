@@ -8,6 +8,7 @@ import {Logo} from './LeftItems/logo.js';
 import {appBarClasses as styles} from './appbar.styles.js';
 import {useAppBar} from './appbar.hooks.js';
 import './appbar.css';
+import PropTypes from 'prop-types';
 /**
  * Main application component
  * @component
@@ -16,7 +17,7 @@ import './appbar.css';
  * <App />
  * @return {JSX.Element} The main application component
  */
-function AppBar() {
+function AppBar({ModTopBar}) {
     const {
         isSearchDropdownVisible,
         setIsSearchDropdownVisible,
@@ -53,6 +54,7 @@ function AppBar() {
                     <RightItems/>
 
                 </nav>
+                {ModTopBar}
             </header>
 
             <div className={sideBarStyles}>
@@ -70,5 +72,10 @@ function AppBar() {
         </>
     );
 }
+
+AppBar.propTypes = {
+    ModTopBar: PropTypes.element,
+};
+
 
 export {AppBar};

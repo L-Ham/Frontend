@@ -15,7 +15,7 @@ function Modsidebar({name}) {
          fixed left-0 mt-3
         h-[calc(100%_-_120px)] w-[268px] overflow-y-auto overflow-x-visible overscroll-none pr-3">
             <div className="box-border flex h-full
-             flex-col items-start overscroll-none bg-[#ffffff] text-[#576f76]"
+             flex-col items-start overscroll-none text-[#576f76]"
             >
                 <a className="mb-3 ml-2 flex items-center p-2 text-[#576f76] no-underline"
                     href={`/r/${name}`}>

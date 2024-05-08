@@ -11,16 +11,14 @@ import {useSubredditOverlay} from './subredditoverlay.hooks.js';
  * SubredditOverlay component
  * @param {function} openOverlay
  * @param {function} closeOverlay
- * @param {string} subredditId
- * @param {string} subredditName
+ * @param {object} subredditData
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function SubredditOverlay({
     openOverlay,
     closeOverlay,
-    subredditId,
-    subredditName,
+    subredditData,
     viewContext,
 }) {
     const {
@@ -33,8 +31,9 @@ export function SubredditOverlay({
         membersNickname,
         currentlyViewingCount,
         currentlyViewingNickname,
+        subredditId,
         rootClasses,
-    } = useSubredditOverlay({subredditName, viewContext});
+    } = useSubredditOverlay({subredditData, viewContext});
     return (
         <div
             className={rootClasses}
@@ -52,7 +51,7 @@ export function SubredditOverlay({
                 subredditId={subredditId}
                 subredditPrefixedName={subredditPrefixedName}
                 isSubscriber={isMember}
-                icon={avatarImage}
+                icon={avatarImage ? <img src={avatarImage} alt="subreddit icon"/> : null}
             />
             {description &&
             <div className={overlayClasses.description} data-testid={`subreddit-overlay-description-${subredditId}`}>
@@ -73,15 +72,6 @@ export function SubredditOverlay({
 SubredditOverlay.propTypes = {
     openOverlay: PropTypes.func.isRequired,
     closeOverlay: PropTypes.func.isRequired,
-    subredditId: PropTypes.string.isRequired,
-    subredditName: PropTypes.string.isRequired,
+    subredditData: PropTypes.object.isRequired,
     viewContext: PropTypes.string.isRequired,
-    /*
-    subredditIcon: PropTypes.element.isRequired,
-    subredditDescription: PropTypes.string.isRequired,
-    subredditMembers: PropTypes.number.isRequired,
-    subredditMembersName: PropTypes.string.isRequired,
-    subredditOnline: PropTypes.number.isRequired,
-    subredditOnlineName: PropTypes.string.isRequired,
-     */
 };

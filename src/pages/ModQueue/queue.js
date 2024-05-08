@@ -2,7 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Modpost} from './unmoderatedposts';
-
+import {Feed} from '../../generic components/feed';
+import {API_ROUTES} from '../../requests/routes';
+import {VIEW_CONTEXTS} from '../../generic components/Post/data';
 /**
  *
  *
@@ -13,27 +15,41 @@ function Queue({name, tab}) {
         'unmoderated': {
             isremoved: false,
             isreported: false,
+            endpoint: API_ROUTES.unmoderatedPosts,
+            name: 'unmoderatedPosts',
         },
-        'reported': {
+        'reports': {
             isremoved: false,
             isreported: true,
+            endpoint: API_ROUTES.reportedPosts,
+            name: 'reportedPosts',
         },
-        'removed': {
+        'spam': {
             isremoved: true,
             isreported: false,
+            endpoint: API_ROUTES.removedPosts,
+            name: 'removedPosts',
         },
         'edited': {
             isremoved: false,
             isreported: false,
-        },
-        'modqueue': {
-            isremoved: false,
-            isreported: false,
+            endpoint: API_ROUTES.editedPosts,
+            name: 'editedPosts',
         },
     };
+    tab = tab || 'unmoderated';
+    const modPostProps = {subredditName: name, ...tabConfig[tab]};
     return (
-        <Modpost name={name} {...tabConfig[tab]}>
-        </Modpost>
+        <Feed
+            key={tab}
+            viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED}
+            endpoint={tabConfig[tab].endpoint(name)}
+            type='posts'
+            name={tabConfig[tab].name}
+            FallbackComponent={<div>No Posts</div>}
+            WrapperComponent={Modpost}
+            wrapperProps={modPostProps}
+        />
     );
 }
 

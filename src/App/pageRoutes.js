@@ -1,7 +1,7 @@
 import React from 'react';
 import {Subreddit} from '../pages/subreddit/subreddit.js';
 import {CreatePostPage} from '../pages/CreatePostPage/createpostpage.js';
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, useNavigate} from 'react-router-dom';
 import {Profile} from '../pages/Profile/profile.js';
 import {CommentsPage} from '../pages/CommentsPage/commentspage.js';
 import {Usermanagement} from '../pages/UserManagement/usermanagement.js';
@@ -15,8 +15,13 @@ import {RemovalPage} from '../pages/RulesPage/removalpage.js';
  * @return {JSX.Element} The rendered Post component.
  */
 export function CommentsRoute() {
-    const {name, postId} = useParams();
-    return <CommentsPage postId={postId} subredditName={name} />;
+    const {type, name, postId} = useParams();
+    // if type is not "user" or "r", then redirect to 404 "*" page
+    const navigate = useNavigate();
+    if (type !== 'user' && type !== 'r') {
+        navigate('/ERROR');
+    }
+    return <CommentsPage postId={postId} isUserPost={type=== 'user'} name={name}/>;
 }
 
 /**
@@ -70,7 +75,7 @@ export function CreatePostRoute() {
  */
 export function ProfilePageRoute() {
     const {name, section} = useParams();
-    return <div className='h-screen'><Profile name={name} section={section}/></div>;
+    return <Profile name={name} section={section}/>;
 }
 /**
  * Renders a route for displaying messages.

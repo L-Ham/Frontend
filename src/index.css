@@ -29,6 +29,7 @@ code {
 
 /* define global colors */
 :root {
+  --newCommunityTheme-widgetColors-sidebarWidgetBorderColor: #ccc;
   --scrollbar-bg: transparent;
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;

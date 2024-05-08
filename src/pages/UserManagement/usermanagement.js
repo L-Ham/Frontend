@@ -40,31 +40,12 @@ function Usermanagement({name}) {
     const username = useSelector((state) => state.user.username);
 
     console.log('this is the username', username);
-
-    let bgbanned = 'bg-[#d2dadd]';
-    let bgmoderator = 'bg-white';
-    let bgmuted = 'bg-white';
-    let bgapproved = 'bg-white';
-    if (isbanPressed) {
-        bgbanned = 'bg-[#d2dadd]';
-    } else {
-        bgbanned = 'bg-white';
-    }
-    if (ismoderatorPressed) {
-        bgmoderator = 'bg-[#d2dadd]';
-    } else {
-        bgmoderator = 'bg-white';
-    }
-    if (ismutedpressed) {
-        bgmuted = 'bg-[#d2dadd]';
-    } else {
-        bgmuted = 'bg-white';
-    }
-    if (isapprovedpressed) {
-        bgapproved = 'bg-[#d2dadd]';
-    } else {
-        bgapproved = 'bg-white';
-    }
+    const bgHighlight = 'bg-[var(--color-secondary-background-selected)]';
+    const bgNormal = 'bg-transparent';
+    const bgbanned = isbanPressed ? bgHighlight : bgNormal;
+    const bgmoderator = ismoderatorPressed ? bgHighlight : bgNormal;
+    const bgmuted = ismutedpressed ? bgHighlight : bgNormal;
+    const bgapproved = isapprovedpressed ? bgHighlight : bgNormal;
     const handlebanClick = () => {
         setIsbanPressed(true);
         setIsmoderatorPressed(false);
@@ -140,27 +121,32 @@ function Usermanagement({name}) {
                         <div className=' box-border w-full '>
                             <div className=' mx-24 overflow-hidden rounded-[0_0_4px_4px]  pt-4'>
                                 <div className='mb-2'>
-                                    <div className="text-lg font-bold leading-6">User Management</div>
+                                    <div className="text-lg font-bold leading-6
+                                    text-[var(--color-neutral-content-strong)]">User Management</div>
                                     <div className="mt-3 flex overflow-auto">
                                         <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${bgbanned}
-                                  font-semibold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
+                                  font-semibold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)]
+                                   hover:no-underline`}
                                         href="#" onClick={handlebanClick}>Banned</a>
                                         <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${bgmuted}
-                                  font-semibold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
+                                  font-semibold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)]
+                                   hover:no-underline`}
                                         href="#"onClick={handlemutedClick}>Muted</a>
                                         <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${bgapproved}
-                                  font-semibold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
+                                  font-semibold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)]
+                                   hover:no-underline`}
                                         href="#" onClick={handleapprovedClick}>Approved</a>
                                         <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${bgmoderator}
-                                  font-semibold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
+                                  font-semibold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)]
+                                   hover:no-underline`}
                                         href="#" onClick={handlemoderatorClick}>Moderators</a>
 
 

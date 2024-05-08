@@ -99,10 +99,11 @@ function Banned({name}) {
                 </button>
             </div>
             <div className="box-border flex flex-row items-center justify-between
-            rounded-[4px_4px_0_0] bg-[#edeff1] px-4 py-2">
+            rounded-[4px_4px_0_0] bg-[var(--newCommunityTheme-body)] px-4 py-2">
                 <div className="flex">
                     <input type="text" className="box-border h-8 w-[248px] rounded-[4px_0_0_4px]
-                    border border-solid border-[#878a8c] bg-white p-2 text-[#1c1c1c]"
+                    border border-solid border-[#878a8c] bg-[var(--newCommunityTheme-body)] p-2
+                    text-[var(--color-neutral-content)]"
                     placeholder="Search for a user" value={usersearch} onChange={handlesearchchange} />
                     <button className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3" onClick={handlesearch}>
                         <svg className="size-4 fill-white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

@@ -8,11 +8,11 @@ import propTypes from 'prop-types';
  *
  * @return {JSX.Element} mod post
  */
-function Modpost({isremoved, isreported, children}) {
+function Modpost({isremoved, isreported, children, postId, subredditName}) {
     return (
-        <div className='overflow-hidden rounded rounded-b-none'>
-            <div className='relative mb-2.5 cursor-pointer  overflow-hidden rounded border
-             border-solid border-[#ccc] bg-[rgba(255,255,255,0.8)] pl-10 pr-4 text-[#878A8C] hover:border-[#1c1c1c]'>
+        <div className=' rounded rounded-b-none'>
+            <div className='relative mb-2.5 cursor-pointer  rounded border border-solid
+             border-[var(--newCommunityTheme-line)] bg-[var(--newCommunityTheme-body)] pl-10 pr-4 text-[#878A8C]'>
                 <div></div>
                 <div className='absolute left-0 top-0 box-border
                  flex w-10 flex-col items-center border-l-4 border-solid border-l-transparent py-2 pl-0 pr-1'>
@@ -105,6 +105,8 @@ Modpost.propTypes = {
     isremoved: propTypes.bool,
     isreported: propTypes.bool,
     children: propTypes.node,
+    postId: propTypes.string.isRequired,
+    subredditName: propTypes.string.isRequired,
 };
 
 

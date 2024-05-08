@@ -76,6 +76,52 @@ const API_ROUTES = {
     editTextWidget: '/subreddit/TextWidget',
     addBookmark: '/subreddit/bookmark/button',
     addBookmarksWidget: '/subreddit/widget/bookmark',
+    userUpvotedPosts: (username) => (page, limit) => {
+        return `/user/upvotedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userSavedPosts: (username) => (page, limit) => {
+        return `/user/savedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userDownvotedPosts: (username) => (page, limit) => {
+        return `/user/downvotedPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userHiddenPosts: (username) => (page, limit) => {
+        return `/user/hiddenPosts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userAllPosts: (username) => (page, limit) => {
+        return `/user/posts?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userComments: (username) => (page, limit) => {
+        return `/user/comments?username=${username}&page=${page}&limit=${limit}`;
+    },
+    userInfo: (userId) => `/user/info?userId=${userId}`,
+    getPost: (postId) => `/post/get?postId=${postId}`,
+    homeFeed: (sortBy) => (page, limit) => {
+        return `/post/homepage/feed?sort=${sortBy}&page=${page}&limit=${limit}`;
+    },
+    communityFeed: (subredditName, sortBy) => (page, limit) => {
+        return `/subreddit/feed?subredditName=${subredditName}&sort=${sortBy}&page=${page}&limit=${limit}`;
+    },
+    upvote: '/post/upvote',
+    downvote: '/post/downvote',
+    cancelUpvote: '/post/cancelUpvote',
+    cancelDownvote: '/post/cancelDownvote',
+    unmoderatedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/unmoderatedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    reportedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/reportedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    editedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/editedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    removedPosts: (subredditName) => (page, limit) => {
+        return `/subreddit/removedPosts?subredditName=${subredditName}&page=${page}&limit=${limit}`;
+    },
+    savePost: '/post/save',
+    unsavePost: '/post/unsave',
+    hidePost: '/post/hide',
+    unhidePost: '/post/unhide',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

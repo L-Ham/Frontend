@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Queue} from './queue';
 import {useNavigate} from 'react-router-dom';
+import {SideInfo} from './sideinfo';
 
 /**
  *
@@ -20,44 +21,43 @@ function Modqueue({name, tab}) {
     // eslint-disable-next-line no-unused-vars
     const navigate = useNavigate();
 
-    const highlighted = 'bg-[#d2dadd]';
-    const white = 'bg-white';
-
+    const highlighted = 'bg-[var(--color-secondary-background-selected)]';
+    const white = 'bg-transparent';
     return (
         <div className=' transition-[margin-top] duration-[0.3s] ease-[ease]'>
             <div className=' flex min-h-screen flex-col overflow-x-auto text-[#1c1c1c]'>
 
                 <div className='mx-0  flex'>
-                    <div className=' box-border w-full '>
-                        <div className=' mx-24 overflow-hidden rounded-[0_0_4px_4px]  pt-4'>
+                    <div className='mx-auto box-border flex'>
+                        <div className=' w-[640px] rounded-[0_0_4px_4px] pt-4'>
                             <div className='mb-2'>
-                                <div className="text-lg font-bold leading-6">Queues</div>
+                                <div className="text-lg font-bold leading-6 text-[var(--color-neutral-content-strong)]">Queues</div>
                                 <div className="mt-3 flex overflow-auto">
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${tab === 'modqueue' ? highlighted : white}
-                                  font-bold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
+                                 rounded-full px-4 py-3 text-sm ${!tab ? highlighted : white}
+                                  font-bold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)] hover:no-underline`}
                                     href="#" onClick={() => navigate(`/r/${name}/about/modqueue`)}>Mod Queue</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${tab === 'reported' ? highlighted : white}
-                                  font-bold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#"onClick={() => navigate(`/r/${name}/about/reports`)}>Reported</a>
+                                 rounded-full px-4 py-3 text-sm ${tab === 'reports' ? highlighted : white}
+                                  font-bold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)] hover:no-underline`}
+                                    href="#"onClick={() => navigate(`/r/${name}/about/modqueue/reports`)}>Reported</a>
                                     <a className={ `cursor-pointer
-                                 rounded-full px-4 py-3 text-sm ${tab === 'removed' ? highlighted : white}
-                                  font-bold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={() => navigate(`/r/${name}/about/spam`)}>Removed</a>
+                                 rounded-full px-4 py-3 text-sm ${tab === 'spam' ? highlighted : white}
+                                  font-bold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)] hover:no-underline`}
+                                    href="#" onClick={() => navigate(`/r/${name}/about/modqueue/spam`)}>Removed</a>
                                     <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${tab === 'edited' ? highlighted : white}
-                                  font-bold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={() => navigate(`/r/${name}/about/edited`)}>Edited</a>
+                                  font-bold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)] hover:no-underline`}
+                                    href="#" onClick={() => navigate(`/r/${name}/about/modqueue/edited`)}>Edited</a>
                                     <a className={ `cursor-pointer
                                  rounded-full px-4 py-3 text-sm ${tab === 'unmoderated' ? highlighted : white}
-                                  font-bold leading-5 text-[#576f76]
-                                  no-underline hover:bg-[#d2dadd] hover:no-underline`}
-                                    href="#" onClick={() => navigate(`/r/${name}/about/unmoderated`)}>Unmoderated</a>
+                                  font-bold leading-5 text-[var(--color-neutral-content-strong)]
+                                  no-underline hover:bg-[var(--color-secondary-background-selected)] hover:no-underline`}
+                                    href="#" onClick={() => navigate(`/r/${name}/about/modqueue/unmoderated`)}>Unmoderated</a>
 
 
                                 </div>
@@ -89,7 +89,7 @@ function Modqueue({name, tab}) {
                                     <div id="mod-insights-tooltip-id"><div id="MODQ--SUBREDDIT_FILTER_DROPDOWN"
                                         className="mr-3 flex cursor-pointer items-center
                                         text-xs font-bold uppercase leading-6
-                                        tracking-[0.5px] text-[#1c1c1c]">All subreddits
+                                        tracking-[0.5px] text-[var(--color-neutral-content-strong)]">All subreddits
                                         <svg className="size-5 align-middle text-xl font-normal leading-5" fill="currentColor" height="16"
                                             viewBox="0 0 20 20"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@ function Modqueue({name, tab}) {
                                     <div id="mod-insights-tooltip-id"><div id="MODQ--SUBREDDIT_FILTER_DROPDOWN"
                                         className="mr-3 flex cursor-pointer items-center
                                         text-xs font-bold uppercase leading-6
-                                        tracking-[0.5px] text-[#1c1c1c]">Newest first
+                                        tracking-[0.5px] text-[var(--color-neutral-content-strong)]">Newest first
                                         <svg className="size-5 align-middle text-xl font-normal leading-5" fill="currentColor" height="16"
                                             viewBox="0 0 20 20"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@ function Modqueue({name, tab}) {
                                     <div id="mod-insights-tooltip-id"><div id="MODQ--SUBREDDIT_FILTER_DROPDOWN"
                                         className="mr-3 flex cursor-pointer items-center
                                         text-xs font-bold uppercase leading-6
-                                        tracking-[0.5px] text-[#1c1c1c]">Posts and Comments
+                                        tracking-[0.5px] text-[var(--color-neutral-content-strong)]">Posts and Comments
                                         <svg className="size-5 align-middle text-xl font-normal leading-5" fill="currentColor" height="16"
                                             viewBox="0 0 20 20"
                                             width="16" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +180,7 @@ function Modqueue({name, tab}) {
 
 
                         </div>
-
+                        <SideInfo />
 
                     </div>
 

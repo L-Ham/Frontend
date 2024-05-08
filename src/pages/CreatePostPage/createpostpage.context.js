@@ -41,8 +41,6 @@ export function CreatePostPageProvider({children, name}) {
                 const rulesData = await fetchSubredditRules(aboutData.communityDetails.subredditId);
                 setRules(rulesData);
 
-                console.log('rules data', rulesData)
-
                 setLoading(false);
             } catch (error) {
                 addNotification({type: 'failure', message: 'Failed to fetch subreddit data, please try again later'});

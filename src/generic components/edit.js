@@ -13,7 +13,6 @@ import './edit.css';
  */
 export function Edit({onClick, className}) {
     const EditIcon = getIconComponent('edit', false);
-    console.log('in edit');
     return (
         <button className={`w-6 h-6
         editt-button-x-small px-[var(--rem6)]

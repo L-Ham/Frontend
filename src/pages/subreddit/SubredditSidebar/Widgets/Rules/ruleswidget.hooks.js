@@ -4,7 +4,6 @@ import {Rule} from './Rule/rule.js';
 export const useRulesWidget = ({data, display}) => {
     if (!data) return {};
 
-    console.log('rules', data);
     const rules = data.map((ruleData, idx) => (
         <Rule
             key={idx}

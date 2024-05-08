@@ -24,6 +24,6 @@ export function Info({info, title}) {
 }
 
 Info.propTypes = {
-    info: PropTypes.string.isRequired,
+    info: PropTypes.any.isRequired,
     title: PropTypes.string.isRequired,
 };
