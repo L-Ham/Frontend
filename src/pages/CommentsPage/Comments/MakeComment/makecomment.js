@@ -57,9 +57,10 @@ export function CommentTextField({
                 console.error('Error:', error);
             }
         };
-        handler();
-        setComment('');
-        onCancel();
+        handler().then(() => {
+            setComment('');
+            onCancel();
+        });
     };
 
     return (

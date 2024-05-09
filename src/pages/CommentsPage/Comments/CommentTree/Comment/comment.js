@@ -33,7 +33,7 @@ function CommentNonMemo({
         <div>
             <div className='grid grid-cols-[24px_minmax(0,1fr)] xs:grid-cols-[32px_minmax(0,1fr)] '>
                 <div className='relative'>
-                    <div className='flex flex-row items-center' onClick={(e) => {
+                    <div className='flex cursor-pointer flex-row items-center' onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = `/user/${userName}`;
                     }}>
@@ -51,8 +51,12 @@ function CommentNonMemo({
                             <div className='flex flex-col overflow-hidden'>
                                 <div className='flex flex-none flex-row flex-nowrap items-center'
                                     style={{font: 'var(--font-12-16-semibold)'}}>
-                                    <div className='text-[var(--color-neutral-content-strong)]'
-
+                                    <div className='cursor-pointer
+                                        text-[var(--color-neutral-content-strong)] hover:text-[var(--color-primary)]'
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        window.location.href = `/user/${userName}`;
+                                    }}
                                     >{userName}</div>
                                     <span className='ml-1 flex' />
                                     <span className='mx-1 my-0 inline-block text-xs
