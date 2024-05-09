@@ -10,6 +10,7 @@ import {VIEW_CONTEXTS} from '../../generic components/Post/data.js';
 import {OverlayContainer} from './General/Components/overlaycontainer.js';
 import {API_ROUTES} from '../../requests/routes.js';
 import {useSearchParams} from 'react-router-dom';
+import uuid from 'react-uuid';
 
 /**
  * Renders the subreddit.
@@ -28,7 +29,7 @@ export function Subreddit({name, style = false}) {
                 <div className={classes.contentContainer} data-testid="content-container">
                     <main className={classes.mainContent} data-testid="main-content">
                         <Feed
-                            key={name}
+                            key={name + (searchParams.get('sort') || 'Hot') + uuid()}
                             viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED}
                             endpoint={API_ROUTES.communityFeed(name, searchParams.get('sort') || 'Hot')}
                             name="subredditPosts"
