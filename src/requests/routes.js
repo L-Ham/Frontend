@@ -46,7 +46,6 @@ const API_ROUTES = {
     communityDetails: (name) => `/subreddit/communityDetails?subRedditName=${name}`,
     subredditRules: (id) => `/subreddit/rule?subredditId=${id}`,
     widgets: (id) => `/subreddit/widget?subredditId=${id}`,
-    searchCommunities: (name) => `/subreddit/nameSearch?search=${name}`,
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
@@ -139,6 +138,21 @@ const API_ROUTES = {
     reportPost: '/post/report',
     forceApprove: '/subreddit/user/forcedApproved',
     hideNotification: '/notification/hide',
+    searchPosts: (query, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW) => `/post/searchPosts?search=${query}` +
+        `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&mediaOnly=${mediaOnly}&isNSFW=${isNSFW}`,
+    searchCommunities: (name) => `/subreddit/nameSearch?search=${name}`,
+    searchUsers: (query) => `/user/searchUsernames?search=${query}`,
+    searchComments: (query, sortRelevance, sortTop, sortNew) => `/comment/searchComments?search=${query}` +
+            `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}`,
+
+    searchSubredditPost: (query, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW, subredditName) =>
+        `/post/subreddit/searchPosts?search=${query}&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}`+
+        `&mediaOnly=${mediaOnly}&isNSFW=${isNSFW}&subredditName=${subredditName}`,
+
+    searchSubredditComments: (query, sortRelevance, sortTop, sortNew, subredditName) =>
+        `/comment/subreddit/searchComment?search=${query}&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&`+
+        `subredditName=${subredditName}`,
+
     votePoll: '/post/votePoll',
     postComments: (postId) => (page, limit) => {
         return `/post/comments?postId=${postId}&page=${page}&limit=${limit}`;

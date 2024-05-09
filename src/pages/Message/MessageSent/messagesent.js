@@ -19,7 +19,7 @@ export function MessageSent() {
             return sentmessages;
         };
         fetchsentMessages();
-    }, );
+    }, []);
 
     const fetchsent = async () => {
         try {

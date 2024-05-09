@@ -139,7 +139,7 @@ export const useProfileMenu = () => {
         return () => {
             document.removeEventListener('click', closeDropdown);
         };
-    });
+    }, []);
 
     return {
         isUserMenuOpen,
