@@ -1,7 +1,7 @@
 import React from 'react';
 
 // disable eslint maxline length
-/* eslint-disable max-len */
+/* eslint-disable  */
 
 /**
  * The chat preview component.
@@ -11,12 +11,21 @@ import React from 'react';
  * <LeftBar />
  * @return {JSX.Element} The chat preview component.
  */
-function LeftThreads() {
+function LeftThreads({onSelect, chats = []}) {
+    const chatsKeys = Object.keys(chats);  // Get all keys from the chats object
+
+    const handleClick = () => {
+        if (chatsKeys.length > 0) {
+            console.log("First chat key:", chatsKeys[0]);  // Log the first key
+            onSelect(chatsKeys[0]);  // Trigger onSelect with the chatId of the first chat
+        }
+    };
+    
     return (
-        <div className="border-0 border-b border-solid border-b-[color:var(--color-tone-5)]">
+        <div onClick = {handleClick}  className="border-0 border-b border-solid border-b-[color:var(--color-tone-5)]">
 
             <div className="mb-2 flex flex-col">
-
+ 
 
                 <li
                     className="relative mt-0 list-none " role="presentation">

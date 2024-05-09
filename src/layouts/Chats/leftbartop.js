@@ -43,6 +43,7 @@ function LeftBarTop({ addingUser,filterChats }) {
                     aria-expanded={dropdownVisible ? 'true' : 'false'}
                     onClick={toggleDropdown}
                 >
+                    <span class="relative flex"><svg rpl="" fill="currentColor" height="16" icon-name="filter-outline" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"> <path d="M15.5 9a3.5 3.5 0 1 0-3.437-4.125H1v1.25h11.063A3.5 3.5 0 0 0 15.5 9Zm0-5.75a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5ZM4.5 11a3.5 3.5 0 1 0 3.437 4.125H18.96v-1.25H7.937A3.5 3.5 0 0 0 4.5 11Zm0 5.75a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z"></path> </svg></span>
                     <span className="flex items-center justify-center">
                         <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10,13.125a.624.624 0 0 1-.442-.183l-5-5 .884-.884L10,11.616l4.558-4.558.884.884-5,5a.624.624 0 0 1-.442.183Z" />

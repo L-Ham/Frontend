@@ -19,7 +19,7 @@ function LeftBar({chatsToLeft, onSelectChat, addUser, filter}) {
     return (
         <div className='box-border flex h-full flex-col overflow-auto border-r border-solid border-r-[color:var(--color-tone-5)]'>
             <LeftBarTop addingUser = {addUser} filterChats = {filter} />
-            <LeftThreads/>
+            <LeftThreads onSelect = {onSelectChat} chats = {chatsToLeft}/>
             <LeftBottom chatsToBottom = {chatsToLeft} onSelectChat={onSelectChat}/>
 
         </div>
