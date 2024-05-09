@@ -8,7 +8,7 @@ import {classes} from './bannerimage.styles.js';
  * @param {string} props.backgroundImage The background image for the banner.
  * @return {JSX.Element} The rendered component.
  */
-export function BannerImage({backgroundImage}) {
+export function BannerImage({backgroundImage=''}) {
     return (
         <div style={{containerType: 'inline-size'}} data-testid="outer-div">
             <div

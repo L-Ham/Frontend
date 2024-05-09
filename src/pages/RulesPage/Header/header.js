@@ -17,20 +17,20 @@ export function Header() {
     if (!type) return null;
 
     return (
-        <div className='pb-[16px]'>
-            <Menu/>
-            <Options/>
-            {type === 'rules' && <RulesNotes/>}
-            {type === 'removal-reasons' && <ReasonsNotes/>}
+        <div className='pb-[16px]' data-testid="header-container">
+            <Menu data-testid="menu-component"/>
+            <Options data-testid="options-component"/>
+            {type === 'rules' && <RulesNotes data-testid="rules-notes-component"/>}
+            {type === 'removal-reasons' && <ReasonsNotes data-testid="reasons-notes-component"/>}
             {addRuleView &&
-            <OverlayContainer>
-                <AddRule rule={ruleToAdd}/>
-            </OverlayContainer>}
+    <OverlayContainer data-testid="add-rule-overlay">
+        <AddRule rule={ruleToAdd} data-testid="add-rule-component"/>
+    </OverlayContainer>}
             {
                 addReasonView &&
-                <OverlayContainer>
-                    <AddReason reason={reasonToAdd}/>
-                </OverlayContainer>
+        <OverlayContainer data-testid="add-reason-overlay">
+            <AddReason reason={reasonToAdd} data-testid="add-reason-component"/>
+        </OverlayContainer>
             }
         </div>
     );

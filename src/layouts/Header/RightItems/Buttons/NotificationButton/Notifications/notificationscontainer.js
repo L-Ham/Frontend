@@ -9,6 +9,7 @@ import {axiosInstance as axios} from '../../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../../requests/routes.js';
 import {useNotifications} from '../../../../../../generic components/Notifications/notificationsContext.js';
 
+import {useNotificationsButtons} from '../notificationsbuttoncontext.js';
 /**
  * Notifications Container
  * @param {string} view - view
@@ -17,20 +18,25 @@ import {useNotifications} from '../../../../../../generic components/Notificatio
  * */
 export function NotificationsContainer({view = 'COMPACT'}) {
     const className = (view === 'COMPACT') ? `absolute right-0 top-[56px] -m-2
-    w-[346px] min-w-[346px] max-w-[346px] overflow-hidden rounded-[15px]
+    w-[346px] min-w-[346px] max-w-[346px] overflow-visible rounded-[15px]
     bg-[var(--color-tooltip-bg-neutral)] text-[var(--color-tooltip-text-neutral)]
     shadow-[0px_5px_13px_-1px_rgba(0,0,0,0.4)]` : 'flex flex-col overflow-hidden';
 
-    const isEmpty = false;
+    const {notifications} = useNotificationsButtons();
+    if (!notifications) return null;
+
+    const isEmpty = notifications.length === 0;
 
     return (
         <div className={className} data-testid="container-#235@SCC">
-            <div className='flex flex-col overflow-hidden' data-testid="flex-container-#142DS@@#">
+            <div className='flex flex-col overflow-visible' data-testid="flex-container-#142DS@@#">
                 <Menu view={view} data-testid="menu-@$DFS%^^&"/>
                 {isEmpty && <EmptyNotifications/>}
-                {!isEmpty && <>
+                {!isEmpty &&
+                <>
                     <Notifications view={view} data-testid="notifications-#JJHSnxcksjSXX@"/>
                     {view == 'COMPACT' && <SeeAllButton data-testid="see-all-button-%%^^&)(()>?asd"/>}
+                    {view == 'FULL' && <div className='z-10 mt-[30px] h-[120px] w-full'/>}
                 </>
                 }
             </div>
@@ -51,6 +57,7 @@ NotificationsContainer.propTypes = {
 function EmptyNotifications() {
     const {addNotification} = useNotifications();
     const [community, setCommunity] = useState('');
+
     const suggestCommunity = async () => {
         const response = await axios.get(API_ROUTES.suggestCommunity);
         const data = response.data;
@@ -103,11 +110,13 @@ function EmptyNotifications() {
                         items-center
                         justify-center px-[var(--rem14)]
                         font-semibold !no-underline "
-                        href={`/r/${community}`}>
+                        href={`/r/${community}`}
+                        disabled={!community}
+                        >
                             <span className="flex items-center justify-center">
                                 <span className="flex
                                 items-center gap-2">
-                             Visit r/{community}
+                                    {community? `Visit r/${community}` : 'loading...'}
                                 </span>
                             </span>
                         </a>

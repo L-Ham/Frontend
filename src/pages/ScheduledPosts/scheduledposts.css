@@ -1,7 +1,3 @@
-._2Z3MiFrgj2rofHXrH1YVKn._1haViLcso0RRPvkDGZgDLJ {
-   /* padding-left: 280px; */
-}
-
 ._2Z3MiFrgj2rofHXrH1YVKn {
     width: 100%;
     box-sizing: border-box;
@@ -25,16 +21,16 @@
     z-index: 3;
     top: 89px;
 }
-.pr-0 {
+.hhh-pr-0 {
     padding-right: 0px;
 }
-.bg-neutral-background {
+.hhh-bg-neutral-background {
     background-color: var(--color-neutral-background);
 }
-.mb-xs {
+.hhh-mb-xs {
     margin-bottom: 0.5rem;
 }
-.fixed {
+.hhh-fixed {
     position: fixed;
 }
 
@@ -333,6 +329,11 @@
     width: 20px;
 }
 
+._1-tY_25z_pkhbFvUz2-AqS {
+    display: inline;
+    vertical-align: text-top;
+}
+
 ._2KWv8ukh9RMgpOturAiV9z {
     background-color: #fff;
     position: relative;
@@ -340,17 +341,13 @@
 }
 
 ._3pHV3zwe-Q9-xNEB0iM3WT {
-    display: -ms-flexbox;
-    display: flex;
     position: relative;
-    -ms-flex-direction: row;
-    flex-direction: row;
     padding: 8px 8px 0;
+    box-sizing: border-box;
 }
 
 @media (min-width: 420px) {
     ._2UwJRJuqEbkRCV8O6REq8h._2UwJRJuqEbkRCV8O6REq8h {
-        display: -ms-flexbox;
         display: flex;
         -ms-flex: 0 0 80px;
         flex: 0 0 80px;
@@ -359,7 +356,6 @@
 }
 @media (min-width: 414px) {
     ._2UwJRJuqEbkRCV8O6REq8h._2UwJRJuqEbkRCV8O6REq8h {
-        display: -ms-flexbox;
         display: flex;
         -ms-flex: 0 0 80px;
         flex: 0 0 80px;
@@ -368,7 +364,6 @@
 }
 @media (min-width: 375px) {
     ._2UwJRJuqEbkRCV8O6REq8h._2UwJRJuqEbkRCV8O6REq8h {
-        display: -ms-flexbox;
         display: flex;
         -ms-flex: 0 0 80px;
         flex: 0 0 80px;
@@ -377,7 +372,6 @@
 }
 @media (min-width: 320px) {
     ._2UwJRJuqEbkRCV8O6REq8h._2UwJRJuqEbkRCV8O6REq8h {
-        display: -ms-flexbox;
         display: flex;
         -ms-flex: 0 0 80px;
         flex: 0 0 80px;
@@ -385,9 +379,35 @@
     }
 }
 ._2UwJRJuqEbkRCV8O6REq8h._2UwJRJuqEbkRCV8O6REq8h {
-    display: none;
+    display: flex;
     margin-right: 8px;
     background-color: var(--newCommunityTheme-bodyTextAlpha03);
+}
+
+._3bAfM2inJTjD3ZXNzO5nE5 {
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+.Q0BxYHtCOJ_rNSPJMU2Y7 {
+    color: var(--newCommunityTheme-actionIcon);
+}
+._1iKd82bq_nqObFvSH1iC_Q {
+    display: inline-block;
+    overflow: hidden;
+    height: 24px;
+    width: 24px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.geso-icon.ZyxIIl4FP5gHGrJDzNpUC {
+    line-height: 24px;
+    position: relative;
+}
+.geso-icon.ZyxIIl4FP5gHGrJDzNpUC {
+    line-height: 24px;
+    position: relative;
 }
 
 
