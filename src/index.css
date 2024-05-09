@@ -381,6 +381,7 @@ code {
   --color-switch-input-background-checked:var(--color-global-alienblue);
   --color-primary-plain: #648EFC;
 
+  --color-brand-background-active: #7e2200;
 }
 .theme-dark {
   /* add dark scheme here */
@@ -803,6 +804,7 @@ code {
   --message-content-odd:#1A1A1B;
   --message-content-text:#d7dadc;
   --graytowhite: #ffffff;
+  --color-brand-background-active: #a74b29;
 }
 .theme-light {
   /* add light scheme here */
@@ -1212,4 +1214,5 @@ code {
     --message-content-even:#f0f0f0;
     --message-content-text:#000000;
     --graytowhite: rgb(237, 239, 241);
+    --color-brand-background-active: #7e2200;
 }

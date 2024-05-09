@@ -15,3 +15,16 @@
     -webkit-box-shadow: -3px 5px 20px -8px rgba(0,0,0,0.65);
     -moz-box-shadow: -3px 5px 20px -8px rgba(0,0,0,0.65);
 }
+
+.button-secondary {
+    --button-color-background-default: var(--color-button-secondary-background);
+    --button-color-background-focus: var(--color-button-secondary-background-focus);
+    --button-color-background-hover: var(--color-button-secondary-background-hover);
+    --button-color-background-active: linear-gradient(var(--color-button-secondary-background-hover), var(--color-button-secondary-background-hover));
+    --button-color-background-disabled: var(--color-button-secondary-background-disabled);
+    --button-color-background-activated: var(--color-button-secondary-background-activated);
+    --button-color-text-default: var(--color-button-secondary-text);
+    --button-color-text-disabled: var(--color-button-secondary-text-disabled);
+    --button-color-text-activated: var(--color-button-secondary-text-activated);
+    --button-border-color-default: var(--color-button-secondary-border);
+}

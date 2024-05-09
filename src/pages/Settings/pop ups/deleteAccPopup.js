@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {logout} from '../../../store/userSlice.js';
 import {useNavigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 /**
  * Component to display a popup for account deletion with user input validation.
@@ -36,12 +37,13 @@ function DeletePopUp({id}) {
     async function handleDeleteUser(l, u, p) {
         const obj = {leavingReason: l, userName: u, password: p};
         console.log('object', obj);
+        const isThemeDark = useSelector((state) => state.user.theme === 'dark');
         try {
             await axiosInstance.delete(API_ROUTES.deleteUser, {
                 data: {leavingReason: l, userName: u, password: p},
             });
             console.log('accdeleted:', u);
-            dispatch(logout());
+            dispatch(logout({theme: isThemeDark ? 'dark': 'light'}));
             navigate('/login');
         } catch (error) {
             console.error('Failed to delete user:', error);

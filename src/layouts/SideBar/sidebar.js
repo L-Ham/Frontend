@@ -6,6 +6,7 @@ import {CommunitiesSection} from './SideBarSection/CommunitySection/communitiess
 import {ResourcesSection} from './SideBarSection/ResourcesSection/resourcessection.js';
 import {sideBarClasses as styles} from './sidebar.styles.js';
 import './sidebar.css';
+import {useSelector} from 'react-redux';
 
 /**
  * The sidebar component
@@ -16,6 +17,7 @@ import './sidebar.css';
  * @return {JSX.Element} The sidebar component
  */
 function SideBar() {
+    const isLoggedin = useSelector((state) => state.user.token) === '' ? false : true;
     return (
 
         <div className={styles.sideBarContainer}>
@@ -23,10 +25,14 @@ function SideBar() {
 
                 <TopSection />
                 <hr className={styles.divider} />
-                <RecentCommunitiesSection />
-                <hr className={styles.divider} />
-                <CommunitiesSection />
-                <hr className={styles.divider} />
+                {isLoggedin &&
+                    <>
+                        <RecentCommunitiesSection />
+                        <hr className={styles.divider} />
+                        <CommunitiesSection />
+                        <hr className={styles.divider} />
+                    </>
+                }
                 <ResourcesSection />
             </nav>
 
