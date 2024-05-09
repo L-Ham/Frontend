@@ -28,7 +28,6 @@ export function ScheduledPosts({name}) {
             setAbout(data);
         } catch (error) {
             addNotification({type: 'error', message: 'Error fetching subreddit about data'});
-            console.error('Error fetching subreddit about data', error);
         }
     };
 

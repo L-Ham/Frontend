@@ -264,6 +264,14 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
     );
 }
 
+// prop types
 AddRule.propTypes = {
-    rule: PropTypes.Object,
+    rule: PropTypes.shape({
+        ruleText: PropTypes.string,
+        fullDescription: PropTypes.string,
+        appliesTo: PropTypes.string,
+        reportReason: PropTypes.string,
+        descriptionHtml: PropTypes.string,
+        _id: PropTypes.string,
+    }),
 };

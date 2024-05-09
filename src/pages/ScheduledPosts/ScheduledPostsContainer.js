@@ -11,8 +11,15 @@ import {useNotifications} from '../../generic components/Notifications/notificat
  */
 export function ScheduledPostsContainer({about}) {
     const [scheduledPosts, setScheduledPosts] = React.useState([]);
-    const {communityDetails: {subredditId: id}} = about;
     const {addNotification} = useNotifications();
+
+    if (!about) return null;
+
+    if (Object.keys(about).length === 0) {
+        return null;
+    }
+
+    const {communityDetails: {subredditId: id}} = about;
 
     if (!id) {
         return null;
@@ -21,7 +28,6 @@ export function ScheduledPostsContainer({about}) {
     const getSchedulePosts = async () => {
         const response = await axiosInstance.get(API_ROUTES.getScheduledPosts(id));
         const data = await response.data.scheduledPosts;
-        console.log('data sched posts', data);
         return data;
     };
 
@@ -67,7 +73,6 @@ export function ScheduledPostsContainer({about}) {
                 };
             });
             setScheduledPosts(formattedPosts);
-            console.log('Scheduled posts', formattedPosts);
         } catch (error) {
             addNotification({type: 'error', message: error.response.data.message});
             console.error('Error fetching scheduled posts', error);
@@ -96,7 +101,8 @@ export function ScheduledPostsContainer({about}) {
     //     isNsfw: false,
     //     isSpoiler: true,
     // }];
-    if (!scheduledPosts) {
+
+    if (!scheduledPosts || scheduledPosts.length === 0) {
         return <div>Loading...</div>;
     }
 

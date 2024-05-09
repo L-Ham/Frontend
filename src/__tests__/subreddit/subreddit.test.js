@@ -1,6 +1,7 @@
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 import {Subreddit} from '../../pages/subreddit/subreddit.js';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 jest.mock('../../pages/subreddit/subredditcontext.js', () => ({
     __esModule: true,
@@ -28,7 +29,11 @@ jest.mock('../../generic components/feed.js', () => ({
     Feed: () => {
         return <div data-testid="feed"/>;
     },
+    SubredditEmptyFeed: () => {
+        return <div data-testid="subreddit-empty-feed"/>;
+    },
 }));
+
 
 jest.mock('../../pages/subreddit//General/Components/overlaycontainer.js', () => ({
     __esModule: true,
@@ -39,11 +44,19 @@ jest.mock('../../pages/subreddit//General/Components/overlaycontainer.js', () =>
 
 describe('Subreddit', () => {
     it('renders without crashing', () => {
-        render(<Subreddit name="test" />);
+        render(
+            <Router>
+                <Subreddit name="test" />
+            </Router>,
+        );
     });
 
     if ('renders all components', () => {
-        const {getByTestId} = render(<Subreddit name="test" />);
+        const {getByTestId} = render(
+            <Router>
+                <Subreddit name="test" />
+            </Router>,
+        );
         expect(getByTestId('subreddit-banner')).toBeInTheDocument();
         expect(getByTestId('subreddit-sidebar')).toBeInTheDocument();
         expect(getByTestId('feed')).toBeInTheDocument();

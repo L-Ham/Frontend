@@ -6,6 +6,7 @@ import {Post} from '../../pages/ScheduledPosts/Post';
 import {axiosInstance} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
 import {useNotifications} from '../../generic components/Notifications/notificationsContext.js';
+import { act } from 'react-dom/test-utils';
 
 jest.mock('../../generic components/Notifications/notificationsContext.js', () => ({
     useNotifications: jest.fn(),
@@ -18,286 +19,151 @@ jest.mock('../../pages/ScheduledPosts/Post', () => ({
     },
 }));
 
+// Mock axios
 jest.mock('../../requests/axios', () => ({
-    __esModule: true,
     axiosInstance: {
+        post: jest.fn(),
+        patch: jest.fn(),
+        delete: jest.fn(),
         get: jest.fn(),
     },
 }));
 
-jest.mock('../../requests/routes', () => ({
-    __esModule: true,
-    API_ROUTES: {
-        getSchedulePosts: jest.fn(),
-    },
-}));
 
-const mockPosts = [
-    {
-        title: 'testing sched',
-        user: 'artyyyGuy',
-        subreddit: 'flowersWorldForYou',
-        scheduledTime: '9:00pm',
-        scheduledDate: '5/1',
-        isNsfw: true,
-        isSpoiler: true,
-    },
-    {
-        title: 'this is a post',
-        user: 'gaser',
-        subreddit: 'flowersWorldForYou',
-        scheduledTime: '8:00pm',
-        scheduledDate: '2/4',
-        isNsfw: false,
-        isSpoiler: true,
-    },
-];
+describe('ScheduledPostsContainer', () => {
+    const mockAbout = { communityDetails: { subredditId: 'testId' } };
+    const mockPosts = [
+        {
+            title: 'testTitle',
+            userName: 'testUser',
+            type: 'testType',
+            subredditName: 'testSubreddit',
+            createdAt: new Date().toISOString(),
+            scheduledMinutes: 30,
+            isNSFW: false,
+            isSpoiler: false,
+        },
+    ];
+    const mockFormattedPosts = [
+        {
+            title: 'testTitle',
+            user: 'testUser',
+            type: 'testType',
+            subreddit: 'testSubreddit',
+            scheduledTime: '12:30 AM',
+            scheduledDate: '1/1',
+            isNsfw: false,
+            isSpoiler: false,
+        },
+    ];
+    const mockError = { response: { data: { message: 'testError' } } };
 
-
-describe('ScheduledPostsContainer2', () => {
     beforeEach(() => {
-        axiosInstance.get.mockResolvedValue({data: mockPosts});
+        useNotifications.mockReturnValue({ addNotification: jest.fn() });
     });
 
     afterEach(() => {
         jest.clearAllMocks();
     });
 
-    it('renders without crashing', () => {
-        render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
+    test('renders without crashing', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+         await act(async () => {
+        render(<ScheduledPostsContainer about={mockAbout} />);
+        });
         expect(screen.getByTestId('scheduled-posts-container-div')).toBeInTheDocument();
     });
 
-    it('calls getSchedulePosts function on component mount', () => {
-        render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-        expect(API_ROUTES.getSchedulePosts).toHaveBeenCalled();
+    test('renders loading state', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: [] } });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
 
-    it('calls loadPosts function on component mount', () => {
-        render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-        expect(axiosInstance.get).toHaveBeenCalled();
+    test('renders Post components', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(screen.getAllByTestId('post-component').length).toBe(mockPosts.length));
     });
 
-    // it('calls setScheduledPosts function with the correct data', async () => {
-    //     render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(setScheduledPosts).toHaveBeenCalledWith(mockPosts);
-    //     });
-    // });
-
-    // it('calls addNotification function when there is an error fetching posts', async () => {
-    //     axiosInstance.get.mockRejectedValueOnce(new Error('Failed to fetch posts'));
-    //     render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(addNotification).toHaveBeenCalledWith('Failed to fetch posts');
-    //     });
-    // });
-
-    // it('renders the correct number of Post components based on the scheduledPosts state', async () => {
-    //     render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    // });
-
-    // it('renders the Post components with the correct props', async () => {
-    //     render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         const postComponents = screen.getAllByTestId('post-component');
-    //         postComponents.forEach((component, index) => {
-    //             expect(component).toHaveAttribute('title', mockPosts[index].title);
-    //             expect(component).toHaveAttribute('user', mockPosts[index].user);
-    //             expect(component).toHaveAttribute('subreddit', mockPosts[index].subreddit);
-    //             expect(component).toHaveAttribute('scheduledTime', mockPosts[index].scheduledTime);
-    //             expect(component).toHaveAttribute('scheduledDate', mockPosts[index].scheduledDate);
-    //             expect(component).toHaveAttribute('isNsfw', mockPosts[index].isNsfw.toString());
-    //             expect(component).toHaveAttribute('isSpoiler', mockPosts[index].isSpoiler.toString());
-    //         });
-    //     });
-    // });
-
-    it('renders the scheduled-posts-container-div', () => {
-        render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-        expect(screen.getByTestId('scheduled-posts-container-div')).toBeInTheDocument();
+    test('handles absence of id', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={{}} />);
+            });
+        expect(axiosInstance.get).not.toHaveBeenCalled();
     });
 
-    // it('renders the post-idx for each post', async () => {
-    //     render(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         const postComponents = screen.getAllByTestId('post-component');
-    //         postComponents.forEach((component, index) => {
-    //             expect(component).toHaveAttribute('post-idx', index.toString());
-    //         });
-    //     });
-    // });
-
-    it('re-renders correctly when the id prop changes', () => {
-        const {rerender} = render(
-            <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-        );
-        rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'newTestId'}}} />);
-        expect(API_ROUTES.getSchedulePosts).toHaveBeenCalledTimes(2);
+    test('handles presence of id', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        expect(axiosInstance.get).toHaveBeenCalledWith(API_ROUTES.getScheduledPosts(mockAbout.communityDetails.subredditId));
     });
 
-    // it('re-renders correctly when the scheduledPosts state changes', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     const newMockPosts = [
-    //         {
-    //             title: 'new post',
-    //             user: 'newUser',
-    //             subreddit: 'newSubreddit',
-    //             scheduledTime: '10:00pm',
-    //             scheduledDate: '5/2',
-    //             isNsfw: false,
-    //             isSpoiler: false,
-    //         },
-    //     ];
-    //     axiosInstance.get.mockResolvedValueOnce({data: newMockPosts});
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(newMockPosts.length);
-    //     });
-    // });
+    test('handles getScheduledPosts API call', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(axiosInstance.get).toHaveBeenCalled());
+    });
 
-    // it('re-renders correctly when there is an error fetching posts', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     axiosInstance.get.mockRejectedValueOnce(new Error('Failed to fetch posts'));
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(addNotification).toHaveBeenCalledWith('Failed to fetch posts');
-    //     });
-    // });
+    test('handles error in getScheduledPosts API call', async () => {
+        axiosInstance.get.mockRejectedValueOnce(mockError);
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(useNotifications().addNotification).toHaveBeenCalledWith({ type: 'error', message: mockError.response.data.message }));
+    });
 
-    // it('re-renders correctly when the getSchedulePosts function returns different data', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     const newMockPosts = [
-    //         {
-    //             title: 'new post',
-    //             user: 'newUser',
-    //             subreddit: 'newSubreddit',
-    //             scheduledTime: '10:00pm',
-    //             scheduledDate: '5/2',
-    //             isNsfw: false,
-    //             isSpoiler: false,
-    //         },
-    //     ];
-    //     axiosInstance.get.mockResolvedValueOnce({data: newMockPosts});
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(newMockPosts.length);
-    //     });
-    // });
+    test('handles loadPosts function', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
 
-    // it('re-renders correctly when the loadPosts function is called with different data', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     const newMockPosts = [
-    //         {
-    //             title: 'new post',
-    //             user: 'newUser',
-    //             subreddit: 'newSubreddit',
-    //             scheduledTime: '10:00pm',
-    //             scheduledDate: '5/2',
-    //             isNsfw: false,
-    //             isSpoiler: false,
-    //         },
-    //     ];
-    //     axiosInstance.get.mockResolvedValueOnce({data: newMockPosts});
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(newMockPosts.length);
-    //     });
-    // });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(axiosInstance.get).toHaveBeenCalled());
+    });
 
-    // it('re-renders correctly when the setScheduledPosts function is called with different data', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     const newMockPosts = [
-    //         {
-    //             title: 'new post',
-    //             user: 'newUser',
-    //             subreddit: 'newSubreddit',
-    //             scheduledTime: '10:00pm',
-    //             scheduledDate: '5/2',
-    //             isNsfw: false,
-    //             isSpoiler: false,
-    //         },
-    //     ];
-    //     axiosInstance.get.mockResolvedValueOnce({data: newMockPosts});
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(newMockPosts.length);
-    //     });
-    // });
+    test('handles useEffect hook', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
 
-    // it('re-renders correctly when the addNotification function is called with different data', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     axiosInstance.get.mockRejectedValueOnce(new Error('Failed to fetch posts'));
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         expect(addNotification).toHaveBeenCalledWith('Failed to fetch posts');
-    //     });
-    // });
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(axiosInstance.get).toHaveBeenCalled());
+    });
 
-    // it('re-renders correctly when the Post components are rendered with different props', async () => {
-    //     const {rerender} = render(
-    //         <ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />,
-    //     );
-    //     await waitFor(() => {
-    //         expect(screen.getAllByTestId('post-component')).toHaveLength(mockPosts.length);
-    //     });
-    //     const newMockPosts = [
-    //         {
-    //             title: 'new post',
-    //             user: 'newUser',
-    //             subreddit: 'newSubreddit',
-    //             scheduledTime: '10:00pm',
-    //             scheduledDate: '5/2',
-    //             isNsfw: false,
-    //             isSpoiler: false,
-    //         },
-    //     ];
-    //     axiosInstance.get.mockResolvedValueOnce({data: newMockPosts});
-    //     rerender(<ScheduledPostsContainer about={{communityDetails: {subredditId: 'testId'}}} />);
-    //     await waitFor(() => {
-    //         const postComponents = screen.getAllByTestId('post-component');
-    //         postComponents.forEach((component, index) => {
-    //             expect(component).toHaveAttribute('title', newMockPosts[index].title);
-    //             expect(component).toHaveAttribute('user', newMockPosts[index].user);
-    //             expect(component).toHaveAttribute('subreddit', newMockPosts[index].subreddit);
-    //             expect(component).toHaveAttribute('scheduledTime', newMockPosts[index].scheduledTime);
-    //             expect(component).toHaveAttribute('scheduledDate', newMockPosts[index].scheduledDate);
-    //             expect(component).toHaveAttribute('isNsfw', newMockPosts[index].isNsfw.toString());
-    //             expect(component).toHaveAttribute('isSpoiler', newMockPosts[index].isSpoiler.toString());
-    //         });
-    //     });
-    // });
+    test('handles addNotification function', async () => {
+        axiosInstance.get.mockRejectedValueOnce(mockError);
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        await waitFor(() => expect(useNotifications().addNotification).toHaveBeenCalledWith({ type: 'error', message: mockError.response.data.message }));
+    });
+
+    test('handles useNotifications hook', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        expect(useNotifications).toHaveBeenCalled();
+    });
+
+    test('handles useState hook', async () => {
+        axiosInstance.get.mockResolvedValueOnce({ data: { scheduledPosts: mockPosts } });
+
+        const useStateSpy = jest.spyOn(React, 'useState');
+        await act(async () => {
+            render(<ScheduledPostsContainer about={mockAbout} />);
+            });
+        expect(useStateSpy).toHaveBeenCalled();
+    });
 });

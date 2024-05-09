@@ -127,7 +127,7 @@ export function AddReason({reason: {title: reasonTitle, message: reasonMessage, 
             <div className="_3cwQrg-XvocnoG0U22wT8t" data-testid="message-label">Reason message:</div>
             <div className="_12g_PUGHD-w7T1w4Q3oTsq _1RYmGXZkbjV_9GAwCiqmLp" data-testid="greeting-text">Hi u/username,</div>
             <textarea placeholder="Write a message that will communicate to the user why their post was removed."
-                className="_2h8O7PjrCXfaJJWKrAxJPL _2g19cC2dTjD8Ivp0iaxvPI" data-redditstyle="true" value={message} onChange={handleMessageChange} maxlength={100000} data-testid="textarea-message">
+                className="_2h8O7PjrCXfaJJWKrAxJPL _2g19cC2dTjD8Ivp0iaxvPI" data-redditstyle="true" value={message} onChange={handleMessageChange} maxLength={100000} data-testid="textarea-message">
             </textarea>
             <div className="_1h0r6vtgOzgWtu-GNBO6Yb s5ap8yh1b4ZfwxvHizW3f" data-testid="characters-remaining-message">{formatNumberWithCommas(100000 - message.length)} Characters remaining</div>
         </div>
@@ -145,6 +145,5 @@ export function AddReason({reason: {title: reasonTitle, message: reasonMessage, 
 AddReason.propTypes = {
     reason: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
 };
 

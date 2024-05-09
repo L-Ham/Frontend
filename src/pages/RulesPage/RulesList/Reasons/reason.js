@@ -8,7 +8,6 @@ import {useRulesPage} from '../../rulespagecontext';
  * Renders the community rules.
  * @param {Object} reason The reason to render.
  * @param {number} idx The index of the reason.
- * @param {string} type The type of the reason.
  * @return {JSX.Element} The rendered component.
  */
 export function Reason({reason: {title}, idx, reason}) {
@@ -39,5 +38,4 @@ export function Reason({reason: {title}, idx, reason}) {
 Reason.propTypes = {
     reason: PropTypes.object.isRequired,
     idx: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
 };
