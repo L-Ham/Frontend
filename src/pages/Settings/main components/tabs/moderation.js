@@ -42,7 +42,7 @@ function ModerationSettings() {
     
    
     return (
-        <div className='max-w-[688px] flex-auto'>
+        <div className='max-w-[688px] flex-auto w-full ml-[40px] mt-[20px]'>
             <h2
                 className='px-0 py-10 text-xl font-medium not-italic leading-6 text-[var(--newCommunityTheme-bodyText)]'
                 style={{fontFamily: '"IBM Plex Sans", sans-serif'}}
