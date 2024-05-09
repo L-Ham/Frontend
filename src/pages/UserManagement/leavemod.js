@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
@@ -13,6 +14,7 @@ import {API_ROUTES} from '../../requests/routes';
 function Leavmod({onxclick, name, onnewleave}) {
     const [isxPressed, setIsxPressed] = useState(false);
     const token = useSelector((state) => state.user.token);
+    const {addNotification} = useNotifications();
     console.log(token);
     const handlexclick = (event) => {
         setIsxPressed(true);
@@ -39,6 +41,7 @@ function Leavmod({onxclick, name, onnewleave}) {
             console.log(response);
             handlexclick();
             onnewleave(true);
+            addNotification({message: 'Moderator left successfuly', type: 'success'});
         } catch (error) {
             console.log(error);
         }

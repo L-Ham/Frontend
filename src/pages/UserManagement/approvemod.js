@@ -5,6 +5,7 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
@@ -13,6 +14,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
     const [isxPressed, setIsxPressed] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [accept, setaccept] = useState(false);
+    const {addNotification} = useNotifications();
     const handlexclick = (event) => {
         setIsxPressed(true);
         console.log(isxPressed);
@@ -38,6 +40,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
             setaccept(true);
             onAccept(true);
             handlexclick();
+            addNotification({message: 'Moderator accepted successfuly', type: 'success'});
         } catch (error) {
             console.log(error);
         }
@@ -54,6 +57,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
             setaccept(false);
             onDecline(true);
             handlexclick();
+            addNotification({message: 'Moderator declined successfuly', type: 'success'});
         } catch (error) {
             console.log(error);
         }

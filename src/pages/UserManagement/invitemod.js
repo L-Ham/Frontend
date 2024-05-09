@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import {Invitemodcheck} from './invitemodcheck';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
@@ -14,6 +15,9 @@ import {API_ROUTES} from '../../requests/routes';
 function Invitepopup({onxclick, banname, name}) {
     const [isxPressed, setIsxPressed] = useState(false);
     const [username, setusername] = useState('');
+    const [empty, setempty] = useState(false);
+    const [ismoderator, setismoderator] = useState(false);
+    const {addNotification} = useNotifications();
     const handlexclick = (event) => {
         setIsxPressed(true);
         console.log(isxPressed);
@@ -26,6 +30,8 @@ function Invitepopup({onxclick, banname, name}) {
         const newusername = event.target.value;
         setusername(newusername);
         console.log(newusername);
+        setempty(false);
+        setismoderator(false);
         // Call the function passed from the parent with the new email
     };
     const handleaddban = () => {
@@ -44,6 +50,10 @@ function Invitepopup({onxclick, banname, name}) {
      * @return {void}
      */
     async function invitemoderator() {
+        if (username === '') {
+            setempty(true);
+        }
+        let response;
         try {
             const response = await axios.post(API_ROUTES.composeMessage, {
                 receiverName: username,
@@ -81,9 +91,15 @@ function Invitepopup({onxclick, banname, name}) {
             console.log(response);
             console.log(name);
             handlexclick();
+            addNotification({message: 'Moderator invited successfully', type: 'success'});
         } catch (error) {
             console.log(error);
             console.log(name);
+            if (error.response && error.response.data &&
+                error.response.data.message === 'User is already a moderator') {
+                setismoderator(true);
+                addNotification({message: 'User is already a moderator', type: 'failure'});
+            }
         }
     }
     return (
@@ -111,6 +127,27 @@ function Invitepopup({onxclick, banname, name}) {
                                          border border-solid border-[#EDEFF1] px-2 py-0
                                          text-sm font-normal leading-[21px] text-[#1c1c1c]"
                         placeholder="Enter username" value={username} onChange={handleusernamechange}/>
+
+                        {
+                            <div className=" max-h-[1000px]  text-xs font-medium
+                            leading-4 text-[#ea0027] opacity-100 transition-all
+                            duration-[0.2s] ease-[ease-in-out]" data-for="password"
+                            data-testid="email-error"
+                            >
+                                {empty&& (
+                                    <>Can&apos;t leave Ban name empty</>
+                                )}
+
+                                {
+                                    ismoderator && !empty && (
+                                        <>User is already a moderator</>
+                                    )
+                                }
+
+
+                            </div>
+                        }
+
 
                     </div>
                     <div className="pl-4 text-base font-medium leading-5 text-[#1c1c1c]">Give them access to...</div>

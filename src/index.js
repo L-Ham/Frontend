@@ -20,15 +20,15 @@ const mocks = async () => worker.start();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const clientId = '332399911432-vjl376a05ukf0hhpj6kq0hnuibij26dh.apps.googleusercontent.com';
 const render = () => root.render(
-    <React.StrictMode>
-        <GoogleOAuthProvider clientId={clientId}>
-            <Provider store={store}>
-                <PersistGate loading={null} persistor={persistStore(store)}>
-                    <App />
-                </PersistGate>
-            </Provider>
-        </GoogleOAuthProvider>
-    </React.StrictMode>,
+
+    <GoogleOAuthProvider clientId={clientId}>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistStore(store)}>
+                <App />
+            </PersistGate>
+        </Provider>
+    </GoogleOAuthProvider>
+    ,
 );
 
 const enableMock = false;

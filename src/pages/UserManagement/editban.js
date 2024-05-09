@@ -4,12 +4,14 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
  */
 function Editban({name, onxclick, username, labeltext, onremoveban}) {
     const [isxPressed, setIsxPressed] = useState(false);
+    const {addNotification} = useNotifications();
 
     const [modnote, setmodnote] = useState('');
     const [reason, setreason] = useState('');
@@ -48,6 +50,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
             });
             console.log(response);
             handlexclick();
+            addNotification({message: 'Ban edited successfully', type: 'success'});
         } catch (error) {
             console.error(error);
         }
@@ -65,6 +68,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
             console.log(response);
             onremoveban(true);
             handlexclick();
+            addNotification({message: 'User unbanned successfully', type: 'success'});
         } catch (error) {
             console.error(error);
         }

@@ -1,14 +1,166 @@
+/* eslint-disable no-unused-vars */
 
 
 import React from 'react';
 import {Reportbanner} from './reportedbanner';
+import {Newremovebanner} from './newremovebanner';
 import {Removedbanner} from './removedbanner';
 import propTypes from 'prop-types';
+import {API_ROUTES} from '../../requests/routes';
+import {axiosInstance as axios} from '../../requests/axios';
+import {useState} from 'react';
+import {Approvedbanner} from './approvedbanner';
+import {Newapprovebanner} from './newapprovebanner';
+import {Newreportbanner} from './newreportbanner';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} mod post
  */
-function Modpost({isremoved, isreported, children, postId, subredditName}) {
+function Modpost({isremoved, isreported, children, postId, subredditName,
+    isLocked, approved, disapproved, disapprovedByUserame,
+    approvedByUserame, disapprovedByAvatarImageUrl, approvedByAvatarImageUrl}) {
+    const [locked, setLocked] = useState(isLocked);
+    const {addNotification} = useNotifications();
+    const [renderapproved, setRenderapproved] = useState(approved);
+    const [renderdisapproved, setRenderdisapproved] = useState(disapproved);
+    const [renderreported, setRenderreported] = useState(isreported);
+
+    const [isapproved, setApproved] = useState(approved);
+    const [isdisapproved, setDisapproved] = useState(disapproved);
+    const [dropdown, setDropdown] = useState(false);
+
+    const toggledropdown = () => {
+        setDropdown(!dropdown);
+        console.log('dropdown', dropdown);
+    };
+    let label='Lock';
+    if (locked) {
+        label='Unlock';
+    } else {
+        label='Lock';
+    }
+
+
+    // console.log('islocked', isLocked);
+
+    /**
+     * @return {void}
+     */
+    async function calllock() {
+        setLocked(!locked);
+        console.log('locked', locked);
+        const url = locked ? API_ROUTES.unlockPost: API_ROUTES.lockPost;
+        try {
+            console.log('postId', postId);
+
+            const response= await axios.patch(url, {
+                postId});
+            console.log(response);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    /**
+     * @return {void}
+     */
+    async function callaproved() {
+        setRenderapproved(true);
+        setRenderdisapproved(false);
+        setRenderreported(false);
+        if (isremoved) {
+            try {
+                const response= await axios.patch(API_ROUTES.approvePost, {
+
+                    postId: postId,
+                    type: 'removed',
+                });
+                console.log(response);
+                addNotification({message: 'Post approved successfuly', type: 'success'});
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        if (isreported) {
+            try {
+                const response= await axios.patch(API_ROUTES.approvePost, {
+
+                    postId: postId,
+                    type: 'reported',
+                });
+                console.log(response);
+                addNotification({message: 'Post approved successfuly', type: 'success'});
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            try {
+                const response= await axios.patch(API_ROUTES.approvePost, {
+
+                    postId: postId,
+
+                });
+                console.log(response);
+                addNotification({message: 'Post approved successfuly', type: 'success'});
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+    /**
+     * @return {void}
+     */
+    async function calldisapproved() {
+        setRenderdisapproved(true);
+        setRenderapproved(false);
+
+        if (isreported) {
+            try {
+                const response= await axios.patch(API_ROUTES.removePost,
+                    {postId: postId,
+                        type: 'reported'},
+
+
+                );
+
+                console.log(response);
+                addNotification({message: 'Post removed successfuly', type: 'success'});
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            try {
+                console.log('post id', postId);
+                const response= await axios.patch(API_ROUTES.removePost,
+                    {postId: postId,
+                    },
+
+
+                );
+                addNotification({message: 'Post removed successfuly', type: 'success'});
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
+    /**
+     * @return {void}
+     */
+    async function reportpost() {
+        setRenderreported(true);
+        setRenderdisapproved(false);
+        try {
+            const response= await axios.patch(API_ROUTES.reportPost, {postId});
+            console.log(response);
+            addNotification({message: 'Post reported successfuly', type: 'success'});
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
     return (
         <div className=' rounded rounded-b-none'>
             <div className='relative mb-2.5 cursor-pointer  rounded border border-solid
@@ -38,57 +190,76 @@ function Modpost({isremoved, isreported, children, postId, subredditName}) {
 
                 {children}
 
-                {isreported &&<Reportbanner />}
-                {isremoved && <Removedbanner />}
+                {renderreported && !renderdisapproved && !renderapproved &&<Newreportbanner />}
 
 
-                <div className="mx-0 my-3 flex flex-row gap-3"><button role="button" tabIndex="0"
-                    className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
+                {renderdisapproved && <Newremovebanner approvedByUserame={approvedByUserame}
+                    disapprovedByUserame={disapprovedByUserame} approvedByAvatarImageUrl={approvedByAvatarImageUrl}
+                    disapprovedByAvatarImageUrl={disapprovedByAvatarImageUrl}/>}
+
+
+                {renderapproved && <Newapprovebanner approvedByUserame={approvedByUserame}
+                    disapprovedByUserame={disapprovedByUserame} approvedByAvatarImageUrl={approvedByAvatarImageUrl}
+                    disapprovedByAvatarImageUrl={disapprovedByAvatarImageUrl} />}
+
+
+                <div className="mx-0 my-3 flex flex-row gap-3">
+                    {!renderapproved &&
+                    <button role="button" tabIndex="0"
+                        className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
                     items-center justify-center rounded-full border
                     border-solid  border-transparent bg-[#0079d3] fill-white
                     px-4 py-1 text-center text-xs font-bold leading-[17px]
-                    tracking-[unset] text-white"><svg aria-hidden="true" className='size-3'
-                        fill="currentColor" height="16"
-                        viewBox="0 0 20 20" width="16"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.5 15.583a.72.72 0 0 1-.513-.212L1.558
+                    tracking-[unset] text-white" onClick={callaproved}><svg aria-hidden="true" className='size-3'
+                            fill="currentColor" height="16"
+                            viewBox="0 0 20 20" width="16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 15.583a.72.72 0 0 1-.513-.212L1.558
                          9.942l.884-.884L7.5 14.116 18.058 3.558l.884.884-10.93
                          10.929a.723.723 0 0 1-.512.212Z"></path>
-                    </svg><span className="pl-2">Approve</span></button>
+                        </svg><span className="pl-2">Approve</span></button>
+                    }
 
-                {!isremoved && <button role="button" tabIndex="0"
-                    className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
+                    {!renderdisapproved && <button role="button" tabIndex="0"
+                        className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
                     items-center justify-center rounded-full border
                     border-solid  border-[#bdbfc0] bg-[#ffffff] fill-white
                     px-4 py-1 text-center text-xs font-bold leading-[17px]
-                    tracking-[unset] text-black"><svg aria-hidden="true" className='size-3'
-                        fill="currentColor" height="16"
-                        viewBox="0 0 20 20" width="16"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="m18.442 2.442-.884-.884L10 9.116 2.442
+                    tracking-[unset] text-black" onClick={calldisapproved}><svg aria-hidden="true" className='size-3'
+                            fill="currentColor" height="16"
+                            viewBox="0 0 20 20" width="16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="m18.442 2.442-.884-.884L10 9.116 2.442
                         1.558l-.884.884L9.116 10l-7.558 7.558.884.884L10
                         10.884l7.558 7.558.884-.884L10.884 10l7.558-7.558Z"></path>
-                    </svg><span className="pl-2">Remove</span></button>
-                }
+                        </svg><span className="pl-2">Remove</span></button>
+                    }
 
 
-                {!isreported&& <button role="button" tabIndex="0"
-                    className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
+                    {!renderreported&& <button role="button" tabIndex="0"
+                        className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
                     items-center justify-center rounded-full border
                     border-solid  border-[#bdbfc0] bg-[#ffffff] fill-white
                     px-4 py-1 text-center text-xs font-bold leading-[17px]
-                    tracking-[unset] text-black"><svg aria-hidden="true" className='size-3'
-                        fill="currentColor" height="16"
-                        viewBox="0 0 20 20" width="16"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.25 19.775H1V2.193l.353-.171a10.293 10.293 0 0 1 8.919 0
+                    tracking-[unset] text-black" onClick={reportpost}><svg aria-hidden="true" className='size-3'
+                            fill="currentColor" height="16"
+                            viewBox="0 0 20 20" width="16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.25 19.775H1V2.193l.353-.171a10.293 10.293 0 0 1 8.919 0
                         9.054 9.054 0 0 0 7.7.061l.309-.144.385.188a.715.715 0 0 1
                         .334.606V14.79l-.353.17a10.286 10.286 0 0 1-8.919 0 9.033 9.033 0
                         0 0-7.478-.16v4.975Zm3.562-6.956a10.23 10.23 0 0 1 4.46 1.016A9.04
                         9.04 0 0 0 17.75 14V3.531a10.17 10.17 0 0 1-8.022-.384 9.037 9.037
                         0 0 0-7.478-.162v10.468c1.14-.42 2.347-.635 3.562-.634Z"></path>
-                    </svg><span className="pl-2">Spam</span></button>
-                }
+                        </svg><span className="pl-2">Spam</span></button>
+                    }
+
+                    <button role="button" tabIndex="0"
+                        className="relative box-border flex min-h-[32px] w-auto min-w-[32px]
+                    items-center justify-center rounded-full border
+                    border-solid  border-[#bdbfc0] bg-[#ffffff] fill-white
+                    px-4 py-1 text-center text-xs font-bold leading-[17px]
+                    tracking-[unset] text-black" onClick={calllock}><span className="pl-2">{label}</span></button>
 
 
                 </div>
@@ -107,6 +278,14 @@ Modpost.propTypes = {
     children: propTypes.node,
     postId: propTypes.string.isRequired,
     subredditName: propTypes.string.isRequired,
+    isLocked: propTypes.bool,
+    approved: propTypes.bool,
+    disapproved: propTypes.bool,
+    disapprovedByUserame: propTypes.string,
+    approvedByUserame: propTypes.string,
+    disapprovedByAvatarImageUrl: propTypes.string,
+    approvedByAvatarImageUrl: propTypes.string,
+
 };
 
 

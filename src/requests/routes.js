@@ -122,6 +122,12 @@ const API_ROUTES = {
     unsavePost: '/post/unsave',
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
+    lockPost: '/post/lockPost',
+    unlockPost: '/post/unlockPost',
+    approvePost: '/post/approvePost',
+    removePost: '/post/removePost',
+    reportPost: '/post/report',
+    forceApprove: '/subreddit/user/forcedApproved',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

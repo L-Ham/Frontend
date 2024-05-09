@@ -1,18 +1,25 @@
+/* eslint-disable no-unused-vars */
+
 
 import React from 'react';
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
  */
 function Betterban({name, onxclick, banname, labeltext, onaddban}) {
     const [isxPressed, setIsxPressed] = useState(false);
+    const {addNotification} = useNotifications();
     const [username, setusername] = useState('');
     const [modnote, setmodnote] = useState('');
     const [reason, setreason] = useState('');
+    const [empty, setempty] = useState(false);
+    const [notfound, setnotfound] = useState(false);
+    const [ismoderator, setismoderator] = useState(false);
     const handlexclick = (event) => {
         setIsxPressed(true);
         console.log(isxPressed);
@@ -24,6 +31,10 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
         setusername(event.target.value);
         const newusername = event.target.value;
         setusername(newusername);
+        setempty(false);
+        setnotfound(false);
+        setismoderator(false);
+
 
         // Call the function passed from the parent with the new email
     };
@@ -44,22 +55,32 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
      */
     async function handleaddban() {
         if (username === '') {
-            alert('Please enter a username');
+            setempty(true);
         }
+        let response;
         try {
             console.log(username);
-            const response = await axios.patch(API_ROUTES.banUser, {
+            response = await axios.patch(API_ROUTES.banUser, {
                 subredditName: name,
                 userName: username,
                 reasonForBan: reason,
                 modNote: modnote,
                 permanent: true,
             });
+            setnotfound(false);
             console.log(response);
             onaddban(true);
             handlexclick();
+            addNotification({message: 'User Banned successfully', type: 'success'});
         } catch (error) {
-            console.error(error);
+            if (error.response && error.response.data && error.response.data.message === 'You can\'t ban yourself') {
+                console.log('You can\'t ban yourself');
+                setismoderator(true);
+            }
+            if (error.response && error.response.data && error.response.data.message === 'User not found') {
+                console.log('User not found');
+                setnotfound(true);
+            }
         }
     }
 
@@ -104,6 +125,27 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
                                          text-sm font-normal leading-[21px] text-[#1c1c1c]"
                             placeholder="u/username" value={username} onChange={handleusernamechange}/>
                         </label>
+                        {
+                            <div className=" max-h-[1000px]  text-xs font-medium
+                            leading-4 text-[#ea0027] opacity-100 transition-all
+                            duration-[0.2s] ease-[ease-in-out]" data-for="password"
+                            data-testid="email-error"
+                            >
+                                {empty&& (
+                                    <>Can&apos;t leave Ban name empty</>
+                                )}
+                                {notfound && !empty && (
+                                    <>User is not a member of this Subreddit</>
+                                )}
+                                {
+                                    ismoderator && !empty && (
+                                        <>You can&apos;t ban yourself</>
+                                    )
+                                }
+
+
+                            </div>
+                        }
 
 
                         <label className="mb-4 block">

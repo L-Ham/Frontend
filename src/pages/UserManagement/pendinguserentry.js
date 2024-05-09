@@ -24,8 +24,8 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     async function approveuser() {
         try {
             const response = await axios.patch(API_ROUTES.approveUser, {
-                subredditName: {name},
-                username: username,
+                subredditName: name,
+                userName: username,
 
             });
             console.log(response);
@@ -44,7 +44,7 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     async function unapproveuser() {
         try {
             const response = await axios.patch(API_ROUTES.unapproveUser, {
-                subredditName: {name},
+                subredditName: name,
                 userName: username,
             });
             console.log(response);

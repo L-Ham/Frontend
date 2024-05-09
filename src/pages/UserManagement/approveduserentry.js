@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNavigate} from 'react-router-dom';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 
 
 /**
@@ -11,6 +13,8 @@ import {API_ROUTES} from '../../requests/routes';
  * @return {JSX.Element} UserHelp
  */
 function Approveduserentry({username, imageurl, name, onremove}) {
+    const navigate = useNavigate();
+    const {addNotification} = useNotifications();
     Approveduserentry.propTypes = {
         username: PropTypes.string,
         imageurl: PropTypes.string,
@@ -23,17 +27,29 @@ function Approveduserentry({username, imageurl, name, onremove}) {
     async function unapproveuser() {
         try {
             const response = await axios.patch(API_ROUTES.removeUser, {
-                subredditName: {name},
                 userName: username,
+                subredditName: name,
+
             });
+
             console.log(response);
+            console.log(name);
+            console.log(username);
             onremove(true);
+            addNotification({message: 'User removed successfuly', type: 'success'});
         } catch (error) {
             console.log(error);
             console.log(name);
             console.log(username);
         }
     }
+    /**
+     * @return {void}
+     */
+    function navmessage() {
+        navigate(`/message/sent`);
+    }
+
     return (
         <div id='1'>
             <div className='box-border flex h-[60px] w-full flex-row
@@ -65,7 +81,7 @@ function Approveduserentry({username, imageurl, name, onremove}) {
                                                 border border-solid border-transparent fill-[#0079d3]
                                                  px-4 py-1 text-center text-sm
                                                  font-bold leading-[17px] tracking-[unset]
-                                                  text-[#0079d3] hover:bg-[#edeff1]">
+                                                  text-[#0079d3] hover:bg-[#edeff1]" onClick={navmessage}>
                                             Send message</button>
 
                     <button role="button" tabIndex="0"
