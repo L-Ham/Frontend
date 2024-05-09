@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
  * Content Hider component which hides the content of the post if it was
  * marked as NSFW or Spoiler by the author. The content is hidden by default
  * and can be toggled by the user.
- * @param {string} tag - NSFW or Spoiler
+ * @param {string} props - NSFW or Spoiler
  * @param {JSX.Element} content - The content to be hidden
  * @return {JSX.Element} - ContentHider component
  */
-export function ContentHider({tag, content}) {
-    if (tag !== 'nsfw' && tag !== 'spoiler') return content;
+export function ContentHider({isNSFW, isSpoiler, content}) {
+    if (!isNSFW && !isSpoiler) return content;
     const [isHidden, setIsHidden] = React.useState(true);
     if (!isHidden) return content;
 
@@ -33,7 +33,8 @@ export function ContentHider({tag, content}) {
                                     font: 'var(--font-12-16-semibold)',
                                 }}
                             >
-                                {tag === 'nsfw' ? 'View NSFW content' : 'View spoiler'}
+                                {isNSFW && isSpoiler ? 'View NSFW & Spoiler content' :
+                                    isNSFW ? 'View NSFW content' : 'View spoiler'}
                             </span>
                         </span>
                     </button>
@@ -48,6 +49,7 @@ export function ContentHider({tag, content}) {
 }
 
 ContentHider.propTypes = {
-    tag: PropTypes.string.isRequired,
+    isNSFW: PropTypes.bool.isRequired,
+    isSpoiler: PropTypes.bool.isRequired,
     content: PropTypes.element.isRequired,
 };
