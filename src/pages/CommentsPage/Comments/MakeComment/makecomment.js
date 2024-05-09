@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from '../../../../generic components/iconsmap';
 import {useState} from 'react';
+import {API_ROUTES} from '../../../../requests/routes';
+import {axiosInstance as axios} from '../../../../requests/axios';
 /**
  * Comment TextField
  * @param {string} postId
@@ -10,10 +12,13 @@ import {useState} from 'react';
  */
 export function CommentTextField({
     postId,
+    commentId,
     onCancel,
 }) {
     const GifPostIconOutline = getIconComponent('gif-post', false);
     const FormatIconOutline = getIconComponent('format', false);
+    const LinkIconFilled = getIconComponent('link', true);
+    const [commentType, setCommentType] = useState('text');
     const [comment, setComment] = useState('');
 
     const handleInputChange = (event) => {
@@ -29,10 +34,37 @@ export function CommentTextField({
 
     const handleOnComment = () => {
         console.log('Commented:', comment);
+        let data = {postId, parentCommentId: commentId, type: commentType, isHidden: false, text: ''};
+        let headers = {'Content-Type': 'application/json'};
+        if (commentType === 'text') {
+            data = {...data, text: comment};
+        } else if (commentType === 'image') {
+            data = comment;
+            data.append('postId', postId);
+            data.append('parentCommentId', commentId);
+            data.append('type', commentType);
+            data.append('isHidden', false);
+            data.append('text', '');
+            headers = {'Content-Type': 'multipart/form-data'};
+        } else if (commentType === 'link') {
+            data = {...data, url: comment, text: comment};
+        }
+        const handler = async () => {
+            try {
+                const response = await axios.post(API_ROUTES.addComment, data, headers);
+                console.log('Response:', response);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        handler();
+        setComment('');
+        onCancel();
     };
 
     return (
-        <div className='h-auto rounded-[1.25rem] border border-solid border-[color:var(--color-neutral-border)]
+        <div className='mb-4 h-auto rounded-[1.25rem] border border-solid
+         border-[color:var(--color-neutral-border)]
         bg-[var(--color-neutral-background)] focus-within:border-[color:var(--color-neutral-border-medium)]'>
             <div className='flex h-auto flex-col'>
                 <div className='relative h-auto'>
@@ -44,24 +76,59 @@ export function CommentTextField({
                 </div>
                 <div className='px-2 py-1'>
                     <div className='flex w-full max-w-full'>
-                        <div className='flex flex-row flex-nowrap gap-1 text-[var(--color-secondary-weak)]'>
-                            <button className='relative mr-3 inline-flex flex-row items-center
+                        <div className='flex flex-row flex-nowrap text-[var(--color-secondary-weak)]'>
+                            <button className={`relative inline-flex flex-row items-center
                             justify-center rounded-[999px]
+                            ${commentType === 'image' && 'bg-[var(--color-secondary-background-hover)]'}
      px-3 text-xs font-semibold leading-4
-    hover:bg-[var(--color-secondary-background-hover)]'>
+    hover:bg-[var(--color-secondary-background-hover)]`} onClick={(e) => {
+                                e.stopPropagation();
+                                setCommentType('image');
+                            }}>
                                 <span className='flex items-center justify-center'>
                                     <span className='flex'>
-                                        <GifPostIconOutline />
+                                        <GifPostIconOutline className='mr-1'/>Image
+                                    </span>
+                                    <input type='file' accept='image/*'
+                                        onChange={(e) => {
+                                            if (!e.target.files.length) {
+                                                return;
+                                            }
+                                            const file = e.target.files[0];
+                                            console.log('File:', file);
+                                            const data = new FormData();
+                                            data.append('file', file);
+                                            setComment(data);
+                                        }}
+                                        className='absolute inset-0 size-full cursor-pointer opacity-0'
+                                    />
+                                </span>
+                            </button>
+                            <button className={`relative inline-flex flex-row items-center
+                            justify-center rounded-[999px] 
+                            ${commentType === 'text' && 'bg-[var(--color-secondary-background-hover)]'}
+                            px-3 text-xs font-semibold leading-4
+    hover:bg-[var(--color-secondary-background-hover)]`} onClick={(e) => {
+                                e.stopPropagation();
+                                setCommentType('text');
+                            }}>
+                                <span className='flex items-center justify-center'>
+                                    <span className='flex'>
+                                        <FormatIconOutline className='mr-1'/>Text
                                     </span>
                                 </span>
                             </button>
-                            <button className='relative mr-3 inline-flex flex-row items-center
+                            <button className={`relative inline-flex flex-row items-center
                             justify-center rounded-[999px]
-     px-3 text-xs font-semibold leading-4
-    hover:bg-[var(--color-secondary-background-hover)]'>
+                            ${commentType === 'link' && 'bg-[var(--color-secondary-background-hover)]'}
+                            px-3 text-xs font-semibold leading-4
+    hover:bg-[var(--color-secondary-background-hover)]`} onClick={(e) => {
+                                e.stopPropagation();
+                                setCommentType('link');
+                            }}>
                                 <span className='flex items-center justify-center'>
                                     <span className='flex'>
-                                        <FormatIconOutline />
+                                        <LinkIconFilled className='mr-1'/>Link
                                     </span>
                                 </span>
                             </button>
@@ -102,6 +169,7 @@ export function CommentTextField({
 }
 
 CommentTextField.propTypes = {
-    postId: PropTypes.string.isRequired,
+    postId: PropTypes.string,
+    commentId: PropTypes.string,
     onCancel: PropTypes.func.isRequired,
 };
