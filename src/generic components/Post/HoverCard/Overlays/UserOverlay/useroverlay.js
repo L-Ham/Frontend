@@ -11,60 +11,54 @@ import {useUserOverlay} from './useroverlay.hooks.js';
  * UserOverlay component
  * @param {function} openOverlay
  * @param {function} closeOverlay
- * @param {string} userId
+ * @param {object} userData
  * @param {string} viewContext
  * @return {React.Component}
  */
 export function UserOverlay({
     openOverlay,
     closeOverlay,
-    userId,
+    userData,
     viewContext,
 }) {
     const {
         classNames,
-        avatar,
-        created,
-        username,
-        description,
-        postKarma,
-        commentKarma,
-        isFriend,
-    } = useUserOverlay({userId, viewContext});
+    } = useUserOverlay({viewContext});
     return (
         <div
             className={classNames}
             onMouseEnter={openOverlay}
             onMouseLeave={closeOverlay}
             onClick={(e) => e.stopPropagation()}
-            data-testid={`user-overlay-${userId}`}
+            data-testid={`user-overlay-${userData.userId}`}
         >
             <div className={overlayClasses.wrapper}>
                 <TopBar
-                    avatar={avatar}
-                    username={username}
-                    created={created}
+                    avatar={userData.avatar}
+                    username={userData.username}
+                    created={userData.created}
                 />
-                {description && <div className={overlayClasses.description}
+                {userData.About && <div className={overlayClasses.description}
                     style={overlayStyles.description}
-                    data-testid={`user-overlay-description-${userId}`}
+                    data-testid={`user-overlay-description-${userData.userId}`}
                 >
-                    {description}
+                    {userData.About}
                 </div>}
                 <Stats
-                    authorId={userId}
-                    postKarma={postKarma}
-                    commentKarma={commentKarma}
+                    authorId={userData.userId}
+                    postKarma={userData.postKarma}
+                    commentKarma={userData.commentKarma}
                 />
                 <InfoButton />
                 <div className={overlayClasses.buttons} style={overlayStyles.buttons}>
                     <FollowButtons
-                        userId={userId}
-                        isFriend={isFriend}
+                        userId={userData.userId}
+                        isFriend={userData.isFriend}
+                        username={userData.username}
                     />
                     <ChatButton
-                        userId={userId}
-                        username={username}
+                        userId={userData.userId}
+                        username={userData.username}
                     />
                 </div>
             </div>
@@ -75,6 +69,6 @@ export function UserOverlay({
 UserOverlay.propTypes = {
     openOverlay: PropTypes.func.isRequired,
     closeOverlay: PropTypes.func.isRequired,
-    userId: PropTypes.string.isRequired,
+    userData: PropTypes.object.isRequired,
     viewContext: PropTypes.string.isRequired,
 };

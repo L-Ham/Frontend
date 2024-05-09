@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {CommentTextField} from './MakeComment/makecomment';
 import {CommentTree} from './CommentTree/commenttree';
-import {Sorter} from './Sorter/sorter';
+import {API_ROUTES} from '../../../requests/routes';
+import uuid from 'react-uuid';
 
 /**
  * Renders Comments Components
@@ -30,8 +31,7 @@ export function Comments({
                 Add a comment
                 </button> :
                 <CommentTextField postId={postId} onCancel={handleCloseComment}/>}
-            <Sorter />
-            <CommentTree postId={postId} />
+            <CommentTree key={postId + uuid()} postId={postId} endpoint={API_ROUTES.postComments(postId)}/>
         </>
     );
 }

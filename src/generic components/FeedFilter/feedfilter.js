@@ -1,6 +1,9 @@
 import React from 'react';
 import {getIconComponent} from '../iconsmap.js';
 import {useState} from 'react';
+import {useNavigate, useSearchParams} from 'react-router-dom';
+import {SortBy} from './sortby.js';
+import {ViewOptions} from './viewoptions.js';
 /**
  *
  * @return {JSX.Element} The rendered FeedFilter component.
@@ -8,13 +11,14 @@ import {useState} from 'react';
 export function FeedFilter() {
     const CaretDownIcon = getIconComponent('caret-down', false);
     const ViewCardIconOutline = getIconComponent('view-card', false);
-    const ViewCardIconFill = getIconComponent('view-card', true);
-    const ViewClassicIcon = getIconComponent('view-classic', false);
     const [isSortByOpen, setIsSortByOpen] = useState(false);
     const [isViewOptionsOpen, setIsViewOptionsOpen] = useState(false);
+    const [searchParams] = useSearchParams();
+    const sortbys = ['Hot', 'New', 'Top', 'Rising'];
+    const navigate = useNavigate();
     return (
         <>
-            <div className='mx-1 my-2'>
+            <div className='mx-1 my-2' data-testid="feed-#$$satdasdy235">
                 <div className='flex h-[32px]'>
                     <div className='flex items-center'>
                         <div className='nd:h-[32px] nd:max-h-[32px] nd:w-[54px]'>
@@ -30,7 +34,7 @@ export function FeedFilter() {
                                 onClick={() => setIsSortByOpen(!isSortByOpen)}>
                                     <span className='flex items-center justify-center'>
                                         <span className='flex items-center gap-2'>
-                                                Best
+                                            {searchParams.get('sort') || 'Hot'}
                                         </span>
                                     </span>
                                     <span className='ml-1 inline-flex rotate-0 transition duration-200 ease-in-out'>
@@ -51,96 +55,18 @@ export function FeedFilter() {
                                     <div className='m-4 mb-2 text-sm font-semibold text-[var(--color-tone-1)]'>
                                             Sort by
                                     </div>
-                                    <li className='relative mt-0 list-none'>
-                                        <a className="relative flex cursor-pointer justify-between gap-2 px-4 py-2
-                                            pr-[16px] text-[var(--color-secondary-onBackground)] no-underline
-                                            -outline-offset-1 hover:bg-[var(--color-neutral-background-selected)]
-                                            hover:no-underline"
-                                        href="/best/?feed=home">
-                                            <span className="flex min-w-0 shrink items-center gap-2">
-                                                <span className="flex min-w-0 shrink flex-col
-                                                    justify-center py-[var(--rem6)]">
-                                                    <span className="text-sm">Best</span>
-                                                    <span className="text-xs text-[var(--color-secondary-weak)]" />
-                                                </span>
-                                            </span>
-                                            <span className="flex shrink-0 items-center">
-                                                <span className="flex h-6 items-center justify-center" />
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li className='relative mt-0 list-none'>
-                                        <a className="relative flex cursor-pointer justify-between gap-2 px-4 py-2
-                                            pr-[16px] text-[var(--color-secondary-onBackground)] no-underline
-                                            -outline-offset-1 hover:bg-[var(--color-neutral-background-selected)]
-                                            hover:no-underline"
-                                        href="/best/?feed=home">
-                                            <span className="flex min-w-0 shrink items-center gap-2">
-                                                <span className="flex min-w-0 shrink flex-col
-                                                    justify-center py-[var(--rem6)]">
-                                                    <span className="text-sm">Hot</span>
-                                                    <span className="text-xs text-[var(--color-secondary-weak)]" />
-                                                </span>
-                                            </span>
-                                            <span className="flex shrink-0 items-center">
-                                                <span className="flex h-6 items-center justify-center" />
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li className='relative mt-0 list-none'>
-                                        <a className="relative flex cursor-pointer justify-between gap-2 px-4 py-2
-                                            pr-[16px] text-[var(--color-secondary-onBackground)] no-underline
-                                            -outline-offset-1 hover:bg-[var(--color-neutral-background-selected)]
-                                            hover:no-underline"
-                                        href="/best/?feed=home">
-                                            <span className="flex min-w-0 shrink items-center gap-2">
-                                                <span className="flex min-w-0 shrink flex-col
-                                                    justify-center py-[var(--rem6)]">
-                                                    <span className="text-sm">New</span>
-                                                    <span className="text-xs text-[var(--color-secondary-weak)]" />
-                                                </span>
-                                            </span>
-                                            <span className="flex shrink-0 items-center">
-                                                <span className="flex h-6 items-center justify-center" />
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li className='relative mt-0 list-none'>
-                                        <a className="relative flex cursor-pointer justify-between gap-2 px-4 py-2
-                                            pr-[16px] text-[var(--color-secondary-onBackground)] no-underline
-                                            -outline-offset-1 hover:bg-[var(--color-neutral-background-selected)]
-                                            hover:no-underline"
-                                        href="/best/?feed=home">
-                                            <span className="flex min-w-0 shrink items-center gap-2">
-                                                <span className="flex min-w-0 shrink flex-col
-                                                    justify-center py-[var(--rem6)]">
-                                                    <span className="text-sm">Top</span>
-                                                    <span className="text-xs text-[var(--color-secondary-weak)]" />
-                                                </span>
-                                            </span>
-                                            <span className="flex shrink-0 items-center">
-                                                <span className="flex h-6 items-center justify-center" />
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li className='relative mt-0 list-none'>
-                                        <a className="relative flex cursor-pointer justify-between gap-2 px-4 py-2
-                                            pr-[16px] text-[var(--color-secondary-onBackground)] no-underline
-                                            -outline-offset-1 hover:bg-[var(--color-neutral-background-selected)]
-                                            hover:no-underline"
-                                        href="/best/?feed=home">
-                                            <span className="flex min-w-0 shrink items-center gap-2">
-                                                <span className="flex min-w-0 shrink flex-col
-                                                    justify-center py-[var(--rem6)]">
-                                                    <span className="text-sm">Rising</span>
-                                                    <span className="text-xs text-[var(--color-secondary-weak)]" />
-                                                </span>
-                                            </span>
-                                            <span className="flex shrink-0 items-center">
-                                                <span className="flex h-6 items-center justify-center" />
-                                            </span>
-                                        </a>
-                                    </li>
+                                    {sortbys.map((sortBy) => (
+                                        <SortBy
+                                            key={sortBy}
+                                            sortBy={sortBy}
+                                            setSortBy={() => {
+                                                searchParams.set('sort', sortBy);
+                                                // go to the new url
+                                                navigate(`?${searchParams.toString()}`);
+                                                setIsSortByOpen(false);
+                                            }}
+                                        />
+                                    ))}
                                 </ul>
                             </div>}
                         </div>
@@ -167,87 +93,7 @@ export function FeedFilter() {
                                     </span>
                                 </button>
                             </div>
-                            {isViewOptionsOpen &&
-                            <div
-                                className='absolute z-[2] inline-flex max-h-[50vh]
-                            w-max justify-center overflow-hidden overflow-y-auto
-                            rounded-lg bg-[var(--color-neutral-background-strong)]
-                            shadow-[rgba(0,0,0,0.1)_0px_4px_8px_0px,rgba(0,0,0,0.25)_0px_6px_12px_0px]
-                            -outline-offset-1'
-                                aria-label='menu'
-                            >
-                                <ul>
-                                    <div className='m-4 mb-2 text-base font-semibold text-[var(--color-tone-1)]'
-                                        style={{font: 'var(--font-12-16-semibold)'}}>
-                                        View
-                                    </div>
-                                    <div slot="dropdown-items">
-                                        <data value="cardView">
-                                            <li
-                                                className="relative mt-0 list-none "
-                                                role="presentation"
-                                            >
-                                                <a
-                                                    className="relative flex
-                                                    cursor-pointer justify-between
-                                                    gap-2 bg-[var(--color-neutral-background-selected)] px-4
-                                                    py-2 pr-[16px] text-[var(--color-secondary-onBackground)]
-                                                    no-underline -outline-offset-1
-                                                    hover:bg-[var(--color-neutral-background-selected)]
-                                                    hover:no-underline"
-                                                    href="?feed=home&feedViewType=cardView"
-                                                >
-                                                    <span className="flex min-w-0 shrink items-center gap-2">
-                                                        <span
-                                                            className="flex size-8 shrink-0 items-center
-                                                            justify-center text-xl leading-4"
-                                                        >
-                                                            <ViewCardIconFill />
-                                                        </span>
-                                                        <span
-                                                            className="flex min-w-0 shrink flex-col justify-center
-                                                            py-1.5"
-                                                        >
-                                                            <span className="text-sm">Card</span>
-                                                            <span className="text-xs
-                                                            text-[var(--color-secondary-weak)]"/>
-                                                        </span>
-                                                    </span>
-                                                    <span className="flex shrink-0 items-center">
-                                                        <span className="flex h-6 items-center justify-center" />
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </data>
-                                        <data value="compactView">
-                                            <li className="relative mt-0 list-none " role="presentation">
-                                                <a className="relative flex cursor-pointer justify-between
-                                                gap-2 px-4 py-2  pr-[16px] text-[var(--color-secondary)] no-underline
-                                                -outline-offset-1 hover:text-[var(--color-secondary-hover)]
-                                                hover:no-underline  active:bg-[var(--color-interactive-pressed)]"
-                                                href="?feed=home&feedViewType=compactView"
-                                                >
-                                                    <span className="flex min-w-0 shrink items-center gap-2">
-                                                        <span className="flex size-8 shrink-0 items-center
-                                                        justify-center text-xl leading-4">
-                                                            <ViewClassicIcon />
-                                                        </span>
-                                                        <span className="flex min-w-0 shrink flex-col justify-center
-                                                        py-1.5">
-                                                            <span className="text-sm">Compact</span>
-                                                            <span className="text-xs
-                                                            text-[var(--color-secondary-weak)]"/>
-                                                        </span>
-                                                    </span>
-                                                    <span className="flex shrink-0 items-center">
-                                                        <span className="flex h-6 items-center justify-center"></span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                        </data>
-                                    </div>
-                                </ul>
-                            </div>}
+                            {isViewOptionsOpen && <ViewOptions />}
                         </div>
                     </div>
                 </div>

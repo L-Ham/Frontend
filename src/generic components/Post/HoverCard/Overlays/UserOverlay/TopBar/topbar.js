@@ -56,5 +56,5 @@ export function TopBar({
 TopBar.propTypes = {
     avatar: PropTypes.string,
     username: PropTypes.string,
-    created: PropTypes.string,
+    created: PropTypes.number,
 };

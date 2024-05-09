@@ -1,6 +1,7 @@
 import React from 'react';
 import {sectionItemsClasses as styles} from '../sidebarsection.styles.js';
 import {useCreateCommunityItem} from './community.hooks.js';
+import {CreateCommunity} from './CreateCommunity/createcommunity.js';
 
 /**
  * The Create Community Item in the sidebar section
@@ -12,16 +13,24 @@ import {useCreateCommunityItem} from './community.hooks.js';
  * @return {JSX.Element} The generic sidebar section item component
  */
 function CreateCommunityItem() {
-    const {Icon, onClick} = useCreateCommunityItem();
+    const {Icon, onClick, isclicked, setisclicked} = useCreateCommunityItem();
     return (
-        <div className={styles.root} onClick={onClick} data-testid={`create-community-item`}>
-            <span className={styles.leftItemsWrapper}>
-                <span className={styles.leftIconContainer}>
-                    <Icon />
+        <>
+            {isclicked &&
+            <div className=" fixed inset-0 z-[9999] flex items-center justify-center">
+                <div className="fixed inset-0 bg-[rgba(0,_0,_0,_0.5)]"/>
+                <CreateCommunity setisclicked={setisclicked} />
+            </div>
+            }
+            <div className={styles.root} onClick={onClick} data-testid={`create-community-item`}>
+                <span className={styles.leftItemsWrapper}>
+                    <span className={styles.leftIconContainer}>
+                        <Icon />
+                    </span>
+                    <span className={styles.label}>Create Community</span>
                 </span>
-                <span className={styles.label}>Create Community</span>
-            </span>
-        </div>
+            </div>
+        </>
     );
 }
 

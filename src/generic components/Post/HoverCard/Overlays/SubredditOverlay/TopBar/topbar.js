@@ -19,8 +19,8 @@ export function TopBar({
     const {
         DefaultIcon,
         isJoined,
-        setIsJoined,
-    } = useTopBar();
+        handleJoin,
+    } = useTopBar({subredditId});
     return (
         <div className={topbarClasses.root}>
             <div className={topbarClasses.icon} data-testid={`subreddit-icon-${subredditId}`}>
@@ -29,7 +29,7 @@ export function TopBar({
             <div className={topbarClasses.subreddit}>
                 <a
                     className={topbarClasses.subredditLink}
-                    href={subredditPrefixedName}
+                    href={'/'+subredditPrefixedName}
                     data-testid={`subreddit-name-${subredditId}`}
                 >
                     {subredditPrefixedName}
@@ -40,9 +40,7 @@ export function TopBar({
                 className={topbarClasses.joinButton}
                 style={topbarStyles.joinButton}
                 type='button'
-                onClick={(e) => {
-                    e.stopPropagation(); setIsJoined(!isJoined);
-                }}
+                onClick={handleJoin}
                 data-testid={`join-button-${subredditId}`}
             >
                 {isJoined ? 'Leave':'Join'}

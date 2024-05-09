@@ -9,6 +9,8 @@ import {Logo} from './LeftItems/logo.js';
 import {appBarClasses as styles} from './appbar.styles.js';
 import {useAppBar} from './appbar.hooks.js';
 import './appbar.css';
+
+import PropTypes from 'prop-types';
 /**
  * Main application component
  * @component
@@ -17,7 +19,7 @@ import './appbar.css';
  * <App />
  * @return {JSX.Element} The main application component
  */
-function AppBar() {
+function AppBar({ModTopBar}) {
     const {
         isSearchDropdownVisible,
         setIsSearchDropdownVisible,
@@ -30,6 +32,7 @@ function AppBar() {
         sideBarStyles,
         isLoggedin,
     } = useAppBar();
+
     return (
         <>
             <header className={styles.header}>
@@ -57,6 +60,7 @@ function AppBar() {
                     }
 
                 </nav>
+                {ModTopBar}
             </header>
 
             <div className={sideBarStyles}>
@@ -67,12 +71,22 @@ function AppBar() {
                     <div
                         className={styles.sidebarCloseOverlay}
                         onClick={() => setIsSideBarVisible(false)}
-                    ></div>
+                    >
+
+                    </div>
                 </div>
 
+
             </div>
+
+
         </>
     );
 }
+
+AppBar.propTypes = {
+    ModTopBar: PropTypes.element,
+};
+
 
 export {AppBar};

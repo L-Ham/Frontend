@@ -5,14 +5,14 @@ import {getIconComponent} from '../../../../../generic components/iconsmap.js';
 export const useOverflowControl = ({isMuted, onMuteClick, isFavourite, onFavouriteClick,
     handleJoinClick,
     isSubscribed}) => {
-    const {about, isModerator} = useSubreddit();
+    const {about} = useSubreddit();
     const [isOtherOptionsVisible, setIsOtherOptionsVisible] = useState(false);
 
     const handleOtherOptionsClick = () => {
         setIsOtherOptionsVisible(!isOtherOptionsVisible);
     };
 
-    const {communityDetails: {name}} = about;
+    const {communityDetails: {name, isModerator}} = about;
     const prefixedName = `r/${name}`;
 
     const menuItems = [

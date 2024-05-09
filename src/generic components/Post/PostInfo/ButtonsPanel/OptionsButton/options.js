@@ -7,11 +7,15 @@ import {Dropdown} from './Dropdown/dropdown.js';
  * OptionsButton component
  * @param {string} postId
  * @param {boolean} isMember
+ * @param {boolean} isSaved
+ * @param {boolean} isHidden
  * @return {React.Component}
  */
 export function OptionsButton({
     postId,
     isMember,
+    isSaved,
+    isHidden,
 }) {
     const {
         ThreeDotsIcon,
@@ -36,6 +40,8 @@ export function OptionsButton({
                 isSubscriber={isMember}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
+                isSaved={isSaved}
+                isHidden={isHidden}
             />
         </>
     );
@@ -44,4 +50,6 @@ export function OptionsButton({
 OptionsButton.propTypes = {
     postId: PropTypes.string.isRequired,
     isMember: PropTypes.bool.isRequired,
+    isSaved: PropTypes.bool.isRequired,
+    isHidden: PropTypes.bool.isRequired,
 };

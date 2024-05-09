@@ -8,13 +8,14 @@ import {classes} from './bannerimage.styles.js';
  * @param {string} props.backgroundImage The background image for the banner.
  * @return {JSX.Element} The rendered component.
  */
-export function BannerImage({backgroundImage}) {
+export function BannerImage({backgroundImage=''}) {
     return (
         <div style={{containerType: 'inline-size'}} data-testid="outer-div">
             <div
                 className={classes.banner}
                 style={{
                     backgroundImage: `url("${backgroundImage}")`,
+                    height: backgroundImage ? '8rem' : '4rem',
                 }}
                 data-testid="banner-div"
             />
@@ -23,5 +24,5 @@ export function BannerImage({backgroundImage}) {
 }
 
 BannerImage.propTypes = {
-    backgroundImage: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string,
 };

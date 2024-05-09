@@ -11,7 +11,7 @@ import parse from 'html-react-parser';
  * @return {React.Component}
  */
 
-export function ReadMessage({id,subject, to, message, isEven,isRead}) {
+export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt}) {
     const [unread,setUnread]=useState(!isRead);
     const ref=useRef();
     const handleUnread=(e)=>{
@@ -20,7 +20,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
         console.log(subject);
         const toggleFavorite = (route) => {
             axios.patch(route, {
-                messageId: id,
+                'messageId': id,
             }).catch((error) => {
                 console.error(`Error:`, error);
             });
@@ -32,6 +32,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
             toggleFavorite(API_ROUTES.markAsRead);
         }
         setUnread(!unread);
+        console.log(id);
     };
     
     const [showReply, setShowReply] = useState(false);
@@ -39,6 +40,45 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
         setShowReply(!showReply);
     };
     const test =parse(message);
+
+    // calcualte the time since the message was sent
+    // return the nearest unit of time
+    const calcTimeSince = (time) => {
+        const now = new Date()
+        const diff = now - new Date(time)
+        const seconds = diff / 1000
+        const minutes = seconds / 60
+        const hours = minutes / 60
+        const days = hours / 24
+        const weeks = days / 7
+        const months = weeks / 4
+        const years = months / 12
+
+        if (years >= 1) {
+            return `${Math.floor(years)} year${Math.floor(years) > 1 ? 's' : ''} ago`
+        }
+        if (months >= 1) {
+            return `${Math.floor(months)} month${Math.floor(months) > 1 ? 's' : ''} ago`
+        }
+        if (weeks >= 1) {
+            return `${Math.floor(weeks)} week${Math.floor(weeks) > 1 ? 's' : ''} ago`
+        }
+        if (days >= 1) {
+            return `${Math.floor(days)} day${Math.floor(days) > 1 ? 's' : ''} ago`
+        }
+        if (hours >= 1) {
+            return `${Math.floor(hours)} hour${Math.floor(hours) > 1 ? 's' : ''} ago`
+        }
+        if (minutes >= 1) {
+            return `${Math.floor(minutes)} minute${Math.floor(minutes) > 1 ? 's' : ''} ago`
+        }
+        if (seconds >= 1) {
+            return `${Math.floor(seconds)} second${Math.floor(seconds) > 1 ? 's' : ''} ago`
+        }
+        return 'just now'
+    }
+    
+
     return (
         <div className={`m-0 block ${isEven===true ?'bg-[var(--message-content-even)] ':''}px-[15px] py-2.5`} data-testid={`message-message-read`}>
             <p className='m-0 block p-0 font-[bold] text-[large]'
@@ -55,7 +95,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                     <span> from</span>
                     <a className='cursor-pointer text-[#4fbcff]'
                     > /u/{to}</a>
-                    <span> sent 18 hours ago</span>
+                    <span> sent {calcTimeSince(createdAt)}</span>
                 </p>
                 <div className="clear-left m-0 ml-[15px] mt-[1.5em] block p-0 text-xs"
                     style={{unicodeBidi: 'isolate'}}>
@@ -108,6 +148,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                                     }).catch((error) => {
                                         console.error(`Error:`, error);
                                     }); 
+                                    handleReplyClick();
                                     
                             }}>
                         <div>
@@ -118,7 +159,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead}) {
                                  pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
                         style={{WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset',
                             borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold'}} 
-                            type="submit" onClick={handleReplyClick} data-testid={`message-send-read`}>
+                            type="submit" data-testid={`message-send-read`}>
                                  send
                         </button>
                     </div>

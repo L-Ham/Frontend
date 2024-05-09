@@ -11,6 +11,7 @@ import {axiosInstance} from '../../../../requests/axios';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import {selfInfo} from '../../../../store/userSlice.js';
+import {ChatPreview} from './chatpreview.js';
 /**
  * AccountSettings function component renders the account settings interface.
  * It provides options to customize email address, gender, language preferences, and more.
@@ -119,6 +120,7 @@ function AccountSettings({id}) {
 
             <SettingsGenericItemRight head="" text = "" thirdComponent={'Delete'} style={leftAlignStyle}
                 id = '12' />
+            <ChatPreview/>
         </div>
     );
 }

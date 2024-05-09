@@ -40,36 +40,40 @@ export function Rule({rule: {ruleText: shortName, descriptionHtml, _id: id}, idx
         <>
             <div className={`container-1223 ${reorderRulesView ? 'my-2' : ''}`} draggable={reorderRulesView}
                 onDragStart={dragStart} onDrop={drop} onDragOver={(e) => e.preventDefault()}
+                data-testid="rule-container"
             >
-                <span className="span-13214">{idx + 1}</span>
-                <span className="span-15212">{shortName}</span>
-                <span className="ml-auto flex pr-[4px]">
+                <span className="span-13214" data-testid="rule-index">{idx + 1}</span>
+                <span className="span-15212" data-testid="rule-shortname">{shortName}</span>
+                <span className="ml-auto flex pr-[4px]" data-testid="rule-actions">
                     {
                         reorderRulesView &&
-                        <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'>
-                            <DragIcon className={`icon-123455`}/>
-                        </button>
+                    <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
+                        data-testid="rule-drag-button">
+                        <DragIcon className={`icon-123455`}/>
+                    </button>
                     }
                     {(!reorderRulesView) &&
-                    <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
-                        onClick={() => {
-                            setRuleToAdd(rule);
-                            setAddRuleView(true);
-                        }}>
-                        <EditIcon className={`icon-123455`}/>
-                    </button>}
+                <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
+                    data-testid="rule-edit-button"
+                    onClick={() => {
+                        setRuleToAdd(rule);
+                        setAddRuleView(true);
+                    }}>
+                    <EditIcon className={`icon-123455`}/>
+                </button>}
                     {(isRule && !reorderRulesView) &&
-                        <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
-                            onClick={() => {
-                                setIsDescriptionVisible(!isDescriptionVisible);
-                            }}>
-                            <CaretDownIcon className={`icon-123455 ${isDescriptionVisible ?
-                                'rotate-180' : 'rotate-0'}`}/>
-                        </button>
+                    <button className='flex cursor-pointer border-[none] p-[2px_12px] text-inherit'
+                        data-testid="rule-description-button"
+                        onClick={() => {
+                            setIsDescriptionVisible(!isDescriptionVisible);
+                        }}>
+                        <CaretDownIcon className={`icon-123455 ${isDescriptionVisible ?
+                            'rotate-180' : 'rotate-0'}`}/>
+                    </button>
                     }
                 </span>
             </div>
-            {isDescriptionVisible && <RuleDescription rule={rule}/>}
+            {isDescriptionVisible && <RuleDescription rule={rule} data-testid="rule-description"/>}
         </>
     );
 }

@@ -31,7 +31,6 @@ export function SubredditProvider({children, name, style}) {
     const [widgets, setWidgets] = useState(null);
     const navigate = useNavigate();
     const {addNotification} = useNotifications();
-    const isModerator = true;
     const [isAppearanceSettingsVisible, setIsAppearanceSettingsVisible] = useState(style === 'true');
     const [isUploadBannerVisible, setIsUploadBannerVisible] = useState(false);
     const [isUploadAvatarVisible, setIsUploadAvatarVisible] = useState(false);
@@ -49,7 +48,7 @@ export function SubredditProvider({children, name, style}) {
 
 
     useEffect(() => {
-        loadData(name, navigate, setAbout, setWidgets, setLoading, isModerator, addNotification);
+        loadData(name, navigate, setAbout, setWidgets, setLoading, addNotification);
     }, [name, navigate, setAbout, setWidgets, setLoading]);
 
     // The value that will be supplied to any descendants of this provider.
@@ -58,7 +57,6 @@ export function SubredditProvider({children, name, style}) {
         name,
         about, setAbout,
         widgets, setWidgets,
-        isModerator,
         isAppearanceSettingsVisible,
         setIsAppearanceSettingsVisible,
         isUploadBannerVisible,
@@ -150,11 +148,11 @@ const processData = async (widgetsData, isModerator) => {
 };
 
 
-export const loadData = async (name, navigate, setAbout, setWidgets, setLoading, isModerator, addNotification) => {
+export const loadData = async (name, navigate, setAbout, setWidgets, setLoading, addNotification) => {
     setLoading(true);
     try {
         const {aboutData, widgetsData} = await fetchSubredditData(name, addNotification);
-        const structuredWidgetsData = await processData(widgetsData, isModerator);
+        const structuredWidgetsData = await processData(widgetsData, aboutData.communityDetails.isModerator);
         setAbout(aboutData);
         setWidgets(structuredWidgetsData);
         setLoading(false);

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../store/store.js';
+import {logout} from '../store/userSlice.js';
 // Setup a base URL
 // export const BASE_URL = 'http://localhost:5000';
 export const BASE_URL = 'https://reddit-bylham.me/api';
@@ -37,6 +38,11 @@ axiosInstance.interceptors.response.use(
     },
     (error) => {
         // Handle responses outside of the 2xx range
+        if (error.response.status === 403 || error.response.status === 401) {
+            // If the response status is 403 (Unauthorized), logout the user
+            store.dispatch(logout());
+            window.location.href = '/login?url=' + window.location.pathname;
+        }
         return Promise.reject(error);
     },
 );

@@ -9,15 +9,13 @@ import {SubredditWidget} from '../../Widget/subredditwidget.js';
  * Renders the community moderators widget.
  * @param {Object} props - The component props.
  * @param {Array} props.moderators - The moderators.
- * @param {number} props.totalMods - The total number of moderators.
  * @return {JSX.Element} The rendered component.
  */
 export function CommunityModeratorsWidget({moderators}) {
-    // TODO_BACKEND: remove the hardcoded totalMods value
-    const totalMods = 16;
+    const totalMods = moderators.length;
     const {multiLinkButtonsComponents, moderatorComponents} = useCommunityModeratorsWidget({moderators, totalMods});
 
-    if (!moderatorComponents.length) return null;
+    if (moderatorComponents.length === 0) return null;
 
     return (
         <SubredditWidget title='moderators' data-testid="subreddit-widget">
@@ -35,5 +33,4 @@ export function CommunityModeratorsWidget({moderators}) {
 
 CommunityModeratorsWidget.propTypes = {
     moderators: propTypes.array.isRequired,
-    totalMods: propTypes.number.isRequired,
 };

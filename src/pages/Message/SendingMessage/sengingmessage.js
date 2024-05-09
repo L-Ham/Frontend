@@ -1,9 +1,12 @@
 import React, {useRef, useState} from 'react';
 import {axiosInstance as axios} from '../../../requests/axios.js';
 import {API_ROUTES} from '../../../requests/routes.js';
+import store from '../../../store/store.js';
+import {useNotifications} from '../../../generic components/Notifications/notificationsContext.js';
 /*eslint-disable*/
 
 export function SendingMessage() {
+    const reffrom = useRef();
     const refusername = useRef();
     const refSubject = useRef();
     const refMessage = useRef();
@@ -12,6 +15,9 @@ export function SendingMessage() {
     const [subjectError, setSubjectError] = useState(false);
     const [messageError, setMessageError] = useState(false);
     const [fetchError, setFetchError] = useState(false); // new state variable
+    const {addNotification} = useNotifications();
+
+    const fromUser = store.getState().user.username;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -35,9 +41,14 @@ export function SendingMessage() {
             parentMessageId: null,
         }).then((response) => {
             console.log(response.data);
-            alert('Message sent');
+            addNotification({message: 'Message sent succesfully', type: 'success'});
+            // clear the form
+            refusername.current.value = '';
+            refSubject.current.value = '';
+            refMessage.current.value = '';
         }).catch((error) => {
             setFetchError(true); // set fetchError to true if there was an error
+            addNotification({message: error.response.data.message, type: 'error'});
         });
     };
 
@@ -48,6 +59,19 @@ export function SendingMessage() {
                 send a private message
             </h1>
             <form className='m-0 block p-0' style={{ unicodeBidi: 'isolate' }} onSubmit={handleSubmit}>
+                <div className='m-0 mb-[5px] block p-0'>
+                    <div className=' m-0 block w-[unset] rounded-none bg-inherit p-0 text-[large]' style={{ unicodeBidi: 'isolate' }}>
+                        <span className='mt-auto'> from </span>
+                        <span className='text-[smaller] text-[#818384]'></span>
+                        <div className='m-0 mt-[5px] block border-[none] p-0 align-top'>
+                            <select className={`m-0 w-[492px] border border-solid p-[3px] text-[100%] border-[gray]`}
+                                style={{ paddingBlock: '1px', paddingInline: '2px'}} name='to' ref={reffrom}
+                                data-testid={`message-username-send`} value={`u/${fromUser}`}>
+                                <option value={`u/${fromUser}`}>{`u/${fromUser}`}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div className='m-0 mb-[5px] block p-0'>
                     <div className=' m-0 block w-[unset] rounded-none bg-inherit p-0 text-[large]' style={{ unicodeBidi: 'isolate' }}>
                         <span className='mt-auto'> to </span>

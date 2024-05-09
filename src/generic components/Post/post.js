@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {PostInfo} from './PostInfo/postinfo.js';
 import {PostContent} from './PostContent/postcontent.js';
@@ -11,6 +11,9 @@ import {ContentTag} from './ContentTag/contenttag.js';
  * Post component
  * @param {string} postId
  * @param {string} user
+ * @param {string} creatorAvatar
+ * @param {string} creatorName
+ * @param {string} subRedditAvatar
  * @param {string} title
  * @param {string} text
  * @param {boolean} approved
@@ -22,23 +25,29 @@ import {ContentTag} from './ContentTag/contenttag.js';
  * @param {boolean} isNSFW
  * @param {boolean} isSpoiler
  * @param {boolean} isLocked
- * @param {boolean} isOc
  * @param {number} upvotes
  * @param {number} downvotes
  * @param {number} views
  * @param {number} commentCount
  * @param {string} createdAt
  * @param {string} subredditName
+ * @param {string} subRedditName
  * @param {boolean} isUpvoted
  * @param {boolean} isDownvoted
  * @param {string[]} imageUrls
+ * @param {object[]} images
  * @param {object} poll
+ * @param {boolean} isSaved
  * @param {string} viewContext
+ * @param {boolean} isHidden
  * @return {React.Component}
  */
-export function Post({
+function PostNonMemo({
     _id: postId,
-    user,
+    user: userId,
+    creatorAvatar,
+    creatorName,
+    subRedditAvatar,
     title,
     text,
     approved,
@@ -50,45 +59,61 @@ export function Post({
     isNSFW,
     isSpoiler,
     isLocked,
-    isOc,
     upvotes,
     downvotes,
     views,
     commentCount,
     createdAt,
     subredditName,
+    subRedditName,
     isUpvoted,
     isDownvoted,
     imageUrls,
+    images,
     poll,
+    isSaved = false,
+    isHidden = false,
     viewContext,
 }) {
+    subredditName = subredditName || subRedditName;
+    imageUrls = imageUrls || images?.map((image) => image.url);
     const {
         isCommentsPage,
         classNames,
-        tag,
-    } = usePost({isNSFW, isSpoiler, viewContext});
+        userData,
+        subredditData,
+    } = usePost({viewContext, userId, subredditName, creatorAvatar, creatorName, subRedditAvatar});
+    const urlRedirect = `${subredditName ? '/r/' + subredditName:'/user/' + userData.username}` + '/comments/' + postId;
     return (
         <div className={classNames}>
             {!isCommentsPage &&
-            <a href={'/r/' + subredditName + '/comments/' + postId} className={postClasses.a}
-                target="_self" data-testid={`link-${postId}`}/>}
+            <a
+                href={urlRedirect}
+                className={postClasses.a}
+                target="_self" data-testid={`link-${postId}`}
+            />}
             <PostInfo
                 postId={postId}
-                userId={user}
-                subredditName={subredditName}
+                userData={userData}
+                subredditData={subredditData}
                 createdAt={createdAt}
+                isSaved={isSaved}
                 viewContext={viewContext}
+                isHidden={isHidden}
             />
             <div className={postClasses.body} data-testid={`body-${postId}`}>
-                <ContentTag tag={tag} postId={postId} />
+                <ContentTag postId={postId} isNSFW={isNSFW} isSpoiler={isSpoiler}/>
                 <PostTitle postId={postId} title={title} isCommentsPage={isCommentsPage} />
                 <PostContent
                     postId={postId}
-                    tag={tag}
+                    isNSFW={isNSFW}
+                    isSpoiler={isSpoiler}
                     type={type}
                     text={text}
                     imageUrls={imageUrls}
+                    url={url}
+                    poll={poll}
+                    createdAt={createdAt}
                     viewContext={viewContext}
                 />
             </div>
@@ -99,16 +124,21 @@ export function Post({
                 isUpvoted={isUpvoted}
                 isDownvoted={isDownvoted}
                 commentCount={commentCount}
-                url={'/r/' + subredditName + '/comments/' + postId}
+                url={urlRedirect}
                 viewContext={viewContext}
             />
         </div>
     );
 }
-
-Post.propTypes = {
+export const Post = memo(PostNonMemo, (prevProps, nextProps) => {
+    return prevProps._id === nextProps._id;
+});
+PostNonMemo.propTypes = {
     _id: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
+    creatorAvatar: PropTypes.string,
+    creatorName: PropTypes.string,
+    subRedditAvatar: PropTypes.string,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
     approved: PropTypes.bool,
@@ -120,16 +150,19 @@ Post.propTypes = {
     isNSFW: PropTypes.bool.isRequired,
     isSpoiler: PropTypes.bool.isRequired,
     isLocked: PropTypes.bool.isRequired,
-    isOc: PropTypes.bool.isRequired,
     upvotes: PropTypes.number.isRequired,
     downvotes: PropTypes.number.isRequired,
     views: PropTypes.number,
     commentCount: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
-    subredditName: PropTypes.string.isRequired,
+    subredditName: PropTypes.string,
+    subRedditName: PropTypes.string,
     isUpvoted: PropTypes.bool.isRequired,
     isDownvoted: PropTypes.bool.isRequired,
     imageUrls: PropTypes.array,
+    images: PropTypes.array,
     poll: PropTypes.object,
+    isSaved: PropTypes.bool,
+    isHidden: PropTypes.bool,
     viewContext: PropTypes.string.isRequired,
 };

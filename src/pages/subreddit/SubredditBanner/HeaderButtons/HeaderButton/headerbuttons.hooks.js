@@ -9,6 +9,8 @@ export const useHeaderButtons = () => {
     const {about} = useSubreddit();
     const {addNotification} = useNotifications();
 
+    if (!about) return {};
+
     const {communityDetails: {subredditId: id, name, isMember: userIsSubscriber,
         isMuted: userIsMuted,
         isFavorite: userHasFavourited}} = about;
@@ -65,11 +67,11 @@ export const useHeaderButtons = () => {
     // join logic
     const joinCommunity = useCallback(async () => {
         try {
-            await axios.patch(API_ROUTES.joinCommunity, {subRedditId: id});
+            const respone = await axios.patch(API_ROUTES.joinCommunity, {subRedditId: id});
             setIsSubscribed(true);
             setActiveNotificationLevel(null);
             addNotification({type: 'success',
-                message: `You've joined r/${name}!`});
+                message: respone.data.message});
         } catch (error) {
             addNotification({type: 'error', message: error.response.data.message});
             console.error('Failed to join community', error);
@@ -78,11 +80,11 @@ export const useHeaderButtons = () => {
 
     const leaveCommunity = useCallback(async () => {
         try {
-            await axios.delete(API_ROUTES.leaveCommunity, {data: {subRedditId: id}});
+            const response = await axios.delete(API_ROUTES.leaveCommunity, {data: {subRedditId: id}});
             setIsSubscribed(false);
             if (activeNotificationLevel !== null) setActiveNotificationLevel(null);
             addNotification({type: 'success',
-                message: `You've left r/${name}`});
+                message: response.data.message});
         } catch (error) {
             addNotification({type: 'error',
                 message: error.response.data.message});

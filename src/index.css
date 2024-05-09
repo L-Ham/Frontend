@@ -29,9 +29,18 @@ code {
 
 /* define global colors */
 :root {
+  --color-vote-background-selected: rgb(255, 137, 93);
+  --newCommunityTheme-widgetColors-sidebarWidgetBorderColor: #ccc;
   --scrollbar-bg: transparent;
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;
+  --color-neutral-background: #ffffff;
+  --color-tone-1: #131313;
+  --color-tone-2: #434343;
+  --color-secondary: #0F1A1C;
+  --color-tone-7: #ffffff;
+  --color-tone-5: #F2F2F2;
+  --color-avatar-gradient: linear-gradient(0deg, #D2DADDff, #ffffffff 75%);
   --newRedditTheme-body: #FFFFFF;
   --newCommunityTheme-body: #FFFFFF;
   --newCommunityTheme-bodyText: #1c1c1c;
@@ -366,6 +375,7 @@ code {
 }
 .theme-dark {
   /* add dark scheme here */
+  --color-vote-background-selected: rgb(83, 97, 104);
   --color-category-spoiler: var(--color-tone-1);
   --scrollbar-bg: #2c2c2c;
   --newRedditTheme-flair: #343536;
@@ -783,10 +793,12 @@ code {
   --message-content-even:#272729;
   --message-content-odd:#1A1A1B;
   --message-content-text:#d7dadc;
+  --graytowhite: #ffffff;
   --color-brand-background-active: #a74b29;
 }
 .theme-light {
   /* add light scheme here */
+  --color-vote-background-selected: rgb(255, 137, 93);
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;
   --newRedditTheme-body: #FFFFFF;
@@ -1191,5 +1203,6 @@ code {
     --message-content-odd:#f6f7f8;
     --message-content-even:#f0f0f0;
     --message-content-text:#000000;
+    --graytowhite: rgb(237, 239, 241);
     --color-brand-background-active: #7e2200;
 }
