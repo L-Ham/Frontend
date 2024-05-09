@@ -126,6 +126,7 @@ export function UnreadMessage({id,subject, to, message, isEven,createdAt}) {
                                     }).catch((error) => {
                                         console.error(`Error:`, error);
                                     }); 
+                                    handleReplyClick();
                                     
                             }}>
                         <div>
@@ -136,7 +137,7 @@ export function UnreadMessage({id,subject, to, message, isEven,createdAt}) {
                                  pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
                         style={{WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset',
                             borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold'}} 
-                            type="submit" onClick={handleReplyClick}>
+                            type="submit" >
                                  send
                         </button>
                     </div>

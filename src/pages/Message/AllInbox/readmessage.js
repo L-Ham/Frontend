@@ -20,7 +20,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
         console.log(subject);
         const toggleFavorite = (route) => {
             axios.patch(route, {
-                messageId: id,
+                'messageId': id,
             }).catch((error) => {
                 console.error(`Error:`, error);
             });
@@ -32,6 +32,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
             toggleFavorite(API_ROUTES.markAsRead);
         }
         setUnread(!unread);
+        console.log(id);
     };
     
     const [showReply, setShowReply] = useState(false);
@@ -147,6 +148,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
                                     }).catch((error) => {
                                         console.error(`Error:`, error);
                                     }); 
+                                    handleReplyClick();
                                     
                             }}>
                         <div>
@@ -157,7 +159,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
                                  pb-1 pt-1.5 font-[bold] uppercase text-[#1a1a1b]'
                         style={{WebkitAppearance: 'button', borderImage: 'initial', borderStyle: 'outset',
                             borderWidth: '2px', paddingBlock: '1px', fontSize: '14px', fontWeight: 'bold'}} 
-                            type="submit" onClick={handleReplyClick} data-testid={`message-send-read`}>
+                            type="submit" data-testid={`message-send-read`}>
                                  send
                         </button>
                     </div>
