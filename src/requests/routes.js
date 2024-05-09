@@ -54,7 +54,7 @@ const API_ROUTES = {
     getUsernamesForSearch: (input) => `/user/searchUsernames?search=${input}`,
     createChat: '/conversation/create',
     sendChatMessage: '/chat/sendMessage',
-
+    markAsReadChat: '/conversation/markAsRead',
     createCommunity: '/subreddit/createCommunity',
     banUser: '/subreddit/user/ban',
     unbanUser: '/subreddit/user/unban',

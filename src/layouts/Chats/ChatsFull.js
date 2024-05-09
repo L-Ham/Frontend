@@ -36,7 +36,7 @@ function ChatsFull({show}) {
     const username = useSelector((state) => state.user.username);
     const [isFullScreen, setIsFullScreen] = useState(false);
     console.log('Username:', username);
-    const addNewMessageToChat = (chatId, newMessage) => {
+    const addNewMessageToChat = (chatId, newMessage,s = false) => {
         setChats(prevChats => {
             const updatedChats = {...prevChats};
             // Check if the chat exists
@@ -50,12 +50,25 @@ function ChatsFull({show}) {
                     updatedChats[chatId].avatar = newMessage.avatar;
                     console.log('Updated group chat avatar to', newMessage.avatar);
                 }
+                if(s === true){
+                    updatedChats[chatId].unreadCount = updatedChats[chatId].unreadCount + 1;
+                    console.log('unread count:', updatedChats[chatId].unreadCount);
+                }
             } else {
                 console.error("Chat ID not found, unable to add message:", chatId);
                 // Optionally, you could initialize a new chat here if that's intended behavior
             }
             return updatedChats;
         });
+    };
+    
+    const markAsUnread = async (chatId) => {
+        try {
+            const response = await axiosInstance.patch(API_ROUTES.markAsReadChat, {'conversationId': chatId});
+            console.log('Message sent successfully:', response.data);
+        } catch (error) {
+            console.error('Failed to send message:', error);
+        }
     };
     
 
@@ -106,9 +119,10 @@ function ChatsFull({show}) {
                 };
                 console.log('Formatted message based on type:', formattedMessage);
                 console.log('Adding message to chat:', formattedMessage);
+                const s = true;
 
-
-                addNewMessageToChat(message.conversationId, formattedMessage);
+                addNewMessageToChat(message.conversationId, formattedMessage,s);
+                
             };
     
             socket.current.on('newMessage', handleNewMessage);
@@ -329,6 +343,8 @@ function ChatsFull({show}) {
     const handleChatSelection = (chatName) => {
         setSelectedChat(chats[chatName]);
         setSelectedChatId(chatName);
+        markAsUnread(chatName);
+        chats[chatName].unreadCount = 0;
         console.log('Selected chat id:', chatName);
         console.log(chatName);
     };

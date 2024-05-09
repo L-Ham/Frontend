@@ -32,6 +32,7 @@ function LeftBottom({chatsToBottom, onSelectChat}) {
                         senderImageURL={senderImageURL}
                         date={displayDate}
                         chatName={chatDisplayName}
+                        unreadTotal = {chatData.unreadCount}
                         onSelect={() => {
                             console.log(chatId); // Logs the chat ID when the chat is selected
                             onSelectChat(chatId); // Calls the onSelectChat function with chatId as argument
