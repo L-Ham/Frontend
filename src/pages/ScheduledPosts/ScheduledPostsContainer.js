@@ -30,17 +30,38 @@ export function ScheduledPostsContainer({about}) {
             const posts = await getSchedulePosts();
             // restructure the posts
             const formattedPosts = posts.map((post) => {
+                // post.createdAt ex:"2024-05-09T00:32:53.809Z"
+                // post.scheduledMinute ex: 32 (number of minutes to schedule after the creation)
+                // now calculate the scheduled time and date
                 const createdAt = new Date(post.createdAt);
-                const minutesToSchedule = post.minutesToSchedule;
-                const scheduledTime = new Date(createdAt.getTime() + minutesToSchedule * 60000);
-                const scheduledDate = scheduledTime.toDateString();
+                let hours = createdAt.getHours();
+                let minutes = createdAt.getMinutes() + post.scheduledMinutes;
+
+                if (minutes >= 60) {
+                    hours += 1;
+                    minutes -= 60;
+                    if (hours >= 24) {
+                        hours = 0;
+                        createdAt.setDate(createdAt.getDate() + 1);
+                    }
+                }
+                let ampm = 'AM';
+                if (hours >= 12) {
+                    ampm = 'PM';
+                    if (hours > 12) {
+                        hours -= 12;
+                    }
+                }
+
+                const scheduledTime = `${hours}:${minutes} ${ampm}`;
+                const scheduledDate = `${createdAt.getMonth() + 1}/${createdAt.getDate()}`;
                 return {
                     title: post.title,
-                    user: post.user, // todo get user name from id
+                    user: post.userName,
                     type: post.type,
-                    subreddit: post.subreddit, // get subredditname from id
-                    scheduledTime: '3:00 PM' || scheduledTime, // to be calculated
-                    scheduledDate: '5/8' || scheduledDate, // to be calculated
+                    subreddit: post.subredditName,
+                    scheduledTime: scheduledTime,
+                    scheduledDate: scheduledDate,
                     isNsfw: post.isNSFW,
                     isSpoiler: post.isSpoiler,
                 };

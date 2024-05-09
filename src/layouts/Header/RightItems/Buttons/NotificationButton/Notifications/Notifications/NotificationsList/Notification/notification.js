@@ -51,7 +51,7 @@ export function Notification({notification, view}) {
                 ${status == 'unread' ? 'bg-[rgba(36,160,237,.1)]' : ''} px-4
                  py-2`}>
                     <Img img={img}/>
-                    <Content title={title} description={description} time={time} view={view}/>
+                    <Content title={title} description={description} time={time} view={view} id={id}/>
                     <Options id={id} type={type}/>
                 </div>
             </a>

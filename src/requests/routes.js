@@ -127,6 +127,7 @@ const API_ROUTES = {
     unsavePost: '/post/unsave',
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
+    hideNotification: '/notification/hide',
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

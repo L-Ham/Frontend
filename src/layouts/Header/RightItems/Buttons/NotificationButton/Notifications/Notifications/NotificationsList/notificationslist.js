@@ -13,13 +13,13 @@ export function NotificationsList({view}) {
 
     const getTitle = (notification) => {
         switch (notification.type) {
-        case 'reply':
+        case 'commentReply':
             return `u/${notification.senderName} replied to your comment in 
             r/${notification.subredditName ? notification.subredditName : ''}`;
         case 'commentedPost':
             return `u/${notification.senderName} replied to your post in 
             r/${notification.subredditName ? notification.subredditName : ''}`;
-        case 'post':
+        case 'postedInSubreddit':
             return `u/${notification.senderName} posted in
              r/${notification.subredditName ? notification.subredditName : ''}`;
         case 'followed':
@@ -36,20 +36,19 @@ export function NotificationsList({view}) {
     };
 
     const getDescritpion = (notification) => {
-        // TODO: implement this function
         switch (notification.type) {
-        case 'reply':
-            return notification.commentContent;
+        case 'commentReply':
+            return notification.content ? notification.content : '';
         case 'commentedPost':
-            return notification.commentContent;
-        case 'post':
-            return notification.postContent;
+            return notification.content ? notification.content : '';
+        case 'postedInSubreddit':
+            return notification.content ? notification.content : '';
         case 'followed':
-            return '';
+            return notification.content ? notification.content : '';
         case 'upvotedPost':
-            return 'upvote';
+            return notification.content ? notification.content : '';
         case 'downvotedPost':
-            return 'downvote';
+            return notification.content ? notification.content : '';
         default:
             return '';
         }
@@ -82,55 +81,6 @@ export function NotificationsList({view}) {
             subredditName: notification.subredditName,
         };
     });
-
-
-    // const FormattedNotifications = [
-    //     {
-    //         id: 1,
-    //         title: 'u/Wordly_ss2 replied to your post in r/gesoArtWorld',
-    //         description: 'agree...',
-    //         time: 14,
-    //         status: 'unread',
-    //         img: 'https://www.redditstatic.com/shreddit/assets/avatar_over18.png',
-    //         type: 'reply',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'u/Wordly_Cold_4661sadasd124 replied to your post in r/gesoArtWorld',
-    //         description: 'i love this!',
-    //         time: 123424,
-    //         status: 'unread',
-    //         img: 'https://www.redditstatic.com/shreddit/assets/avatar_over18.png',
-    //         type: 'reply',
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'u/Wordly_Cold_4661 replied to your comment in r/OnePiece',
-    //         description: 'Loofy is the toppp!',
-    //         time: 1412224,
-    //         status: 'read',
-    //         img: 'https://styles.redditmedia.com/t5_2rfz5/styles/communityIcon_0jgg9qqdkbxb1.png',
-    //         type: 'reply',
-    //     },
-    //     {
-    //         id: 4,
-    //         title: 'u/ironman replied to your post in r/picsForLife',
-    //         description: 'agree...',
-    //         time: 14124,
-    //         status: 'unread',
-    //         img: 'https://www.redditstatic.com/shreddit/assets/avatar_over18.png',
-    //         type: 'reply',
-    //     },
-    //     {
-    //         id: 5,
-    //         title: 'u/Wordly_Cold_4661sadasd124 replied to your post in r/gesoArtWorld',
-    //         description: 'i love this!',
-    //         time: 1212421,
-    //         status: 'read',
-    //         img: 'https://www.redditstatic.com/shreddit/assets/avatar_over18.png',
-    //         type: 'reply',
-    //     },
-    // ];
 
     return (
         <div className='block' data-testid="#main-div-r23rtad">
