@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import {getIconComponent} from '../../../../../generic components/iconsmap';
 import './postcreationformsharingoptions.css';
 import {usePostCreation} from '../postcreationcontext';
@@ -92,8 +91,3 @@ export function PostCreationFormSharingOptions() {
         </div>
     );
 }
-
-PostCreationFormSharingOptions.propTypes = {
-    setIsSendPostNotifications: PropTypes.func.isRequired,
-    isSendPostNotifications: PropTypes.bool.isRequired,
-};

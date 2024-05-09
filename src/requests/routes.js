@@ -128,6 +128,7 @@ const API_ROUTES = {
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
     hideNotification: '/notification/hide',
+    getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

@@ -10,6 +10,7 @@ import {Messages} from '../pages/Message/messages.js';
 import {RulesPage} from '../pages/RulesPage/rulespage.js';
 import {RemovalPage} from '../pages/RulesPage/removalpage.js';
 import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
+import {SubredditProvider} from '../pages/subreddit/subredditcontext.js';
 
 /**
  * Renders a route for displaying a post based on the provided ID.
@@ -35,7 +36,9 @@ export function SubredditRoute() {
     const queryParams = new URLSearchParams(location.search);
     const style = queryParams.get('style');
     return (
-        <Subreddit name={name} style={style}/>
+        <SubredditProvider name={name} style={style}>
+            <Subreddit name={name} style={style}/>
+        </SubredditProvider>
     );
 }
 /**
