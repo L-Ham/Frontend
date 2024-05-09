@@ -12,7 +12,7 @@ export function OverlayContainer({children}) {
     return (
         <div className='fixed inset-0 z-[55] box-border
         flex size-full items-center justify-center
-         overflow-auto bg-[rgba(28,28,28,0.9)] p-[150px_30px_20px]'>
+         overflow-auto bg-[rgba(28,28,28,0.9)] p-[150px_30px_20px]' data-testid="overlay-container">
             {children}
         </div>
     );

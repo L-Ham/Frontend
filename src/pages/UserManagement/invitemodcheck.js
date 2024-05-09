@@ -10,7 +10,7 @@ function Invitemodcheck({labeltext1, labeltext2}) {
         <div className="mt-4 block px-4">
             <button aria-checked="true" aria-disabled="false"
                 className="box-border inline-flex fill-[#0079d3]
-                            text-xs font-bold leading-4 text-[#1c1c1c]"
+                            text-xs font-bold leading-4 text-[var(--newCommunityTheme-bodyText)]"
                 type="button" role="checkbox"><span tabIndex="-1"
                     className="inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg"
                         width="20" height="20" viewBox="0 0 20 20" className=" mr-2 size-4">

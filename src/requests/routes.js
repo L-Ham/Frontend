@@ -81,6 +81,11 @@ const API_ROUTES = {
     editTextWidget: '/subreddit/TextWidget',
     addBookmark: '/subreddit/bookmark/button',
     addBookmarksWidget: '/subreddit/widget/bookmark',
+    addScheduledPost: '/post/scheduledPost',
+    getScheduledPosts: (id) => `subreddit/mod/scheduledPosts?subredditId=${id}`,
+    getNotifications: (limit) => `/notification/user?limit${limit}`,
+    markNotificationAsRead: '/notification/markRead',
+    markAllNotificationsAsRead: '/notification/markAllRead',
     userUpvotedPosts: (username) => (page, limit) => {
         return `/user/upvotedPosts?username=${username}&page=${page}&limit=${limit}`;
     },
@@ -127,6 +132,14 @@ const API_ROUTES = {
     unsavePost: '/post/unsave',
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
+    lockPost: '/post/lockPost',
+    unlockPost: '/post/unlockPost',
+    approvePost: '/post/approvePost',
+    removePost: '/post/removePost',
+    reportPost: '/post/report',
+    forceApprove: '/subreddit/user/forcedApproved',
+    hideNotification: '/notification/hide',
+    getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

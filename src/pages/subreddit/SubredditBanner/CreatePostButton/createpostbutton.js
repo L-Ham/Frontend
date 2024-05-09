@@ -10,6 +10,7 @@ import {classes} from './createpostbutton.styles.js';
  * @return {JSX.Element} The rendered component.
  */
 export function CreatePostButton({handleCreatePost, PlusIcon}) {
+    if (!PlusIcon) return null;
     return (
         <span className={classes.container} data-testid="container">
             <a

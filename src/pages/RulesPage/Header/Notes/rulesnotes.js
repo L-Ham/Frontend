@@ -9,10 +9,10 @@ export function RulesNotes() {
     return (
         <div className='text-[14px]/[18px]
          font-[500]
-         text-[var(--newCommunityTheme-bodyText)]'>
-            These are rules that visitors must follow to participate.
-             They can be used as reasons to report or ban posts,
-             comments, and users. Communities can have a maximum of 15 rules.
+         text-[var(--newCommunityTheme-bodyText)]' data-testid="rules-notes">
+    These are rules that visitors must follow to participate.
+    They can be used as reasons to report or ban posts,
+    comments, and users. Communities can have a maximum of 15 rules.
         </div>
     );
 }

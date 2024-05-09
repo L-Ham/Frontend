@@ -42,5 +42,5 @@ export function CommunityListDropdownItem({communityData}) {
 }
 
 CommunityListDropdownItem.propTypes = {
-    communityData: PropTypes.object.isRequired,
+    communityData: PropTypes.object,
 };

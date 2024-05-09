@@ -10,7 +10,6 @@ import {classes} from './communityrules.styles';
  */
 export function CommunityRules() {
     const {rules} = useCreatePostPage();
-    console.log(rules);
     if (!rules) return null;
     if (!rules.length) return null;
 

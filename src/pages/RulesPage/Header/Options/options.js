@@ -108,22 +108,22 @@ export function Options() {
     return (
         <div className='static mb-2 flex
         h-[48px] flex-row items-center justify-end bg-[var(--color-neutral-background)] pr-0
-        text-[var(--newCommunityTheme-bodyText)]'>
+        text-[var(--newCommunityTheme-bodyText)]' data-testid="options-container">
             {isRulesType && (
                 <>
                     <button className="reorder-rules-btn"
-                        onClick={buttons[0].onClick}>
+                        onClick={buttons[0].onClick} data-testid="reorder-rules-button">
                         {buttons[0].text}
                     </button>
                     <button className="add-rule-btn"
-                        onClick={buttons[1].onClick}>
+                        onClick={buttons[1].onClick} data-testid="add-rule-button">
                         {buttons[1].text}
                     </button>
                 </>
             )}
             {isRemovalReasonsType && (
                 <button className="add-rule-btn"
-                    onClick={buttons[0].onClick}>
+                    onClick={buttons[0].onClick} data-testid="add-removal-reason-button">
                     {buttons[0].text}
                 </button>
             )}

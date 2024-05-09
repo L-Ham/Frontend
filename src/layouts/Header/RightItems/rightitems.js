@@ -24,7 +24,7 @@ function RightItems() {
                 <AdvertiseButton />
                 <ActionButton icon='chat' onClick={() => setShowChats(!showChats)}/>
                 <CreatePost />
-                <NotificationsButtonProvider>
+                <NotificationsButtonProvider >
                     <NotificationButton />
                 </NotificationsButtonProvider>
             </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import React, {Fragment, useState} from 'react';
 import {Betterban} from './betterban';
@@ -6,12 +7,14 @@ import PropTypes from 'prop-types';
 import {useEffect} from 'react';
 
 import {axiosInstance as axios} from '../../requests/axios';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  *
  * @return  {JSX.Element} UserHelp
  */
 function Banned({name}) {
+    const {addNotification} = useNotifications();
     const [isbanPressed, setIsbanPressed] = useState(false);
     const [isxclicked, setIsxclicked] = useState(false);
     const [usersearch, setUsersearch] = useState('');
@@ -59,6 +62,7 @@ function Banned({name}) {
             const response = await axios.get(`/subreddit/users/banned?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setbanned(response.data.bannedUsers);
+
             console.log(response);
             console.log(banned);
             console.log('getbannedapi');

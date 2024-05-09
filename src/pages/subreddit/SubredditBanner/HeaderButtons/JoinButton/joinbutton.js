@@ -18,7 +18,7 @@ export function JoinButton({
     unSubscribeLabel,
     handleJoinClick,
     isSubscribed,
-    isDisabled,
+    isDisabled=false,
 }) {
     const {
         handleClick,

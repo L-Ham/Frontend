@@ -24,8 +24,8 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     async function approveuser() {
         try {
             const response = await axios.patch(API_ROUTES.approveUser, {
-                subredditName: {name},
-                username: username,
+                subredditName: name,
+                userName: username,
 
             });
             console.log(response);
@@ -44,7 +44,7 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     async function unapproveuser() {
         try {
             const response = await axios.patch(API_ROUTES.unapproveUser, {
-                subredditName: {name},
+                subredditName: name,
                 userName: username,
             });
             console.log(response);
@@ -60,10 +60,11 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     return (
         <div id='1'>
             <div className='box-border flex h-[60px] w-full flex-row
-                                     items-center border-b border-solid border-b-[#EDEFF1] bg-white
+                                     items-center border-b border-solid border-b-[#EDEFF1]
+                                     bg-[var(--newCommunityTheme-body)]
                                      px-4 py-2 text-xs font-normal leading-4 text-[#878A8C] '>
                 <div className="min-w-[220px] rounded-lg text-sm font-medium
-                                         leading-[18px] text-[#1c1c1c] hover:bg-[#edeff1]">
+                                         leading-[18px] text-[var(--newCommunityTheme-bodyText)] hover:bg-[#edeff1]">
                     <a className="inline-block rounded py-1
                                                  pl-1 pr-2" href="/user/mohamed">
                         <span className="mr-1.5 inline-block align-middle"

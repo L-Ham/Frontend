@@ -28,6 +28,5 @@ export function StatsItem({count, label, isCap}) {
 StatsItem.propTypes = {
     count: propTypes.number.isRequired,
     label: propTypes.string.isRequired,
-    id: propTypes.string.isRequired,
     isCap: propTypes.bool.isRequired,
 };

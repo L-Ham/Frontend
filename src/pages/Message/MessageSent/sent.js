@@ -13,7 +13,7 @@ export function Sent({id,subject, to, message,isEven, createdAt}) {
         console.log(id);
         const toggleFavorite = (route) => {
             axios.delete(route, {
-                messageId: id,
+                data:{'messageId': id}
             }).catch((error) => {
                 console.log(id);
                 console.error(`Error:`, error);

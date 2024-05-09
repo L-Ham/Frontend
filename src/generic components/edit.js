@@ -19,7 +19,8 @@ export function Edit({onClick, className}) {
         editt-button-secondary
         icon
         items-center justify-center
-        editt-button inline-flex absolute right-5 top-2`} onClick={onClick}>
+        editt-button inline-flex absolute right-5 top-2`} onClick={onClick}
+        data-testid="edit-button">
             <span className='flex items-center justify-center'>
                 <span className='flex'>
                     <EditIcon/>
@@ -30,10 +31,11 @@ export function Edit({onClick, className}) {
 }
 
 Edit.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     className: PropTypes.string,
 };
 
 Edit.defaultProps = {
     className: '',
+    onClick: () => {},
 };

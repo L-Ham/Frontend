@@ -23,8 +23,8 @@ export function RichTextToolbar() {
     return (
         <div ref={toolbarRef} className={classes.richTextToolbarDiv} data-testid="rich-text-toolbar-div">
             <div className={classes.richTextToolbarInnerDiv} data-testid="rich-text-toolbar-inner-div">
-                {visibleOptionsList.map((option) =>
-                    (<FormatOption key={option.name} option={option} data-testid={`format-option-${option.name}`}/>))}
+                {visibleOptionsList.map((option, idx) =>
+                    (<FormatOption key={idx} option={option} data-testid={`format-option-${option.name}`}/>))}
                 <span>
                     <div className={classes.richTextToolbarSpan} data-testid="rich-text-toolbar-span" />
                 </span>

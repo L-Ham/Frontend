@@ -4,12 +4,14 @@ import {useState} from 'react';
 import PropTypes from 'prop-types';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
+import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  * @return {JSX.Element} UserHelp
  */
 function Editban({name, onxclick, username, labeltext, onremoveban}) {
     const [isxPressed, setIsxPressed] = useState(false);
+    const {addNotification} = useNotifications();
 
     const [modnote, setmodnote] = useState('');
     const [reason, setreason] = useState('');
@@ -48,6 +50,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
             });
             console.log(response);
             handlexclick();
+            addNotification({message: 'Ban edited successfully', type: 'success'});
         } catch (error) {
             console.error(error);
         }
@@ -65,6 +68,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
             console.log(response);
             onremoveban(true);
             handlexclick();
+            addNotification({message: 'User unbanned successfully', type: 'success'});
         } catch (error) {
             console.error(error);
         }
@@ -91,8 +95,9 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
                     <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
-                            <div className="w-full flex-[1_1_100%] text-[#1c1c1c]">
-                                <div className=" text-base font-medium leading-5 text-[#1c1c1c]">Edit Ban:
+                            <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
+                                <div className=" text-base font-medium leading-5
+                                text-[var(--newCommunityTheme-bodyText)]">Edit Ban:
                                 </div></div><div className="flex-[0_0]">
                                 <button className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"><svg viewBox="0 0 20 20"
@@ -101,7 +106,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                                     1.5 9.881 8.114 3.267 1.5 1.5 3.267 8.114 9.883 1.5 16.497 3.267
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497" onClick={handlexclick}></polygon>
                                     </svg></button></div></div></header>
-                    <div className="p-4 text-[#1c1c1c]">
+                    <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
 
 
                         <label className="mb-4 block">
@@ -109,7 +114,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                             font-bold uppercase leading-3 tracking-[0.5px] text-[#878A8C]">Reason for ban
                             </label><input className="box-border block h-9 w-full
                              rounded border border-solid border-[#EDEFF1] bg-[#ffffff] p-3
-                              text-sm font-normal leading-[21px] text-[#1c1c1c]"
+                              text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                             data-redditstyle="true" placeholder="Mod note"
                             value={reason} onChange={handlereasonchange}/>
                             <div className="pt-[5px] text-xs font-normal leading-4 text-[#7c7c7c]">
@@ -120,7 +125,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                             font-bold uppercase leading-3 tracking-[0.5px] text-[#878A8C]">Mod Note
                             </label><input className="box-border block h-9 w-full
                              rounded border border-solid border-[#EDEFF1] bg-[#ffffff] p-3
-                              text-sm font-normal leading-[21px] text-[#1c1c1c]"
+                              text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                             data-redditstyle="true" placeholder="Mod note"
                             value={modnote} onChange={handlemodnotechange}/>
                             <div className="pt-[5px] text-xs font-normal leading-4 text-[#7c7c7c]">
@@ -135,7 +140,8 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
 
 
                         <div className="mb-2  flex w-full flex-row">
-                            <p className="mb-2 block text-left text-sm font-normal leading-[21px] text-[#1c1c1c]">
+                            <p className="mb-2 block text-left text-sm font-normal leading-[21px]
+                            text-[var(--newCommunityTheme-bodyText)]">
                             Note to include in ban message
                                 <span className="m-0.5 text-[#0079D3]">•</span></p></div>
 
@@ -146,7 +152,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                                  w-full rounded border
                                   border-solid border-[#EDEFF1]
                                   bg-[#ffffff]
-                                  px-2.5 py-[9px] text-[#1c1c1c]">
+                                  px-2.5 py-[9px] text-[var(--newCommunityTheme-bodyText)]">
                             </textarea></div>
                         <div className="mb-2 flex w-full flex-row">
                             <div className="pt-[5px] text-xs
