@@ -1,4 +1,4 @@
-/*eslint-disable*/
+
 import React from 'react';
 import {Login} from '../pages/registration_pages/login.js';
 import {SignUp} from '../pages/registration_pages/signup.js';
@@ -19,7 +19,6 @@ import {Usermanagementroute, MessagesRoute, ModqueueRoute, RemovalPageRoute, Rul
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
 import {ScheduledPostsRoute} from './pageRoutes.js';
 import {Modlayout} from '../generic components/modlayout.js';
-import { ModerationSettings } from '../pages/Settings/main components/tabs/moderation.js';
 
 
 /**
@@ -49,7 +48,33 @@ function App() {
         );
     };
     return (
-        <ModerationSettings />
+        <Router>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<SignUp />} />
+                <Route path="/password" element={<ForgotPassword />} />
+                <Route path="/username" element={<ForgotUsername />} />
+                <Route path="/resetpassword" element={<ForgotPassword2/>} />
+                <Route path="/settings/:tab?" element={renderWithLayout(<BasicTabs />)} />
+                <Route path="/:type/:name/comments/:postId" element={renderWithLayout(<CommentsRoute />)} />
+                <Route path="/r/:name" element={renderWithLayout(<SubredditRoute />)} />
+                <Route path="/r/:name?/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/submit" element={renderWithLayout(<CreatePostRoute />)} />
+                <Route path="/" element={renderWithLayout(<HomePage />)} />
+                <Route path="/user/:name/:section?" element={renderWithLayout(<ProfilePageRoute />)} />
+                <Route path="/popular" element={renderWithLayout(<PopularPage />)} />
+                <Route path="/all" element={renderWithLayout(<HomePage />)} />
+                <Route path="/notifications" element={renderWithLayout(<NotificationsPage />)} />
+                <Route path="/r/:name/about/rules" element={renderModPage( <RulesPageRoute/>)} />
+                <Route path="/r/:name/about/removal" element={renderModPage(<RemovalPageRoute/>)} />
+                <Route path='/r/:name/about/settings' element={renderModPage(<AboutSettings />)} />
+                <Route path='/r/:name/about/scheduledposts' element={renderModPage(<ScheduledPostsRoute />)} />
+                <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
+                <Route path="/r/:name/about/modqueue/:tab?" element={renderModPage(<ModqueueRoute />)} />
+                <Route path="/r/:name/about/usermanagement" element={renderModPage(<Usermanagementroute />)} />
+                <Route path="*" element={<ErrorPage />} />
+            </Routes>
+        </Router>
     );
 }
 
