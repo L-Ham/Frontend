@@ -25,10 +25,10 @@ function SideBar() {
 
                 <TopSection />
                 <hr className={styles.divider} />
-                <RecentCommunitiesSection />
-                <hr className={styles.divider} />
                 {isLoggedin &&
                     <>
+                        <RecentCommunitiesSection />
+                        <hr className={styles.divider} />
                         <CommunitiesSection />
                         <hr className={styles.divider} />
                     </>
