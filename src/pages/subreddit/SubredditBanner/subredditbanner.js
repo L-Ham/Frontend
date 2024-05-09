@@ -7,6 +7,7 @@ import {BannerImage} from './BannerImage/bannerimage.js';
 import {useSubredditBanner} from './subredditbanner.hooks.js';
 import {classes} from './subredditbanner.styles.js';
 
+
 /**
  * Renders the subreddit banner.
  * @return {JSX.Element} The rendered component.
@@ -14,7 +15,7 @@ import {classes} from './subredditbanner.styles.js';
 export function SubredditBanner() {
     const bannerData = useSubredditBanner();
 
-    if (bannerData.activeUserCount === undefined) return null;
+    if (Object.keys(bannerData).length === 0) return null;
 
     const {
         bannerBackgroundImage,
@@ -29,7 +30,7 @@ export function SubredditBanner() {
 
 
     return (
-        <div className={classes.container} data-testid="container">
+        <div className={classes.container} data-testid="subreddit-banner-ws5dsd">
             <BannerImage backgroundImage={bannerBackgroundImage} data-testid="banner-image" />
             <section className={classes.sectionContainer} data-testid="section-container">
                 <div className={classes.flexContainer} data-testid="flex-container">

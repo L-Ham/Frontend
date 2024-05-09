@@ -12,7 +12,7 @@ import {useCommunityIcon} from './communityicon.hooks.js';
  * @param {string} props.primaryColor The primary color.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityIcon({icon=null, displayNamePrefixed, primaryColor}) {
+export function CommunityIcon({icon=null, displayNamePrefixed='', primaryColor= '#0079d3'}) {
     const {Tag, tagProps} = useCommunityIcon({icon, primaryColor});
 
     return (
@@ -32,6 +32,6 @@ export function CommunityIcon({icon=null, displayNamePrefixed, primaryColor}) {
 
 CommunityIcon.propTypes = {
     icon: PropTypes.string,
-    displayNamePrefixed: PropTypes.string.isRequired,
-    primaryColor: PropTypes.string.isRequired,
+    displayNamePrefixed: PropTypes.string,
+    primaryColor: PropTypes.string,
 };

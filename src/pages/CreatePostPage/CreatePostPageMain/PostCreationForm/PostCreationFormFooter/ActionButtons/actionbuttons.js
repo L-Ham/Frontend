@@ -47,16 +47,16 @@ export function ActionButtons() {
                     </span>
                 </div>}
                 <div className={classes.actionButtonsFlexDiv} data-testid="action-buttons-flex-div">
-                    { !isScheduled &&
-                   <div className={classes.actionButtonsBoxDiv} data-testid="action-buttons-box-div-0">
-                       <button className={classes.actionButtonsBorderedBtn}
+                    {
+                        <div className={classes.actionButtonsBoxDiv} data-testid="action-buttons-box-div-0">
+                            <button className={classes.actionButtonsBorderedBtn}
 
-                           onClick={handleSchedule}
-                           data-testid="action-buttons-bordered-btn"
-                       >
-                           <CalendarIcon data-testid="calendar-icon" className="geso-icon"/>
-                       </button>
-                   </div>}
+                                onClick={handleSchedule}
+                                data-testid="action-buttons-bordered-btn"
+                            >
+                                <CalendarIcon data-testid="calendar-icon" className="geso-icon"/>
+                            </button>
+                        </div>}
                     <div className={classes.actionButtonsBoxDiv} data-testid="action-buttons-box-div-1">
                         <button className={classes.actionButtonsPrimaryBtn}
                             onClick={handlePost}
@@ -134,15 +134,27 @@ const ShcedulePostForm = ({setIsScheduleFormVisble, setScheduledData}) => {
         backgroundColor: 'var(--newCommunityTheme-field)',
     };
 
+    let minTime;
+    const today = new Date().toISOString().split('T')[0];
+    if (date === today) {
+        minTime = new Date().toISOString().split('T')[1].slice(0, 5);
+    } else {
+        minTime = '00:00';
+    }
+
     return (
         <form style={formStyle} onSubmit={handleSubmit} className='bg-[var(--background)]'>
             <label style={labelStyle} htmlFor="date">Date:</label>
             <input style={inputStyle} type="date" id="date" name="date" onChange={handleDateChange} value={date}
-                required={true}/>
+                required={true}
+                min={new Date().toISOString().split('T')[0]}
+            />
             <label style={labelStyle} htmlFor="time">Time:</label>
             <input style={inputStyle} type="time" id="time" name="time" onChange={handleTimeChange}
                 value={time}
-                required={true}/>
+                required={true}
+                min={minTime}
+            />
             <div className='flex flex-row items-center justify-between gap-2'>
                 <button className={`top-1 min-h-[32px] w-full ${classes.actionButtonsBorderedBtn}`}
                     type="button" onClick={() =>

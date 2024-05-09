@@ -1,14 +1,10 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {WIDGETS_MAP} from '../widgetsmap.js';
 import {useWidgetsRenderer} from './widgetsrenderer.hooks.js';
 import {useSubreddit} from '../../../subredditcontext.js';
 
 /**
  * Renders the widgets.
- * @param {Object} props The component props.
- * @param {Array} props.allWidgets The widgets to render.
- * @param {Object} props.items The widget items.
  * @return {JSX.Element} The rendered component.
  */
 export function WidgetsRenderer() {
@@ -18,7 +14,7 @@ export function WidgetsRenderer() {
         setTextWidgetId,
         setBookmarkWidgetId,
         setTextWidget} = useSubreddit();
-    const {allWidgets, items, userIsModerator, about} = useWidgetsRenderer();
+    const {allWidgets, items, about} = useWidgetsRenderer();
 
     if (!allWidgets) return null;
 
@@ -58,19 +54,14 @@ export function WidgetsRenderer() {
 
         return (
             <Fragment key={widgetId}>
-                {WidgetComponent && <WidgetComponent {...widget} isCustomizable={userIsModerator &&
-                 widget.kind !== 'community-settings' ||
-                 widget.kind !== 'moderators'}
+                {WidgetComponent && <WidgetComponent {...widget} isCustomizable={(about.communityDetails.isModerator &&
+                 (widget.kind !== 'community-settings' ||
+                 widget.kind !== 'moderators'))}
                 onEditClick={() => onEdit(widget.kind, widgetId, items)}/>}
                 {WidgetComponent && (index < allWidgets.length - 1) &&
-                 <hr className={hrClasses} data-testid={`hr-${widgetId}`}/>}
+                 <hr className={hrClasses} data-testid={`hr-###222sd0-${index}`}/>}
             </Fragment>
         );
     });
 }
-
-WidgetsRenderer.propTypes = {
-    allWidgets: PropTypes.array.isRequired,
-    items: PropTypes.object.isRequired,
-};
 

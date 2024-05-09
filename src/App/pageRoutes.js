@@ -9,6 +9,7 @@ import {Modqueue} from '../pages/ModQueue/modqueue.js';
 import {Messages} from '../pages/Message/messages.js';
 import {RulesPage} from '../pages/RulesPage/rulespage.js';
 import {RemovalPage} from '../pages/RulesPage/removalpage.js';
+import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
 
 /**
  * Renders a route for displaying a post based on the provided ID.
@@ -105,4 +106,13 @@ export function RemovalPageRoute() {
     return <RemovalPage name={name}/>;
 }
 
+
+/**
+ * Renders a route for the scheduled posts page.
+ * @return {JSX.Element} The rendered ScheduledPosts component.
+ */
+export function ScheduledPostsRoute() {
+    const {name} = useParams();
+    return <ScheduledPosts name={name}/>;
+}
 

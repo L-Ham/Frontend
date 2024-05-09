@@ -14,7 +14,9 @@ import {classes} from './dropdownmenuitem.styles.js';
  */
 export function DropdownMenuItem({text, onClick, icon: Icon, isActive=false}) {
     return (
-        <li className={classes.listItem} onClick={onClick} data-testid="list-item">
+        <li className={classes.listItem} onClick={(e) => {
+            onClick(e);
+        }} data-testid="list-item">
             <div
                 className={`${classes.itemContainer} ${isActive ? classes.activeItem : ''}`}
                 data-testid="item-container"

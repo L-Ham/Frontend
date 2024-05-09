@@ -31,7 +31,7 @@ export function Content({title, description, time, view}) {
                 className="col-start-2 font-normal text-[var(--color-neutral-content-weak)]"
                 data-testid="body-div-^HAKSLKSss"
             >
-                {description}
+                {truncate(description, 58)}
             </div>
         </div>
     );

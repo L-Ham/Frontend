@@ -14,9 +14,9 @@ export function ReasonsNotes() {
         <p className="mb-[20px] flex text-[12px]/[16px]
         font-[400]
         text-[var(--newCommunityTheme-metaText)]
-        ">
-            Help people become better posters by giving a short reason why their post was removed.
-            <span className="m-0 ml-auto p-0">
+        " data-testid="reasons-notes-paragraph">
+    Help people become better posters by giving a short reason why their post was removed.
+            <span className="m-0 ml-auto p-0" data-testid="reasons-notes-counter">
                 {rules.length}/50
             </span>
         </p>
