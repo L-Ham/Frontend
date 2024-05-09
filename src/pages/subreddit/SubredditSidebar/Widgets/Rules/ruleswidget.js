@@ -7,7 +7,6 @@ import {SubredditWidget} from '../Widget/subredditwidget.js';
 /**
  * Renders the rules widget.
  * @param {Object} props - The component props.
- * @param {string} props.display - The widget display.
  * @param {Array} props.ruleList - The widget data.
  * @param {boolean} props.isCustomizable - The flag to check if the widget is customizable.
  * @param {function} props.onEditClick - The function to call when the edit button is clicked.
@@ -31,7 +30,6 @@ export function RulesWidget({ruleList: data, isCustomizable=false, onEditClick=n
 }
 
 RulesWidget.propTypes = {
-    display: PropTypes.string.isRequired,
     ruleList: PropTypes.array.isRequired,
     isCustomizable: PropTypes.bool,
     onEditClick: PropTypes.func,

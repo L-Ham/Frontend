@@ -20,7 +20,7 @@ export function Rule({data, display, idx: priority}) {
         CaretDownIconOutline, toggleDescriptionVisibility} = useRule({data, display});
 
     return (
-        <div onClick={() => toggleDescriptionVisibility()} data-testid="rule-container">
+        <div onClick={() => toggleDescriptionVisibility()} data-testid={`rule-${priority}`}>
             <div className={classes.container} data-testid="inner-container">
                 <div className={classes.fontNormal} data-testid="font-container">
                     <li className={classes.listItem} role="presentation" data-testid="list-item">
