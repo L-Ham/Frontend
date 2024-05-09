@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
  * @param {string} postTitle - The post title.
  * @return {JSX.Element} The post preview component.
  */
-function PostPreview({postId, subredditName, viewContext, postUrl, postTitle}) {
+function PostPreview({postId, subredditName, viewContext, postUrl, postTitle, upvotes = 1, comments = 2}) {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
@@ -28,8 +28,8 @@ function PostPreview({postId, subredditName, viewContext, postUrl, postTitle}) {
             </div>
             <div className={styles.stats}>
                 <PostStats
-                    upvotes={1}
-                    comments={2}
+                    upvotes={upvotes}
+                    comments={comments}
                 />
             </div>
         </div>
@@ -43,6 +43,8 @@ PostPreview.propTypes = {
     viewContext: PropTypes.string.isRequired,
     postUrl: PropTypes.string.isRequired,
     postTitle: PropTypes.string.isRequired,
+    upvotes: PropTypes.number,
+    comments: PropTypes.number,
 };
 
 export {PostPreview};
