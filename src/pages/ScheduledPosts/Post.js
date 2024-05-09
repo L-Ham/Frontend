@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getIconComponent} from '../../generic components/iconsmap';
@@ -15,7 +16,7 @@ export function Post({title, user, subreddit, scheduledTime, scheduledDate, isNs
                 <div>
                     <div className="_26zeT5d9JKXWbWzOT4ncpg">
                         <div className="qDE3oDok1392-t8IDOBfk">
-                            <svg className="_3dezPhiKJXkVFXj94zLKcs _2sfIhl6E6vfZCwxx54EUNB"
+                        <svg className="_3dezPhiKJXkVFXj94zLKcs _2sfIhl6E6vfZCwxx54EUNB"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" data-testid="post-icon-svg">
                                 <g>
                                     <path d="M5 3.75C5 3.47388 5.22363 3.25 5.5 3.25C5.77637
