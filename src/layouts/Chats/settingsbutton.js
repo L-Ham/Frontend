@@ -29,8 +29,8 @@ function SettingsButton() {
     return (
         <div className="relative"> {/* Wrap everything in a container for relative positioning */}
             <button id='settinggss'
-                className="button-medium button-plain
-                icon button inline-flex items-center
+                className="button-medium
+                icon  inline-flex items-center
                 justify-center rounded-full p-1
                 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)]
                 active:bg-[var(--color-interactive-pressed)]"
@@ -50,9 +50,9 @@ function SettingsButton() {
             </button>
 
             {menuVisible && (
-                <div className="menu-dropdown absolute right-0 top-full z-50 box-border rounded bg-white shadow-lg"> {/* Positioned to the right of the button */}
+                <div className=" absolute right-0 top-full z-50 box-border rounded bg-white shadow-lg"> {/* Positioned to the right of the button */}
                     <div
-                        className="menu-item flex items-center gap-2 p-2 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)] active:bg-[var(--color-interactive-pressed)]"
+                        className=" flex items-center gap-2 p-2 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)] active:bg-[var(--color-interactive-pressed)]"
                         onClick={handleMuteNotifications}
                     >
                         <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@ function SettingsButton() {
             Mute Notifications
                     </div>
                     <div
-                        className="menu-item flex items-center gap-2 p-2 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)] active:bg-[var(--color-interactive-pressed)]"
+                        className=" flex items-center gap-2 p-2 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)] active:bg-[var(--color-interactive-pressed)]"
                         onClick={handleHideChat}
                     >
                         <svg fill="currentColor" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">

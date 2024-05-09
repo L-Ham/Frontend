@@ -15,8 +15,8 @@ function CloseChatButton({minimizeChat}) {
     return (
 
         <button id = 'closebutton' onClick={minimizeChat} aria-label="Minimize chat" className="
-        button-medium button-plain
-        icon button inline-flex items-center
+        button-medium
+        icon  inline-flex items-center
         justify-center rounded-full p-1
         text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)]
         active:bg-[var(--color-interactive-pressed)]" type="button">
