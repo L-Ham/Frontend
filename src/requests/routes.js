@@ -46,7 +46,6 @@ const API_ROUTES = {
     communityDetails: (name) => `/subreddit/communityDetails?subRedditName=${name}`,
     subredditRules: (id) => `/subreddit/rule?subredditId=${id}`,
     widgets: (id) => `/subreddit/widget?subredditId=${id}`,
-    searchCommunities: (name) => `/subreddit/nameSearch?search=${name}`,
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
@@ -128,6 +127,12 @@ const API_ROUTES = {
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
     hideNotification: '/notification/hide',
+    searchPosts: (query, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW) => `/post/searchPosts?search=${query}` +
+        `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&mediaOnly=${mediaOnly}&isNSFW=${isNSFW}`,
+    searchCommunities: (name) => `/subreddit/nameSearch?search=${name}`,
+    searchUsers: (query) => `/user/searchUsernames?search=${query}`,
+    searchComments: (query, sortRelevance, sortTop, sortNew) => `/comment/searchComments?search=${query}` +
+            `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

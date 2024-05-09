@@ -17,6 +17,8 @@ import {NotificationsPage} from '../pages/NotificationsPage/notificationspage.js
 import {Usermanagementroute, MessagesRoute, ModqueueRoute, RemovalPageRoute, RulesPageRoute,
     CreatePostRoute, CommentsRoute, SubredditRoute, ProfilePageRoute} from './pageRoutes.js';
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
+// import {ScheduledPosts} from '../pages/ScheduledPosts/scheduledposts.js';
+import {SearchPage} from '../pages/SearchPage/searchpage.js';
 import {ScheduledPostsRoute} from './pageRoutes.js';
 import {Modlayout} from '../generic components/modlayout.js';
 
@@ -70,6 +72,7 @@ function App() {
                 <Route path='/r/:name/about/settings' element={renderModPage(<AboutSettings />)} />
                 <Route path='/r/:name/about/scheduledposts' element={renderModPage(<ScheduledPostsRoute />)} />
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
+                <Route path="/search" element={renderWithLayout(<SearchPage />)} />
                 <Route path="/r/:name/about/modqueue/:tab?" element={renderModPage(<ModqueueRoute />)} />
                 <Route path="/r/:name/about/usermanagement" element={renderModPage(<Usermanagementroute />)} />
                 <Route path="*" element={<ErrorPage />} />

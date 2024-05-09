@@ -1,0 +1,59 @@
+.outer {
+    background: var(--color-switch-input-background-default);
+    border-radius: var(--radius-full);
+    box-shadow: var(--elevation-switch-input-default-inset);
+    height: var(--size-switch-input-h);
+    vertical-align: middle;
+    width: var(--size-switch-input-w);
+    padding: var(--line-md);
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.switch-input-primary {
+    --checked-color-background-default: var(--color-switch-input-background-checked);
+    --checked-color-background-hover: var(--color-switch-input-background-checked-hover);
+}
+
+.knob {
+    --knob-w: calc(var(--size-switch-input-h) - (var(--line-md) * 2));
+    --translate-left: calc(var(--size-switch-input-w) - var(--knob-w) - (var(--line-md) * 2));
+    --knob-center: calc(var(--knob-w) / 2);
+    background: var(--color-global-white);
+    border-radius: var(--radius-full);
+    filter: drop-shadow(rgba(0, 0, 0, 0.15) 0px 1px 4px);
+    display: block;
+    height: 87.5%;
+    position: absolute;
+    transform: translateX(0px);
+    transition: transform 0.3s ease 0s;
+    width: var(--knob-w);
+}
+
+.knob::before {
+    border-radius: 0px;
+    transform-origin: left center;
+    transform: translateX(var(--knob-center)) scaleX(0);
+    transition: transform 0.2s ease 0s;
+    width: var(--spacer-switch-input-active-pl);
+}
+
+
+.knob::after, .knob::before {
+    background: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transition: transform 0.3s ease 0s;
+}
+
+.knob::after {
+    border-radius: var(--radius-full);
+    transform: translateX(0px);
+    width: var(--knob-w);
+}
