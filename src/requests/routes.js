@@ -139,6 +139,17 @@ const API_ROUTES = {
     reportPost: '/post/report',
     forceApprove: '/subreddit/user/forcedApproved',
     hideNotification: '/notification/hide',
+    votePoll: '/post/votePoll',
+    postComments: (postId) => (page, limit) => {
+        return `/post/comments?postId=${postId}&page=${page}&limit=${limit}`;
+    },
+    commentUpvote: '/comment/upvote',
+    commentDownvote: '/comment/downvote',
+    commentCancelUpvote: '/comment/cancelUpvote',
+    commentCancelDownvote: '/comment/cancelDownvote',
+    addComment: '/comment/addComment',
+    followUser: '/user/followUser',
+    unfollowUser: '/user/unfollowUser',
     getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed

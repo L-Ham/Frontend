@@ -41,7 +41,7 @@ axiosInstance.interceptors.response.use(
         if (error.response.status === 403 || error.response.status === 401) {
             // If the response status is 403 (Unauthorized), logout the user
             store.dispatch(logout());
-            window.location.href = '/login';
+            window.location.href = '/login?url=' + window.location.pathname;
         }
         return Promise.reject(error);
     },

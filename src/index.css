@@ -29,6 +29,7 @@ code {
 
 /* define global colors */
 :root {
+  --color-vote-background-selected: rgb(255, 137, 93);
   --newCommunityTheme-widgetColors-sidebarWidgetBorderColor: #ccc;
   --scrollbar-bg: transparent;
   --newRedditTheme-flair: #EDEFF1;
@@ -373,6 +374,7 @@ code {
 }
 .theme-dark {
   /* add dark scheme here */
+  --color-vote-background-selected: rgb(83, 97, 104);
   --color-category-spoiler: var(--color-tone-1);
   --scrollbar-bg: #2c2c2c;
   --newRedditTheme-flair: #343536;
@@ -794,6 +796,7 @@ code {
 }
 .theme-light {
   /* add light scheme here */
+  --color-vote-background-selected: rgb(255, 137, 93);
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;
   --newRedditTheme-body: #FFFFFF;
