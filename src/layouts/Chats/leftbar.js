@@ -15,10 +15,10 @@ import PropTypes from 'prop-types';
  * <LeftBar />
  * @return {JSX.Element} The chat preview component.
  */
-function LeftBar({chatsToLeft, onSelectChat, addUser}) {
+function LeftBar({chatsToLeft, onSelectChat, addUser, filter}) {
     return (
         <div className='box-border flex h-full flex-col overflow-auto border-r border-solid border-r-[color:var(--color-tone-5)]'>
-            <LeftBarTop addingUser = {addUser}/>
+            <LeftBarTop addingUser = {addUser} filterChats = {filter} />
             <LeftThreads/>
             <LeftBottom chatsToBottom = {chatsToLeft} onSelectChat={onSelectChat}/>
 
@@ -31,5 +31,6 @@ LeftBar.propTypes = {
     chatsToLeft: PropTypes.array,
     onSelectChat: PropTypes.func,
     addUser: PropTypes.func,
+    filter: PropTypes.func,
 };
 export {LeftBar};

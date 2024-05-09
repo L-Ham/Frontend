@@ -27,8 +27,11 @@ function ChatsFull({show}) {
     const [message, setMessage] = useState('');
     const ourtoken = useSelector((state) => state.user.token);
     const socket = useRef(null);
+    const [myAvatar, setMyAvatar] = useState(defaultAvatar);
     const [selectedChatId, setSelectedChatId] = useState('');
     const selectedChatIdRef = useRef(selectedChatId);
+    const [filteredChats, setFilteredChats] = useState([{}]);
+    const [filterType,setFilterType] = useState('All');
     const [receivedMessages, setReceivedMessages] = useState([]);
     const username = useSelector((state) => state.user.username);
     const [isFullScreen, setIsFullScreen] = useState(false);
@@ -48,7 +51,26 @@ function ChatsFull({show}) {
             return updatedChats;
         });
     };
-    
+
+    async function fetchAvatar() {
+        try {
+            const response = await axiosInstance.get(API_ROUTES.avatar);
+            // Directly use response.data since it matches the expected structure
+            setMyAvatar(response.data.url);
+        } catch (error) {
+            if (error?.response?.data?.message === 'Avatar image not found') return;
+            console.error('Failed to fetch banner:', error);
+        }
+    }
+    useEffect(() => {
+        fetchAvatar();
+    }, []);
+    //make filtered chats have the chats that are filtered
+
+
+
+
+
     
     useEffect(() => {
         selectedChatIdRef.current = selectedChatId;
@@ -61,6 +83,7 @@ function ChatsFull({show}) {
             socket.current = io('http://api.reddit-bylham.me', {
                 query: { token: `Bearer ${ourtoken}` },
             });
+            //past: 
     
             const handleNewMessage = (message) => {
                 console.log('Received new message:', message);
@@ -118,7 +141,7 @@ function ChatsFull({show}) {
         } else if (diffInMinutes > 0) {
             return `${diffInMinutes} minutes ago`;
         } else {
-            return `a few seconds ago`;
+            return `now`;
         }
     }
     function convertData(data, username) {
@@ -126,16 +149,22 @@ function ChatsFull({show}) {
         data.conversations.forEach((conversation) => {
             const chatId = conversation._id;
             let chatName = conversation.chatName; // Default to using the predefined chatName
+            let Type = conversation.type;
+    
+            // Attempt to set the primaryAvatar to the avatar of the last message sender
+            const lastMessage = conversation.messages.slice(-1)[0];
+            let primaryAvatar = lastMessage ? conversation.participantsAvatarUrls[conversation.participants.indexOf(lastMessage.senderName)] : conversation.participantsAvatarUrls[0];
+            console.log('primary avatar:', primaryAvatar);
     
             // Check if the conversation type is 'single' and has exactly two participants
             if (conversation.type === 'single' && conversation.participants.length === 2) {
-                // Find the other participant's name that isn't the username
-                chatName = conversation.participants.find(participant => participant !== username);
+                const otherParticipantIndex = conversation.participants.findIndex(participant => participant !== username);
+                chatName = conversation.participants[otherParticipantIndex]; // Find the other participant's name
+                primaryAvatar = conversation.participantsAvatarUrls[otherParticipantIndex]; // Use the other participant's avatar
                 console.log('Chat name:', chatName);
-                console.log('Username:', username );
+                console.log('Username:', username);
             }
     
-            
             const avatarUrls = conversation.participantsAvatarUrls.map((avatar) => avatar || defaultAvatar);
     
             const messages = conversation.messages.map((message) => ({
@@ -149,14 +178,17 @@ function ChatsFull({show}) {
     
             chats[chatId] = {
                 name: chatName, // Use the dynamically determined chatName
-                avatar: avatarUrls[0], // Assuming the first avatar is the primary one for the chat
+                avatar: primaryAvatar, // Use the avatar determined above
                 messages: messages,
                 unreadCount: conversation.unreadCount,
+                type : Type,
             };
         });
         console.log('Chats:', chats);
         return chats;
     }
+    
+    
     
     
    /* useEffect(() => {
@@ -185,9 +217,10 @@ function ChatsFull({show}) {
                 sender: username, // Adjust according to your app's context
             type: "text",
             message: textMessage,
-            avatar: defaultAvatar,
+            avatar: myAvatar,
 
             });
+            console.log('image: ',myAvatar);
         } catch (error) {
             console.error('Failed to send message:', error);
         }
@@ -212,7 +245,7 @@ function ChatsFull({show}) {
                 type: "image",
                 message: "", // Since it's an image, the message could be empty or an image description if you have it
                 imgsrc: URL.createObjectURL(image), // This assumes you want to display the image immediately before any server 
-                avatar: defaultAvatar,
+                avatar: myAvatar,
             });
         } catch (error) {
             console.error('Failed to send image:', error);
@@ -242,6 +275,25 @@ function ChatsFull({show}) {
     function expand() {
         setIsFullScreen(!isFullScreen);
     }
+    
+    useEffect(() => {
+        console.log('chats,,', chats);
+        if (filterType === 'all') {
+            setFilteredChats(chats);
+            console.log('chatssss',chats);
+            console.log('filtered chats: ',chats);
+        } else {
+            const filtered = {};
+            Object.keys(chats).forEach((chatId) => {
+                if (chats[chatId].type.toLowerCase().includes(filterType.toLowerCase())) {
+                    filtered[chatId] = chats[chatId];
+                }
+            });
+            setFilteredChats(filtered);
+            console.log('filtered: ', filtered);
+        }
+    }, [chats, filterType]);
+    
 
     
         
@@ -299,7 +351,7 @@ function ChatsFull({show}) {
                     <div className={chatsHidden ? 'hidden' : ''}>
                         <div className={isFullScreen  ? 'h-screen w-full' : 'h-[506px] w-[632px]'}>
                             <div className='grid h-full grid-cols-[220px_1fr] overflow-hidden'>
-                                <LeftBar chatsToLeft={chats} onSelectChat={handleChatSelection} addUser={toggleAddUser} />
+                                <LeftBar filter = {setFilterType} chatsToLeft={filteredChats} onSelectChat={handleChatSelection} addUser={toggleAddUser} />
                                 <div className='h-full overflow-hidden'>
                                     <div className='relative flex h-full overflow-hidden'>
                                         <div className='flex h-full grow flex-col overflow-auto'>
