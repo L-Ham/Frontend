@@ -181,7 +181,7 @@ function Usermanagement({name}) {
 
             {isamod &&
             <div className='pt-12 transition-[margin-top] duration-[0.3s] ease-[ease]'>
-                <div className=' flex min-h-screen flex-col overflow-x-auto text-[#1c1c1c]'>
+                <div className=' flex min-h-screen flex-col overflow-x-auto text-[var(--newCommunityTheme-bodyText)]'>
                     <div className='fixed z-30 flex h-10 w-full flex-row items-center border-b
                 border-solid border-neutral-200 bg-white pl-6 text-xs  font-bold uppercase leading-6 tracking-[0.5px]'>
                         <a className=' mr-3 inline-block text-[#0079d3]' href='/r/'>r/{name}

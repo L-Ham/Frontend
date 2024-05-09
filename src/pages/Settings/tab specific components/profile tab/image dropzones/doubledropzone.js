@@ -121,6 +121,7 @@ function DoubleDropZone(props, id) {
         updateImageFromFile(files, setRightImage);
 
         handleUpdateBanner(event.dataTransferfiles[0]);
+        console.log('clicked right');
     }
 
     /**
@@ -143,6 +144,7 @@ function DoubleDropZone(props, id) {
     function handleLeftChange(event) {
         updateImageFromFile(event.target.files, setLeftImage);
         handleUpdateAvatar(event.target.files[0]);
+        console.log('clicked');
     }
 
     /**

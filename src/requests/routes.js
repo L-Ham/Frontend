@@ -49,6 +49,11 @@ const API_ROUTES = {
     createPost: '/post/createPost',
     joinCommunity: '/user/joinCommunity',
     leaveCommunity: '/user/unjoinCommunity',
+    getAllChats: '/conversation/getUserChats',
+    getUsernamesForSearch: (input) => `/user/searchUsernames?search=${input}`,
+    createChat: '/conversation/create',
+    sendChatMessage: '/chat/sendMessage',
+    markAsReadChat: '/conversation/markAsRead',
     createCommunity: '/subreddit/createCommunity',
     banUser: '/subreddit/user/ban',
     unbanUser: '/subreddit/user/unban',
@@ -126,6 +131,12 @@ const API_ROUTES = {
     unsavePost: '/post/unsave',
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
+    lockPost: '/post/lockPost',
+    unlockPost: '/post/unlockPost',
+    approvePost: '/post/approvePost',
+    removePost: '/post/removePost',
+    reportPost: '/post/report',
+    forceApprove: '/subreddit/user/forcedApproved',
     hideNotification: '/notification/hide',
     searchPosts: (query, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW) => `/post/searchPosts?search=${query}` +
         `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&mediaOnly=${mediaOnly}&isNSFW=${isNSFW}`,
@@ -142,6 +153,18 @@ const API_ROUTES = {
         `/comment/subreddit/searchComment?search=${query}&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&`+
         `subredditName=${subredditName}`,
 
+    votePoll: '/post/votePoll',
+    postComments: (postId) => (page, limit) => {
+        return `/post/comments?postId=${postId}&page=${page}&limit=${limit}`;
+    },
+    commentUpvote: '/comment/upvote',
+    commentDownvote: '/comment/downvote',
+    commentCancelUpvote: '/comment/cancelUpvote',
+    commentCancelDownvote: '/comment/cancelDownvote',
+    addComment: '/comment/addComment',
+    followUser: '/user/followUser',
+    unfollowUser: '/user/unfollowUser',
+    getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };

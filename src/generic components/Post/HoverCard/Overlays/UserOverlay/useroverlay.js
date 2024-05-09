@@ -54,6 +54,7 @@ export function UserOverlay({
                     <FollowButtons
                         userId={userData.userId}
                         isFriend={userData.isFriend}
+                        username={userData.username}
                     />
                     <ChatButton
                         userId={userData.userId}

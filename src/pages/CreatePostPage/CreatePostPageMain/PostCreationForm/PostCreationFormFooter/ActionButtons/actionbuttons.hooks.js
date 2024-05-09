@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import {useState} from 'react';
 import {useCreatePostPage} from '../../../../createpostpage.context.js';
 import {usePostCreation} from '../../postcreationcontext.js';
@@ -5,15 +6,28 @@ import {axiosInstance as axios} from '../../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../../requests/routes.js';
 import {validateLink} from '../../../../../../generic components/utils.js';
 import {useNotifications} from '../../../../../../generic components/Notifications/notificationsContext.js';
+import {useSelector} from 'react-redux';
 
 export const useActionButtons = () => {
+    const {about, setIsScheduleFormVisble, isScheduleFormVisble} = useCreatePostPage();
     const [errorMessage, setErrorMessage] = useState('');
     const {addNotification} = useNotifications();
     const {activeTab, setFiles, postTitle,
         text, files, link, pollData, isSendPostNotifications, postTags,
         scheduledData, setScheduledData} = usePostCreation();
-    const {about, setIsScheduleFormVisble, isScheduleFormVisble} = useCreatePostPage();
-    const subredditId = about?.communityDetails?.subredditId;
+    const username = useSelector((state) => state.user.username);
+    const userid = useSelector((state) => state.user.userId);
+
+    if (!about) return {};
+
+    const subredditId = about?.communityDetails?.subredditId || null;
+    const isUserProfilePost = subredditId === null;
+    const subredditName = about?.communityDetails?.name || null;
+    const isMember = about?.communityDetails?.isMember;
+
+    console.log('isMember',isMember);
+    console.log('isUserProfile',isUserProfilePost);
+
 
     const handleSaveDraft = () => {
         addNotification({message: 'Drafts are not supported yet :(', type: 'failure'});
@@ -47,14 +61,9 @@ export const useActionButtons = () => {
         setIsScheduleFormVisble(true);
     };
 
-    const handlePost = async () => {
-        if (about == null) {
-            addNotification({message: 'Please select a community', type: 'failure'});
-            return;
-        }
 
+    const handlePost = async () => {
         const formData = new FormData();
-        // to be used in image and video upload
 
         const postData = {
             subRedditId: subredditId,
@@ -109,12 +118,16 @@ export const useActionButtons = () => {
             postData.type = 'link';
             break;
         case 'poll':
-            postData.text = text;
-            postData['poll.options'] = Object.values(pollData.options);
-            postData['pollData.votingLength'] = pollData.votingLength;
-            postData['pollData.startTime'] = new Date().toISOString();
-            postData['pollData.endTime'] = new Date(new Date().getTime() + pollData.votingLength * 60000).toISOString();
-            postData.type = 'poll';
+            formData.append('text', text);
+            Object.values(pollData.options).forEach((value) => {
+                formData.append('poll.options[]', value);
+            });
+            formData.append('pollData.startTime', new Date().toISOString());
+            formData.append('pollData.endTime',
+                new Date(new Date().getTime() + pollData.votingLength * 60000).toISOString());
+            formData.append('poll.votingLength', pollData.votingLength);
+            formData.append('type', 'poll');
+            console.log(formData);
             break;
         case 'post':
             postData.text = text;
@@ -124,25 +137,25 @@ export const useActionButtons = () => {
             break;
         }
 
+        if (((isMember == false) && (isUserProfilePost == false))) {
+            addNotification({message: 'You need to join the community to post', type: 'failure'});
+            return;
+        }
+
         try {
-            if (activeTab === 'img') {
-                await axios.post(API_ROUTES.createPost, formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-                window.open(`/r/${about.communityDetails.name}`, '_self');
-            } else {
-                if (isScheduled) {
-                    await axios.post(API_ROUTES.addScheduledPost, postData);
-                    window.open(`/r/${about.communityDetails.name}`, '_self');
-                } else {
-                    await axios.post(API_ROUTES.createPost, postData);
-                    window.open(`/r/${about.communityDetails.name}`, '_self');
-                }
-            }
+            const postRoute = isScheduled ? API_ROUTES.addScheduledPost : API_ROUTES.createPost;
+            const postPayload = activeTab === 'img' || activeTab === 'poll' ?
+                formData : postData;
+            const postHeaders = activeTab === 'img' || activeTab === 'poll' ?
+                {headers: {'Content-Type': 'multipart/form-data'}} : {};
+
+            await axios.post(postRoute, postPayload, postHeaders);
+
+            const redirectRoute = isUserProfilePost ? `/user/${username}/posts` : `/r/${about.communityDetails.name}`;
+            window.open(redirectRoute, '_self');
         } catch (error) {
-            addNotification({message: error.response ?error.response.message : 'el file size kberr', type: 'failure'});
+            const errorMessage = error.response ? error.response.message : 'unrecognized error please try again later';
+            addNotification({message: errorMessage, type: 'failure'});
             console.error('Failed to create post:', error);
         }
     };

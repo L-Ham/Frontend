@@ -7,7 +7,6 @@ import {useCommunityListDropDown} from './communitylistdropdown.hooks.js';
 /**
  * Renders the community list dropdown.
  * @param {Object} props - The component props.
- * @param {Array} props.userCommunities - The user's communities.
  * @param {string} props.searchInput - The search input.
  * @return {JSX.Element} The rendered component.
  */
@@ -27,6 +26,5 @@ export function CommunityListDropdown({searchInput}) {
 }
 
 CommunityListDropdown.propTypes = {
-    userCommunities: PropTypes.array.isRequired,
     searchInput: PropTypes.string.isRequired,
 };

@@ -12,6 +12,8 @@ import {API_ROUTES} from '../../requests/routes';
 function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
     const [isxPressed, setIsxPressed] = useState(false);
     const [username, setusername] = useState('');
+    const [notfound, setnotfound] = useState(false);
+    const [empty, setempty] = useState(false);
     const handlexclick = (event) => {
         setIsxPressed(true);
         console.log(isxPressed);
@@ -24,6 +26,9 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
         const newusername = event.target.value;
         setusername(newusername);
         console.log(newusername);
+        setempty(false);
+        setnotfound(false);
+
         // Call the function passed from the parent with the new email
     };
     /**
@@ -31,10 +36,10 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
      */
     async function handleaddban() {
         if (username === '') {
-            alert('Please enter a username');
+            setempty(true);
         }
         try {
-            const response = await axios.patch(API_ROUTES.approveUser, {
+            const response = await axios.patch(API_ROUTES.forceApprove, {
                 subredditName: name,
                 userName: username,
             });
@@ -43,6 +48,11 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
             handlexclick();
         } catch (error) {
             console.log(error);
+
+            if (error.response && error.response.data && error.response.data.message === 'User not found') {
+                console.log('User not found');
+                setnotfound(true);
+            }
         }
     }
     // Call the function passed from the parent with the new email
@@ -64,8 +74,9 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
                     <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
-                            <div className="w-full flex-[1_1_100%] text-[#1c1c1c]">
-                                <div className=" text-base font-medium leading-5 text-[#1c1c1c]">{labeltext} a user:
+                            <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
+                                <div className=" text-base font-medium leading-5
+                                 text-[var(--newCommunityTheme-bodyText)]">{labeltext} a user:
                                 </div></div><div className="flex-[0_0]">
                                 <button className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"><svg viewBox="0 0 20 20"
@@ -74,11 +85,28 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
                                     1.5 9.881 8.114 3.267 1.5 1.5 3.267 8.114 9.883 1.5 16.497 3.267
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497" onClick={handlexclick}></polygon>
                                     </svg></button></div></div></header>
-                    <div className="p-4 text-[#1c1c1c]">
+                    <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
                         <input className="box-border block h-9 w-full rounded
                                          border border-solid border-[#EDEFF1] px-2 py-0
-                                         text-sm font-normal leading-[21px] text-[#1c1c1c]"
+                                         text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                         placeholder="Enter username" value={username} onChange={handleusernamechange}/>
+                        {
+                            <div className=" max-h-[1000px]  text-xs font-medium
+                            leading-4 text-[#ea0027] opacity-100 transition-all
+                            duration-[0.2s] ease-[ease-in-out]" data-for="password"
+                            data-testid="email-error"
+                            >
+                                {empty&& (
+                                    <>Can&apos;t leave Approve name empty</>
+                                )}
+                                {notfound && !empty && (
+                                    <>Username is not found</>
+                                )}
+
+
+                            </div>
+                        }
+
 
                     </div>
                     <footer className="flex justify-end rounded-b
