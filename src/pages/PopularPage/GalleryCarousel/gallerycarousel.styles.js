@@ -3,7 +3,7 @@ export const galleryCarouselClasses = {
     container: 'mt-4',
     contentWrapper: 'block h-[210px] nd:visible nd:overflow-hidden',
     content: 'relative',
-    list: 'm-0 flex w-full snap-x snap-mandatory list-none flex-row overflow-x-scroll scroll-smooth p-0',
+    list: 'm-0 flex w-full list-none flex-row overflow-x-scroll scroll-smooth p-0',
     leftButton: 'absolute left-[8px] top-[85px] md:inline',
     rightButton: 'absolute right-[8px] top-[85px] md:inline',
     buttonVisible: 'visible',
