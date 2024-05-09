@@ -79,6 +79,8 @@ export function NotificationsList({view}) {
             // the image depending on the notification type
             type: notification.type,
             subredditName: notification.subredditName,
+            postId: notification.postId,
+            senderName: notification.senderName,
         };
     });
 
