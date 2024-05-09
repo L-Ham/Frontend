@@ -37,32 +37,55 @@ function SearchPage() {
     const sortTop = queryParams.get('sortTop') || 'false';
     const sortNew = queryParams.get('sortNew') || 'false';
     const isNSFW = queryParams.get('isNSFW') || 'false';
+    const subredditName = queryParams.get('subredditName') || '';
     const mediaOnly = searchType == 'media';
 
-    const tabs = [
-        {name: 'Posts', type: 'posts'},
-        {name: 'Communities', type: 'communities'},
-        {name: 'Comments', type: 'comments'},
-        {name: 'Media', type: 'media'},
-        {name: 'People', type: 'users'},
-        // Add more tabs here
-    ];
+    const tabs = subredditName !== '' ?
+        [
+            {name: 'Posts', type: 'posts'},
+            {name: 'Comments', type: 'comments'},
+            {name: 'Media', type: 'media'},
+        ] :
+        [
+            {name: 'Posts', type: 'posts'},
+            {name: 'Communities', type: 'communities'},
+            {name: 'Comments', type: 'comments'},
+            {name: 'Media', type: 'media'},
+            {name: 'People', type: 'users'},
+        ];
 
     // get search results
     const getPosts = () => {
-        axios.get(API_ROUTES.searchPosts(
-            searchQuery,
-            sortRelevance,
-            sortTop,
-            sortNew,
-            mediaOnly,
-            isNSFW,
-        ), {
-        }).then((response) => {
-            setSearchResults({...searchResults, posts: response.data.posts});
-        }).catch((error) => {
-            console.error(error);
-        });
+        if (subredditName) {
+            axios.get(API_ROUTES.searchSubredditPost(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+                mediaOnly,
+                isNSFW,
+                subredditName,
+            ), {
+            }).then((response) => {
+                setSearchResults({...searchResults, posts: response.data.posts});
+            }).catch((error) => {
+                console.error(error);
+            });
+        } else {
+            axios.get(API_ROUTES.searchPosts(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+                mediaOnly,
+                isNSFW,
+            ), {
+            }).then((response) => {
+                setSearchResults({...searchResults, posts: response.data.posts});
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
     };
 
     const getCommunities = () => {
@@ -78,15 +101,10 @@ function SearchPage() {
     };
 
     const getUsers = () => {
-        console.log(API_ROUTES.searchUsers(
-            searchQuery,
-        ));
         axios.get(API_ROUTES.searchUsers(
             searchQuery,
         ), {
         }).then((response) => {
-            console.log(response);
-            // setSearchUserResults(response.data.matchingUsernames);
             setSearchResults({...searchResults, users: response.data.matchingUsernames});
         }).catch((error) => {
             console.error(error);
@@ -94,44 +112,73 @@ function SearchPage() {
     };
 
     const getComments = () => {
-        console.log(API_ROUTES.searchComments(
-            searchQuery,
-            sortRelevance,
-            sortTop,
-            sortNew,
-        ));
-        axios.get(API_ROUTES.searchComments(
-            searchQuery,
-            sortRelevance,
-            sortTop,
-            sortNew,
-        ), {
-        }).then((response) => {
-            console.log(response);
-            // setSearchCommentResults(response.data.comments);
-            setSearchResults({...searchResults, comments: response.data.comments});
-        }).catch((error) => {
-            console.error(error);
-        });
+        if (subredditName) {
+            axios.get(API_ROUTES.searchSubredditComments(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+                subredditName,
+            ), {
+            }).then((response) => {
+                console.log(response);
+                // setSearchCommentResults(response.data.comments);
+                setSearchResults({...searchResults, comments: response.data.comments});
+            }).catch((error) => {
+                console.error(error);
+            });
+        } else {
+            axios.get(API_ROUTES.searchComments(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+            ), {
+            }).then((response) => {
+                console.log(response);
+                // setSearchCommentResults(response.data.comments);
+                setSearchResults({...searchResults, comments: response.data.comments});
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
     };
 
     const getMedia = () => {
-        axios.get(API_ROUTES.searchPosts(
-            searchQuery,
-            sortRelevance,
-            sortTop,
-            sortNew,
-            mediaOnly,
-            isNSFW,
-        ), {
-        }).then((response) => {
-            setSearchResults({...searchResults, media: response.data.posts});
-        }).catch((error) => {
-            console.error(error);
-        });
+        if (subredditName) {
+            axios.get(API_ROUTES.searchSubredditPost(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+                mediaOnly,
+                isNSFW,
+                subredditName,
+            ), {
+            }).then((response) => {
+                setSearchResults({...searchResults, media: response.data.posts});
+            }).catch((error) => {
+                console.error(error);
+            });
+        } else {
+            axios.get(API_ROUTES.searchPosts(
+                searchQuery,
+                sortRelevance,
+                sortTop,
+                sortNew,
+                mediaOnly,
+                isNSFW,
+            ), {
+            }).then((response) => {
+                setSearchResults({...searchResults, media: response.data.posts});
+            }).catch((error) => {
+                console.error(error);
+            });
+        }
     };
 
 
+    console.log('searchResults', searchResults);
     useEffect(() => {
         if (searchType == 'communities') {
             getCommunities();
@@ -147,7 +194,7 @@ function SearchPage() {
     }, [searchType, searchQuery, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW]);
 
     const renderPost = (result) => (
-        <React.Fragment key={result.postId}>
+        <React.Fragment key={uuid()}>
             <Post
                 postData={result}
             />
@@ -156,7 +203,7 @@ function SearchPage() {
     );
 
     const renderCommunity = (result) => (
-        <React.Fragment key={result.name}>
+        <React.Fragment key={uuid()}>
             <Community
                 name={result.name}
                 URL={`/r/${result.name}`}
@@ -171,7 +218,7 @@ function SearchPage() {
     );
 
     const renderUser = (result) => (
-        <React.Fragment key={result.userName}>
+        <React.Fragment key={uuid()}>
             <User
                 name={result.userName}
                 imgSrc={result.avatarImageUrl ?? 'https://via.placeholder.com/150'}
@@ -184,7 +231,7 @@ function SearchPage() {
     );
 
     const renderComment = (result) => (
-        <React.Fragment key={result.postId}>
+        <React.Fragment key={uuid()}>
             <Comment
                 commentData={result}
             />
@@ -297,7 +344,7 @@ function SearchPage() {
                             {searchType == 'comments' && searchResults.comments.map((result) => renderComment(result))}
                             {searchType == 'media' && (
                                 <Box sx={{width: '100%', height: '100%'}}>
-                                    <ImageList cols={3} gap={20} variant='masonry'>
+                                    <ImageList cols={Math.min(searchResults.media.length, 3)} gap={20} variant='masonry'>
                                         {searchResults.media.map((result) => renderMedia(result))}
                                     </ImageList>
                                 </Box>

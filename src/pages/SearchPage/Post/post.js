@@ -19,25 +19,35 @@ function Post({
         image,
         video,
         URL,
+        postUpvotes,
+        postDownvotes,
         postCommentCount,
-        userName,
+        postKarma,
+        postCommentKarma,
+        score,
+        isUpvoted,
+        isDownvoted,
+        isNSFW,
+        postCreatedAt,
         userId,
+        userName,
         userAbout,
+        userNickName,
         userAvatarImage,
+        userBannerImage,
+        userKarma,
+        userCreatedAt,
         subreddit,
         subRedditId,
         avatarImageSubReddit,
-        subredditBanner,
+        subredditBannerImage,
         subRedditDescription,
         subRedditMembers,
         subRedditNickName,
         subRedditCreated,
-        score,
-        isUpvoted,
-        isDownvoted,
-        commentCount,
-        isNSFW,
-        createdAt,
+        subredditcurrentlyViewingNickname,
+        isFriend,
+        isMember,
     }}) {
     // const viewContext = VIEW_CONTEXTS.AGGREGATE_FEED;
     const isUser = subreddit === null;
@@ -46,38 +56,27 @@ function Post({
         name: subreddit,
         subredditId: subRedditId,
         avatarImage: avatarImageSubReddit,
-        bannerImage: subredditBanner,
+        bannerImage: subredditBannerImage,
         description: subRedditDescription,
         membersNickname: subRedditNickName,
         membersCount: subRedditMembers,
-        currentlyViewingNickname: 'Online',
+        currentlyViewingNickname: subredditcurrentlyViewingNickname,
         currentlyViewingCount: 0,
-        isMember: false,
+        isMember: isMember,
         isFavorite: false,
         isMuted: false,
         createdAt: subRedditCreated,
     } : {
-        // userId
-        // displayName
-        // username
-        // commentKarma
-        // created
-        // postKarma
-        // isFriend
-        // isBlocked
-        // avatar
-        // banner
-        // About
-        userId: 'loading',
-        displayName: 'loading',
+        userId: userId,
+        displayName: userNickName,
         username: userName,
-        commentKarma: 0,
-        created: 0,
-        postKarma: 0,
-        isFriend: false,
+        commentKarma: userKarma,
+        created: userCreatedAt,
+        postKarma: userKarma,
+        isFriend: isFriend,
         isBlocked: false,
         avatar: userAvatarImage,
-        banner: 'https://placehold.co/400',
+        banner: userBannerImage,
         About: userAbout,
     };
 
@@ -96,7 +95,7 @@ function Post({
                     postId={postId}
                     entityData={entityData}
                     isUser={isUser}
-                    createdAt={createdAt}
+                    createdAt={postCreatedAt}
                     viewContext={VIEW_CONTEXTS.AGGREGATE_FEED}
                 />
 
@@ -113,7 +112,7 @@ function Post({
                 </a>
 
                 {/* Post footer. votes and comments */}
-                <PostFooter score={score} commentCount={commentCount} />
+                <PostFooter score={score} commentCount={postCommentCount} />
             </div>
 
             {/* Post media */}

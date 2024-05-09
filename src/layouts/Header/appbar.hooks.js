@@ -30,7 +30,7 @@ export const useAppBar = () => {
             document.removeEventListener('click', closeDropdown);
             window.removeEventListener('resize', closeSideBar);
         };
-    });
+    }, []);
 
     const searchbarStyles = isSearchDropdownVisible ? styles.searchBarVisible :styles.searchBarHidden;
     const sideBarStyles = isSideBarVisible ? `${styles.sidebarOverlay} ${styles.sidebarOverlayVisible}` :

@@ -133,6 +133,15 @@ const API_ROUTES = {
     searchUsers: (query) => `/user/searchUsernames?search=${query}`,
     searchComments: (query, sortRelevance, sortTop, sortNew) => `/comment/searchComments?search=${query}` +
             `&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}`,
+
+    searchSubredditPost: (query, sortRelevance, sortTop, sortNew, mediaOnly, isNSFW, subredditName) =>
+        `/post/subreddit/searchPosts?search=${query}&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}`+
+        `&mediaOnly=${mediaOnly}&isNSFW=${isNSFW}&subredditName=${subredditName}`,
+
+    searchSubredditComments: (query, sortRelevance, sortTop, sortNew, subredditName) =>
+        `/comment/subreddit/searchComment?search=${query}&relevance=${sortRelevance}&top=${sortTop}&new=${sortNew}&`+
+        `subredditName=${subredditName}`,
+
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };
