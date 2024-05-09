@@ -3,27 +3,28 @@ import {VIEW_CONTEXTS} from './data.js';
 import {postClasses} from './post.styles.js';
 import {API_ROUTES} from '../../requests/routes.js';
 import {axiosInstance as axios} from '../../requests/axios.js';
-export const usePost = ({isNSFW, isSpoiler, viewContext, userId, subredditName}) => {
+export const usePost = ({isNSFW, isSpoiler, viewContext, userId, subredditName,
+    creatorAvatar, creatorName, subRedditAvatar}) => {
     // viewContexts: AggregateFeed, CommentsPage, SubredditFeed
     // postTypes: gallery, text, image, link, video, multiMedia
     // viewType: cardView, compactView
     const [userData, setUserData] = useState({
         userId: userId,
         displayName: 'loading',
-        username: 'loading',
+        username: creatorName || 'loading',
         commentKarma: 0,
         created: 0,
         postKarma: 0,
         isFriend: false,
         isBlocked: false,
-        avatar: 'https://placehold.co/400',
+        avatar: creatorAvatar || 'https://placehold.co/400',
         banner: 'https://placehold.co/400',
         About: 'loading',
     });
     const [subredditData, setSubredditData] = useState({
         name: subredditName,
         subredditId: 'loading',
-        avatarImage: 'https://placehold.co/400',
+        avatarImage: subRedditAvatar || 'https://placehold.co/400',
         bannerImage: 'https://placehold.co/400',
         description: 'loading',
         membersNickname: 'Members',

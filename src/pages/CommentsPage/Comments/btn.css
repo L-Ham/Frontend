@@ -1,0 +1,76 @@
+.button {
+    background: var(--button-color-background);
+    border-radius: 999px;
+    border: none;
+    border: var(--button-border-width, 0) solid var(--button-border-color, transparent);
+    box-shadow: var(--button-shadow);
+    box-sizing: border-box;
+    color: var(--button-color-text);
+    cursor: pointer;
+    display: inline-block;
+    font: var(--button-font);
+    height: var(--button-height);
+    line-height: calc(var(--button-height) - (2 * var(--button-border-width, 0px)));
+    overflow: hidden;
+    padding: 0 calc(var(--button-padding) - var(--button-border-width, 0px));
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    --button-border-color: var(--button-border-color-default);
+    --button-border-width: var(--button-border-width-default);
+    --button-color-background: var(--button-color-background-default);
+    --button-color-text: var(--button-color-text-default);
+}
+
+.button-medium {
+    --button-height: var(--size-button-md-h);
+    --button-padding: var(--spacer-xs);
+    --button-font: var(--font-button-md);
+    --button-border-width-default: var(--line-button-md-border);
+}
+
+.button-bordered {
+    --button-color-background-default: transparent;
+    --button-color-background-focus: transparent;
+    --button-color-background-hover: transparent;
+    --button-color-background-active: linear-gradient(transparent, transparent);
+    --button-color-background-disabled: transparent;
+    --button-color-background-activated: var(--color-button-secondary-background-activated);
+    --button-color-text-default: var(--color-secondary-plain);
+    --button-color-text-disabled: var(--color-interactive-content-disabled);
+    --button-color-text-activated: var(--color-neutral-content-strong);
+    --button-color-text-hover: var(--color-secondary-plain-hover);
+    --button-border-color-default: var(--color-neutral-border-medium);
+    --button-border-color-hover: var(--color-neutral-border-strong);
+    --button-border-color-active: var(--color-neutral-border-strong);
+    --button-border-color-activated: var(--color-neutral-border-strong);
+    --button-border-color-disabled: var(--color-neutral-content-disabled);
+    --button-border-width-default: var(--line-sm);
+    --button-border-width-activated: var(--line-sm);
+}
+
+
+.button-small {
+    --button-height: var(--size-button-sm-h);
+    --button-padding: var(--spacer-2xs);
+    --button-font: var(--font-button-sm);
+    --button-border-width-default: var(--line-button-sm-border);
+}
+.button.icon {
+    width: var(--button-height);
+}
+
+.button-plain {
+    --button-color-background-default: transparent;
+    --button-color-background-focus: transparent;
+    --button-color-background-hover: var(--color-button-plain-background-hover);
+    --button-color-background-disabled: var(--color-button-plain-background-disabled);
+    --button-color-background-activated: var(--color-button-plain-background-activated);
+    --button-color-background-active: linear-gradient(var(--color-button-secondary-background-hover), var(--color-button-secondary-background-hover));
+    --button-color-text-default: var(--color-button-plain-text);
+    --button-color-text-disabled: var(--color-button-plain-text-disabled);
+    --button-color-text-activated: var(--color-button-plain-text-activated);
+    --button-color-text-hover: var(--color-button-plain-text-hover);
+    --button-border-color-default: transparent;
+}

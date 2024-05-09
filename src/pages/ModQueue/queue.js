@@ -41,7 +41,7 @@ function Queue({name, tab}) {
     const modPostProps = {subredditName: name, ...tabConfig[tab]};
     return (
         <Feed
-            key={tab}
+            key={tab + name}
             viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED}
             endpoint={tabConfig[tab].endpoint(name)}
             type='posts'

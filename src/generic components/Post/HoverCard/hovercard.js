@@ -5,7 +5,6 @@ import {SubredditOverlay} from './Overlays/SubredditOverlay/subredditoverlay.js'
 import {UserOverlay} from './Overlays/UserOverlay/useroverlay.js';
 import {useHoverCard} from './hovercard.hooks.js';
 import {hoverCardClasses, hoverCardStyles} from './hovercard.styles.js';
-import {NavLink} from 'react-router-dom';
 /**
  * HoverCard component
  * @param {string} postId
@@ -37,14 +36,15 @@ export function HoverCard({
                 data-testid={`hovercard-${postId}-${entityId}`}
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
+                onClick={(e) => e.stopPropagation()}
             >
                 {viewContext !== VIEW_CONTEXTS.COMMENTS_PAGE &&
                 <div className={hoverCardClasses.icon} data-testid={`displayicon-${postId}-${entityId}`}>
                     {DisplayIcon}
                 </div>}
-                <NavLink href={url} >
+                <a href={url} >
                     {prefixedName}
-                </NavLink>
+                </a>
             </div>
             <div className={hoverCardClasses.overlay} data-testid={`overlay-${postId}-${entityId}`}>
                 {overlayOpen && (isUser ?

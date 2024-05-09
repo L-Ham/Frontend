@@ -21,6 +21,8 @@ export function ActionButtons() {
         setIsScheduleFormVisble,
     } = useActionButtons();
 
+    if (!setErrorMessage) return null;
+
     const isScheduled = scheduledData.Date && scheduledData.Time;
     const CalendarIcon = getIconComponent('calendar');
 
