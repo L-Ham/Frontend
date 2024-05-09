@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {SubredditBanner} from './SubredditBanner/subredditbanner.js';
 import {SubredditSidebar} from './SubredditSidebar/subredditsidebar.js';
@@ -11,6 +11,7 @@ import {API_ROUTES} from '../../requests/routes.js';
 import {useSearchParams} from 'react-router-dom';
 import {useSubreddit} from './subredditcontext.js';
 import {Fragment} from 'react';
+import {axiosInstance as axios} from '../../requests/axios.js';
 
 /**
  * Renders the subreddit.
@@ -21,13 +22,30 @@ import {Fragment} from 'react';
  */
 export function Subreddit({name, style = false}) {
     const [show, setShow] = React.useState(false);
+    const [subredditType, setSubredditType] = React.useState('private');
     const [searchParams] = useSearchParams();
     const {about} = useSubreddit();
-    if (!about) return null;
-    if (Object.keys(about).length === 0) return null;
 
-    const isMember = about.communityDetails.isMember;
-    const isModerator = about.communityDetails.isModerator;
+    useEffect(() => {
+        if (about && about.communityDetails && about.communityDetails.name) {
+            const fetchType = async () => {
+                try {
+                    const response = await axios.get(API_ROUTES.getCommunityType(about.communityDetails.name));
+                    console.log('response', response);
+                    setSubredditType(response.data.privacy);
+                } catch (e) {
+                    console.log('error', e);
+                }
+            };
+
+            fetchType();
+        }
+    }, [about]);
+
+    if (!about || Object.keys(about).length === 0) return null;
+
+    const isMember = about.communityDetails?.isMember || false;
+    const isModerator = about.communityDetails?.isModerator || false;
 
     return (
         <Fragment>
@@ -35,7 +53,7 @@ export function Subreddit({name, style = false}) {
                 <SubredditBanner />
                 <div className={classes.contentContainer} data-testid="content-container">
                     <main className={classes.mainContent} data-testid="main-content">
-                        {isMember && <Feed
+                        {(isMember || subredditType == 'Public') && <Feed
                             key={name}
                             viewContext={VIEW_CONTEXTS.SUBREDDIT_FEED}
                             endpoint={API_ROUTES.communityFeed(name, searchParams.get('sort') || 'Hot')}
@@ -43,7 +61,7 @@ export function Subreddit({name, style = false}) {
                             type='posts'
                             FallbackComponent={<SubredditEmptyFeed/>}
                         />}
-                        {(!isMember && !isModerator) && <p>
+                        {(isMember == false && isModerator == false && subredditType != 'Public') && <p>
                         This is a private community. Only approved members can view and contribute.
                         please request to join
                         </p>}
