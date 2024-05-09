@@ -15,10 +15,19 @@ import PropTypes from 'prop-types';
  * <SearchTrendingItem />
  * @return {JSX.Element} The search trending item component
  */
-function SearchTrendingItem({title, description, subredditIconURL,
-    subredditName, imageURL, href}) {
+function SearchTrendingItem({
+    data: {
+        postId,
+        title,
+        text,
+        image,
+        subreddit,
+        subRedditId,
+        avatarImage,
+    },
+}) {
     return (
-        <a className={styles.root} href={href}
+        <a className={styles.root} href={`/r/${subreddit}/comments/${postId}`}
             role='menuitem' tabIndex='-1' data-testid={`search-trending-item-${title}`}>
             <span className={styles.itemWrapper}>
                 <span className={styles.itemContainer}>
@@ -29,16 +38,16 @@ function SearchTrendingItem({title, description, subredditIconURL,
                     </span>
                     <span className={styles.descriptionContainer}>
                         <span className={styles.description}>
-                            {description}
+                            {text}
                         </span>
                         <div className={styles.subreddit}>
 
                             <img className={styles.subredditIcon}
                                 loading='lazy'
-                                src={subredditIconURL}
+                                src={avatarImage??'https://placehold.co/400'}
                                 width='16' height='16' alt='Icon for r/'></img>
 
-                            <span>{subredditName}</span>
+                            <span>{subreddit}</span>
                         </div>
                     </span>
                 </span>
@@ -46,7 +55,7 @@ function SearchTrendingItem({title, description, subredditIconURL,
             <span className={styles.imageWrapper}>
                 <span className={styles.imageContainer}>
                     <img className={styles.image}
-                        loading='lazy' src={imageURL} alt=''/>
+                        loading='lazy' src={image} alt=''/>
                 </span>
             </span>
         </a>
@@ -54,12 +63,15 @@ function SearchTrendingItem({title, description, subredditIconURL,
 }
 
 SearchTrendingItem.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    subredditIconURL: PropTypes.string.isRequired,
-    subredditName: PropTypes.string.isRequired,
-    imageURL: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
+    data: PropTypes.shape({
+        postId: PropTypes.string,
+        title: PropTypes.string,
+        text: PropTypes.string,
+        image: PropTypes.string,
+        subreddit: PropTypes.string,
+        subRedditId: PropTypes.string,
+        avatarImage: PropTypes.string,
+    }),
 };
 
 export {SearchTrendingItem};

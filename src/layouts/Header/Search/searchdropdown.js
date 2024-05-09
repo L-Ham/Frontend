@@ -19,6 +19,7 @@ import uuid from 'react-uuid';
  * */
 function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryItems = []}) {
     const {rootStyles, TrendingIcon} = useSearchDropDown({isDropdownVisible});
+    console.log(TrendingItems);
     return (
         <div className={rootStyles} data-testid='search-dropdown'>
             <ul className={styles.recentSearchList}>
@@ -42,7 +43,9 @@ function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryI
                     TrendingItems.map((item, index) => (
                         <React.Fragment key={uuid()}>
                             <li className={styles.listItem}>
-                                <SearchTrendingItem {...item}/>
+                                <SearchTrendingItem
+                                    data={item}
+                                />
                             </li>
                             {index !== TrendingItems.length - 1 && <hr className={styles.listSeparator}/>}
                         </React.Fragment>
