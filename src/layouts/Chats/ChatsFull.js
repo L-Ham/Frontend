@@ -31,7 +31,7 @@ function ChatsFull({show}) {
     const [selectedChatId, setSelectedChatId] = useState('');
     const selectedChatIdRef = useRef(selectedChatId);
     const [filteredChats, setFilteredChats] = useState([{}]);
-    const [filterType,setFilterType] = useState('All');
+    const [filterType,setFilterType] = useState('all');
     const [receivedMessages, setReceivedMessages] = useState([]);
     const username = useSelector((state) => state.user.username);
     const [isFullScreen, setIsFullScreen] = useState(false);
