@@ -1,5 +1,5 @@
 import {render, fireEvent} from '@testing-library/react';
-import {ListItem} from '../../../pages/subreddit/CommunityAppearance/components/listitem';
+import {ListItem} from '../../../pages/subreddit/CommunityAppearance/components/ListItem.js';
 import {SvgIcon} from '../../../pages/subreddit/CommunityAppearance/components/svgicon';
 
 jest.mock('../../../pages/subreddit/CommunityAppearance/components/svgicon', () => ({

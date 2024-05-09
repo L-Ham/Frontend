@@ -19,7 +19,7 @@ jest.mock('../../../pages/subreddit/CommunityAppearance/components/uploadarea', 
         return <div data-testid="upload-area"/>;
     },
 }));
-jest.mock('../../../pages/subreddit/CommunityAppearance/components/listitem', () => ({
+jest.mock('../../../pages/subreddit/CommunityAppearance/components/ListItem.js', () => ({
     __esModule: true,
     ListItem: () => {
         return <li data-testid="list-item"/>;
