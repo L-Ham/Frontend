@@ -37,13 +37,19 @@ function ChatsFull({show}) {
     const [isFullScreen, setIsFullScreen] = useState(false);
     console.log('Username:', username);
     const addNewMessageToChat = (chatId, newMessage) => {
-        
         setChats(prevChats => {
             const updatedChats = {...prevChats};
-            // Check if the chat exists, if not log an error or handle appropriately
+            // Check if the chat exists
             if (updatedChats[chatId]) {
+                // Push the new message into the chat's messages array
                 updatedChats[chatId].messages.push(newMessage);
-                console.log('adding the message', updatedChats[chatId].messages);
+                console.log('Adding the message', updatedChats[chatId].messages);
+    
+                // If the chat is of type 'group', update the chat's avatar to the newMessage's avatar
+                if (updatedChats[chatId].type === 'group') {
+                    updatedChats[chatId].avatar = newMessage.avatar;
+                    console.log('Updated group chat avatar to', newMessage.avatar);
+                }
             } else {
                 console.error("Chat ID not found, unable to add message:", chatId);
                 // Optionally, you could initialize a new chat here if that's intended behavior
@@ -51,6 +57,7 @@ function ChatsFull({show}) {
             return updatedChats;
         });
     };
+    
 
     async function fetchAvatar() {
         try {
