@@ -16,8 +16,8 @@ function Banbutton() {
                 <section className='shadow-[0_2_15px_rgba(0,0,0,0.3)] max-w-[538px] min-w-[410px]'>
                 <header class="p-4 rounded-tr rounded-tl border-b-[#EDEFF1] border-b border-solid">
                     <div class="flex flex-row">
-                        <div class="text-[#1c1c1c] flex-[1_1_100%] w-full">
-                            <div class=" text-[#1c1c1c] text-base font-medium leading-5">Ban a user: 
+                        <div class="text-[var(--newCommunityTheme-bodyText)] flex-[1_1_100%] w-full">
+                            <div class=" text-[var(--newCommunityTheme-bodyText)] text-base font-medium leading-5">Ban a user: 
                             </div></div><div class="flex-[0_0]">
                                 <button class="text-xs font-bold tracking-[0.5px] leading-6 
                                 uppercase underline p-0 border-[none]"><svg viewBox="0 0 20 20" 

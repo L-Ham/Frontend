@@ -15,7 +15,7 @@ function Modonly({name}) {
             <div className='box-border w-full'>
                 <div className='flex h-[calc(100vh-48px)]  flex-col items-center justify-center
                     bg-[#dae0e6] text-xl font-medium leading-6
-                    text-[#1c1c1c]'>
+                    text-[var(--newCommunityTheme-bodyText)]'>
                     <img className="mx-auto mb-6 mt-0"
                         src="https://www.redditstatic.com/desktop2x/img/content-gate-icons/remember-the-human.png"/>
 

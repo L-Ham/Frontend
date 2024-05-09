@@ -69,16 +69,16 @@ function CreateCommunity({setisclicked}) {
     }
 
     return (
-        <div className="pointer-events-auto
-         fixed flex max-w-full
-          basis-full flex-col
+        <div className=" pointer-events-auto flex max-h-[650px]
+          max-w-[500px] basis-full
+          flex-col scroll-auto
           rounded-xl bg-white font-sans
            shadow-none lg:shadow-sm" style={{
 
             width: '500px',
-            height: '650px',
-            top: '40px',
-            left: '500px',
+            //  height: '650px',
+            // top: '40px',
+            // left: '500px',
             paddingBottom: '0px',
             zIndex: '100',
             boxShadow: '0 0 #0000, 0 0 #0000, 0 0.0625rem 0.25rem #00000026, 0 0.25rem 0.25rem #00000026',

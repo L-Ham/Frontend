@@ -127,6 +127,12 @@ const API_ROUTES = {
     unsavePost: '/post/unsave',
     hidePost: '/post/hide',
     unhidePost: '/post/unhide',
+    lockPost: '/post/lockPost',
+    unlockPost: '/post/unlockPost',
+    approvePost: '/post/approvePost',
+    removePost: '/post/removePost',
+    reportPost: '/post/report',
+    forceApprove: '/subreddit/user/forcedApproved',
     hideNotification: '/notification/hide',
     getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object

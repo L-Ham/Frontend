@@ -114,7 +114,7 @@ function Usermanagement({name}) {
 
 
             <div className=' transition-[margin-top] duration-[0.3s] ease-[ease]'>
-                <div className=' flex min-h-screen flex-col overflow-x-auto text-[#1c1c1c]'>
+                <div className=' flex min-h-screen flex-col overflow-x-auto text-[var(--newCommunityTheme-bodyText)]'>
 
                     <div className='mx-0 flex'>
 
