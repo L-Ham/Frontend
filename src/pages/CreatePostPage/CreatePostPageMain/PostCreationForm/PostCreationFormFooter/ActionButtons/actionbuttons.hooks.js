@@ -52,8 +52,6 @@ export const useActionButtons = () => {
             addNotification({message: 'Please select a community', type: 'failure'});
             return;
         }
-        const isScheduled = scheduledData.Date && scheduledData.Time;
-        console.log('isScheduled', isScheduled);
 
         const formData = new FormData();
         // to be used in image and video upload
@@ -73,6 +71,28 @@ export const useActionButtons = () => {
         formData.append('isSpoiler', postTags.includes('SPOILER'));
         formData.append('isLocked', false);
         formData.append('isSendPostNotifications', isSendPostNotifications);
+
+        const isScheduled = scheduledData.Date != '' && scheduledData.Time != '';
+        // calculate the total number of minutes to schedule the post
+        // from the date and time selected by the user
+        if (isScheduled) {
+            const [hours, minutes] = scheduledData.Time.split(':');
+            const [year, month, day] = scheduledData.Date.split('-');
+            const scheduledDate = new Date(year, month - 1, day, hours, minutes);
+            const currentDate = new Date();
+            // calulate the difference between the scheduled date and the current date
+            const diff = scheduledDate - currentDate; // milliseconds
+
+            if (diff < 0) {
+                addNotification({message: 'Please select a future date and time', type: 'failure'});
+                return;
+            }
+            // convert the difference to minutes
+            const scheduledMinutes = Math.floor(diff / 60000);
+
+            postData['scheduledMinutes'] = scheduledMinutes;
+            formData.append('scheduledMinutes', scheduledMinutes);
+        }
 
 
         switch (activeTab) {
@@ -106,17 +126,20 @@ export const useActionButtons = () => {
 
         try {
             if (activeTab === 'img') {
-                const response = await axios.post(API_ROUTES.createPost, formData, {
+                await axios.post(API_ROUTES.createPost, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
                 window.open(`/r/${about.communityDetails.name}`, '_self');
-                addNotification({message: response.data.message, type: 'success'});
             } else {
-                const response = await axios.post(API_ROUTES.createPost, postData);
-                window.open(`/r/${about.communityDetails.name}`, '_self');
-                addNotification({message: response.data.message, type: 'success'});
+                if (isScheduled) {
+                    await axios.post(API_ROUTES.addScheduledPost, postData);
+                    window.open(`/r/${about.communityDetails.name}`, '_self');
+                } else {
+                    await axios.post(API_ROUTES.createPost, postData);
+                    window.open(`/r/${about.communityDetails.name}`, '_self');
+                }
             }
         } catch (error) {
             addNotification({message: error.response ?error.response.message : 'el file size kberr', type: 'failure'});

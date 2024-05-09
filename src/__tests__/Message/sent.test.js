@@ -4,7 +4,7 @@ import {Sent} from '../../pages/Message/MessageSent/sent';
 /*eslint-disable*/
 
 describe('Sent', () => {
-    it('should render the Sent component with the correct props', () => {
+    it('should render the Sent component with the correct props',async () => {
         const id = 1;
         const subject = 'Test Subject';
         const to = 'testuser';

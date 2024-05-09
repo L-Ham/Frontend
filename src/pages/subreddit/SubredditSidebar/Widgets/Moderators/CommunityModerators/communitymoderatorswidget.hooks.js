@@ -20,7 +20,7 @@ export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
             data={{
                 icon: <MessageIcon/>,
                 label: 'Message the moderators',
-                url: `https://www.reddit.com/message/compose?to=r%2F${subredditName}/`,
+                url: `https://reddit-bylham.me/message/compose?to=r%2F${subredditName}/`,
             }}
         />,
     ];
@@ -32,7 +32,7 @@ export const useCommunityModeratorsWidget = ({moderators, totalMods}) => {
                 key='view-all-moderators'
                 data={{
                     label: 'View all moderators',
-                    url: `https://www.reddit.com/r/${subredditName}/about/moderators/`,
+                    url: `https://reddit-bylham.me/r/${subredditName}/about/moderators/`,
                 }}
             />,
         );

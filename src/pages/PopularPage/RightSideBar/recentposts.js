@@ -30,7 +30,6 @@ function RecentPosts() {
                                 <PostPreview
                                     postId={post.postId}
                                     subredditName={post.subredditName}
-                                    subredditId={post.subredditId}
                                     viewContext={post.viewContext}
                                     postUrl={post.postUrl}
                                     postTitle={post.postTitle}

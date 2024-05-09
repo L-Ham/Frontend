@@ -43,10 +43,10 @@ export function RulesPageProvider({children, name, type}) {
             try {
                 const aboutData = await fetchSubredditAbout(name);
                 const rulesData = await fetchSubredditRules(aboutData.communityDetails.subredditId);
-                // const removalReasonsData = await fetchRemovalReasons(aboutData.communityDetails.subredditId);
+                const removalReasonsData = await fetchRemovalReasons(aboutData.communityDetails.subredditId);
                 const rulesOrder = rulesData.map((rule) => rule._id);
 
-                // setRemovalReasons(removalReasonsData);
+                setRemovalReasons(removalReasonsData);
                 setAbout(aboutData);
                 setRules(rulesData);
                 setRulesOrder(rulesOrder);

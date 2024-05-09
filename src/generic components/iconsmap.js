@@ -118,6 +118,9 @@ import {ReactComponent as CloseIcon} from '../assets/icons/close.svg';
 import {ReactComponent as GifPostIconOutline} from '../assets/icons/gif-post-outline.svg';
 import {ReactComponent as FormatIconOutline} from '../assets/icons/format-outline.svg';
 import {ReactComponent as CalendarIcon} from '../assets/icons/calendar.svg';
+import {ReactComponent as SaveIconFill} from '../assets/icons/save-fill.svg';
+import {ReactComponent as HideIconFill} from '../assets/icons/hide-fill.svg';
+import {ReactComponent as CaretRightIconOutline} from '../assets/icons/caret-right-outline.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -238,6 +241,9 @@ const ICONS_MAP = {
     'gif-post-outline': GifPostIconOutline,
     'format-outline': FormatIconOutline,
     'calendar': CalendarIcon,
+    'save-fill': SaveIconFill,
+    'hide-fill': HideIconFill,
+    'caret-right-outline': CaretRightIconOutline,
 };
 
 /**

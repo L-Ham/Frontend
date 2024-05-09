@@ -11,7 +11,7 @@ import {NumberFormatter} from '../../General/Components/numberformatter.js';
  * @param {number} props.activeUserCount The number of active users.
  * @return {JSX.Element} The rendered component.
  */
-export function CommunityStats({displayNamePrefixed, subscribersCount, activeUserCount}) {
+export function CommunityStats({displayNamePrefixed='', subscribersCount=0, activeUserCount=0}) {
     return (
         <div className={classes.container} data-testid="container">
             <h1 className={classes.communityHeader} data-testid="community-header">
@@ -36,7 +36,7 @@ export function CommunityStats({displayNamePrefixed, subscribersCount, activeUse
 }
 
 CommunityStats.propTypes = {
-    displayNamePrefixed: PropTypes.string.isRequired,
-    subscribersCount: PropTypes.number.isRequired,
-    activeUserCount: PropTypes.number.isRequired,
+    displayNamePrefixed: PropTypes.string,
+    subscribersCount: PropTypes.number,
+    activeUserCount: PropTypes.number,
 };

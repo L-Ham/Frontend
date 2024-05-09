@@ -12,7 +12,7 @@ import {NotificationsList} from './NotificationsList/notificationslist.js';
  * */
 export function Notifications({view}) {
     return (
-        <div className="scrollbar-hide flex flex-col overflow-auto" data-testid="main-div-#%&*@()IJNASD<>?SPODJQ">
+        <div className="scrollbar-hide flex flex-col overflow-visible" data-testid="main-div-#%&*@()IJNASD<>?SPODJQ">
             <div data-testid="inner-div-#$$!%^&*()PDMSANKMHU">
                 <Menu data-testid="menu-~!@#$%^&*()_LSVJ_AKA"/>
                 <NotificationsList view={view} data-testid="notifications-list-_)(*IJKXGBASKXSsad"/>
