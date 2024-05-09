@@ -17,7 +17,7 @@ function CreateCommunityItem() {
     return (
         <>
             {isclicked &&
-            <div className=" fixed inset-0 z-[1000] flex items-center justify-center">
+            <div className=" fixed inset-0 z-[9999] flex items-center justify-center">
                 <div className="fixed inset-0 bg-[rgba(0,_0,_0,_0.5)]"/>
                 <CreateCommunity setisclicked={setisclicked} />
             </div>

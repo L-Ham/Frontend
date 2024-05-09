@@ -51,8 +51,8 @@ function Banneduserentry({username, rules, modNotes, name, imageurl, timestamp, 
     return (
         <div id='1'>
             {iseditPressed && !isxclicked && <Editban name={name} username={username} onxclick={handlexclick} labeltext={'Ban'} onremoveban={handlenewunbanned} />}
-            <div className='box-border flex h-[60px] w-full flex-row items-center border-b border-solid border-b-[#EDEFF1] bg-white px-4 py-2 text-xs font-normal leading-4 text-[#878A8C]'>
-                <div className="min-w-[220px] rounded-lg text-sm font-medium leading-[18px] text-[#1c1c1c] hover:bg-[#edeff1]">
+            <div className='box-border flex h-[60px] w-full flex-row items-center border-b border-solid border-b-[#EDEFF1] bg-[var(--newCommunityTheme-body)] px-4 py-2 text-xs font-normal leading-4 text-[#878A8C]'>
+                <div className="min-w-[220px] rounded-lg text-sm font-medium leading-[18px] text-[var(--newCommunityTheme-bodyText)] hover:bg-[#edeff1]">
                     <a className="inline-block rounded py-1 pl-1 pr-2" href="/user/mohamed">
                         <span className="mr-1.5 inline-block align-middle" style={{height: '32px', width: '32px'}}>
                             <div className=" relative h-full ">

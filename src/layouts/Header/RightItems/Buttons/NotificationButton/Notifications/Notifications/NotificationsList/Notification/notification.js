@@ -18,7 +18,9 @@ import {axiosInstance as axios} from '../../../../../../../../../requests/axios'
 export function Notification({notification, view}) {
     if (!notification) return null;
 
-    const {id, title, description, time, status, img, type, subredditName} = notification;
+    const {id, title, description, time, status, img, type, subredditName,
+        postId, senderName} = notification;
+    console.log(postId);
     const {addNotification} = useNotifications();
 
     const markAsRead = async () => {
@@ -26,7 +28,6 @@ export function Notification({notification, view}) {
             await axios.patch(API_ROUTES.markNotificationAsRead, {
                 'notificationId': id,
             });
-            addNotification({type: 'success', message: 'Notification marked as read'});
         } catch (error) {
             addNotification({type: 'error', message: error.message});
         }
@@ -37,7 +38,11 @@ export function Notification({notification, view}) {
             await markAsRead();
         }
         // then go the subreddit
-        window.open(`/r/${subredditName ? subredditName : ''}`, '_self');
+        if (type !== 'followed') {
+            window.open(`/r/${subredditName ? subredditName : ''}/comments/${postId}`, '_self');
+        } else {
+            window.open(`/user/${senderName ? senderName : ''}`, '_self');
+        }
     };
 
     return (
