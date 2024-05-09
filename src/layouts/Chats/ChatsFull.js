@@ -101,7 +101,7 @@ function ChatsFull({show}) {
                 console.log('Adding message to chat:', formattedMessage);
 
 
-                addNewMessageToChat(selectedChatIdRef.current, formattedMessage);
+                addNewMessageToChat(message.conversationId, formattedMessage);
             };
     
             socket.current.on('newMessage', handleNewMessage);
