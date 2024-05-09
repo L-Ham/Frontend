@@ -19,7 +19,7 @@ import {Usermanagementroute, MessagesRoute, ModqueueRoute, RemovalPageRoute, Rul
 import {AboutSettings} from '../pages/AboutSettings/aboutsettings.js';
 import {ScheduledPostsRoute} from './pageRoutes.js';
 import {Modlayout} from '../generic components/modlayout.js';
-
+import {ModerationSettings} from '../pages/Settings/main components/tabs/moderation.js';
 
 /**
  * Renders the main application component.
@@ -72,6 +72,7 @@ function App() {
                 <Route path="/message/:name/:section?" element={renderWithLayout(<MessagesRoute />)} />
                 <Route path="/r/:name/about/modqueue/:tab?" element={renderModPage(<ModqueueRoute />)} />
                 <Route path="/r/:name/about/usermanagement" element={renderModPage(<Usermanagementroute />)} />
+                <Route path="/r/:name/about/edit" element={renderModPage(<ModerationSettings />)} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </Router>
