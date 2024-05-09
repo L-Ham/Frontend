@@ -33,6 +33,13 @@ code {
   --scrollbar-bg: transparent;
   --newRedditTheme-flair: #EDEFF1;
   --newRedditTheme-linkText: #0079D3;
+  --color-neutral-background: #ffffff;
+  --color-tone-1: #131313;
+  --color-tone-2: #434343;
+  --color-secondary: #0F1A1C;
+  --color-tone-7: #ffffff;
+  --color-tone-5: #F2F2F2;
+  --color-avatar-gradient: linear-gradient(0deg, #D2DADDff, #ffffffff 75%);
   --newRedditTheme-body: #FFFFFF;
   --newCommunityTheme-body: #FFFFFF;
   --newCommunityTheme-bodyText: #1c1c1c;
