@@ -35,8 +35,7 @@ export function Feed({
     const postElements = useMemo(() =>
         posts.map((postel) =>
             WrapperComponent ? (
-                <WrapperComponent key={postel._id}
-                    {...postel} {...wrapperProps} postId={postel._id}>
+                <WrapperComponent key={postel._id} {...postel} {...wrapperProps} postId={postel._id}>
                     <Post key={postel._id} viewContext={viewContext} {...postel} />
                 </WrapperComponent>
             ) : (
@@ -58,10 +57,8 @@ export function Feed({
                 const response = await axios.get(endpoint(page, limit));
                 if (page === 1) {
                     setPosts(response.data[name]);
-                    console.log(response.data[name]);
                 } else if (lastPage !== page) {
                     setPosts((prevPosts) => [...prevPosts, ...response.data[name]]);
-                    console.log(response.data[name]);
                 }
                 setLastPage(page);
                 setLoading(false);
