@@ -190,7 +190,7 @@ function Approved({name}) {
             </div>
             <div style={{paddingTop: '40px'}} />
             <div className="mb-2 ml-1 text-sm font-medium leading-[18px]
-             text-[#1c1c1c] ">Pending Users</div>
+             text-[var(--newCommunityTheme-bodyText)] ">Pending Users</div>
 
             <div className=' border border-solid border-[#EDEFF1]'>
                 <div data-scroller-first>

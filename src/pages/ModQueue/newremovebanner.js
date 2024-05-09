@@ -59,7 +59,7 @@ function Newremovebanner({approvedByUserame, disapprovedByUserame
 
                 <h2 className="px-3
                  pb-1 pt-2 text-xs font-normal leading-4
-                 text-[#1c1c1c]">Recent actions</h2>
+                 text-[var(--newCommunityTheme-bodyText)]">Recent actions</h2>
 
                 { approvedByUserame!=null && <Newactionentry label="Approved post" username={approvedByUserame}
                     imageurl={imageurltoputapproved}/>

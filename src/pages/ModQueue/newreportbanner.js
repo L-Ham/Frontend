@@ -57,7 +57,7 @@ function Newreportbanner() {
 
                 <h2 className="px-3
                  pb-1 pt-2 text-xs font-normal leading-4
-                 text-[#1c1c1c]">Recent actions</h2>
+                 text-[var(--newCommunityTheme-bodyText)]">Recent actions</h2>
 
                 <Newactionentry label="Approved post" username="3abwareth"
                     imageurl="https://www.redditstatic.com/avatars/defaults/v2/avatar_default_1.png"/>

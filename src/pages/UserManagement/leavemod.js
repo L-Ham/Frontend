@@ -57,8 +57,9 @@ function Leavmod({onxclick, name, onnewleave}) {
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
                     <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
-                            <div className="w-full flex-[1_1_100%] text-[#1c1c1c]">
-                                <div className=" text-base font-medium leading-5 text-[#1c1c1c]">Leave as mod
+                            <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
+                                <div className=" text-base font-medium leading-5
+                                 text-[var(--newCommunityTheme-bodyText)]">Leave as mod
                                 </div></div><div className="flex-[0_0]">
                                 <button className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"
@@ -68,8 +69,9 @@ function Leavmod({onxclick, name, onnewleave}) {
                                     1.5 9.881 8.114 3.267 1.5 1.5 3.267 8.114 9.883 1.5 16.497 3.267
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497"></polygon>
                                     </svg></button></div></div></header>
-                    <div className="p-4 text-[#1c1c1c]">
-                        <p className="block text-sm font-normal leading-[21px] text-[#1c1c1c]">
+                    <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
+                        <p className="block text-sm font-normal leading-[21px]
+                        text-[var(--newCommunityTheme-bodyText)]">
                                             Once you leave as a mod, you will lose
                                             mod permissions and will be unable to access
                                             any mod tools for this community. Are you sure you

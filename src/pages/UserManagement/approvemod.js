@@ -72,7 +72,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
                     <header className="rounded-t  p-4">
                         <div className="flex flex-row">
-                            <div className="w-full flex-[1_1_100%] text-[#1c1c1c]">
+                            <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
                             </div><div className="flex-[0_0]">
                                 <button className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"
@@ -84,7 +84,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
                                     </svg></button></div></div></header>
                     <img src="https://www.redditstatic.com/desktop2x/img/snoo-success@2x.png"
                         className="w-full max-w-[250px] pl-40"/>
-                    <div className="p-4 text-[#1c1c1c]">
+                    <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
 
                         <p className="block pl-8 text-sm font-normal leading-[21px] text-[#282626]">
                         Congrats!You are invited to become a moderator!</p></div>

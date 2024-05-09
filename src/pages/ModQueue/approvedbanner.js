@@ -18,7 +18,7 @@ function Approvedbanner() {
                             <div className="flex w-full flex-row justify-between">
 
 
-                                <p className="text-xs font-bold text-[#1c1c1c]">
+                                <p className="text-xs font-bold text-[var(--newCommunityTheme-bodyText)]">
 
                                     Approved</p><button className="m-0 flex flex-[0_0_auto] items-center rounded-sm
                                      border-[none] p-1 text-xs capitalize no-underline">
@@ -33,7 +33,7 @@ function Approvedbanner() {
                                 </button>
 
                             </div>
-                            <p className='text-xs text-[#1c1c1c]'>
+                            <p className='text-xs text-[var(--newCommunityTheme-bodyText)]'>
                             This post was approved
                             </p>
 
