@@ -6,8 +6,10 @@ import {ContentHider} from './Hider/hider.js';
 /**
  * PostContent component
  * @param {string} postId
- * @param {string} tag
+ * @param {boolean} isNSFW
+ * @param {boolean} isSpoiler
  * @param {string} type
+ * @param {string} url
  * @param {string} text
  * @param {string[]} imageUrls
  * @param {string} viewContext
@@ -15,27 +17,36 @@ import {ContentHider} from './Hider/hider.js';
  */
 export function PostContent({
     postId,
-    tag,
+    isNSFW,
+    isSpoiler,
     type,
+    url,
     text,
     imageUrls,
+    poll,
+    createdAt,
     viewContext,
 }) {
     const {
         postContent,
-    } = usePostContent({postId, type, text, imageUrls, viewContext});
+    } = usePostContent({postId, type, text, imageUrls, poll, url, createdAt, viewContext});
     return (
         <div className={contentClasses.root}>
-            <ContentHider tag={tag} content={postContent} />
+            <ContentHider content={postContent}
+                isNSFW={isNSFW} isSpoiler={isSpoiler}/>
         </div>
     );
 }
 
 PostContent.propTypes = {
     postId: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
+    isNSFW: PropTypes.bool.isRequired,
+    isSpoiler: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired,
+    url: PropTypes.string,
     text: PropTypes.string,
     imageUrls: PropTypes.array,
+    poll: PropTypes.object,
+    createdAt: PropTypes.string.isRequired,
     viewContext: PropTypes.string.isRequired,
 };

@@ -19,7 +19,7 @@ function HomePage() {
                 <div className='min-h-screen w-full scroll-mt-[48px]
                 md:scroll-mt-[56px] s:max-w-[calc(100%_-(16px_+_316px))] lxl:max-w-[756px]'>
                     <Feed
-                        key={uuid()}
+                        key={uuid() + (sort || 'Hot')}
                         viewContext={VIEW_CONTEXTS.AGGREGATE_FEED}
                         endpoint={API_ROUTES.homeFeed(sort || 'Hot')}
                         type='posts'

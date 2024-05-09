@@ -11,6 +11,9 @@ import {ContentTag} from './ContentTag/contenttag.js';
  * Post component
  * @param {string} postId
  * @param {string} user
+ * @param {string} creatorAvatar
+ * @param {string} creatorName
+ * @param {string} subRedditAvatar
  * @param {string} title
  * @param {string} text
  * @param {boolean} approved
@@ -42,6 +45,9 @@ import {ContentTag} from './ContentTag/contenttag.js';
 function PostNonMemo({
     _id: postId,
     user: userId,
+    creatorAvatar,
+    creatorName,
+    subRedditAvatar,
     title,
     text,
     approved,
@@ -74,10 +80,9 @@ function PostNonMemo({
     const {
         isCommentsPage,
         classNames,
-        tag,
         userData,
         subredditData,
-    } = usePost({isNSFW, isSpoiler, viewContext, userId, subredditName});
+    } = usePost({viewContext, userId, subredditName, creatorAvatar, creatorName, subRedditAvatar});
     const urlRedirect = `${subredditName ? '/r/' + subredditName:'/user/' + userData.username}` + '/comments/' + postId;
     return (
         <div className={classNames}>
@@ -97,14 +102,18 @@ function PostNonMemo({
                 isHidden={isHidden}
             />
             <div className={postClasses.body} data-testid={`body-${postId}`}>
-                <ContentTag tag={tag} postId={postId} />
+                <ContentTag postId={postId} isNSFW={isNSFW} isSpoiler={isSpoiler}/>
                 <PostTitle postId={postId} title={title} isCommentsPage={isCommentsPage} />
                 <PostContent
                     postId={postId}
-                    tag={tag}
+                    isNSFW={isNSFW}
+                    isSpoiler={isSpoiler}
                     type={type}
                     text={text}
                     imageUrls={imageUrls}
+                    url={url}
+                    poll={poll}
+                    createdAt={createdAt}
                     viewContext={viewContext}
                 />
             </div>
@@ -127,6 +136,9 @@ export const Post = memo(PostNonMemo, (prevProps, nextProps) => {
 PostNonMemo.propTypes = {
     _id: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
+    creatorAvatar: PropTypes.string,
+    creatorName: PropTypes.string,
+    subRedditAvatar: PropTypes.string,
     title: PropTypes.string.isRequired,
     text: PropTypes.string,
     approved: PropTypes.bool,
