@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
  */
 function ExpandChatsButton({ expandChats }) {
     return (
-        <button onClick={expandChats} aria-label="Expand chats" className="
+        <button id = 'expand' onClick={expandChats} aria-label="Expand chats" className="
         button-medium button-plain
         icon button inline-flex items-center
         justify-center rounded-full p-1

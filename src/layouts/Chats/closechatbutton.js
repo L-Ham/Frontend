@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 function CloseChatButton({minimizeChat}) {
     return (
 
-        <button onClick={minimizeChat} aria-label="Minimize chat" className="
+        <button id = 'closebutton' onClick={minimizeChat} aria-label="Minimize chat" className="
         button-medium button-plain
         icon button inline-flex items-center
         justify-center rounded-full p-1

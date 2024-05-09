@@ -8,6 +8,7 @@ import {AddChat} from './new chat/addchat';
 import {axiosInstance} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
 import {io} from 'socket.io-client';
+import soundFile from './sound.mp3';
 
 /* eslint-disable*/
  
@@ -27,6 +28,7 @@ function ChatsFull({show}) {
     const [message, setMessage] = useState('');
     const ourtoken = useSelector((state) => state.user.token);
     const socket = useRef(null);
+    const audioRef = useRef(null);
     const [myAvatar, setMyAvatar] = useState(defaultAvatar);
     const [selectedChatId, setSelectedChatId] = useState('');
     const selectedChatIdRef = useRef(selectedChatId);
@@ -122,6 +124,7 @@ function ChatsFull({show}) {
                 const s = true;
 
                 addNewMessageToChat(message.conversationId, formattedMessage,s);
+                audioRef.current.play();
                 
             };
     
@@ -368,7 +371,11 @@ function ChatsFull({show}) {
     : [];
 
     return (
+        
         <div className={isFullScreen ? 'fixed top-0 right-0 bottom-0 left-0' : 'fixed bottom-0 right-8'} style={{ zIndex: 1000 }}>
+            <audio ref={audioRef} src={soundFile} hidden />
+
+
             <div className='block min-w-0'>
                 <div className='overflow-hidden rounded-t-[16px] border border-b-0 border-solid border-[color:var(--color-neutral-border-weak)] bg-[color:var(--color-neutral-background)] shadow-md'>
                     <div className={chatsHidden ? 'hidden' : ''}>

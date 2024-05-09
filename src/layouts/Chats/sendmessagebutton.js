@@ -21,7 +21,7 @@ function SendMessageButton({ sendMessage,image }) {
             console.log('image',image);
     }
     return (
-        <button onClick={handleClick} className="
+        <button onClick={handleClick} id = 'sendmsg' className="
 button-medium button-plain
 icon
 button

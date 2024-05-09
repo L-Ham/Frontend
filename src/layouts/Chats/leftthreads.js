@@ -22,7 +22,7 @@ function LeftThreads({onSelect, chats = []}) {
     };
     
     return (
-        <div onClick = {handleClick}  className="border-0 border-b border-solid border-b-[color:var(--color-tone-5)]">
+        <div id = 'threads' onClick = {handleClick}  className="border-0 border-b border-solid border-b-[color:var(--color-tone-5)]">
 
             <div className="mb-2 flex flex-col">
  

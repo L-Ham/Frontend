@@ -45,7 +45,7 @@ function ChatPreview({sender, lastMessage, senderImageURL, date, onSelect, unrea
                 </div>
             </div>
             {unreadTotal > 0 && (
-                <div className="py-0.25 absolute right-4 top-[55%] -translate-y-1/2 rounded-full bg-blue-500 px-0.5 text-[8px] leading-none text-white">
+                <div className="py-0.5 absolute right-4 top-[55%] -translate-y-1/2 rounded-full bg-blue-500 px-1 text-[8px] leading-none text-white">
                     {unreadTotal}
                 </div>
             )}

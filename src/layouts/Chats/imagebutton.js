@@ -19,7 +19,7 @@ function ImageButton({ setImage, setPreview }) {
 
     return (
         <>
-            <button
+            <button id='imgbuttoonn'
                 className="button-medium button-plain icon button inline-flex items-center justify-center rounded-full p-2 text-[color:var(--color-tone-2)] hover:bg-[var(--color-secondary-background-hover)] active:bg-[var(--color-interactive-pressed)]"
                 type="button"
                 onClick={handleButtonClick}

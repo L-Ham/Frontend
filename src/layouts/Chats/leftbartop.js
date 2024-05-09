@@ -17,7 +17,7 @@ function LeftBarTop({ addingUser,filterChats }) {
     return (
         <div className="flex items-center px-4 py-3">
             <span className="text-lg font-bold leading-6">Chats</span>
-            <button onClick={() => {
+            <button id='first' onClick={() => {
                 toggleMenu();
                 addingUser();
             }}

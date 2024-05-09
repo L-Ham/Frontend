@@ -28,7 +28,7 @@ function SettingsButton() {
 
     return (
         <div className="relative"> {/* Wrap everything in a container for relative positioning */}
-            <button
+            <button id='settinggss'
                 className="button-medium button-plain
                 icon button inline-flex items-center
                 justify-center rounded-full p-1

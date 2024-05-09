@@ -17,7 +17,7 @@ function MessageBox({ setMessage, message }) {
             }}
         >
             <div className="relative w-full p-2">
-                <textarea
+                <textarea id = 'msgboxx'
                     name="message"
                     autoComplete="off"
                     rows="1"

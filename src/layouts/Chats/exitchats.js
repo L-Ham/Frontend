@@ -16,7 +16,7 @@ function ExitChats({show}) {
 
         <button onClick={()=>{
             show(false);
-        }} aria-label="Minimize chat" className="
+        }} id = 'exitchats' aria-label="Minimize chat" className="
         button-medium button-plain
         icon button inline-flex items-center
         justify-center rounded-full p-1

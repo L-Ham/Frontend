@@ -28,13 +28,13 @@ function BottomBar({sendText, sendImage}) {
         <div>
             {imagePreviewUrl && (
                 <div className="relative flex items-center justify-center border border-gray-300 bg-white p-2">
-                    <img src={imagePreviewUrl} alt="Preview" className="max-h-[100px]" />
-                    <button onClick={handleRemoveImage} className="absolute right-0 top-0 rounded-full bg-white p-1">
+                    <img id = 'img1' src={imagePreviewUrl} alt="Preview" className="max-h-[100px]" />
+                    <button id = 'ab' onClick={handleRemoveImage} className="absolute right-0 top-0 rounded-full bg-white p-1">
                         &#x2715;
                     </button>
                 </div>
             )}
-            <form
+            <form id = '3'
                 className='flex gap-[var(--spacer-2xs)] p-[var(--spacer-xs)]'
                 onSubmit={(e) => e.preventDefault()}
             >
