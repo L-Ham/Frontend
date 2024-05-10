@@ -15,8 +15,6 @@ import {NavLink} from 'react-router-dom';
 import ImageList from '@mui/material/ImageList';
 import Box from '@mui/material/Box';
 import {SearchFilter} from './searchfilter.js';
-import {useDispatch} from 'react-redux';
-import {addRecentSearch} from '../../store/userSlice.js';
 
 /**
  * Selectors component
@@ -42,11 +40,6 @@ function SearchPage() {
     const subredditName = queryParams.get('subredditName') || '';
     const mediaOnly = searchType == 'media';
 
-    const dispatch = useDispatch();
-    console.log('here2');
-    dispatch(addRecentSearch({
-        searchQuery,
-    }));
 
     const tabs = subredditName !== '' ?
         [
