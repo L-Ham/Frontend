@@ -8,7 +8,7 @@ import {profileMenuClasses} from './profilemenu.styles.js';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {setTheme, logout} from '../../../../store/userSlice.js';
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
 
 
 export const useProfileMenu = () => {
@@ -26,7 +26,7 @@ export const useProfileMenu = () => {
     const userMenuDropdownStyles = `${profileMenuClasses.userMenuDropdown} ${isUserMenuOpen? 'block': 'hidden'} `;
     const username = useSelector((state) => state.user.username);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
 
     const contributorProgramSubLabel = (
@@ -42,6 +42,15 @@ export const useProfileMenu = () => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(setTheme({theme: isThemeDark ? 'light': 'dark'}));
+    };
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(logout({theme: isThemeDark ? 'dark': 'light'}));
+        // refresh the page
+        window.location.reload();
+        // navigate('/login');
     };
 
     useEffect(() => {
@@ -90,12 +99,7 @@ export const useProfileMenu = () => {
                 key='log-out'
                 mainLabel='Log Out'
                 icon={<LogOut/>}
-                onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    dispatch(logout());
-                    navigate('/login');
-                }}
+                onClick={handleLogout}
             />),
         ],
         [
@@ -135,7 +139,7 @@ export const useProfileMenu = () => {
         return () => {
             document.removeEventListener('click', closeDropdown);
         };
-    });
+    }, []);
 
     return {
         isUserMenuOpen,

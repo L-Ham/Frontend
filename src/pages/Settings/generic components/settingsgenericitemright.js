@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import {ConnectToGoogle} from '../tab specific components/account tab/buttons/connecttogoogle.js';
@@ -13,6 +14,8 @@ import {RedditMenu} from '../tab specific components/feed tab/redditmenu.js';
 import {ChatMenu} from '../tab specific components/chats tab/chatmenu.js';
 import {PrivateMenu} from '../tab specific components/chats tab/privatemenu.js';
 import {ClearHistory} from '../tab specific components/profile tab/buttons/clearhistory.js';
+import {ModerationMenu} from '../tab specific components/account tab/menus/moderationmenu.js';
+import {ModerationMenuTwo} from '../tab specific components/account tab/menus/moderationmenutwo.js';
 
 
 /**
@@ -42,6 +45,8 @@ function SettingsGenericItemRight({head, text, thirdComponent, f, prop, genericF
                 <div className="relative float-right">
                     {thirdComponent === 'Change' && <ChangeButton id={id} />}
                     {thirdComponent === 'GenderMenu' && <GenderMenu id={id} func = {f} init = {item} />}
+                    {thirdComponent === 'mm' && <ModerationMenu  />}
+                    {thirdComponent === 'mm2' && <ModerationMenuTwo  />}
                     {thirdComponent === 'Languages' && <LanguagesMenu id={id} />}
                     {thirdComponent === 'Twitter' && <ConnectToTwitterButton id={id} />}
                     {thirdComponent === 'Apple' && <ConnectToGoogle id={id} />}

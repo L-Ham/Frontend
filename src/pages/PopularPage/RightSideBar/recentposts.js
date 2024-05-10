@@ -3,6 +3,8 @@ import React from 'react';
 import {PostPreview} from './PostPreview/postpreview.js';
 import {recentPostsClasses as styles} from './rightsidebar.styles.js';
 import {useRecentPosts} from './rightsidebar.hooks.js';
+import {VIEW_CONTEXTS} from '../../../generic components/Post/data.js';
+import uuid from 'react-uuid';
 
 /**
  * Renders the recent posts preview component in right side bar.
@@ -25,16 +27,16 @@ function RecentPosts() {
 
                 <div className={styles.contentContainer}>
                     <div className={styles.content}>
-                        {data.map((post, index) => (
-                            <React.Fragment key={index}>
+                        {Object.entries(data).map(([key, post], index, arr) => (
+                            <React.Fragment key={uuid()}>
                                 <PostPreview
                                     postId={post.postId}
                                     subredditName={post.subredditName}
-                                    viewContext={post.viewContext}
-                                    postUrl={post.postUrl}
+                                    viewContext={VIEW_CONTEXTS.AGGREGATE_FEED}
+                                    postUrl={`/r/${post.subredditName}/comments/${post.postId}`}
                                     postTitle={post.postTitle}
                                 />
-                                {index !== data.length - 1 && <hr className={styles.divider}/>}
+                                {index !== arr.length - 1 && <hr className={styles.divider}/>}
                             </React.Fragment>
                         ))}
                     </div>

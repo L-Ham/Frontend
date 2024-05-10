@@ -371,6 +371,17 @@ code {
   --anim-duration:300ms;
   --font-14-20-semibold: normal 600 0.875rem / 1.25rem var(--font-sans);
   --shreddit-color-wordmark: #FF4500;
+
+
+  --color-switch-input-background-default:var(--color-secondary-background);
+  --radius-full:624.9375rem;
+  --size-switch-input-h:2rem;
+  --size-switch-input-w:3rem;
+  --line-md:0.125rem;
+  --color-switch-input-background-checked:var(--color-global-alienblue);
+  --color-primary-plain: #648EFC;
+
+  --color-brand-background-active: #7e2200;
 }
 .theme-dark {
   /* add dark scheme here */
@@ -793,6 +804,7 @@ code {
   --message-content-odd:#1A1A1B;
   --message-content-text:#d7dadc;
   --graytowhite: #ffffff;
+  --color-brand-background-active: #a74b29;
 }
 .theme-light {
   /* add light scheme here */
@@ -1202,4 +1214,5 @@ code {
     --message-content-even:#f0f0f0;
     --message-content-text:#000000;
     --graytowhite: rgb(237, 239, 241);
+    --color-brand-background-active: #7e2200;
 }

@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} The PopularCommunity component.
  */
 function PopularCommunity({iconUrl, communityName, memberCount}) {
-    iconUrl = iconUrl || 'https://www.redditstatic.com/avatars/avatar_default_02_24A0ED.png';
     return (
         <li className={styles.listItem} data-testid={`popular-community-${communityName}`}>
             <a className={styles.link}

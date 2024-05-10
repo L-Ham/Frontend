@@ -13,6 +13,8 @@ import uuid from 'react-uuid';
 import {useSubreddit} from './subredditcontext.js';
 import {Fragment} from 'react';
 import {axiosInstance as axios} from '../../requests/axios.js';
+import {useDispatch} from 'react-redux';
+import {addRecentCommunity} from '../../store/userSlice.js';
 
 /**
  * Renders the subreddit.
@@ -47,6 +49,13 @@ export function Subreddit({name, style = false}) {
 
     const isMember = about.communityDetails?.isMember || false;
     const isModerator = about.communityDetails?.isModerator || false;
+
+    const dispatch = useDispatch();
+    dispatch(addRecentCommunity({
+        communityId: about.communityDetails.subredditId,
+        communityName: about.communityDetails.name,
+        avatar: about.communityDetails.avatarImage,
+    }));
 
     return (
         <Fragment>
