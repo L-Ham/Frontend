@@ -10,12 +10,10 @@ import {API_ROUTES} from '../../requests/routes';
  * @return {JSX.Element} UserHelp
  */
 function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
-    const [isxPressed, setIsxPressed] = useState(false);
     const [username, setusername] = useState('');
     const [notfound, setnotfound] = useState(false);
     const [empty, setempty] = useState(false);
     const handlexclick = (event) => {
-        setIsxPressed(true);
         // console.log(isxPressed);
         onxclick(true);
     };
@@ -39,7 +37,7 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
             setempty(true);
         }
         try {
-            const response = await axios.patch(API_ROUTES.forceApprove, {
+            await axios.patch(API_ROUTES.forceApprove, {
                 subredditName: name,
                 userName: username,
             });

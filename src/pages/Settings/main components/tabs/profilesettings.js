@@ -54,7 +54,7 @@ function ProfileSettings({id}) {
      */
     async function handleUpdateProfileSettings(updatedSettings) {
         try {
-            const response = await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings);
+            await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings);
             // console.log('Profile updated:', response.data);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {

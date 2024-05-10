@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {useSelector} from 'react-redux';
 import {axiosInstance} from '../../../../../requests/axios.js';
 import {API_ROUTES} from '../../../../../requests/routes.js';
 import {useToggle} from '../../../pop ups/togglecontext.js';
@@ -17,7 +16,6 @@ import {SocialLinksButton} from '../buttons/sociallinksbutton.js';
  * @return {React.Component} A list of social media links.
  */
 function SocialContainer({initialList, id}) {
-    const token = useSelector((state) => state.user.token);
     const {toggleSocialTwo, setSocialId, setSocialText, setSocialIcon, setSocialRequestType} = useToggle();
 
     // Define the mapping from app name to logo URL

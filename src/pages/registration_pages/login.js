@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Heading} from '../.././generic components/guestpagecomponents/logincomponents/heading';
 import {UserAgreement} from '../.././generic components/guestpagecomponents/logincomponents/useragreement';
 import {Divider} from '../.././generic components/guestpagecomponents/divider';
@@ -16,7 +16,6 @@ import {login, selfInfo} from '../../store/userSlice.js';
 
 const Login = () => {
     const userToken = useSelector((state) => state.user.token);
-    const [Token, setToken] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
@@ -46,7 +45,6 @@ const Login = () => {
     }
     // Function to handle access token received from GoogleButton
     const handleAccessToken = async (accessToken) => {
-        setToken(accessToken);
         // You can perform further actions with the access token here
         // console.log('Received access token:', accessToken);
         try {

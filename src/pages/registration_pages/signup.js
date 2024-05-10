@@ -23,7 +23,6 @@ import {SignUpContinued} from './signupcontinued.js';
  * @return {JSX.Element} App
  */
 function SignUp() {
-    const [Token, setToken] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -68,7 +67,6 @@ function SignUp() {
      * @return {Promise<void>}
      */
     async function handleAccessToken(accessToken) {
-        setToken(accessToken);
         // You can perform further actions with the access token here
         // console.log('Received access token:', accessToken);
         try {

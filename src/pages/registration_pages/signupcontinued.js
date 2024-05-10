@@ -243,13 +243,12 @@ function SignUpContinued({email}) {
     /**
      * Handles the input change event.
      */
-    let response;
     /**
      * Checks if the username is unique.
      */
     async function uniqueusername() {
         try {
-            response = await axios.get(`/user/usernameAvailability?username=${username}`);
+            await axios.get(`/user/usernameAvailability?username=${username}`);
 
             setresponseunqiue(true);
             // console.log(response);

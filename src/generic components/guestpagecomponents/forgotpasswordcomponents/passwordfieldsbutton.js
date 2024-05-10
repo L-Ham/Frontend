@@ -43,7 +43,7 @@ function LoginForm() {
             // console.log('Username:', username);
             // console.log('Email:', email);
             try {
-                const response = await axios.post(API_ROUTES.forgotpassword, {
+                await axios.post(API_ROUTES.forgotpassword, {
 
                     email: email,
                 });

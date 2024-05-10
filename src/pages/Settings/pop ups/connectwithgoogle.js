@@ -32,7 +32,7 @@ function ConnectWithGoogle({id}) {
         // console.log('Received access token:', accessToken);
         try {
             // Send the access token to the backend
-            const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd});
+            await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd});
             toggleConnectToGoogle();
             // console.log('Token sent to backend:', response.data);
         } catch (error) {

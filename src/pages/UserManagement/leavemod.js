@@ -1,9 +1,7 @@
 
 import React from 'react';
 
-import {useState} from 'react';
 import PropTypes from 'prop-types';
-import {useSelector} from 'react-redux';
 import {axiosInstance as axios} from '../../requests/axios';
 import {API_ROUTES} from '../../requests/routes';
 import {useNotifications} from '../../generic components/Notifications/notificationsContext';
@@ -12,12 +10,9 @@ import {useNotifications} from '../../generic components/Notifications/notificat
  * @return {JSX.Element} UserHelp
  */
 function Leavmod({onxclick, name, onnewleave}) {
-    const [isxPressed, setIsxPressed] = useState(false);
-    const token = useSelector((state) => state.user.token);
     const {addNotification} = useNotifications();
     // console.log(token);
     const handlexclick = (event) => {
-        setIsxPressed(true);
         // console.log(isxPressed);
         onxclick(true);
     };
@@ -33,7 +28,7 @@ function Leavmod({onxclick, name, onnewleave}) {
      */
     async function leave() {
         try {
-            const response = await axios.patch(API_ROUTES.leaveMod, {
+            await axios.patch(API_ROUTES.leaveMod, {
 
                 subredditName: name,
 

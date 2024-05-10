@@ -11,12 +11,10 @@ import {useNotifications} from '../../generic components/Notifications/notificat
  * @return {JSX.Element} UserHelp
  */
 function Approve({onAccept, onDecline, onxclick, name}) {
-    const [isxPressed, setIsxPressed] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [accept, setaccept] = useState(false);
     const {addNotification} = useNotifications();
     const handlexclick = (event) => {
-        setIsxPressed(true);
         // console.log(isxPressed);
         onxclick(true);
     };
@@ -33,7 +31,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
      */
     async function acceptmoderator() {
         try {
-            const response = await axios.patch(API_ROUTES.acceptModinvite, {
+            await axios.patch(API_ROUTES.acceptModinvite, {
                 subredditName: name,
             });
             // console.log(response);
@@ -50,7 +48,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
      */
     async function decline() {
         try {
-            const response = await axios.patch(API_ROUTES.declineModinvite, {
+            await axios.patch(API_ROUTES.declineModinvite, {
                 subredditName: name,
             });
             // console.log(response);

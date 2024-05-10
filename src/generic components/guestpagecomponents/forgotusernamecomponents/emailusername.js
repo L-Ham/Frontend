@@ -22,7 +22,7 @@ const ForgotLoginForm = () => {
         if (/\S+@\S+\.\S+/.test(email)) {
             try {
                 // console.log(email);
-                const response = await axios.post(API_ROUTES.forgotusername, {
+                await axios.post(API_ROUTES.forgotusername, {
                     email: email,
 
                 });

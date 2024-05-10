@@ -9,11 +9,9 @@ import PropTypes from 'prop-types';
 const EmailLoginForm = ({onFormSubmit}) => {
     const [email, setEmail] = useState('');
     const [emptyemail, setEmptyemail] = useState(false);
-    const [validEmail, setValidEmail] = useState(false);
 
     const handleContinue = () => {
         const isValidEmail = /\S+@\S+\.\S+/.test(email);
-        setValidEmail(isValidEmail); // Update state with the validation result
         onFormSubmit(isValidEmail, email); // Pass the updated state value to onFormSubmit
         // console.log(validEmail);
         if (!email) {

@@ -54,7 +54,7 @@ function CreateCommunity({setisclicked}) {
             return;
         }
         try {
-            const response = await axios.post(API_ROUTES.createCommunity, {
+            await axios.post(API_ROUTES.createCommunity, {
                 name: cname,
                 privacy: communityType,
                 ageRestriction: mature,

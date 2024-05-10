@@ -26,7 +26,7 @@ function Approveduserentry({username, imageurl, name, onremove}) {
      */
     async function unapproveuser() {
         try {
-            const response = await axios.patch(API_ROUTES.removeUser, {
+            await axios.patch(API_ROUTES.removeUser, {
                 userName: username,
                 subredditName: name,
 

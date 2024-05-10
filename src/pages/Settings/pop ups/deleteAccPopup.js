@@ -35,7 +35,6 @@ function DeletePopUp({id}) {
      * @param {string} p - The ID of the item to delete.
      */
     async function handleDeleteUser(l, u, p) {
-        const obj = {leavingReason: l, userName: u, password: p};
         // console.log('object', obj);
         const isThemeDark = useSelector((state) => state.user.theme === 'dark');
         try {

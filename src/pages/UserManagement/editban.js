@@ -10,13 +10,11 @@ import {useNotifications} from '../../generic components/Notifications/notificat
  * @return {JSX.Element} UserHelp
  */
 function Editban({name, onxclick, username, labeltext, onremoveban}) {
-    const [isxPressed, setIsxPressed] = useState(false);
     const {addNotification} = useNotifications();
 
     const [modnote, setmodnote] = useState('');
     const [reason, setreason] = useState('');
     const handlexclick = (event) => {
-        setIsxPressed(true);
         // console.log(isxPressed);
         onxclick(true);
     };
@@ -41,7 +39,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
      */
     async function handleaddban() {
         try {
-            const response = await axios.patch(API_ROUTES.banUser, {
+            await axios.patch(API_ROUTES.banUser, {
                 subredditName: name,
                 userName: username,
                 reasonForBan: reason,
@@ -60,7 +58,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
      */
     async function handleunbanClick() {
         try {
-            const response = await axios.patch(API_ROUTES.unbanUser, {
+            await axios.patch(API_ROUTES.unbanUser, {
                 subredditName: name,
                 userName: username,
 

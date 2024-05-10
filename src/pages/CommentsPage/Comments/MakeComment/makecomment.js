@@ -51,7 +51,7 @@ export function CommentTextField({
         }
         const handler = async () => {
             try {
-                const response = await axios.post(API_ROUTES.addComment, data, headers);
+                await axios.post(API_ROUTES.addComment, data, headers);
                 // console.log('Response:', response);
             } catch (error) {
                 // console.error('Error:', error);

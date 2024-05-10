@@ -38,7 +38,7 @@ function ForgotPassword2() {
     async function handleUpdatePwd() {
         if (passwordfinal.length >= 8 && passwordMatch) {
             try {
-                const response = await axios.patch(API_ROUTES.updatepassword,
+                await axios.patch(API_ROUTES.updatepassword,
                     {
                         password: passwordfinal,
                         passwordConfirm: passwordfinal,
