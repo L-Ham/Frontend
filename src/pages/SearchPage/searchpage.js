@@ -40,6 +40,7 @@ function SearchPage() {
     const subredditName = queryParams.get('subredditName') || '';
     const mediaOnly = searchType == 'media';
 
+
     const tabs = subredditName !== '' ?
         [
             {name: 'Posts', type: 'posts'},

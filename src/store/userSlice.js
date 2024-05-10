@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {recentPostsData} from '../pages/PopularPage/RightSideBar/data.js';
+// import {recentPostsData} from '../pages/PopularPage/RightSideBar/data.js';
 
 const initialState = {
     userId: '',
@@ -13,7 +13,8 @@ const initialState = {
     About: '',
     token: '',
     theme: 'light',
-    recentPosts: recentPostsData,
+    recentPosts: {},
+    recentCommunities: {},
 };
 const userSlice = createSlice({
     name: 'user',
@@ -34,11 +35,42 @@ const userSlice = createSlice({
             console.log('in logout', action.payload.theme);
         },
         clearRecentPosts: (state) => {
-            state.recentPosts = [];
+            state.recentPosts = {};
+        },
+        addRecentPost: (state, action) => {
+            const {
+                postId,
+                subredditId,
+                subredditName,
+                postTitle,
+                upvotes,
+                comments} = action.payload;
+            state.recentPosts[postId] = {
+                postId,
+                subredditId,
+                subredditName,
+                postTitle,
+                upvotes,
+                comments,
+            };
+        },
+        addRecentCommunity: (state, action) => {
+            const {communityId, communityName, avatar} = action.payload;
+            state.recentCommunities[communityId] = {
+                communityName,
+                avatar,
+            };
         },
     },
 });
 
 export {initialState};
-export const {login, setTheme, selfInfo, logout, clearRecentPosts} = userSlice.actions;
+export const {
+    login,
+    setTheme,
+    selfInfo,
+    logout,
+    clearRecentPosts,
+    addRecentPost,
+    addRecentCommunity} = userSlice.actions;
 export default userSlice.reducer;
