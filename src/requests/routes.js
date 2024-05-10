@@ -165,6 +165,7 @@ const API_ROUTES = {
     followUser: '/user/followUser',
     unfollowUser: '/user/unfollowUser',
     getBannedUsers: (name) => `/subreddit/users/banned?subredditName=${name}`,
+    getCommunityType: (name) => `/subreddit/type?subredditName=${name}`,
     // TODO-BACKEND: destruct the right properties from the community object
     // Add more routes as needed
 };
