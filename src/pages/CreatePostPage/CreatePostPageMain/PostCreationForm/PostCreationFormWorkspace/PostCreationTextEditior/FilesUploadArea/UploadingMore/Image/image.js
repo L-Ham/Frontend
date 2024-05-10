@@ -14,18 +14,19 @@ import {classes} from './image.styles';
 export function Image({file}) {
     const XIcon = getIconComponent('x', true);
     return (
-        <div className={classes.imageDiv}>
-            <span className={classes.imageSpan}>
-                <span className={classes.imageSpan2}>
-                    <div className={classes.imageDiv2}>
+        <div className={classes.imageDiv} data-testid="image-div">
+            <span className={classes.imageSpan} data-testid="image-span">
+                <span className={classes.imageSpan2} data-testid="image-span2">
+                    <div className={classes.imageDiv2} data-testid="image-div2">
                         <span
                             className={classes.imageSpan3}
                             style={{
                                 backgroundImage: `url(${URL.createObjectURL(file)})`,
                             }}
+                            data-testid="image-span3"
                         >
-                            <button className={classes.imageButton}>
-                                <XIcon className={classes.xIcon}/>
+                            <button className={classes.imageButton} data-testid="image-button">
+                                <XIcon className={classes.xIcon} data-testid="x-icon"/>
                             </button>
                         </span>
                     </div>

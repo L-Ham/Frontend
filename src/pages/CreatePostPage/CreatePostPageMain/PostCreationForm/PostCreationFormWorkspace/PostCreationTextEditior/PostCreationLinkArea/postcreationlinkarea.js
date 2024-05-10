@@ -1,15 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {ErrorMessage} from '../../ErrorMessage/errormessage.js';
 import {classes} from './postcreationlinkarea.styles.js';
 import {usePostCreationLinkArea} from './postcreationlinkarea.hooks.js';
 
 /**
  * Renders the link area for the post creation form.
- * @param {Object} props The component props.
- * @param {Function} props.setBorderColor The border color setter.
- * @param {Function} props.setErrorMessage The error message setter.
- * @param {string} props.errorMessage The error message.
  * @return {JSX.Element} The rendered component.
  */
 export function PostCreationLinkArea() {
@@ -47,8 +42,3 @@ export function PostCreationLinkArea() {
     );
 }
 
-PostCreationLinkArea.propTypes = {
-    setBorderColor: PropTypes.func.isRequired,
-    setErrorMessage: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string.isRequired,
-};
