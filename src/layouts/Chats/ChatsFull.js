@@ -101,8 +101,7 @@ function ChatsFull({show}) {
     //const [socket, setSocket] = useState([]);
     useEffect(() => {
         if (!socket.current) {
-            // console.log('Connecting to server with token:', ourtoken);
-            socket.current = io('http://api.reddit-bylham.me', {
+            socket.current = io('https://api.reddit-bylham.me', {
                 query: { token: `Bearer ${ourtoken}` },
             });
             //past: 
