@@ -63,13 +63,13 @@ function Banned({name}) {
             // If the API call is successful, update the state with the moderators' data
             setbanned(response.data.bannedUsers);
 
-            console.log(response);
-            console.log(banned);
-            console.log('getbannedapi');
+            // console.log(response);
+            // console.log(banned);
+            // console.log('getbannedapi');
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts

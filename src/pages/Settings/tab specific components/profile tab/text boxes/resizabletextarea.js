@@ -42,7 +42,7 @@ function ResizableTextArea({maxCharacters, initialText = '', functio, id}) {
      * This function is typically called when the input field loses focus.
      */
     function handleBlur() {
-        console.log(tempValue); // Log the temporary value for debugging
+        // console.log(tempValue); // Log the temporary value for debugging
         if (functio) {
             functio('about', tempValue); // Call an external function to process the value further
         }

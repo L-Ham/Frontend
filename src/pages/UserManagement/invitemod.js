@@ -20,7 +20,7 @@ function Invitepopup({onxclick, banname, name}) {
     const {addNotification} = useNotifications();
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
 
@@ -29,13 +29,13 @@ function Invitepopup({onxclick, banname, name}) {
         setusername(event.target.value);
         const newusername = event.target.value;
         setusername(newusername);
-        console.log(newusername);
+        // console.log(newusername);
         setempty(false);
         setismoderator(false);
         // Call the function passed from the parent with the new email
     };
     const handleaddban = () => {
-        console.log(username);
+        // console.log(username);
         banname(username);
     };
         // Call the function passed from the parent with the new email
@@ -77,24 +77,24 @@ function Invitepopup({onxclick, banname, name}) {
                 parentMessageId: null,
 
             });
-            console.log(response);
-            console.log(name);
+            // console.log(response);
+            // console.log(name);
         } catch (error) {
-            console.log(error);
-            console.log(name);
+            // console.log(error);
+            // console.log(name);
         }
         try {
             const response = await axios.patch(API_ROUTES.inviteMod, {
                 subredditName: name,
                 invitedModeratorUsername: username,
             });
-            console.log(response);
-            console.log(name);
+            // console.log(response);
+            // console.log(name);
             handlexclick();
             addNotification({message: 'Moderator invited successfully', type: 'success'});
         } catch (error) {
-            console.log(error);
-            console.log(name);
+            // console.log(error);
+            // console.log(name);
             if (error.response && error.response.data &&
                 error.response.data.message === 'User is already a moderator') {
                 setismoderator(true);

@@ -30,7 +30,7 @@ function SubredditSearchIndicator({setSearchSubreddit, imgSrc}) {
                 setAvatarImage(subredditResponse.data.communityDetails.avatarImage || 'https://placehold.co/400');
                 subredditName = subredditResponse.data.communityDetails.name;
             } catch (error) {
-                // console.error(error);
+                // // console.error(error);
             }
         };
         fetchSubreddit();

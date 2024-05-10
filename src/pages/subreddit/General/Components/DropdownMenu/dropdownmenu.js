@@ -14,9 +14,9 @@ import {useDropdownMenu} from './dropdownmenu.hooks.js';
  * @return {JSX.Element}
  * @example
  * const items = [
- *    {content: {text: 'Hot', icon: 'hot'}, onClick: () => console.log('Hot clicked')},
- *   {content: {text: 'New', icon: 'new'}, onClick: () => console.log('New clicked')},
- *  {content: {text: 'Top', icon: 'top'}, onClick: () => console.log('Top clicked')},
+ *    {content: {text: 'Hot', icon: 'hot'}, onClick: () => // console.log('Hot clicked')},
+ *   {content: {text: 'New', icon: 'new'}, onClick: () => // console.log('New clicked')},
+ *  {content: {text: 'Top', icon: 'top'}, onClick: () => // console.log('Top clicked')},
  * ];
  *
  * <DropdownMenu

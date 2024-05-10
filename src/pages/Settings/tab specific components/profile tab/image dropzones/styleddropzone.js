@@ -47,7 +47,7 @@ function StyledDropZone(props) {
             onDrop={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log(e.dataTransfer.files);
+                // console.log(e.dataTransfer.files);
             }}
             >
                 <div className='-mt-2 mb-1'>

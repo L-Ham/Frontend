@@ -30,13 +30,13 @@ function Approved({name}) {
         const newusername = event.target.value;
         setUsersearch(newusername);
         setSearch(false);
-        console.log(newusername);
+        // console.log(newusername);
         // Call the function passed from the parent with the new email
     };
     const handlesearch = (event) => {
         setSearch(true);
-        console.log(usersearch);
-        console.log(search);
+        // console.log(usersearch);
+        // console.log(search);
     };
 
 
@@ -59,7 +59,7 @@ function Approved({name}) {
     };
     const handlebanname = (banname) => {
         setBanname(banname);
-        console.log(banname);
+        // console.log(banname);
     };
     Approved.propTypes = {
         name: PropTypes.string,
@@ -73,12 +73,12 @@ function Approved({name}) {
             const response = await axios.get(`/subreddit/users/approved?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setapproved(response.data.approvedMembers);
-            console.log(response);
-            console.log(approved);
+            // console.log(response);
+            // console.log(approved);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts
@@ -94,12 +94,12 @@ function Approved({name}) {
             const response = await axios.get(`/subreddit/users/pending?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setpending(response.data.pendingMembers);
-            console.log(response);
-            console.log(pending);
+            // console.log(response);
+            // console.log(pending);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts

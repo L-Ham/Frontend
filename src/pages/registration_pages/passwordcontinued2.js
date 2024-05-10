@@ -47,12 +47,12 @@ function ForgotPassword2() {
                         headers: {Authorization: `Bearer ${searchParams.get('token')}`},
                     },
                 );
-                console.log(response);
-                console.log('password reset!');
+                // console.log(response);
+                // console.log('password reset!');
                 navigate('/login');
             } catch (e) {
-                console.log(e);
-                console.log('Failed');
+                // console.log(e);
+                // console.log('Failed');
             }
         } else {
             alert('Failed');

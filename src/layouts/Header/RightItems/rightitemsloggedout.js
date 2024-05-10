@@ -22,7 +22,7 @@ function RightItemsLoggedout() {
     const menuRef = useRef(null);
     useEffect(() => {
         const handleClick = (e) => {
-            // console.log(isMenuOpen);
+            // // console.log(isMenuOpen);
             if (menuRef.current && !menuRef.current.contains(e.target)) {
                 setIsMenuOpen(false);
             }

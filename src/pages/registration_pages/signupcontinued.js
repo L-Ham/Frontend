@@ -181,7 +181,7 @@ function SignUpContinued({email}) {
             const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
             dispatch(selfInfo(selfInfoResponse.data.user));
         } catch (error) {
-            console.error('Error retrieving user info:', error);
+            // console.error('Error retrieving user info:', error);
         }
     }
     /**
@@ -190,9 +190,9 @@ function SignUpContinued({email}) {
     async function handleLogin() {
         if (password.length >= 8 && username.length >= 3 && username.length <= 20 && responseunqiue) {
             try {
-                console.log(username);
-                console.log(password);
-                console.log(email);
+                // console.log(username);
+                // console.log(password);
+                // console.log(email);
 
                 await axios.post(API_ROUTES.signup, {
                     userName: username,
@@ -209,10 +209,10 @@ function SignUpContinued({email}) {
                 dispatch(login({token: response.data.token}));
                 handleUserData();
                 navigate('/');
-                console.log(response);
+                // console.log(response);
             } catch (error) {
                 if (error.response) {
-                    console.log(error.response.message);
+                    // console.log(error.response.message);
                     alert('Failed');
                 }
             }
@@ -226,9 +226,9 @@ function SignUpContinued({email}) {
             const response = await axios.get(API_ROUTES.generateusernames);
             const data = response.data;
             setUsernames(data.usernames); // Store the received usernames in state
-            console.log('Usernames:', data.usernames);
+            // console.log('Usernames:', data.usernames);
         } catch (error) {
-            console.error('Error occurred while generating usernames:', error.response.data.message);
+            // console.error('Error occurred while generating usernames:', error.response.data.message);
             // Handle the error, e.g., display an error message to the user
         }
     }
@@ -252,7 +252,7 @@ function SignUpContinued({email}) {
             response = await axios.get(`/user/usernameAvailability?username=${username}`);
 
             setresponseunqiue(true);
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             if (error.response) {
                 setresponseunqiue(false);

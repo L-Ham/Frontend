@@ -70,7 +70,7 @@ export function CommentsPage({
                     comments: response.data.post.commentCount,
                 }));
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         };
         fetchData();

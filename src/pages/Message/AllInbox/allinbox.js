@@ -21,7 +21,7 @@ export function AllInbox() {
             return sentmessages;
         };
         fetchsentMessages();
-        console.log(sentMessages);
+        // console.log(sentMessages);
     }, [user.token]);
 
     const fetchsent = async () => {
@@ -29,7 +29,7 @@ export function AllInbox() {
             const response = await axios.get(API_ROUTES.allInbox);
             return response.data;
         } catch (e) {
-            console.error(e);
+            // console.error(e);
         }
     };
     return (

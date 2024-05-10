@@ -38,7 +38,7 @@ function PostContent({postId, subredditName, viewContext, postUrl, postTitle}) {
                 const subredditResponse = await axios.get(API_ROUTES.communityDetails(subredditName));
                 setSubredditData(subredditResponse.data.communityDetails);
             } catch (error) {
-                // console.error(error);
+                // // console.error(error);
             }
         };
         fetchSubreddit();

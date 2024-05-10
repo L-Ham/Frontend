@@ -19,7 +19,7 @@ function CommunitiesSection() {
         setIsOpen,
         rootStyles,
         Communities} = useCommunitiesSection();
-    // console.log(Communities);
+    // // console.log(Communities);
     return (
         <>
             <SectionHeader sectionName='COMMUNITIES' isOpen={isOpen} setIsOpen={setIsOpen} />

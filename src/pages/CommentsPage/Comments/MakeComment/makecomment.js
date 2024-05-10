@@ -33,7 +33,7 @@ export function CommentTextField({
     };
 
     const handleOnComment = () => {
-        console.log('Commented:', comment);
+        // console.log('Commented:', comment);
         let data = {postId, parentCommentId: commentId, type: commentType, isHidden: false, text: ''};
         let headers = {'Content-Type': 'application/json'};
         if (commentType === 'text') {
@@ -52,9 +52,9 @@ export function CommentTextField({
         const handler = async () => {
             try {
                 const response = await axios.post(API_ROUTES.addComment, data, headers);
-                console.log('Response:', response);
+                // console.log('Response:', response);
             } catch (error) {
-                console.error('Error:', error);
+                // console.error('Error:', error);
             }
         };
         handler().then(() => {
@@ -96,7 +96,7 @@ export function CommentTextField({
                                                 return;
                                             }
                                             const file = e.target.files[0];
-                                            console.log('File:', file);
+                                            // console.log('File:', file);
                                             const data = new FormData();
                                             data.append('file', file);
                                             setComment(data);

@@ -30,12 +30,12 @@ function AddSocialLinksTwo({id}) {
      * @param {Object} updatedSettings - The new settings to be updated.
      */
     async function handleUpdateSocial(updatedSettings) {
-        console.log(updatedSettings);
+        // console.log(updatedSettings);
         try {
             await axiosInstance.patch(API_ROUTES.editSocial, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update social settings:', error);
+            // console.error('Failed to update social settings:', error);
         }
     }
     /**
@@ -45,13 +45,13 @@ function AddSocialLinksTwo({id}) {
      */
     async function handleAddSocial(updatedSettings) {
         // const {linkId, ...settingsWithoutLinkId} = ;
-        // console.log(linkId);
-        console.log(updatedSettings);
+        // // console.log(linkId);
+        // console.log(updatedSettings);
         try {
             await axiosInstance.post(API_ROUTES.editSocial, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update social settings:', error);
+            // console.error('Failed to update social settings:', error);
         }
     }
 
@@ -78,7 +78,7 @@ function AddSocialLinksTwo({id}) {
  * and toggling the visibility of a social element.
  */
     function handleSaveClick() {
-        console.log(inputValue); // Assuming `inputValue` is accessible in the scope
+        // console.log(inputValue); // Assuming `inputValue` is accessible in the scope
         toggleSocialTwo(); // Assuming `toggleSocialTwo` is a function defined to toggle the visibility
 
         if (socialRequestType === 'add') {

@@ -30,7 +30,7 @@ export function LocationCustomization({id}) {
             await axiosInstance.patch(API_ROUTES.editLocation, updatedSettings);
             // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
 
@@ -59,7 +59,7 @@ export function LocationCustomization({id}) {
                     ]);
                 }
             } catch (error) {
-                console.error('Failed to fetch location settings:', error);
+                // console.error('Failed to fetch location settings:', error);
             }
         }
 

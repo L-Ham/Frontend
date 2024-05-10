@@ -15,10 +15,10 @@ function Leavmod({onxclick, name, onnewleave}) {
     const [isxPressed, setIsxPressed] = useState(false);
     const token = useSelector((state) => state.user.token);
     const {addNotification} = useNotifications();
-    console.log(token);
+    // console.log(token);
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
         // Call the function passed from the parent with the new email
@@ -38,12 +38,12 @@ function Leavmod({onxclick, name, onnewleave}) {
                 subredditName: name,
 
             });
-            console.log(response);
+            // console.log(response);
             handlexclick();
             onnewleave(true);
             addNotification({message: 'Moderator left successfuly', type: 'success'});
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 

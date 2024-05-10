@@ -26,7 +26,7 @@ export function FollowButtons({
             try {
                 await axios.patch(API_ROUTES.followUser, {usernameToFollow: username});
             } catch (error) {
-                console.error('Error:', error);
+                // console.error('Error:', error);
             }
         };
         handler().then(() => setFriend(true));
@@ -36,7 +36,7 @@ export function FollowButtons({
             try {
                 await axios.patch(API_ROUTES.unfollowUser, {usernameToUnfollow: username});
             } catch (error) {
-                console.error('Error:', error);
+                // console.error('Error:', error);
             }
         };
         handler().then(() => setFriend(false));

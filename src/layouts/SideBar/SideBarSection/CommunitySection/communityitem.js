@@ -20,7 +20,7 @@ import defaultSubreddit from '../../../../assets/icons/default-subreddit.svg';
 function CommunityItem({imgURL, communityName, communityId, isFavorite}) {
     const {handleStar, StarIcon} = useCommunityItem({communityId, isFavorite});
     imgURL = imgURL || defaultSubreddit;
-    // console.log({imgURL, communityName, communityId, isFavorite});
+    // // console.log({imgURL, communityName, communityId, isFavorite});
     return (
         <NavLink to={'/r/' + communityName} className={styles.root} data-testid={`community-item-${communityName}`}>
             <span className={styles.leftItemsWrapper}>

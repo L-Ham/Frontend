@@ -14,7 +14,7 @@ function ToggleButton({header = '', func, init, id}) { // Default value for head
     const [isToggledOn, setIsToggledOn] = useState(false);
     useEffect(() => {
         setIsToggledOn(init);
-        console.log(init);
+        // console.log(init);
     }, [init]);
 
     /**
@@ -22,9 +22,9 @@ function ToggleButton({header = '', func, init, id}) { // Default value for head
      */
     function handleToggle() {
         setIsToggledOn(!isToggledOn); // Toggle the state
-        console.log(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
+        // console.log(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
         func();
-        console.log(func);
+        // console.log(func);
 
         // alert(`${header} is now ${!isToggledOn ? 'on' : 'off'}`);
     }

@@ -20,8 +20,8 @@ function Newremovebanner({approvedByUserame, disapprovedByUserame
     if (disapprovedByAvatarImageUrl) {
         imageurltoputdisapproved = disapprovedByAvatarImageUrl;
     }
-    console.log('disapprovedByUserame', disapprovedByUserame);
-    console.log(disapprovedByAvatarImageUrl);
+    // console.log('disapprovedByUserame', disapprovedByUserame);
+    // console.log(disapprovedByAvatarImageUrl);
 
 
     return (

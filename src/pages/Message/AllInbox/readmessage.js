@@ -16,13 +16,13 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
     const ref=useRef();
     const handleUnread=(e)=>{
         e.preventDefault();
-        console.log(id);
-        console.log(subject);
+        // console.log(id);
+        // console.log(subject);
         const toggleFavorite = (route) => {
             axios.patch(route, {
                 'messageId': id,
             }).catch((error) => {
-                console.error(`Error:`, error);
+                // console.error(`Error:`, error);
             });
         };
 
@@ -32,7 +32,7 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
             toggleFavorite(API_ROUTES.markAsRead);
         }
         setUnread(!unread);
-        console.log(id);
+        // console.log(id);
     };
     
     const [showReply, setShowReply] = useState(false);
@@ -144,9 +144,9 @@ export function ReadMessage({id,subject, to, message, isEven,isRead, createdAt})
                                         isSubreddit: false,
                                         parentMessageId: id
                                     }).then((response) => {
-                                        console.log(response.data);
+                                        // console.log(response.data);
                                     }).catch((error) => {
-                                        console.error(`Error:`, error);
+                                        // console.error(`Error:`, error);
                                     }); 
                                     handleReplyClick();
                                     

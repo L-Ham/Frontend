@@ -43,11 +43,11 @@ export function Options() {
     const handleSaveReorder = async () => {
         try {
             const response = await reorderRules(rulesOrder);
-            console.log('Reorder rules response', response);
+            // console.log('Reorder rules response', response);
             setReorderRulesView(false);
             addNotification({type: 'success', message: response.message});
         } catch (error) {
-            console.error('Failed to reorder rules', error);
+            // console.error('Failed to reorder rules', error);
             addNotification({type: 'failure', message: error.response.message});
         }
     };

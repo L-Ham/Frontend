@@ -15,7 +15,7 @@ const EmailLoginForm = ({onFormSubmit}) => {
         const isValidEmail = /\S+@\S+\.\S+/.test(email);
         setValidEmail(isValidEmail); // Update state with the validation result
         onFormSubmit(isValidEmail, email); // Pass the updated state value to onFormSubmit
-        console.log(validEmail);
+        // console.log(validEmail);
         if (!email) {
             setEmptyemail(true);
         }

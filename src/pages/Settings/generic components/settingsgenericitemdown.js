@@ -33,7 +33,7 @@ function SettingsGenericItemDown({head, text, thirdComponent, prop, genericFunct
      * Handles the change email button click event.
      */
     function handleChangeEmail() {
-        console.log('Change email button clicked');
+        // console.log('Change email button clicked');
     }
     return (
         <div className = 'mb-8 flex flex-col flex-wrap' style={{fontFamily: '"IBM Plex Sans", sans-serif'}}>

@@ -20,7 +20,7 @@ export function Notification({notification, view}) {
 
     const {id, title, description, time, status, img, type, subredditName,
         postId, senderName} = notification;
-    console.log(postId);
+    // console.log(postId);
     const {addNotification} = useNotifications();
 
     const markAsRead = async () => {

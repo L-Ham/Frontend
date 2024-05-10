@@ -21,17 +21,17 @@ const ForgotLoginForm = () => {
     async function handleContinue() {
         if (/\S+@\S+\.\S+/.test(email)) {
             try {
-                console.log(email);
+                // console.log(email);
                 const response = await axios.post(API_ROUTES.forgotusername, {
                     email: email,
 
                 });
-                console.log(response);
+                // console.log(response);
 
                 setisclicked(true);
             } catch (error) {
                 if (error.response) {
-                    console.log(error.response.message);
+                    // console.log(error.response.message);
                     setisclicked(true);
                 }
             }

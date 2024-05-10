@@ -18,7 +18,7 @@ export const useCommunitiesSection = () => {
             .then((response) => {
                 setCommunities(response.data.communities);
             }).catch((error) => {
-                console.error('Error fetching communities:', error);
+                // console.error('Error fetching communities:', error);
             });
     }, []);
 
@@ -35,7 +35,7 @@ export const useCommunitiesSection = () => {
 export const useCommunityItem = ({communityId, isFavorite}) => {
     const [starred, setStarred] = useState(isFavorite);
 
-    // console.log({communityId, isFavorite});
+    // // console.log({communityId, isFavorite});
     const StarIcon = getIconComponent('star', starred);
 
     /**
@@ -50,7 +50,7 @@ export const useCommunityItem = ({communityId, isFavorite}) => {
             axios.patch(route, {
                 subRedditId: communityId,
             }).catch((error) => {
-                console.error(`Error:`, error);
+                // console.error(`Error:`, error);
             });
         };
 
@@ -84,7 +84,7 @@ export const useCreateCommunityItem = () => {
     function onClick(e) {
         e.preventDefault();
         setisclicked(!isclicked);
-        console.log('isclicked:', isclicked);
+        // console.log('isclicked:', isclicked);
     }
 
     return {

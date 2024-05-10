@@ -32,7 +32,7 @@ export function SubredditSidebar() {
 
             <OverlayContainer>
                 <BookmarksForm
-                    onSubmit={(formData) => console.log(formData)}
+                    onSubmit={(formData) => null}
                     onClose={() => setIsBookmarksFormVisible(false)}
                 />
             </OverlayContainer>
@@ -41,7 +41,7 @@ export function SubredditSidebar() {
             {isCommunityDetailsFormVisible &&
             <OverlayContainer>
                 <CommunityDetailsForm
-                    onSubmit={(formData) => console.log(formData)}
+                    onSubmit={(formData) => null}
                     onClose={() => setIsCommunityDetailsFormVisible(false)}
                 />
             </OverlayContainer>
@@ -50,7 +50,7 @@ export function SubredditSidebar() {
             {isTextWidgetFormVisible &&
             <OverlayContainer>
                 <TextWidgetForm
-                    onSubmit={(formData) => console.log(formData)}
+                    onSubmit={(formData) => null}
                     onClose={() => setIsTextWidgetFormVisible(false)}
                 />
             </OverlayContainer>

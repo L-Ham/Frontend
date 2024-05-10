@@ -35,7 +35,7 @@ function DisplayNameTextBox({initialText = '', functio, id}) {
  * and triggering an external function with the new value.
  */
     function handleInputFinalize() {
-        console.log(tempValue); // Log the temporary input value
+        // console.log(tempValue); // Log the temporary input value
         functio('displayName', tempValue); // Assuming `functio` is a function that processes the input further
     }
 

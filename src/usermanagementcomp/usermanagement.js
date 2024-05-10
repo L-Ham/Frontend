@@ -39,7 +39,7 @@ function Usermanagement({name}) {
     const [isxclicked, setIsxclicked] = useState(false);
     const username = useSelector((state) => state.user.username);
 
-    console.log('this is the username', username);
+    // console.log('this is the username', username);
 
     let bgbanned = 'bg-[#d2dadd]';
     let bgmoderator = 'bg-white';
@@ -98,13 +98,13 @@ function Usermanagement({name}) {
             const response = await axios.get(`/subreddit/moderators/invited?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setinvited(response.data.invitedModerators);
-            console.log(response);
-            console.log(invited);
-            console.log('invitedapi in usermanagement');
+            // console.log(response);
+            // console.log(invited);
+            // console.log('invitedapi in usermanagement');
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts
@@ -119,13 +119,13 @@ function Usermanagement({name}) {
             const response = await axios.get(`/subreddit/moderators?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setModerators(response.data.moderators);
-            console.log(response);
-            console.log(moderators);
-            console.log('get mods in usermanagement');
+            // console.log(response);
+            // console.log(moderators);
+            // console.log('get mods in usermanagement');
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts
@@ -155,7 +155,7 @@ function Usermanagement({name}) {
                 }
             });
         }
-        console.log('showpopup', showpopup);
+        // console.log('showpopup', showpopup);
     }, [invited, username]);
 
     useEffect(() => {
@@ -167,7 +167,7 @@ function Usermanagement({name}) {
                 }
             });
         }
-        console.log('is a mod', isamod);
+        // console.log('is a mod', isamod);
     }, [moderators, username]);
     const handlexclick = () => {
         setIsxclicked(true);

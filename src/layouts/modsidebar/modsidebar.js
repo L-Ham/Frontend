@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
  */
 function Modsidebar({name}) {
-    console.log('from side bar', name);
+    // console.log('from side bar', name);
     return (
         <div className="
          fixed left-0 mt-3

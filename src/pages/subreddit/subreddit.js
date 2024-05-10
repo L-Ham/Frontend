@@ -34,10 +34,10 @@ export function Subreddit({name, style = false}) {
             const fetchType = async () => {
                 try {
                     const response = await axios.get(API_ROUTES.getCommunityType(about.communityDetails.name));
-                    console.log('response', response);
+                    // console.log('response', response);
                     setSubredditType(response.data.privacy);
                 } catch (e) {
-                    console.log('error', e);
+                    // console.log('error', e);
                 }
             };
 

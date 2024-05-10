@@ -47,23 +47,23 @@ export const usePostCreationPollOption = (index) => {
 
 
         const options = Object.values(pollData.options);
-        console.log('options drag end', options);
-        console.log('draggedIndex', draggedIndex);
-        console.log('targetIndex', targetIndex);
+        // console.log('options drag end', options);
+        // console.log('draggedIndex', draggedIndex);
+        // console.log('targetIndex', targetIndex);
 
         // swap the options
         const temp = options[draggedIndex];
         options[draggedIndex] = options[targetIndex];
         options[targetIndex] = temp;
 
-        console.log('options after swap', options);
+        // console.log('options after swap', options);
 
         const newOptionsObject = {};
         options.forEach((option, i) => {
             newOptionsObject[i] = option;
         });
 
-        console.log(newOptionsObject);
+        // console.log(newOptionsObject);
 
         setPollData({...pollData, options: newOptionsObject});
     };

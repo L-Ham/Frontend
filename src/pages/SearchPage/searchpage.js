@@ -70,7 +70,7 @@ function SearchPage() {
             }).then((response) => {
                 setSearchResults({...searchResults, posts: response.data.posts});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         } else {
             axios.get(API_ROUTES.searchPosts(
@@ -84,7 +84,7 @@ function SearchPage() {
             }).then((response) => {
                 setSearchResults({...searchResults, posts: response.data.posts});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         }
     };
@@ -97,7 +97,7 @@ function SearchPage() {
             // setSearchCommunityResults(response.data.matchingNames);
             setSearchResults({...searchResults, communities: response.data.matchingNames});
         }).catch((error) => {
-            console.error(error);
+            // console.error(error);
         });
     };
 
@@ -108,7 +108,7 @@ function SearchPage() {
         }).then((response) => {
             setSearchResults({...searchResults, users: response.data.matchingUsernames});
         }).catch((error) => {
-            console.error(error);
+            // console.error(error);
         });
     };
 
@@ -122,11 +122,11 @@ function SearchPage() {
                 subredditName,
             ), {
             }).then((response) => {
-                console.log(response);
+                // console.log(response);
                 // setSearchCommentResults(response.data.comments);
                 setSearchResults({...searchResults, comments: response.data.comments});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         } else {
             axios.get(API_ROUTES.searchComments(
@@ -136,11 +136,11 @@ function SearchPage() {
                 sortNew,
             ), {
             }).then((response) => {
-                console.log(response);
+                // console.log(response);
                 // setSearchCommentResults(response.data.comments);
                 setSearchResults({...searchResults, comments: response.data.comments});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         }
     };
@@ -159,7 +159,7 @@ function SearchPage() {
             }).then((response) => {
                 setSearchResults({...searchResults, media: response.data.posts});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         } else {
             axios.get(API_ROUTES.searchPosts(
@@ -173,13 +173,13 @@ function SearchPage() {
             }).then((response) => {
                 setSearchResults({...searchResults, media: response.data.posts});
             }).catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
         }
     };
 
 
-    console.log('searchResults', searchResults);
+    // console.log('searchResults', searchResults);
     useEffect(() => {
         if (searchType == 'communities') {
             getCommunities();

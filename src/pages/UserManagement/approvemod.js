@@ -17,7 +17,7 @@ function Approve({onAccept, onDecline, onxclick, name}) {
     const {addNotification} = useNotifications();
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
         // Call the function passed from the parent with the new email
@@ -36,13 +36,13 @@ function Approve({onAccept, onDecline, onxclick, name}) {
             const response = await axios.patch(API_ROUTES.acceptModinvite, {
                 subredditName: name,
             });
-            console.log(response);
+            // console.log(response);
             setaccept(true);
             onAccept(true);
             handlexclick();
             addNotification({message: 'Moderator accepted successfuly', type: 'success'});
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
     /**
@@ -53,13 +53,13 @@ function Approve({onAccept, onDecline, onxclick, name}) {
             const response = await axios.patch(API_ROUTES.declineModinvite, {
                 subredditName: name,
             });
-            console.log(response);
+            // console.log(response);
             setaccept(false);
             onDecline(true);
             handlexclick();
             addNotification({message: 'Moderator declined successfuly', type: 'success'});
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
     return (

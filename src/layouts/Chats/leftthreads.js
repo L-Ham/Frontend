@@ -16,7 +16,7 @@ function LeftThreads({onSelect, chats = []}) {
 
     const handleClick = () => {
         if (chatsKeys.length > 0) {
-            console.log("First chat key:", chatsKeys[0]);  // Log the first key
+            // console.log("First chat key:", chatsKeys[0]);  // Log the first key
             onSelect(chatsKeys[0]);  // Trigger onSelect with the chatId of the first chat
         }
     };

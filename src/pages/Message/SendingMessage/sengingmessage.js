@@ -40,7 +40,7 @@ export function SendingMessage() {
             isSubreddit,
             parentMessageId: null,
         }).then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             addNotification({message: 'Message sent succesfully', type: 'success'});
             // clear the form
             refusername.current.value = '';

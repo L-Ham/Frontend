@@ -9,7 +9,7 @@ function LeftBarTop({ addingUser,filterChats }) {
     const toggleDropdown = () => setDropdownVisible(!dropdownVisible);
 
     const handleMenuClick = (option) => {
-        console.log(option);
+        // console.log(option);
         filterChats(option) // Handle the option here or propagate it up
         setDropdownVisible(false); // Hide the dropdown after selection
     };

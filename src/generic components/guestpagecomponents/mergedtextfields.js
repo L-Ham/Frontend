@@ -27,7 +27,7 @@ const LoginForm = () => {
                 const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
                 dispatch(selfInfo(selfInfoResponse.data.user));
             } catch (error) {
-                console.error('Error retrieving user info:', error);
+                // console.error('Error retrieving user info:', error);
             }
         }
     }
@@ -40,12 +40,12 @@ const LoginForm = () => {
                 userName: username,
                 password: password,
             });
-            console.log(response);
+            // console.log(response);
             handleUserData(response.data.token);
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             setShowInvalidCredentials(true);
-            console.log(showInvalidCredentials);
+            // console.log(showInvalidCredentials);
         }
     }
 

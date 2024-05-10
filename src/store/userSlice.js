@@ -32,7 +32,7 @@ const userSlice = createSlice({
         logout: (state, action) => {
             Object.assign(state, initialState);
             state.theme = action.payload.theme;
-            console.log('in logout', action.payload.theme);
+            // console.log('in logout', action.payload.theme);
         },
         clearRecentPosts: (state) => {
             state.recentPosts = {};

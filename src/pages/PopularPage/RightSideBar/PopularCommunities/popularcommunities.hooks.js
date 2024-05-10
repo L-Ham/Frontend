@@ -25,7 +25,7 @@ export const usePopularCommunities = () => {
                 setData(response.data.popularCommunities);
             })
             .catch((error) => {
-                console.error(error);
+                // console.error(error);
             });
     }, []);
 

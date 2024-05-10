@@ -36,7 +36,7 @@ function NotificationSettings({id}) {
             await axiosInstance.patch(API_ROUTES.notificationSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update notification settings:', error);
+            // console.error('Failed to update notification settings:', error);
         }
     }
 
@@ -50,7 +50,7 @@ function NotificationSettings({id}) {
         const updatedSettings = {...notificationSettings, [settingKey]: newValue};
         setNotificationSettings(updatedSettings); // Update local state
         handleUpdateNotificationSettings(updatedSettings); // Send update request
-        console.log('send notification settings', updatedSettings);
+        // console.log('send notification settings', updatedSettings);
     }
 
     useEffect(() => {
@@ -63,11 +63,11 @@ function NotificationSettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.notificationSettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('feed settings recived:', response.data);
+                // console.log('feed settings recived:', response.data);
 
                 setNotificationSettings(response.data.notificationSettings);
             } catch (error) {
-                console.error('Failed to fetch feed settings:', error);
+                // console.error('Failed to fetch feed settings:', error);
             }
         }
 

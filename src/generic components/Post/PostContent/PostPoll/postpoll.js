@@ -114,9 +114,9 @@ export function PostPoll({
                             } catch (error) {
                                 if (error.response && error.response.status === 400) {
                                 // Handle error code 400
-                                    console.log('Error: Bad Request');
+                                    // console.log('Error: Bad Request');
                                 } else {
-                                // console.log('Error:', error.message);
+                                // // console.log('Error:', error.message);
                                 }
                             }
                         }}

@@ -17,7 +17,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
     const [reason, setreason] = useState('');
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
 
@@ -26,15 +26,15 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
         setmodnote(event.target.value);
         const newmodnote = event.target.value;
         setmodnote(newmodnote);
-        console.log(newmodnote);
-        console.log(name);
-        console.log(username);
+        // console.log(newmodnote);
+        // console.log(name);
+        // console.log(username);
     };
     const handlereasonchange = (event) => {
         setreason(event.target.value);
         const newreason = event.target.value;
         setreason(newreason);
-        console.log(newreason);
+        // console.log(newreason);
     };
     /**
      * @return {void}
@@ -48,11 +48,11 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                 modNote: modnote,
                 permanent: true,
             });
-            console.log(response);
+            // console.log(response);
             handlexclick();
             addNotification({message: 'Ban edited successfully', type: 'success'});
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
     /**
@@ -65,12 +65,12 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                 userName: username,
 
             });
-            console.log(response);
+            // console.log(response);
             onremoveban(true);
             handlexclick();
             addNotification({message: 'User unbanned successfully', type: 'success'});
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
 

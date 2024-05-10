@@ -102,7 +102,7 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
             setAddRuleView(false);
             addNotification({type: 'success', message: response.message});
         } catch (error) {
-            console.error('Failed to add rule', error);
+            // console.error('Failed to add rule', error);
             addNotification({type: 'failure', message: error.response.data.message});
         }
     };
@@ -126,7 +126,7 @@ export function AddRule({rule: {ruleText, fullDescription: ruleDesc,
             setAddRuleView(false);
             addNotification({type: 'success', message: data.message});
         } catch (error) {
-            console.error('Failed to delete rule', error);
+            // console.error('Failed to delete rule', error);
             addNotification({type: 'failure', message: error.response.data.message});
         }
     };

@@ -28,14 +28,14 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
                 userName: username,
 
             });
-            console.log(response);
+            // console.log(response);
             onapprove(true);
-            console.log(name);
-            console.log(username);
+            // console.log(name);
+            // console.log(username);
         } catch (error) {
-            console.log(error);
-            console.log(name);
-            console.log(username);
+            // console.log(error);
+            // console.log(name);
+            // console.log(username);
         }
     }
     /**
@@ -47,14 +47,14 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
                 subredditName: name,
                 userName: username,
             });
-            console.log(response);
-            console.log(name);
-            console.log(username);
+            // console.log(response);
+            // console.log(name);
+            // console.log(username);
             onremove(true);
         } catch (error) {
-            console.log(error);
-            console.log(name);
-            console.log(username);
+            // console.log(error);
+            // console.log(name);
+            // console.log(username);
         }
     }
     return (

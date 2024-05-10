@@ -23,7 +23,7 @@ function Community({
     memberCount,
     onlineCount,
 }) {
-    console.log('Community',
+    // console.log('Community',
         {name, URL, imgSrc, isNSFW, description, memberCount, onlineCount});
     // const subredditName = 'Dragon Oath';
     // const subredditUrl = '/r/Dragon%20Oath';

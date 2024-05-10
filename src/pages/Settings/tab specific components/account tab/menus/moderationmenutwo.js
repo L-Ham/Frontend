@@ -48,7 +48,7 @@ function ModerationMenuTwo() {
     //  */
     // function handleChangeGender(event) {
     //     setSelection(event.target.value);
-    //     console.log(`${event.target.value} is now selected`);
+    //     // console.log(`${event.target.value} is now selected`);
 
     //     // alert(`${event.target.value} is now selected`);
     // }

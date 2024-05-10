@@ -27,7 +27,7 @@ function LoginForm() {
     async function handleLogin() {
         if (!username ) {
             setEmptyusername(true);
-            console.log(emptyusername);
+            // console.log(emptyusername);
         } else {
             setEmptyusername(false);
         }
@@ -40,21 +40,21 @@ function LoginForm() {
 
         if (username.length >= 3 && username.length <= 20 && /\S+@\S+\.\S+/.test(email)) {
             setIsclicked(true);
-            console.log('Username:', username);
-            console.log('Email:', email);
+            // console.log('Username:', username);
+            // console.log('Email:', email);
             try {
                 const response = await axios.post(API_ROUTES.forgotpassword, {
 
                     email: email,
                 });
-                console.log(response);
-                console.log('real user');
+                // console.log(response);
+                // console.log('real user');
                 setshowfakeuser(false);
             } catch (e) {
-                console.log(e);
-                console.log('fake user');
+                // console.log(e);
+                // console.log('fake user');
                 setshowfakeuser(true);
-                console.log(showfakeuser);
+                // console.log(showfakeuser);
             }
         } else {
             setShowEmailError(!/\S+@\S+\.\S+/.test(email));

@@ -45,7 +45,7 @@ export function GenericForm({inputConfigs, onSubmit, onClose, onDelete, isDelete
             await onSubmit(formData);
             onClose();
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     };
 

@@ -14,10 +14,10 @@ function AddChat({ reverse,fetch }) {
         const fetchUserName = async () => {
             try {
                 const response = await axiosInstance.get(API_ROUTES.getUsernamesForSearch(input));
-                console.log('Search usernames received:', response.data);
+                // console.log('Search usernames received:', response.data);
                 setSuggestions(response.data.matchingUsernames);
             } catch (error) {
-                console.error('Failed to fetch usernames:', error);
+                // console.error('Failed to fetch usernames:', error);
             }
         };
 
@@ -75,14 +75,14 @@ function AddChat({ reverse,fetch }) {
             chatName: usernames.length > 1 ? groupname : "single chat",
             participants: usernames.map(user => user.userName)
         };
-        console.log('Creating chat:', chatObject);
+        // console.log('Creating chat:', chatObject);
         try {
             await axiosInstance.post(API_ROUTES.createChat, chatObject);
-            console.log('Chat created successfully:', chatObject);
+            // console.log('Chat created successfully:', chatObject);
             fetch();
             reverse();  // Assuming reverse is used to close this component or indicate success
         } catch (error) {
-            console.error('Failed to create chat:', error);
+            // console.error('Failed to create chat:', error);
         }
     }
 

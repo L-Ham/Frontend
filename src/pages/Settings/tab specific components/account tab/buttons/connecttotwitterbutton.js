@@ -16,7 +16,7 @@ function ConnectToTwitterButton({id}) {
      * This function logs a message to the console and is a placeholder for further connection logic.
      */
     function handleConnectToTwitter() {
-        console.log('Twitter button is clicked');
+        // console.log('Twitter button is clicked');
 
         // alert('Twitter button is clicked');
         // Placeholder for the actual connection logic

@@ -40,7 +40,7 @@ function SignUp() {
                 const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
                 dispatch(selfInfo(selfInfoResponse.data.user));
             } catch (error) {
-                console.error('Error retrieving user info:', error);
+                // console.error('Error retrieving user info:', error);
             }
         }
     }
@@ -58,7 +58,7 @@ function SignUp() {
             if (error.response.data.message === 'User didn\'t signup using google signup') {
                 navigate('/login');
             } else {
-                console.error('Error sending token to backend:', error);
+                // console.error('Error sending token to backend:', error);
             }
         }
     }
@@ -70,28 +70,28 @@ function SignUp() {
     async function handleAccessToken(accessToken) {
         setToken(accessToken);
         // You can perform further actions with the access token here
-        console.log('Received access token:', accessToken);
+        // console.log('Received access token:', accessToken);
         try {
             const response = await axios.post(API_ROUTES.GoogleSignUp, {token: accessToken});
             handleUserData(response.data.token);
-            console.log('Token sent to backend:', response.data);
+            // console.log('Token sent to backend:', response.data);
             navigate('/');
         } catch (error) {
             if (error.response.data.message === 'Email already Exists') {
                 // If user exists then log in the user
                 googleLoginUser(accessToken);
             } else {
-                console.error('Error sending token to backend:', error);
+                // console.error('Error sending token to backend:', error);
             }
         }
-        console.log(Token);
+        // console.log(Token);
     }
 
     const handleEmailFormSubmit = (isValidEmail, userEmail) => {
         setValidEmail(isValidEmail);
         setEmail(userEmail);
-        console.log('Email:', userEmail);
-        console.log('Valid Email:', isValidEmail);
+        // console.log('Email:', userEmail);
+        // console.log('Valid Email:', isValidEmail);
     };
     return (
 

@@ -35,9 +35,9 @@ export const useAppBar = () => {
             try {
                 const response = await axios.get(API_ROUTES.getTrendingPosts);
                 setSearchTrendingItems(response.data.trendingPosts);
-                console.log(response.data.trendingPosts);
+                // console.log(response.data.trendingPosts);
             } catch (error) {
-            // console.error(error);
+            // // console.error(error);
             }
         };
         fetchTrending();

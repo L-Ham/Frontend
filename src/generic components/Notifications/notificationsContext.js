@@ -25,10 +25,10 @@ export function NotificationProvider({children}) {
 
     // Function to add a notification
     const addNotification = (notification) => {
-        console.log('notification', notification);
+        // console.log('notification', notification);
         // Access the current value of the ref and increment it
         const id = notificationIdRef.current++;
-        console.log(id);
+        // console.log(id);
         setNotifications((prevNotifications) => [...prevNotifications, {...notification, id: id}]);
     };
 

@@ -44,7 +44,7 @@ function AccountSettings({id}) {
             const selfInfoResponse = await axiosInstance.get(API_ROUTES.userSelfInfo);
             dispatch(selfInfo(selfInfoResponse.data.user));
         } catch (error) {
-            console.error('Error retrieving user info:', error);
+            // console.error('Error retrieving user info:', error);
         }
     }
     useEffect(() => {
@@ -57,11 +57,11 @@ function AccountSettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.accountSettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('acc settings recived:', response.data);
+                // console.log('acc settings recived:', response.data);
                 setAccSettings(response.data.accountSettings);
                 handleUserData();
             } catch (error) {
-                console.error('Failed to fetch feed settings:', error);
+                // console.error('Failed to fetch feed settings:', error);
             }
         }
         fetchAccountSettings();

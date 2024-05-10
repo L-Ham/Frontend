@@ -31,7 +31,7 @@ export function Options({type, id}) {
             const data = await response.data;
             addNotification({type: 'success', message: data.message});
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             addNotification({type: 'error', message: error.message});
         }
     };

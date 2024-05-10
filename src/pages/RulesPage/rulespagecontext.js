@@ -55,9 +55,9 @@ export function RulesPageProvider({children, name, type}) {
                 setLoading(false);
             } catch (error) {
                 addNotification({type: 'failure', message: error.response.data.message});
-                console.error('Failed to fetch subreddit data', error);
+                // console.error('Failed to fetch subreddit data', error);
                 // console .log the error and request details
-                console.log(error.response);
+                // console.log(error.response);
                 setLoading(false);
                 setIsError(true);
             }

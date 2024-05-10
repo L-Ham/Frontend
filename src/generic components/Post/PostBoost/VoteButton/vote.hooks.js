@@ -33,7 +33,7 @@ export const useVote = ({postId, upvotes, downvotes, isUpvoted, isDownvoted}) =>
                 await axios.patch(vote === VOTE.UPVOTE ? API_ROUTES.cancelUpvote: API_ROUTES.upvote,
                     {postId: postId});
             } catch (error) {
-                // console.error(error);
+                // // console.error(error);
             }
         };
         if (vote === VOTE.UPVOTE) {
@@ -62,7 +62,7 @@ export const useVote = ({postId, upvotes, downvotes, isUpvoted, isDownvoted}) =>
                 await axios.patch(vote === VOTE.DOWNVOTE ? API_ROUTES.cancelDownvote: API_ROUTES.downvote,
                     {postId: postId});
             } catch (error) {
-                // console.error(error);
+                // // console.error(error);
             }
         };
         if (vote === VOTE.DOWNVOTE) {

@@ -41,7 +41,7 @@ export const useHeaderButtons = () => {
             addNotification({type: 'success', message: `muted r/${name}`});
         } catch (error) {
             addNotification({type: 'error', message: error.response.data.message});
-            console.error('Failed to mute community', error);
+            // console.error('Failed to mute community', error);
         }
     }, [name]);
 
@@ -74,7 +74,7 @@ export const useHeaderButtons = () => {
                 message: respone.data.message});
         } catch (error) {
             addNotification({type: 'error', message: error.response.data.message});
-            console.error('Failed to join community', error);
+            // console.error('Failed to join community', error);
         }
     }, [id]);
 
@@ -88,7 +88,7 @@ export const useHeaderButtons = () => {
         } catch (error) {
             addNotification({type: 'error',
                 message: error.response.data.message});
-            console.error('Failed to leave community', error);
+            // console.error('Failed to leave community', error);
         }
     }, [id, activeNotificationLevel]);
 
@@ -108,7 +108,7 @@ export const useHeaderButtons = () => {
                 }
             }
         } catch (error) {
-            console.error('Failed', error);
+            // console.error('Failed', error);
         } finally {
             setIsJoinDisabled(false);
         }
@@ -123,7 +123,7 @@ export const useHeaderButtons = () => {
             addNotification({type: 'success', message: `added r/${name} to favorites`});
         } catch (error) {
             addNotification({type: 'failure', message: error.response.data.message});
-            console.error('Failed to set favorite', error);
+            // console.error('Failed to set favorite', error);
         }
     }, [id]);
 
@@ -134,7 +134,7 @@ export const useHeaderButtons = () => {
             addNotification({type: 'success', message: `removed r/${name} from favorites`});
         } catch (error) {
             addNotification({type: 'failure', message: error.response.data.message});
-            console.error('Failed to unset favorite', error);
+            // console.error('Failed to unset favorite', error);
         }
     }, [id]);
 

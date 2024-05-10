@@ -72,7 +72,7 @@ export function Feed({
                     setHasMore(false);
                     setLoading(false);
                 } else {
-                    // console.error(error);
+                    // // console.error(error);
                 }
             }
         };

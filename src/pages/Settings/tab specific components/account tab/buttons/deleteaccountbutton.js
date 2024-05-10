@@ -16,7 +16,7 @@ function DeleteAccountButton({id}) {
      * Logs a message to the console and placeholder for actual account deletion logic.
      */
     function handleClick() {
-        console.log('delete button is clicked');
+        // console.log('delete button is clicked');
         setDisplayDelete(true);
 
         // alert('delete button is clicked');

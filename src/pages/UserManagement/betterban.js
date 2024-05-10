@@ -22,7 +22,7 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
     const [ismoderator, setismoderator] = useState(false);
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
 
@@ -42,13 +42,13 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
         setmodnote(event.target.value);
         const newmodnote = event.target.value;
         setmodnote(newmodnote);
-        console.log(newmodnote);
+        // console.log(newmodnote);
     };
     const handlereasonchange = (event) => {
         setreason(event.target.value);
         const newreason = event.target.value;
         setreason(newreason);
-        console.log(newreason);
+        // console.log(newreason);
     };
     /**
      * @return {void}
@@ -59,7 +59,7 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
         }
         let response;
         try {
-            console.log(username);
+            // console.log(username);
             response = await axios.patch(API_ROUTES.banUser, {
                 subredditName: name,
                 userName: username,
@@ -68,17 +68,17 @@ function Betterban({name, onxclick, banname, labeltext, onaddban}) {
                 permanent: true,
             });
             setnotfound(false);
-            console.log(response);
+            // console.log(response);
             onaddban(true);
             handlexclick();
             addNotification({message: 'User Banned successfully', type: 'success'});
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message === 'You can\'t ban yourself') {
-                console.log('You can\'t ban yourself');
+                // console.log('You can\'t ban yourself');
                 setismoderator(true);
             }
             if (error.response && error.response.data && error.response.data.message === 'User not found') {
-                console.log('User not found');
+                // console.log('User not found');
                 setnotfound(true);
             }
         }

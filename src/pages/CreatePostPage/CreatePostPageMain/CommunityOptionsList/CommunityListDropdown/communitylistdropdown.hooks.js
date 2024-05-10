@@ -42,18 +42,18 @@ export const useCommunityListDropDown = (searchInput) => {
                 );
 
 
-                console.log('allCommunities', allCommunities);
-                console.log('allUserCommunities', allUserCommunities);
-                console.log('restructuredAllCommunities', restructuredAllCommunities);
-                console.log('newOtherCommunities', newOtherCommunities);
-                console.log('newUserCommunities', newUserCommunities);
+                // console.log('allCommunities', allCommunities);
+                // console.log('allUserCommunities', allUserCommunities);
+                // console.log('restructuredAllCommunities', restructuredAllCommunities);
+                // console.log('newOtherCommunities', newOtherCommunities);
+                // console.log('newUserCommunities', newUserCommunities);
 
                 setOtherCommunities(newOtherCommunities);
                 setUserCommunities(newUserCommunities);
             } catch (error) {
                 addNotification({type: 'failure',
                     message: 'Failed to fetch communitites data, please try again later'});
-                console.error('Failed to fetch communitites data', error);
+                // console.error('Failed to fetch communitites data', error);
             }
         };
         loadData();

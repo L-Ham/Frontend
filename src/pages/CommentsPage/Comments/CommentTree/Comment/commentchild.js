@@ -11,7 +11,7 @@ import uuid from 'react-uuid';
 export function CommentChild(
     props,
 ) {
-    console.log(props);
+    // console.log(props);
     return (
         <Comment key={uuid()} {...props}/>
     );

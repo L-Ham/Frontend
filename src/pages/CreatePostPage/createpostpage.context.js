@@ -44,7 +44,7 @@ export function CreatePostPageProvider({children, name}) {
                 setLoading(false);
             } catch (error) {
                 addNotification({type: 'failure', message: 'Failed to fetch subreddit data, please try again later'});
-                console.error('Failed to fetch subreddit data', error);
+                // console.error('Failed to fetch subreddit data', error);
                 setLoading(false);
                 setIsError(true);
             }

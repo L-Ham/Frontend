@@ -111,7 +111,7 @@ export function UploadArea() {
             addNotification({type: 'success', message: 'Image uploaded successfully'});
             refetchData();
         } catch (error) {
-            console.error('Failed to upload image', error);
+            // console.error('Failed to upload image', error);
             if (!error.response) {
                 addNotification({type: 'failure', message: 'file is very big 8yr ya 7beby'});
                 return;

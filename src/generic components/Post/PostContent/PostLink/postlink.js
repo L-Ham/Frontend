@@ -31,7 +31,7 @@ export function PostLink({
                 const data = await response.json();
                 setThumbnail(data.imageUrl);
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         };
         if (viewContext === VIEW_CONTEXTS.COMMENTS_PAGE) {

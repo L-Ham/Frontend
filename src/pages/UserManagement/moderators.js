@@ -55,12 +55,12 @@ function Moderators({name}) {
             const response = await axios.get(`/subreddit/moderators?subredditName=${name}`);
             // If the API call is successful, update the state with the moderators' data
             setModerators(response.data.moderators);
-            console.log(response);
-            console.log(moderators);
+            // console.log(response);
+            // console.log(moderators);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
-        console.log(name);
+        // console.log(name);
     }
     useEffect(() => {
         // Call the Getmoderators function once when the component mounts

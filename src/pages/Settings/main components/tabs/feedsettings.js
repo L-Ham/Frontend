@@ -38,7 +38,7 @@ function FeedSettings({id}) {
             await axiosInstance.patch(API_ROUTES.feedSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
 
@@ -52,7 +52,7 @@ function FeedSettings({id}) {
         const updatedSettings = {...feedSettings, [settingKey]: newValue};
         setFeedSettings(updatedSettings); // Update local state
         handleUpdateFeedSettings(updatedSettings); // Send update request
-        console.log('send feed settings', updatedSettings);
+        // console.log('send feed settings', updatedSettings);
     }
 
 
@@ -67,7 +67,7 @@ function FeedSettings({id}) {
         const updatedSettings = {...feedSettings, [settingKey]: newValue};
         setFeedSettings(updatedSettings); // Update local state
         handleUpdateFeedSettings(updatedSettings); // Send update request
-        console.log('send feed settings', updatedSettings);
+        // console.log('send feed settings', updatedSettings);
     }
 
 
@@ -81,11 +81,11 @@ function FeedSettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.feedSettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('feed settings recived:', response.data);
+                // console.log('feed settings recived:', response.data);
 
                 setFeedSettings(response.data.feedSettings);
             } catch (error) {
-                console.error('Failed to fetch feed settings:', error);
+                // console.error('Failed to fetch feed settings:', error);
             }
         }
 

@@ -32,7 +32,7 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
 
     const toggledropdown = () => {
         setDropdown(!dropdown);
-        console.log('dropdown', dropdown);
+        // console.log('dropdown', dropdown);
     };
     let label='Lock';
     if (locked) {
@@ -42,23 +42,23 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
     }
 
 
-    // console.log('islocked', isLocked);
+    // // console.log('islocked', isLocked);
 
     /**
      * @return {void}
      */
     async function calllock() {
         setLocked(!locked);
-        console.log('locked', locked);
+        // console.log('locked', locked);
         const url = locked ? API_ROUTES.unlockPost: API_ROUTES.lockPost;
         try {
-            console.log('postId', postId);
+            // console.log('postId', postId);
 
             const response= await axios.patch(url, {
                 postId});
-            console.log(response);
+            // console.log(response);
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
     /**
@@ -75,10 +75,10 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
                     postId: postId,
                     type: 'removed',
                 });
-                console.log(response);
+                // console.log(response);
                 addNotification({message: 'Post approved successfuly', type: 'success'});
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         }
         if (isreported) {
@@ -88,10 +88,10 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
                     postId: postId,
                     type: 'reported',
                 });
-                console.log(response);
+                // console.log(response);
                 addNotification({message: 'Post approved successfuly', type: 'success'});
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         } else {
             try {
@@ -100,10 +100,10 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
                     postId: postId,
 
                 });
-                console.log(response);
+                // console.log(response);
                 addNotification({message: 'Post approved successfuly', type: 'success'});
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         }
     }
@@ -123,14 +123,14 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
 
                 );
 
-                console.log(response);
+                // console.log(response);
                 addNotification({message: 'Post removed successfuly', type: 'success'});
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         } else {
             try {
-                console.log('post id', postId);
+                // console.log('post id', postId);
                 const response= await axios.patch(API_ROUTES.removePost,
                     {postId: postId,
                     },
@@ -138,9 +138,9 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
 
                 );
                 addNotification({message: 'Post removed successfuly', type: 'success'});
-                console.log(response);
+                // console.log(response);
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         }
     }
@@ -153,10 +153,10 @@ function Modpost({isremoved, isreported, children, postId, subredditName,
         setRenderdisapproved(false);
         try {
             const response= await axios.patch(API_ROUTES.reportPost, {postId});
-            console.log(response);
+            // console.log(response);
             addNotification({message: 'Post reported successfuly', type: 'success'});
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
 

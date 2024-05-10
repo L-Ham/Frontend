@@ -19,7 +19,7 @@ import uuid from 'react-uuid';
  * */
 function SearchDropDown({isDropdownVisible = false, TrendingItems = [], HistoryItems = []}) {
     const {rootStyles, TrendingIcon} = useSearchDropDown({isDropdownVisible});
-    console.log(TrendingItems);
+    // console.log(TrendingItems);
     return (
         <div className={rootStyles} data-testid='search-dropdown'>
             <ul className={styles.recentSearchList}>

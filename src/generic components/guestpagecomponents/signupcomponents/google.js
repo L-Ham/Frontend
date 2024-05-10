@@ -13,7 +13,7 @@ export function GoogleButton({onAccessToken}) {
 
     const onSuccess = async (response) => {
         const accessToken = response.access_token;
-        console.log('accessToken', accessToken);
+        // console.log('accessToken', accessToken);
         // Log the access token for debugging
 
         // Pass the access token to the parent component using the callback function

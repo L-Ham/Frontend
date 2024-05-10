@@ -35,7 +35,7 @@ export function NotificationsButtonProvider({children}) {
     const loadData = async () => {
         try {
             const data = await fetchNotifications();
-            console.log(data);
+            // console.log(data);
             let unread = 0;
             data.forEach((notification) => {
                 if (!notification.isRead) {

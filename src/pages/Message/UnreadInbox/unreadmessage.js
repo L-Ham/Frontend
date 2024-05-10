@@ -22,7 +22,7 @@ export function UnreadMessage({id,subject, to, message, isEven,createdAt}) {
         axios.patch(API_ROUTES.markAsRead, {
             messageId: id,
         }).catch((error) => {
-            console.error(`Error:`, error);
+            // console.error(`Error:`, error);
         });
     }, []);
     const test =parse(message);
@@ -122,9 +122,9 @@ export function UnreadMessage({id,subject, to, message, isEven,createdAt}) {
                                         isSubreddit: false,
                                         parentMessageId: id
                                     }).then((response) => {
-                                        console.log(response.data);
+                                        // console.log(response.data);
                                     }).catch((error) => {
-                                        console.error(`Error:`, error);
+                                        // console.error(`Error:`, error);
                                     }); 
                                     handleReplyClick();
                                     

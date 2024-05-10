@@ -16,7 +16,7 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
     const [empty, setempty] = useState(false);
     const handlexclick = (event) => {
         setIsxPressed(true);
-        console.log(isxPressed);
+        // console.log(isxPressed);
         onxclick(true);
     };
 
@@ -25,7 +25,7 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
         setusername(event.target.value);
         const newusername = event.target.value;
         setusername(newusername);
-        console.log(newusername);
+        // console.log(newusername);
         setempty(false);
         setnotfound(false);
 
@@ -43,14 +43,14 @@ function Userpopupban({onxclick, banname, labeltext, name, onnewapproved}) {
                 subredditName: name,
                 userName: username,
             });
-            console.log(response);
+            // console.log(response);
             onnewapproved(true);
             handlexclick();
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
             if (error.response && error.response.data && error.response.data.message === 'User not found') {
-                console.log('User not found');
+                // console.log('User not found');
                 setnotfound(true);
             }
         }

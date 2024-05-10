@@ -25,7 +25,7 @@ export function UnreadInbox() {
             const response = await axios.get(API_ROUTES.unreadMessages);
             return response.data;
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     };
     return (

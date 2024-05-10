@@ -18,7 +18,7 @@ function SendMessageButton({ sendMessage,image }) {
             {
         sendMessage();
             }
-            console.log('image',image);
+            // console.log('image',image);
     }
     return (
         <button onClick={handleClick} id = 'sendmsg' className="

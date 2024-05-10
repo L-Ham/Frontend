@@ -49,7 +49,7 @@ export const usePost = ({isNSFW, isSpoiler, viewContext, userId, subredditName,
                 }
                 setUserData(userResponse.data.user);
             } catch (error) {
-                // console.error(error);
+                // // console.error(error);
             }
         };
         fetchUser();

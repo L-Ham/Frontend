@@ -51,14 +51,14 @@ function SocialContainer({initialList, id}) {
      * */
     async function handleDeleteSocial(id) {
         try {
-            console.log('token' + token);
-            console.log('Deleting social link:', id);
+            // console.log('token' + token);
+            // console.log('Deleting social link:', id);
             await axiosInstance.delete(API_ROUTES.editSocial, {
                 data: {socialLinkId: id},
             });
-            console.log('Social link deleted:', id);
+            // console.log('Social link deleted:', id);
         } catch (error) {
-            console.error('Failed to delete social link:', error);
+            // console.error('Failed to delete social link:', error);
         }
     }
 
@@ -69,7 +69,7 @@ function SocialContainer({initialList, id}) {
      * @param {string} itemId - The ID of the item to delete.
      * */
     function handleDelete(itemIndex, itemId) {
-        console.log(`${list[itemIndex].displayText} was deleted`);
+        // console.log(`${list[itemIndex].displayText} was deleted`);
         handleDeleteSocial(itemId);
         setList((currList) => currList.filter((_, index) => index !== itemIndex));
     }

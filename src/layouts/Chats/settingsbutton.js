@@ -17,12 +17,12 @@ function SettingsButton() {
     const toggleMenu = () => setMenuVisible(!menuVisible);
 
     const handleMuteNotifications = () => {
-        console.log('Muted notifications'); // Replace with actual functionality
+        // console.log('Muted notifications'); // Replace with actual functionality
         setMenuVisible(false); // Hide menu after action
     };
 
     const handleHideChat = () => {
-        console.log('Chat hidden'); // Replace with actual functionality
+        // console.log('Chat hidden'); // Replace with actual functionality
         setMenuVisible(false); // Hide menu after action
     };
 

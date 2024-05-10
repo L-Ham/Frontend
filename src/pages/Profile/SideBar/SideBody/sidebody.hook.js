@@ -22,7 +22,7 @@ export const useSidebody = () => {
             const response = await axios.get(API_ROUTES.profileSettings);
             return response.data.profileSettings.socialLinks;
         } catch (e) {
-            console.error(e);
+            // console.error(e);
         }
     };
     return {

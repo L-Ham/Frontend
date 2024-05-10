@@ -25,24 +25,24 @@ function CreateCommunity({setisclicked}) {
     const [mature, setMature] = useState(false);
     const handlecnamechange = (cname) => {
         setcname(cname);
-        console.log(cname);
+        // console.log(cname);
         setistaken(false);
-        console.log(communityType);
-        console.log(mature);
+        // console.log(communityType);
+        // console.log(mature);
         if (cname.length !== 0) {
             setisempty(false);
         }
     };
     const handletoggle = (mature) => {
         setMature(mature);
-        console.log(mature);
+        // console.log(mature);
     };
     const handlexclick = () => {
         setisclicked(false);
     };
     const handleCommunityTypeChange = (communityType) => {
         setCommunityType(communityType);
-        console.log(communityType);
+        // console.log(communityType);
     };
     /**
      *
@@ -59,12 +59,12 @@ function CreateCommunity({setisclicked}) {
                 privacy: communityType,
                 ageRestriction: mature,
             });
-            console.log(response);
+            // console.log(response);
             setisclicked(false);
             navigate(`/r/${cname}`);
         } catch (e) {
             setistaken(true);
-            console.log(e);
+            // console.log(e);
         }
     }
 

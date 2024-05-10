@@ -74,7 +74,7 @@ export function AddReason({reason: {title: reasonTitle, message: reasonMessage, 
             setAddReasonView(false);
             addNotification({type: 'success', message: response.message});
         } catch (error) {
-            console.error('Failed to add reason', error);
+            // console.error('Failed to add reason', error);
             addNotification({type: 'failure', message: error.response.data.message});
         }
     };
@@ -94,7 +94,7 @@ export function AddReason({reason: {title: reasonTitle, message: reasonMessage, 
             setAddReasonView(false);
             addNotification({type: 'success', message: response.data.message});
         } catch (error) {
-            console.error('Failed to delete reason', error);
+            // console.error('Failed to delete reason', error);
             addNotification({type: 'failure', message: error.response.data.message});
         }
     };

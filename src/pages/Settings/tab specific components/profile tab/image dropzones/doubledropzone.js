@@ -30,7 +30,7 @@ function DoubleDropZone(props, id) {
     async function handleUpdateAvatar(bannerImage) {
         const file = new FormData();
         file.append('file', bannerImage);
-        console.log('banner image file', file);
+        // console.log('banner image file', file);
         try {
             await axiosInstance.post(API_ROUTES.avatar, file, {
                 headers: {'Content-Type': 'multipart/form-data'},
@@ -38,7 +38,7 @@ function DoubleDropZone(props, id) {
 
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update banner:', error);
+            // console.error('Failed to update banner:', error);
         }
     }
     /**
@@ -49,7 +49,7 @@ function DoubleDropZone(props, id) {
     async function handleUpdateBanner(bannerImage) {
         const file = new FormData();
         file.append('file', bannerImage);
-        console.log('banner image file', file);
+        // console.log('banner image file', file);
         try {
             await axiosInstance.post(API_ROUTES.banner, file, {
                 headers: {'Content-Type': 'multipart/form-data'},
@@ -57,7 +57,7 @@ function DoubleDropZone(props, id) {
 
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update banner:', error);
+            // console.error('Failed to update banner:', error);
         }
     }
 
@@ -74,7 +74,7 @@ function DoubleDropZone(props, id) {
                 setRightImage(response.data.url);
             } catch (error) {
                 if (error?.response?.data?.message === 'Banner image not found') return;
-                console.error('Failed to fetch banner:', error);
+                // console.error('Failed to fetch banner:', error);
             }
         }
         /**
@@ -89,7 +89,7 @@ function DoubleDropZone(props, id) {
                 setLeftImage(response.data.url);
             } catch (error) {
                 if (error?.response?.data?.message === 'Avatar image not found') return;
-                console.error('Failed to fetch banner:', error);
+                // console.error('Failed to fetch banner:', error);
             }
         }
 
@@ -121,7 +121,7 @@ function DoubleDropZone(props, id) {
         updateImageFromFile(files, setRightImage);
 
         handleUpdateBanner(event.dataTransferfiles[0]);
-        console.log('clicked right');
+        // console.log('clicked right');
     }
 
     /**
@@ -144,7 +144,7 @@ function DoubleDropZone(props, id) {
     function handleLeftChange(event) {
         updateImageFromFile(event.target.files, setLeftImage);
         handleUpdateAvatar(event.target.files[0]);
-        console.log('clicked');
+        // console.log('clicked');
     }
 
     /**

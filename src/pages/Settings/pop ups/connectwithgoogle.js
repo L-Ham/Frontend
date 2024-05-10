@@ -29,14 +29,14 @@ function ConnectWithGoogle({id}) {
 
     const handleAccessToken = async (accessToken) => {
         // You can perform further actions with the access token here
-        console.log('Received access token:', accessToken);
+        // console.log('Received access token:', accessToken);
         try {
             // Send the access token to the backend
             const response = await axios.patch(API_ROUTES.googleConnect, {token: accessToken, password: passwordd});
             toggleConnectToGoogle();
-            console.log('Token sent to backend:', response.data);
+            // console.log('Token sent to backend:', response.data);
         } catch (error) {
-            console.error('Error sending token to backend:', error);
+            // console.error('Error sending token to backend:', error);
         }
     };
     const {displayConnectToGoogle} = useToggle();

@@ -26,10 +26,10 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
     async function handleMuteCommunity(community) {
         try {
             await axiosInstance.patch(API_ROUTES.muteCommunity, community);
-            console.log('muted community:', community);
+            // console.log('muted community:', community);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
 
@@ -39,13 +39,13 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
      * @param {Object} blockedUser - The new settings to be updated.
      */
     async function handleBlockUser(blockedUser) {
-        console.log('Blocking user:', blockedUser);
+        // console.log('Blocking user:', blockedUser);
         try {
             await axiosInstance.patch(API_ROUTES.blockUser, blockedUser);
-            console.log('Blocked user:', blockedUser);
+            // console.log('Blocked user:', blockedUser);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
     /**
@@ -56,10 +56,10 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
     async function handleUnblockUser(user) {
         try {
             await axiosInstance.patch(API_ROUTES.unblockUser, user);
-            console.log('unBlocked user:', user);
+            // console.log('unBlocked user:', user);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
     /**
@@ -69,14 +69,14 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
      */
     async function handleUnMuteCommunity(community) {
         try {
-            console.log('unMuting user:', community);
+            // console.log('unMuting user:', community);
             await axiosInstance.delete(API_ROUTES.unmuteCommunity, {
                 data: community,
             });
-            console.log('unMuted user:', community);
+            // console.log('unMuted user:', community);
             // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update Feed settings:', error);
+            // console.error('Failed to update Feed settings:', error);
         }
     }
 
@@ -117,7 +117,7 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
         };
         setUsersList((prevUsersList) => [...prevUsersList, newUser]); // Add new user to the list
         setInputValue(''); // Clear input field after adding
-        console.log(`${inputValue} has been added`);
+        // console.log(`${inputValue} has been added`);
         if (type == 'user') {
             const blockedUser = {'usernameToBlock': inputValue};
             handleBlockUser(blockedUser);
@@ -134,7 +134,7 @@ function BlockUserComponent({head, text, blocktext, list, type, id}) {
      */
     function handleRemove(userName) {
         setUsersList(usersList.filter((user) => user.blockedUserName !== userName)); // Remove user from the list
-        console.log(`${userName} has been removed`);
+        // console.log(`${userName} has been removed`);
         if (type == 'user') {
             const unBlockedUser = {'UserNameToUnblock': userName};
             handleUnblockUser(unBlockedUser);

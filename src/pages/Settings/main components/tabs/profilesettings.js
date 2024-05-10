@@ -40,7 +40,7 @@ function ProfileSettings({id}) {
             const response = await axiosInstance.get(API_ROUTES.profileSettings);
             setProfileSettings(response.data.profileSettings);
         } catch (error) {
-            console.error('Failed to fetch profile settings:', error);
+            // console.error('Failed to fetch profile settings:', error);
         }
     }
     useEffect(() => {
@@ -55,10 +55,10 @@ function ProfileSettings({id}) {
     async function handleUpdateProfileSettings(updatedSettings) {
         try {
             const response = await axiosInstance.patch(API_ROUTES.profileSettings, updatedSettings);
-            console.log('Profile updated:', response.data);
+            // console.log('Profile updated:', response.data);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update profile settings:', error);
+            // console.error('Failed to update profile settings:', error);
         }
     }
 
@@ -73,7 +73,7 @@ function ProfileSettings({id}) {
         const updatedSettings = {...profileSettings, [settingKey]: newValue};
         setProfileSettings(updatedSettings); // Update local state
         handleUpdateProfileSettings(updatedSettings); // Send update request
-        console.log('updated', updatedSettings);
+        // console.log('updated', updatedSettings);
     }
 
     /**
@@ -86,7 +86,7 @@ function ProfileSettings({id}) {
         const updatedSettings = {...profileSettings, [settingKey]: value};
         setProfileSettings(updatedSettings); // Update local state
         handleUpdateProfileSettings(updatedSettings); // Send update request
-        console.log('updated', updatedSettings);
+        // console.log('updated', updatedSettings);
     }
 
     /**
@@ -99,7 +99,7 @@ function ProfileSettings({id}) {
         const updatedSettings = {...profileSettings, [settingKey]: value};
         setProfileSettings(updatedSettings); // Update local state
         handleUpdateProfileSettings(updatedSettings); // Send update request
-        console.log('updated', updatedSettings);
+        // console.log('updated', updatedSettings);
     }
 
 

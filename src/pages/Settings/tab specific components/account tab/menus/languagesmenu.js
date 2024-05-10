@@ -49,7 +49,7 @@ function LanguagesMenu({id}) {
      */
     function handleChangeLanguage(event) {
         setLanguage(event.target.value);
-        console.log(`${event.target.value} is now selected`);
+        // console.log(`${event.target.value} is now selected`);
         // alert(`${event.target.value} is now selected`);
     }
 

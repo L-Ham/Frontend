@@ -29,7 +29,7 @@ function ChatSettings({id}) {
             await axiosInstance.patch(API_ROUTES.chatSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update notification settings:', error);
+            // console.error('Failed to update notification settings:', error);
         }
     }/**
  * Changes a specified setting in the feed settings to a new value.
@@ -42,7 +42,7 @@ function ChatSettings({id}) {
         const updatedSettings = {...chatSettings, [settingKey]: newValue};
         setChatSettings(updatedSettings); // Update local state
         handleUpdateChatSettings(updatedSettings); // Send update request
-        console.log('send feed settings', updatedSettings);
+        // console.log('send feed settings', updatedSettings);
     }
     useEffect(() => {
         /**
@@ -54,11 +54,11 @@ function ChatSettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.chatSettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('feed settings recived:', response.data);
+                // console.log('feed settings recived:', response.data);
 
                 setChatSettings(response.data);
             } catch (error) {
-                console.error('Failed to fetch feed settings:', error);
+                // console.error('Failed to fetch feed settings:', error);
             }
         }
 

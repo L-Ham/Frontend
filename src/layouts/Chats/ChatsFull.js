@@ -37,7 +37,7 @@ function ChatsFull({show}) {
     const [receivedMessages, setReceivedMessages] = useState([]);
     const username = useSelector((state) => state.user.username);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    console.log('Username:', username);
+    // console.log('Username:', username);
     const addNewMessageToChat = (chatId, newMessage,s = false) => {
         setChats(prevChats => {
             const updatedChats = {...prevChats};
@@ -45,19 +45,19 @@ function ChatsFull({show}) {
             if (updatedChats[chatId]) {
                 // Push the new message into the chat's messages array
                 updatedChats[chatId].messages.push(newMessage);
-                console.log('Adding the message', updatedChats[chatId].messages);
+                // console.log('Adding the message', updatedChats[chatId].messages);
     
                 // If the chat is of type 'group', update the chat's avatar to the newMessage's avatar
                 if (updatedChats[chatId].type === 'group') {
                     updatedChats[chatId].avatar = newMessage.avatar;
-                    console.log('Updated group chat avatar to', newMessage.avatar);
+                    // console.log('Updated group chat avatar to', newMessage.avatar);
                 }
                 if(s === true){
                     updatedChats[chatId].unreadCount = updatedChats[chatId].unreadCount + 1;
-                    console.log('unread count:', updatedChats[chatId].unreadCount);
+                    // console.log('unread count:', updatedChats[chatId].unreadCount);
                 }
             } else {
-                console.error("Chat ID not found, unable to add message:", chatId);
+                // console.error("Chat ID not found, unable to add message:", chatId);
                 // Optionally, you could initialize a new chat here if that's intended behavior
             }
             return updatedChats;
@@ -67,9 +67,9 @@ function ChatsFull({show}) {
     const markAsUnread = async (chatId) => {
         try {
             const response = await axiosInstance.patch(API_ROUTES.markAsReadChat, {'conversationId': chatId});
-            console.log('Message sent successfully:', response.data);
+            // console.log('Message sent successfully:', response.data);
         } catch (error) {
-            console.error('Failed to send message:', error);
+            // console.error('Failed to send message:', error);
         }
     };
     
@@ -81,7 +81,7 @@ function ChatsFull({show}) {
             setMyAvatar(response.data.url);
         } catch (error) {
             if (error?.response?.data?.message === 'Avatar image not found') return;
-            console.error('Failed to fetch banner:', error);
+            // console.error('Failed to fetch banner:', error);
         }
     }
     useEffect(() => {
@@ -101,14 +101,14 @@ function ChatsFull({show}) {
     //const [socket, setSocket] = useState([]);
     useEffect(() => {
         if (!socket.current) {
-            console.log('Connecting to server with token:', ourtoken);
+            // console.log('Connecting to server with token:', ourtoken);
             socket.current = io('http://api.reddit-bylham.me', {
                 query: { token: `Bearer ${ourtoken}` },
             });
             //past: 
     
             const handleNewMessage = (message) => {
-                console.log('Received new message:', message);
+                // console.log('Received new message:', message);
                 const formattedMessage = {
                     time: convertDateFormat(message.createdAt),
                     sender: message.senderName,
@@ -119,8 +119,8 @@ function ChatsFull({show}) {
                     isRead: message.isRead,
                     id: message._id
                 };
-                console.log('Formatted message based on type:', formattedMessage);
-                console.log('Adding message to chat:', formattedMessage);
+                // console.log('Formatted message based on type:', formattedMessage);
+                // console.log('Adding message to chat:', formattedMessage);
                 const s = true;
 
                 addNewMessageToChat(message.conversationId, formattedMessage,s);
@@ -178,15 +178,15 @@ function ChatsFull({show}) {
             // Attempt to set the primaryAvatar to the avatar of the last message sender
             const lastMessage = conversation.messages.slice(-1)[0];
             let primaryAvatar = lastMessage ? conversation.participantsAvatarUrls[conversation.participants.indexOf(lastMessage.senderName)] : conversation.participantsAvatarUrls[0];
-            console.log('primary avatar:', primaryAvatar);
+            // console.log('primary avatar:', primaryAvatar);
     
             // Check if the conversation type is 'single' and has exactly two participants
             if (conversation.type === 'single' && conversation.participants.length === 2) {
                 const otherParticipantIndex = conversation.participants.findIndex(participant => participant !== username);
                 chatName = conversation.participants[otherParticipantIndex]; // Find the other participant's name
                 primaryAvatar = conversation.participantsAvatarUrls[otherParticipantIndex]; // Use the other participant's avatar
-                console.log('Chat name:', chatName);
-                console.log('Username:', username);
+                // console.log('Chat name:', chatName);
+                // console.log('Username:', username);
             }
     
             const avatarUrls = conversation.participantsAvatarUrls.map((avatar) => avatar || defaultAvatar);
@@ -208,7 +208,7 @@ function ChatsFull({show}) {
                 type : Type,
             };
         });
-        console.log('Chats:', chats);
+        // console.log('Chats:', chats);
         return chats;
     }
     
@@ -218,7 +218,7 @@ function ChatsFull({show}) {
    /* useEffect(() => {
         // Listen for messages
         socket.on('newMessage', (message) => {
-            console.log('Received message:', message);
+            // console.log('Received message:', message);
         });
 
         // Cleanup on component unmount
@@ -232,11 +232,11 @@ function ChatsFull({show}) {
             type: "text",
             message: textMessage,
         };
-        console.log('Sending message:', messageData);
+        // console.log('Sending message:', messageData);
     
         try {
             const response = await axiosInstance.post(API_ROUTES.sendChatMessage, messageData);
-            console.log('Message sent successfully:', response.data);
+            // console.log('Message sent successfully:', response.data);
             addNewMessageToChat(selectedChatId, {
                 sender: username, // Adjust according to your app's context
             type: "text",
@@ -244,9 +244,9 @@ function ChatsFull({show}) {
             avatar: myAvatar,
 
             });
-            console.log('image: ',myAvatar);
+            // console.log('image: ',myAvatar);
         } catch (error) {
-            console.error('Failed to send message:', error);
+            // console.error('Failed to send message:', error);
         }
     };
     const sendImageMessage = async (image) => {
@@ -255,13 +255,13 @@ function ChatsFull({show}) {
         formData.append('chatId', selectedChatId);
         formData.append('type', 'image');
     
-        console.log('Sending image:', formData);
+        // console.log('Sending image:', formData);
     
         try {
             const response = await axiosInstance.post(API_ROUTES.sendChatMessage, formData, {
                 headers: {'Content-Type': 'multipart/form-data'}
             });
-            console.log('Image sent successfully:', response.data);
+            // console.log('Image sent successfully:', response.data);
     
             // Add new message to chat history in state
             addNewMessageToChat(selectedChatId, {
@@ -272,7 +272,7 @@ function ChatsFull({show}) {
                 avatar: myAvatar,
             });
         } catch (error) {
-            console.error('Failed to send image:', error);
+            // console.error('Failed to send image:', error);
         }
     };
     
@@ -280,7 +280,7 @@ function ChatsFull({show}) {
      // const sendMessage = () => {
        // socket.emit('sendMessage', message);
        // setMessage('');
-       // console.log('Sent message:', message);
+       // // console.log('Sent message:', message);
       //};
 
     const [chats, setChats] = useState({});
@@ -301,11 +301,11 @@ function ChatsFull({show}) {
     }
     
     useEffect(() => {
-        console.log('chats,,', chats);
+        // console.log('chats,,', chats);
         if (filterType === 'all') {
             setFilteredChats(chats);
-            console.log('chatssss',chats);
-            console.log('filtered chats: ',chats);
+            // console.log('chatssss',chats);
+            // console.log('filtered chats: ',chats);
         } else {
             const filtered = {};
             Object.keys(chats).forEach((chatId) => {
@@ -314,7 +314,7 @@ function ChatsFull({show}) {
                 }
             });
             setFilteredChats(filtered);
-            console.log('filtered: ', filtered);
+            // console.log('filtered: ', filtered);
         }
     }, [chats, filterType]);
     
@@ -325,18 +325,18 @@ function ChatsFull({show}) {
         async function fetchAllChats() {
             try {
                 const response = await axiosInstance.get(API_ROUTES.getAllChats);
-                console.log('Chats response:', response);
+                // console.log('Chats response:', response);
                 const newChats = convertData(response.data,username);
-                console.log('newChats: ',newChats);
+                // console.log('newChats: ',newChats);
                 setChats(newChats);
                 if (Object.keys(newChats).length > 0) {
                     setSelectedChat(newChats[Object.keys(newChats)[0]]);
                     setSelectedChatId(Object.keys(newChats)[0]);
-                    console.log('Selected chat id:', Object.keys(newChats)[0]);
-                    console.log('Selected chat:', newChats[Object.keys(newChats)[0]]);
+                    // console.log('Selected chat id:', Object.keys(newChats)[0]);
+                    // console.log('Selected chat:', newChats[Object.keys(newChats)[0]]);
                 }
             } catch (error) {
-                console.error('Failed to fetch chats:', error);
+                // console.error('Failed to fetch chats:', error);
             }
         }
 
@@ -348,8 +348,8 @@ function ChatsFull({show}) {
         setSelectedChatId(chatName);
         markAsUnread(chatName);
         chats[chatName].unreadCount = 0;
-        console.log('Selected chat id:', chatName);
-        console.log(chatName);
+        // console.log('Selected chat id:', chatName);
+        // console.log(chatName);
     };
     useEffect(() => {
         if (isFullScreen && !chatsHidden) {

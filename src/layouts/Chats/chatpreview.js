@@ -6,10 +6,10 @@ function ChatPreview({sender, lastMessage, senderImageURL, date, onSelect, unrea
         e.preventDefault();
         e.stopPropagation();
         onSelect();
-        console.log('Sender: ' + sender);
-        console.log('Last Message: ' + lastMessage);
-        console.log('Sender Image URL: ' + senderImageURL);
-        console.log('Date: ' + date);
+        // console.log('Sender: ' + sender);
+        // console.log('Last Message: ' + lastMessage);
+        // console.log('Sender Image URL: ' + senderImageURL);
+        // console.log('Date: ' + date);
     };
 
     return (

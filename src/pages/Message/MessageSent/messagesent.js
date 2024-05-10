@@ -26,7 +26,7 @@ export function MessageSent() {
             const response = await axios.get(API_ROUTES.sentMessages);
             return response.data;
         } catch (e) {
-            console.error(e);
+            // console.error(e);
         }
     };
     return (

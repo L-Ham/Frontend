@@ -14,7 +14,7 @@ export const usePostContent = ({postId, type, text, imageUrls, poll, url, create
     } else if (type === 'link') {
         postContent = <PostLink postId={postId} url={url} viewContext={viewContext} />;
     } else {
-        console.log('Unexpected post type', type);
+        // console.log('Unexpected post type', type);
         postContent = (
             <div>
                 Unexptected post type

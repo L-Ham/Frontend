@@ -32,15 +32,15 @@ function Approveduserentry({username, imageurl, name, onremove}) {
 
             });
 
-            console.log(response);
-            console.log(name);
-            console.log(username);
+            // console.log(response);
+            // console.log(name);
+            // console.log(username);
             onremove(true);
             addNotification({message: 'User removed successfuly', type: 'success'});
         } catch (error) {
-            console.log(error);
-            console.log(name);
-            console.log(username);
+            // console.log(error);
+            // console.log(name);
+            // console.log(username);
         }
     }
     /**

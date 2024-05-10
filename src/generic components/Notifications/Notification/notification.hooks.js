@@ -14,7 +14,7 @@ export const useNotification = ({notification, onClose}) => {
         // add class scale-down and remove class scale-up
         const toaster = document.getElementById(`toaster-${id}`);
         if (!toaster) {
-            console.error('Element with id "toaster" not found');
+            // console.error('Element with id "toaster" not found');
             return;
         }
         toaster.classList.remove('scale-up');

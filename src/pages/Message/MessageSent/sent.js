@@ -10,13 +10,13 @@ import {API_ROUTES} from '../../../requests/routes.js';
  */
 export function Sent({id,subject, to, message,isEven, createdAt}) {
     const handleUnsend=()=>{
-        console.log(id);
+        // console.log(id);
         const toggleFavorite = (route) => {
             axios.delete(route, {
                 data:{'messageId': id}
             }).catch((error) => {
-                console.log(id);
-                console.error(`Error:`, error);
+                // console.log(id);
+                // console.error(`Error:`, error);
             });
         };
         toggleFavorite(API_ROUTES.unsendMessage);

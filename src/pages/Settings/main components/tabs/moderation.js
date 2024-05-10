@@ -37,7 +37,7 @@ function ModerationSettings() {
 
     function f()
     {
-        console.log('clicked');
+        // console.log('clicked');
     }
     
    

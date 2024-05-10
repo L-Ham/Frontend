@@ -15,7 +15,7 @@ function ClearHistory({id}) {
      * such as initiating state changes or triggering application-specific actions.
      */
     function handleClick() {
-        console.log('Change Button clicked');
+        // console.log('Change Button clicked');
         // alert('Change Button clicked');
     }
 

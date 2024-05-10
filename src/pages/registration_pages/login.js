@@ -24,7 +24,7 @@ const Login = () => {
     useEffect(() => {
         if (userToken) {
             const redirectUrl = searchParams.get('url') || '/';
-            console.log(redirectUrl);
+            // console.log(redirectUrl);
             navigate(redirectUrl);
         }
     }, [userToken, navigate]);
@@ -40,7 +40,7 @@ const Login = () => {
                 const selfInfoResponse = await axios.get(API_ROUTES.userSelfInfo);
                 dispatch(selfInfo(selfInfoResponse.data.user));
             } catch (error) {
-                console.error('Error retrieving user info:', error);
+                // console.error('Error retrieving user info:', error);
             }
         }
     }
@@ -48,19 +48,19 @@ const Login = () => {
     const handleAccessToken = async (accessToken) => {
         setToken(accessToken);
         // You can perform further actions with the access token here
-        console.log('Received access token:', accessToken);
+        // console.log('Received access token:', accessToken);
         try {
             // Send the access token to the backend
             const response = await axios.post(API_ROUTES.GoogleLogin, {token: accessToken});
             handleUserData(response.data.token);
-            console.log('Token sent to backend:', response.data);
+            // console.log('Token sent to backend:', response.data);
             const redirectUrl = searchParams.get('url') || '/';
-            console.log(redirectUrl);
+            // console.log(redirectUrl);
             navigate(redirectUrl);
         } catch (error) {
-            console.error('Error sending token to backend:', error);
+            // console.error('Error sending token to backend:', error);
         }
-        console.log(Token);
+        // console.log(Token);
     };
 
 

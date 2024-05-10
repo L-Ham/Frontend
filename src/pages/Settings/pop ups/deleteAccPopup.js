@@ -36,17 +36,17 @@ function DeletePopUp({id}) {
      */
     async function handleDeleteUser(l, u, p) {
         const obj = {leavingReason: l, userName: u, password: p};
-        console.log('object', obj);
+        // console.log('object', obj);
         const isThemeDark = useSelector((state) => state.user.theme === 'dark');
         try {
             await axiosInstance.delete(API_ROUTES.deleteUser, {
                 data: {leavingReason: l, userName: u, password: p},
             });
-            console.log('accdeleted:', u);
+            // console.log('accdeleted:', u);
             dispatch(logout({theme: isThemeDark ? 'dark': 'light'}));
             navigate('/login');
         } catch (error) {
-            console.error('Failed to delete user:', error);
+            // console.error('Failed to delete user:', error);
         }
     }
 
@@ -55,7 +55,7 @@ function DeletePopUp({id}) {
      */
     function handleDelete() {
         if (canDelete) {
-            console.log('Account deleted successfully');
+            // console.log('Account deleted successfully');
             setDisplayDelete(false); // Optionally close the popup on successful deletion
             handleDeleteUser(reason, username, password);
         }

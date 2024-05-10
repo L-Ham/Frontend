@@ -75,7 +75,7 @@ export function ScheduledPostsContainer({about}) {
             setScheduledPosts(formattedPosts);
         } catch (error) {
             addNotification({type: 'error', message: error.response.data.message});
-            console.error('Error fetching scheduled posts', error);
+            // console.error('Error fetching scheduled posts', error);
         }
     };
 

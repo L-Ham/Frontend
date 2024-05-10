@@ -25,8 +25,8 @@ export const useActionButtons = () => {
     const subredditName = about?.communityDetails?.name || null;
     const isMember = about?.communityDetails?.isMember;
 
-    console.log('isMember',isMember);
-    console.log('isUserProfile',isUserProfilePost);
+    // console.log('isMember',isMember);
+    // console.log('isUserProfile',isUserProfilePost);
 
 
     const handleSaveDraft = () => {
@@ -50,7 +50,7 @@ export const useActionButtons = () => {
         canPost = canPost && link.length > 0 && validateLink(link);
         break;
     case 'poll':
-        console.log('pollData', pollData);
+        // console.log('pollData', pollData);
         canPost = canPost && pollData.options[0].length > 0 && pollData.options[1].length > 0 && text.length > 0;
         break;
     default:
@@ -127,7 +127,7 @@ export const useActionButtons = () => {
                 new Date(new Date().getTime() + pollData.votingLength * 60000).toISOString());
             formData.append('poll.votingLength', pollData.votingLength);
             formData.append('type', 'poll');
-            console.log(formData);
+            // console.log(formData);
             break;
         case 'post':
             postData.text = text;
@@ -156,7 +156,7 @@ export const useActionButtons = () => {
         } catch (error) {
             const errorMessage = error.response ? error.response.message : 'unrecognized error please try again later';
             addNotification({message: errorMessage, type: 'failure'});
-            console.error('Failed to create post:', error);
+            // console.error('Failed to create post:', error);
         }
     };
 

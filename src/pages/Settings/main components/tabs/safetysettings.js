@@ -28,12 +28,12 @@ function SafetySettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.safetySettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('Safety settings:', response.data);
+                // console.log('Safety settings:', response.data);
                 const transformedSettings = transformSafetySettings(response.data);
-                console.log('Transformed safety settings:', transformedSettings);
+                // console.log('Transformed safety settings:', transformedSettings);
                 setSafetySettings(transformedSettings);
             } catch (error) {
-                console.error('Failed to fetch safety settings:', error);
+                // console.error('Failed to fetch safety settings:', error);
             }
         }
 

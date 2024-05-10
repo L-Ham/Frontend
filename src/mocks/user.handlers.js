@@ -41,7 +41,7 @@ const login = async ({request, params, cookies}) => {
         }
         return HttpResponse.json(responseBody, status);
     } catch (error) {
-        console.error('Error processing login:', error);
+        // console.error('Error processing login:', error);
         return HttpResponse.json({error: 'Internal server error'}, {status: 500});
     }
 };
@@ -71,7 +71,7 @@ const signup = async ({request, params, cookies}) => {
         }
         return HttpResponse.json(responseBody, status);
     } catch (error) {
-        console.error('Error processing login:', error);
+        // console.error('Error processing login:', error);
         return HttpResponse.json({error: 'Internal server error'}, {status: 500});
     }
 };
@@ -82,9 +82,9 @@ const forgotusername = async ({request, params, cookies}) => {
         const body = await request.json();
 
         const {email} = body;
-        console.log(email);
+        // console.log(email);
         let responseBody; let status;
-        console.log(FORGOTUSERNAME[email]);
+        // console.log(FORGOTUSERNAME[email]);
         if (email !== FORGOTUSERNAME.email) {
             responseBody = {message: 'Invalid email'};
             status = {status: 400};
@@ -94,7 +94,7 @@ const forgotusername = async ({request, params, cookies}) => {
         }
         return HttpResponse.json(responseBody, status);
     } catch (error) {
-        console.error('Error processing forgot username:', error);
+        // console.error('Error processing forgot username:', error);
         return HttpResponse.json({error: 'Internal server error'}, {status: 500});
     }
 };
@@ -104,9 +104,9 @@ const forgotpassword = async ({request, params, cookies}) => {
         const body = await request.json();
 
         const {email} = body;
-        console.log(email);
+        // console.log(email);
         let responseBody; let status;
-        console.log(FORGOTPASSWORD[email]);
+        // console.log(FORGOTPASSWORD[email]);
         if (email !== FORGOTPASSWORD.email2) {
             responseBody = {message: 'Invalid email'};
             status = {status: 400};
@@ -116,7 +116,7 @@ const forgotpassword = async ({request, params, cookies}) => {
         }
         return HttpResponse.json(responseBody, status);
     } catch (error) {
-        console.error('Error processing forgot username:', error);
+        // console.error('Error processing forgot username:', error);
         return HttpResponse.json({error: 'Internal server error'}, {status: 500});
     }
 };

@@ -36,7 +36,7 @@ function EmailSettings({id}) {
             await axiosInstance.patch(API_ROUTES.emailSettings, updatedSettings);
         // Optionally refresh the profile settings or indicate success to the user
         } catch (error) {
-            console.error('Failed to update notification settings:', error);
+            // console.error('Failed to update notification settings:', error);
         }
     }
     /**
@@ -49,7 +49,7 @@ function EmailSettings({id}) {
         const updatedSettings = {...mailSettings, [settingKey]: newValue};
         setmailSettings(updatedSettings); // Update local state
         handleUpdateEmailSettings(updatedSettings); // Send update request
-        console.log('send notification settings', updatedSettings);
+        // console.log('send notification settings', updatedSettings);
     }
     useEffect(() => {
         /**
@@ -61,11 +61,11 @@ function EmailSettings({id}) {
             try {
                 const response = await axiosInstance.get(API_ROUTES.emailSettings);
                 // Directly use response.data since it matches the expected structure
-                console.log('feed settings recived:', response.data);
+                // console.log('feed settings recived:', response.data);
 
                 setmailSettings(response.data.emailSettings);
             } catch (error) {
-                console.error('Failed to fetch feed settings:', error);
+                // console.error('Failed to fetch feed settings:', error);
             }
         }
 

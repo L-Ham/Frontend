@@ -24,13 +24,13 @@ function Muted() {
         const newusername = event.target.value;
         setUsersearch(newusername);
         setSearch(false);
-        console.log(newusername);
+        // console.log(newusername);
         // Call the function passed from the parent with the new email
     };
     const handlesearch = (event) => {
         setSearch(true);
-        console.log(usersearch);
-        console.log(search);
+        // console.log(usersearch);
+        // console.log(search);
     };
 
 
@@ -46,7 +46,7 @@ function Muted() {
     };
     const handlebanname = (banname) => {
         setBanname(banname);
-        console.log(banname);
+        // console.log(banname);
     };
 
 
