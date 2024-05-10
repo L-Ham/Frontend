@@ -23,7 +23,6 @@ export const usePopularCommunities = () => {
         axios.get(API_ROUTES.getPopularCommunities)
             .then((response) => {
                 setData(response.data.popularCommunities);
-                console.log(response.data.popularCommunities);
             })
             .catch((error) => {
                 console.error(error);
@@ -32,7 +31,7 @@ export const usePopularCommunities = () => {
 
     const popularCommunities = data.slice(0, numberOfCommunities).map((community, index) => (
         <PopularCommunity key={index}
-            iconUrl={community.avatarImageUrl}
+            iconUrl={community.avatarImageUrl || 'https://www.redditstatic.com/avatars/avatar_default_02_24A0ED.png'}
             communityName={community.name}
             memberCount={community.memberCount}
         />

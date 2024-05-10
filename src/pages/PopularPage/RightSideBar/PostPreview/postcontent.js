@@ -42,7 +42,7 @@ function PostContent({postId, subredditName, viewContext, postUrl, postTitle}) {
             }
         };
         fetchSubreddit();
-    });
+    }, []);
     return (
         <div className={styles.container}>
             <div className={styles.hoverCard}>

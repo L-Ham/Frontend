@@ -24,8 +24,14 @@ function RecentCommunitiesSection() {
             <SectionHeader sectionName='RECENT' isOpen={isOpen} setIsOpen={setIsOpen}
                 data-testid='recent-communities-section-header' />
             <div className={rootStyles}>
-                {recentCommunities.map((community) => (
-                    <RecentCommunityItem key={uuid()} {...community} />
+                {Object.entries(recentCommunities).map(([key, community], index, arr) => (
+                    <React.Fragment key={uuid()}>
+                        <RecentCommunityItem
+                            imgURL={community.avatar}
+                            label={community.communityName}
+                            href={`/r/${community.communityName}`}
+                        />
+                    </React.Fragment>
                 ))}
             </div>
         </>

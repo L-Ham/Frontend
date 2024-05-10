@@ -121,9 +121,12 @@ import {ReactComponent as CalendarIcon} from '../assets/icons/calendar.svg';
 import {ReactComponent as SaveIconFill} from '../assets/icons/save-fill.svg';
 import {ReactComponent as HideIconFill} from '../assets/icons/hide-fill.svg';
 import {ReactComponent as CaretRightIconOutline} from '../assets/icons/caret-right-outline.svg';
+import {ReactComponent as RemoveIconFill} from '../assets/icons/remove-fill.svg';
 import {ReactComponent as RadioButtonIconOutline} from '../assets/icons/radio-button-outline.svg';
 import {ReactComponent as RadioButtonIconFill} from '../assets/icons/radio-button-fill.svg';
 import {ReactComponent as LeaveIconOutline} from '../assets/icons/leave-outline.svg';
+import {ReactComponent as QRCodeIcon} from '../assets/icons/qr-code-outline.svg';
+import {ReactComponent as TopicMarketPlaceIcon} from '../assets/icons/topic-marketplace.svg';
 
 // icons map
 const ICONS_MAP = {
@@ -247,9 +250,12 @@ const ICONS_MAP = {
     'save-fill': SaveIconFill,
     'hide-fill': HideIconFill,
     'caret-right-outline': CaretRightIconOutline,
+    'remove-fill': RemoveIconFill,
     'radio-button-outline': RadioButtonIconOutline,
     'radio-button-fill': RadioButtonIconFill,
     'leave-outline': LeaveIconOutline,
+    'qrcode': QRCodeIcon,
+    'topic-marketplace-outline': TopicMarketPlaceIcon,
 };
 
 /**

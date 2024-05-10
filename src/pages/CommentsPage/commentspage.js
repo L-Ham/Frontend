@@ -8,6 +8,9 @@ import {Comments} from './Comments/comments';
 import {SubredditProvider} from '../subreddit/subredditcontext';
 import {SubredditSidebar} from '../subreddit/SubredditSidebar/subredditsidebar';
 import '../../layouts/SideBar/sidebar.css';
+import {useDispatch} from 'react-redux';
+import {addRecentPost} from '../../store/userSlice.js';
+
 /**
  * Renders Comments Page
  * @return {JSX.Element} The rendered Comments Page component.
@@ -51,12 +54,21 @@ export function CommentsPage({
         spammedBy: [],
     });
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(API_ROUTES.getPost(postId));
                 setPostData(response.data.post);
                 setIsLoading(false);
+                dispatch(addRecentPost({
+                    postId: response.data.post._id,
+                    subredditId: response.data.post.subReddit,
+                    subredditName: name,
+                    postTitle: response.data.post.title,
+                    upvotes: response.data.post.upvotes,
+                    comments: response.data.post.commentCount,
+                }));
             } catch (error) {
                 console.error(error);
             }
