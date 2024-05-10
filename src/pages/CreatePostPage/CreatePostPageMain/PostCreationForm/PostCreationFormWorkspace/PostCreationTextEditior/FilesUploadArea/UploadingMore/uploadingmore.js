@@ -43,14 +43,15 @@ export function UploadingMore() {
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
+            data-testid="uploading-more-div"
         >
             <div className={classes.uploadingMoreDiv2}>
                 <div className={classes.uploadingMoreDiv3}>
                     <div className={classes.uploadingMoreDiv4}>
                         <div className={classes.uploadingMoreDiv5}>
-                            {files.map((file, idx) => <Image file={file} key={idx}/>)}
+                            {files.map((file, idx) => <Image file={file} key={idx} data-testid={`image-${idx}`}/>)}
                         </div>
-                        <AddFiles/>
+                        <AddFiles data-testid="add-files"/>
                     </div>
                 </div>
                 <div className={classes.uploadingMoreDiv6} />

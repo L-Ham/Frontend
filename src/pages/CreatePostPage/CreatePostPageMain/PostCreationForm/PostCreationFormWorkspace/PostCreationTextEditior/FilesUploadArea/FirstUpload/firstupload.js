@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {classes} from './firstupload.styles.js';
 import {useFirstUpload} from './firstupload.hooks.js';
 import './firstupload.css';
@@ -16,9 +15,7 @@ export function FirstUpload() {
         handleDragOver} = useFirstUpload();
 
     return (
-        <div className={classes.firstUploadDiv}
-
-        >
+        <div className={classes.firstUploadDiv} data-testid="first-upload-div">
             <input
                 ref={fileInputRef}
                 type="file"
@@ -26,22 +23,25 @@ export function FirstUpload() {
                 multiple={false}
                 className={classes.firstUploadInput}
                 onChange={handleFileChange}
+                data-testid="first-upload-input"
             />
             <div className={`${classes.firstUploadDiv2} ${isDragging ? 'dragging' : ''}`}
                 onDragOver={handleDragOver}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
+                data-testid="first-upload-div2"
             >
-                <p className={classes.firstUploadP}>
-                Drag and drop images or{' '}
+                <p className={classes.firstUploadP} data-testid="first-upload-p">
+            Drag and drop images or{' '}
                     <button
                         role="button"
                         tabIndex={0}
                         className={classes.firstUploadButton}
                         onClick={handleButtonClick}
+                        data-testid="first-upload-button"
                     >
-                    Upload
+                Upload
                     </button>
                 </p>
             </div>
@@ -49,6 +49,3 @@ export function FirstUpload() {
     );
 }
 
-FirstUpload.propTypes = {
-    setPostBody: PropTypes.func.isRequired,
-};
