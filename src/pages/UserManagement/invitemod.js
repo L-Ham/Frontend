@@ -103,20 +103,21 @@ function Invitepopup({onxclick, banname, name}) {
         }
     }
     return (
-        <div className='pointer-events-none fixed left-0 top-0 z-[55]
+        <div data-testid='qwr3h3nj5ywnj' className='pointer-events-none fixed left-0 top-0 z-[55]
          box-border flex size-full w-screen
          items-center overflow-auto bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]'>
             <div aria-modal="true" className="pointer-events-auto z-[55] m-auto rounded
              border border-solid border-[#EDEFF1] bg-white
               shadow-[0_2px_20px_0_rgba(0,0,0,0.3)]" role="dialog" tabIndex="-1">
                 <section className=' min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
-                    <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
+                    <header
+                        data-testid='erhbtrnbe54s' className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
                             <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
                                 <div className=" text-base font-medium leading-5
                                 text-[var(--newCommunityTheme-bodyText)]"> Invite Moderators:
                                 </div></div><div className="flex-[0_0]">
-                                <button className="border-[none] p-0 text-xs font-bold
+                                <button data-testid='wrneym5n' className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"><svg viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" className="size-4 fill-[#878A8C]">
                                         <polygon fill="inherit" points="11.649 9.882 18.262 3.267 16.495
@@ -124,7 +125,7 @@ function Invitepopup({onxclick, banname, name}) {
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497" onClick={handlexclick}></polygon>
                                     </svg></button></div></div></header>
                     <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
-                        <input className="box-border block h-9 w-full rounded
+                        <input data-testid='q3h4jnmuh' className="box-border block h-9 w-full rounded
                                          border border-solid border-[#EDEFF1] px-2 py-0
                                          text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                         placeholder="Enter username" value={username} onChange={handleusernamechange}/>
@@ -155,7 +156,7 @@ function Invitepopup({onxclick, banname, name}) {
                     text-[var(--newCommunityTheme-bodyText)]">Give them access to...</div>
 
 
-                    <Invitemodcheck labeltext1={'Everything'} labeltext2=
+                    <Invitemodcheck data-testid='q3ne5jtm' labeltext1={'Everything'} labeltext2=
                         {'Full access including the ability to manage moderator access and permissions.'}/>
                     <hr className="mx-0 mb-0 mt-4 border-0 border-t border-solid border-t-[#EDEFF1]"/>
 
@@ -193,7 +194,7 @@ function Invitepopup({onxclick, banname, name}) {
                                              text-center text-sm font-bold leading-[17px]
                                              tracking-[unset] text-[#0079D3]
                                             "onClick={handlexclick}>Cancel</button>
-                        <button role="button" tabIndex="0" disabled=""
+                        <button data-testid='q3bw5rnmye6' role="button" tabIndex="0" disabled=""
                             className="relative ml-2 box-border
                              flex min-h-[32px] w-auto min-w-[32px] items-center
                              justify-center rounded-full border-[none] bg-[#0079d3]

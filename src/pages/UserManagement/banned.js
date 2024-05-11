@@ -7,14 +7,12 @@ import PropTypes from 'prop-types';
 import {useEffect} from 'react';
 
 import {axiosInstance as axios} from '../../requests/axios';
-import {useNotifications} from '../../generic components/Notifications/notificationsContext';
 /**
  *
  *
  * @return  {JSX.Element} UserHelp
  */
 function Banned({name}) {
-    const {addNotification} = useNotifications();
     const [isbanPressed, setIsbanPressed] = useState(false);
     const [isxclicked, setIsxclicked] = useState(false);
     const [usersearch, setUsersearch] = useState('');
@@ -93,12 +91,12 @@ function Banned({name}) {
             {isbanPressed && !isxclicked && <Betterban name={name}
                 onxclick={handlexclick} banname={handlebanname} labeltext={'Ban'} onaddban={handlenewban}/>}
             <div className="static left-[280px] right-0 top-[89px]
-             z-[3] mb-2 flex h-12 flex-row items-center justify-end pr-0 ">
+             z-[3] mb-2 flex h-12 flex-row items-center justify-end pr-0 " data-testid='cefvgrbt4wh5yj7'>
                 <button role="button" tabIndex="0" className="relative
                 box-border flex min-h-[32px] w-auto min-w-[32px] items-center
                  justify-center rounded-full border-[none] bg-[#0079d3] fill-white px-4
                  py-1 text-center text-sm font-bold leading-[17px] tracking-[unset]
-                  text-white" onClick={handlebanClick}>
+                  text-white" onClick={handlebanClick} data-testid='cfqgvrbtwh53'>
                     Ban user
                 </button>
             </div>
@@ -109,7 +107,8 @@ function Banned({name}) {
                     border border-solid border-[#878a8c] bg-[var(--newCommunityTheme-body)] p-2
                     text-[var(--color-neutral-content)]"
                     placeholder="Search for a user" value={usersearch} onChange={handlesearchchange} />
-                    <button className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3" onClick={handlesearch}>
+                    <button className="h-8 w-10 rounded-[0_4px_4px_0]
+                    bg-[#878A8C] pl-3" onClick={handlesearch} data-testid='cf 3vgrq54tr'>
                         <svg className="size-4 fill-white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.59,13.91l2.78,2.69a1.25,1.25,0,1,
                             1-1.74,1.8l-2.82-2.73a8,8,0,1,1,1.78-1.76ZM14.64,9.2A5.45,
@@ -123,7 +122,7 @@ function Banned({name}) {
                 <div data-scroller-first>
                     {banned && banned.map((user, index) => (
                         (search && usersearch === user.userName) || !search ? (
-                            <Banneduserentry
+                            <Banneduserentry data-testid='cvrgbh35nj7nj5y'
                                 key={index}
                                 username={user.userName}
                                 imageurl={user.avatarImage}

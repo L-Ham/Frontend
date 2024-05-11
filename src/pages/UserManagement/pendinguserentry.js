@@ -59,7 +59,7 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
     }
     return (
         <div id='1'>
-            <div className='box-border flex h-[60px] w-full flex-row
+            <div data-testid='werbvtwe4n' className='box-border flex h-[60px] w-full flex-row
                                      items-center border-b border-solid border-b-[#EDEFF1]
                                      bg-[var(--newCommunityTheme-body)]
                                      px-4 py-2 text-xs font-normal leading-4 text-[#878A8C] '>
@@ -82,7 +82,7 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
                         </span></a></div>
 
                 <div className='ml-auto flex min-w-0 flex-row items-center'>
-                    <button role="button"
+                    <button data-testid='vaerbwtabwe' role="button"
                         tabIndex="0" className="relative box-border
                                                 flex min-h-[32px] w-auto
                                                 min-w-[32px] items-center justify-center rounded-full
@@ -92,7 +92,7 @@ function Pendinguserentry({username, imageurl, name, onremove, onapprove}) {
                                                   text-[#0079d3] hover:bg-[#edeff1]" onClick={approveuser}>
                                             Approve</button>
 
-                    <button role="button" tabIndex="0"
+                    <button data-testid='wrgvbqetwa' role="button" tabIndex="0"
                         className="relative box-border flex min-h-[32px]
                                                 w-auto min-w-[32px] items-center justify-center
                                                 rounded-full border border-solid border-transparent fill-[#0079d3]

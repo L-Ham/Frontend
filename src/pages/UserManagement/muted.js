@@ -57,7 +57,7 @@ function Muted() {
             <div className="static left-[280px] right-0
                              top-[89px] z-[3] mb-2 flex h-12 flex-row
                              items-center justify-end pr-0 ">
-                <button role="button" tabIndex="0" className="relative box-border
+                <button data-testid='EBTENYMR' role="button" tabIndex="0" className="relative box-border
                                  flex min-h-[32px] w-auto min-w-[32px] items-center justify-center rounded-full
                                  border-[none] bg-[#0079d3] fill-white px-4 py-1 text-center
                                  text-sm font-bold leading-[17px] tracking-[unset] text-white "
@@ -67,12 +67,14 @@ function Muted() {
             <div className="box-border  flex flex-row items-center justify-between
                              rounded-[4px_4px_0_0] bg-[var(--newCommunityTheme-body)] px-4 py-2">
                 <div className="flex">
-                    <input type="text" className="box-border h-8 w-[248px] rounded-[4px_0_0_4px]
+                    <input data-testid='wvebternym'
+                        type="text" className="box-border h-8 w-[248px] rounded-[4px_0_0_4px]
                                     border border-solid border-[#878a8c] bg-[var(--newCommunityTheme-body)] p-2
                                     text-[var(--color-neutral-content)]"
-                    placeholder="Search for a user"
-                    value={usersearch} onChange={handlesearchchange}/>
-                    <button className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3" onClick={handlesearch}>
+                        placeholder="Search for a user"
+                        value={usersearch} onChange={handlesearchchange}/>
+                    <button data-testid='vabtwny5eme'
+                        className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3" onClick={handlesearch}>
                         <svg className="size-4 fill-white "
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.59,13.91l2.78,2.69a1.25,
@@ -81,7 +83,7 @@ function Muted() {
                             </path></svg></button></div>
             </div>
 
-            <div className=' border border-solid border-[#EDEFF1]'>
+            <div data-testid='ewvq3rwbv3q' className=' border border-solid border-[#EDEFF1]'>
                 <div data-scroller-first>
                     {/* Map over the hardcodedUsernames array and render Banneduserentry component for each username */}
                     {hardcodedUsernames.map((username, index) => (

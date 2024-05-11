@@ -6,7 +6,7 @@ import React from 'react';
  */
 function Userpopupapprove() {
     return (
-        <div className='pointer-events-none fixed top-0
+        <div data-testid='cvwaervqerq' className='pointer-events-none fixed top-0
          z-[55] box-border flex size-full
          items-center overflow-auto bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]'>
             <div aria-modal="true" className="pointer-events-auto z-[55] m-auto rounded
@@ -16,9 +16,10 @@ function Userpopupapprove() {
                     <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
                             <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
-                                <div className=" text-base font-medium leading-5 text-[var(--newCommunityTheme-bodyText)]">Add approved user
+                                <div className=" text-base font-medium leading-5
+                                text-[var(--newCommunityTheme-bodyText)]">Add approved user
                                 </div></div><div className="flex-[0_0]">
-                                <button className="border-[none] p-0 text-xs font-bold
+                                <button data-testid='WEVWVQWR' className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"><svg viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" className="size-4 fill-[#878A8C]">
                                         <polygon fill="inherit" points="11.649 9.882 18.262 3.267 16.495
@@ -26,7 +27,7 @@ function Userpopupapprove() {
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497"></polygon>
                                     </svg></button></div></div></header>
                     <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
-                        <input className="box-border block h-9 w-full rounded
+                        <input data-testid='wEVQERBRQE' className="box-border block h-9 w-full rounded
                                          border border-solid border-[#EDEFF1] px-2 py-0
                                          text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                         placeholder="Enter username" value=""/>
@@ -34,14 +35,14 @@ function Userpopupapprove() {
                     </div>
                     <footer className="flex justify-end rounded-b
                     border-t border-solid border-t-[#EDEFF1] bg-[#EDEFF1] p-4">
-                        <button role="button" tabIndex="0"
+                        <button data-testid='CVQBTEWNYE5MU' role="button" tabIndex="0"
                             className=" relative box-border flex min-h-[32px]  w-auto min-w-[32px] items-center
                                             justify-center rounded-full border border-solid
                                              border-[#0079D3] fill-[#0079D3] px-4 py-1
                                              text-center text-sm font-bold leading-[17px]
                                              tracking-[unset] text-[#0079D3]
                                             ">Cancel</button>
-                        <button role="button" tabIndex="0" disabled=""
+                        <button data-testid='WEVBTE5NY' role="button" tabIndex="0" disabled=""
                             className="relative ml-2 box-border
                              flex min-h-[32px] w-auto min-w-[32px] items-center
                              justify-center rounded-full border-[none] bg-[#0079d3]

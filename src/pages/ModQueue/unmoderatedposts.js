@@ -2,14 +2,11 @@
 
 
 import React from 'react';
-import {Reportbanner} from './reportedbanner';
 import {Newremovebanner} from './newremovebanner';
-import {Removedbanner} from './removedbanner';
 import propTypes from 'prop-types';
 import {API_ROUTES} from '../../requests/routes';
 import {axiosInstance as axios} from '../../requests/axios';
 import {useState} from 'react';
-import {Approvedbanner} from './approvedbanner';
 import {Newapprovebanner} from './newapprovebanner';
 import {Newreportbanner} from './newreportbanner';
 import {useNotifications} from '../../generic components/Notifications/notificationsContext';

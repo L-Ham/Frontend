@@ -84,20 +84,21 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
         onremoveban: PropTypes.func,
     };
     return (
-        <div className='pointer-events-none fixed
+        <div data-testid='  2QVEWQ3RWGV3Q' className='pointer-events-none fixed
          left-0 top-0 z-[55] box-border flex size-full w-screen
          items-center overflow-auto bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]'>
             <div aria-modal="true" className="pointer-events-auto z-[55] m-auto rounded
              border border-solid border-[#EDEFF1] bg-white
               shadow-[0_2px_20px_0_rgba(0,0,0,0.3)]" role="dialog" tabIndex="-1">
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
-                    <header className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
+                    <header
+                        data-testid='erbttrhbtr54' className="rounded-t border-b border-solid border-b-[#EDEFF1] p-4">
                         <div className="flex flex-row">
                             <div className="w-full flex-[1_1_100%] text-[var(--newCommunityTheme-bodyText)]">
                                 <div className=" text-base font-medium leading-5
                                 text-[var(--newCommunityTheme-bodyText)]">Edit Ban:
                                 </div></div><div className="flex-[0_0]">
-                                <button className="border-[none] p-0 text-xs font-bold
+                                <button data-testid='bwn4ymtnbebtfr' className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"><svg viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg" className="size-4 fill-[#878A8C]">
                                         <polygon fill="inherit" points="11.649 9.882 18.262 3.267 16.495
@@ -118,10 +119,10 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                             <div className="pt-[5px] text-xs font-normal leading-4 text-[#7c7c7c]">
                                 {300-reason.length} Characters remaining</div></label>
 
-                        <label className="mb-4 block">
+                        <label data-testid='qwerbry5nmjukr' className="mb-4 block">
                             <label className="mb-2 block text-[10px]
                             font-bold uppercase leading-3 tracking-[0.5px] text-[#878A8C]">Mod Note
-                            </label><input className="box-border block h-9 w-full
+                            </label><input data-testid='qerbneryye5' className="box-border block h-9 w-full
                              rounded border border-solid border-[#EDEFF1] bg-[#ffffff] p-3
                               text-sm font-normal leading-[21px] text-[var(--newCommunityTheme-bodyText)]"
                             data-redditstyle="true" placeholder="Mod note"
@@ -159,7 +160,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                                     5,000 Characters remaining</div></div>
 
                         <div className='mb-0 flex flex-row'>
-                            <button role="button" tabIndex="0"
+                            <button data-testid='ewrbvernyrme' role="button" tabIndex="0"
                                 className="fill-[#0079D3)] relative float-left box-border
                                  flex min-h-[32px] w-auto
                                  min-w-[32px] items-center justify-center rounded-full border
@@ -193,7 +194,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                                  Z M3,4.04761905 L5,6.07142857 L5,6.37783333 C5,6.93114286 4.5568,7.37961905
                                  4.01,7.37961905 L3.99,7.37961905 C3.4432,7.37961905 3,6.93114286
                                  3,6.37783333 L3,4.04761905 Z"></path></g></svg>Unban</button>
-                            <button role="button" tabIndex="0"
+                            <button data-testid='rk675434eqwdefrbtn' role="button" tabIndex="0"
                                 className=" relative box-border flex min-h-[32px]
                                          w-auto min-w-[32px] items-center
                                             justify-center rounded-full border border-solid
@@ -201,7 +202,7 @@ function Editban({name, onxclick, username, labeltext, onremoveban}) {
                                              text-center text-sm font-bold leading-[17px]
                                              tracking-[unset] text-[#0079D3]
                                             "onClick={handlexclick}>Cancel</button>
-                            <button role="button" tabIndex="0" disabled=""
+                            <button data-testid='ukmytnh bgre3rfew' role="button" tabIndex="0" disabled=""
                                 className="relative ml-2 box-border
                              flex min-h-[32px] w-auto min-w-[32px] items-center
                              justify-center rounded-full border-[none] bg-[#0079d3]
