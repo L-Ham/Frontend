@@ -47,8 +47,7 @@ export function formatNumberWithCommas(number) {
  * // Returns '<!-- SC_OFF --><div class="md"><p>All about studying and
  * students of computer science.</p>\n</div><!-- SC_ON -->'
  * replaceHtmlEntities('&lt;!-- SC_OFF --&gt;&lt;div class="md"&gt;&lt;p&gt;All about studying and
-   students of computer science.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;')
- * @example
+ * students of computer science.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;')
  *
  */
 export function replaceHtmlEntities(str) {

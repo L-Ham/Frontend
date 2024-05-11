@@ -90,6 +90,7 @@
       "!**/SearchPage/**/*.{js,jsx,ts,tsx}",
       "!**/Message/**/*.{js,jsx,ts,tsx}",
       "!**/usermanagementcomp/**/*.{js,jsx,ts,tsx}",
+      "!**/registration_pages/signup2components/*.{js,jsx,ts,tsx}",
       "!**/subreddit/SubredditSidebar/Widgets/WidgetsRenderer/**/*.{js,jsx,ts,tsx}"
     ]
   },
