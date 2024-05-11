@@ -63,10 +63,10 @@ function Approve({onAccept, onDecline, onxclick, name}) {
     return (
         <div className='pointer-events-none fixed
          left-0 top-0 z-[55] box-border flex size-full w-screen
-         items-center overflow-auto bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]'>
+         items-center overflow-auto bg-[rgba(28,28,28,0.9)] px-[30px] pb-5 pt-[75px]' data-testid='sacfawdvaegf'>
             <div aria-modal="true" className="pointer-events-auto z-[55] m-auto rounded
              border border-solid border-[#EDEFF1] bg-white
-              shadow-[0_2px_20px_0_rgba(0,0,0,0.3)]" role="dialog" tabIndex="-1">
+              shadow-[0_2px_20px_0_rgba(0,0,0,0.3)]" role="dialog" tabIndex="-1" data-testid='cawbgvhnjku65ytregbf'>
                 <section className='min-w-[410px] max-w-[538px] shadow-[0_2_15px_rgba(0,0,0,0.3)]'>
                     <header className="rounded-t  p-4">
                         <div className="flex flex-row">
@@ -75,13 +75,14 @@ function Approve({onAccept, onDecline, onxclick, name}) {
                                 <button className="border-[none] p-0 text-xs font-bold
                                 uppercase leading-6 tracking-[0.5px] underline"
                                 onClick={handlexclick}><svg viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg" className="size-4 fill-[#878A8C]">
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="size-4 fill-[#878A8C]"data-testid='ewfegvwh46h'>
                                         <polygon fill="inherit" points="11.649 9.882 18.262 3.267 16.495
                                     1.5 9.881 8.114 3.267 1.5 1.5 3.267 8.114 9.883 1.5 16.497 3.267
                                     18.264 9.881 11.65 16.495 18.264 18.262 16.497"></polygon>
                                     </svg></button></div></div></header>
                     <img src="https://www.redditstatic.com/desktop2x/img/snoo-success@2x.png"
-                        className="w-full max-w-[250px] pl-40"/>
+                        className="w-full max-w-[250px] pl-40"data-testid='cwEVQ3HBRT4WB'/>
                     <div className="p-4 text-[var(--newCommunityTheme-bodyText)]">
 
                         <p className="block pl-8 text-sm font-normal leading-[21px] text-[#282626]">
@@ -94,14 +95,14 @@ function Approve({onAccept, onDecline, onxclick, name}) {
                                              border-[#0079D3] fill-[#0079D3] px-4 py-1
                                              text-center text-sm font-bold leading-[17px]
                                              tracking-[unset] text-[#0079D3]
-                                            "onClick={decline}>Decline</button>
+                                            "onClick={decline} data-testid='fvaegrbtherstn'>Decline</button>
                         <button role="button" tabIndex="0" disabled=""
                             className="relative ml-2 box-border
                              flex min-h-[32px] w-auto min-w-[32px] items-center
                              justify-center rounded-full border-[none] bg-[#0079d3]
                               fill-[#0079d3] px-4 py-1 text-center
                                text-sm font-bold leading-[17px] tracking-[unset]
-                                text-[#ffffff]" onClick={acceptmoderator}>
+                                text-[#ffffff]" onClick={acceptmoderator} data-testid='wevgwerhbt44wt'>
                                                 Accept</button></footer>
 
 

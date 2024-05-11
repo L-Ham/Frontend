@@ -89,16 +89,16 @@ function Moderators({name}) {
             {isleavePressed &&!isxclicked && <Leavmod onxclick={handlexclick}name={name} onnewleave={handlenewleave}/>}
             {isinvitePressed &&!isxclicked2 &&
             <Invitepopup onxclick={handlexclick2} name={name} onnewadd={handlenewadd}/>}
-            <div className='left-[280px] right-0 top-[89px] z-[3] mb-2
+            <div data-testid='wegvq3rgv' className='left-[280px] right-0 top-[89px] z-[3] mb-2
             flex h-12 flex-row items-center justify-end  pr-0'>
-                <button role="button" tabIndex="0"
+                <button data-testid='wrvbq3rbgvq' role="button" tabIndex="0"
                     className=" relative mr-2 box-border flex min-h-[32px]
               w-auto min-w-[32px] items-center
              justify-center rounded-full border border-solid border-[#0079D3]
               fill-[#0079D3] px-4 py-1 text-center text-sm font-bold
               leading-[17px] tracking-[unset] text-[#0079D3] hover:bg-[#e8f0fe]">
                 Reorder</button>
-                <button role="button" tabIndex="0"
+                <button data-testid='qw3gvrr3q' role="button" tabIndex="0"
                     className=" relative mr-2 box-border flex min-h-[32px]
               w-auto min-w-[32px] items-center
              justify-center rounded-full border border-solid border-[#0079D3]
@@ -106,7 +106,7 @@ function Moderators({name}) {
               leading-[17px] tracking-[unset] text-[#0079D3] hover:bg-[#e8f0fe]" onClick={handleleaveClick}>
                 Leave as mod</button>
 
-                <button role="button" tabIndex="0"
+                <button data-testid='2webvr3vr4wtbrw' role="button" tabIndex="0"
                     className="relative box-border flex
                   min-h-[32px] w-auto  min-w-[32px] items-center
                   justify-center rounded-full border-[none] bg-[#0079d3]
@@ -118,12 +118,13 @@ function Moderators({name}) {
             <div className="box-border  flex flex-row items-center justify-between
                              rounded-[4px_4px_0_0] bg-[var(--newCommunityTheme-body)] px-4 py-2">
                 <div className="flex">
-                    <input type="text" className="box-border h-8 w-[248px] rounded-[4px_0_0_4px]
+                    <input data-testid='WEVRWVQ3RW'type="text" className="box-border h-8 w-[248px] rounded-[4px_0_0_4px]
                                     border border-solid border-[#878a8c] bg-[var(--newCommunityTheme-body)] p-2
                                     text-[var(--color-neutral-content)]"
                     placeholder="Search for a user"
                     value={usersearch} onChange={handlesearchchange}/>
-                    <button className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3"onClick={handlesearch}>
+                    <button data-testid='ERBVERBGV3QR'
+                        className="h-8 w-10 rounded-[0_4px_4px_0] bg-[#878A8C] pl-3"onClick={handlesearch}>
                         <svg className="size-4 fill-white "
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.59,13.91l2.78,2.69a1.25,
@@ -158,12 +159,12 @@ function Moderators({name}) {
                                      px-4 py-2 text-xs font-normal leading-4 text-[#878A8C] '>
                         <div className="min-w-[220px] rounded-lg text-sm font-medium
                                          leading-[18px] text-[var(--newCommunityTheme-bodyText)] hover:bg-[#edeff1]">
-                            <a className="inline-block rounded py-1
+                            <a data-testid='ebtnyrmu' className="inline-block rounded py-1
                                                  pl-1 pr-2" href="/user/mohamed">
                                 <span className="mr-1.5 inline-block align-middle"
                                     style={{height: '32px', width: '32px'}}>
                                     <div className=" relative h-full ">
-                                        <img alt="User avatar"
+                                        <img data-testid='werbgtnre5ym' alt="User avatar"
                                             className="box-border  size-full rounded border
                                                             border-solid border-[#EDEFF1] object-cover
                                                              object-center indent-[-9999px] text-white"

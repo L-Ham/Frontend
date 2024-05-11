@@ -51,12 +51,12 @@ function Banneduserentry({username, rules, modNotes, name, imageurl, timestamp, 
     return (
         <div id='1'>
             {iseditPressed && !isxclicked && <Editban name={name} username={username} onxclick={handlexclick} labeltext={'Ban'} onremoveban={handlenewunbanned} />}
-            <div className='box-border flex h-[60px] w-full flex-row items-center border-b border-solid border-b-[#EDEFF1] bg-[var(--newCommunityTheme-body)] px-4 py-2 text-xs font-normal leading-4 text-[#878A8C]'>
+            <div className='box-border flex h-[60px] w-full flex-row items-center border-b border-solid border-b-[#EDEFF1] bg-[var(--newCommunityTheme-body)] px-4 py-2 text-xs font-normal leading-4 text-[#878A8C]' data-testid='wervqrbgvt4eb'>
                 <div className="min-w-[220px] rounded-lg text-sm font-medium leading-[18px] text-[var(--newCommunityTheme-bodyText)] hover:bg-[#edeff1]">
                     <a className="inline-block rounded py-1 pl-1 pr-2" href="/user/mohamed">
                         <span className="mr-1.5 inline-block align-middle" style={{height: '32px', width: '32px'}}>
                             <div className=" relative h-full ">
-                                <img alt="User avatar" className="box-border size-full rounded border border-solid border-[#EDEFF1] object-cover object-center indent-[-9999px] text-white" src={imageurl ? imageurl : 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_3.png'} />
+                                <img alt="User avatar" className="box-border size-full rounded border border-solid border-[#EDEFF1] object-cover object-center indent-[-9999px] text-white" src={imageurl ? imageurl : 'https://www.redditstatic.com/avatars/defaults/v2/avatar_default_3.png'} data-testid='   wevg4rbgv4wtb2'/>
                             </div>
                         </span>
                         <span className=" inline-block flex-col">
@@ -74,12 +74,12 @@ function Banneduserentry({username, rules, modNotes, name, imageurl, timestamp, 
                     {rules}
                 </div>
                 <div className='ml-auto flex min-w-0 flex-row items-center'>
-                    <button role="button" tabIndex="0" className="relative box-border flex min-h-[32px] w-auto min-w-[32px] items-center justify-center rounded-full border border-solid border-transparent fill-[#0079d3] px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset] text-[#0079d3] hover:bg-[#edeff1]" onClick={handleeditClick}>
+                    <button role="button" data-testid='weg42hg34' tabIndex="0" className="relative box-border flex min-h-[32px] w-auto min-w-[32px] items-center justify-center rounded-full border border-solid border-transparent fill-[#0079d3] px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset] text-[#0079d3] hover:bg-[#edeff1]" onClick={handleeditClick}>
                         Edit
                     </button>
-                    <button role="button" tabIndex="0" className="relative box-border flex min-h-[32px] w-auto min-w-[32px] items-center justify-center rounded-full border border-solid border-transparent fill-[#0079d3] px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset] text-[#0079d3] hover:bg-[#edeff1]" onClick={handlemoreDetails}>
+                    <button role="button" tabIndex="0" data-testid='q3gvr4rg' className="relative box-border flex min-h-[32px] w-auto min-w-[32px] items-center justify-center rounded-full border border-solid border-transparent fill-[#0079d3] px-4 py-1 text-center text-sm font-bold leading-[17px] tracking-[unset] text-[#0079d3] hover:bg-[#edeff1]" onClick={handlemoreDetails}>
                         More Details
-                        <svg className="ml-1 size-3 align-middle" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="ml-1 size-3 align-middle" data-testid='3qrgv4tg4wt' viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <polygon fill="inherit" points="11.0584 4.0602 6.0292 9.0894 1 4.0602 2.0608 3 6.0292 6.9684 9.9982 3" />
                             </g>

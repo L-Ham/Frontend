@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 function Invitemodcheck({labeltext1, labeltext2}) {
     return (
         <div className="mt-4 block px-4">
-            <button aria-checked="true" aria-disabled="false"
+            <button data-testid='3qh4w6j4k785muny' aria-checked="true" aria-disabled="false"
                 className="box-border inline-flex fill-[#0079d3]
                             text-xs font-bold leading-4 text-[var(--newCommunityTheme-bodyText)]"
                 type="button" role="checkbox"><span tabIndex="-1"

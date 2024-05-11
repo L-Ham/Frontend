@@ -11,12 +11,12 @@ function Modonly({name}) {
         name: PropTypes.string,
     };
     return (
-        <div className='mx-0 my-10'>
+        <div className='mx-0 my-10' data-testid='FV2W3BT4H6NJ5'>
             <div className='box-border w-full'>
                 <div className='flex h-[calc(100vh-48px)]  flex-col items-center justify-center
                     bg-[#dae0e6] text-xl font-medium leading-6
                     text-[var(--newCommunityTheme-bodyText)]'>
-                    <img className="mx-auto mb-6 mt-0"
+                    <img data-testid='wegv3brt4we5nyj' className="mx-auto mb-6 mt-0"
                         src="https://www.redditstatic.com/desktop2x/img/content-gate-icons/remember-the-human.png"/>
 
                         Sorry, this is a moderator-only page
